@@ -4781,15 +4781,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4900,15 +4897,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof Foreign.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Foreign.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Foreign.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Foreign.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Foreign.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Foreign.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Foreign.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Foreign.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5262,15 +5256,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof ForeignLoad.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForeignLoad.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ForeignLoad.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForeignLoad.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ForeignLoad.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForeignLoad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ForeignLoad.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForeignLoad.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5468,15 +5459,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof ForeignSave.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForeignSave.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ForeignSave.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForeignSave.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ForeignSave.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForeignSave.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ForeignSave.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForeignSave.SignalSignatures[K]>): void;
     }
 
 
@@ -5523,15 +5511,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof GInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GInputStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GInputStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GInputStream.SignalSignatures[K]>): void;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -5964,15 +5949,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -7161,15 +7143,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof Interpolate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Interpolate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Interpolate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Interpolate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Interpolate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Interpolate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Interpolate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Interpolate.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -7395,15 +7374,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -7758,15 +7734,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Operation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Operation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Operation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Operation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Operation.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -7874,15 +7847,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof Region.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Region.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Region.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Region.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Region.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Region.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Region.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Region.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8149,15 +8119,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof Sbuf.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sbuf.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Sbuf.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sbuf.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Sbuf.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sbuf.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Sbuf.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sbuf.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8324,15 +8291,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Source.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Source.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8557,15 +8521,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof SourceCustom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCustom.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceCustom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCustom.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceCustom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCustom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceCustom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCustom.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8630,15 +8591,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof SourceGInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceGInputStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceGInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceGInputStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceGInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceGInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceGInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceGInputStream.SignalSignatures[K]>): void;
     }
 
 
@@ -8709,15 +8667,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof Target.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Target.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Target.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Target.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Target.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Target.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Target.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Target.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8947,15 +8902,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof TargetCustom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TargetCustom.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TargetCustom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TargetCustom.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TargetCustom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TargetCustom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TargetCustom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TargetCustom.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -9053,15 +9005,12 @@ export namespace Vips {
         // Signals
         /** @signal */
         connect<K extends keyof ThreadState.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThreadState.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ThreadState.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThreadState.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ThreadState.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThreadState.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ThreadState.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThreadState.SignalSignatures[K]>): void;
 
         // Static methods
         /**

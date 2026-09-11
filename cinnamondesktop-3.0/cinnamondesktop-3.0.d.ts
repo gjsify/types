@@ -444,15 +444,12 @@ export namespace CinnamonDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof BG.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BG.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BG.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -674,15 +671,12 @@ export namespace CinnamonDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof BGCrossfade.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BGCrossfade.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BGCrossfade.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BGCrossfade.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BGCrossfade.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BGCrossfade.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BGCrossfade.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BGCrossfade.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -770,15 +764,12 @@ export namespace CinnamonDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof DesktopThumbnailFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DesktopThumbnailFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesktopThumbnailFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesktopThumbnailFactory.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -888,15 +879,12 @@ export namespace CinnamonDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof IdleMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IdleMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IdleMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IdleMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IdleMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IdleMonitor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1051,15 +1039,12 @@ export namespace CinnamonDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PnpIds.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PnpIds.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PnpIds.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PnpIds.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1114,15 +1099,12 @@ export namespace CinnamonDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof RRConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRConfig.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RRConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRConfig.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RRConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RRConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RRConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RRConfig.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1222,15 +1204,12 @@ export namespace CinnamonDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof RRLabeler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRLabeler.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RRLabeler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRLabeler.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RRLabeler.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RRLabeler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RRLabeler.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RRLabeler.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1282,15 +1261,12 @@ export namespace CinnamonDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof RROutputInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RROutputInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RROutputInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RROutputInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RROutputInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RROutputInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RROutputInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RROutputInfo.SignalSignatures[K]>): void;
 
         // Methods
         get_aspect_ratio(): number;
@@ -1495,15 +1471,12 @@ export namespace CinnamonDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof RRScreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRScreen.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RRScreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRScreen.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RRScreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RRScreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RRScreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RRScreen.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1961,15 +1934,12 @@ export namespace CinnamonDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof WallClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WallClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WallClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WallClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WallClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WallClock.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2064,15 +2034,12 @@ export namespace CinnamonDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof XkbInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XkbInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XkbInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XkbInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XkbInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XkbInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -1700,15 +1700,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof AsyncProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncProgress.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AsyncProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncProgress.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AsyncProgress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncProgress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AsyncProgress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncProgress.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1834,15 +1831,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof BootconfigParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BootconfigParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BootconfigParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BootconfigParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BootconfigParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BootconfigParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BootconfigParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BootconfigParser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1959,15 +1953,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof ContentWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentWriter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContentWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentWriter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContentWriter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContentWriter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentWriter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2013,15 +2004,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof Deployment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Deployment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Deployment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Deployment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Deployment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Deployment.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2188,15 +2176,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof GpgVerifyResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GpgVerifyResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GpgVerifyResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GpgVerifyResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GpgVerifyResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GpgVerifyResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GpgVerifyResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GpgVerifyResult.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2441,15 +2426,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof MutableTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MutableTree.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MutableTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MutableTree.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MutableTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MutableTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MutableTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MutableTree.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2671,15 +2653,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof Repo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Repo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Repo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Repo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Repo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Repo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Repo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Repo.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4944,15 +4923,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof RepoFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RepoFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RepoFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RepoFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9825,15 +9801,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof RepoFinderAvahi.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderAvahi.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RepoFinderAvahi.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderAvahi.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RepoFinderAvahi.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderAvahi.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RepoFinderAvahi.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderAvahi.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10048,15 +10021,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof RepoFinderConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderConfig.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RepoFinderConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderConfig.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RepoFinderConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RepoFinderConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderConfig.SignalSignatures[K]>): void;
 
         /**
          * Find reachable remote URIs which claim to provide any of the given `refs`. The
@@ -10246,15 +10216,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof RepoFinderMount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderMount.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RepoFinderMount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderMount.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RepoFinderMount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderMount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RepoFinderMount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderMount.SignalSignatures[K]>): void;
 
         /**
          * Find reachable remote URIs which claim to provide any of the given `refs`. The
@@ -10432,15 +10399,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof RepoFinderOverride.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderOverride.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RepoFinderOverride.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderOverride.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RepoFinderOverride.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderOverride.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RepoFinderOverride.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderOverride.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10656,15 +10620,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof SePolicy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SePolicy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SePolicy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SePolicy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SePolicy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SePolicy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SePolicy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SePolicy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -10878,15 +10839,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof Sysroot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sysroot.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Sysroot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sysroot.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Sysroot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sysroot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Sysroot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sysroot.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -11505,15 +11463,12 @@ export namespace OSTree {
         // Signals
         /** @signal */
         connect<K extends keyof SysrootUpgrader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SysrootUpgrader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SysrootUpgrader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SysrootUpgrader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SysrootUpgrader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SysrootUpgrader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SysrootUpgrader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SysrootUpgrader.SignalSignatures[K]>): void;
 
         // Static methods
         /**

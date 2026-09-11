@@ -396,15 +396,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof ActionInfoCentralStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionInfoCentralStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ActionInfoCentralStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionInfoCentralStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ActionInfoCentralStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionInfoCentralStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ActionInfoCentralStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionInfoCentralStore.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -468,15 +465,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof ActionInfoStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionInfoStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ActionInfoStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionInfoStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ActionInfoStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionInfoStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ActionInfoStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionInfoStore.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -591,15 +585,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -704,15 +695,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -897,15 +885,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1097,15 +1082,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<File.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1333,15 +1315,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof FileLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLoader.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1489,15 +1468,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof FileMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileMetadata.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileMetadata.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileMetadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileMetadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileMetadata.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1792,15 +1768,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof FileSaver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSaver.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileSaver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSaver.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileSaver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSaver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileSaver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSaver.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1980,15 +1953,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof FoldRegion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FoldRegion.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FoldRegion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FoldRegion.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FoldRegion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FoldRegion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FoldRegion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FoldRegion.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2072,15 +2042,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof GutterRendererFolds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GutterRendererFolds.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GutterRendererFolds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GutterRendererFolds.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GutterRendererFolds.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GutterRendererFolds.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GutterRendererFolds.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GutterRendererFolds.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2179,15 +2146,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof InfoBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InfoBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InfoBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfoBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InfoBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfoBar.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2315,15 +2279,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof MenuShell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuShell.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuShell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuShell.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuShell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuShell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuShell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuShell.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2441,15 +2402,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2601,15 +2559,12 @@ export namespace Gtef {
         // Signals
         /** @signal */
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]>): void;
 
         // Methods
         /**

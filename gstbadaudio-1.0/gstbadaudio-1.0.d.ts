@@ -296,15 +296,12 @@ export namespace GstBadAudio {
         // Signals
         /** @signal */
         connect<K extends keyof NonstreamAudioDecoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NonstreamAudioDecoder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NonstreamAudioDecoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NonstreamAudioDecoder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NonstreamAudioDecoder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NonstreamAudioDecoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NonstreamAudioDecoder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NonstreamAudioDecoder.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -669,15 +666,12 @@ export namespace GstBadAudio {
         // Signals
         /** @signal */
         connect<K extends keyof PlanarAudioAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlanarAudioAdapter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PlanarAudioAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlanarAudioAdapter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PlanarAudioAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlanarAudioAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PlanarAudioAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlanarAudioAdapter.SignalSignatures[K]>): void;
 
         // Methods
         /**

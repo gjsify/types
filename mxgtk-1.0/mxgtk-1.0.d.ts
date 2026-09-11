@@ -100,15 +100,12 @@ export namespace MxGtk {
         // Signals
         /** @signal */
         connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Frame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Frame.SignalSignatures[K]>): void;
 
         /**
          * Gets a named field from the objects table of associations (see `g_object_set_data()`).
@@ -218,15 +215,12 @@ export namespace MxGtk {
         // Signals
         /** @signal */
         connect<K extends keyof LightSwitch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LightSwitch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LightSwitch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LightSwitch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LightSwitch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LightSwitch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LightSwitch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LightSwitch.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

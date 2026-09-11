@@ -620,15 +620,12 @@ export namespace LightDM {
         // Signals
         /** @signal */
         connect<K extends keyof Greeter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Greeter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Greeter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Greeter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Greeter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Greeter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Greeter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Greeter.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1082,15 +1079,12 @@ export namespace LightDM {
         // Signals
         /** @signal */
         connect<K extends keyof Language.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Language.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Language.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Language.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Language.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Language.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1187,15 +1181,12 @@ export namespace LightDM {
         // Signals
         /** @signal */
         connect<K extends keyof Layout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layout.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Layout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layout.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Layout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Layout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layout.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1278,15 +1269,12 @@ export namespace LightDM {
         // Signals
         /** @signal */
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1510,15 +1498,12 @@ export namespace LightDM {
         // Signals
         /** @signal */
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, User.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, User.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<User.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1690,15 +1675,12 @@ export namespace LightDM {
         // Signals
         /** @signal */
         connect<K extends keyof UserList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserList.SignalSignatures[K]>): void;
 
         // Static methods
         /**

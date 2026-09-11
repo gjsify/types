@@ -752,15 +752,12 @@ export namespace OsmGpsMap {
         // Signals
         /** @signal */
         connect<K extends keyof Map.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Map.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Map.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Map.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1194,15 +1191,12 @@ export namespace OsmGpsMap {
         // Signals
         /** @signal */
         connect<K extends keyof MapImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapImage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapImage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapImage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1468,15 +1462,12 @@ export namespace OsmGpsMap {
         // Signals
         /** @signal */
         connect<K extends keyof MapOsd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapOsd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapOsd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapOsd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapOsd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapOsd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapOsd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapOsd.SignalSignatures[K]>): void;
 
         /**
          * Check whether layer is busy (eg drawing an animation)
@@ -1632,15 +1623,12 @@ export namespace OsmGpsMap {
         // Signals
         /** @signal */
         connect<K extends keyof MapPolygon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapPolygon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapPolygon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapPolygon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapPolygon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapPolygon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapPolygon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapPolygon.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1760,15 +1748,12 @@ export namespace OsmGpsMap {
         // Signals
         /** @signal */
         connect<K extends keyof MapTrack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapTrack.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapTrack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapTrack.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapTrack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapTrack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapTrack.SignalSignatures[K]>): void;
 
         // Methods
         /**

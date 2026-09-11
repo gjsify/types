@@ -264,15 +264,12 @@ export namespace Garcon {
         // Signals
         /** @signal */
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Menu.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -516,15 +513,12 @@ export namespace Garcon {
         // Signals
         /** @signal */
         connect<K extends keyof MenuDirectory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuDirectory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuDirectory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuDirectory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuDirectory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuDirectory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuDirectory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuDirectory.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -862,15 +856,12 @@ export namespace Garcon {
         // Signals
         /** @signal */
         connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1173,15 +1164,12 @@ export namespace Garcon {
         // Signals
         /** @signal */
         connect<K extends keyof MenuItemAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItemAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuItemAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItemAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuItemAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItemAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuItemAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItemAction.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1256,15 +1244,12 @@ export namespace Garcon {
         // Signals
         /** @signal */
         connect<K extends keyof MenuItemCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItemCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuItemCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItemCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuItemCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItemCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuItemCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItemCache.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1321,15 +1306,12 @@ export namespace Garcon {
         // Signals
         /** @signal */
         connect<K extends keyof MenuItemPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItemPool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuItemPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItemPool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuItemPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItemPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuItemPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItemPool.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1414,15 +1396,12 @@ export namespace Garcon {
         // Signals
         /** @signal */
         connect<K extends keyof MenuMerger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuMerger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuMerger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuMerger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuMerger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuMerger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuMerger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuMerger.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1493,15 +1472,12 @@ export namespace Garcon {
         // Signals
         /** @signal */
         connect<K extends keyof MenuNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuNode.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1664,15 +1640,12 @@ export namespace Garcon {
         // Signals
         /** @signal */
         connect<K extends keyof MenuParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuParser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1723,15 +1696,12 @@ export namespace Garcon {
         // Signals
         /** @signal */
         connect<K extends keyof MenuSeparator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuSeparator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuSeparator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuSeparator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuSeparator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuSeparator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuSeparator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuSeparator.SignalSignatures[K]>): void;
 
         /**
          * @param b 

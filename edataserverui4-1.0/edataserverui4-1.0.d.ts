@@ -267,15 +267,12 @@ export namespace EDataServerUI4 {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererColor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererColor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererColor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererColor.SignalSignatures[K]>): void;
     }
 
 
@@ -354,15 +351,12 @@ export namespace EDataServerUI4 {
         // Signals
         /** @signal */
         connect<K extends keyof CertificateWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CertificateWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CertificateWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CertificateWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CertificateWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CertificateWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CertificateWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CertificateWidget.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -512,15 +506,12 @@ export namespace EDataServerUI4 {
         // Signals
         /** @signal */
         connect<K extends keyof CredentialsPrompter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CredentialsPrompter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CredentialsPrompter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CredentialsPrompter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CredentialsPrompter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CredentialsPrompter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CredentialsPrompter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CredentialsPrompter.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -819,15 +810,12 @@ export namespace EDataServerUI4 {
         // Signals
         /** @signal */
         connect<K extends keyof CredentialsPrompterImpl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CredentialsPrompterImpl.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CredentialsPrompterImpl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CredentialsPrompterImpl.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CredentialsPrompterImpl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CredentialsPrompterImpl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CredentialsPrompterImpl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CredentialsPrompterImpl.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -943,15 +931,12 @@ export namespace EDataServerUI4 {
         // Signals
         /** @signal */
         connect<K extends keyof CredentialsPrompterImplOAuth2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CredentialsPrompterImplOAuth2.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CredentialsPrompterImplOAuth2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CredentialsPrompterImplOAuth2.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CredentialsPrompterImplOAuth2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CredentialsPrompterImplOAuth2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CredentialsPrompterImplOAuth2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CredentialsPrompterImplOAuth2.SignalSignatures[K]>): void;
     }
 
 
@@ -991,15 +976,12 @@ export namespace EDataServerUI4 {
         // Signals
         /** @signal */
         connect<K extends keyof CredentialsPrompterImplPassword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CredentialsPrompterImplPassword.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CredentialsPrompterImplPassword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CredentialsPrompterImplPassword.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CredentialsPrompterImplPassword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CredentialsPrompterImplPassword.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CredentialsPrompterImplPassword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CredentialsPrompterImplPassword.SignalSignatures[K]>): void;
     }
 
 
@@ -1111,15 +1093,12 @@ export namespace EDataServerUI4 {
         // Signals
         /** @signal */
         connect<K extends keyof RemindersWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemindersWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RemindersWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemindersWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RemindersWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemindersWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RemindersWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemindersWidget.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1310,15 +1289,12 @@ export namespace EDataServerUI4 {
         // Signals
         /** @signal */
         connect<K extends keyof WebDAVDiscoverContent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebDAVDiscoverContent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebDAVDiscoverContent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebDAVDiscoverContent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebDAVDiscoverContent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebDAVDiscoverContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebDAVDiscoverContent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebDAVDiscoverContent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1574,15 +1550,12 @@ export namespace EDataServerUI4 {
         // Signals
         /** @signal */
         connect<K extends keyof WebDAVDiscoverDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebDAVDiscoverDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebDAVDiscoverDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebDAVDiscoverDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebDAVDiscoverDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebDAVDiscoverDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebDAVDiscoverDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebDAVDiscoverDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**

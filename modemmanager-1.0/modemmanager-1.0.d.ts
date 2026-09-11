@@ -4384,15 +4384,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof __3gppProfile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, __3gppProfile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof __3gppProfile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, __3gppProfile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof __3gppProfile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<__3gppProfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof __3gppProfile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<__3gppProfile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4637,15 +4634,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Bearer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bearer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Bearer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bearer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Bearer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bearer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Bearer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bearer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5589,15 +5583,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof BearerIpConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BearerIpConfig.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BearerIpConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BearerIpConfig.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BearerIpConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BearerIpConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BearerIpConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BearerIpConfig.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5679,15 +5670,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof BearerProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BearerProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BearerProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BearerProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BearerProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BearerProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BearerProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BearerProperties.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5943,15 +5931,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof BearerStats.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BearerStats.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BearerStats.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BearerStats.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BearerStats.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BearerStats.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BearerStats.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BearerStats.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6086,15 +6071,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Call.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Call.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Call.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Call.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Call.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Call.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Call.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Call.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7561,15 +7543,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof CallAudioFormat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallAudioFormat.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CallAudioFormat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallAudioFormat.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CallAudioFormat.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallAudioFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CallAudioFormat.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallAudioFormat.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7637,15 +7616,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof CallProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CallProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CallProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CallProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallProperties.SignalSignatures[K]>): void;
 
         // Methods
         get_dictionary(): GLib.Variant;
@@ -7762,15 +7738,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Cbm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cbm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Cbm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cbm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Cbm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cbm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Cbm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cbm.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8141,15 +8114,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof CdmaManualActivationProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CdmaManualActivationProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CdmaManualActivationProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CdmaManualActivationProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CdmaManualActivationProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CdmaManualActivationProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CdmaManualActivationProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CdmaManualActivationProperties.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8321,15 +8291,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof CellInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfo.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8392,15 +8359,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof CellInfoCdma.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoCdma.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellInfoCdma.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoCdma.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellInfoCdma.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoCdma.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellInfoCdma.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoCdma.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8483,15 +8447,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof CellInfoGsm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoGsm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellInfoGsm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoGsm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellInfoGsm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoGsm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellInfoGsm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoGsm.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8587,15 +8548,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof CellInfoLte.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoLte.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellInfoLte.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoLte.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellInfoLte.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoLte.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellInfoLte.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoLte.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8712,15 +8670,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof CellInfoNr5g.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoNr5g.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellInfoNr5g.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoNr5g.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellInfoNr5g.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoNr5g.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellInfoNr5g.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoNr5g.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8844,15 +8799,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof CellInfoTdscdma.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoTdscdma.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellInfoTdscdma.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoTdscdma.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellInfoTdscdma.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoTdscdma.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellInfoTdscdma.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoTdscdma.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8954,15 +8906,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof CellInfoUmts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoUmts.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellInfoUmts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellInfoUmts.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellInfoUmts.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoUmts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellInfoUmts.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellInfoUmts.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9088,15 +9037,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof FirmwareProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FirmwareProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FirmwareProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FirmwareProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FirmwareProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FirmwareProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FirmwareProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FirmwareProperties.SignalSignatures[K]>): void;
 
         // Methods
         get_dictionary(): GLib.Variant;
@@ -9213,15 +9159,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof FirmwareUpdateSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FirmwareUpdateSettings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FirmwareUpdateSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FirmwareUpdateSettings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FirmwareUpdateSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FirmwareUpdateSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FirmwareUpdateSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FirmwareUpdateSettings.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9331,15 +9274,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusBearerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusBearerProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusBearerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusBearerProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusBearerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusBearerProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusBearerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusBearerProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -10120,15 +10060,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusBearerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusBearerSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusBearerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusBearerSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusBearerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusBearerSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusBearerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusBearerSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Bearer.BearerType">"BearerType"</link>.
@@ -10592,15 +10529,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusCallProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusCallProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusCallProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusCallProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusCallProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusCallProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusCallProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusCallProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -11646,15 +11580,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusCallSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusCallSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusCallSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusCallSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusCallSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusCallSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusCallSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusCallSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Call.AudioFormat">"AudioFormat"</link>.
@@ -12387,15 +12318,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusCbmProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusCbmProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusCbmProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusCbmProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusCbmProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusCbmProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusCbmProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusCbmProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -12906,15 +12834,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusCbmSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusCbmSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusCbmSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusCbmSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusCbmSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusCbmSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusCbmSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusCbmSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Cbm.Channel">"Channel"</link>.
@@ -13110,15 +13035,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModem3gppProfileManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppProfileManagerProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModem3gppProfileManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppProfileManagerProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModem3gppProfileManagerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppProfileManagerProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModem3gppProfileManagerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppProfileManagerProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -13803,15 +13725,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModem3gppProfileManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppProfileManagerSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModem3gppProfileManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppProfileManagerSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModem3gppProfileManagerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppProfileManagerSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModem3gppProfileManagerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppProfileManagerSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.IndexField">"IndexField"</link>.
@@ -14197,15 +14116,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModem3gppProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModem3gppProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModem3gppProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModem3gppProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -15453,15 +15369,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModem3gppSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModem3gppSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModem3gppSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModem3gppSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp.EnabledFacilityLocks">"EnabledFacilityLocks"</link>.
@@ -16388,15 +16301,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModem3gppUssdProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppUssdProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModem3gppUssdProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppUssdProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModem3gppUssdProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppUssdProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModem3gppUssdProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppUssdProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -17102,15 +17012,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModem3gppUssdSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppUssdSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModem3gppUssdSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModem3gppUssdSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModem3gppUssdSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppUssdSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModem3gppUssdSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModem3gppUssdSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.NetworkNotification">"NetworkNotification"</link>.
@@ -17509,15 +17416,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemCdmaProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemCdmaProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemCdmaProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemCdmaProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemCdmaProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemCdmaProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemCdmaProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemCdmaProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -18227,15 +18131,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemCdmaSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemCdmaSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemCdmaSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemCdmaSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemCdmaSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemCdmaSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemCdmaSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemCdmaSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-ModemCdma.ActivationState">"ActivationState"</link>.
@@ -18629,15 +18530,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemCellBroadcastProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemCellBroadcastProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemCellBroadcastProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemCellBroadcastProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemCellBroadcastProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemCellBroadcastProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemCellBroadcastProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemCellBroadcastProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -19344,15 +19242,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemCellBroadcastSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemCellBroadcastSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemCellBroadcastSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemCellBroadcastSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemCellBroadcastSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemCellBroadcastSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemCellBroadcastSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemCellBroadcastSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-CellBroadcast.CellBroadcasts">"CellBroadcasts"</link>.
@@ -19747,15 +19642,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemFirmwareProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemFirmwareProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemFirmwareProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemFirmwareProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemFirmwareProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemFirmwareProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemFirmwareProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemFirmwareProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -20357,15 +20249,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemFirmwareSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemFirmwareSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemFirmwareSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemFirmwareSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemFirmwareSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemFirmwareSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemFirmwareSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemFirmwareSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Firmware.UpdateSettings">"UpdateSettings"</link>.
@@ -20663,15 +20552,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemLocationProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemLocationProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemLocationProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemLocationProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemLocationProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemLocationProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemLocationProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemLocationProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -21603,15 +21489,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemLocationSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemLocationSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemLocationSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemLocationSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemLocationSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemLocationSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemLocationSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemLocationSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Location.AssistanceDataServers">"AssistanceDataServers"</link>.
@@ -22227,15 +22110,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemMessagingProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemMessagingProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemMessagingProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemMessagingProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemMessagingProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemMessagingProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemMessagingProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemMessagingProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -23036,15 +22916,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemMessagingSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemMessagingSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemMessagingSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemMessagingSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemMessagingSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemMessagingSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemMessagingSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemMessagingSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Messaging.DefaultStorage">"DefaultStorage"</link>.
@@ -23535,15 +23412,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemOmaProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemOmaProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemOmaProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemOmaProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemOmaProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemOmaProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemOmaProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemOmaProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -24358,15 +24232,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemOmaSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemOmaSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemOmaSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemOmaSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemOmaSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemOmaSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemOmaSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemOmaSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Oma.Features">"Features"</link>.
@@ -24902,15 +24773,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -26891,15 +26759,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemSarProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSarProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemSarProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSarProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemSarProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSarProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemSarProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSarProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -27517,15 +27382,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemSarSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSarSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemSarSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSarSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemSarSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSarSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemSarSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSarSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Sar.PowerLevel">"PowerLevel"</link>.
@@ -27839,15 +27701,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemSignalProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSignalProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemSignalProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSignalProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemSignalProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSignalProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemSignalProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSignalProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -28546,15 +28405,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemSignalSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSignalSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemSignalSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSignalSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemSignalSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSignalSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemSignalSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSignalSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Signal.Cdma">"Cdma"</link>.
@@ -28933,15 +28789,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemSimpleProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSimpleProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemSimpleProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSimpleProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemSimpleProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSimpleProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemSimpleProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSimpleProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -29594,15 +29447,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemSimpleSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSimpleSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemSimpleSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSimpleSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemSimpleSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSimpleSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemSimpleSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSimpleSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -29957,15 +29807,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.AccessTechnologies">"AccessTechnologies"</link>.
@@ -31611,15 +31458,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemTimeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemTimeProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemTimeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemTimeProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemTimeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemTimeProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemTimeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemTimeProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -32163,15 +32007,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemTimeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemTimeSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemTimeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemTimeSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemTimeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemTimeSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemTimeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemTimeSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Time.NetworkTimezone">"NetworkTimezone"</link>.
@@ -32405,15 +32246,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemVoiceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemVoiceProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemVoiceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemVoiceProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemVoiceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemVoiceProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemVoiceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemVoiceProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -33519,15 +33357,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusModemVoiceSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemVoiceSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusModemVoiceSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusModemVoiceSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusModemVoiceSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemVoiceSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusModemVoiceSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusModemVoiceSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Voice.Calls">"Calls"</link>.
@@ -34320,15 +34155,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusObjectManagerClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusObjectManagerClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusObjectManagerClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusObjectManagerClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusObjectManagerClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusObjectManagerClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusObjectManagerClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusObjectManagerClient.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -34834,15 +34666,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusObjectProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusObjectProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusObjectProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusObjectProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusObjectProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusObjectProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusObjectProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusObjectProxy.SignalSignatures[K]>): void;
 
         /**
          * The {@link ModemManager.GdbusModem} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem.top_of_page">org.freedesktop.ModemManager1.Modem</link>, if any.
@@ -35299,15 +35128,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusObjectSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusObjectSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusObjectSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusObjectSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusObjectSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusObjectSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusObjectSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusObjectSkeleton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -35864,15 +35690,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusOrgFreedesktopModemManager1Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusOrgFreedesktopModemManager1Proxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusOrgFreedesktopModemManager1Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusOrgFreedesktopModemManager1Proxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusOrgFreedesktopModemManager1Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusOrgFreedesktopModemManager1Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusOrgFreedesktopModemManager1Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusOrgFreedesktopModemManager1Proxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -36609,15 +36432,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusOrgFreedesktopModemManager1Skeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusOrgFreedesktopModemManager1Skeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusOrgFreedesktopModemManager1Skeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusOrgFreedesktopModemManager1Skeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusOrgFreedesktopModemManager1Skeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusOrgFreedesktopModemManager1Skeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusOrgFreedesktopModemManager1Skeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusOrgFreedesktopModemManager1Skeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1.Version">"Version"</link>.
@@ -37055,15 +36875,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusSimProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusSimProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusSimProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusSimProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusSimProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusSimProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusSimProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusSimProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -38081,15 +37898,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusSimSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusSimSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusSimSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusSimSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusSimSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusSimSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusSimSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusSimSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sim.Active">"Active"</link>.
@@ -38799,15 +38613,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusSmsProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusSmsProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusSmsProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusSmsProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusSmsProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusSmsProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusSmsProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusSmsProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -39632,15 +39443,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusSmsSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusSmsSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusSmsSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusSmsSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusSmsSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusSmsSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusSmsSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusSmsSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sms.Class">"Class"</link>.
@@ -40114,15 +39922,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof KernelEventProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KernelEventProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KernelEventProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KernelEventProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KernelEventProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KernelEventProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KernelEventProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KernelEventProperties.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -40216,15 +40021,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Location3gpp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Location3gpp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Location3gpp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Location3gpp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Location3gpp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Location3gpp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Location3gpp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Location3gpp.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -40314,15 +40116,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof LocationCdmaBs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocationCdmaBs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LocationCdmaBs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocationCdmaBs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LocationCdmaBs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocationCdmaBs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LocationCdmaBs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocationCdmaBs.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -40374,15 +40173,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof LocationGpsNmea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocationGpsNmea.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LocationGpsNmea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocationGpsNmea.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LocationGpsNmea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocationGpsNmea.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LocationGpsNmea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocationGpsNmea.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -40444,15 +40240,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof LocationGpsRaw.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocationGpsRaw.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LocationGpsRaw.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocationGpsRaw.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LocationGpsRaw.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocationGpsRaw.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LocationGpsRaw.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocationGpsRaw.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -40538,15 +40331,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Manager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Manager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Manager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Manager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Manager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -41312,15 +41102,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Modem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Modem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Modem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Modem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Modem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Modem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Modem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Modem.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -44896,15 +44683,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Modem3gpp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Modem3gpp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Modem3gpp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Modem3gpp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Modem3gpp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Modem3gpp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Modem3gpp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Modem3gpp.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -46837,15 +46621,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Modem3gppProfileManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Modem3gppProfileManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Modem3gppProfileManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Modem3gppProfileManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Modem3gppProfileManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Modem3gppProfileManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Modem3gppProfileManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Modem3gppProfileManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -47634,15 +47415,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Modem3gppUssd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Modem3gppUssd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Modem3gppUssd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Modem3gppUssd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Modem3gppUssd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Modem3gppUssd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Modem3gppUssd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Modem3gppUssd.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -48470,15 +48248,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof ModemCdma.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemCdma.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModemCdma.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemCdma.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModemCdma.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemCdma.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModemCdma.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemCdma.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -49251,15 +49026,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof ModemCellBroadcast.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemCellBroadcast.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModemCellBroadcast.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemCellBroadcast.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModemCellBroadcast.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemCellBroadcast.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModemCellBroadcast.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemCellBroadcast.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -50021,15 +49793,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof ModemFirmware.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemFirmware.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModemFirmware.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemFirmware.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModemFirmware.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemFirmware.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModemFirmware.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemFirmware.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -50644,15 +50413,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof ModemLocation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemLocation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModemLocation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemLocation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModemLocation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemLocation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModemLocation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemLocation.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -52277,15 +52043,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof ModemMessaging.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemMessaging.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModemMessaging.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemMessaging.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModemMessaging.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemMessaging.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModemMessaging.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemMessaging.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -53220,15 +52983,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof ModemOma.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemOma.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModemOma.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemOma.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModemOma.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemOma.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModemOma.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemOma.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -54202,15 +53962,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof ModemSar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemSar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModemSar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemSar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModemSar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemSar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModemSar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemSar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -54818,15 +54575,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof ModemSignal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemSignal.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModemSignal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemSignal.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModemSignal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemSignal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModemSignal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemSignal.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -55657,15 +55411,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof ModemSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemSimple.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModemSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemSimple.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModemSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModemSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemSimple.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -56370,15 +56121,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof ModemTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemTime.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModemTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemTime.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModemTime.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemTime.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModemTime.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemTime.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -56842,15 +56590,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof ModemVoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemVoice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModemVoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModemVoice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModemVoice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemVoice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModemVoice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModemVoice.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -58421,15 +58166,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof NetworkRejection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkRejection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetworkRejection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkRejection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetworkRejection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkRejection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetworkRejection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkRejection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -58495,15 +58237,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof NetworkTimezone.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkTimezone.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetworkTimezone.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkTimezone.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetworkTimezone.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkTimezone.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetworkTimezone.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkTimezone.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -58565,15 +58304,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Nr5gRegistrationSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Nr5gRegistrationSettings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Nr5gRegistrationSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Nr5gRegistrationSettings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Nr5gRegistrationSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Nr5gRegistrationSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Nr5gRegistrationSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Nr5gRegistrationSettings.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -58657,15 +58393,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -59100,15 +58833,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Pco.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Pco.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Pco.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Pco.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Pco.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Pco.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Pco.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Pco.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -59183,15 +58913,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Signal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Signal.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Signal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Signal.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Signal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Signal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Signal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Signal.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -59309,15 +59036,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof SignalThresholdProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalThresholdProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SignalThresholdProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalThresholdProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SignalThresholdProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalThresholdProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SignalThresholdProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalThresholdProperties.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -59406,15 +59130,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Sim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sim.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Sim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sim.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Sim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Sim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sim.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -60854,15 +60575,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleConnectProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleConnectProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleConnectProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleConnectProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleConnectProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleConnectProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleConnectProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleConnectProperties.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -61249,15 +60967,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleStatus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleStatus.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleStatus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleStatus.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleStatus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleStatus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleStatus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleStatus.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -61407,15 +61122,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof Sms.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sms.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Sms.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sms.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Sms.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sms.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Sms.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sms.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -62409,15 +62121,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof SmsProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SmsProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SmsProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SmsProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SmsProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SmsProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SmsProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SmsProperties.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -62623,15 +62332,12 @@ export namespace ModemManager {
         // Signals
         /** @signal */
         connect<K extends keyof UnlockRetries.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnlockRetries.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UnlockRetries.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnlockRetries.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UnlockRetries.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnlockRetries.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UnlockRetries.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnlockRetries.SignalSignatures[K]>): void;
 
         // Methods
         /**

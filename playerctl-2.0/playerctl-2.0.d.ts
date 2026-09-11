@@ -677,15 +677,12 @@ export namespace Playerctl {
         // Signals
         /** @signal */
         connect<K extends keyof Player.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Player.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Player.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Player.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Player.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -912,15 +909,12 @@ export namespace Playerctl {
         // Signals
         /** @signal */
         connect<K extends keyof PlayerManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PlayerManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PlayerManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PlayerManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerManager.SignalSignatures[K]>): void;
 
         // Methods
         /**

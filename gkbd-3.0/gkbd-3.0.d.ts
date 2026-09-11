@@ -187,15 +187,12 @@ export namespace Gkbd {
         // Signals
         /** @signal */
         connect<K extends keyof Configuration.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Configuration.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Configuration.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Configuration.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Configuration.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Configuration.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Configuration.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Configuration.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -389,15 +386,12 @@ export namespace Gkbd {
         // Signals
         /** @signal */
         connect<K extends keyof Indicator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Indicator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Indicator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Indicator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Indicator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Indicator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Indicator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Indicator.SignalSignatures[K]>): void;
 
         // Static methods
         static get_group_names(): string[];
@@ -512,15 +506,12 @@ export namespace Gkbd {
         // Signals
         /** @signal */
         connect<K extends keyof KeyboardDrawing.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyboardDrawing.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KeyboardDrawing.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyboardDrawing.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KeyboardDrawing.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyboardDrawing.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KeyboardDrawing.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyboardDrawing.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -648,15 +639,12 @@ export namespace Gkbd {
         // Signals
         /** @signal */
         connect<K extends keyof Status.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Status.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Status.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Status.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Status.SignalSignatures[K]>): void;
 
         // Static methods
         static get_group_names(): string[];

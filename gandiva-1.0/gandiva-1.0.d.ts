@@ -117,15 +117,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof AndNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AndNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AndNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AndNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AndNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AndNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AndNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AndNode.SignalSignatures[K]>): void;
     }
 
 
@@ -167,15 +164,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof BinaryLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BinaryLiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BinaryLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BinaryLiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BinaryLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BinaryLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BinaryLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BinaryLiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -222,15 +216,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof BooleanLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BooleanLiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BooleanLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BooleanLiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BooleanLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BooleanLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BooleanLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BooleanLiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -275,15 +266,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof BooleanNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BooleanNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BooleanNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BooleanNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BooleanNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BooleanNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BooleanNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BooleanNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -330,15 +318,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof DoubleLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DoubleLiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DoubleLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DoubleLiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DoubleLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DoubleLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DoubleLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DoubleLiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -418,15 +403,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof Expression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Expression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Expression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Expression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Expression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Expression.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -482,15 +464,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof FieldNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FieldNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FieldNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FieldNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FieldNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FieldNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FieldNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FieldNode.SignalSignatures[K]>): void;
     }
 
 
@@ -530,15 +509,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof FloatLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FloatLiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FloatLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FloatLiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FloatLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FloatLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FloatLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FloatLiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -594,15 +570,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof FunctionNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FunctionNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FunctionNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FunctionNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -646,15 +619,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof FunctionRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionRegistry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FunctionRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionRegistry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FunctionRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FunctionRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionRegistry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -721,15 +691,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof FunctionSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionSignature.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FunctionSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionSignature.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FunctionSignature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionSignature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FunctionSignature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionSignature.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -842,15 +809,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof IfNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IfNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IfNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IfNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IfNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IfNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IfNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IfNode.SignalSignatures[K]>): void;
     }
 
 
@@ -890,15 +854,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof Int16LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int16LiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Int16LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int16LiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Int16LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int16LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Int16LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int16LiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -945,15 +906,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof Int32LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int32LiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Int32LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int32LiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Int32LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int32LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Int32LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int32LiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1000,15 +958,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof Int64LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int64LiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Int64LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int64LiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Int64LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int64LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Int64LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int64LiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1055,15 +1010,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof Int8LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int8LiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Int8LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int8LiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Int8LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int8LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Int8LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int8LiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1108,15 +1060,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LiteralNode.SignalSignatures[K]>): void;
     }
 
 
@@ -1167,15 +1116,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof NativeFunction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NativeFunction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NativeFunction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NativeFunction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NativeFunction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NativeFunction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NativeFunction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NativeFunction.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1277,15 +1223,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Node.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1332,15 +1275,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof NullLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullLiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NullLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullLiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NullLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NullLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NullLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NullLiteralNode.SignalSignatures[K]>): void;
     }
 
 
@@ -1380,15 +1320,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof OrNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OrNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OrNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OrNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OrNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OrNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OrNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OrNode.SignalSignatures[K]>): void;
     }
 
 
@@ -1435,15 +1372,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof Projector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Projector.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Projector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Projector.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Projector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Projector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Projector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Projector.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1492,15 +1426,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof StringLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringLiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StringLiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringLiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StringLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StringLiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringLiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1547,15 +1478,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof UInt16LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UInt16LiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UInt16LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UInt16LiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UInt16LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UInt16LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UInt16LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UInt16LiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1602,15 +1530,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof UInt32LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UInt32LiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UInt32LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UInt32LiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UInt32LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UInt32LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UInt32LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UInt32LiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1657,15 +1582,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof UInt64LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UInt64LiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UInt64LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UInt64LiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UInt64LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UInt64LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UInt64LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UInt64LiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1712,15 +1634,12 @@ export namespace Gandiva {
         // Signals
         /** @signal */
         connect<K extends keyof UInt8LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UInt8LiteralNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UInt8LiteralNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UInt8LiteralNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UInt8LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UInt8LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UInt8LiteralNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UInt8LiteralNode.SignalSignatures[K]>): void;
 
         // Methods
         /**

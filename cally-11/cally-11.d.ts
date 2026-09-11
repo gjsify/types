@@ -121,15 +121,12 @@ export namespace Cally {
         // Signals
         /** @signal */
         connect<K extends keyof Actor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Actor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Actor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Actor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Actor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Actor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Actor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Actor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -721,15 +718,12 @@ export namespace Cally {
         // Signals
         /** @signal */
         connect<K extends keyof Clone.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Clone.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Clone.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Clone.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Clone.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Clone.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Clone.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Clone.SignalSignatures[K]>): void;
 
         /**
          * Perform the specified action on the object.
@@ -1299,15 +1293,12 @@ export namespace Cally {
         // Signals
         /** @signal */
         connect<K extends keyof Root.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Root.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Root.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Root.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Root.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Root.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Root.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Root.SignalSignatures[K]>): void;
     }
 
 
@@ -1371,15 +1362,12 @@ export namespace Cally {
         // Signals
         /** @signal */
         connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Stage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Stage.SignalSignatures[K]>): void;
 
         /**
          * Perform the specified action on the object.
@@ -1943,15 +1931,12 @@ export namespace Cally {
         // Signals
         /** @signal */
         connect<K extends keyof Text.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Text.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Text.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Text.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Text.SignalSignatures[K]>): void;
 
         /**
          * Perform the specified action on the object.
@@ -3174,15 +3159,12 @@ export namespace Cally {
         // Signals
         /** @signal */
         connect<K extends keyof Util.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Util.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Util.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Util.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Util.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Util.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Util.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Util.SignalSignatures[K]>): void;
     }
 
 

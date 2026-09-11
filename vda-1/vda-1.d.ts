@@ -365,15 +365,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof AffectedRows.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AffectedRows.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AffectedRows.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AffectedRows.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AffectedRows.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AffectedRows.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AffectedRows.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AffectedRows.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -429,15 +426,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof CommandDelete.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandDelete.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CommandDelete.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandDelete.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CommandDelete.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandDelete.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CommandDelete.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandDelete.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -598,15 +592,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof CommandInsert.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandInsert.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CommandInsert.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandInsert.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CommandInsert.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandInsert.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CommandInsert.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandInsert.SignalSignatures[K]>): void;
 
         to_string(): string;
 
@@ -691,15 +682,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof CommandModification.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandModification.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CommandModification.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandModification.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CommandModification.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandModification.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CommandModification.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandModification.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -904,15 +892,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof CommandSelect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandSelect.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CommandSelect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandSelect.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CommandSelect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandSelect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CommandSelect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandSelect.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -1112,15 +1097,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof CommandUpdate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandUpdate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CommandUpdate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandUpdate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CommandUpdate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandUpdate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CommandUpdate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandUpdate.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -1224,15 +1206,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ConnectionParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConnectionParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConnectionParameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConnectionParameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameter.SignalSignatures[K]>): void;
 
         // Methods
         get_name(): string;
@@ -1287,15 +1266,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ConnectionParameterDbName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterDbName.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConnectionParameterDbName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterDbName.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConnectionParameterDbName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterDbName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConnectionParameterDbName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterDbName.SignalSignatures[K]>): void;
     }
 
 
@@ -1335,15 +1311,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ConnectionParameterHost.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterHost.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConnectionParameterHost.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterHost.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConnectionParameterHost.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterHost.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConnectionParameterHost.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterHost.SignalSignatures[K]>): void;
     }
 
 
@@ -1383,15 +1356,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ConnectionParameterPort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterPort.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConnectionParameterPort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterPort.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConnectionParameterPort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConnectionParameterPort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterPort.SignalSignatures[K]>): void;
     }
 
 
@@ -1431,15 +1401,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ConnectionParameterUserName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterUserName.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConnectionParameterUserName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterUserName.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConnectionParameterUserName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterUserName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConnectionParameterUserName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterUserName.SignalSignatures[K]>): void;
     }
 
 
@@ -1479,15 +1446,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ConnectionParameterPassword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterPassword.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConnectionParameterPassword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterPassword.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConnectionParameterPassword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterPassword.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConnectionParameterPassword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterPassword.SignalSignatures[K]>): void;
     }
 
 
@@ -1540,15 +1504,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ConnectionParameters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameters.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConnectionParameters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameters.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConnectionParameters.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConnectionParameters.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameters.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1612,15 +1573,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof Expression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Expression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Expression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Expression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Expression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Expression.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1837,15 +1795,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionField.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionField.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionField.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionField.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionField.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionField.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionField.SignalSignatures[K]>): void;
 
         /** @category Inherited from Vda.SqlExpressionField */
         get table_ref(): string;
@@ -1972,15 +1927,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperator.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -2498,15 +2450,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorGroup.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -2562,15 +2511,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorMultiterm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorMultiterm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorMultiterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorMultiterm.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -2626,15 +2572,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorAnd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorAnd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorAnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorAnd.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -2690,15 +2633,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorOr.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorOr.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorOr.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorOr.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorOr.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorOr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorOr.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorOr.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -2754,15 +2694,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBinaryterm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBinaryterm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBinaryterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBinaryterm.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -2818,15 +2755,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorEq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorEq.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorEq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorEq.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorEq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorEq.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorEq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorEq.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -2882,15 +2816,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotEq.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotEq.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotEq.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotEq.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -2946,15 +2877,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorDiff.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorDiff.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorDiff.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorDiff.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorDiff.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorDiff.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorDiff.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorDiff.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3010,15 +2938,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorGt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGt.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorGt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGt.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorGt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorGt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorGt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorGt.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3074,15 +2999,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorLt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLt.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorLt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLt.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorLt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorLt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorLt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorLt.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3138,15 +3060,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorGeq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGeq.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorGeq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGeq.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorGeq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorGeq.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorGeq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorGeq.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3202,15 +3121,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorLeq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLeq.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorLeq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLeq.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorLeq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorLeq.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorLeq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorLeq.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3266,15 +3182,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorRegexp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorRegexp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorRegexp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorRegexp.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3330,15 +3243,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorStar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorStar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorStar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorStar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorStar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorStar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorStar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorStar.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3394,15 +3304,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorDiv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorDiv.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorDiv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorDiv.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorDiv.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorDiv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorDiv.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorDiv.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3458,15 +3365,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIn.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIn.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIn.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3522,15 +3426,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotIn.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotIn.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotIn.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3586,15 +3487,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorConcatenate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorConcatenate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorConcatenate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorConcatenate.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3650,15 +3548,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorSimilarTo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorSimilarTo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorSimilarTo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorSimilarTo.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3714,15 +3609,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorLike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLike.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorLike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLike.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorLike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorLike.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorLike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorLike.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3778,15 +3670,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotLike.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotLike.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotLike.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotLike.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3842,15 +3731,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIlike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIlike.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIlike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIlike.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIlike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIlike.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIlike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIlike.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3906,15 +3792,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotIlike.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotIlike.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotIlike.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotIlike.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3970,15 +3853,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4034,15 +3914,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorMinus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorMinus.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorMinus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorMinus.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorMinus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorMinus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorMinus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorMinus.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4098,15 +3975,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorPlus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorPlus.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorPlus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorPlus.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorPlus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorPlus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorPlus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorPlus.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4162,15 +4036,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorInitialUnaryterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4226,15 +4097,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorNot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNot.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorNot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNot.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorNot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNot.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4290,15 +4158,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorFinalUnaryterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4354,15 +4219,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIs.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4418,15 +4280,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNot.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNot.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNot.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4482,15 +4341,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNull.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNull.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNull.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4546,15 +4402,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotNull.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotNull.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotNull.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4610,15 +4463,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsTrue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsTrue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsTrue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsTrue.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4674,15 +4524,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotTrue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotTrue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotTrue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotTrue.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4738,15 +4585,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsFalse.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsFalse.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsFalse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsFalse.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4802,15 +4646,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotFalse.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotFalse.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotFalse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotFalse.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4866,15 +4707,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotUnknown.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotUnknown.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotUnknown.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotUnknown.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4930,15 +4768,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsUnknown.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsUnknown.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsUnknown.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsUnknown.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4994,15 +4829,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinct.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinct.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsDistinct.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsDistinct.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5058,15 +4890,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinct.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinct.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotDistinct.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotDistinct.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5122,15 +4951,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsDistinctFrom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5186,15 +5012,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5250,15 +5073,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorThreeterm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorThreeterm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorThreeterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorThreeterm.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5314,15 +5134,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorBetween.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetween.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorBetween.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetween.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBetween.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetween.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorBetween.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetween.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5378,15 +5195,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenAnd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenAnd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetweenAnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetweenAnd.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5442,15 +5256,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetween.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetween.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetween.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetween.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5506,15 +5317,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenAnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5570,15 +5378,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetweenSymmetric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5634,15 +5439,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5698,15 +5500,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5762,15 +5561,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5828,15 +5624,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionValue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionValue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionValue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionValue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionValue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionValue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionValue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionValue.SignalSignatures[K]>): void;
 
         /** @category Inherited from Vda.SqlExpressionValue */
         get connection(): Connection;
@@ -5953,15 +5746,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionValueParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionValueParameter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionValueParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionValueParameter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionValueParameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionValueParameter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionValueParameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionValueParameter.SignalSignatures[K]>): void;
 
         /** @category Inherited from Vda.SqlExpressionValueParameter */
         get parameters(): SqlParameters;
@@ -6095,15 +5885,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof HashList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HashList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HashList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HashList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashList.SignalSignatures[K]>): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -6332,15 +6119,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof InvalidQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidQuery.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InvalidQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidQuery.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InvalidQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InvalidQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InvalidQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InvalidQuery.SignalSignatures[K]>): void;
 
         // Methods
         get_message(): string;
@@ -6490,15 +6274,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof InvalidPreparedQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidPreparedQuery.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InvalidPreparedQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidPreparedQuery.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InvalidPreparedQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InvalidPreparedQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InvalidPreparedQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InvalidPreparedQuery.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -6569,15 +6350,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof InvalidResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InvalidResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InvalidResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InvalidResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InvalidResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InvalidResult.SignalSignatures[K]>): void;
 
         // Methods
         get_message(): string;
@@ -6635,15 +6413,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof Parameters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parameters.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Parameters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parameters.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Parameters.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Parameters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Parameters.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Parameters.SignalSignatures[K]>): void;
 
         /**
          * @param name 
@@ -6751,15 +6526,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Parser.SignalSignatures[K]>): void;
 
         /**
          * @param str 
@@ -6813,15 +6585,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof TableReference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TableReference.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TableReference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TableReference.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TableReference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TableReference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TableReference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TableReference.SignalSignatures[K]>): void;
 
         /** @category Inherited from Vda.SqlTableReference */
         get name(): string;
@@ -6904,15 +6673,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof Value.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Value.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Value.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Value.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Value.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -7047,15 +6813,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueNull.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueNull.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueNull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueNull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueNull.SignalSignatures[K]>): void;
     }
 
 
@@ -7092,15 +6855,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueString.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueString.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueString.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueString.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueString.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueString.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueString.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueString.SignalSignatures[K]>): void;
     }
 
 
@@ -7139,15 +6899,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueXml.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueXml.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueXml.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueXml.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueXml.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueXml.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueXml.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueXml.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -7199,15 +6956,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueJson.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueJson.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueJson.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueJson.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueJson.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueJson.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueJson.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueJson.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -7257,15 +7011,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueText.SignalSignatures[K]>): void;
     }
 
 
@@ -7302,15 +7053,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueName.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueName.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueName.SignalSignatures[K]>): void;
     }
 
 
@@ -7347,15 +7095,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueBool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueBool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueBool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueBool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueBool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueBool.SignalSignatures[K]>): void;
     }
 
 
@@ -7392,15 +7137,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueBit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBit.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueBit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBit.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueBit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueBit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueBit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueBit.SignalSignatures[K]>): void;
     }
 
 
@@ -7439,15 +7181,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueInteger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInteger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueInteger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInteger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueInteger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInteger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueInteger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInteger.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -7562,15 +7301,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueByte.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueByte.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueByte.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueByte.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueByte.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueByte.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueByte.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueByte.SignalSignatures[K]>): void;
     }
 
 
@@ -7607,15 +7343,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueInt2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt2.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueInt2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt2.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueInt2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInt2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueInt2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInt2.SignalSignatures[K]>): void;
     }
 
 
@@ -7652,15 +7385,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueInt4.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt4.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueInt4.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt4.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueInt4.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInt4.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueInt4.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInt4.SignalSignatures[K]>): void;
     }
 
 
@@ -7697,15 +7427,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueInt8.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt8.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueInt8.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt8.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueInt8.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInt8.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueInt8.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInt8.SignalSignatures[K]>): void;
     }
 
 
@@ -7744,15 +7471,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueUnsignedInteger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInteger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueUnsignedInteger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInteger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueUnsignedInteger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInteger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueUnsignedInteger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInteger.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -7867,15 +7591,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueUnsignedByte.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedByte.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueUnsignedByte.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedByte.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueUnsignedByte.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedByte.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueUnsignedByte.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedByte.SignalSignatures[K]>): void;
     }
 
 
@@ -7912,15 +7633,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueUnsignedInt2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt2.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueUnsignedInt2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt2.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueUnsignedInt2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInt2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueUnsignedInt2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInt2.SignalSignatures[K]>): void;
     }
 
 
@@ -7957,15 +7675,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueUnsignedInt4.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt4.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueUnsignedInt4.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt4.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueUnsignedInt4.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInt4.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueUnsignedInt4.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInt4.SignalSignatures[K]>): void;
     }
 
 
@@ -8002,15 +7717,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueUnsignedInt8.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt8.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueUnsignedInt8.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt8.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueUnsignedInt8.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInt8.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueUnsignedInt8.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInt8.SignalSignatures[K]>): void;
     }
 
 
@@ -8047,15 +7759,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueOid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueOid.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueOid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueOid.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueOid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueOid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueOid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueOid.SignalSignatures[K]>): void;
     }
 
 
@@ -8092,15 +7801,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueNumeric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueNumeric.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueNumeric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueNumeric.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueNumeric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueNumeric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueNumeric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueNumeric.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8222,15 +7928,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueFloat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueFloat.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueFloat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueFloat.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueFloat.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueFloat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueFloat.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueFloat.SignalSignatures[K]>): void;
 
         get_float(): number;
 
@@ -8274,15 +7977,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueDouble.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueDouble.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueDouble.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueDouble.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueDouble.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueDouble.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueDouble.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueDouble.SignalSignatures[K]>): void;
     }
 
 
@@ -8319,15 +8019,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueMoney.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueMoney.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueMoney.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueMoney.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueMoney.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueMoney.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueMoney.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueMoney.SignalSignatures[K]>): void;
 
         locale(): string;
 
@@ -8396,15 +8093,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueTimestamp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimestamp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueTimestamp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimestamp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueTimestamp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTimestamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueTimestamp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTimestamp.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8517,15 +8211,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueTimestampNtz.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimestampNtz.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueTimestampNtz.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimestampNtz.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueTimestampNtz.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTimestampNtz.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueTimestampNtz.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTimestampNtz.SignalSignatures[K]>): void;
     }
 
 
@@ -8562,15 +8253,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTime.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTime.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueTime.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTime.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueTime.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTime.SignalSignatures[K]>): void;
     }
 
 
@@ -8607,15 +8295,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueTimeNtz.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimeNtz.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueTimeNtz.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimeNtz.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueTimeNtz.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTimeNtz.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueTimeNtz.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTimeNtz.SignalSignatures[K]>): void;
     }
 
 
@@ -8655,15 +8340,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueDate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueDate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueDate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueDate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueDate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueDate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueDate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueDate.SignalSignatures[K]>): void;
 
         get_date(): GLib.Date;
 
@@ -8724,15 +8406,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueBinary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBinary.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueBinary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBinary.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueBinary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueBinary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueBinary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueBinary.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -8813,15 +8492,12 @@ export namespace Vda {
         // Signals
         /** @signal */
         connect<K extends keyof ValueMathExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueMathExp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValueMathExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueMathExp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValueMathExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueMathExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValueMathExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueMathExp.SignalSignatures[K]>): void;
 
         // Methods
         get_parameters(): SqlParameters;

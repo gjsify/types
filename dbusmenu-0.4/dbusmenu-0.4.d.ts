@@ -625,15 +625,12 @@ export namespace Dbusmenu {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -840,15 +837,12 @@ export namespace Dbusmenu {
         // Signals
         /** @signal */
         connect<K extends keyof Menuitem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menuitem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Menuitem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menuitem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Menuitem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Menuitem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Menuitem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Menuitem.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1288,15 +1282,12 @@ export namespace Dbusmenu {
         // Signals
         /** @signal */
         connect<K extends keyof MenuitemProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuitemProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuitemProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuitemProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuitemProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuitemProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuitemProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuitemProxy.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1402,15 +1393,12 @@ export namespace Dbusmenu {
         // Signals
         /** @signal */
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Server.SignalSignatures[K]>): void;
 
         // Methods
         /**

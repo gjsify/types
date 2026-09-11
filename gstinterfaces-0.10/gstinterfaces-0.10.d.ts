@@ -594,15 +594,12 @@ export namespace GstInterfaces {
         // Signals
         /** @signal */
         connect<K extends keyof ColorBalanceChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorBalanceChannel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorBalanceChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorBalanceChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorBalanceChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorBalanceChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorBalanceChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorBalanceChannel.SignalSignatures[K]>): void;
     }
 
 
@@ -648,15 +645,12 @@ export namespace GstInterfaces {
         // Signals
         /** @signal */
         connect<K extends keyof MixerOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerOptions.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MixerOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerOptions.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MixerOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MixerOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerOptions.SignalSignatures[K]>): void;
     }
 
 
@@ -767,15 +761,12 @@ export namespace GstInterfaces {
         // Signals
         /** @signal */
         connect<K extends keyof MixerTrack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerTrack.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MixerTrack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerTrack.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MixerTrack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MixerTrack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerTrack.SignalSignatures[K]>): void;
     }
 
 
@@ -836,15 +827,12 @@ export namespace GstInterfaces {
         // Signals
         /** @signal */
         connect<K extends keyof TunerChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TunerChannel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TunerChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TunerChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TunerChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TunerChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TunerChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TunerChannel.SignalSignatures[K]>): void;
     }
 
 
@@ -882,15 +870,12 @@ export namespace GstInterfaces {
         // Signals
         /** @signal */
         connect<K extends keyof TunerNorm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TunerNorm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TunerNorm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TunerNorm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TunerNorm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TunerNorm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TunerNorm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TunerNorm.SignalSignatures[K]>): void;
     }
 
 

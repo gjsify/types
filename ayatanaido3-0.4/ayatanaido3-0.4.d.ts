@@ -173,15 +173,12 @@ export namespace AyatanaIdo3 {
         // Signals
         /** @signal */
         connect<K extends keyof CalendarMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalendarMenuItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalendarMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalendarMenuItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalendarMenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalendarMenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalendarMenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalendarMenuItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -711,15 +708,12 @@ export namespace AyatanaIdo3 {
         // Signals
         /** @signal */
         connect<K extends keyof EntryMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryMenuItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryMenuItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryMenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryMenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryMenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryMenuItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1207,15 +1201,12 @@ export namespace AyatanaIdo3 {
         // Signals
         /** @signal */
         connect<K extends keyof Range.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Range.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Range.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Range.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Range.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Range.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Range.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Range.SignalSignatures[K]>): void;
     }
 
 
@@ -1364,15 +1355,12 @@ export namespace AyatanaIdo3 {
         // Signals
         /** @signal */
         connect<K extends keyof ScaleMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScaleMenuItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScaleMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScaleMenuItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScaleMenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScaleMenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScaleMenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScaleMenuItem.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1967,15 +1955,12 @@ export namespace AyatanaIdo3 {
         // Signals
         /** @signal */
         connect<K extends keyof SwitchMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwitchMenuItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SwitchMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwitchMenuItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SwitchMenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SwitchMenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SwitchMenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SwitchMenuItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2157,15 +2142,12 @@ export namespace AyatanaIdo3 {
         // Signals
         /** @signal */
         connect<K extends keyof Timeline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Timeline.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Timeline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Timeline.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Timeline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Timeline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Timeline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Timeline.SignalSignatures[K]>): void;
 
         // Static methods
         /**

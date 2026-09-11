@@ -80,15 +80,12 @@ export namespace GdkMacos {
         // Signals
         /** @signal */
         connect<K extends keyof MacosDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MacosDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MacosDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MacosDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosDevice.SignalSignatures[K]>): void;
     }
 
 
@@ -129,15 +126,12 @@ export namespace GdkMacos {
         // Signals
         /** @signal */
         connect<K extends keyof MacosDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosDisplay.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MacosDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosDisplay.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MacosDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MacosDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosDisplay.SignalSignatures[K]>): void;
     }
 
 
@@ -178,15 +172,12 @@ export namespace GdkMacos {
         // Signals
         /** @signal */
         connect<K extends keyof MacosGLContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosGLContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MacosGLContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosGLContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MacosGLContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosGLContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MacosGLContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosGLContext.SignalSignatures[K]>): void;
     }
 
 
@@ -221,15 +212,12 @@ export namespace GdkMacos {
         // Signals
         /** @signal */
         connect<K extends keyof MacosKeymap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosKeymap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MacosKeymap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosKeymap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MacosKeymap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosKeymap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MacosKeymap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosKeymap.SignalSignatures[K]>): void;
     }
 
 
@@ -278,15 +266,12 @@ export namespace GdkMacos {
         // Signals
         /** @signal */
         connect<K extends keyof MacosMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MacosMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MacosMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MacosMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosMonitor.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -340,15 +325,12 @@ export namespace GdkMacos {
         // Signals
         /** @signal */
         connect<K extends keyof MacosSeat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosSeat.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MacosSeat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosSeat.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MacosSeat.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosSeat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MacosSeat.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosSeat.SignalSignatures[K]>): void;
     }
 
 
@@ -402,15 +384,12 @@ export namespace GdkMacos {
         // Signals
         /** @signal */
         connect<K extends keyof MacosSurface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosSurface.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MacosSurface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MacosSurface.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MacosSurface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosSurface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MacosSurface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MacosSurface.SignalSignatures[K]>): void;
 
         // Methods
         /**

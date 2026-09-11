@@ -3352,15 +3352,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4311,15 +4308,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof Extension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Extension.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Extension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Extension.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Extension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Extension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Extension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Extension.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4385,15 +4379,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof GDataSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GDataSession.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GDataSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GDataSession.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GDataSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GDataSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GDataSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GDataSession.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4623,15 +4614,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof Module.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Module.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Module.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4752,15 +4740,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof MsOapxbc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MsOapxbc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MsOapxbc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MsOapxbc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MsOapxbc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MsOapxbc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MsOapxbc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MsOapxbc.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4858,15 +4843,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof NetworkMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetworkMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetworkMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetworkMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkMonitor.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5333,15 +5315,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof OAuth2ServiceBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2ServiceBase.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuth2ServiceBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2ServiceBase.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuth2ServiceBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2ServiceBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuth2ServiceBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2ServiceBase.SignalSignatures[K]>): void;
     }
 
 
@@ -5378,15 +5357,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof OAuth2ServiceGoogle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2ServiceGoogle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuth2ServiceGoogle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2ServiceGoogle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuth2ServiceGoogle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2ServiceGoogle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuth2ServiceGoogle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2ServiceGoogle.SignalSignatures[K]>): void;
 
         /**
          * Checks whether the `service` can be used with the given `source`.
@@ -5960,15 +5936,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof OAuth2ServiceOutlook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2ServiceOutlook.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuth2ServiceOutlook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2ServiceOutlook.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuth2ServiceOutlook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2ServiceOutlook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuth2ServiceOutlook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2ServiceOutlook.SignalSignatures[K]>): void;
 
         /**
          * Checks whether the `service` can be used with the given `source`.
@@ -6542,15 +6515,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof OAuth2ServiceYahoo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2ServiceYahoo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuth2ServiceYahoo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2ServiceYahoo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuth2ServiceYahoo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2ServiceYahoo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuth2ServiceYahoo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2ServiceYahoo.SignalSignatures[K]>): void;
 
         /**
          * Checks whether the `service` can be used with the given `source`.
@@ -7125,15 +7095,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof OAuth2Services.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2Services.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuth2Services.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2Services.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuth2Services.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2Services.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuth2Services.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2Services.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -7283,15 +7250,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SoupAuthBearer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SoupAuthBearer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SoupAuthBearer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SoupAuthBearer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SoupAuthBearer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SoupAuthBearer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SoupAuthBearer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SoupAuthBearer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7447,15 +7411,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SoupSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SoupSession.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SoupSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SoupSession.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SoupSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SoupSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SoupSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SoupSession.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -8007,15 +7968,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Source.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Source.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -10028,15 +9986,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceAddressBook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceAddressBook.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceAddressBook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceAddressBook.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceAddressBook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceAddressBook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceAddressBook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceAddressBook.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10141,15 +10096,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceAlarms.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceAlarms.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceAlarms.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceAlarms.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceAlarms.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceAlarms.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceAlarms.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceAlarms.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10389,15 +10341,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceAuthentication.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceAuthentication.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceAuthentication.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceAuthentication.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceAuthentication.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceAuthentication.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceAuthentication.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceAuthentication.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10673,15 +10622,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceAutocomplete.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceAutocomplete.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceAutocomplete.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceAutocomplete.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceAutocomplete.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceAutocomplete.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceAutocomplete.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceAutocomplete.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10748,15 +10694,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceAutoconfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceAutoconfig.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceAutoconfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceAutoconfig.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceAutoconfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceAutoconfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceAutoconfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceAutoconfig.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10855,15 +10798,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceBackend.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceBackend.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceBackend.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10935,15 +10875,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceCalendar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCalendar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceCalendar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCalendar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceCalendar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCalendar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceCalendar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCalendar.SignalSignatures[K]>): void;
     }
 
 
@@ -10995,15 +10932,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceCamel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCamel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceCamel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCamel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceCamel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCamel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceCamel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCamel.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -11220,15 +11154,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCollection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCollection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceCollection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceCollection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCollection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11466,15 +11397,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceConflictSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceConflictSearch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceConflictSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceConflictSearch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceConflictSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceConflictSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceConflictSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceConflictSearch.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11549,15 +11477,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceContacts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceContacts.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceContacts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceContacts.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceContacts.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceContacts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceContacts.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceContacts.SignalSignatures[K]>): void;
 
         // Methods
         get_include_me(): boolean;
@@ -11614,15 +11539,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceCredentialsProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCredentialsProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceCredentialsProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCredentialsProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceCredentialsProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCredentialsProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceCredentialsProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCredentialsProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -11965,15 +11887,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceCredentialsProviderImpl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCredentialsProviderImpl.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceCredentialsProviderImpl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCredentialsProviderImpl.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceCredentialsProviderImpl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCredentialsProviderImpl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceCredentialsProviderImpl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCredentialsProviderImpl.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -12156,15 +12075,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceCredentialsProviderImplOAuth2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCredentialsProviderImplOAuth2.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceCredentialsProviderImplOAuth2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCredentialsProviderImplOAuth2.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceCredentialsProviderImplOAuth2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCredentialsProviderImplOAuth2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceCredentialsProviderImplOAuth2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCredentialsProviderImplOAuth2.SignalSignatures[K]>): void;
     }
 
 
@@ -12203,15 +12119,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceCredentialsProviderImplPassword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCredentialsProviderImplPassword.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceCredentialsProviderImplPassword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceCredentialsProviderImplPassword.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceCredentialsProviderImplPassword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCredentialsProviderImplPassword.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceCredentialsProviderImplPassword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceCredentialsProviderImplPassword.SignalSignatures[K]>): void;
     }
 
 
@@ -12258,15 +12171,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceExtension.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceExtension.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceExtension.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12411,15 +12321,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceGoa.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceGoa.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceGoa.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceGoa.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceGoa.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceGoa.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceGoa.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceGoa.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12689,15 +12596,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceLDAP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceLDAP.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceLDAP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceLDAP.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceLDAP.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceLDAP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceLDAP.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceLDAP.SignalSignatures[K]>): void;
 
         // Methods
         dup_filter(): string;
@@ -12831,15 +12735,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceLocal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceLocal.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceLocal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceLocal.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceLocal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceLocal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceLocal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceLocal.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12966,15 +12867,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceMDN.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMDN.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceMDN.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMDN.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceMDN.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMDN.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceMDN.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMDN.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13124,15 +13022,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceMailAccount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailAccount.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceMailAccount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailAccount.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceMailAccount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailAccount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceMailAccount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailAccount.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13437,15 +13332,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceMailComposition.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailComposition.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceMailComposition.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailComposition.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceMailComposition.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailComposition.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceMailComposition.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailComposition.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13803,15 +13695,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceMailIdentity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailIdentity.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceMailIdentity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailIdentity.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceMailIdentity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailIdentity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceMailIdentity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailIdentity.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14071,15 +13960,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceMailSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailSignature.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceMailSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailSignature.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceMailSignature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailSignature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceMailSignature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailSignature.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14237,15 +14123,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceMailSubmission.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailSubmission.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceMailSubmission.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailSubmission.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceMailSubmission.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailSubmission.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceMailSubmission.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailSubmission.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14370,15 +14253,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceMailTransport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailTransport.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceMailTransport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMailTransport.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceMailTransport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailTransport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceMailTransport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMailTransport.SignalSignatures[K]>): void;
     }
 
 
@@ -14421,15 +14301,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceMemoList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMemoList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceMemoList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceMemoList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceMemoList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMemoList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceMemoList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceMemoList.SignalSignatures[K]>): void;
     }
 
 
@@ -14486,15 +14363,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceOffline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceOffline.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceOffline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceOffline.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceOffline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceOffline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceOffline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceOffline.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14740,15 +14614,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceOpenPGP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceOpenPGP.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceOpenPGP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceOpenPGP.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceOpenPGP.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceOpenPGP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceOpenPGP.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceOpenPGP.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15215,15 +15086,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceProxy.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15634,15 +15502,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceRefresh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceRefresh.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceRefresh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceRefresh.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceRefresh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceRefresh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceRefresh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceRefresh.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15884,15 +15749,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceRegistry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceRegistry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceRegistry.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -16978,15 +16840,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceRegistryWatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceRegistryWatcher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceRegistryWatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceRegistryWatcher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceRegistryWatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceRegistryWatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceRegistryWatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceRegistryWatcher.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -17076,15 +16935,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceResource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceResource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceResource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceResource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceResource.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17164,15 +17020,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceRevisionGuards.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceRevisionGuards.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceRevisionGuards.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceRevisionGuards.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceRevisionGuards.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceRevisionGuards.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceRevisionGuards.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceRevisionGuards.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17331,15 +17184,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceSMIME.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceSMIME.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceSMIME.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceSMIME.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceSMIME.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceSMIME.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceSMIME.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceSMIME.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17526,15 +17376,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceSecurity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceSecurity.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceSecurity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceSecurity.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceSecurity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceSecurity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceSecurity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceSecurity.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17667,15 +17514,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceSelectable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceSelectable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceSelectable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceSelectable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceSelectable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceSelectable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceSelectable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceSelectable.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17812,15 +17656,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceTaskList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceTaskList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceTaskList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceTaskList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceTaskList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceTaskList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceTaskList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceTaskList.SignalSignatures[K]>): void;
     }
 
 
@@ -17877,15 +17718,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceUoa.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceUoa.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceUoa.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceUoa.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceUoa.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceUoa.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceUoa.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceUoa.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17959,15 +17797,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceWeather.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceWeather.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceWeather.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceWeather.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceWeather.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceWeather.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceWeather.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceWeather.SignalSignatures[K]>): void;
 
         // Methods
         dup_location(): string;
@@ -18041,15 +17876,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceWebDAVNotes.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceWebDAVNotes.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceWebDAVNotes.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceWebDAVNotes.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceWebDAVNotes.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceWebDAVNotes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceWebDAVNotes.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceWebDAVNotes.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -18286,15 +18118,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof SourceWebdav.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceWebdav.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceWebdav.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceWebdav.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceWebdav.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceWebdav.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceWebdav.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceWebdav.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -18690,15 +18519,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof WebDAVSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebDAVSession.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebDAVSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebDAVSession.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebDAVSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebDAVSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebDAVSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebDAVSession.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -19541,15 +19367,12 @@ export namespace EDataServer {
         // Signals
         /** @signal */
         connect<K extends keyof XmlDocument.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlDocument.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XmlDocument.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlDocument.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XmlDocument.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XmlDocument.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XmlDocument.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XmlDocument.SignalSignatures[K]>): void;
 
         // Methods
         /**

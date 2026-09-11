@@ -1302,15 +1302,12 @@ export namespace Ipuz {
         // Signals
         /** @signal */
         connect<K extends keyof Acrostic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Acrostic.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Acrostic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Acrostic.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Acrostic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Acrostic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Acrostic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Acrostic.SignalSignatures[K]>): void;
 
         // Methods
         clear_clue_answers(): void;
@@ -1949,15 +1946,12 @@ export namespace Ipuz {
         // Signals
         /** @signal */
         connect<K extends keyof Arrowword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Arrowword.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Arrowword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Arrowword.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Arrowword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Arrowword.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Arrowword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Arrowword.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2489,15 +2483,12 @@ export namespace Ipuz {
         // Signals
         /** @signal */
         connect<K extends keyof Barred.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Barred.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Barred.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Barred.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Barred.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Barred.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Barred.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Barred.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3095,15 +3086,12 @@ export namespace Ipuz {
         // Signals
         /** @signal */
         connect<K extends keyof Crossword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Crossword.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Crossword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Crossword.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Crossword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Crossword.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Crossword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Crossword.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3919,15 +3907,12 @@ export namespace Ipuz {
         // Signals
         /** @signal */
         connect<K extends keyof Cryptic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cryptic.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Cryptic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cryptic.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Cryptic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cryptic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Cryptic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cryptic.SignalSignatures[K]>): void;
 
         /**
          * Adds a new clue set to `clues`. This clue set will be in the
@@ -4364,15 +4349,12 @@ export namespace Ipuz {
         // Signals
         /** @signal */
         connect<K extends keyof Filippine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filippine.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Filippine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filippine.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Filippine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Filippine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Filippine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Filippine.SignalSignatures[K]>): void;
 
         /**
          * Adds a new clue set to `clues`. This clue set will be in the
@@ -4871,15 +4853,12 @@ export namespace Ipuz {
         // Signals
         /** @signal */
         connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Grid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Grid.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5264,15 +5243,12 @@ export namespace Ipuz {
         // Signals
         /** @signal */
         connect<K extends keyof Nonogram.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Nonogram.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Nonogram.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Nonogram.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Nonogram.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Nonogram.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Nonogram.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Nonogram.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5596,15 +5572,12 @@ export namespace Ipuz {
         // Signals
         /** @signal */
         connect<K extends keyof NonogramColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NonogramColor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NonogramColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NonogramColor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NonogramColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NonogramColor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NonogramColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NonogramColor.SignalSignatures[K]>): void;
     }
 
 
@@ -6093,15 +6066,12 @@ export namespace Ipuz {
         // Signals
         /** @signal */
         connect<K extends keyof Puzzle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Puzzle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Puzzle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Puzzle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Puzzle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Puzzle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Puzzle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Puzzle.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -6840,15 +6810,12 @@ export namespace Ipuz {
         // Signals
         /** @signal */
         connect<K extends keyof PuzzleInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PuzzleInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PuzzleInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PuzzleInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PuzzleInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PuzzleInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PuzzleInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PuzzleInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**

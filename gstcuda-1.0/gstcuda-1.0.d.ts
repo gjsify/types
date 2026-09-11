@@ -334,15 +334,12 @@ export namespace GstCuda {
         // Signals
         /** @signal */
         connect<K extends keyof CudaAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CudaAllocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CudaAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CudaAllocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CudaAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CudaAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CudaAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CudaAllocator.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -473,15 +470,12 @@ export namespace GstCuda {
         // Signals
         /** @signal */
         connect<K extends keyof CudaBufferPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CudaBufferPool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CudaBufferPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CudaBufferPool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CudaBufferPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CudaBufferPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CudaBufferPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CudaBufferPool.SignalSignatures[K]>): void;
     }
 
 
@@ -654,15 +648,12 @@ export namespace GstCuda {
         // Signals
         /** @signal */
         connect<K extends keyof CudaContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CudaContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CudaContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CudaContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CudaContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CudaContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CudaContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CudaContext.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -760,15 +751,12 @@ export namespace GstCuda {
         // Signals
         /** @signal */
         connect<K extends keyof CudaPoolAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CudaPoolAllocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CudaPoolAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CudaPoolAllocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CudaPoolAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CudaPoolAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CudaPoolAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CudaPoolAllocator.SignalSignatures[K]>): void;
 
         // Methods
         /**

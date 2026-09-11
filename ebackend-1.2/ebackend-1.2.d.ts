@@ -502,15 +502,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Backend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Backend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Backend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Backend.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -887,15 +884,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof BackendFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackendFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BackendFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackendFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BackendFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackendFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BackendFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackendFactory.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1003,15 +997,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof Cache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Cache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Cache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Cache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cache.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -1587,15 +1578,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof CacheKeys.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CacheKeys.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CacheKeys.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CacheKeys.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CacheKeys.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CacheKeys.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CacheKeys.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CacheKeys.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1759,15 +1747,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof CacheReaper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CacheReaper.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CacheReaper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CacheReaper.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CacheReaper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CacheReaper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CacheReaper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CacheReaper.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1915,15 +1900,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof CollectionBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CollectionBackend.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CollectionBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CollectionBackend.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CollectionBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CollectionBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CollectionBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CollectionBackend.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2502,15 +2484,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof CollectionBackendFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CollectionBackendFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CollectionBackendFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CollectionBackendFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CollectionBackendFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CollectionBackendFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CollectionBackendFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CollectionBackendFactory.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2608,15 +2587,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof DBusServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusServer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DBusServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusServer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DBusServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DBusServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusServer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2812,15 +2788,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof DataFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataFactory.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3115,15 +3088,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof FileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3384,15 +3354,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof ServerSideSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerSideSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServerSideSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerSideSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServerSideSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerSideSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServerSideSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerSideSource.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3852,15 +3819,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerSideSourceCredentialsProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerSideSourceCredentialsProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerSideSourceCredentialsProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerSideSourceCredentialsProvider.SignalSignatures[K]>): void;
 
         /**
          * Returns a list of {@link EDataServer.Extension} objects bound to `extensible` whose
@@ -3976,15 +3940,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof SourceRegistryServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceRegistryServer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceRegistryServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceRegistryServer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceRegistryServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceRegistryServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceRegistryServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceRegistryServer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4454,15 +4415,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof SubprocessFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubprocessFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SubprocessFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubprocessFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SubprocessFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubprocessFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SubprocessFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubprocessFactory.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4687,15 +4645,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof UserPrompter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserPrompter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserPrompter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserPrompter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserPrompter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserPrompter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserPrompter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserPrompter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4943,15 +4898,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof UserPrompterServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserPrompterServer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserPrompterServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserPrompterServer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserPrompterServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserPrompterServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserPrompterServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserPrompterServer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5048,15 +5000,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof UserPrompterServerExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserPrompterServerExtension.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserPrompterServerExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserPrompterServerExtension.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserPrompterServerExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserPrompterServerExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserPrompterServerExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserPrompterServerExtension.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5159,15 +5108,12 @@ export namespace EBackend {
         // Signals
         /** @signal */
         connect<K extends keyof WebDAVCollectionBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebDAVCollectionBackend.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebDAVCollectionBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebDAVCollectionBackend.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebDAVCollectionBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebDAVCollectionBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebDAVCollectionBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebDAVCollectionBackend.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

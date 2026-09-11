@@ -199,15 +199,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof ConnectionManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConnectionManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConnectionManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConnectionManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionManager.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -255,15 +252,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof DescriptionFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DescriptionFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DescriptionFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DescriptionFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DescriptionFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DescriptionFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DescriptionFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DescriptionFile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -379,15 +373,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof DLNAProfile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DLNAProfile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DLNAProfile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DLNAProfile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DLNAProfile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DLNAProfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DLNAProfile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DLNAProfile.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -454,15 +445,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof RootDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RootDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RootDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RootDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RootDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RootDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RootDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RootDevice.SignalSignatures[K]>): void;
 
         // Methods
         get_services(): Gee.ArrayList;
@@ -603,15 +591,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof RootDeviceFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RootDeviceFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RootDeviceFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RootDeviceFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RootDeviceFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RootDeviceFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RootDeviceFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RootDeviceFactory.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -746,15 +731,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof LogHandler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogHandler.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LogHandler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogHandler.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LogHandler.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogHandler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LogHandler.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogHandler.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default(): LogHandler;
@@ -794,15 +776,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof MetaConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetaConfig.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MetaConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetaConfig.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MetaConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MetaConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MetaConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MetaConfig.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default(): MetaConfig;
@@ -1092,15 +1071,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof PluginLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginLoader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginLoader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginLoader.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1165,15 +1141,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof RecursiveModuleLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RecursiveModuleLoader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RecursiveModuleLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RecursiveModuleLoader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RecursiveModuleLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RecursiveModuleLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RecursiveModuleLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RecursiveModuleLoader.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1323,15 +1296,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1424,15 +1394,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof ResourceInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ResourceInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ResourceInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ResourceInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceInfo.SignalSignatures[K]>): void;
     }
 
 
@@ -1489,15 +1456,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof MediaDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaDevice.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1558,15 +1522,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof BaseConfiguration.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseConfiguration.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BaseConfiguration.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseConfiguration.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BaseConfiguration.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseConfiguration.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BaseConfiguration.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseConfiguration.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1840,15 +1801,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof CmdlineConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CmdlineConfig.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CmdlineConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CmdlineConfig.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CmdlineConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CmdlineConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CmdlineConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CmdlineConfig.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default(): CmdlineConfig;
@@ -2136,15 +2094,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof EnvironmentConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnvironmentConfig.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EnvironmentConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnvironmentConfig.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EnvironmentConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnvironmentConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EnvironmentConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnvironmentConfig.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default(): EnvironmentConfig;
@@ -2428,15 +2383,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof UserConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserConfig.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserConfig.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserConfig.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default(): UserConfig;
@@ -2741,15 +2693,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof V1Hacks.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, V1Hacks.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof V1Hacks.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, V1Hacks.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof V1Hacks.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<V1Hacks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof V1Hacks.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<V1Hacks.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2806,15 +2755,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof IconInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IconInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IconInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IconInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IconInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IconInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IconInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IconInfo.SignalSignatures[K]>): void;
     }
 
 
@@ -2840,15 +2786,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof XMLUtils.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XMLUtils.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XMLUtils.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XMLUtils.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XMLUtils.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XMLUtils.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XMLUtils.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XMLUtils.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2882,15 +2825,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof XMLUtilsIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XMLUtilsIterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XMLUtilsIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XMLUtilsIterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XMLUtilsIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XMLUtilsIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XMLUtilsIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XMLUtilsIterator.SignalSignatures[K]>): void;
 
         // Methods
         iterator(): XMLUtilsIterator;
@@ -2920,15 +2860,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof XMLUtilsChildIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XMLUtilsChildIterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XMLUtilsChildIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XMLUtilsChildIterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XMLUtilsChildIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XMLUtilsChildIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XMLUtilsChildIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XMLUtilsChildIterator.SignalSignatures[K]>): void;
     }
 
 
@@ -3002,15 +2939,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof PluginInformation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginInformation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginInformation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginInformation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginInformation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginInformation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginInformation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginInformation.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3070,15 +3004,12 @@ export namespace RygelCore {
         // Signals
         /** @signal */
         connect<K extends keyof Dlna150Hacks.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dlna150Hacks.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Dlna150Hacks.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dlna150Hacks.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Dlna150Hacks.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dlna150Hacks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Dlna150Hacks.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dlna150Hacks.SignalSignatures[K]>): void;
 
         // Methods
         /**

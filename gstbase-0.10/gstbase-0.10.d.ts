@@ -186,15 +186,12 @@ export namespace BaseSink {
         // Signals
         /** @signal */
         connect<K extends keyof GstAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GstAdapter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GstAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GstAdapter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GstAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GstAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GstAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GstAdapter.SignalSignatures[K]>): void;
 
         // Methods
         clear(): void;
@@ -312,15 +309,12 @@ export namespace BaseSink {
         // Signals
         /** @signal */
         connect<K extends keyof GstCollectPads.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GstCollectPads.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GstCollectPads.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GstCollectPads.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GstCollectPads.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GstCollectPads.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GstCollectPads.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GstCollectPads.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -516,15 +510,12 @@ export namespace BaseSink {
         // Signals
         /** @signal */
         connect<K extends keyof GstDataQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GstDataQueue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GstDataQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GstDataQueue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GstDataQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GstDataQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GstDataQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GstDataQueue.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -600,15 +591,12 @@ export namespace BaseSink {
         // Signals
         /** @signal */
         connect<K extends keyof GstPushSrc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GstPushSrc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GstPushSrc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GstPushSrc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GstPushSrc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GstPushSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GstPushSrc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GstPushSrc.SignalSignatures[K]>): void;
     }
 
 
@@ -767,15 +755,12 @@ export namespace BaseSink {
         // Signals
         /** @signal */
         connect<K extends keyof Sink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Sink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Sink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Sink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sink.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -956,15 +941,12 @@ export namespace BaseSink {
         // Signals
         /** @signal */
         connect<K extends keyof Src.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Src.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Src.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Src.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Src.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Src.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Src.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Src.SignalSignatures[K]>): void;
 
         // Methods
         wait_playing(): Gst.FlowReturn;
@@ -1076,15 +1058,12 @@ export namespace BaseSink {
         // Signals
         /** @signal */
         connect<K extends keyof Transform.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transform.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Transform.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transform.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Transform.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Transform.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transform.SignalSignatures[K]>): void;
 
         // Methods
         /**

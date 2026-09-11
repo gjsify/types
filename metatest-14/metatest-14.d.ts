@@ -117,15 +117,12 @@ export namespace MetaTest {
         // Signals
         /** @signal */
         connect<K extends keyof ContextTest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextTest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContextTest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextTest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContextTest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextTest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContextTest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextTest.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -170,15 +167,12 @@ export namespace MetaTest {
         // Signals
         /** @signal */
         connect<K extends keyof TestMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TestMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TestMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TestMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TestMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TestMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TestMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TestMonitor.SignalSignatures[K]>): void;
 
         // Methods
         destroy(): void;

@@ -68,15 +68,12 @@ export namespace Plasma {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -158,15 +155,12 @@ export namespace Plasma {
         // Signals
         /** @signal */
         connect<K extends keyof ClientCreateOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientCreateOptions.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClientCreateOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientCreateOptions.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClientCreateOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientCreateOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClientCreateOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientCreateOptions.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -228,15 +222,12 @@ export namespace Plasma {
         // Signals
         /** @signal */
         connect<K extends keyof ClientOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientOptions.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClientOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientOptions.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClientOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClientOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientOptions.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -292,15 +283,12 @@ export namespace Plasma {
         // Signals
         /** @signal */
         connect<K extends keyof CreatedObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CreatedObject.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CreatedObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CreatedObject.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CreatedObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CreatedObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CreatedObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CreatedObject.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -424,15 +412,12 @@ export namespace Plasma {
         // Signals
         /** @signal */
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]>): void;
     }
 
 
@@ -469,15 +454,12 @@ export namespace Plasma {
         // Signals
         /** @signal */
         connect<K extends keyof ObjectID.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectID.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ObjectID.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectID.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ObjectID.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectID.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ObjectID.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectID.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -533,15 +515,12 @@ export namespace Plasma {
         // Signals
         /** @signal */
         connect<K extends keyof ReferredObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ReferredObject.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ReferredObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ReferredObject.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ReferredObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ReferredObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ReferredObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ReferredObject.SignalSignatures[K]>): void;
 
         // Methods
         /**

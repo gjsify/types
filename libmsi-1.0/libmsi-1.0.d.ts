@@ -312,15 +312,12 @@ export namespace Libmsi {
         // Signals
         /** @signal */
         connect<K extends keyof Database.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Database.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Database.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Database.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Database.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Database.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -452,15 +449,12 @@ export namespace Libmsi {
         // Signals
         /** @signal */
         connect<K extends keyof Query.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Query.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Query.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -546,15 +540,12 @@ export namespace Libmsi {
         // Signals
         /** @signal */
         connect<K extends keyof Record.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Record.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Record.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Record.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Record.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Record.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Record.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Record.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -692,15 +683,12 @@ export namespace Libmsi {
         // Signals
         /** @signal */
         connect<K extends keyof SummaryInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SummaryInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SummaryInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SummaryInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SummaryInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SummaryInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SummaryInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SummaryInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**

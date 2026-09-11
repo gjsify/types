@@ -1750,15 +1750,12 @@ export namespace Cogl {
         // Signals
         /** @signal */
         connect<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bitmap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bitmap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Bitmap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bitmap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Bitmap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bitmap.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): number;
@@ -1815,15 +1812,12 @@ export namespace Cogl {
         // Signals
         /** @signal */
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]>): void;
     }
 
 
@@ -1844,15 +1838,12 @@ export namespace Cogl {
         // Signals
         /** @signal */
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]>): void;
     }
 
 
@@ -1877,15 +1868,12 @@ export namespace Cogl {
         // Signals
         /** @signal */
         connect<K extends keyof Offscreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Offscreen.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Offscreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Offscreen.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Offscreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Offscreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Offscreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Offscreen.SignalSignatures[K]>): void;
 
         /**
          * Explicitly allocates a configured {@link Cogl.Framebuffer} allowing developers to
@@ -2718,15 +2706,12 @@ export namespace Cogl {
         // Signals
         /** @signal */
         connect<K extends keyof Onscreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Onscreen.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Onscreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Onscreen.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Onscreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Onscreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Onscreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Onscreen.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3868,15 +3853,12 @@ export namespace Cogl {
         // Signals
         /** @signal */
         connect<K extends keyof Pipeline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Pipeline.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Pipeline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Pipeline.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Pipeline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Pipeline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Pipeline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Pipeline.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4607,15 +4589,12 @@ export namespace Cogl {
         // Signals
         /** @signal */
         connect<K extends keyof Texture2D.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Texture2D.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Texture2D.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Texture2D.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Texture2D.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Texture2D.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Texture2D.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Texture2D.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4898,15 +4877,12 @@ export namespace Cogl {
         // Signals
         /** @signal */
         connect<K extends keyof Texture2DSliced.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Texture2DSliced.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Texture2DSliced.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Texture2DSliced.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Texture2DSliced.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Texture2DSliced.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Texture2DSliced.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Texture2DSliced.SignalSignatures[K]>): void;
 
         /**
          * Explicitly allocates the storage for the given `texture` which

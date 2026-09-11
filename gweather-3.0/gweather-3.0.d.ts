@@ -784,15 +784,12 @@ export namespace GWeather {
         // Signals
         /** @signal */
         connect<K extends keyof Info.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Info.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Info.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1198,15 +1195,12 @@ export namespace GWeather {
         // Signals
         /** @signal */
         connect<K extends keyof LocationEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocationEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LocationEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocationEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LocationEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocationEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LocationEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocationEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1356,15 +1350,12 @@ export namespace GWeather {
         // Signals
         /** @signal */
         connect<K extends keyof TimezoneMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimezoneMenu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TimezoneMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimezoneMenu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TimezoneMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimezoneMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TimezoneMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimezoneMenu.SignalSignatures[K]>): void;
 
         // Methods
         /**

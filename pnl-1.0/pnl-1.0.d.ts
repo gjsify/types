@@ -207,15 +207,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof Animation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Animation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Animation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Animation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Animation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Animation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Animation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Animation.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -331,15 +328,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockBin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockBin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockBin.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -591,15 +585,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockBinEdge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockBinEdge.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockBinEdge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockBinEdge.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockBinEdge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockBinEdge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockBinEdge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockBinEdge.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -783,15 +774,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockManager.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -904,15 +892,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockOverlay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockOverlay.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockOverlay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockOverlay.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockOverlay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockOverlay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockOverlay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockOverlay.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1149,15 +1134,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockOverlayEdge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockOverlayEdge.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockOverlayEdge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockOverlayEdge.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockOverlayEdge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockOverlayEdge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockOverlayEdge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockOverlayEdge.SignalSignatures[K]>): void;
 
         // Methods
         get_edge(): Gtk.PositionType;
@@ -1375,15 +1357,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockPaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockPaned.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockPaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockPaned.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockPaned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockPaned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockPaned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockPaned.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1677,15 +1656,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockRevealer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockRevealer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockRevealer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockRevealer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockRevealer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockRevealer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockRevealer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockRevealer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1820,15 +1796,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockStack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockStack.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockStack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockStack.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockStack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockStack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockStack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockStack.SignalSignatures[K]>): void;
 
         // Methods
         get_edge(): Gtk.PositionType;
@@ -2066,15 +2039,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockTabStrip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockTabStrip.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockTabStrip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockTabStrip.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockTabStrip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockTabStrip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockTabStrip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockTabStrip.SignalSignatures[K]>): void;
     }
 
 
@@ -2119,15 +2089,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockTransientGrab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockTransientGrab.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockTransientGrab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockTransientGrab.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockTransientGrab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockTransientGrab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockTransientGrab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockTransientGrab.SignalSignatures[K]>): void;
 
         // Methods
         acquire(): void;
@@ -2256,15 +2223,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockWidget.SignalSignatures[K]>): void;
 
         // Methods
         get_title(): string;
@@ -2508,15 +2472,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof DockWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockWindow.SignalSignatures[K]>): void;
 
         /** @category Inherited from Pnl.Dock */
         get manager(): DockManager;
@@ -2799,15 +2760,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof MultiPaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiPaned.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MultiPaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiPaned.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MultiPaned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiPaned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MultiPaned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiPaned.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2944,15 +2902,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]>): void;
 
         // Methods
         get_edge(): Gtk.PositionType;
@@ -3109,15 +3064,12 @@ export namespace Pnl {
         // Signals
         /** @signal */
         connect<K extends keyof TabStrip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TabStrip.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TabStrip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TabStrip.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TabStrip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TabStrip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TabStrip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TabStrip.SignalSignatures[K]>): void;
 
         // Methods
         get_edge(): Gtk.PositionType;

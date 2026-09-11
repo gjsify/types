@@ -2079,15 +2079,12 @@ export namespace ECal {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4112,15 +4109,12 @@ export namespace ECal {
         // Signals
         /** @signal */
         connect<K extends keyof ClientView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClientView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClientView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClientView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientView.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4339,15 +4333,12 @@ export namespace ECal {
         // Signals
         /** @signal */
         connect<K extends keyof Component.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Component.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Component.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Component.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Component.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Component.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Component.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Component.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5332,15 +5323,12 @@ export namespace ECal {
         // Signals
         /** @signal */
         connect<K extends keyof ComponentBag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ComponentBag.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ComponentBag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ComponentBag.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ComponentBag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ComponentBag.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ComponentBag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ComponentBag.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5656,15 +5644,12 @@ export namespace ECal {
         // Signals
         /** @signal */
         connect<K extends keyof ReminderWatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ReminderWatcher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ReminderWatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ReminderWatcher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ReminderWatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ReminderWatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ReminderWatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ReminderWatcher.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

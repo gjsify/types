@@ -484,15 +484,12 @@ export namespace gSignon {
         // Signals
         /** @signal */
         connect<K extends keyof AuthService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthService.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -597,15 +594,12 @@ export namespace gSignon {
         // Signals
         /** @signal */
         connect<K extends keyof AuthSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthSession.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthSession.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthSession.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -787,15 +781,12 @@ export namespace gSignon {
         // Signals
         /** @signal */
         connect<K extends keyof Identity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Identity.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Identity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Identity.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Identity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Identity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Identity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Identity.SignalSignatures[K]>): void;
 
         // Methods
         /**

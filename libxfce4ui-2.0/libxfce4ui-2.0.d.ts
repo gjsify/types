@@ -732,15 +732,12 @@ export namespace Libxfce4ui {
         // Signals
         /** @signal */
         connect<K extends keyof ClipboardManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClipboardManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClipboardManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClipboardManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClipboardManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClipboardManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClipboardManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClipboardManager.SignalSignatures[K]>): void;
     }
 
 
@@ -887,15 +884,12 @@ export namespace Libxfce4ui {
         // Signals
         /** @signal */
         connect<K extends keyof FilenameInput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilenameInput.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilenameInput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilenameInput.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilenameInput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilenameInput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilenameInput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilenameInput.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1154,15 +1148,12 @@ export namespace Libxfce4ui {
         // Signals
         /** @signal */
         connect<K extends keyof SMClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SMClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SMClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SMClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SMClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SMClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SMClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SMClient.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1447,15 +1438,12 @@ export namespace Libxfce4ui {
         // Signals
         /** @signal */
         connect<K extends keyof Screensaver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Screensaver.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Screensaver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Screensaver.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Screensaver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Screensaver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Screensaver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Screensaver.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1603,15 +1591,12 @@ export namespace Libxfce4ui {
         // Signals
         /** @signal */
         connect<K extends keyof TitledDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TitledDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TitledDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TitledDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TitledDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TitledDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TitledDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TitledDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**

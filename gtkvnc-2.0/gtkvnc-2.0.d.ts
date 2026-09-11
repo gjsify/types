@@ -140,15 +140,12 @@ export namespace GtkVnc {
         // Signals
         /** @signal */
         connect<K extends keyof CairoFramebuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CairoFramebuffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CairoFramebuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CairoFramebuffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CairoFramebuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CairoFramebuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CairoFramebuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CairoFramebuffer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -757,15 +754,12 @@ export namespace GtkVnc {
         // Signals
         /** @signal */
         connect<K extends keyof Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Display.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Display.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Display.SignalSignatures[K]>): void;
 
         // Static methods
         /**

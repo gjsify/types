@@ -72,15 +72,12 @@ export namespace GUPnPDLNA {
         // Signals
         /** @signal */
         connect<K extends keyof AudioInformation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AudioInformation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AudioInformation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AudioInformation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AudioInformation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AudioInformation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AudioInformation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AudioInformation.SignalSignatures[K]>): void;
     }
 
 
@@ -115,15 +112,12 @@ export namespace GUPnPDLNA {
         // Signals
         /** @signal */
         connect<K extends keyof ContainerInformation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContainerInformation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContainerInformation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContainerInformation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContainerInformation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContainerInformation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContainerInformation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContainerInformation.SignalSignatures[K]>): void;
     }
 
 
@@ -158,15 +152,12 @@ export namespace GUPnPDLNA {
         // Signals
         /** @signal */
         connect<K extends keyof ImageInformation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageInformation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ImageInformation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageInformation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ImageInformation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageInformation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ImageInformation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageInformation.SignalSignatures[K]>): void;
     }
 
 
@@ -273,15 +264,12 @@ export namespace GUPnPDLNA {
         // Signals
         /** @signal */
         connect<K extends keyof Information.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Information.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Information.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Information.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Information.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Information.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -399,15 +387,12 @@ export namespace GUPnPDLNA {
         // Signals
         /** @signal */
         connect<K extends keyof MetadataExtractor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetadataExtractor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MetadataExtractor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetadataExtractor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MetadataExtractor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MetadataExtractor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MetadataExtractor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MetadataExtractor.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -575,15 +560,12 @@ export namespace GUPnPDLNA {
         // Signals
         /** @signal */
         connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Profile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Profile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Profile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Profile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Profile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -707,15 +689,12 @@ export namespace GUPnPDLNA {
         // Signals
         /** @signal */
         connect<K extends keyof ProfileGuesser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProfileGuesser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProfileGuesser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProfileGuesser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProfileGuesser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProfileGuesser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProfileGuesser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProfileGuesser.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -809,15 +788,12 @@ export namespace GUPnPDLNA {
         // Signals
         /** @signal */
         connect<K extends keyof VideoInformation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoInformation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VideoInformation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoInformation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VideoInformation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoInformation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VideoInformation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoInformation.SignalSignatures[K]>): void;
     }
 
 

@@ -2321,15 +2321,12 @@ export namespace ColorHug {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceQueue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceQueue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceQueue.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

@@ -1022,15 +1022,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof AsyncCommand.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncCommand.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AsyncCommand.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncCommand.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AsyncCommand.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncCommand.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AsyncCommand.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncCommand.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1097,15 +1094,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof AsyncNotify.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncNotify.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AsyncNotify.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncNotify.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AsyncNotify.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncNotify.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AsyncNotify.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncNotify.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1169,15 +1163,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Autogen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Autogen.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Autogen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Autogen.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Autogen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Autogen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Autogen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Autogen.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1298,15 +1289,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof CModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CModule.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CModule.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CModule.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1391,15 +1379,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof CPluginFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CPluginFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CPluginFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CPluginFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CPluginFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CPluginFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CPluginFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CPluginFactory.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1479,15 +1464,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererCaptionedImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererCaptionedImage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererCaptionedImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererCaptionedImage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererCaptionedImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererCaptionedImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererCaptionedImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererCaptionedImage.SignalSignatures[K]>): void;
     }
 
 
@@ -1550,15 +1532,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererDiff.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererDiff.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererDiff.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererDiff.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererDiff.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererDiff.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererDiff.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererDiff.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1657,15 +1636,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof CloseButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CloseButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CloseButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CloseButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CloseButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CloseButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CloseButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CloseButton.SignalSignatures[K]>): void;
 
         /**
          * @default null
@@ -2108,15 +2084,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof ColumnTextView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnTextView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColumnTextView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnTextView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColumnTextView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnTextView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColumnTextView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnTextView.SignalSignatures[K]>): void;
 
         // Methods
         get_text(): string;
@@ -2211,15 +2184,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Command.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Command.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Command.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Command.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Command.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Command.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Command.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Command.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2492,15 +2462,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof CommandBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CommandBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CommandBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CommandBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2565,15 +2532,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof CommandQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandQueue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CommandQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandQueue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CommandQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CommandQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandQueue.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2642,15 +2606,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Completion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Completion.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Completion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Completion.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Completion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Completion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Completion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Completion.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2762,15 +2723,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Dock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dock.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Dock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dock.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Dock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Dock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dock.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2910,15 +2868,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof DockPane.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockPane.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockPane.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockPane.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockPane.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockPane.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockPane.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockPane.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3082,15 +3037,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof DropEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DropEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DropEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DropEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DropEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DropEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DropEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DropEntry.SignalSignatures[K]>): void;
     }
 
 
@@ -3230,15 +3182,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3653,15 +3602,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof EnvironmentEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnvironmentEditor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EnvironmentEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnvironmentEditor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EnvironmentEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnvironmentEditor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EnvironmentEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnvironmentEditor.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3821,15 +3767,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof FileDropEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileDropEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileDropEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileDropEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileDropEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileDropEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileDropEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileDropEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3945,15 +3888,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof FileList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileList.SignalSignatures[K]>): void;
 
         // Methods
         clear(): void;
@@ -4019,15 +3959,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof LanguageProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LanguageProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LanguageProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LanguageProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageProvider.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4126,15 +4063,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Launcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Launcher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Launcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Launcher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Launcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Launcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Launcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Launcher.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4344,15 +4278,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof PkgConfigChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PkgConfigChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PkgConfigChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PkgConfigChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PkgConfigChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PkgConfigChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PkgConfigChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PkgConfigChooser.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4574,15 +4505,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof PkgScanner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PkgScanner.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PkgScanner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PkgScanner.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PkgScanner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PkgScanner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PkgScanner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PkgScanner.SignalSignatures[K]>): void;
 
         // Methods
         get_package(): string;
@@ -4643,15 +4571,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4941,15 +4866,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof PluginHandle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginHandle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginHandle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginHandle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginHandle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginHandle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginHandle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginHandle.SignalSignatures[K]>): void;
 
         // Methods
         get_about(): string;
@@ -5089,15 +5011,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof PluginManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginManager.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5206,15 +5125,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Preferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Preferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Preferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Preferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preferences.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5366,15 +5282,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5493,15 +5406,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Profile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Profile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Profile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Profile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Profile.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5657,15 +5567,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof ProfileManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProfileManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProfileManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProfileManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProfileManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProfileManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProfileManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProfileManager.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5807,15 +5714,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof ProjectNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProjectNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProjectNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProjectNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProjectNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProjectNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProjectNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProjectNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6085,15 +5989,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof SavePrompt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SavePrompt.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SavePrompt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SavePrompt.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SavePrompt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SavePrompt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SavePrompt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SavePrompt.SignalSignatures[K]>): void;
 
         // Methods
         get_items_count(): number;
@@ -6152,15 +6053,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Serializer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Serializer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Serializer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Serializer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Serializer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Serializer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Serializer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Serializer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6235,15 +6133,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6434,15 +6329,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Status.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Status.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Status.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Status.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Status.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -6566,15 +6458,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof SyncCommand.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SyncCommand.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SyncCommand.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SyncCommand.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SyncCommand.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SyncCommand.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SyncCommand.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SyncCommand.SignalSignatures[K]>): void;
     }
 
 
@@ -6663,15 +6552,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof Tabber.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tabber.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tabber.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tabber.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tabber.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tabber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tabber.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tabber.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6721,15 +6607,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof TokenFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TokenFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TokenFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TokenFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TokenFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TokenFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TokenFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TokenFile.SignalSignatures[K]>): void;
 
         // Methods
         free(): void;
@@ -6885,15 +6768,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof TreeComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeComboBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeComboBox.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -7207,15 +7087,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof UI.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UI.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UI.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UI.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UI.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UI.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UI.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UI.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -7715,15 +7592,12 @@ export namespace Anjuta {
         // Signals
         /** @signal */
         connect<K extends keyof VcsStatusTreeView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsStatusTreeView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsStatusTreeView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsStatusTreeView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsStatusTreeView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsStatusTreeView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsStatusTreeView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsStatusTreeView.SignalSignatures[K]>): void;
 
         // Methods
         /**

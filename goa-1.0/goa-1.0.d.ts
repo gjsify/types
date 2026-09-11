@@ -554,15 +554,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof AccountProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AccountProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AccountProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AccountProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1591,15 +1588,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof AccountSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AccountSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AccountSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AccountSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.AttentionNeeded">"AttentionNeeded"</link>.
@@ -2297,15 +2291,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof CalendarProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalendarProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalendarProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalendarProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalendarProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalendarProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalendarProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalendarProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2783,15 +2774,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof CalendarSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalendarSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalendarSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalendarSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalendarSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalendarSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalendarSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalendarSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.AcceptSslErrors">"AcceptSslErrors"</link>.
@@ -2956,15 +2944,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ChatProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChatProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChatProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChatProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChatProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChatProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChatProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChatProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3410,15 +3395,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ChatSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChatSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChatSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChatSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChatSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChatSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChatSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChatSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -3571,15 +3553,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3985,15 +3964,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ContactsProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactsProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContactsProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactsProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContactsProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContactsProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContactsProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContactsProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4471,15 +4447,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ContactsSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactsSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContactsSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactsSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContactsSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContactsSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContactsSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContactsSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.AcceptSslErrors">"AcceptSslErrors"</link>.
@@ -4645,15 +4618,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof DocumentsProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentsProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DocumentsProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentsProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DocumentsProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentsProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DocumentsProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentsProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5102,15 +5072,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof DocumentsSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentsSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DocumentsSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentsSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DocumentsSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentsSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DocumentsSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentsSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -5248,15 +5215,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ExchangeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExchangeProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExchangeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExchangeProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExchangeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExchangeProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExchangeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExchangeProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5740,15 +5704,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ExchangeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExchangeSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExchangeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExchangeSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExchangeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExchangeSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExchangeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExchangeSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Exchange.AcceptSslErrors">"AcceptSslErrors"</link>.
@@ -5919,15 +5880,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof FilesProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilesProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilesProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilesProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -6411,15 +6369,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof FilesSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilesSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilesSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilesSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Files.AcceptSslErrors">"AcceptSslErrors"</link>.
@@ -6605,15 +6560,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof MailProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MailProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MailProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MailProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MailProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MailProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MailProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MailProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -7427,15 +7379,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof MailSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MailSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MailSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MailSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MailSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MailSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MailSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MailSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.EmailAddress">"EmailAddress"</link>.
@@ -7920,15 +7869,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -8536,15 +8482,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -8843,15 +8786,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof MapsProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapsProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapsProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapsProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapsProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapsProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapsProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapsProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -9303,15 +9243,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof MapsSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapsSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapsSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapsSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapsSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapsSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapsSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapsSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -9450,15 +9387,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof MediaServerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaServerProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaServerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaServerProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaServerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaServerProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaServerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaServerProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -9948,15 +9882,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof MediaServerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaServerSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaServerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaServerSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaServerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaServerSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaServerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaServerSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-MediaServer.DlnaSupported">"DlnaSupported"</link>.
@@ -10128,15 +10059,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof MusicProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MusicProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MusicProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MusicProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MusicProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MusicProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MusicProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MusicProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -10585,15 +10513,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof MusicSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MusicSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MusicSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MusicSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MusicSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MusicSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MusicSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MusicSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -10730,15 +10655,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof OAuth2BasedProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2BasedProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuth2BasedProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2BasedProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuth2BasedProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2BasedProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuth2BasedProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2BasedProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -11293,15 +11215,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof OAuth2BasedSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2BasedSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuth2BasedSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2BasedSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuth2BasedSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2BasedSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuth2BasedSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2BasedSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientId">"ClientId"</link>.
@@ -11545,15 +11464,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof OAuthBasedProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuthBasedProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuthBasedProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuthBasedProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuthBasedProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuthBasedProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuthBasedProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuthBasedProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -12109,15 +12025,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof OAuthBasedSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuthBasedSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuthBasedSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuthBasedSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuthBasedSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuthBasedSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuthBasedSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuthBasedSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerKey">"ConsumerKey"</link>.
@@ -12360,15 +12273,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ObjectManagerClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectManagerClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ObjectManagerClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectManagerClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ObjectManagerClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectManagerClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ObjectManagerClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectManagerClient.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -12879,15 +12789,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ObjectProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ObjectProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ObjectProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ObjectProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectProxy.SignalSignatures[K]>): void;
 
         /**
          * The {@link Goa.Account} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Account.top_of_page">org.gnome.OnlineAccounts.Account</link>, if any.
@@ -13391,15 +13298,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ObjectSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ObjectSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ObjectSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ObjectSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectSkeleton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14045,15 +13949,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof PasswordBasedProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordBasedProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PasswordBasedProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordBasedProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PasswordBasedProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordBasedProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PasswordBasedProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordBasedProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -14579,15 +14480,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof PasswordBasedSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordBasedSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PasswordBasedSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordBasedSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PasswordBasedSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordBasedSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PasswordBasedSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordBasedSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -14800,15 +14698,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof PhotosProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PhotosProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PhotosProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PhotosProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PhotosProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PhotosProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PhotosProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PhotosProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -15257,15 +15152,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof PhotosSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PhotosSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PhotosSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PhotosSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PhotosSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PhotosSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PhotosSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PhotosSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -15402,15 +15294,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof PrintersProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintersProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PrintersProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintersProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PrintersProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintersProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PrintersProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintersProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -15862,15 +15751,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof PrintersSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintersSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PrintersSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintersSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PrintersSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintersSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PrintersSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintersSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -16007,15 +15893,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ReadLaterProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ReadLaterProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ReadLaterProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ReadLaterProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ReadLaterProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ReadLaterProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ReadLaterProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ReadLaterProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -16467,15 +16350,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof ReadLaterSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ReadLaterSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ReadLaterSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ReadLaterSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ReadLaterSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ReadLaterSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ReadLaterSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ReadLaterSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -16612,15 +16492,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof TicketingProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TicketingProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TicketingProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TicketingProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TicketingProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TicketingProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TicketingProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TicketingProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -17151,15 +17028,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof TicketingSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TicketingSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TicketingSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TicketingSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TicketingSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TicketingSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TicketingSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TicketingSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Ticketing.Details">"Details"</link>.
@@ -17377,15 +17251,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof TodoProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TodoProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TodoProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TodoProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TodoProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TodoProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TodoProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TodoProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -17837,15 +17708,12 @@ export namespace Goa {
         // Signals
         /** @signal */
         connect<K extends keyof TodoSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TodoSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TodoSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TodoSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TodoSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TodoSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TodoSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TodoSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.

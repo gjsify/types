@@ -2390,15 +2390,12 @@ export namespace Cogl {
         // Signals
         /** @signal */
         connect<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bitmap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bitmap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Bitmap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bitmap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Bitmap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bitmap.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): number;
@@ -2459,15 +2456,12 @@ export namespace Cogl {
         // Signals
         /** @signal */
         connect<K extends keyof Offscreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Offscreen.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Offscreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Offscreen.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Offscreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Offscreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Offscreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Offscreen.SignalSignatures[K]>): void;
 
         // Static methods
         /**

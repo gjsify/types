@@ -68,15 +68,12 @@ export namespace ArrowCUDA {
         // Signals
         /** @signal */
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -156,15 +153,12 @@ export namespace ArrowCUDA {
         // Signals
         /** @signal */
         connect<K extends keyof BufferInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BufferInputStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BufferInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BufferInputStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BufferInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BufferInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BufferInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BufferInputStream.SignalSignatures[K]>): void;
     }
 
 
@@ -203,15 +197,12 @@ export namespace ArrowCUDA {
         // Signals
         /** @signal */
         connect<K extends keyof BufferOutputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BufferOutputStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BufferOutputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BufferOutputStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BufferOutputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BufferOutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BufferOutputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BufferOutputStream.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -315,15 +306,12 @@ export namespace ArrowCUDA {
         // Signals
         /** @signal */
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -367,15 +355,12 @@ export namespace ArrowCUDA {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -434,15 +419,12 @@ export namespace ArrowCUDA {
         // Signals
         /** @signal */
         connect<K extends keyof HostBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HostBuffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HostBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HostBuffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HostBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HostBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HostBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HostBuffer.SignalSignatures[K]>): void;
     }
 
 
@@ -497,15 +479,12 @@ export namespace ArrowCUDA {
         // Signals
         /** @signal */
         connect<K extends keyof IPCMemoryHandle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IPCMemoryHandle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IPCMemoryHandle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IPCMemoryHandle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IPCMemoryHandle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IPCMemoryHandle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IPCMemoryHandle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IPCMemoryHandle.SignalSignatures[K]>): void;
 
         // Methods
         /**

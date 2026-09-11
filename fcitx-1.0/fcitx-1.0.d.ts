@@ -123,15 +123,12 @@ export namespace Fcitx {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -297,15 +294,12 @@ export namespace Fcitx {
         // Signals
         /** @signal */
         connect<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -392,15 +386,12 @@ export namespace Fcitx {
         // Signals
         /** @signal */
         connect<K extends keyof InputMethod.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputMethod.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputMethod.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputMethod.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputMethod.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputMethod.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputMethod.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputMethod.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -903,15 +894,12 @@ export namespace Fcitx {
         // Signals
         /** @signal */
         connect<K extends keyof Kbd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Kbd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Kbd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Kbd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Kbd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Kbd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Kbd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Kbd.SignalSignatures[K]>): void;
 
         // Methods
         /**

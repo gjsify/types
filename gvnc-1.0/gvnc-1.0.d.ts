@@ -350,15 +350,12 @@ export namespace GVnc {
         // Signals
         /** @signal */
         connect<K extends keyof BaseAudio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseAudio.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BaseAudio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseAudio.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BaseAudio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseAudio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BaseAudio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseAudio.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -501,15 +498,12 @@ export namespace GVnc {
         // Signals
         /** @signal */
         connect<K extends keyof BaseFramebuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseFramebuffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BaseFramebuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseFramebuffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BaseFramebuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseFramebuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BaseFramebuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseFramebuffer.SignalSignatures[K]>): void;
 
         /**
          * @param src 
@@ -871,15 +865,12 @@ export namespace GVnc {
         // Signals
         /** @signal */
         connect<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1397,15 +1388,12 @@ export namespace GVnc {
         // Signals
         /** @signal */
         connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cursor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cursor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cursor.SignalSignatures[K]>): void;
 
         // Methods
         /**

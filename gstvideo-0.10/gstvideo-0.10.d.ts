@@ -416,15 +416,12 @@ export namespace GstVideo {
         // Signals
         /** @signal */
         connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Filter.SignalSignatures[K]>): void;
     }
 
 
@@ -490,15 +487,12 @@ export namespace GstVideo {
         // Signals
         /** @signal */
         connect<K extends keyof Sink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Sink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Sink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Sink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sink.SignalSignatures[K]>): void;
 
         // Static methods
         /**

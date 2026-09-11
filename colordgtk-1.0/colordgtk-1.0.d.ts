@@ -141,15 +141,12 @@ export namespace ColordGtk {
         // Signals
         /** @signal */
         connect<K extends keyof SampleWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SampleWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SampleWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SampleWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SampleWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SampleWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SampleWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SampleWidget.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -270,15 +267,12 @@ export namespace ColordGtk {
         // Signals
         /** @signal */
         connect<K extends keyof SampleWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SampleWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SampleWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SampleWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SampleWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SampleWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SampleWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SampleWindow.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -351,15 +345,12 @@ export namespace ColordGtk {
         // Signals
         /** @signal */
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Window.SignalSignatures[K]>): void;
 
         // Static methods
         /**

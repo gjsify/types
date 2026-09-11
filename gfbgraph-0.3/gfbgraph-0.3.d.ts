@@ -119,15 +119,12 @@ export namespace GFBGraph {
         // Signals
         /** @signal */
         connect<K extends keyof Album.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Album.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Album.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Album.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Album.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Album.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Album.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Album.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -254,15 +251,12 @@ export namespace GFBGraph {
         // Signals
         /** @signal */
         connect<K extends keyof GoaAuthorizer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GoaAuthorizer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GoaAuthorizer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]>): void;
 
         /**
          * Adds the necessary authorization to `call`.
@@ -395,15 +389,12 @@ export namespace GFBGraph {
         // Signals
         /** @signal */
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Node.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -590,15 +581,12 @@ export namespace GFBGraph {
         // Signals
         /** @signal */
         connect<K extends keyof Photo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Photo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Photo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Photo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Photo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Photo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Photo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Photo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -962,15 +950,12 @@ export namespace GFBGraph {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleAuthorizer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleAuthorizer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleAuthorizer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleAuthorizer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleAuthorizer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleAuthorizer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleAuthorizer.SignalSignatures[K]>): void;
 
         /**
          * Adds the necessary authorization to `call`.
@@ -1090,15 +1075,12 @@ export namespace GFBGraph {
         // Signals
         /** @signal */
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, User.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, User.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<User.SignalSignatures[K]>): void;
 
         // Static methods
         /**

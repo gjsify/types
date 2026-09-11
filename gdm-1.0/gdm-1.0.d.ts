@@ -174,15 +174,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -409,15 +406,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof GreeterProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GreeterProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GreeterProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GreeterProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GreeterProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GreeterProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GreeterProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GreeterProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1363,15 +1357,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof GreeterSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GreeterSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GreeterSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GreeterSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GreeterSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GreeterSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GreeterSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GreeterSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`.
@@ -2007,15 +1998,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2739,15 +2727,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-DisplayManager-Manager.Version">"Version"</link>.
@@ -3159,15 +3144,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierChoiceListProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierChoiceListProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierChoiceListProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierChoiceListProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3705,15 +3687,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierChoiceListSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierChoiceListSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierChoiceListSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierChoiceListSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`.
@@ -3940,15 +3919,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof UserVerifierCustomJSONProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierCustomJSONProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserVerifierCustomJSONProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierCustomJSONProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserVerifierCustomJSONProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierCustomJSONProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserVerifierCustomJSONProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierCustomJSONProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4563,15 +4539,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof UserVerifierCustomJSONSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierCustomJSONSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserVerifierCustomJSONSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierCustomJSONSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserVerifierCustomJSONSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierCustomJSONSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserVerifierCustomJSONSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierCustomJSONSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`.
@@ -4875,15 +4848,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof UserVerifierProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserVerifierProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserVerifierProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserVerifierProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5835,15 +5805,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof UserVerifierSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserVerifierSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserVerifierSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserVerifierSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`.
@@ -6484,15 +6451,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof WorkerManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkerManagerProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WorkerManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkerManagerProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WorkerManagerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WorkerManagerProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WorkerManagerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WorkerManagerProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -7472,15 +7436,12 @@ export namespace Gdm {
         // Signals
         /** @signal */
         connect<K extends keyof WorkerManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkerManagerSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WorkerManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkerManagerSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WorkerManagerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WorkerManagerSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WorkerManagerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WorkerManagerSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`.

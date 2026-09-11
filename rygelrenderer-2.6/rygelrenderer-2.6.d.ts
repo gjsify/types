@@ -87,15 +87,12 @@ export namespace RygelRenderer {
         // Signals
         /** @signal */
         connect<K extends keyof MediaRendererPlugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaRendererPlugin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaRendererPlugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaRendererPlugin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaRendererPlugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaRendererPlugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaRendererPlugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaRendererPlugin.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -170,15 +167,12 @@ export namespace RygelRenderer {
         // Signals
         /** @signal */
         connect<K extends keyof MediaRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaRenderer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaRenderer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaRenderer.SignalSignatures[K]>): void;
     }
 
 

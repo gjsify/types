@@ -154,15 +154,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof GlobalShortcutClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GlobalShortcutClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GlobalShortcutClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GlobalShortcutClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GlobalShortcutClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GlobalShortcutClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GlobalShortcutClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GlobalShortcutClient.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -648,15 +645,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesBehaviourPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesBehaviourPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesBehaviourPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesBehaviourPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesBehaviourPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesBehaviourPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesBehaviourPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesBehaviourPage.SignalSignatures[K]>): void;
     }
 
 
@@ -745,15 +739,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesDialog.SignalSignatures[K]>): void;
     }
 
 
@@ -833,15 +824,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -960,15 +948,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesHistorySettingsPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesHistorySettingsPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesHistorySettingsPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesHistorySettingsPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesHistorySettingsPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesHistorySettingsPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesHistorySettingsPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesHistorySettingsPage.SignalSignatures[K]>): void;
     }
 
 
@@ -1050,15 +1035,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesImagesPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesImagesPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesImagesPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesImagesPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesImagesPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesImagesPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesImagesPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesImagesPage.SignalSignatures[K]>): void;
     }
 
 
@@ -1095,15 +1077,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1199,15 +1178,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesPage.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1306,15 +1282,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesShortcutsPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesShortcutsPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesShortcutsPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesShortcutsPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesShortcutsPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesShortcutsPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesShortcutsPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesShortcutsPage.SignalSignatures[K]>): void;
     }
 
 
@@ -1388,15 +1361,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesWidget.SignalSignatures[K]>): void;
     }
 
 

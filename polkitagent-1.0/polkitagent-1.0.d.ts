@@ -98,15 +98,12 @@ export namespace PolkitAgent {
         // Signals
         /** @signal */
         connect<K extends keyof Listener.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Listener.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Listener.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Listener.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Listener.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Listener.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Listener.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Listener.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -396,15 +393,12 @@ export namespace PolkitAgent {
         // Signals
         /** @signal */
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -514,15 +508,12 @@ export namespace PolkitAgent {
         // Signals
         /** @signal */
         connect<K extends keyof TextListener.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextListener.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextListener.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextListener.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextListener.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextListener.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextListener.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextListener.SignalSignatures[K]>): void;
 
         /**
          * Initializes the object implementing the interface.

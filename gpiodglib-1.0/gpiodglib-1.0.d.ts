@@ -372,15 +372,12 @@ export namespace Gpiodglib {
         // Signals
         /** @signal */
         connect<K extends keyof Chip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Chip.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Chip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Chip.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Chip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Chip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Chip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Chip.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -616,15 +613,12 @@ export namespace Gpiodglib {
         // Signals
         /** @signal */
         connect<K extends keyof ChipInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChipInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChipInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChipInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChipInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChipInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChipInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChipInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -770,15 +764,12 @@ export namespace Gpiodglib {
         // Signals
         /** @signal */
         connect<K extends keyof EdgeEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EdgeEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EdgeEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EdgeEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EdgeEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EdgeEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EdgeEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EdgeEvent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -906,15 +897,12 @@ export namespace Gpiodglib {
         // Signals
         /** @signal */
         connect<K extends keyof InfoEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InfoEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InfoEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfoEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InfoEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfoEvent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -993,15 +981,12 @@ export namespace Gpiodglib {
         // Signals
         /** @signal */
         connect<K extends keyof LineConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LineConfig.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LineConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LineConfig.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LineConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LineConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LineConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LineConfig.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1221,15 +1206,12 @@ export namespace Gpiodglib {
         // Signals
         /** @signal */
         connect<K extends keyof LineInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LineInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LineInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LineInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LineInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LineInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LineInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LineInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1389,15 +1371,12 @@ export namespace Gpiodglib {
         // Signals
         /** @signal */
         connect<K extends keyof LineRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LineRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LineRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LineRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LineRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LineRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LineRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LineRequest.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1637,15 +1616,12 @@ export namespace Gpiodglib {
         // Signals
         /** @signal */
         connect<K extends keyof LineSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LineSettings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LineSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LineSettings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LineSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LineSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LineSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LineSettings.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1813,15 +1789,12 @@ export namespace Gpiodglib {
         // Signals
         /** @signal */
         connect<K extends keyof RequestConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RequestConfig.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RequestConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RequestConfig.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RequestConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RequestConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RequestConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RequestConfig.SignalSignatures[K]>): void;
 
         // Methods
         /**

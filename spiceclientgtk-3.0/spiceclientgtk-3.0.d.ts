@@ -367,15 +367,12 @@ export namespace SpiceClientGtk {
         // Signals
         /** @signal */
         connect<K extends keyof Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Display.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Display.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Display.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -543,15 +540,12 @@ export namespace SpiceClientGtk {
         // Signals
         /** @signal */
         connect<K extends keyof GtkSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkSession.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GtkSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkSession.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GtkSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GtkSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkSession.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -703,15 +697,12 @@ export namespace SpiceClientGtk {
         // Signals
         /** @signal */
         connect<K extends keyof UsbDeviceWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UsbDeviceWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UsbDeviceWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UsbDeviceWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UsbDeviceWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UsbDeviceWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UsbDeviceWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UsbDeviceWidget.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.

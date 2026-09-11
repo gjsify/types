@@ -531,15 +531,12 @@ export namespace GnomeAutoar {
         // Signals
         /** @signal */
         connect<K extends keyof Compressor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Compressor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Compressor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Compressor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Compressor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Compressor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Compressor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Compressor.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -890,15 +887,12 @@ export namespace GnomeAutoar {
         // Signals
         /** @signal */
         connect<K extends keyof Extractor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Extractor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Extractor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Extractor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Extractor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Extractor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Extractor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Extractor.SignalSignatures[K]>): void;
 
         // Static methods
         /**

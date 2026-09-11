@@ -244,15 +244,12 @@ export namespace ClutterGst {
         // Signals
         /** @signal */
         connect<K extends keyof Aspectratio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Aspectratio.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Aspectratio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Aspectratio.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Aspectratio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Aspectratio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Aspectratio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Aspectratio.SignalSignatures[K]>): void;
 
         // Static methods
         static ["new"](): Clutter.Content;
@@ -398,15 +395,12 @@ export namespace ClutterGst {
         // Signals
         /** @signal */
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Camera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Camera.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -953,15 +947,12 @@ export namespace ClutterGst {
         // Signals
         /** @signal */
         connect<K extends keyof CameraDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CameraDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CameraDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CameraDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraDevice.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1054,15 +1045,12 @@ export namespace ClutterGst {
         // Signals
         /** @signal */
         connect<K extends keyof CameraManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CameraManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CameraManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CameraManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1170,15 +1158,12 @@ export namespace ClutterGst {
         // Signals
         /** @signal */
         connect<K extends keyof Content.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Content.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Content.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Content.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Content.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Content.SignalSignatures[K]>): void;
 
         // Static methods
         static ["new"](): Clutter.Content;
@@ -1424,15 +1409,12 @@ export namespace ClutterGst {
         // Signals
         /** @signal */
         connect<K extends keyof Crop.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Crop.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Crop.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Crop.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Crop.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Crop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Crop.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Crop.SignalSignatures[K]>): void;
 
         /**
          * Retrieves the natural size of the `content`, if any.
@@ -1781,15 +1763,12 @@ export namespace ClutterGst {
         // Signals
         /** @signal */
         connect<K extends keyof Playback.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Playback.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Playback.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Playback.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Playback.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Playback.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Playback.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Playback.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2318,15 +2297,12 @@ export namespace ClutterGst {
         // Signals
         /** @signal */
         connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VideoSink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VideoSink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

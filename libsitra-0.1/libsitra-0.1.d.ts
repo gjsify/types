@@ -106,15 +106,12 @@ export namespace Libsitra {
         // Signals
         /** @signal */
         connect<K extends keyof Font.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Font.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Font.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Font.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Font.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -221,15 +218,12 @@ export namespace Libsitra {
         // Signals
         /** @signal */
         connect<K extends keyof Fonts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Fonts.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Fonts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Fonts.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Fonts.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Fonts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Fonts.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Fonts.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -291,15 +285,12 @@ export namespace Libsitra {
         // Signals
         /** @signal */
         connect<K extends keyof Library.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Library.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Library.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Library.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Library.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Library.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Library.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Library.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -1723,15 +1723,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpAgent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpAgent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpAgent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpAgent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpAgent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpAgent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpAgent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpAgent.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2112,15 +2109,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpChangedFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpChangedFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpChangedFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpChangedFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpChangedFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpChangedFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpChangedFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpChangedFile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2195,15 +2189,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpConnection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2317,15 +2308,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpContentBlock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpContentBlock.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpContentBlock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpContentBlock.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpContentBlock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpContentBlock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpContentBlock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpContentBlock.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2512,15 +2500,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpEvent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2624,15 +2609,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2802,15 +2784,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpPermissionOption.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionOption.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpPermissionOption.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionOption.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpPermissionOption.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionOption.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpPermissionOption.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionOption.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2880,15 +2859,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpPermissionPolicy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionPolicy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpPermissionPolicy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionPolicy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpPermissionPolicy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionPolicy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpPermissionPolicy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionPolicy.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2962,15 +2938,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionRequest.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3083,15 +3056,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpPermissionResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionResponse.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpPermissionResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionResponse.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpPermissionResponse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpPermissionResponse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionResponse.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3143,15 +3113,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpProjectClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpProjectClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpProjectClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpProjectClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpProjectClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpProjectClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpProjectClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpProjectClient.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3412,15 +3379,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpPromptResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPromptResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpPromptResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPromptResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpPromptResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPromptResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpPromptResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPromptResult.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3485,15 +3449,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3899,15 +3860,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpSession.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpSession.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpSession.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4034,15 +3992,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpSessionUpdate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpSessionUpdate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpSessionUpdate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpSessionUpdate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpSessionUpdate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpSessionUpdate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpSessionUpdate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpSessionUpdate.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4411,15 +4366,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpTerminal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpTerminal.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpTerminal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpTerminal.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpTerminal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpTerminal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpTerminal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpTerminal.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4547,15 +4499,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AcpTerminalOutput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpTerminalOutput.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AcpTerminalOutput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpTerminalOutput.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AcpTerminalOutput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpTerminalOutput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AcpTerminalOutput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpTerminalOutput.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4660,15 +4609,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ActionIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionIntent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ActionIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionIntent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ActionIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionIntent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ActionIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionIntent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4726,15 +4672,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ActionMuxer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionMuxer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ActionMuxer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionMuxer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ActionMuxer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionMuxer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ActionMuxer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionMuxer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5314,15 +5257,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof AuthProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5611,15 +5551,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof BuildAddin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildAddin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuildAddin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildAddin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuildAddin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildAddin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuildAddin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildAddin.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5924,15 +5861,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof BuildFlags.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildFlags.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuildFlags.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildFlags.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuildFlags.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildFlags.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuildFlags.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildFlags.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6004,15 +5938,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof BuildManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuildManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuildManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuildManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6203,15 +6134,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof BuildPipeline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildPipeline.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuildPipeline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildPipeline.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuildPipeline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildPipeline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuildPipeline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildPipeline.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6771,15 +6699,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof BuildProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildProgress.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuildProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildProgress.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuildProgress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildProgress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuildProgress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildProgress.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7114,15 +7039,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof BuildStage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildStage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuildStage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildStage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuildStage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildStage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuildStage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildStage.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -7560,15 +7482,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof BuildTarget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildTarget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuildTarget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuildTarget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuildTarget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildTarget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuildTarget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuildTarget.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -7655,15 +7574,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CiArtifact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiArtifact.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CiArtifact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiArtifact.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CiArtifact.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiArtifact.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CiArtifact.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiArtifact.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7844,15 +7760,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CiJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiJob.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CiJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiJob.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CiJob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiJob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CiJob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiJob.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8044,15 +7957,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CiManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CiManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CiManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CiManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8158,15 +8068,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CiPipeline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiPipeline.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CiPipeline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiPipeline.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CiPipeline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiPipeline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CiPipeline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiPipeline.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8287,15 +8194,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CiProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CiProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CiProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CiProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8688,15 +8592,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CiRun.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiRun.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CiRun.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiRun.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CiRun.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiRun.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CiRun.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiRun.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -9057,15 +8958,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CiRunOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiRunOptions.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CiRunOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiRunOptions.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CiRunOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiRunOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CiRunOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiRunOptions.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9226,15 +9124,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CliCommandTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CliCommandTree.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CliCommandTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CliCommandTree.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CliCommandTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CliCommandTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CliCommandTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CliCommandTree.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -9328,15 +9223,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CliCommandTreeAddin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CliCommandTreeAddin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CliCommandTreeAddin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CliCommandTreeAddin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CliCommandTreeAddin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CliCommandTreeAddin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CliCommandTreeAddin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CliCommandTreeAddin.SignalSignatures[K]>): void;
     }
 
 
@@ -9390,15 +9282,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CodeAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CodeAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CodeAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CodeAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CodeAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CodeAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CodeAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CodeAction.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -9478,15 +9367,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CodeTemplate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CodeTemplate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CodeTemplate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CodeTemplate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CodeTemplate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CodeTemplate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CodeTemplate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CodeTemplate.SignalSignatures[K]>): void;
 
         // Methods
         dup_context(): Context | null;
@@ -9580,15 +9466,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Command.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Command.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Command.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Command.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Command.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Command.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Command.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Command.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -9933,15 +9816,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CommandLine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandLine.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CommandLine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandLine.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CommandLine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandLine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CommandLine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandLine.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -10059,15 +9939,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CommandManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CommandManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CommandManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CommandManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10224,15 +10101,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CommandProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CommandProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CommandProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CommandProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -10689,15 +10563,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CommandStage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandStage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CommandStage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandStage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CommandStage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandStage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CommandStage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandStage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10755,15 +10626,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CompileCommands.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompileCommands.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CompileCommands.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompileCommands.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CompileCommands.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompileCommands.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CompileCommands.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompileCommands.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10861,15 +10729,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CompletionProposal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompletionProposal.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CompletionProposal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompletionProposal.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CompletionProposal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompletionProposal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CompletionProposal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompletionProposal.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -10988,15 +10853,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CompletionProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompletionProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CompletionProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompletionProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CompletionProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompletionProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CompletionProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompletionProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -11307,15 +11169,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof CompletionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompletionRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CompletionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompletionRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CompletionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompletionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CompletionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompletionRequest.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -11500,15 +11359,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Config.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -11952,15 +11808,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12132,15 +11985,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -12980,15 +12830,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -13329,15 +13176,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Contextual.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Contextual.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Contextual.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Contextual.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Contextual.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Contextual.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Contextual.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Contextual.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -13632,15 +13476,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DBusService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DBusService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DBusService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DBusService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusService.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13730,15 +13571,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DapDebugger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DapDebugger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DapDebugger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DapDebugger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DapDebugger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DapDebugger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DapDebugger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DapDebugger.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13893,15 +13731,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Debugger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Debugger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Debugger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Debugger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Debugger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Debugger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Debugger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Debugger.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -14470,15 +14305,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerActions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerActions.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerActions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerActions.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerActions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerActions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerActions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerActions.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15036,15 +14868,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerBreakpoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerBreakpoint.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerBreakpoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerBreakpoint.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerBreakpoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerBreakpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerBreakpoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerBreakpoint.SignalSignatures[K]>): void;
     }
 
 
@@ -15082,15 +14911,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerCountpoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerCountpoint.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerCountpoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerCountpoint.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerCountpoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerCountpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerCountpoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerCountpoint.SignalSignatures[K]>): void;
     }
 
 
@@ -15125,15 +14951,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerEvent.SignalSignatures[K]>): void;
     }
 
 
@@ -15210,15 +15033,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerInstruction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerInstruction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerInstruction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerInstruction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerInstruction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerInstruction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerInstruction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerInstruction.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -15288,15 +15108,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerLogMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerLogMessage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerLogMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerLogMessage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerLogMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerLogMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerLogMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerLogMessage.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -15354,15 +15171,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15479,15 +15293,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerMappedRegion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerMappedRegion.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerMappedRegion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerMappedRegion.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerMappedRegion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerMappedRegion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerMappedRegion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerMappedRegion.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -15620,15 +15431,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerModule.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerModule.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerModule.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -15730,15 +15538,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -16048,15 +15853,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerSource.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -16252,15 +16054,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerStackFrame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerStackFrame.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerStackFrame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerStackFrame.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerStackFrame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerStackFrame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerStackFrame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerStackFrame.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -16403,15 +16202,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerStopEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerStopEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerStopEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerStopEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerStopEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerStopEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerStopEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerStopEvent.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -16477,15 +16273,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerTarget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTarget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerTarget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTarget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerTarget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTarget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerTarget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTarget.SignalSignatures[K]>): void;
     }
 
 
@@ -16538,15 +16331,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerTargetCommand.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTargetCommand.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerTargetCommand.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTargetCommand.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerTargetCommand.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTargetCommand.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerTargetCommand.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTargetCommand.SignalSignatures[K]>): void;
 
         // Methods
         dup_command(): Command;
@@ -16598,15 +16388,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerTargetProcess.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTargetProcess.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerTargetProcess.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTargetProcess.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerTargetProcess.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTargetProcess.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerTargetProcess.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTargetProcess.SignalSignatures[K]>): void;
 
         // Methods
         get_pid(): GLib.Pid;
@@ -16658,15 +16445,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerTargetRemote.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTargetRemote.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerTargetRemote.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTargetRemote.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerTargetRemote.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTargetRemote.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerTargetRemote.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTargetRemote.SignalSignatures[K]>): void;
 
         // Methods
         dup_address(): string;
@@ -16746,15 +16530,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerThread.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerThread.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerThread.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -16889,15 +16670,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerThreadGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerThreadGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerThreadGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerThreadGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerThreadGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerThreadGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerThreadGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerThreadGroup.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -16953,15 +16731,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerTrap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTrap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerTrap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTrap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerTrap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTrap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerTrap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTrap.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -17165,15 +16940,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerTrapParams.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTrapParams.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerTrapParams.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerTrapParams.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerTrapParams.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTrapParams.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerTrapParams.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerTrapParams.SignalSignatures[K]>): void;
 
         // Methods
         copy(): DebuggerTrapParams | null;
@@ -17321,15 +17093,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerVariable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerVariable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerVariable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerVariable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerVariable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerVariable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerVariable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerVariable.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -17436,15 +17205,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DebuggerWatchpoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerWatchpoint.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebuggerWatchpoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebuggerWatchpoint.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebuggerWatchpoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerWatchpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebuggerWatchpoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebuggerWatchpoint.SignalSignatures[K]>): void;
     }
 
 
@@ -17515,15 +17281,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Dependency.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dependency.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Dependency.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dependency.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Dependency.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dependency.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Dependency.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dependency.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -17803,15 +17566,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DependencyManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DependencyManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DependencyManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DependencyManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DependencyManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DependencyManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DependencyManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DependencyManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17878,15 +17638,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DependencyProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DependencyProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DependencyProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DependencyProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DependencyProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DependencyProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DependencyProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DependencyProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -18211,15 +17968,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DeployStrategy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeployStrategy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeployStrategy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeployStrategy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeployStrategy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeployStrategy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeployStrategy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeployStrategy.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -18556,15 +18310,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -18889,15 +18640,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceInfo.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -18977,15 +18725,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19155,15 +18900,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -19665,15 +19407,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Diagnostic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Diagnostic.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Diagnostic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Diagnostic.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Diagnostic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Diagnostic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Diagnostic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Diagnostic.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -19809,15 +19548,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DiagnosticFix.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiagnosticFix.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DiagnosticFix.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiagnosticFix.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DiagnosticFix.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiagnosticFix.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DiagnosticFix.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiagnosticFix.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19873,15 +19609,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DiagnosticManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiagnosticManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DiagnosticManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiagnosticManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DiagnosticManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiagnosticManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DiagnosticManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiagnosticManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19973,15 +19706,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DiagnosticProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiagnosticProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DiagnosticProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiagnosticProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DiagnosticProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiagnosticProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DiagnosticProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiagnosticProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -20362,15 +20092,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DiagnosticRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiagnosticRange.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DiagnosticRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiagnosticRange.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DiagnosticRange.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiagnosticRange.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DiagnosticRange.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiagnosticRange.SignalSignatures[K]>): void;
 
         // Methods
         get_end_line(): number;
@@ -20431,15 +20158,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DiagnosticTool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiagnosticTool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DiagnosticTool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiagnosticTool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DiagnosticTool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiagnosticTool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DiagnosticTool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiagnosticTool.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -20577,15 +20301,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DirectoryItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DirectoryItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DirectoryItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DirectoryItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryItem.SignalSignatures[K]>): void;
 
         // Methods
         dup_content_type(): string;
@@ -20700,15 +20421,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DirectoryListing.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryListing.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DirectoryListing.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryListing.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DirectoryListing.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryListing.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DirectoryListing.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryListing.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21098,15 +20816,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DirectoryReaper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryReaper.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DirectoryReaper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryReaper.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DirectoryReaper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryReaper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DirectoryReaper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryReaper.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21280,15 +20995,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DoapFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DoapFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DoapFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DoapFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DoapFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DoapFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DoapFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DoapFile.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -21372,15 +21084,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DoapPerson.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DoapPerson.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DoapPerson.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DoapPerson.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DoapPerson.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DoapPerson.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DoapPerson.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DoapPerson.SignalSignatures[K]>): void;
 
         // Methods
         get_email(): string;
@@ -21447,15 +21156,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DoapService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DoapService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DoapService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DoapService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DoapService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DoapService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DoapService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DoapService.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21600,15 +21306,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Documentation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Documentation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Documentation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Documentation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Documentation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Documentation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Documentation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Documentation.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -21814,15 +21517,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DocumentationBundle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationBundle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DocumentationBundle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationBundle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DocumentationBundle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationBundle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DocumentationBundle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationBundle.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -22159,15 +21859,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DocumentationIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationIntent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DocumentationIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationIntent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DocumentationIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationIntent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DocumentationIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationIntent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22229,15 +21926,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DocumentationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DocumentationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DocumentationManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DocumentationManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22331,15 +22025,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DocumentationMatches.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationMatches.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DocumentationMatches.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationMatches.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DocumentationMatches.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationMatches.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DocumentationMatches.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationMatches.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22521,15 +22212,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DocumentationProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DocumentationProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DocumentationProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DocumentationProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -22950,15 +22638,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DocumentationQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationQuery.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DocumentationQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationQuery.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DocumentationQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DocumentationQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationQuery.SignalSignatures[K]>): void;
 
         // Methods
         dup_function_name(): string;
@@ -23076,15 +22761,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof DocumentationRoot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationRoot.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DocumentationRoot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentationRoot.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DocumentationRoot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationRoot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DocumentationRoot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentationRoot.SignalSignatures[K]>): void;
 
         // Methods
         dup_icon(): Gio.Icon | null;
@@ -23187,15 +22869,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Extension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Extension.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Extension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Extension.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Extension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Extension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Extension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Extension.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23532,15 +23211,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ExtensionSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtensionSet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExtensionSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtensionSet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExtensionSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtensionSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExtensionSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtensionSet.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23950,15 +23626,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FileManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -24068,15 +23741,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FileMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileMonitor.SignalSignatures[K]>): void;
 
         // Methods
         cancel(): void;
@@ -24152,15 +23822,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FileMonitorEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileMonitorEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileMonitorEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileMonitorEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileMonitorEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileMonitorEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileMonitorEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileMonitorEvent.SignalSignatures[K]>): void;
 
         // Methods
         dup_file(): Gio.File;
@@ -24302,15 +23969,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FileSearchMatch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSearchMatch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileSearchMatch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSearchMatch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileSearchMatch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSearchMatch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileSearchMatch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSearchMatch.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -24588,15 +24252,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FileSearchOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSearchOptions.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileSearchOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSearchOptions.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileSearchOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSearchOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileSearchOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSearchOptions.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -24830,15 +24491,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FileSearchProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSearchProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileSearchProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSearchProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileSearchProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSearchProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileSearchProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSearchProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -25142,15 +24800,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FileSearchReplacement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSearchReplacement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileSearchReplacement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSearchReplacement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileSearchReplacement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSearchReplacement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileSearchReplacement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSearchReplacement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -25197,15 +24852,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakArchOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakArchOptions.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakArchOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakArchOptions.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakArchOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakArchOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakArchOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakArchOptions.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -25654,15 +25306,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakExtension.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakExtension.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakExtension.SignalSignatures[K]>): void;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -25911,15 +25560,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakExtensions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakExtensions.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakExtensions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakExtensions.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakExtensions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakExtensions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakExtensions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakExtensions.SignalSignatures[K]>): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -26081,15 +25727,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -27021,15 +26664,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakManifest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakManifest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakManifest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakManifest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakManifest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakManifest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakManifest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakManifest.SignalSignatures[K]>): void;
 
         // Methods
         dup_build_options(): FlatpakOptions | null;
@@ -27305,15 +26945,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakManifestLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakManifestLoader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakManifestLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakManifestLoader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakManifestLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakManifestLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakManifestLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakManifestLoader.SignalSignatures[K]>): void;
 
         // Methods
         dup_base_dir(): Gio.File;
@@ -27658,15 +27295,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakModule.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakModule.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakModule.SignalSignatures[K]>): void;
 
         // Methods
         dup_build_commands(): string[] | null;
@@ -27930,15 +27564,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakModules.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakModules.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakModules.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakModules.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakModules.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakModules.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakModules.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakModules.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -28402,15 +28033,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakOptions.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakOptions.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakOptions.SignalSignatures[K]>): void;
 
         // Methods
         dup_append_path(): string;
@@ -28669,15 +28297,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSerializable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSerializable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSerializable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSerializable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSerializable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSerializable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSerializable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSerializable.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -28979,15 +28604,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSource.SignalSignatures[K]>): void;
 
         // Methods
         dup_dest(): string;
@@ -29402,15 +29024,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSourceArchive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceArchive.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSourceArchive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceArchive.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSourceArchive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceArchive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSourceArchive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceArchive.SignalSignatures[K]>): void;
     }
 
 
@@ -29467,15 +29086,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSourceBzr.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceBzr.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSourceBzr.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceBzr.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSourceBzr.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceBzr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSourceBzr.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceBzr.SignalSignatures[K]>): void;
     }
 
 
@@ -29529,15 +29145,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSourceDir.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceDir.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSourceDir.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceDir.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSourceDir.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceDir.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSourceDir.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceDir.SignalSignatures[K]>): void;
     }
 
 
@@ -29602,15 +29215,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSourceExtraData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceExtraData.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSourceExtraData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceExtraData.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSourceExtraData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceExtraData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSourceExtraData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceExtraData.SignalSignatures[K]>): void;
     }
 
 
@@ -29746,15 +29356,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSourceFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSourceFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSourceFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSourceFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceFile.SignalSignatures[K]>): void;
     }
 
 
@@ -29880,15 +29487,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSourceGit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceGit.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSourceGit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceGit.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSourceGit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceGit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSourceGit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceGit.SignalSignatures[K]>): void;
 
         // Methods
         dup_branch(): string;
@@ -29976,15 +29580,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSourceInline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceInline.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSourceInline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceInline.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSourceInline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceInline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSourceInline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceInline.SignalSignatures[K]>): void;
     }
 
 
@@ -30088,15 +29689,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSourcePatch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourcePatch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSourcePatch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourcePatch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSourcePatch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourcePatch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSourcePatch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourcePatch.SignalSignatures[K]>): void;
     }
 
 
@@ -30157,15 +29755,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSourceScript.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceScript.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSourceScript.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceScript.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSourceScript.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceScript.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSourceScript.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceScript.SignalSignatures[K]>): void;
     }
 
 
@@ -30211,15 +29806,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSourceShell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceShell.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSourceShell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceShell.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSourceShell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceShell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSourceShell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceShell.SignalSignatures[K]>): void;
     }
 
 
@@ -30276,15 +29868,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSourceSvn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceSvn.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSourceSvn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSourceSvn.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSourceSvn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceSvn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSourceSvn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSourceSvn.SignalSignatures[K]>): void;
     }
 
 
@@ -30321,15 +29910,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakSources.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSources.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakSources.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakSources.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakSources.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSources.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakSources.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakSources.SignalSignatures[K]>): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -30507,15 +30093,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Forge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Forge.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Forge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Forge.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Forge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Forge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Forge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Forge.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -30873,15 +30456,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ForgeIssue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeIssue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ForgeIssue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeIssue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ForgeIssue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeIssue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ForgeIssue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeIssue.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -31054,15 +30634,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ForgeListing.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeListing.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ForgeListing.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeListing.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ForgeListing.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeListing.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ForgeListing.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeListing.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -31288,15 +30865,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ForgeManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ForgeManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ForgeManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ForgeManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -31536,15 +31110,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ForgeMergeRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeMergeRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ForgeMergeRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeMergeRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ForgeMergeRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeMergeRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ForgeMergeRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeMergeRequest.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -31763,15 +31334,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ForgeProject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeProject.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ForgeProject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeProject.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ForgeProject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeProject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ForgeProject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeProject.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -31954,15 +31522,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ForgeQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeQuery.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ForgeQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeQuery.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ForgeQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ForgeQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeQuery.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -32131,15 +31696,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ForgeUser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeUser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ForgeUser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForgeUser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ForgeUser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeUser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ForgeUser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForgeUser.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -32285,15 +31847,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof FutureItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FutureItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FutureItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FutureItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FutureItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FutureItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FutureItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FutureItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -32364,15 +31923,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Gir.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Gir.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Gir.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Gir.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Gir.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Gir.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Gir.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Gir.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -32440,15 +31996,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GirNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GirNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GirNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GirNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GirNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GirNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GirNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GirNode.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -32552,15 +32105,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitBlame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitBlame.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitBlame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitBlame.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitBlame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitBlame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitBlame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitBlame.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -32611,15 +32161,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitBranch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitBranch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitBranch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitBranch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitBranch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitBranch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitBranch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitBranch.SignalSignatures[K]>): void;
     }
 
 
@@ -32725,15 +32272,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitCloner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitCloner.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitCloner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitCloner.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitCloner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitCloner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitCloner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitCloner.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -32834,15 +32378,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitCommit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitCommit.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitCommit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitCommit.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitCommit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitCommit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitCommit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitCommit.SignalSignatures[K]>): void;
     }
 
 
@@ -33113,15 +32654,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitCommitBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitCommitBuilder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitCommitBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitCommitBuilder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitCommitBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitCommitBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitCommitBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitCommitBuilder.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -33482,15 +33020,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitDelta.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitDelta.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitDelta.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitDelta.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitDelta.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitDelta.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitDelta.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitDelta.SignalSignatures[K]>): void;
     }
 
 
@@ -33525,15 +33060,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitDiff.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitDiff.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitDiff.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitDiff.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitDiff.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitDiff.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitDiff.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitDiff.SignalSignatures[K]>): void;
     }
 
 
@@ -33574,15 +33106,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitDiffHunk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitDiffHunk.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitDiffHunk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitDiffHunk.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitDiffHunk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitDiffHunk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitDiffHunk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitDiffHunk.SignalSignatures[K]>): void;
     }
 
 
@@ -33624,15 +33153,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitDiffLine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitDiffLine.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitDiffLine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitDiffLine.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitDiffLine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitDiffLine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitDiffLine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitDiffLine.SignalSignatures[K]>): void;
     }
 
 
@@ -33670,15 +33196,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitFile.SignalSignatures[K]>): void;
     }
 
 
@@ -33717,15 +33240,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitReference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitReference.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitReference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitReference.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitReference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitReference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitReference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitReference.SignalSignatures[K]>): void;
     }
 
 
@@ -33763,15 +33283,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitRemote.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitRemote.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitRemote.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitRemote.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitRemote.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitRemote.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitRemote.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitRemote.SignalSignatures[K]>): void;
     }
 
 
@@ -33810,15 +33327,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitSignature.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitSignature.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitSignature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitSignature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitSignature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitSignature.SignalSignatures[K]>): void;
     }
 
 
@@ -33857,15 +33371,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitStats.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitStats.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitStats.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitStats.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitStats.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitStats.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitStats.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitStats.SignalSignatures[K]>): void;
     }
 
 
@@ -33963,15 +33474,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitStatusEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitStatusEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitStatusEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitStatusEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitStatusEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitStatusEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitStatusEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitStatusEntry.SignalSignatures[K]>): void;
 
         // Methods
         dup_icon(): Gio.Icon | null;
@@ -34015,15 +33523,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitStatusList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitStatusList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitStatusList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitStatusList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitStatusList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitStatusList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitStatusList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitStatusList.SignalSignatures[K]>): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -34173,15 +33678,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitTag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitTag.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitTag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitTag.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitTag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitTag.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitTag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitTag.SignalSignatures[K]>): void;
     }
 
 
@@ -34218,15 +33720,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitTree.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitTree.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitTree.SignalSignatures[K]>): void;
     }
 
 
@@ -34275,15 +33774,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof GitVcs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitVcs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GitVcs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GitVcs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GitVcs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitVcs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GitVcs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GitVcs.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -34427,15 +33923,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof HoverProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HoverProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HoverProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HoverProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HoverProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HoverProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HoverProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HoverProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -34713,15 +34206,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Inhibitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Inhibitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Inhibitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Inhibitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Inhibitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Inhibitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Inhibitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Inhibitor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -34799,15 +34289,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Input.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Input.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Input.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Input.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Input.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Input.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Input.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Input.SignalSignatures[K]>): void;
 
         // Methods
         dup_subtitle(): string;
@@ -34877,15 +34364,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputChoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputChoice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputChoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputChoice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputChoice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputChoice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputChoice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputChoice.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -34953,15 +34437,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputCombo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputCombo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputCombo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputCombo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputCombo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputCombo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputCombo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputCombo.SignalSignatures[K]>): void;
 
         // Methods
         dup_choice(): InputChoice | null;
@@ -35037,15 +34518,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputFile.SignalSignatures[K]>): void;
 
         // Methods
         dup_value(): Gio.File | null;
@@ -35114,15 +34592,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputFont.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputFont.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputFont.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputFont.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputFont.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputFont.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputFont.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputFont.SignalSignatures[K]>): void;
 
         // Methods
         dup_value(): string;
@@ -35173,15 +34648,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputGroup.SignalSignatures[K]>): void;
 
         // Methods
         list_children(): Gio.ListModel;
@@ -35235,15 +34707,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputPassword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputPassword.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputPassword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputPassword.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputPassword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputPassword.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputPassword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputPassword.SignalSignatures[K]>): void;
 
         // Methods
         dup_value(): string;
@@ -35333,15 +34802,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputSpin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputSpin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputSpin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputSpin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputSpin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputSpin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputSpin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputSpin.SignalSignatures[K]>): void;
 
         // Methods
         get_lower(): number;
@@ -35406,15 +34872,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputSwitch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputSwitch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputSwitch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputSwitch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputSwitch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputSwitch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputSwitch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputSwitch.SignalSignatures[K]>): void;
 
         // Methods
         get_value(): boolean;
@@ -35473,15 +34936,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputText.SignalSignatures[K]>): void;
 
         // Methods
         dup_value(): string;
@@ -35524,15 +34984,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputValidator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputValidator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputValidator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputValidator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputValidator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputValidator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputValidator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputValidator.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -35581,15 +35038,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputValidatorDelegate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputValidatorDelegate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputValidatorDelegate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputValidatorDelegate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputValidatorDelegate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputValidatorDelegate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputValidatorDelegate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputValidatorDelegate.SignalSignatures[K]>): void;
     }
 
 
@@ -35636,15 +35090,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof InputValidatorRegex.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputValidatorRegex.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputValidatorRegex.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputValidatorRegex.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputValidatorRegex.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputValidatorRegex.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputValidatorRegex.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputValidatorRegex.SignalSignatures[K]>): void;
 
         // Methods
         dup_regex(): GLib.Regex;
@@ -35688,15 +35139,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Intent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Intent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Intent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Intent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Intent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Intent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Intent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Intent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -35814,15 +35262,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof IntentHandler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntentHandler.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IntentHandler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntentHandler.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IntentHandler.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntentHandler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IntentHandler.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntentHandler.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -36102,15 +35547,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof IntentManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntentManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IntentManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntentManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IntentManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntentManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IntentManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntentManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -36161,15 +35603,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof JsonListLlmResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JsonListLlmResource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JsonListLlmResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JsonListLlmResource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JsonListLlmResource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JsonListLlmResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JsonListLlmResource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JsonListLlmResource.SignalSignatures[K]>): void;
     }
 
 
@@ -36218,15 +35657,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof JsonLlmResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JsonLlmResource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JsonLlmResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JsonLlmResource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JsonLlmResource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JsonLlmResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JsonLlmResource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JsonLlmResource.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -36287,15 +35723,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof KeyRotator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyRotator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KeyRotator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyRotator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KeyRotator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyRotator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KeyRotator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyRotator.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -36645,15 +36078,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Language.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Language.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Language.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Language.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Language.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Language.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -36714,15 +36144,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LanguageGuesser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageGuesser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LanguageGuesser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageGuesser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LanguageGuesser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageGuesser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LanguageGuesser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageGuesser.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -37073,15 +36500,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof License.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, License.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof License.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, License.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof License.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<License.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof License.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<License.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -37187,15 +36611,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LinkedPipelineStage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkedPipelineStage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LinkedPipelineStage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkedPipelineStage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LinkedPipelineStage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkedPipelineStage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LinkedPipelineStage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkedPipelineStage.SignalSignatures[K]>): void;
     }
 
 
@@ -37230,15 +36651,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LlmCompletion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmCompletion.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LlmCompletion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmCompletion.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LlmCompletion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmCompletion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LlmCompletion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmCompletion.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -37321,15 +36739,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LlmCompletionChunk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmCompletionChunk.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LlmCompletionChunk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmCompletionChunk.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LlmCompletionChunk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmCompletionChunk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LlmCompletionChunk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmCompletionChunk.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -37407,15 +36822,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LlmConversation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmConversation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LlmConversation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmConversation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LlmConversation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmConversation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LlmConversation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmConversation.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -37553,15 +36965,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LlmManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LlmManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LlmManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LlmManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -37771,15 +37180,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LlmMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmMessage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LlmMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmMessage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LlmMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LlmMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmMessage.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -37884,15 +37290,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LlmModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LlmModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LlmModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LlmModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmModel.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -38224,15 +37627,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LlmProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LlmProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LlmProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LlmProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -38613,15 +38013,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LlmResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmResource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LlmResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmResource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LlmResource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LlmResource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmResource.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -38785,15 +38182,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LlmTool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmTool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LlmTool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmTool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LlmTool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmTool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LlmTool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmTool.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -39140,15 +38534,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LlmToolCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmToolCall.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LlmToolCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LlmToolCall.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LlmToolCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmToolCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LlmToolCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LlmToolCall.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -39245,15 +38636,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LocalDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocalDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LocalDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocalDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LocalDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocalDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LocalDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocalDevice.SignalSignatures[K]>): void;
     }
 
 
@@ -39290,15 +38678,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LogManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LogManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LogManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LogManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -39491,15 +38876,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LogMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogMessage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LogMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogMessage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LogMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LogMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogMessage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -39592,15 +38974,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LspClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LspClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LspClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LspClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspClient.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -39893,15 +39272,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LspCompletionProposal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspCompletionProposal.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LspCompletionProposal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspCompletionProposal.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LspCompletionProposal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspCompletionProposal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LspCompletionProposal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspCompletionProposal.SignalSignatures[K]>): void;
     }
 
 
@@ -39940,15 +39316,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LspCompletionProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspCompletionProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LspCompletionProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspCompletionProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LspCompletionProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspCompletionProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LspCompletionProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspCompletionProvider.SignalSignatures[K]>): void;
     }
 
 
@@ -39985,15 +39358,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LspManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LspManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LspManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LspManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -40178,15 +39548,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LspProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LspProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LspProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LspProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -40587,15 +39954,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof LspServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspServer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LspServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LspServer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LspServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LspServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LspServer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -40910,15 +40274,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Markup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Markup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Markup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Markup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Markup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Markup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Markup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Markup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -40968,15 +40329,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof McpServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, McpServer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof McpServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, McpServer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof McpServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<McpServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof McpServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<McpServer.SignalSignatures[K]>): void;
 
         // Methods
         start(): void;
@@ -41233,15 +40591,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof MenuSearchProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuSearchProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuSearchProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuSearchProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuSearchProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuSearchProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuSearchProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuSearchProvider.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -41289,15 +40644,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof MenuSearchResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuSearchResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuSearchResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuSearchResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuSearchResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuSearchResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuSearchResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuSearchResult.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -41341,15 +40693,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ModelManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModelManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModelManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModelManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModelManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModelManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModelManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModelManager.SignalSignatures[K]>): void;
 
         // Static methods
         static dup_default(): ModelManager;
@@ -41426,15 +40775,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof NoVcs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NoVcs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NoVcs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NoVcs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NoVcs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NoVcs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NoVcs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NoVcs.SignalSignatures[K]>): void;
     }
 
 
@@ -41473,15 +40819,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof OnTypeDiagnostics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OnTypeDiagnostics.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OnTypeDiagnostics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OnTypeDiagnostics.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OnTypeDiagnostics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OnTypeDiagnostics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OnTypeDiagnostics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OnTypeDiagnostics.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -41642,15 +40985,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof OnTypeFormatter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OnTypeFormatter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OnTypeFormatter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OnTypeFormatter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OnTypeFormatter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OnTypeFormatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OnTypeFormatter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OnTypeFormatter.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -41757,15 +41097,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof OpenFileIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OpenFileIntent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OpenFileIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OpenFileIntent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OpenFileIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OpenFileIntent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OpenFileIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OpenFileIntent.SignalSignatures[K]>): void;
 
         // Methods
         dup_content_type(): string | null;
@@ -41867,15 +41204,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Operation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Operation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Operation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Operation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Operation.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -41984,15 +41318,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof OperationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OperationManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OperationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OperationManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OperationManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OperationManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OperationManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OperationManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -42155,15 +41486,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof PathCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PathCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PathCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PathCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathCache.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -42237,15 +41565,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof PluginBuildAddin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginBuildAddin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginBuildAddin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginBuildAddin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginBuildAddin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginBuildAddin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginBuildAddin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginBuildAddin.SignalSignatures[K]>): void;
     }
 
 
@@ -42284,15 +41609,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof PluginLspProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginLspProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginLspProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginLspProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginLspProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginLspProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginLspProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginLspProvider.SignalSignatures[K]>): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -42446,15 +41768,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof PluginManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginManager.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default(): PluginManager;
@@ -42513,15 +41832,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ProcessLauncher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProcessLauncher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProcessLauncher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProcessLauncher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProcessLauncher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProcessLauncher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProcessLauncher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProcessLauncher.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -42753,15 +42069,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof ProjectTemplate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProjectTemplate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProjectTemplate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProjectTemplate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProjectTemplate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProjectTemplate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProjectTemplate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProjectTemplate.SignalSignatures[K]>): void;
     }
 
 
@@ -42801,15 +42114,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof PtyDiagnostics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PtyDiagnostics.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PtyDiagnostics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PtyDiagnostics.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PtyDiagnostics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PtyDiagnostics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PtyDiagnostics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PtyDiagnostics.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -43213,15 +42523,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof RenameProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RenameProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RenameProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RenameProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RenameProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RenameProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RenameProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RenameProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -43510,15 +42817,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof RunManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RunManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RunManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RunManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RunManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RunManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RunManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RunManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -43620,15 +42924,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof RunTool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RunTool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RunTool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RunTool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RunTool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RunTool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RunTool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RunTool.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -44028,15 +43329,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Sdk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sdk.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Sdk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sdk.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Sdk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sdk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Sdk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sdk.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -44532,15 +43830,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SdkManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SdkManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SdkManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SdkManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SdkManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SdkManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SdkManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SdkManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -44711,15 +44006,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SdkProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SdkProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SdkProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SdkProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SdkProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SdkProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SdkProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SdkProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -45126,15 +44418,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SearchManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SearchManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SearchManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SearchManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -45194,15 +44483,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SearchProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SearchProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SearchProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SearchProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -45510,15 +44796,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SearchRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SearchRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SearchRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SearchRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchRequest.SignalSignatures[K]>): void;
 
         // Methods
         dup_categories(): string[] | null;
@@ -45832,15 +45115,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SearchResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SearchResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SearchResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SearchResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchResult.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -45973,15 +45253,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SecretService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SecretService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SecretService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SecretService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SecretService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SecretService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SecretService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SecretService.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -46072,15 +45349,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -46429,15 +45703,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -47298,15 +46569,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleLlmMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleLlmMessage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleLlmMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleLlmMessage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleLlmMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleLlmMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleLlmMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleLlmMessage.SignalSignatures[K]>): void;
     }
 
 
@@ -47372,15 +46640,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleTextBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleTextBuffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleTextBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleTextBuffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleTextBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleTextBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleTextBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleTextBuffer.SignalSignatures[K]>): void;
 
         // Static methods
         static ["new"](): TextBuffer;
@@ -47588,15 +46853,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Symbol.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Symbol.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Symbol.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Symbol.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Symbol.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Symbol.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Symbol.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Symbol.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -47743,15 +47005,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SymbolIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SymbolIntent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SymbolIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SymbolIntent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SymbolIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SymbolIntent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SymbolIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SymbolIntent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -47843,15 +47102,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SymbolLocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SymbolLocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SymbolLocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SymbolLocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SymbolLocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SymbolLocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SymbolLocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SymbolLocator.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -47916,15 +47172,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof SymbolProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SymbolProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SymbolProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SymbolProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SymbolProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SymbolProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SymbolProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SymbolProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -48238,15 +47491,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Template.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Template.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Template.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Template.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Template.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Template.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Template.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Template.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -48329,15 +47579,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TemplateManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TemplateManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TemplateManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TemplateManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TemplateManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TemplateManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TemplateManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TemplateManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -48446,15 +47693,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TemplateOutput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TemplateOutput.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TemplateOutput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TemplateOutput.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TemplateOutput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TemplateOutput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TemplateOutput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TemplateOutput.SignalSignatures[K]>): void;
 
         // Methods
         dup_contents(): GLib.Bytes;
@@ -48505,15 +47749,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TemplateProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TemplateProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TemplateProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TemplateProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TemplateProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TemplateProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TemplateProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TemplateProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -48592,15 +47833,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TerminalIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TerminalIntent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TerminalIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TerminalIntent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TerminalIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TerminalIntent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TerminalIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TerminalIntent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -48667,15 +47905,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TerminalLauncher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TerminalLauncher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TerminalLauncher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TerminalLauncher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TerminalLauncher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TerminalLauncher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TerminalLauncher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TerminalLauncher.SignalSignatures[K]>): void;
 
         // Methods
         copy(): TerminalLauncher;
@@ -48728,15 +47963,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TerminalService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TerminalService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TerminalService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TerminalService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TerminalService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TerminalService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TerminalService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TerminalService.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -48818,15 +48050,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Test.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Test.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Test.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Test.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Test.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Test.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Test.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Test.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -49112,15 +48341,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TestManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TestManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TestManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TestManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TestManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TestManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TestManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TestManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -49298,15 +48524,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TestProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TestProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TestProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TestProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TestProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TestProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TestProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TestProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -49581,15 +48804,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TestSuite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TestSuite.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TestSuite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TestSuite.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TestSuite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TestSuite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TestSuite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TestSuite.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -49746,15 +48966,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TextBufferProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextBufferProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextBufferProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextBufferProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextBufferProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextBufferProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextBufferProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextBufferProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -50116,15 +49333,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TextDocument.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextDocument.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextDocument.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextDocument.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextDocument.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextDocument.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextDocument.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextDocument.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -50510,15 +49724,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TextDocumentAddin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextDocumentAddin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextDocumentAddin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextDocumentAddin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextDocumentAddin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextDocumentAddin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextDocumentAddin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextDocumentAddin.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -50844,15 +50055,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TextEdit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextEdit.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextEdit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextEdit.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextEdit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextEdit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextEdit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextEdit.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -50932,15 +50140,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TextFormatter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextFormatter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextFormatter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextFormatter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextFormatter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextFormatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextFormatter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextFormatter.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -51254,15 +50459,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TextManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -51750,15 +50952,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TextSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextSettings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextSettings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextSettings.SignalSignatures[K]>): void;
 
         // Methods
         dup_custom_font(): string;
@@ -52237,15 +51436,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TextSettingsProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextSettingsProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextSettingsProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextSettingsProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextSettingsProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextSettingsProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextSettingsProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextSettingsProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -52530,15 +51726,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TtyAuthProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TtyAuthProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TtyAuthProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TtyAuthProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TtyAuthProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TtyAuthProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TtyAuthProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TtyAuthProvider.SignalSignatures[K]>): void;
     }
 
 
@@ -52631,15 +51824,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Tweak.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tweak.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tweak.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tweak.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tweak.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tweak.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tweak.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tweak.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -52744,15 +51934,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TweakManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TweakManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TweakManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TweakManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TweakManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TweakManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TweakManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TweakManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -52797,15 +51984,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof TweakProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TweakProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TweakProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TweakProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TweakProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TweakProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TweakProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TweakProvider.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -53069,15 +52253,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof UnixFDMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixFDMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UnixFDMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixFDMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UnixFDMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixFDMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UnixFDMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixFDMap.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -53257,15 +52438,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof Vcs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Vcs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Vcs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Vcs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Vcs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Vcs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Vcs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Vcs.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -53818,15 +52996,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsBlame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsBlame.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsBlame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsBlame.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsBlame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsBlame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsBlame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsBlame.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -53949,15 +53124,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsBranch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsBranch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsBranch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsBranch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsBranch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsBranch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsBranch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsBranch.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -54058,15 +53230,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsCommit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsCommit.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsCommit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsCommit.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsCommit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsCommit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsCommit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsCommit.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -54215,15 +53384,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsDelta.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsDelta.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsDelta.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsDelta.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsDelta.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsDelta.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsDelta.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsDelta.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -54339,15 +53505,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsDiff.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsDiff.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsDiff.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsDiff.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsDiff.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsDiff.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsDiff.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsDiff.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -54475,15 +53638,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsDiffHunk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsDiffHunk.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsDiffHunk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsDiffHunk.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsDiffHunk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsDiffHunk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsDiffHunk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsDiffHunk.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -54673,15 +53833,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsDiffLine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsDiffLine.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsDiffLine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsDiffLine.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsDiffLine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsDiffLine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsDiffLine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsDiffLine.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -54785,15 +53942,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsFile.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -54847,15 +54001,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsGraph.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsGraph.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsGraph.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsGraph.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsGraph.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsGraph.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsGraph.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsGraph.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -55075,15 +54226,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsGraphEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsGraphEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsGraphEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsGraphEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsGraphEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsGraphEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsGraphEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsGraphEntry.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -55192,15 +54340,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsLineChanges.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsLineChanges.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsLineChanges.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsLineChanges.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsLineChanges.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsLineChanges.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsLineChanges.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsLineChanges.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -55273,15 +54418,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -55476,15 +54618,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsProvider.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -55944,15 +55083,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsReference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsReference.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsReference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsReference.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsReference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsReference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsReference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsReference.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -56053,15 +55189,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsRemote.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsRemote.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsRemote.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsRemote.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsRemote.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsRemote.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsRemote.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsRemote.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -56142,15 +55275,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsSignature.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsSignature.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsSignature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsSignature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsSignature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsSignature.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -56242,15 +55372,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsStats.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsStats.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsStats.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsStats.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsStats.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsStats.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsStats.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsStats.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -56342,15 +55469,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsTag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsTag.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsTag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsTag.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsTag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsTag.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsTag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsTag.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -56427,15 +55551,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof VcsTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsTree.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VcsTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsTree.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VcsTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VcsTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsTree.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -56497,15 +55618,12 @@ export namespace Foundry {
         // Signals
         /** @signal */
         connect<K extends keyof WebIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebIntent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebIntent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebIntent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebIntent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebIntent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebIntent.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -152,15 +152,12 @@ export namespace GtkSessionLock {
         // Signals
         /** @signal */
         connect<K extends keyof Lock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lock.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Lock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lock.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Lock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Lock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Lock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Lock.SignalSignatures[K]>): void;
 
         // Methods
         /**

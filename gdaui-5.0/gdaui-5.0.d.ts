@@ -409,15 +409,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof BasicForm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BasicForm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BasicForm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BasicForm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BasicForm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BasicForm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BasicForm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BasicForm.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -732,15 +729,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof Cloud.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cloud.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Cloud.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cloud.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Cloud.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cloud.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Cloud.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cloud.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1071,15 +1065,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof Combo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Combo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Combo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Combo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Combo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Combo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Combo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Combo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1695,15 +1686,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof DataCellRendererBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCellRendererBin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataCellRendererBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCellRendererBin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataCellRendererBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCellRendererBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataCellRendererBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCellRendererBin.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1823,15 +1811,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof DataCellRendererBoolean.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCellRendererBoolean.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataCellRendererBoolean.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCellRendererBoolean.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataCellRendererBoolean.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCellRendererBoolean.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataCellRendererBoolean.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCellRendererBoolean.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2032,15 +2017,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof DataCellRendererCombo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCellRendererCombo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataCellRendererCombo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCellRendererCombo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataCellRendererCombo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCellRendererCombo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataCellRendererCombo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCellRendererCombo.SignalSignatures[K]>): void;
     }
 
 
@@ -2140,15 +2122,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof DataCellRendererInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCellRendererInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataCellRendererInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCellRendererInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataCellRendererInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCellRendererInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataCellRendererInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCellRendererInfo.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2315,15 +2294,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof DataCellRendererTextual.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCellRendererTextual.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataCellRendererTextual.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCellRendererTextual.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataCellRendererTextual.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCellRendererTextual.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataCellRendererTextual.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCellRendererTextual.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2432,15 +2408,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof DataFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataFilter.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -2583,15 +2556,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof DataProxyInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataProxyInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataProxyInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataProxyInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataProxyInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataProxyInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataProxyInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataProxyInfo.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -2678,15 +2648,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof DataStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataStore.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3369,15 +3336,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entry.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3865,15 +3829,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryBin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryBin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryBin.SignalSignatures[K]>): void;
 
         /**
          * Used for the layout of `GdaDataEntry` widgets in containers: queries if `de` requires
@@ -4287,15 +4248,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryBoolean.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryBoolean.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryBoolean.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryBoolean.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryBoolean.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryBoolean.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryBoolean.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryBoolean.SignalSignatures[K]>): void;
 
         /**
          * Used for the layout of `GdaDataEntry` widgets in containers: queries if `de` requires
@@ -4719,15 +4677,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryCombo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryCombo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryCombo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryCombo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryCombo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryCombo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryCombo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryCombo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5205,15 +5160,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryCommonTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryCommonTime.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryCommonTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryCommonTime.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryCommonTime.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryCommonTime.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryCommonTime.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryCommonTime.SignalSignatures[K]>): void;
 
         /**
          * Used for the layout of `GdaDataEntry` widgets in containers: queries if `de` requires
@@ -5682,15 +5634,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryDate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryDate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryDate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryDate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryDate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryDate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryDate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryDate.SignalSignatures[K]>): void;
 
         /**
          * Indicates whether editing on the cell has been canceled.
@@ -5885,15 +5834,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryNone.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryNone.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryNone.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryNone.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryNone.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryNone.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryNone.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryNone.SignalSignatures[K]>): void;
 
         /**
          * Used for the layout of `GdaDataEntry` widgets in containers: queries if `de` requires
@@ -6325,15 +6271,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryNumber.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryNumber.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryNumber.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryNumber.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryNumber.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryNumber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryNumber.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryNumber.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -6822,15 +6765,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryShell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryShell.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryShell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryShell.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryShell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryShell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryShell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryShell.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7114,15 +7054,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryString.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryString.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryString.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryString.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryString.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryString.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryString.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryString.SignalSignatures[K]>): void;
 
         /**
          * Used for the layout of `GdaDataEntry` widgets in containers: queries if `de` requires
@@ -7591,15 +7528,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryTime.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryTime.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryTime.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryTime.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryTime.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryTime.SignalSignatures[K]>): void;
 
         /**
          * Indicates whether editing on the cell has been canceled.
@@ -7796,15 +7730,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryTimestamp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryTimestamp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryTimestamp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryTimestamp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryTimestamp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryTimestamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryTimestamp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryTimestamp.SignalSignatures[K]>): void;
 
         /**
          * Indicates whether editing on the cell has been canceled.
@@ -8004,15 +7935,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof EntryWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryWrapper.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryWrapper.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryWrapper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryWrapper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryWrapper.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8486,15 +8414,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof Form.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Form.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Form.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Form.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Form.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Form.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Form.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Form.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -8949,15 +8874,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof FormattedEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormattedEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FormattedEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormattedEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FormattedEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormattedEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FormattedEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormattedEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9090,15 +9012,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Grid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Grid.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9520,15 +9439,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof Login.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Login.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Login.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Login.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Login.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Login.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Login.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Login.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -9770,15 +9686,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof NumericEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NumericEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NumericEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NumericEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NumericEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NumericEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NumericEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NumericEntry.SignalSignatures[K]>): void;
 
         // Methods
         get_value(): unknown;
@@ -9878,15 +9791,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof ProviderSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderSelector.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProviderSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderSelector.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProviderSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProviderSelector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProviderSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProviderSelector.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10231,15 +10141,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof RawForm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RawForm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RawForm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RawForm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RawForm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RawForm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RawForm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RawForm.SignalSignatures[K]>): void;
 
         /**
          * Sets if the data entry in the `iface` widget at `column` (in the data model `iface` operates on)
@@ -10682,15 +10589,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof RawGrid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RawGrid.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RawGrid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RawGrid.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RawGrid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RawGrid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RawGrid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RawGrid.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -11334,15 +11238,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof RtEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RtEditor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RtEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RtEditor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RtEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RtEditor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RtEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RtEditor.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -11510,15 +11411,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof ServerOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerOperation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServerOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerOperation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServerOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServerOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerOperation.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -11610,15 +11508,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof Set.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Set.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Set.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Set.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Set.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Set.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Set.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Set.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -11711,15 +11606,12 @@ export namespace Gdaui {
         // Signals
         /** @signal */
         connect<K extends keyof TreeStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeStore.SignalSignatures[K]>): void;
 
         // Static methods
         /**

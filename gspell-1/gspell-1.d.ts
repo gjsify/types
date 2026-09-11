@@ -141,15 +141,12 @@ export namespace Gspell {
         // Signals
         /** @signal */
         connect<K extends keyof Checker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Checker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Checker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Checker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Checker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Checker.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -367,15 +364,12 @@ export namespace Gspell {
         // Signals
         /** @signal */
         connect<K extends keyof CheckerDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CheckerDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CheckerDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CheckerDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CheckerDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CheckerDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CheckerDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CheckerDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -455,15 +449,12 @@ export namespace Gspell {
         // Signals
         /** @signal */
         connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entry.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -596,15 +587,12 @@ export namespace Gspell {
         // Signals
         /** @signal */
         connect<K extends keyof EntryBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryBuffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryBuffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryBuffer.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -733,15 +721,12 @@ export namespace Gspell {
         // Signals
         /** @signal */
         connect<K extends keyof LanguageChooserButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LanguageChooserButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LanguageChooserButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageChooserButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LanguageChooserButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageChooserButton.SignalSignatures[K]>): void;
 
         /**
          * The selected {@link Gspell.Language}.
@@ -1278,15 +1263,12 @@ export namespace Gspell {
         // Signals
         /** @signal */
         connect<K extends keyof LanguageChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LanguageChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LanguageChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageChooserDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LanguageChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageChooserDialog.SignalSignatures[K]>): void;
 
         /**
          * The selected {@link Gspell.Language}.
@@ -1392,15 +1374,12 @@ export namespace Gspell {
         // Signals
         /** @signal */
         connect<K extends keyof NavigatorTextView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NavigatorTextView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NavigatorTextView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NavigatorTextView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NavigatorTextView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NavigatorTextView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NavigatorTextView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NavigatorTextView.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1536,15 +1515,12 @@ export namespace Gspell {
         // Signals
         /** @signal */
         connect<K extends keyof TextBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextBuffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextBuffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextBuffer.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1655,15 +1631,12 @@ export namespace Gspell {
         // Signals
         /** @signal */
         connect<K extends keyof TextView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextView.SignalSignatures[K]>): void;
 
         // Static methods
         /**

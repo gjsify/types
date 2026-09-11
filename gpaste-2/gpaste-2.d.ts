@@ -813,15 +813,12 @@ export namespace GPaste {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2333,15 +2330,12 @@ export namespace GPaste {
         // Signals
         /** @signal */
         connect<K extends keyof ClientItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClientItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClientItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClientItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2411,15 +2405,12 @@ export namespace GPaste {
         // Signals
         /** @signal */
         connect<K extends keyof GnomeShellClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GnomeShellClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GnomeShellClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GnomeShellClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GnomeShellClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GnomeShellClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GnomeShellClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GnomeShellClient.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2990,15 +2981,12 @@ export namespace GPaste {
         // Signals
         /** @signal */
         connect<K extends keyof ScreensaverClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScreensaverClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScreensaverClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScreensaverClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScreensaverClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScreensaverClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScreensaverClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScreensaverClient.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3445,15 +3433,12 @@ export namespace GPaste {
         // Signals
         /** @signal */
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]>): void;
 
         // Methods
         /**

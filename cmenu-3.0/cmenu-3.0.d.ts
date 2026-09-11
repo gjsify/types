@@ -99,15 +99,12 @@ export namespace CMenu {
         // Signals
         /** @signal */
         connect<K extends keyof DesktopAppInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DesktopAppInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesktopAppInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DesktopAppInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesktopAppInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -891,15 +888,12 @@ export namespace CMenu {
         // Signals
         /** @signal */
         connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tree.SignalSignatures[K]>): void;
 
         // Static methods
         /**

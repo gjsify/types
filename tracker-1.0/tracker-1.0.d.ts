@@ -185,15 +185,12 @@ export namespace Tracker {
         // Signals
         /** @signal */
         connect<K extends keyof SparqlBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlBuilder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SparqlBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlBuilder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SparqlBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SparqlBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlBuilder.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -349,15 +346,12 @@ export namespace Tracker {
         // Signals
         /** @signal */
         connect<K extends keyof SparqlConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SparqlConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SparqlConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SparqlConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlConnection.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -773,15 +767,12 @@ export namespace Tracker {
         // Signals
         /** @signal */
         connect<K extends keyof SparqlCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SparqlCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SparqlCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SparqlCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlCursor.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

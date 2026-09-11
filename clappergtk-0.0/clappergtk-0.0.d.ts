@@ -296,15 +296,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof Audio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Audio.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Audio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Audio.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Audio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Audio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Audio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Audio.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -453,15 +450,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof Av.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Av.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Av.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Av.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Av.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Av.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Av.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Av.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -943,15 +937,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof Billboard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Billboard.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Billboard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Billboard.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Billboard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Billboard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Billboard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Billboard.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1160,15 +1151,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof Container.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Container.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Container.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Container.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Container.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Container.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Container.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Container.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1749,15 +1737,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof ExtraMenuButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtraMenuButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExtraMenuButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtraMenuButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExtraMenuButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtraMenuButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExtraMenuButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtraMenuButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2278,15 +2263,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof LeadContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LeadContainer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LeadContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LeadContainer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LeadContainer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LeadContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LeadContainer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LeadContainer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2397,15 +2379,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof NextItemButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NextItemButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NextItemButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NextItemButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NextItemButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NextItemButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NextItemButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NextItemButton.SignalSignatures[K]>): void;
 
         /**
          * The name of the action with which this widget should be associated.
@@ -2635,15 +2614,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PreviousItemButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviousItemButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreviousItemButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviousItemButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreviousItemButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreviousItemButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreviousItemButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreviousItemButton.SignalSignatures[K]>): void;
 
         /**
          * The name of the action with which this widget should be associated.
@@ -2902,15 +2878,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof SeekBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SeekBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SeekBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SeekBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SeekBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SeekBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SeekBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SeekBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3426,15 +3399,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleControls.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleControls.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleControls.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleControls.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleControls.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleControls.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleControls.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleControls.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3593,15 +3563,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof TitleHeader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TitleHeader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TitleHeader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TitleHeader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TitleHeader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TitleHeader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TitleHeader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TitleHeader.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3757,15 +3724,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof TitleLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TitleLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TitleLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TitleLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TitleLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TitleLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TitleLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TitleLabel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4244,15 +4208,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof ToggleFullscreenButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ToggleFullscreenButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ToggleFullscreenButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ToggleFullscreenButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ToggleFullscreenButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ToggleFullscreenButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ToggleFullscreenButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ToggleFullscreenButton.SignalSignatures[K]>): void;
 
         /**
          * The name of the action with which this widget should be associated.
@@ -4482,15 +4443,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof TogglePlayButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TogglePlayButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TogglePlayButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TogglePlayButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TogglePlayButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TogglePlayButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TogglePlayButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TogglePlayButton.SignalSignatures[K]>): void;
 
         /**
          * The name of the action with which this widget should be associated.
@@ -4823,15 +4781,12 @@ export namespace ClapperGtk {
         // Signals
         /** @signal */
         connect<K extends keyof Video.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Video.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Video.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Video.SignalSignatures[K]>): void;
 
         // Methods
         /**

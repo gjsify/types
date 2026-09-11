@@ -531,15 +531,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof BookBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookBackend.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookBackend.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookBackend.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1870,15 +1867,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof BookBackendFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookBackendFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookBackendFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookBackendFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookBackendFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookBackendFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookBackendFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookBackendFactory.SignalSignatures[K]>): void;
     }
 
 
@@ -1915,15 +1909,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof BookBackendSExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookBackendSExp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookBackendSExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookBackendSExp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookBackendSExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookBackendSExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookBackendSExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookBackendSExp.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2014,15 +2005,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof BookBackendSync.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookBackendSync.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookBackendSync.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookBackendSync.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookBackendSync.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookBackendSync.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookBackendSync.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookBackendSync.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2304,15 +2292,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof BookCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookCache.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2871,15 +2856,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof BookMetaBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookMetaBackend.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookMetaBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookMetaBackend.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookMetaBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookMetaBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookMetaBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookMetaBackend.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3591,15 +3573,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof BookSqlite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookSqlite.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookSqlite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookSqlite.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookSqlite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookSqlite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookSqlite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookSqlite.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -4086,15 +4065,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof DataBook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBook.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataBook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBook.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataBook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataBook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBook.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4392,15 +4368,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof DataBookCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookCursor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataBookCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookCursor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataBookCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataBookCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookCursor.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4682,15 +4655,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof DataBookCursorCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookCursorCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataBookCursorCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookCursorCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataBookCursorCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookCursorCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataBookCursorCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookCursorCache.SignalSignatures[K]>): void;
     }
 
 
@@ -4768,15 +4738,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof DataBookCursorSqlite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookCursorSqlite.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataBookCursorSqlite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookCursorSqlite.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataBookCursorSqlite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookCursorSqlite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataBookCursorSqlite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookCursorSqlite.SignalSignatures[K]>): void;
     }
 
 
@@ -4813,15 +4780,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof DataBookDirect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookDirect.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataBookDirect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookDirect.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataBookDirect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookDirect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataBookDirect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookDirect.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4872,15 +4836,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof DataBookFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataBookFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataBookFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataBookFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookFactory.SignalSignatures[K]>): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -5107,15 +5068,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof DataBookView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataBookView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataBookView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataBookView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5485,15 +5443,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof DataBookViewWatcherCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookViewWatcherCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataBookViewWatcherCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookViewWatcherCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataBookViewWatcherCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookViewWatcherCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataBookViewWatcherCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookViewWatcherCache.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5555,15 +5510,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookViewWatcherMemory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookViewWatcherMemory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookViewWatcherMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookViewWatcherMemory.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5633,15 +5585,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookViewWatcherSqlite.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataBookViewWatcherSqlite.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookViewWatcherSqlite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataBookViewWatcherSqlite.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5702,15 +5651,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof SubprocessBookFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubprocessBookFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SubprocessBookFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubprocessBookFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SubprocessBookFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubprocessBookFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SubprocessBookFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubprocessBookFactory.SignalSignatures[K]>): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -5852,15 +5798,12 @@ export namespace EDataBook {
         // Signals
         /** @signal */
         connect<K extends keyof SystemLocaleWatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SystemLocaleWatcher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SystemLocaleWatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SystemLocaleWatcher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SystemLocaleWatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SystemLocaleWatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SystemLocaleWatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SystemLocaleWatcher.SignalSignatures[K]>): void;
 
         // Methods
         /**

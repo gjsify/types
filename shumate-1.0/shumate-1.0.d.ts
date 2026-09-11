@@ -543,15 +543,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof Compass.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Compass.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Compass.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Compass.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Compass.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Compass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Compass.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Compass.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -970,15 +967,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof Coordinate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Coordinate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Coordinate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Coordinate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Coordinate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Coordinate.SignalSignatures[K]>): void;
 
         /**
          * The latitude coordonate in degrees
@@ -1130,15 +1124,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof DataSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSource.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1396,15 +1387,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof DataSourceRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSourceRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataSourceRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSourceRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataSourceRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSourceRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataSourceRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSourceRequest.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1597,15 +1585,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof FileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1848,15 +1833,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2341,15 +2323,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof License.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, License.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof License.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, License.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof License.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<License.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof License.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<License.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3347,15 +3326,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof Map.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Map.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Map.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Map.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3976,15 +3952,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof MapLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapLayer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapLayer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapLayer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4174,15 +4147,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof MapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSource.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4443,15 +4413,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof MapSourceRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceRegistry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapSourceRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceRegistry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapSourceRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapSourceRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceRegistry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4745,15 +4712,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Marker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Marker.SignalSignatures[K]>): void;
 
         // Methods
         animate_in(): void;
@@ -5363,15 +5327,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof MarkerLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MarkerLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MarkerLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MarkerLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MarkerLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MarkerLayer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5637,15 +5598,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof PathLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PathLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PathLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PathLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathLayer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5875,15 +5833,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof Point.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Point.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Point.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Point.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Point.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Point.SignalSignatures[K]>): void;
 
         /**
          * The latitude coordonate in degrees
@@ -6021,15 +5976,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof RasterRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RasterRenderer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RasterRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RasterRenderer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RasterRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RasterRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RasterRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RasterRenderer.SignalSignatures[K]>): void;
     }
 
 
@@ -6150,15 +6102,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof Scale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Scale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scale.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scale.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6730,15 +6679,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleMap.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7313,15 +7259,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof SymbolEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SymbolEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SymbolEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SymbolEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SymbolEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SymbolEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SymbolEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SymbolEvent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7586,15 +7529,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof Tile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7770,15 +7710,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof TileDownloader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileDownloader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TileDownloader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileDownloader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TileDownloader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TileDownloader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TileDownloader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TileDownloader.SignalSignatures[K]>): void;
     }
 
 
@@ -7823,15 +7760,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof VectorReader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorReader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VectorReader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorReader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VectorReader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VectorReader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorReader.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7907,15 +7841,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof VectorReaderIter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorReaderIter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VectorReaderIter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorReaderIter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VectorReaderIter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorReaderIter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VectorReaderIter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorReaderIter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8156,15 +8087,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof VectorRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorRenderer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VectorRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorRenderer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VectorRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VectorRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorRenderer.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -8464,15 +8392,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof VectorSprite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorSprite.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VectorSprite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorSprite.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VectorSprite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorSprite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VectorSprite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorSprite.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8852,15 +8777,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof VectorSpriteSheet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorSpriteSheet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VectorSpriteSheet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorSpriteSheet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VectorSpriteSheet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorSpriteSheet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VectorSpriteSheet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorSpriteSheet.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9047,15 +8969,12 @@ export namespace Shumate {
         // Signals
         /** @signal */
         connect<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Viewport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Viewport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -720,15 +720,12 @@ export namespace Rsvg {
         // Signals
         /** @signal */
         connect<K extends keyof Handle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Handle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Handle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Handle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Handle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Handle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Handle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Handle.SignalSignatures[K]>): void;
 
         // Methods
         /**

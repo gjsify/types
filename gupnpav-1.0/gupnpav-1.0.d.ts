@@ -452,15 +452,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof CDSLastChangeParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CDSLastChangeParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CDSLastChangeParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CDSLastChangeParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CDSLastChangeParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CDSLastChangeParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CDSLastChangeParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CDSLastChangeParser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -608,15 +605,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof DIDLLiteContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteContainer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DIDLLiteContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteContainer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DIDLLiteContainer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DIDLLiteContainer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteContainer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -828,15 +822,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof DIDLLiteContributor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteContributor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DIDLLiteContributor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteContributor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DIDLLiteContributor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteContributor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DIDLLiteContributor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteContributor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -967,15 +958,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof DIDLLiteCreateClass.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteCreateClass.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DIDLLiteCreateClass.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteCreateClass.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DIDLLiteCreateClass.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteCreateClass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DIDLLiteCreateClass.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteCreateClass.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1128,15 +1116,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof DIDLLiteDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteDescriptor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DIDLLiteDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteDescriptor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DIDLLiteDescriptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DIDLLiteDescriptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteDescriptor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1280,15 +1265,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof DIDLLiteItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DIDLLiteItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DIDLLiteItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DIDLLiteItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1647,15 +1629,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof DIDLLiteObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteObject.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DIDLLiteObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteObject.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DIDLLiteObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DIDLLiteObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteObject.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2126,15 +2105,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof DIDLLiteParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DIDLLiteParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DIDLLiteParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DIDLLiteParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteParser.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2507,15 +2483,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof DIDLLiteResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteResource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DIDLLiteResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteResource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DIDLLiteResource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DIDLLiteResource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteResource.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2871,15 +2844,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof DIDLLiteWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteWriter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DIDLLiteWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DIDLLiteWriter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DIDLLiteWriter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DIDLLiteWriter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DIDLLiteWriter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3002,15 +2972,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof Feature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Feature.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Feature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Feature.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Feature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Feature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Feature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Feature.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3070,15 +3037,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof FeatureListParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeatureListParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeatureListParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeatureListParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeatureListParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeatureListParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeatureListParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeatureListParser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3129,15 +3093,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof LastChangeParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LastChangeParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LastChangeParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LastChangeParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LastChangeParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LastChangeParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LastChangeParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LastChangeParser.SignalSignatures[K]>): void;
     }
 
 
@@ -3220,15 +3181,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof MediaCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaCollection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaCollection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaCollection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaCollection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaCollection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3437,15 +3395,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof ProtocolInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProtocolInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProtocolInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProtocolInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProtocolInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProtocolInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProtocolInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProtocolInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3637,15 +3592,12 @@ export namespace GUPnPAV {
         // Signals
         /** @signal */
         connect<K extends keyof SearchCriteriaParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchCriteriaParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SearchCriteriaParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchCriteriaParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SearchCriteriaParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchCriteriaParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SearchCriteriaParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchCriteriaParser.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;

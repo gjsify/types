@@ -121,15 +121,12 @@ export namespace Gepub {
         // Signals
         /** @signal */
         connect<K extends keyof Doc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Doc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Doc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Doc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Doc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Doc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Doc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Doc.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -424,15 +421,12 @@ export namespace Gepub {
         // Signals
         /** @signal */
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Widget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Widget.SignalSignatures[K]>): void;
 
         // Methods
         /**

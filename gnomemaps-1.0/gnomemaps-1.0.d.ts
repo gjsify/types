@@ -80,15 +80,12 @@ export namespace GnomeMaps {
         // Signals
         /** @signal */
         connect<K extends keyof DownloadStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DownloadStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DownloadStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DownloadStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadStore.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -372,15 +369,12 @@ export namespace GnomeMaps {
         // Signals
         /** @signal */
         connect<K extends keyof OSMChangeset.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMChangeset.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OSMChangeset.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMChangeset.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OSMChangeset.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OSMChangeset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OSMChangeset.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OSMChangeset.SignalSignatures[K]>): void;
 
         // Methods
         serialize(): string;
@@ -444,15 +438,12 @@ export namespace GnomeMaps {
         // Signals
         /** @signal */
         connect<K extends keyof OSMNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OSMNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OSMNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OSMNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OSMNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OSMNode.SignalSignatures[K]>): void;
     }
 
 
@@ -517,15 +508,12 @@ export namespace GnomeMaps {
         // Signals
         /** @signal */
         connect<K extends keyof OSMObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMObject.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OSMObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMObject.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OSMObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OSMObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OSMObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OSMObject.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -590,15 +578,12 @@ export namespace GnomeMaps {
         // Signals
         /** @signal */
         connect<K extends keyof OSMRelation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMRelation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OSMRelation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMRelation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OSMRelation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OSMRelation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OSMRelation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OSMRelation.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -647,15 +632,12 @@ export namespace GnomeMaps {
         // Signals
         /** @signal */
         connect<K extends keyof OSMWay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMWay.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OSMWay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMWay.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OSMWay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OSMWay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OSMWay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OSMWay.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -700,15 +682,12 @@ export namespace GnomeMaps {
         // Signals
         /** @signal */
         connect<K extends keyof Shield.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shield.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Shield.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shield.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Shield.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Shield.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Shield.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Shield.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -778,15 +757,12 @@ export namespace GnomeMaps {
         // Signals
         /** @signal */
         connect<K extends keyof SpriteSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpriteSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SpriteSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpriteSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SpriteSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpriteSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SpriteSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpriteSource.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -854,15 +830,12 @@ export namespace GnomeMaps {
         // Signals
         /** @signal */
         connect<K extends keyof SyncMapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SyncMapSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SyncMapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SyncMapSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SyncMapSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SyncMapSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SyncMapSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SyncMapSource.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

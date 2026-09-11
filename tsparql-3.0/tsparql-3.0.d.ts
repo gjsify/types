@@ -552,15 +552,12 @@ export namespace Tsparql {
         // Signals
         /** @signal */
         connect<K extends keyof Batch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Batch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Batch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Batch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Batch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Batch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Batch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Batch.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -817,15 +814,12 @@ export namespace Tsparql {
         // Signals
         /** @signal */
         connect<K extends keyof Endpoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Endpoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Endpoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Endpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Endpoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Endpoint.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1031,15 +1025,12 @@ export namespace Tsparql {
         // Signals
         /** @signal */
         connect<K extends keyof EndpointDBus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EndpointDBus.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EndpointDBus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EndpointDBus.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EndpointDBus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EndpointDBus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EndpointDBus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EndpointDBus.SignalSignatures[K]>): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -1256,15 +1247,12 @@ export namespace Tsparql {
         // Signals
         /** @signal */
         connect<K extends keyof EndpointHttp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EndpointHttp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EndpointHttp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EndpointHttp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EndpointHttp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EndpointHttp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EndpointHttp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EndpointHttp.SignalSignatures[K]>): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -1403,15 +1391,12 @@ export namespace Tsparql {
         // Signals
         /** @signal */
         connect<K extends keyof NamespaceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NamespaceManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NamespaceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NamespaceManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NamespaceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NamespaceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NamespaceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NamespaceManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1564,15 +1549,12 @@ export namespace Tsparql {
         // Signals
         /** @signal */
         connect<K extends keyof Notifier.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Notifier.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Notifier.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Notifier.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Notifier.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Notifier.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Notifier.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Notifier.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1685,15 +1667,12 @@ export namespace Tsparql {
         // Signals
         /** @signal */
         connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Resource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Resource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Resource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Resource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Resource.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2240,15 +2219,12 @@ export namespace Tsparql {
         // Signals
         /** @signal */
         connect<K extends keyof SparqlConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SparqlConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SparqlConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SparqlConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlConnection.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3029,15 +3005,12 @@ export namespace Tsparql {
         // Signals
         /** @signal */
         connect<K extends keyof SparqlCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SparqlCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SparqlCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SparqlCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlCursor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3316,15 +3289,12 @@ export namespace Tsparql {
         // Signals
         /** @signal */
         connect<K extends keyof SparqlStatement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlStatement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SparqlStatement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlStatement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SparqlStatement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlStatement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SparqlStatement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlStatement.SignalSignatures[K]>): void;
 
         // Methods
         /**

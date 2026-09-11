@@ -866,15 +866,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof Capabilities.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Capabilities.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Capabilities.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Capabilities.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Capabilities.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Capabilities.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Capabilities.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Capabilities.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -925,15 +922,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof CapabilitiesCpu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesCpu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CapabilitiesCpu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesCpu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CapabilitiesCpu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesCpu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CapabilitiesCpu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesCpu.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1011,15 +1005,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof CapabilitiesCpuFeature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesCpuFeature.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CapabilitiesCpuFeature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesCpuFeature.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CapabilitiesCpuFeature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesCpuFeature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CapabilitiesCpuFeature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesCpuFeature.SignalSignatures[K]>): void;
 
         // Methods
         get_name(): string;
@@ -1072,15 +1063,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof CapabilitiesCpuModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesCpuModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CapabilitiesCpuModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesCpuModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CapabilitiesCpuModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesCpuModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CapabilitiesCpuModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesCpuModel.SignalSignatures[K]>): void;
 
         // Methods
         get_name(): string;
@@ -1133,15 +1121,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof CapabilitiesCpuTopology.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesCpuTopology.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CapabilitiesCpuTopology.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesCpuTopology.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CapabilitiesCpuTopology.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesCpuTopology.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CapabilitiesCpuTopology.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesCpuTopology.SignalSignatures[K]>): void;
 
         // Methods
         get_cores(): number;
@@ -1201,15 +1186,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof CapabilitiesGuest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesGuest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CapabilitiesGuest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesGuest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CapabilitiesGuest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesGuest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CapabilitiesGuest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesGuest.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1262,15 +1244,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof CapabilitiesGuestArch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesGuestArch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CapabilitiesGuestArch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesGuestArch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CapabilitiesGuestArch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesGuestArch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CapabilitiesGuestArch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesGuestArch.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1319,15 +1298,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof CapabilitiesGuestDomain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesGuestDomain.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CapabilitiesGuestDomain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesGuestDomain.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CapabilitiesGuestDomain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesGuestDomain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CapabilitiesGuestDomain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesGuestDomain.SignalSignatures[K]>): void;
 
         // Methods
         get_emulator(): string;
@@ -1370,15 +1346,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof CapabilitiesGuestFeature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesGuestFeature.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CapabilitiesGuestFeature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesGuestFeature.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CapabilitiesGuestFeature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesGuestFeature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CapabilitiesGuestFeature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesGuestFeature.SignalSignatures[K]>): void;
 
         // Methods
         get_name(): string;
@@ -1419,15 +1392,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof CapabilitiesHost.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesHost.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CapabilitiesHost.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesHost.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CapabilitiesHost.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesHost.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CapabilitiesHost.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesHost.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1480,15 +1450,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof CapabilitiesHostSecModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesHostSecModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CapabilitiesHostSecModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CapabilitiesHostSecModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CapabilitiesHostSecModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesHostSecModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CapabilitiesHostSecModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CapabilitiesHostSecModel.SignalSignatures[K]>): void;
 
         // Methods
         get_doi(): string;
@@ -1608,15 +1575,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof Domain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Domain.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Domain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Domain.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Domain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Domain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Domain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Domain.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1825,15 +1789,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainAddress.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainAddress.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainAddress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainAddress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainAddress.SignalSignatures[K]>): void;
     }
 
 
@@ -1878,15 +1839,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainAddressPci.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainAddressPci.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainAddressPci.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainAddressPci.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainAddressPci.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainAddressPci.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainAddressPci.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainAddressPci.SignalSignatures[K]>): void;
 
         // Methods
         get_bus(): number;
@@ -1967,15 +1925,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainAddressUsb.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainAddressUsb.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainAddressUsb.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainAddressUsb.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainAddressUsb.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainAddressUsb.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainAddressUsb.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainAddressUsb.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2031,15 +1986,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainAudio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainAudio.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainAudio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainAudio.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainAudio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainAudio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainAudio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainAudio.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2095,15 +2047,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainCapabilities.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainCapabilities.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainCapabilities.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainCapabilities.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainCapabilities.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainCapabilities.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainCapabilities.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainCapabilities.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2148,15 +2097,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainCapabilitiesOs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainCapabilitiesOs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainCapabilitiesOs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainCapabilitiesOs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainCapabilitiesOs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainCapabilitiesOs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainCapabilitiesOs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainCapabilitiesOs.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2217,15 +2163,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChannel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChannel.SignalSignatures[K]>): void;
 
         // Methods
         get_target_name(): string;
@@ -2278,15 +2221,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainChardev.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardev.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainChardev.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardev.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainChardev.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainChardev.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardev.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2336,15 +2276,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainChardevSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardevSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainChardevSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardevSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainChardevSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardevSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainChardevSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardevSource.SignalSignatures[K]>): void;
     }
 
 
@@ -2389,15 +2326,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainChardevSourcePty.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardevSourcePty.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainChardevSourcePty.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardevSourcePty.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainChardevSourcePty.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardevSourcePty.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainChardevSourcePty.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardevSourcePty.SignalSignatures[K]>): void;
 
         // Methods
         get_path(): string;
@@ -2450,15 +2384,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainChardevSourceSpicePort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardevSourceSpicePort.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainChardevSourceSpicePort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardevSourceSpicePort.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainChardevSourceSpicePort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardevSourceSpicePort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainChardevSourceSpicePort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardevSourceSpicePort.SignalSignatures[K]>): void;
 
         // Methods
         get_channel(): string;
@@ -2511,15 +2442,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainChardevSourceSpiceVmc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardevSourceSpiceVmc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainChardevSourceSpiceVmc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardevSourceSpiceVmc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainChardevSourceSpiceVmc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardevSourceSpiceVmc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainChardevSourceSpiceVmc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardevSourceSpiceVmc.SignalSignatures[K]>): void;
     }
 
 
@@ -2564,15 +2492,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainChardevSourceUnix.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardevSourceUnix.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainChardevSourceUnix.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainChardevSourceUnix.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainChardevSourceUnix.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardevSourceUnix.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainChardevSourceUnix.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainChardevSourceUnix.SignalSignatures[K]>): void;
     }
 
 
@@ -2617,15 +2542,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainClock.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainClock.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainClock.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2697,15 +2619,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainConsole.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainConsole.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainConsole.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainConsole.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainConsole.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainConsole.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainConsole.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainConsole.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2749,15 +2668,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainController.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainController.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainController.SignalSignatures[K]>): void;
 
         // Methods
         get_index(): number;
@@ -2825,15 +2741,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainControllerUsb.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainControllerUsb.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainControllerUsb.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainControllerUsb.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainControllerUsb.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainControllerUsb.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainControllerUsb.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainControllerUsb.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2894,15 +2807,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainCpu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainCpu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainCpu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainCpu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainCpu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainCpu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainCpu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainCpu.SignalSignatures[K]>): void;
 
         // Methods
         get_match_policy(): DomainCpuMatchPolicy;
@@ -2967,15 +2877,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainCpuFeature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainCpuFeature.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainCpuFeature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainCpuFeature.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainCpuFeature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainCpuFeature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainCpuFeature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainCpuFeature.SignalSignatures[K]>): void;
 
         // Methods
         get_policy(): DomainCpuFeaturePolicy;
@@ -3028,15 +2935,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainCpuModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainCpuModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainCpuModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainCpuModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainCpuModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainCpuModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainCpuModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainCpuModel.SignalSignatures[K]>): void;
     }
 
 
@@ -3074,15 +2978,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainDevice.SignalSignatures[K]>): void;
 
         // Methods
         get_alias(): string;
@@ -3130,15 +3031,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainDisk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainDisk.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainDisk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainDisk.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainDisk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainDisk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainDisk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainDisk.SignalSignatures[K]>): void;
 
         // Methods
         get_disk_type(): DomainDiskType;
@@ -3282,15 +3180,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainDiskDriver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainDiskDriver.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainDiskDriver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainDiskDriver.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainDiskDriver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainDiskDriver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainDiskDriver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainDiskDriver.SignalSignatures[K]>): void;
 
         // Methods
         get_cache(): DomainDiskCacheType;
@@ -3385,15 +3280,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainFilesys.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainFilesys.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainFilesys.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainFilesys.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainFilesys.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainFilesys.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainFilesys.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainFilesys.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3472,15 +3364,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainGraphics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphics.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainGraphics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphics.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainGraphics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainGraphics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphics.SignalSignatures[K]>): void;
     }
 
 
@@ -3525,15 +3414,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainGraphicsDBus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsDBus.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainGraphicsDBus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsDBus.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainGraphicsDBus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsDBus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainGraphicsDBus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsDBus.SignalSignatures[K]>): void;
 
         // Methods
         get_address(): string;
@@ -3591,15 +3477,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainGraphicsDesktop.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsDesktop.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainGraphicsDesktop.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsDesktop.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainGraphicsDesktop.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsDesktop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainGraphicsDesktop.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsDesktop.SignalSignatures[K]>): void;
 
         // Methods
         get_display(): string;
@@ -3659,15 +3542,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainGraphicsRdp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsRdp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainGraphicsRdp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsRdp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainGraphicsRdp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsRdp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainGraphicsRdp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsRdp.SignalSignatures[K]>): void;
 
         // Methods
         get_multi_user(): boolean;
@@ -3739,15 +3619,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainGraphicsSdl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsSdl.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainGraphicsSdl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsSdl.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainGraphicsSdl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsSdl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainGraphicsSdl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsSdl.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3808,15 +3685,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainGraphicsSpice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsSpice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainGraphicsSpice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsSpice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainGraphicsSpice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsSpice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainGraphicsSpice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsSpice.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3899,15 +3773,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainGraphicsVnc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsVnc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainGraphicsVnc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainGraphicsVnc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainGraphicsVnc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsVnc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainGraphicsVnc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainGraphicsVnc.SignalSignatures[K]>): void;
 
         // Methods
         get_port(): number;
@@ -3970,15 +3841,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainHostdev.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainHostdev.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainHostdev.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainHostdev.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainHostdev.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainHostdev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainHostdev.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainHostdev.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4058,15 +3926,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainHostdevPci.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainHostdevPci.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainHostdevPci.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainHostdevPci.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainHostdevPci.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainHostdevPci.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainHostdevPci.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainHostdevPci.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4144,15 +4009,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainInput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInput.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainInput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInput.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainInput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainInput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInput.SignalSignatures[K]>): void;
 
         // Methods
         get_bus(): DomainInputBus;
@@ -4205,15 +4067,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainInterface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterface.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainInterface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterface.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainInterface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainInterface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterface.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4298,15 +4157,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainInterfaceBridge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterfaceBridge.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainInterfaceBridge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterfaceBridge.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainInterfaceBridge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterfaceBridge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainInterfaceBridge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterfaceBridge.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4357,15 +4213,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainInterfaceFilterref.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterfaceFilterref.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainInterfaceFilterref.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterfaceFilterref.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainInterfaceFilterref.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterfaceFilterref.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainInterfaceFilterref.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterfaceFilterref.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4431,15 +4284,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainInterfaceFilterrefParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterfaceFilterrefParameter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainInterfaceFilterrefParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterfaceFilterrefParameter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainInterfaceFilterrefParameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterfaceFilterrefParameter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainInterfaceFilterrefParameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterfaceFilterrefParameter.SignalSignatures[K]>): void;
 
         // Methods
         get_name(): string;
@@ -4499,15 +4349,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainInterfaceNetwork.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterfaceNetwork.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainInterfaceNetwork.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterfaceNetwork.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainInterfaceNetwork.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterfaceNetwork.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainInterfaceNetwork.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterfaceNetwork.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4558,15 +4405,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainInterfaceUser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterfaceUser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainInterfaceUser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainInterfaceUser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainInterfaceUser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterfaceUser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainInterfaceUser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainInterfaceUser.SignalSignatures[K]>): void;
     }
 
 
@@ -4611,15 +4455,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainMemballoon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainMemballoon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainMemballoon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainMemballoon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainMemballoon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainMemballoon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainMemballoon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainMemballoon.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4670,15 +4511,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainOs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainOs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainOs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainOs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainOs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainOs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainOs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainOs.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4810,15 +4648,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainParallel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainParallel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainParallel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainParallel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainParallel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainParallel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainParallel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainParallel.SignalSignatures[K]>): void;
     }
 
 
@@ -4863,15 +4698,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainPowerManagement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainPowerManagement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainPowerManagement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainPowerManagement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainPowerManagement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainPowerManagement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainPowerManagement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainPowerManagement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4927,15 +4759,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainRedirdev.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainRedirdev.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainRedirdev.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainRedirdev.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainRedirdev.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainRedirdev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainRedirdev.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainRedirdev.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4991,15 +4820,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainSeclabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSeclabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainSeclabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSeclabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainSeclabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSeclabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainSeclabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSeclabel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5065,15 +4891,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainSerial.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSerial.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainSerial.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSerial.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainSerial.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSerial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainSerial.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSerial.SignalSignatures[K]>): void;
     }
 
 
@@ -5111,15 +4934,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainSmartcard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSmartcard.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainSmartcard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSmartcard.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainSmartcard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSmartcard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainSmartcard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSmartcard.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5171,15 +4991,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainSmartcardHost.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSmartcardHost.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainSmartcardHost.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSmartcardHost.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainSmartcardHost.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSmartcardHost.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainSmartcardHost.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSmartcardHost.SignalSignatures[K]>): void;
     }
 
 
@@ -5224,15 +5041,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainSmartcardHostCertificates.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSmartcardHostCertificates.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainSmartcardHostCertificates.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSmartcardHostCertificates.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainSmartcardHostCertificates.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSmartcardHostCertificates.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainSmartcardHostCertificates.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSmartcardHostCertificates.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5290,15 +5104,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainSmartcardPassthrough.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSmartcardPassthrough.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainSmartcardPassthrough.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSmartcardPassthrough.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainSmartcardPassthrough.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSmartcardPassthrough.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainSmartcardPassthrough.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSmartcardPassthrough.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5349,15 +5160,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainSnapshot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSnapshot.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainSnapshot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSnapshot.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainSnapshot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSnapshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainSnapshot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSnapshot.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5461,15 +5269,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainSnapshotDisk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSnapshotDisk.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainSnapshotDisk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSnapshotDisk.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainSnapshotDisk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSnapshotDisk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainSnapshotDisk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSnapshotDisk.SignalSignatures[K]>): void;
 
         // Methods
         get_driver_format(): DomainDiskFormat;
@@ -5543,15 +5348,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainSound.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSound.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainSound.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainSound.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainSound.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSound.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainSound.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainSound.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5595,15 +5397,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainTimer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainTimer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainTimer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainTimer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainTimer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainTimer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainTimer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainTimer.SignalSignatures[K]>): void;
 
         // Methods
         get_present(): boolean;
@@ -5663,15 +5462,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainTimerHpet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainTimerHpet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainTimerHpet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainTimerHpet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainTimerHpet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainTimerHpet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainTimerHpet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainTimerHpet.SignalSignatures[K]>): void;
     }
 
 
@@ -5716,15 +5512,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainTimerPit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainTimerPit.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainTimerPit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainTimerPit.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainTimerPit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainTimerPit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainTimerPit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainTimerPit.SignalSignatures[K]>): void;
     }
 
 
@@ -5769,15 +5562,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainTimerRtc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainTimerRtc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainTimerRtc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainTimerRtc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainTimerRtc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainTimerRtc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainTimerRtc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainTimerRtc.SignalSignatures[K]>): void;
     }
 
 
@@ -5822,15 +5612,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof DomainVideo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainVideo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomainVideo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomainVideo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomainVideo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainVideo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomainVideo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomainVideo.SignalSignatures[K]>): void;
 
         // Methods
         get_model(): DomainVideoModel;
@@ -5908,15 +5695,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof Interface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Interface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Interface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Interface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Interface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Interface.SignalSignatures[K]>): void;
     }
 
 
@@ -5961,15 +5745,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof Network.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Network.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Network.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Network.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Network.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Network.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Network.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Network.SignalSignatures[K]>): void;
     }
 
 
@@ -6014,15 +5795,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof NetworkFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetworkFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetworkFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetworkFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkFilter.SignalSignatures[K]>): void;
     }
 
 
@@ -6067,15 +5845,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof NodeDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NodeDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NodeDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NodeDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NodeDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NodeDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NodeDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NodeDevice.SignalSignatures[K]>): void;
     }
 
 
@@ -6132,15 +5907,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -6198,15 +5970,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof Secret.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Secret.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Secret.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Secret.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Secret.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Secret.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Secret.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Secret.SignalSignatures[K]>): void;
     }
 
 
@@ -6251,15 +6020,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof StoragePermissions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoragePermissions.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StoragePermissions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoragePermissions.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StoragePermissions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoragePermissions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StoragePermissions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoragePermissions.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6349,15 +6115,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof StoragePool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoragePool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StoragePool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoragePool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StoragePool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoragePool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StoragePool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoragePool.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6491,15 +6254,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof StoragePoolSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoragePoolSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StoragePoolSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoragePoolSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StoragePoolSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoragePoolSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StoragePoolSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoragePoolSource.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6638,15 +6398,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof StoragePoolTarget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoragePoolTarget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StoragePoolTarget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoragePoolTarget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StoragePoolTarget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoragePoolTarget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StoragePoolTarget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoragePoolTarget.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6715,15 +6472,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof StorageVol.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StorageVol.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StorageVol.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StorageVol.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StorageVol.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StorageVol.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StorageVol.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StorageVol.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6794,15 +6548,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof StorageVolBackingStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StorageVolBackingStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StorageVolBackingStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StorageVolBackingStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StorageVolBackingStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StorageVolBackingStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StorageVolBackingStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StorageVolBackingStore.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6858,15 +6609,12 @@ export namespace LibvirtGConfig {
         // Signals
         /** @signal */
         connect<K extends keyof StorageVolTarget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StorageVolTarget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StorageVolTarget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StorageVolTarget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StorageVolTarget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StorageVolTarget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StorageVolTarget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StorageVolTarget.SignalSignatures[K]>): void;
 
         // Methods
         /**

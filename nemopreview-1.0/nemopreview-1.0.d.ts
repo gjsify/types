@@ -121,15 +121,12 @@ export namespace NemoPreview {
         // Signals
         /** @signal */
         connect<K extends keyof CoverArtFetcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoverArtFetcher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CoverArtFetcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoverArtFetcher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CoverArtFetcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoverArtFetcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CoverArtFetcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoverArtFetcher.SignalSignatures[K]>): void;
     }
 
 
@@ -235,15 +232,12 @@ export namespace NemoPreview {
         // Signals
         /** @signal */
         connect<K extends keyof FileLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLoader.SignalSignatures[K]>): void;
 
         // Methods
         get_content_type_string(): string;
@@ -360,15 +354,12 @@ export namespace NemoPreview {
         // Signals
         /** @signal */
         connect<K extends keyof FontWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FontWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FontWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FontWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontWidget.SignalSignatures[K]>): void;
 
         // Methods
         get_uri(): string;
@@ -426,15 +417,12 @@ export namespace NemoPreview {
         // Signals
         /** @signal */
         connect<K extends keyof PdfLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PdfLoader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PdfLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PdfLoader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PdfLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PdfLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PdfLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PdfLoader.SignalSignatures[K]>): void;
 
         // Methods
         cleanup_document(): void;
@@ -517,15 +505,12 @@ export namespace NemoPreview {
         // Signals
         /** @signal */
         connect<K extends keyof SoundPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SoundPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SoundPlayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SoundPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SoundPlayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SoundPlayer.SignalSignatures[K]>): void;
     }
 
 
@@ -578,15 +563,12 @@ export namespace NemoPreview {
         // Signals
         /** @signal */
         connect<K extends keyof TextLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextLoader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextLoader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextLoader.SignalSignatures[K]>): void;
     }
 
 

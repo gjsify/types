@@ -496,15 +496,12 @@ export namespace GioUnix {
         // Signals
         /** @signal */
         connect<K extends keyof DesktopAppInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DesktopAppInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesktopAppInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DesktopAppInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesktopAppInfo.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1373,15 +1370,12 @@ export namespace GioUnix {
         // Signals
         /** @signal */
         connect<K extends keyof FDMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FDMessage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FDMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FDMessage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FDMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FDMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FDMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FDMessage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1508,15 +1502,12 @@ export namespace GioUnix {
         // Signals
         /** @signal */
         connect<K extends keyof InputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputStream.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1741,15 +1732,12 @@ export namespace GioUnix {
         // Signals
         /** @signal */
         connect<K extends keyof MountMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MountMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MountMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MountMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MountMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MountMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MountMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MountMonitor.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1857,15 +1845,12 @@ export namespace GioUnix {
         // Signals
         /** @signal */
         connect<K extends keyof OutputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OutputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OutputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OutputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutputStream.SignalSignatures[K]>): void;
 
         // Methods
         /**

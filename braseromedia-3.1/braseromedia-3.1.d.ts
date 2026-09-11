@@ -326,15 +326,12 @@ export namespace BraseroMedia {
         // Signals
         /** @signal */
         connect<K extends keyof Drive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Drive.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Drive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Drive.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Drive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Drive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Drive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Drive.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -618,15 +615,12 @@ export namespace BraseroMedia {
         // Signals
         /** @signal */
         connect<K extends keyof DriveSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveSelection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DriveSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveSelection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DriveSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DriveSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveSelection.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1008,15 +1002,12 @@ export namespace BraseroMedia {
         // Signals
         /** @signal */
         connect<K extends keyof Medium.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Medium.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Medium.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Medium.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Medium.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Medium.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Medium.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Medium.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1247,15 +1238,12 @@ export namespace BraseroMedia {
         // Signals
         /** @signal */
         connect<K extends keyof MediumMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediumMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediumMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediumMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediumMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediumMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediumMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediumMonitor.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1427,15 +1415,12 @@ export namespace BraseroMedia {
         // Signals
         /** @signal */
         connect<K extends keyof MediumSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediumSelection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediumSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediumSelection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediumSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediumSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediumSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediumSelection.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1807,15 +1792,12 @@ export namespace BraseroMedia {
         // Signals
         /** @signal */
         connect<K extends keyof Volume.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Volume.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Volume.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Volume.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Volume.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Volume.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Volume.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Volume.SignalSignatures[K]>): void;
 
         // Methods
         /**

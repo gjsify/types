@@ -137,15 +137,12 @@ export namespace Sushi {
         // Signals
         /** @signal */
         connect<K extends keyof Discoverer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Discoverer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Discoverer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Discoverer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Discoverer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Discoverer.SignalSignatures[K]>): void;
 
         // Methods
         get_tag_list(): Gst.TagList;
@@ -261,15 +258,12 @@ export namespace Sushi {
         // Signals
         /** @signal */
         connect<K extends keyof FontWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FontWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FontWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FontWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontWidget.SignalSignatures[K]>): void;
 
         // Methods
         get_uri(): string;

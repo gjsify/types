@@ -188,15 +188,12 @@ export namespace Gc {
         // Signals
         /** @signal */
         connect<K extends keyof SearchContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SearchContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SearchContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SearchContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchContext.SignalSignatures[K]>): void;
 
         // Methods
         is_finished(): boolean;

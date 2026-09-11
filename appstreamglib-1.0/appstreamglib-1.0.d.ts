@@ -3017,15 +3017,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Agreement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Agreement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Agreement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Agreement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Agreement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Agreement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Agreement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Agreement.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3125,15 +3122,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof AgreementSection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AgreementSection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AgreementSection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AgreementSection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AgreementSection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AgreementSection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AgreementSection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AgreementSection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3217,15 +3211,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<App.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4453,15 +4444,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Bundle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bundle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Bundle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bundle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Bundle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bundle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Bundle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bundle.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4570,15 +4558,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Checksum.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Checksum.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Checksum.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Checksum.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Checksum.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Checksum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Checksum.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Checksum.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4687,15 +4672,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof ContentRating.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentRating.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContentRating.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentRating.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContentRating.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentRating.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContentRating.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentRating.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4889,15 +4871,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Format.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Format.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Format.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Format.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Format.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Format.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Format.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Format.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4991,15 +4970,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Icon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Icon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Icon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Icon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Icon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Icon.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5203,15 +5179,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5423,15 +5396,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Launchable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Launchable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Launchable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Launchable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Launchable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Launchable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Launchable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Launchable.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5512,15 +5482,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Problem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Problem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Problem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Problem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Problem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Problem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Problem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Problem.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5608,15 +5575,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Provide.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Provide.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Provide.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Provide.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Provide.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Provide.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Provide.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Provide.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5697,15 +5661,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Release.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Release.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Release.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Release.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Release.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Release.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Release.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Release.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5981,15 +5942,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Require.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Require.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Require.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Require.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Require.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Require.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Require.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Require.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -6237,15 +6195,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Review.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Review.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Review.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Review.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Review.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Review.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Review.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Review.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6476,15 +6431,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Screenshot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Screenshot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Screenshot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Screenshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Screenshot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Screenshot.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -6677,15 +6629,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Store.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Store.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Store.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Store.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Store.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Store.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Store.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Store.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -7273,15 +7222,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Suggest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Suggest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Suggest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Suggest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Suggest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Suggest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Suggest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Suggest.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -7362,15 +7308,12 @@ export namespace AppStreamGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Translation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Translation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Translation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Translation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Translation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Translation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Translation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Translation.SignalSignatures[K]>): void;
 
         // Static methods
         /**

@@ -1001,15 +1001,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof ContextMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextMenu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContextMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextMenu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContextMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContextMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextMenu.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1196,15 +1193,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof ContextMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextMenuItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContextMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextMenuItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContextMenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextMenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContextMenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextMenuItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1383,15 +1377,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMAttr.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMAttr.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMAttr.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMAttr.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMAttr.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMAttr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMAttr.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMAttr.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1545,15 +1536,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMBlob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMBlob.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMBlob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMBlob.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMBlob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMBlob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMBlob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMBlob.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1613,15 +1601,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMCDATASection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCDATASection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMCDATASection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCDATASection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMCDATASection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCDATASection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMCDATASection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCDATASection.SignalSignatures[K]>): void;
 
         /**
          * Gets a named field from the objects table of associations (see `g_object_set_data()`).
@@ -1738,15 +1723,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMCSSRule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCSSRule.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMCSSRule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCSSRule.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMCSSRule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCSSRule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMCSSRule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCSSRule.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1825,15 +1807,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMCSSRuleList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCSSRuleList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMCSSRuleList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCSSRuleList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMCSSRuleList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCSSRuleList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMCSSRuleList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCSSRuleList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1916,15 +1895,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMCSSStyleDeclaration.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCSSStyleDeclaration.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMCSSStyleDeclaration.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCSSStyleDeclaration.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMCSSStyleDeclaration.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCSSStyleDeclaration.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMCSSStyleDeclaration.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCSSStyleDeclaration.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2087,15 +2063,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMCSSStyleSheet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCSSStyleSheet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMCSSStyleSheet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCSSStyleSheet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMCSSStyleSheet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCSSStyleSheet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMCSSStyleSheet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCSSStyleSheet.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2210,15 +2183,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMCSSValue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCSSValue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMCSSValue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCSSValue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMCSSValue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCSSValue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMCSSValue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCSSValue.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2303,15 +2273,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMCharacterData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCharacterData.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMCharacterData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMCharacterData.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMCharacterData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCharacterData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMCharacterData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMCharacterData.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2519,15 +2486,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMClientRect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMClientRect.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMClientRect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMClientRect.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMClientRect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMClientRect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMClientRect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMClientRect.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2623,15 +2587,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMClientRectList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMClientRectList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMClientRectList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMClientRectList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMClientRectList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMClientRectList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMClientRectList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMClientRectList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2701,15 +2662,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMComment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMComment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMComment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMComment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMComment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMComment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMComment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMComment.SignalSignatures[K]>): void;
 
         /**
          * Gets a named field from the objects table of associations (see `g_object_set_data()`).
@@ -2781,15 +2739,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMDOMImplementation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDOMImplementation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMDOMImplementation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDOMImplementation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMDOMImplementation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDOMImplementation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMDOMImplementation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDOMImplementation.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3022,15 +2977,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMDOMSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDOMSelection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMDOMSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDOMSelection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMDOMSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDOMSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMDOMSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDOMSelection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3268,15 +3220,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMDOMTokenList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDOMTokenList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMDOMTokenList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDOMTokenList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMDOMTokenList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDOMTokenList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMDOMTokenList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDOMTokenList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3689,15 +3638,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMDOMWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDOMWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMDOMWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDOMWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMDOMWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDOMWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMDOMWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDOMWindow.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4689,15 +4635,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMDocument.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDocument.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMDocument.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDocument.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMDocument.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDocument.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMDocument.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDocument.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5593,15 +5536,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMDocumentFragment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDocumentFragment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMDocumentFragment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDocumentFragment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMDocumentFragment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDocumentFragment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMDocumentFragment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDocumentFragment.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5822,15 +5762,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMDocumentType.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDocumentType.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMDocumentType.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMDocumentType.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMDocumentType.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDocumentType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMDocumentType.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMDocumentType.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6358,15 +6295,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7034,15 +6968,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMEntityReference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMEntityReference.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMEntityReference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMEntityReference.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMEntityReference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMEntityReference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMEntityReference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMEntityReference.SignalSignatures[K]>): void;
 
         /**
          * Version of `webkit_dom_event_target_add_event_listener()` using a closure
@@ -7251,15 +7182,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMEvent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7397,15 +7325,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMFile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7459,15 +7384,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMFileList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMFileList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMFileList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMFileList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMFileList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMFileList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMFileList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMFileList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7668,15 +7590,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLAnchorElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLAnchorElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLAnchorElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLAnchorElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLAnchorElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLAnchorElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLAnchorElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLAnchorElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8056,15 +7975,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLAppletElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLAppletElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLAppletElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLAppletElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLAppletElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLAppletElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLAppletElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLAppletElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8369,15 +8285,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLAreaElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLAreaElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLAreaElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLAreaElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLAreaElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLAreaElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLAreaElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLAreaElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8642,15 +8555,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLBRElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLBRElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLBRElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLBRElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLBRElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLBRElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLBRElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLBRElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8770,15 +8680,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLBaseElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLBaseElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLBaseElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLBaseElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLBaseElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLBaseElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLBaseElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLBaseElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8898,15 +8805,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLBaseFontElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLBaseFontElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLBaseFontElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLBaseFontElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLBaseFontElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLBaseFontElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLBaseFontElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLBaseFontElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9088,15 +8992,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLBodyElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLBodyElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLBodyElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLBodyElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLBodyElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLBodyElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLBodyElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLBodyElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9319,15 +9220,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLButtonElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLButtonElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLButtonElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLButtonElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLButtonElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLButtonElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLButtonElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLButtonElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9513,15 +9411,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLCanvasElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLCanvasElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLCanvasElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLCanvasElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLCanvasElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLCanvasElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLCanvasElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLCanvasElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9593,15 +9488,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLCollection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLCollection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLCollection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLCollection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLCollection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9727,15 +9619,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLDListElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLDListElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLDListElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLDListElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLDListElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLDListElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLDListElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLDListElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9853,15 +9742,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLDirectoryElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLDirectoryElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLDirectoryElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLDirectoryElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLDirectoryElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLDirectoryElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLDirectoryElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLDirectoryElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9976,15 +9862,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLDivElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLDivElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLDivElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLDivElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLDivElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLDivElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLDivElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLDivElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10165,15 +10048,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLDocument.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLDocument.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLDocument.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLDocument.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLDocument.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLDocument.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLDocument.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLDocument.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10515,15 +10395,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10869,15 +10746,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLEmbedElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLEmbedElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLEmbedElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLEmbedElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLEmbedElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLEmbedElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLEmbedElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLEmbedElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11054,15 +10928,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLFieldSetElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLFieldSetElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLFieldSetElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLFieldSetElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLFieldSetElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLFieldSetElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLFieldSetElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLFieldSetElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11181,15 +11052,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLFontElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLFontElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLFontElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLFontElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLFontElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLFontElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLFontElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLFontElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11377,15 +11245,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLFormElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLFormElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLFormElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLFormElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLFormElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLFormElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLFormElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLFormElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11697,15 +11562,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLFrameElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLFrameElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLFrameElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLFrameElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLFrameElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLFrameElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLFrameElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLFrameElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11931,15 +11793,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLFrameSetElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLFrameSetElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLFrameSetElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLFrameSetElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLFrameSetElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLFrameSetElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLFrameSetElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLFrameSetElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12091,15 +11950,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLHRElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLHRElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLHRElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLHRElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLHRElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLHRElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLHRElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLHRElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12250,15 +12106,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLHeadElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLHeadElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLHeadElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLHeadElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLHeadElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLHeadElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLHeadElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLHeadElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12373,15 +12226,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLHeadingElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLHeadingElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLHeadingElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLHeadingElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLHeadingElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLHeadingElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLHeadingElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLHeadingElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12496,15 +12346,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLHtmlElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLHtmlElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLHtmlElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLHtmlElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLHtmlElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLHtmlElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLHtmlElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLHtmlElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12706,15 +12553,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLIFrameElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLIFrameElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLIFrameElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLIFrameElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLIFrameElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLIFrameElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLIFrameElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLIFrameElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13093,15 +12937,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLImageElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLImageElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLImageElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLImageElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLImageElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLImageElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLImageElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLImageElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13581,15 +13422,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLInputElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLInputElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLInputElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLInputElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLInputElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLInputElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLInputElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLInputElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14020,15 +13858,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLLIElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLLIElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLLIElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLLIElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLLIElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLLIElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLLIElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLLIElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14166,15 +14001,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLLabelElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLLabelElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLLabelElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLLabelElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLLabelElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLLabelElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLLabelElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLLabelElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14302,15 +14134,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLLegendElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLLegendElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLLegendElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLLegendElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLLegendElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLLegendElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLLegendElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLLegendElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14488,15 +14317,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLLinkElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLLinkElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLLinkElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLLinkElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLLinkElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLLinkElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLLinkElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLLinkElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14734,15 +14560,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLMapElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLMapElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLMapElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLMapElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLMapElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLMapElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLMapElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLMapElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14856,15 +14679,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLMarqueeElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLMarqueeElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLMarqueeElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLMarqueeElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLMarqueeElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLMarqueeElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLMarqueeElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLMarqueeElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14980,15 +14800,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLMenuElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLMenuElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLMenuElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLMenuElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLMenuElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLMenuElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLMenuElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLMenuElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15122,15 +14939,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLMetaElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLMetaElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLMetaElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLMetaElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLMetaElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLMetaElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLMetaElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLMetaElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15290,15 +15104,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLModElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLModElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLModElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLModElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLModElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLModElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLModElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLModElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15441,15 +15252,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLOListElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLOListElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLOListElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLOListElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLOListElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLOListElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLOListElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLOListElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15704,15 +15512,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLObjectElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLObjectElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLObjectElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLObjectElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLObjectElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLObjectElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLObjectElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLObjectElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16033,15 +15838,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLOptGroupElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLOptGroupElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLOptGroupElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLOptGroupElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLOptGroupElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLOptGroupElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLOptGroupElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLOptGroupElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16226,15 +16028,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLOptionElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLOptionElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLOptionElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLOptionElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLOptionElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLOptionElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLOptionElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLOptionElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16375,15 +16174,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLOptionsCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLOptionsCollection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLOptionsCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLOptionsCollection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLOptionsCollection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLOptionsCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLOptionsCollection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLOptionsCollection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16511,15 +16307,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLParagraphElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLParagraphElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLParagraphElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLParagraphElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLParagraphElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLParagraphElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLParagraphElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLParagraphElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16653,15 +16446,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLParamElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLParamElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLParamElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLParamElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLParamElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLParamElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLParamElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLParamElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16823,15 +16613,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLPreElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLPreElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLPreElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLPreElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLPreElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLPreElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLPreElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLPreElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16958,15 +16745,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLQuoteElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLQuoteElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLQuoteElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLQuoteElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLQuoteElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLQuoteElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLQuoteElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLQuoteElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17118,15 +16902,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLScriptElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLScriptElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLScriptElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLScriptElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLScriptElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLScriptElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLScriptElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLScriptElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17410,15 +17191,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLSelectElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLSelectElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLSelectElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLSelectElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLSelectElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLSelectElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLSelectElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLSelectElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17696,15 +17474,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLStyleElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLStyleElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLStyleElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLStyleElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLStyleElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLStyleElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLStyleElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLStyleElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17849,15 +17624,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLTableCaptionElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableCaptionElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLTableCaptionElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableCaptionElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLTableCaptionElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableCaptionElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLTableCaptionElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableCaptionElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -18094,15 +17866,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLTableCellElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableCellElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLTableCellElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableCellElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLTableCellElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableCellElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLTableCellElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableCellElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -18415,15 +18184,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLTableColElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableColElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLTableColElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableColElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLTableColElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableColElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLTableColElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableColElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -18698,15 +18464,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLTableElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLTableElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLTableElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLTableElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19073,15 +18836,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLTableRowElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableRowElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLTableRowElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableRowElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLTableRowElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableRowElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLTableRowElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableRowElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19307,15 +19067,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLTableSectionElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableSectionElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLTableSectionElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTableSectionElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLTableSectionElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableSectionElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLTableSectionElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTableSectionElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19607,15 +19364,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLTextAreaElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTextAreaElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLTextAreaElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTextAreaElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLTextAreaElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTextAreaElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLTextAreaElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTextAreaElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19875,15 +19629,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLTitleElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTitleElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLTitleElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLTitleElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLTitleElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTitleElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLTitleElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLTitleElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -20006,15 +19757,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMHTMLUListElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLUListElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMHTMLUListElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMHTMLUListElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMHTMLUListElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLUListElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMHTMLUListElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMHTMLUListElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -20199,15 +19947,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMKeyboardEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMKeyboardEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMKeyboardEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMKeyboardEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMKeyboardEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMKeyboardEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMKeyboardEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMKeyboardEvent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -20329,15 +20074,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMMediaList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMMediaList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMMediaList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMMediaList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMMediaList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMMediaList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMMediaList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMMediaList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -20648,15 +20390,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMMouseEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMMouseEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMMouseEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMMouseEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMMouseEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMMouseEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMMouseEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMMouseEvent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -20820,15 +20559,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMNamedNodeMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMNamedNodeMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMNamedNodeMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMNamedNodeMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMNamedNodeMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMNamedNodeMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMNamedNodeMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMNamedNodeMap.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21092,15 +20828,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMNode.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -21496,15 +21229,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMNodeIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMNodeIterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMNodeIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMNodeIterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMNodeIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMNodeIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMNodeIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMNodeIterator.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21608,15 +21338,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMNodeList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMNodeList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMNodeList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMNodeList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMNodeList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMNodeList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMNodeList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMNodeList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21684,15 +21411,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMObject.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMObject.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMObject.SignalSignatures[K]>): void;
     }
 
 
@@ -21760,15 +21484,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMProcessingInstruction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMProcessingInstruction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMProcessingInstruction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMProcessingInstruction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMProcessingInstruction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMProcessingInstruction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMProcessingInstruction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMProcessingInstruction.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21939,15 +21660,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMRange.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMRange.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMRange.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMRange.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMRange.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMRange.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22275,15 +21993,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMStyleSheet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMStyleSheet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMStyleSheet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMStyleSheet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMStyleSheet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMStyleSheet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMStyleSheet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMStyleSheet.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22379,15 +22094,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMStyleSheetList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMStyleSheetList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMStyleSheetList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMStyleSheetList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMStyleSheetList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMStyleSheetList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMStyleSheetList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMStyleSheetList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22468,15 +22180,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMText.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22615,15 +22324,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMTreeWalker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMTreeWalker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMTreeWalker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMTreeWalker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMTreeWalker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMTreeWalker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMTreeWalker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMTreeWalker.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22858,15 +22564,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMUIEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMUIEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMUIEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMUIEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMUIEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMUIEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMUIEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMUIEvent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23043,15 +22746,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMWheelEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMWheelEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMWheelEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMWheelEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMWheelEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMWheelEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMWheelEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMWheelEvent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23123,15 +22823,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMXPathExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMXPathExpression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMXPathExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMXPathExpression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMXPathExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMXPathExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMXPathExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMXPathExpression.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23282,15 +22979,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof DOMXPathResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMXPathResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DOMXPathResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DOMXPathResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DOMXPathResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMXPathResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DOMXPathResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DOMXPathResult.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23393,15 +23087,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Frame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Frame.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23625,15 +23316,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof HitTestResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HitTestResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HitTestResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HitTestResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HitTestResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HitTestResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HitTestResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HitTestResult.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23764,15 +23452,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof ScriptWorld.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptWorld.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScriptWorld.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptWorld.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScriptWorld.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptWorld.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScriptWorld.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptWorld.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -23844,15 +23529,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof URIRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URIRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof URIRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URIRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof URIRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<URIRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof URIRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<URIRequest.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -24015,15 +23697,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof URIResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URIResponse.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof URIResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URIResponse.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof URIResponse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<URIResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof URIResponse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<URIResponse.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -24161,15 +23840,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof UserMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserMessage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserMessage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserMessage.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -24259,15 +23935,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof WebEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebEditor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebEditor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebEditor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebEditor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -24399,15 +24072,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof WebExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebExtension.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebExtension.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebExtension.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -24544,15 +24214,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof WebFormManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebFormManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebFormManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebFormManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebFormManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebFormManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebFormManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebFormManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -24635,15 +24302,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof WebHitTestResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebHitTestResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebHitTestResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebHitTestResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebHitTestResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebHitTestResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebHitTestResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebHitTestResult.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -24840,15 +24504,12 @@ export namespace WebKit2WebExtension {
         // Signals
         /** @signal */
         connect<K extends keyof WebPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebPage.SignalSignatures[K]>): void;
 
         // Methods
         /**

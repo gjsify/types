@@ -284,15 +284,12 @@ export namespace GstVa {
         // Signals
         /** @signal */
         connect<K extends keyof VaAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaAllocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VaAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaAllocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VaAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VaAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaAllocator.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -424,15 +421,12 @@ export namespace GstVa {
         // Signals
         /** @signal */
         connect<K extends keyof VaDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplay.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VaDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplay.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VaDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VaDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDisplay.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -531,15 +525,12 @@ export namespace GstVa {
         // Signals
         /** @signal */
         connect<K extends keyof VaDisplayDrm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplayDrm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VaDisplayDrm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplayDrm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VaDisplayDrm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDisplayDrm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VaDisplayDrm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDisplayDrm.SignalSignatures[K]>): void;
     }
 
 
@@ -584,15 +575,12 @@ export namespace GstVa {
         // Signals
         /** @signal */
         connect<K extends keyof VaDisplayWrapped.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplayWrapped.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VaDisplayWrapped.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplayWrapped.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VaDisplayWrapped.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDisplayWrapped.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VaDisplayWrapped.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDisplayWrapped.SignalSignatures[K]>): void;
     }
 
 
@@ -636,15 +624,12 @@ export namespace GstVa {
         // Signals
         /** @signal */
         connect<K extends keyof VaDmabufAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDmabufAllocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VaDmabufAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDmabufAllocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VaDmabufAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDmabufAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VaDmabufAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDmabufAllocator.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -735,15 +720,12 @@ export namespace GstVa {
         // Signals
         /** @signal */
         connect<K extends keyof VaPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaPool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VaPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaPool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VaPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VaPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaPool.SignalSignatures[K]>): void;
 
         // Static methods
         /**

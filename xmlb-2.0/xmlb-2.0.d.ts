@@ -495,15 +495,12 @@ export namespace Xmlb {
         // Signals
         /** @signal */
         connect<K extends keyof Builder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Builder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Builder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Builder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Builder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Builder.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -623,15 +620,12 @@ export namespace Xmlb {
         // Signals
         /** @signal */
         connect<K extends keyof BuilderFixup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderFixup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuilderFixup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderFixup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuilderFixup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderFixup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuilderFixup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderFixup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -687,15 +681,12 @@ export namespace Xmlb {
         // Signals
         /** @signal */
         connect<K extends keyof BuilderNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuilderNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuilderNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuilderNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -960,15 +951,12 @@ export namespace Xmlb {
         // Signals
         /** @signal */
         connect<K extends keyof BuilderSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuilderSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuilderSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuilderSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderSource.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1058,15 +1046,12 @@ export namespace Xmlb {
         // Signals
         /** @signal */
         connect<K extends keyof BuilderSourceCtx.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderSourceCtx.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuilderSourceCtx.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderSourceCtx.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuilderSourceCtx.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderSourceCtx.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuilderSourceCtx.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderSourceCtx.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1131,15 +1116,12 @@ export namespace Xmlb {
         // Signals
         /** @signal */
         connect<K extends keyof Machine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Machine.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Machine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Machine.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Machine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Machine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Machine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Machine.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1380,15 +1362,12 @@ export namespace Xmlb {
         // Signals
         /** @signal */
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Node.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1743,15 +1722,12 @@ export namespace Xmlb {
         // Signals
         /** @signal */
         connect<K extends keyof Query.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Query.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Query.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1918,15 +1894,12 @@ export namespace Xmlb {
         // Signals
         /** @signal */
         connect<K extends keyof Silo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Silo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Silo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Silo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Silo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Silo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Silo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Silo.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -353,15 +353,12 @@ export namespace GstNet {
         // Signals
         /** @signal */
         connect<K extends keyof NetClientClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetClientClock.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetClientClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetClientClock.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetClientClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetClientClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetClientClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetClientClock.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -467,15 +464,12 @@ export namespace GstNet {
         // Signals
         /** @signal */
         connect<K extends keyof NetTimeProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetTimeProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetTimeProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetTimeProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetTimeProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetTimeProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetTimeProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetTimeProvider.SignalSignatures[K]>): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -649,15 +643,12 @@ export namespace GstNet {
         // Signals
         /** @signal */
         connect<K extends keyof NtpClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NtpClock.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NtpClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NtpClock.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NtpClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NtpClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NtpClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NtpClock.SignalSignatures[K]>): void;
     }
 
 
@@ -779,15 +770,12 @@ export namespace GstNet {
         // Signals
         /** @signal */
         connect<K extends keyof PtpClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PtpClock.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PtpClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PtpClock.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PtpClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PtpClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PtpClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PtpClock.SignalSignatures[K]>): void;
     }
 
 

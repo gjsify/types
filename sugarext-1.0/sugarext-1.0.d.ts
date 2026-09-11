@@ -227,15 +227,12 @@ export namespace SugarExt {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -430,15 +427,12 @@ export namespace SugarExt {
         // Signals
         /** @signal */
         connect<K extends keyof ClientXSMP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientXSMP.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClientXSMP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientXSMP.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClientXSMP.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientXSMP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClientXSMP.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientXSMP.SignalSignatures[K]>): void;
     }
 
 
@@ -475,15 +469,12 @@ export namespace SugarExt {
         // Signals
         /** @signal */
         connect<K extends keyof CursorTracker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CursorTracker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CursorTracker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CursorTracker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CursorTracker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CursorTracker.SignalSignatures[K]>): void;
     }
 
 
@@ -520,15 +511,12 @@ export namespace SugarExt {
         // Signals
         /** @signal */
         connect<K extends keyof GestureGrabber.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureGrabber.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GestureGrabber.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureGrabber.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GestureGrabber.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureGrabber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GestureGrabber.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureGrabber.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -584,15 +572,12 @@ export namespace SugarExt {
         // Signals
         /** @signal */
         connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Grid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Grid.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -669,15 +654,12 @@ export namespace SugarExt {
         // Signals
         /** @signal */
         connect<K extends keyof KeyGrabber.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyGrabber.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KeyGrabber.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyGrabber.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KeyGrabber.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyGrabber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KeyGrabber.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyGrabber.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -752,15 +734,12 @@ export namespace SugarExt {
         // Signals
         /** @signal */
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -824,15 +803,12 @@ export namespace SugarExt {
         // Signals
         /** @signal */
         connect<K extends keyof Volume.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Volume.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Volume.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Volume.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Volume.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Volume.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Volume.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Volume.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -919,15 +895,12 @@ export namespace SugarExt {
         // Signals
         /** @signal */
         connect<K extends keyof VolumeAlsa.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VolumeAlsa.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VolumeAlsa.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VolumeAlsa.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VolumeAlsa.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VolumeAlsa.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VolumeAlsa.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VolumeAlsa.SignalSignatures[K]>): void;
     }
 
 

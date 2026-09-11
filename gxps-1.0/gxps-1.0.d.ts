@@ -157,15 +157,12 @@ export namespace Gxps {
         // Signals
         /** @signal */
         connect<K extends keyof CoreProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CoreProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CoreProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CoreProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreProperties.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -417,15 +414,12 @@ export namespace Gxps {
         // Signals
         /** @signal */
         connect<K extends keyof Document.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Document.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Document.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Document.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Document.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -608,15 +602,12 @@ export namespace Gxps {
         // Signals
         /** @signal */
         connect<K extends keyof DocumentStructure.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentStructure.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DocumentStructure.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentStructure.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DocumentStructure.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentStructure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DocumentStructure.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentStructure.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -705,15 +696,12 @@ export namespace Gxps {
         // Signals
         /** @signal */
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<File.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -892,15 +880,12 @@ export namespace Gxps {
         // Signals
         /** @signal */
         connect<K extends keyof Page.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Page.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;

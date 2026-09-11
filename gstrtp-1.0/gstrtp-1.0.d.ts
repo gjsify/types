@@ -1317,15 +1317,12 @@ export namespace GstRtp {
         // Signals
         /** @signal */
         connect<K extends keyof RTPBaseAudioPayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBaseAudioPayload.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTPBaseAudioPayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBaseAudioPayload.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTPBaseAudioPayload.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPBaseAudioPayload.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTPBaseAudioPayload.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPBaseAudioPayload.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1610,15 +1607,12 @@ export namespace GstRtp {
         // Signals
         /** @signal */
         connect<K extends keyof RTPBaseDepayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBaseDepayload.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTPBaseDepayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBaseDepayload.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTPBaseDepayload.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPBaseDepayload.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTPBaseDepayload.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPBaseDepayload.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2142,15 +2136,12 @@ export namespace GstRtp {
         // Signals
         /** @signal */
         connect<K extends keyof RTPBasePayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBasePayload.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTPBasePayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBasePayload.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTPBasePayload.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPBasePayload.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTPBasePayload.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPBasePayload.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2330,15 +2321,12 @@ export namespace GstRtp {
         // Signals
         /** @signal */
         connect<K extends keyof RTPHeaderExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPHeaderExtension.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTPHeaderExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPHeaderExtension.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTPHeaderExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPHeaderExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTPHeaderExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPHeaderExtension.SignalSignatures[K]>): void;
 
         // Static methods
         /**

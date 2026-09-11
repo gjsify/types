@@ -778,15 +778,12 @@ export namespace GstValidate {
         // Signals
         /** @signal */
         connect<K extends keyof BinMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BinMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BinMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BinMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BinMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BinMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BinMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BinMonitor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -869,15 +866,12 @@ export namespace GstValidate {
         // Signals
         /** @signal */
         connect<K extends keyof ElementMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ElementMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ElementMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ElementMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ElementMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ElementMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ElementMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ElementMonitor.SignalSignatures[K]>): void;
 
         /**
          * @construct-only
@@ -1067,15 +1061,12 @@ export namespace GstValidate {
         // Signals
         /** @signal */
         connect<K extends keyof MediaDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaDescriptor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaDescriptor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaDescriptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaDescriptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaDescriptor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1257,15 +1248,12 @@ export namespace GstValidate {
         // Signals
         /** @signal */
         connect<K extends keyof MediaDescriptorParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaDescriptorParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaDescriptorParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaDescriptorParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaDescriptorParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaDescriptorParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaDescriptorParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaDescriptorParser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1462,15 +1450,12 @@ export namespace GstValidate {
         // Signals
         /** @signal */
         connect<K extends keyof MediaDescriptorWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaDescriptorWriter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaDescriptorWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaDescriptorWriter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaDescriptorWriter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaDescriptorWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaDescriptorWriter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaDescriptorWriter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1744,15 +1729,12 @@ export namespace GstValidate {
         // Signals
         /** @signal */
         connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Monitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Monitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Monitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1984,15 +1966,12 @@ export namespace GstValidate {
         // Signals
         /** @signal */
         connect<K extends keyof Override.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Override.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Override.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Override.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Override.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Override.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Override.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Override.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2224,15 +2203,12 @@ export namespace GstValidate {
         // Signals
         /** @signal */
         connect<K extends keyof PadMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PadMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PadMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PadMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PadMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PadMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PadMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PadMonitor.SignalSignatures[K]>): void;
 
         /**
          * @construct-only
@@ -2418,15 +2394,12 @@ export namespace GstValidate {
         // Signals
         /** @signal */
         connect<K extends keyof PipelineMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PipelineMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PipelineMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PipelineMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PipelineMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PipelineMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PipelineMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PipelineMonitor.SignalSignatures[K]>): void;
 
         /**
          * Increases the reference count of `object`.
@@ -2520,15 +2493,12 @@ export namespace GstValidate {
         // Signals
         /** @signal */
         connect<K extends keyof Runner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Runner.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Runner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Runner.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Runner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Runner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Runner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Runner.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2667,15 +2637,12 @@ export namespace GstValidate {
         // Signals
         /** @signal */
         connect<K extends keyof Scenario.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scenario.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Scenario.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scenario.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Scenario.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scenario.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Scenario.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scenario.SignalSignatures[K]>): void;
 
         // Static methods
         static deinit(): void;

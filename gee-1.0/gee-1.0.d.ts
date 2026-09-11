@@ -110,15 +110,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof AbstractCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractCollection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AbstractCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractCollection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AbstractCollection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AbstractCollection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractCollection.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -284,15 +281,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof AbstractList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AbstractList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AbstractList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AbstractList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractList.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -640,15 +634,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof AbstractMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AbstractMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AbstractMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AbstractMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractMap.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -886,15 +877,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof AbstractMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMultiMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AbstractMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMultiMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AbstractMultiMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AbstractMultiMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractMultiMap.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1056,15 +1044,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof AbstractMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMultiSet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AbstractMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMultiSet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AbstractMultiSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AbstractMultiSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractMultiSet.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -1290,15 +1275,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof AbstractQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractQueue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AbstractQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractQueue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AbstractQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AbstractQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractQueue.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1532,15 +1514,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof AbstractSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractSet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AbstractSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractSet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AbstractSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AbstractSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractSet.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -1720,15 +1699,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof ArrayList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ArrayList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ArrayList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArrayList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ArrayList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArrayList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1807,15 +1783,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof HashMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HashMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HashMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HashMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashMap.SignalSignatures[K]>): void;
     }
 
 
@@ -1899,15 +1872,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof HashMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMultiMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HashMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMultiMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HashMultiMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HashMultiMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashMultiMap.SignalSignatures[K]>): void;
     }
 
 
@@ -1976,15 +1946,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof HashMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMultiSet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HashMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMultiSet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HashMultiSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HashMultiSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashMultiSet.SignalSignatures[K]>): void;
     }
 
 
@@ -2045,15 +2012,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof HashSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashSet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HashSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashSet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HashSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HashSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashSet.SignalSignatures[K]>): void;
     }
 
 
@@ -2120,15 +2084,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof LinkedList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkedList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LinkedList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkedList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LinkedList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkedList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LinkedList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkedList.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -2327,15 +2288,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof PriorityQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PriorityQueue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PriorityQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PriorityQueue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PriorityQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PriorityQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PriorityQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PriorityQueue.SignalSignatures[K]>): void;
     }
 
 
@@ -2399,15 +2357,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof TreeMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMap.SignalSignatures[K]>): void;
     }
 
 
@@ -2469,15 +2424,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof TreeMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMultiMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMultiMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeMultiMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeMultiMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMultiMap.SignalSignatures[K]>): void;
     }
 
 
@@ -2533,15 +2485,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof TreeMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMultiSet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMultiSet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeMultiSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeMultiSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMultiSet.SignalSignatures[K]>): void;
     }
 
 
@@ -2593,15 +2542,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof TreeSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeSet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeSet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeSet.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -2774,15 +2720,12 @@ export namespace Gee {
         // Signals
         /** @signal */
         connect<K extends keyof MapEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapEntry.SignalSignatures[K]>): void;
     }
 
 

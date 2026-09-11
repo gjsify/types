@@ -114,15 +114,12 @@ export namespace GtkSpell {
         // Signals
         /** @signal */
         connect<K extends keyof Checker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Checker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Checker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Checker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Checker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Checker.SignalSignatures[K]>): void;
 
         // Static methods
         /**

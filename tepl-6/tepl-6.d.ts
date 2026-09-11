@@ -866,15 +866,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof AbstractFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AbstractFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AbstractFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AbstractFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractFactory.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1041,15 +1038,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1242,15 +1236,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1576,15 +1567,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1756,15 +1744,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof CodeCommentView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CodeCommentView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CodeCommentView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CodeCommentView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CodeCommentView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CodeCommentView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CodeCommentView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CodeCommentView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1950,15 +1935,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<File.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2094,15 +2076,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof FileLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLoader.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2266,15 +2245,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof FileSaver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSaver.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileSaver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSaver.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileSaver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSaver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileSaver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSaver.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2423,15 +2399,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof FoldRegion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FoldRegion.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FoldRegion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FoldRegion.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FoldRegion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FoldRegion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FoldRegion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FoldRegion.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2552,15 +2525,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof GotoLineBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GotoLineBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GotoLineBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GotoLineBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GotoLineBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GotoLineBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GotoLineBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GotoLineBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2649,15 +2619,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof GutterRendererFolds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GutterRendererFolds.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GutterRendererFolds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GutterRendererFolds.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GutterRendererFolds.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GutterRendererFolds.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GutterRendererFolds.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GutterRendererFolds.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2843,15 +2810,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof InfoBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InfoBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InfoBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfoBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InfoBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfoBar.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3070,15 +3034,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof LanguageChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LanguageChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LanguageChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageChooserDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LanguageChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageChooserDialog.SignalSignatures[K]>): void;
 
         /**
          * Selects `language` in the list.
@@ -3187,15 +3148,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof LanguageChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LanguageChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LanguageChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageChooserWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LanguageChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageChooserWidget.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -3321,15 +3279,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof LineColumnIndicator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LineColumnIndicator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LineColumnIndicator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LineColumnIndicator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LineColumnIndicator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LineColumnIndicator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LineColumnIndicator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LineColumnIndicator.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3393,15 +3348,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Metadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Metadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Metadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3466,15 +3418,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof MetadataManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetadataManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MetadataManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetadataManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MetadataManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MetadataManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MetadataManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MetadataManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3643,15 +3592,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof Notebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Notebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Notebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Notebook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Notebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Notebook.SignalSignatures[K]>): void;
 
         /**
          * The {@link Tepl.Buffer} of the active tab.
@@ -3890,15 +3836,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof OverwriteIndicator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OverwriteIndicator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OverwriteIndicator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OverwriteIndicator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OverwriteIndicator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OverwriteIndicator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OverwriteIndicator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OverwriteIndicator.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4008,15 +3951,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof Panel1.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Panel1.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Panel1.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Panel1.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Panel1.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Panel1.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Panel1.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Panel1.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4207,15 +4147,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof PanelItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PanelItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PanelItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PanelItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PanelItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PanelItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PanelItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PanelItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4302,15 +4239,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof PanelNotebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PanelNotebook.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PanelNotebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PanelNotebook.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PanelNotebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PanelNotebook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PanelNotebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PanelNotebook.SignalSignatures[K]>): void;
     }
 
 
@@ -4423,15 +4357,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof PanelSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PanelSimple.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PanelSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PanelSimple.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PanelSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PanelSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PanelSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PanelSimple.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4570,15 +4501,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof PanelStack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PanelStack.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PanelStack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PanelStack.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PanelStack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PanelStack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PanelStack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PanelStack.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4682,15 +4610,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof PanelSwitcherMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PanelSwitcherMenu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PanelSwitcherMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PanelSwitcherMenu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PanelSwitcherMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PanelSwitcherMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PanelSwitcherMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PanelSwitcherMenu.SignalSignatures[K]>): void;
     }
 
 
@@ -4817,15 +4742,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof PrefsDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrefsDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PrefsDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrefsDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PrefsDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrefsDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PrefsDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrefsDialog.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4964,15 +4886,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof ProgressInfoBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressInfoBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProgressInfoBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressInfoBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProgressInfoBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressInfoBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProgressInfoBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressInfoBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5088,15 +5007,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5283,15 +5199,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof SpaceDrawerPrefs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpaceDrawerPrefs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SpaceDrawerPrefs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpaceDrawerPrefs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SpaceDrawerPrefs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpaceDrawerPrefs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SpaceDrawerPrefs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpaceDrawerPrefs.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5422,15 +5335,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof StatusMenuButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StatusMenuButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StatusMenuButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StatusMenuButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StatusMenuButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StatusMenuButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StatusMenuButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StatusMenuButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5593,15 +5503,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Statusbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Statusbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Statusbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Statusbar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5704,15 +5611,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof StyleSchemeChooserFull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StyleSchemeChooserFull.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StyleSchemeChooserFull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StyleSchemeChooserFull.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StyleSchemeChooserFull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StyleSchemeChooserFull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StyleSchemeChooserFull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StyleSchemeChooserFull.SignalSignatures[K]>): void;
     }
 
 
@@ -5821,15 +5725,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof StyleSchemeChooserSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StyleSchemeChooserSimple.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StyleSchemeChooserSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StyleSchemeChooserSimple.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StyleSchemeChooserSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StyleSchemeChooserSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StyleSchemeChooserSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StyleSchemeChooserSimple.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5964,15 +5865,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -6414,15 +6312,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof TabLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TabLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TabLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TabLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TabLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TabLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TabLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TabLabel.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -6589,15 +6484,12 @@ export namespace Tepl {
         // Signals
         /** @signal */
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -227,15 +227,12 @@ export namespace SecretUnstable {
         // Signals
         /** @signal */
         connect<K extends keyof Collection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Collection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Collection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Collection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Collection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Collection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Collection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Collection.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1238,15 +1235,12 @@ export namespace SecretUnstable {
         // Signals
         /** @signal */
         connect<K extends keyof Item.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Item.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2139,15 +2133,12 @@ export namespace SecretUnstable {
         // Signals
         /** @signal */
         connect<K extends keyof Prompt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Prompt.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Prompt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Prompt.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Prompt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Prompt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Prompt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Prompt.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2661,15 +2652,12 @@ export namespace SecretUnstable {
         // Signals
         /** @signal */
         connect<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]>): void;
 
         // Static methods
         /**

@@ -217,15 +217,12 @@ export namespace NMGtk {
         // Signals
         /** @signal */
         connect<K extends keyof MobileProvidersDatabase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MobileProvidersDatabase.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MobileProvidersDatabase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MobileProvidersDatabase.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MobileProvidersDatabase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MobileProvidersDatabase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MobileProvidersDatabase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MobileProvidersDatabase.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -673,15 +670,12 @@ export namespace NMGtk {
         // Signals
         /** @signal */
         connect<K extends keyof VpnPasswordDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VpnPasswordDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VpnPasswordDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VpnPasswordDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VpnPasswordDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VpnPasswordDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VpnPasswordDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VpnPasswordDialog.SignalSignatures[K]>): void;
 
         // Methods
         focus_password(): void;
@@ -864,15 +858,12 @@ export namespace NMGtk {
         // Signals
         /** @signal */
         connect<K extends keyof WifiDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WifiDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WifiDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WifiDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WifiDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WifiDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WifiDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WifiDialog.SignalSignatures[K]>): void;
 
         // Methods
         get_connection(): [NetworkManager.Connection, NMClient.Device, NMClient.AccessPoint];

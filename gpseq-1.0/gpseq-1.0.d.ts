@@ -681,15 +681,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof ArraySpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArraySpliterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ArraySpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArraySpliterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ArraySpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArraySpliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ArraySpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArraySpliterator.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -942,15 +939,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof ForkJoinTask.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForkJoinTask.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ForkJoinTask.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForkJoinTask.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ForkJoinTask.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForkJoinTask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ForkJoinTask.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForkJoinTask.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1037,15 +1031,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForkJoinTaskSharedResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ForkJoinTaskSharedResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForkJoinTaskSharedResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ForkJoinTaskSharedResult.SignalSignatures[K]>): void;
 
         // Methods
         get_ready(): boolean;
@@ -1147,15 +1138,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof FuncTask.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FuncTask.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FuncTask.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FuncTask.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FuncTask.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FuncTask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FuncTask.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FuncTask.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -1264,15 +1252,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof Future.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Future.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Future.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Future.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Future.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Future.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Future.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Future.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1562,15 +1547,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof GenericArraySpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GenericArraySpliterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GenericArraySpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GenericArraySpliterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GenericArraySpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GenericArraySpliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GenericArraySpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GenericArraySpliterator.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -1736,15 +1718,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof IteratorSpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IteratorSpliterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IteratorSpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IteratorSpliterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IteratorSpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IteratorSpliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IteratorSpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IteratorSpliterator.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -1908,15 +1887,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof ListSpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListSpliterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListSpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListSpliterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListSpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListSpliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListSpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListSpliterator.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -2115,15 +2091,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof Optional.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Optional.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Optional.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Optional.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Optional.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Optional.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Optional.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Optional.SignalSignatures[K]>): void;
 
         // Methods
         get_value_type(): GObject.GType;
@@ -2193,15 +2166,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof Promise.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Promise.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Promise.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Promise.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Promise.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Promise.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Promise.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Promise.SignalSignatures[K]>): void;
 
         // Methods
         get_future(): Future;
@@ -2345,15 +2315,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof Seq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Seq.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Seq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Seq.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Seq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Seq.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Seq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Seq.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2839,15 +2806,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof SpliteratorTask.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpliteratorTask.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SpliteratorTask.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpliteratorTask.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SpliteratorTask.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpliteratorTask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SpliteratorTask.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpliteratorTask.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2991,15 +2955,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof SubArray.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubArray.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SubArray.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubArray.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SubArray.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SubArray.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubArray.SignalSignatures[K]>): void;
 
         // Methods
         get_data(): null[];
@@ -3340,15 +3301,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof SubArraySpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubArraySpliterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SubArraySpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubArraySpliterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SubArraySpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubArraySpliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SubArraySpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubArraySpliterator.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -3512,15 +3470,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof SupplierSpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SupplierSpliterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SupplierSpliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SupplierSpliterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SupplierSpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SupplierSpliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SupplierSpliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SupplierSpliterator.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -3648,15 +3603,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof TaskEnv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskEnv.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TaskEnv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskEnv.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TaskEnv.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TaskEnv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TaskEnv.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TaskEnv.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default_task_env(): TaskEnv;
@@ -3760,15 +3712,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof WaitGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaitGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WaitGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaitGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WaitGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaitGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WaitGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaitGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3916,15 +3865,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof WorkerPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkerPool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WorkerPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkerPool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WorkerPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WorkerPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WorkerPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WorkerPool.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default_factory(): ThreadFactory;
@@ -4080,15 +4026,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof WorkerThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkerThread.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WorkerThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkerThread.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WorkerThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WorkerThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WorkerThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WorkerThread.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4224,15 +4167,12 @@ export namespace Gpseq {
         // Signals
         /** @signal */
         connect<K extends keyof Wrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Wrapper.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Wrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Wrapper.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Wrapper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Wrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Wrapper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Wrapper.SignalSignatures[K]>): void;
 
         // Methods
         get_value(): null;

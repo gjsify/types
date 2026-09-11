@@ -187,15 +187,12 @@ export namespace Fep {
         // Signals
         /** @signal */
         connect<K extends keyof GClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GClient.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

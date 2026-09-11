@@ -366,15 +366,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof Adjustment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Adjustment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Adjustment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Adjustment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Adjustment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Adjustment.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -465,15 +462,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof Coordinate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Coordinate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Coordinate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Coordinate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Coordinate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Coordinate.SignalSignatures[K]>): void;
 
         /**
          * The latitude coordonate
@@ -666,15 +660,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof CustomMarker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CustomMarker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CustomMarker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CustomMarker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CustomMarker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CustomMarker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CustomMarker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CustomMarker.SignalSignatures[K]>): void;
 
         /**
          * The latitude coordonate
@@ -799,15 +790,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof ErrorTileRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ErrorTileRenderer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ErrorTileRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ErrorTileRenderer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ErrorTileRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ErrorTileRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ErrorTileRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ErrorTileRenderer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -909,15 +897,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof FileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1004,15 +989,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof FileTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTileSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTileSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileTileSource.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1060,15 +1042,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof ImageRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageRenderer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ImageRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageRenderer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ImageRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ImageRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageRenderer.SignalSignatures[K]>): void;
     }
 
 
@@ -1237,15 +1216,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof KineticScrollView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KineticScrollView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KineticScrollView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KineticScrollView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KineticScrollView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KineticScrollView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KineticScrollView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KineticScrollView.SignalSignatures[K]>): void;
 
         // Methods
         stop(): void;
@@ -2131,15 +2107,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof Label.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Label.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Label.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Label.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Label.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Label.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2521,15 +2494,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3278,15 +3248,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof License.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, License.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof License.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, License.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof License.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<License.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof License.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<License.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3950,15 +3917,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof MapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSource.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4227,15 +4191,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof MapSourceChain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceChain.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapSourceChain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceChain.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapSourceChain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceChain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapSourceChain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceChain.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4427,15 +4388,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof MapSourceDesc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceDesc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapSourceDesc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceDesc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapSourceDesc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceDesc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapSourceDesc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceDesc.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4544,15 +4502,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof MapSourceFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapSourceFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapSourceFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapSourceFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceFactory.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4799,15 +4754,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Marker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Marker.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5672,15 +5624,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof MarkerLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MarkerLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MarkerLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MarkerLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MarkerLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MarkerLayer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5882,15 +5831,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof MemoryCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MemoryCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MemoryCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MemoryCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MemoryCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MemoryCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MemoryCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MemoryCache.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6031,15 +5977,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof NetworkBboxTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkBboxTileSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetworkBboxTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkBboxTileSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetworkBboxTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkBboxTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetworkBboxTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkBboxTileSource.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6218,15 +6161,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof NetworkTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkTileSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetworkTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkTileSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetworkTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetworkTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkTileSource.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6353,15 +6293,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof NullTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullTileSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NullTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullTileSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NullTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NullTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NullTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NullTileSource.SignalSignatures[K]>): void;
     }
 
 
@@ -6584,15 +6521,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof PathLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PathLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PathLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PathLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathLayer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6934,15 +6868,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof Point.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Point.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Point.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Point.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Point.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Point.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7115,15 +7046,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Renderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Renderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Renderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -7322,15 +7250,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof Scale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Scale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scale.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scale.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8163,15 +8088,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof Tile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8954,15 +8876,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof TileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TileCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TileCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TileCache.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -9188,15 +9107,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof TileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TileSource.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10801,15 +10717,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11916,15 +11829,12 @@ export namespace Champlain {
         // Signals
         /** @signal */
         connect<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Viewport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Viewport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -1477,15 +1477,12 @@ export namespace Nice {
         // Signals
         /** @signal */
         connect<K extends keyof Agent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Agent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Agent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Agent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Agent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Agent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Agent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Agent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2388,15 +2385,12 @@ export namespace Nice {
         // Signals
         /** @signal */
         connect<K extends keyof PseudoTcpSocket.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PseudoTcpSocket.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PseudoTcpSocket.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PseudoTcpSocket.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PseudoTcpSocket.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PseudoTcpSocket.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PseudoTcpSocket.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PseudoTcpSocket.SignalSignatures[K]>): void;
 
         // Methods
         /**

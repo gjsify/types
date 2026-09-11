@@ -397,15 +397,12 @@ export namespace Xfconf {
         // Signals
         /** @signal */
         connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Channel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Channel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Channel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Channel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -704,15 +701,12 @@ export namespace Xfconf {
         // Signals
         /** @signal */
         connect<K extends keyof Int16.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int16.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Int16.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int16.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Int16.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int16.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Int16.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int16.SignalSignatures[K]>): void;
     }
 
 
@@ -733,15 +727,12 @@ export namespace Xfconf {
         // Signals
         /** @signal */
         connect<K extends keyof Uint16.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Uint16.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Uint16.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Uint16.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Uint16.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Uint16.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Uint16.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Uint16.SignalSignatures[K]>): void;
     }
 
 

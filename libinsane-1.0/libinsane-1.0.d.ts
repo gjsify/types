@@ -211,15 +211,12 @@ export namespace Libinsane {
         // Signals
         /** @signal */
         connect<K extends keyof Api.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Api.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Api.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Api.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Api.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Api.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Api.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Api.SignalSignatures[K]>): void;
 
         // Static methods
         static get_version(): string;
@@ -274,15 +271,12 @@ export namespace Libinsane {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceDescriptor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceDescriptor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceDescriptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceDescriptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceDescriptor.SignalSignatures[K]>): void;
 
         // Methods
         get_dev_id(): string;
@@ -332,15 +326,12 @@ export namespace Libinsane {
         // Signals
         /** @signal */
         connect<K extends keyof Item.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Item.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -408,15 +399,12 @@ export namespace Libinsane {
         // Signals
         /** @signal */
         connect<K extends keyof OptionDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OptionDescriptor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OptionDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OptionDescriptor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OptionDescriptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OptionDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OptionDescriptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OptionDescriptor.SignalSignatures[K]>): void;
 
         // Methods
         get_capabilities(): Capability;
@@ -487,15 +475,12 @@ export namespace Libinsane {
         // Signals
         /** @signal */
         connect<K extends keyof ScanParameters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScanParameters.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScanParameters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScanParameters.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScanParameters.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScanParameters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScanParameters.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScanParameters.SignalSignatures[K]>): void;
 
         // Methods
         get_format(): ImgFormat;
@@ -539,15 +524,12 @@ export namespace Libinsane {
         // Signals
         /** @signal */
         connect<K extends keyof ScanSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScanSession.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScanSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScanSession.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScanSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScanSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScanSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScanSession.SignalSignatures[K]>): void;
 
         // Methods
         cancel(): void;

@@ -319,15 +319,12 @@ export namespace InputPad {
         // Signals
         /** @signal */
         connect<K extends keyof GtkApplication.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkApplication.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GtkApplication.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkApplication.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GtkApplication.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkApplication.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GtkApplication.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkApplication.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -435,15 +432,12 @@ export namespace InputPad {
         // Signals
         /** @signal */
         connect<K extends keyof GtkButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GtkButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GtkButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GtkButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkButton.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -987,15 +981,12 @@ export namespace InputPad {
         // Signals
         /** @signal */
         connect<K extends keyof GtkComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkComboBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GtkComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GtkComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GtkComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkComboBox.SignalSignatures[K]>): void;
 
         // Methods
         get_base(): number;
@@ -1351,15 +1342,12 @@ export namespace InputPad {
         // Signals
         /** @signal */
         connect<K extends keyof GtkKbdui.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkKbdui.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GtkKbdui.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkKbdui.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GtkKbdui.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkKbdui.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GtkKbdui.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkKbdui.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1461,15 +1449,12 @@ export namespace InputPad {
         // Signals
         /** @signal */
         connect<K extends keyof GtkViewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkViewport.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GtkViewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkViewport.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GtkViewport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkViewport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GtkViewport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkViewport.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1771,15 +1756,12 @@ export namespace InputPad {
         // Signals
         /** @signal */
         connect<K extends keyof GtkWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GtkWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GtkWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GtkWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GtkWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GtkWindow.SignalSignatures[K]>): void;
 
         // Static methods
         /**

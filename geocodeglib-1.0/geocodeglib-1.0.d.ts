@@ -405,15 +405,12 @@ export namespace GeocodeGlib {
         // Signals
         /** @signal */
         connect<K extends keyof BoundingBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoundingBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BoundingBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoundingBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BoundingBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BoundingBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BoundingBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BoundingBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -537,15 +534,12 @@ export namespace GeocodeGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Forward.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Forward.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Forward.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Forward.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Forward.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Forward.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Forward.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Forward.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -750,15 +744,12 @@ export namespace GeocodeGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Location.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Location.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Location.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Location.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Location.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Location.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -902,15 +893,12 @@ export namespace GeocodeGlib {
         // Signals
         /** @signal */
         connect<K extends keyof MockBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MockBackend.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MockBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MockBackend.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MockBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MockBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MockBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MockBackend.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1377,15 +1365,12 @@ export namespace GeocodeGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Nominatim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Nominatim.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Nominatim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Nominatim.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Nominatim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Nominatim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Nominatim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Nominatim.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1949,15 +1934,12 @@ export namespace GeocodeGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Place.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Place.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Place.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Place.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Place.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Place.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Place.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Place.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2214,15 +2196,12 @@ export namespace GeocodeGlib {
         // Signals
         /** @signal */
         connect<K extends keyof Reverse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Reverse.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Reverse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Reverse.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Reverse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Reverse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Reverse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Reverse.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -321,15 +321,12 @@ export namespace TrackerMiner {
         // Signals
         /** @signal */
         connect<K extends keyof Decorator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Decorator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Decorator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Decorator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Decorator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Decorator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Decorator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Decorator.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -595,15 +592,12 @@ export namespace TrackerMiner {
         // Signals
         /** @signal */
         connect<K extends keyof DecoratorFS.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DecoratorFS.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DecoratorFS.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DecoratorFS.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DecoratorFS.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DecoratorFS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DecoratorFS.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DecoratorFS.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -717,15 +711,12 @@ export namespace TrackerMiner {
         // Signals
         /** @signal */
         connect<K extends keyof IndexingTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IndexingTree.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IndexingTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IndexingTree.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IndexingTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IndexingTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IndexingTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IndexingTree.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1068,15 +1059,12 @@ export namespace TrackerMiner {
         // Signals
         /** @signal */
         connect<K extends keyof Miner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Miner.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Miner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Miner.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Miner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Miner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Miner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Miner.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1510,15 +1498,12 @@ export namespace TrackerMiner {
         // Signals
         /** @signal */
         connect<K extends keyof MinerFS.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MinerFS.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MinerFS.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MinerFS.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MinerFS.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MinerFS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MinerFS.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MinerFS.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2012,15 +1997,12 @@ export namespace TrackerMiner {
         // Signals
         /** @signal */
         connect<K extends keyof MinerOnline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MinerOnline.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MinerOnline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MinerOnline.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MinerOnline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MinerOnline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MinerOnline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MinerOnline.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

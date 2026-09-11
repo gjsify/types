@@ -2028,15 +2028,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof Auth.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Auth.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Auth.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Auth.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Auth.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Auth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Auth.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Auth.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2255,15 +2252,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof AuthBasic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthBasic.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthBasic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthBasic.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthBasic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthBasic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthBasic.SignalSignatures[K]>): void;
     }
 
 
@@ -2310,15 +2304,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof AuthDigest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthDigest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthDigest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthDigest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthDigest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthDigest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthDigest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthDigest.SignalSignatures[K]>): void;
     }
 
 
@@ -2444,15 +2435,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof AuthDomain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthDomain.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthDomain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthDomain.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthDomain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthDomain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthDomain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthDomain.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2691,15 +2679,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof AuthDomainBasic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthDomainBasic.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthDomainBasic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthDomainBasic.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthDomainBasic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthDomainBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthDomainBasic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthDomainBasic.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2794,15 +2779,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof AuthDomainDigest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthDomainDigest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthDomainDigest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthDomainDigest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthDomainDigest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthDomainDigest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthDomainDigest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthDomainDigest.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2894,15 +2876,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof AuthManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2971,15 +2950,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof AuthNTLM.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthNTLM.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthNTLM.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthNTLM.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthNTLM.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthNTLM.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthNTLM.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthNTLM.SignalSignatures[K]>): void;
     }
 
 
@@ -3031,15 +3007,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof AuthNegotiate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthNegotiate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthNegotiate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthNegotiate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthNegotiate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthNegotiate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthNegotiate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthNegotiate.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3124,15 +3097,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof Cache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Cache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Cache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Cache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cache.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3262,15 +3232,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof CompressionDictionaryRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompressionDictionaryRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CompressionDictionaryRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompressionDictionaryRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CompressionDictionaryRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompressionDictionaryRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CompressionDictionaryRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompressionDictionaryRequest.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3351,15 +3318,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof ContentDecoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentDecoder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContentDecoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentDecoder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContentDecoder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentDecoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContentDecoder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentDecoder.SignalSignatures[K]>): void;
     }
 
 
@@ -3404,15 +3368,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof ContentSniffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentSniffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContentSniffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentSniffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContentSniffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentSniffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContentSniffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentSniffer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3521,15 +3482,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof CookieJar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CookieJar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CookieJar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CookieJar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CookieJar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CookieJar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CookieJar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CookieJar.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3801,15 +3759,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof CookieJarDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CookieJarDB.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CookieJarDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CookieJarDB.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CookieJarDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CookieJarDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CookieJarDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CookieJarDB.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3995,15 +3950,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof CookieJarText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CookieJarText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CookieJarText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CookieJarText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CookieJarText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CookieJarText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CookieJarText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CookieJarText.SignalSignatures[K]>): void;
     }
 
 
@@ -4080,15 +4032,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof HSTSEnforcer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HSTSEnforcer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HSTSEnforcer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HSTSEnforcer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HSTSEnforcer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HSTSEnforcer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HSTSEnforcer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HSTSEnforcer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4217,15 +4166,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof HSTSEnforcerDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HSTSEnforcerDB.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HSTSEnforcerDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HSTSEnforcerDB.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HSTSEnforcerDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HSTSEnforcerDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HSTSEnforcerDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HSTSEnforcerDB.SignalSignatures[K]>): void;
     }
 
 
@@ -4353,15 +4299,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof Logger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Logger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Logger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Logger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Logger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Logger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Logger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Logger.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4957,15 +4900,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof Message.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Message.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Message.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Message.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Message.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Message.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5399,15 +5339,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof MultipartInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultipartInputStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MultipartInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultipartInputStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MultipartInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultipartInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MultipartInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultipartInputStream.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5934,15 +5871,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Server.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -6491,15 +6425,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof ServerMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerMessage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServerMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerMessage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServerMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServerMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerMessage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7127,15 +7058,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8086,15 +8014,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof WebsocketConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsocketConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebsocketConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsocketConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebsocketConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebsocketConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebsocketConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebsocketConnection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8311,15 +8236,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof WebsocketExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsocketExtension.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebsocketExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsocketExtension.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebsocketExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebsocketExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebsocketExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebsocketExtension.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8472,15 +8394,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsocketExtensionDeflate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsocketExtensionDeflate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebsocketExtensionDeflate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebsocketExtensionDeflate.SignalSignatures[K]>): void;
     }
 
 
@@ -8523,15 +8442,12 @@ export namespace Soup {
         // Signals
         /** @signal */
         connect<K extends keyof WebsocketExtensionManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsocketExtensionManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WebsocketExtensionManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsocketExtensionManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebsocketExtensionManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebsocketExtensionManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebsocketExtensionManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebsocketExtensionManager.SignalSignatures[K]>): void;
     }
 
 

@@ -218,15 +218,12 @@ export namespace EDataCal {
         // Signals
         /** @signal */
         connect<K extends keyof CalBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalBackend.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalBackend.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalBackend.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1751,15 +1748,12 @@ export namespace EDataCal {
         // Signals
         /** @signal */
         connect<K extends keyof CalBackendFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalBackendFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalBackendFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalBackendFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalBackendFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalBackendFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalBackendFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalBackendFactory.SignalSignatures[K]>): void;
     }
 
 
@@ -1796,15 +1790,12 @@ export namespace EDataCal {
         // Signals
         /** @signal */
         connect<K extends keyof CalBackendSExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalBackendSExp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalBackendSExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalBackendSExp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalBackendSExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalBackendSExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalBackendSExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalBackendSExp.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1895,15 +1886,12 @@ export namespace EDataCal {
         // Signals
         /** @signal */
         connect<K extends keyof CalBackendSync.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalBackendSync.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalBackendSync.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalBackendSync.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalBackendSync.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalBackendSync.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalBackendSync.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalBackendSync.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2290,15 +2278,12 @@ export namespace EDataCal {
         // Signals
         /** @signal */
         connect<K extends keyof CalCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalCache.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2879,15 +2864,12 @@ export namespace EDataCal {
         // Signals
         /** @signal */
         connect<K extends keyof CalMetaBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalMetaBackend.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalMetaBackend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalMetaBackend.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalMetaBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalMetaBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalMetaBackend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalMetaBackend.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3676,15 +3658,12 @@ export namespace EDataCal {
         // Signals
         /** @signal */
         connect<K extends keyof DataCal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCal.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataCal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCal.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataCal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataCal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCal.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3995,15 +3974,12 @@ export namespace EDataCal {
         // Signals
         /** @signal */
         connect<K extends keyof DataCalFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCalFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataCalFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCalFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataCalFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCalFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataCalFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCalFactory.SignalSignatures[K]>): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -4175,15 +4151,12 @@ export namespace EDataCal {
         // Signals
         /** @signal */
         connect<K extends keyof DataCalView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCalView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataCalView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCalView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataCalView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCalView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataCalView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCalView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4474,15 +4447,12 @@ export namespace EDataCal {
         // Signals
         /** @signal */
         connect<K extends keyof IntervalTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntervalTree.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IntervalTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntervalTree.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IntervalTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntervalTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IntervalTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntervalTree.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4552,15 +4522,12 @@ export namespace EDataCal {
         // Signals
         /** @signal */
         connect<K extends keyof SubprocessCalFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubprocessCalFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SubprocessCalFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubprocessCalFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SubprocessCalFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubprocessCalFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SubprocessCalFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubprocessCalFactory.SignalSignatures[K]>): void;
 
         /**
          * Initializes the object implementing the interface.

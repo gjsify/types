@@ -72,15 +72,12 @@ export namespace UMockdev {
         // Signals
         /** @signal */
         connect<K extends keyof Testbed.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Testbed.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Testbed.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Testbed.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Testbed.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Testbed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Testbed.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Testbed.SignalSignatures[K]>): void;
 
         // Methods
         get_root_dir(): string;
@@ -313,15 +310,12 @@ export namespace UMockdev {
         // Signals
         /** @signal */
         connect<K extends keyof IoctlData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlData.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IoctlData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlData.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IoctlData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IoctlData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IoctlData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IoctlData.SignalSignatures[K]>): void;
 
         // Methods
         compat_ref(): IoctlData | null;
@@ -418,15 +412,12 @@ export namespace UMockdev {
         // Signals
         /** @signal */
         connect<K extends keyof IoctlClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IoctlClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IoctlClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IoctlClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IoctlClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IoctlClient.SignalSignatures[K]>): void;
 
         // Methods
         get_devnode(): string;
@@ -494,15 +485,12 @@ export namespace UMockdev {
         // Signals
         /** @signal */
         connect<K extends keyof IoctlBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlBase.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IoctlBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlBase.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IoctlBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IoctlBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IoctlBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IoctlBase.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

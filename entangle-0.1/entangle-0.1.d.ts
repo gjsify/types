@@ -220,15 +220,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -446,15 +443,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Camera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Camera.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1587,15 +1581,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof CameraAutomata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraAutomata.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CameraAutomata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraAutomata.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CameraAutomata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraAutomata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CameraAutomata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraAutomata.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1743,15 +1734,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof CameraFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CameraFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CameraFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CameraFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraFile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1898,15 +1886,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof CameraList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CameraList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CameraList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CameraList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2081,15 +2066,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof CameraManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CameraManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CameraManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CameraManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2875,15 +2857,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof CameraPicker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraPicker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CameraPicker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraPicker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CameraPicker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraPicker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CameraPicker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraPicker.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2934,15 +2913,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof CameraPreferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraPreferences.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CameraPreferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraPreferences.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CameraPreferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraPreferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CameraPreferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraPreferences.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3090,15 +3066,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof CameraSupport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraSupport.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CameraSupport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraSupport.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CameraSupport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraSupport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CameraSupport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraSupport.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3168,15 +3141,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ColourProfile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColourProfile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColourProfile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColourProfile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColourProfile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColourProfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColourProfile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColourProfile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3267,15 +3237,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ColourProfileTransform.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColourProfileTransform.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColourProfileTransform.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColourProfileTransform.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColourProfileTransform.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColourProfileTransform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColourProfileTransform.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColourProfileTransform.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3374,15 +3341,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof Control.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Control.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Control.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Control.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Control.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Control.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Control.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Control.SignalSignatures[K]>): void;
 
         // Methods
         get_dirty(): boolean;
@@ -3449,15 +3413,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ControlButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControlButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControlButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControlButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlButton.SignalSignatures[K]>): void;
     }
 
 
@@ -3511,15 +3472,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ControlChoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlChoice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControlChoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlChoice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControlChoice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlChoice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControlChoice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlChoice.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3588,15 +3546,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ControlDate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlDate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControlDate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlDate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControlDate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlDate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControlDate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlDate.SignalSignatures[K]>): void;
     }
 
 
@@ -3640,15 +3595,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ControlGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControlGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControlGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControlGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3803,15 +3755,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ControlPanel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlPanel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControlPanel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlPanel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControlPanel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlPanel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControlPanel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlPanel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3922,15 +3871,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ControlRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlRange.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControlRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlRange.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControlRange.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlRange.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControlRange.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlRange.SignalSignatures[K]>): void;
 
         // Methods
         get_max(): number;
@@ -3991,15 +3937,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ControlText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControlText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControlText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControlText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlText.SignalSignatures[K]>): void;
     }
 
 
@@ -4053,15 +3996,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ControlToggle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlToggle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControlToggle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlToggle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControlToggle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlToggle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControlToggle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlToggle.SignalSignatures[K]>): void;
     }
 
 
@@ -4109,15 +4049,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4252,15 +4189,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof HelpAbout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HelpAbout.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HelpAbout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HelpAbout.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HelpAbout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HelpAbout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HelpAbout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HelpAbout.SignalSignatures[K]>): void;
     }
 
 
@@ -4309,15 +4243,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4535,15 +4466,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ImageDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageDisplay.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ImageDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageDisplay.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ImageDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ImageDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageDisplay.SignalSignatures[K]>): void;
 
         // Methods
         get_aspect_ratio(): number;
@@ -4742,15 +4670,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ImageHistogram.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageHistogram.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ImageHistogram.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageHistogram.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ImageHistogram.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageHistogram.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ImageHistogram.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageHistogram.SignalSignatures[K]>): void;
 
         // Methods
         get_histogram_linear(): boolean;
@@ -4828,15 +4753,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ImageLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageLoader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ImageLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageLoader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ImageLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ImageLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageLoader.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4905,15 +4827,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Media.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5076,15 +4995,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof MediaPopup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaPopup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaPopup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaPopup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaPopup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaPopup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaPopup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaPopup.SignalSignatures[K]>): void;
 
         // Methods
         get_background(): string;
@@ -5218,15 +5134,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof MediaStatusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaStatusbar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaStatusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaStatusbar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaStatusbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaStatusbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaStatusbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaStatusbar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5352,15 +5265,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof PixbufLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PixbufLoader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PixbufLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PixbufLoader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PixbufLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PixbufLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PixbufLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PixbufLoader.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5861,15 +5771,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof Preferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Preferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Preferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Preferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preferences.SignalSignatures[K]>): void;
 
         // Static methods
         static ensure_girepository_dir(): void;
@@ -6370,15 +6277,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesDisplay.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesDisplay.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesDisplay.SignalSignatures[K]>): void;
     }
 
 
@@ -6424,15 +6328,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof Script.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Script.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Script.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Script.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Script.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Script.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Script.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Script.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -6577,15 +6478,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ScriptConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptConfig.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScriptConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptConfig.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScriptConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScriptConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptConfig.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6664,15 +6562,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ScriptSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptSimple.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScriptSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptSimple.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScriptSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScriptSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptSimple.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -6784,15 +6679,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6936,15 +6828,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof SessionBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionBrowser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SessionBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionBrowser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SessionBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SessionBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SessionBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SessionBrowser.SignalSignatures[K]>): void;
 
         // Methods
         get_background(): string;
@@ -7206,15 +7095,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof ThumbnailLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThumbnailLoader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ThumbnailLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThumbnailLoader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ThumbnailLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThumbnailLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ThumbnailLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThumbnailLoader.SignalSignatures[K]>): void;
     }
 
 
@@ -7263,15 +7149,12 @@ export namespace Entangle {
         // Signals
         /** @signal */
         connect<K extends keyof Video.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Video.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Video.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Video.SignalSignatures[K]>): void;
 
         // Methods
         /**

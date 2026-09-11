@@ -706,15 +706,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof BlockLVM2Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockLVM2Proxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BlockLVM2Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockLVM2Proxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BlockLVM2Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockLVM2Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BlockLVM2Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockLVM2Proxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1186,15 +1183,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof BlockLVM2Skeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockLVM2Skeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BlockLVM2Skeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockLVM2Skeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BlockLVM2Skeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockLVM2Skeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BlockLVM2Skeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockLVM2Skeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Block-LVM2.LogicalVolume">"LogicalVolume"</link>.
@@ -1376,15 +1370,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof BlockProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BlockProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BlockProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BlockProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3127,15 +3118,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof BlockSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BlockSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BlockSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BlockSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Block.Configuration">"Configuration"</link>.
@@ -4593,15 +4581,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5329,15 +5314,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof DriveAtaProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveAtaProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DriveAtaProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveAtaProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DriveAtaProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveAtaProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DriveAtaProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveAtaProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -6956,15 +6938,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof DriveAtaSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveAtaSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DriveAtaSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveAtaSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DriveAtaSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveAtaSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DriveAtaSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveAtaSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Drive-Ata.AamEnabled">"AamEnabled"</link>.
@@ -8258,15 +8237,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof DriveLSMProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveLSMProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DriveLSMProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveLSMProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DriveLSMProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveLSMProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DriveLSMProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveLSMProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -8945,15 +8921,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof DriveLSMSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveLSMSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DriveLSMSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveLSMSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DriveLSMSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveLSMSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DriveLSMSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveLSMSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Drive-LSM.IsOK">"IsOK"</link>.
@@ -9308,15 +9281,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof DriveLsmLocalProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveLsmLocalProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DriveLsmLocalProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveLsmLocalProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DriveLsmLocalProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveLsmLocalProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DriveLsmLocalProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveLsmLocalProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -10066,15 +10036,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof DriveLsmLocalSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveLsmLocalSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DriveLsmLocalSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveLsmLocalSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DriveLsmLocalSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveLsmLocalSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DriveLsmLocalSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveLsmLocalSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -10542,15 +10509,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof DriveProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DriveProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DriveProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DriveProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -11693,15 +11657,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof DriveSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DriveSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DriveSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DriveSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Drive.CanPowerOff">"CanPowerOff"</link>.
@@ -12508,15 +12469,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof EncryptedProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EncryptedProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EncryptedProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EncryptedProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EncryptedProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EncryptedProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EncryptedProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EncryptedProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -13513,15 +13471,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof EncryptedSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EncryptedSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EncryptedSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EncryptedSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EncryptedSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EncryptedSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EncryptedSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EncryptedSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Encrypted.ChildConfiguration">"ChildConfiguration"</link>.
@@ -14208,15 +14163,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof FilesystemBTRFSProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesystemBTRFSProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilesystemBTRFSProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesystemBTRFSProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilesystemBTRFSProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesystemBTRFSProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilesystemBTRFSProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesystemBTRFSProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -15618,15 +15570,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof FilesystemBTRFSSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesystemBTRFSSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilesystemBTRFSSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesystemBTRFSSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilesystemBTRFSSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesystemBTRFSSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilesystemBTRFSSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesystemBTRFSSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Filesystem-BTRFS.label">"label"</link>.
@@ -16712,15 +16661,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof FilesystemProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesystemProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilesystemProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesystemProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilesystemProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesystemProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilesystemProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesystemProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -17786,15 +17732,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof FilesystemSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesystemSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilesystemSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilesystemSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilesystemSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesystemSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilesystemSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilesystemSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Filesystem.MountPoints">"MountPoints"</link>.
@@ -18557,15 +18500,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ISCSISessionProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ISCSISessionProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ISCSISessionProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ISCSISessionProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ISCSISessionProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ISCSISessionProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ISCSISessionProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ISCSISessionProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -19348,15 +19288,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ISCSISessionSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ISCSISessionSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ISCSISessionSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ISCSISessionSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ISCSISessionSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ISCSISessionSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ISCSISessionSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ISCSISessionSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-ISCSI-Session.abort_timeout">"abort_timeout"</link>.
@@ -19828,15 +19765,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof JobProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -20516,15 +20450,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof JobSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Job.Bytes">"Bytes"</link>.
@@ -20899,15 +20830,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof LogicalVolumeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogicalVolumeProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LogicalVolumeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogicalVolumeProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LogicalVolumeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogicalVolumeProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LogicalVolumeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogicalVolumeProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -22403,15 +22331,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof LogicalVolumeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogicalVolumeSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LogicalVolumeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogicalVolumeSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LogicalVolumeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogicalVolumeSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LogicalVolumeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogicalVolumeSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-LogicalVolume.Active">"Active"</link>.
@@ -23581,15 +23506,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof LoopProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LoopProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LoopProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LoopProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LoopProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LoopProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LoopProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LoopProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -24309,15 +24231,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof LoopSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LoopSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LoopSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LoopSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LoopSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LoopSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LoopSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LoopSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Loop.Autoclear">"Autoclear"</link>.
@@ -24740,15 +24659,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof MDRaidProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MDRaidProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MDRaidProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MDRaidProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MDRaidProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MDRaidProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MDRaidProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MDRaidProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -26047,15 +25963,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof MDRaidSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MDRaidSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MDRaidSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MDRaidSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MDRaidSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MDRaidSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MDRaidSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MDRaidSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-MDRaid.ActiveDevices">"ActiveDevices"</link>.
@@ -27025,15 +26938,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerBTRFSProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerBTRFSProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerBTRFSProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerBTRFSProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerBTRFSProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerBTRFSProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerBTRFSProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerBTRFSProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -27578,15 +27488,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerBTRFSSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerBTRFSSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerBTRFSSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerBTRFSSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerBTRFSSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerBTRFSSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerBTRFSSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerBTRFSSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -27819,15 +27726,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerISCSIInitiatorProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerISCSIInitiatorProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerISCSIInitiatorProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerISCSIInitiatorProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerISCSIInitiatorProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerISCSIInitiatorProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerISCSIInitiatorProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerISCSIInitiatorProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -28964,15 +28868,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerISCSIInitiatorSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerISCSIInitiatorSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerISCSIInitiatorSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerISCSIInitiatorSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerISCSIInitiatorSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerISCSIInitiatorSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerISCSIInitiatorSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerISCSIInitiatorSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.SessionsSupported">"SessionsSupported"</link>.
@@ -29795,15 +29696,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerLVM2Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerLVM2Proxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerLVM2Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerLVM2Proxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerLVM2Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerLVM2Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerLVM2Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerLVM2Proxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -30339,15 +30237,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerLVM2Skeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerLVM2Skeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerLVM2Skeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerLVM2Skeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerLVM2Skeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerLVM2Skeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerLVM2Skeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerLVM2Skeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -30571,15 +30466,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerNVMeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerNVMeProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerNVMeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerNVMeProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerNVMeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerNVMeProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerNVMeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerNVMeProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -31321,15 +31213,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerNVMeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerNVMeSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerNVMeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerNVMeSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerNVMeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerNVMeSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerNVMeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerNVMeSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Manager-NVMe.HostID">"HostID"</link>.
@@ -31762,15 +31651,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -33170,15 +33056,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ManagerSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Manager.DefaultEncryptionType">"DefaultEncryptionType"</link>.
@@ -34277,15 +34160,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof NVMeControllerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeControllerProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NVMeControllerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeControllerProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NVMeControllerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeControllerProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NVMeControllerProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeControllerProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -35398,15 +35278,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof NVMeControllerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeControllerSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NVMeControllerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeControllerSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NVMeControllerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeControllerSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NVMeControllerSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeControllerSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-NVMe-Controller.ControllerID">"ControllerID"</link>.
@@ -36198,15 +36075,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof NVMeFabricsProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeFabricsProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NVMeFabricsProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeFabricsProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NVMeFabricsProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeFabricsProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NVMeFabricsProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeFabricsProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -36802,15 +36676,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof NVMeFabricsSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeFabricsSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NVMeFabricsSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeFabricsSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NVMeFabricsSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeFabricsSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NVMeFabricsSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeFabricsSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-NVMe-Fabrics.HostID">"HostID"</link>.
@@ -37102,15 +36973,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof NVMeNamespaceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeNamespaceProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NVMeNamespaceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeNamespaceProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NVMeNamespaceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeNamespaceProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NVMeNamespaceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeNamespaceProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -37802,15 +37670,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof NVMeNamespaceSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeNamespaceSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NVMeNamespaceSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NVMeNamespaceSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NVMeNamespaceSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeNamespaceSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NVMeNamespaceSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NVMeNamespaceSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-NVMe-Namespace.EUI64">"EUI64"</link>.
@@ -38173,15 +38038,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ObjectInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ObjectInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ObjectInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ObjectInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -38316,15 +38178,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ObjectManagerClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectManagerClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ObjectManagerClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectManagerClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ObjectManagerClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectManagerClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ObjectManagerClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectManagerClient.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -38843,15 +38702,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ObjectProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ObjectProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ObjectProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ObjectProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectProxy.SignalSignatures[K]>): void;
 
         /**
          * The {@link UDisks.Block} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Block.top_of_page">org.freedesktop.UDisks2.Block</link>, if any.
@@ -39593,15 +39449,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof ObjectSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ObjectSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ObjectSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ObjectSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectSkeleton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -40528,15 +40381,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof PartitionProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PartitionProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PartitionProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PartitionProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PartitionProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PartitionProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PartitionProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PartitionProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -41563,15 +41413,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof PartitionSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PartitionSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PartitionSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PartitionSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PartitionSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PartitionSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PartitionSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PartitionSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Partition.Flags">"Flags"</link>.
@@ -42279,15 +42126,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof PartitionTableProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PartitionTableProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PartitionTableProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PartitionTableProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PartitionTableProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PartitionTableProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PartitionTableProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PartitionTableProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -42946,15 +42790,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof PartitionTableSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PartitionTableSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PartitionTableSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PartitionTableSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PartitionTableSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PartitionTableSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PartitionTableSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PartitionTableSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-PartitionTable.Partitions">"Partitions"</link>.
@@ -43304,15 +43145,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof PhysicalVolumeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PhysicalVolumeProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PhysicalVolumeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PhysicalVolumeProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PhysicalVolumeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PhysicalVolumeProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PhysicalVolumeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PhysicalVolumeProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -43819,15 +43657,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof PhysicalVolumeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PhysicalVolumeSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PhysicalVolumeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PhysicalVolumeSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PhysicalVolumeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PhysicalVolumeSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PhysicalVolumeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PhysicalVolumeSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-PhysicalVolume.FreeSize">"FreeSize"</link>.
@@ -44018,15 +43853,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof SwapspaceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwapspaceProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SwapspaceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwapspaceProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SwapspaceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SwapspaceProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SwapspaceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SwapspaceProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -44779,15 +44611,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof SwapspaceSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwapspaceSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SwapspaceSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwapspaceSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SwapspaceSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SwapspaceSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SwapspaceSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SwapspaceSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Swapspace.Active">"Active"</link>.
@@ -45236,15 +45065,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof VDOVolumeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VDOVolumeProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VDOVolumeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VDOVolumeProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VDOVolumeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VDOVolumeProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VDOVolumeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VDOVolumeProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -46233,15 +46059,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof VDOVolumeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VDOVolumeSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VDOVolumeSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VDOVolumeSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VDOVolumeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VDOVolumeSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VDOVolumeSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VDOVolumeSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-VDOVolume.Compression">"Compression"</link>.
@@ -46917,15 +46740,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof VolumeGroupProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VolumeGroupProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VolumeGroupProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VolumeGroupProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VolumeGroupProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VolumeGroupProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VolumeGroupProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VolumeGroupProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -48538,15 +48358,12 @@ export namespace UDisks {
         // Signals
         /** @signal */
         connect<K extends keyof VolumeGroupSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VolumeGroupSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VolumeGroupSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VolumeGroupSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VolumeGroupSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VolumeGroupSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VolumeGroupSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VolumeGroupSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-VolumeGroup.ExtentSize">"ExtentSize"</link>.

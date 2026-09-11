@@ -101,15 +101,12 @@ export namespace Spelling {
         // Signals
         /** @signal */
         connect<K extends keyof Checker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Checker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Checker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Checker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Checker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Checker.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -218,15 +215,12 @@ export namespace Spelling {
         // Signals
         /** @signal */
         connect<K extends keyof Dictionary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dictionary.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Dictionary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dictionary.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Dictionary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dictionary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Dictionary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dictionary.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -333,15 +327,12 @@ export namespace Spelling {
         // Signals
         /** @signal */
         connect<K extends keyof Language.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Language.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Language.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Language.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Language.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Language.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -416,15 +407,12 @@ export namespace Spelling {
         // Signals
         /** @signal */
         connect<K extends keyof Provider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Provider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Provider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Provider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Provider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Provider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Provider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Provider.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -541,15 +529,12 @@ export namespace Spelling {
         // Signals
         /** @signal */
         connect<K extends keyof TextBufferAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextBufferAdapter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextBufferAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextBufferAdapter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextBufferAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextBufferAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextBufferAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextBufferAdapter.SignalSignatures[K]>): void;
 
         // Methods
         /**

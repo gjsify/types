@@ -264,15 +264,12 @@ export namespace Amtk {
         // Signals
         /** @signal */
         connect<K extends keyof ActionInfoCentralStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionInfoCentralStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ActionInfoCentralStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionInfoCentralStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ActionInfoCentralStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionInfoCentralStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ActionInfoCentralStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionInfoCentralStore.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -323,15 +320,12 @@ export namespace Amtk {
         // Signals
         /** @signal */
         connect<K extends keyof ActionInfoStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionInfoStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ActionInfoStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionInfoStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ActionInfoStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionInfoStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ActionInfoStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionInfoStore.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -438,15 +432,12 @@ export namespace Amtk {
         // Signals
         /** @signal */
         connect<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -598,15 +589,12 @@ export namespace Amtk {
         // Signals
         /** @signal */
         connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Factory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Factory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Factory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Factory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Factory.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -790,15 +778,12 @@ export namespace Amtk {
         // Signals
         /** @signal */
         connect<K extends keyof MenuShell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuShell.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuShell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuShell.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuShell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuShell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuShell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuShell.SignalSignatures[K]>): void;
 
         // Static methods
         /**

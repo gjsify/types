@@ -2156,15 +2156,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof AccessPoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccessPoint.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AccessPoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccessPoint.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AccessPoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccessPoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AccessPoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccessPoint.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2763,15 +2760,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof ActiveConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActiveConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ActiveConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActiveConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ActiveConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActiveConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ActiveConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActiveConnection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3490,15 +3484,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4189,15 +4180,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DHCP4Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DHCP4Config.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DHCP4Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DHCP4Config.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DHCP4Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DHCP4Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DHCP4Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DHCP4Config.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4556,15 +4544,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DHCP6Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DHCP6Config.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DHCP6Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DHCP6Config.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DHCP6Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DHCP6Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DHCP6Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DHCP6Config.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5208,15 +5193,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5929,15 +5911,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceAdsl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceAdsl.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceAdsl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceAdsl.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceAdsl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceAdsl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceAdsl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceAdsl.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6257,15 +6236,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceBond.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceBond.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceBond.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceBond.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceBond.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceBond.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceBond.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceBond.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6601,15 +6577,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceBridge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceBridge.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceBridge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceBridge.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceBridge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceBridge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceBridge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceBridge.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6950,15 +6923,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceBt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceBt.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceBt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceBt.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceBt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceBt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceBt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceBt.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7310,15 +7280,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceEthernet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceEthernet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceEthernet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceEthernet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceEthernet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceEthernet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceEthernet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceEthernet.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7656,15 +7623,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceGeneric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceGeneric.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceGeneric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceGeneric.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceGeneric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceGeneric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceGeneric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceGeneric.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7976,15 +7940,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceInfiniband.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceInfiniband.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceInfiniband.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceInfiniband.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceInfiniband.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceInfiniband.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceInfiniband.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceInfiniband.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8314,15 +8275,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceModem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceModem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceModem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceModem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceModem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceModem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceModem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceModem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8658,15 +8616,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceOlpcMesh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceOlpcMesh.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceOlpcMesh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceOlpcMesh.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceOlpcMesh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceOlpcMesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceOlpcMesh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceOlpcMesh.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8997,15 +8952,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceTeam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceTeam.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceTeam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceTeam.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceTeam.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceTeam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceTeam.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceTeam.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9355,15 +9307,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceVlan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceVlan.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceVlan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceVlan.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceVlan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceVlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceVlan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceVlan.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9773,15 +9722,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceWifi.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceWifi.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceWifi.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceWifi.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceWifi.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceWifi.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceWifi.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceWifi.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -10273,15 +10219,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceWimax.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceWimax.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceWimax.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceWimax.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceWimax.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceWimax.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceWimax.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceWimax.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -10691,15 +10634,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof IP4Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IP4Config.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IP4Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IP4Config.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IP4Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IP4Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IP4Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IP4Config.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11136,15 +11076,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof IP6Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IP6Config.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IP6Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IP6Config.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IP6Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IP6Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IP6Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IP6Config.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11549,15 +11486,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -11960,15 +11894,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof RemoteConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RemoteConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RemoteConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemoteConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RemoteConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemoteConnection.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -12415,15 +12346,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof RemoteSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteSettings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RemoteSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteSettings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RemoteSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemoteSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RemoteSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemoteSettings.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -12939,15 +12867,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof SecretAgent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SecretAgent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SecretAgent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SecretAgent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SecretAgent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SecretAgent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SecretAgent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SecretAgent.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -13135,15 +13060,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof VPNConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VPNConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VPNConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VPNConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VPNConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VPNConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VPNConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VPNConnection.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -13448,15 +13370,12 @@ export namespace NMClient {
         // Signals
         /** @signal */
         connect<K extends keyof WimaxNsp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WimaxNsp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WimaxNsp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WimaxNsp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WimaxNsp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WimaxNsp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WimaxNsp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WimaxNsp.SignalSignatures[K]>): void;
 
         // Methods
         /**

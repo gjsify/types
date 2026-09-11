@@ -2143,15 +2143,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof AdaptorChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AdaptorChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AdaptorChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AdaptorChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AdaptorChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AdaptorChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AdaptorChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AdaptorChooser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2244,15 +2241,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<App.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2471,15 +2465,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof BaseEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseEditor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BaseEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseEditor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BaseEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseEditor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BaseEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseEditor.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2663,15 +2654,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererIcon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererIcon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererIcon.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2755,15 +2743,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof Clipboard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Clipboard.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Clipboard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Clipboard.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Clipboard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Clipboard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Clipboard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Clipboard.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2821,15 +2806,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof Command.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Command.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Command.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Command.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Command.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Command.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Command.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Command.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3162,15 +3144,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof DesignView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesignView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DesignView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesignView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DesignView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesignView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DesignView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesignView.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3290,15 +3269,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EPropBool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropBool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EPropBool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropBool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EPropBool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropBool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EPropBool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropBool.SignalSignatures[K]>): void;
 
         block(): void;
 
@@ -3483,15 +3459,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EPropCheck.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropCheck.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EPropCheck.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropCheck.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EPropCheck.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropCheck.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EPropCheck.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropCheck.SignalSignatures[K]>): void;
 
         block(): void;
 
@@ -3676,15 +3649,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EPropColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropColor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EPropColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropColor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EPropColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropColor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EPropColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropColor.SignalSignatures[K]>): void;
 
         block(): void;
 
@@ -3869,15 +3839,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EPropEnum.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropEnum.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EPropEnum.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropEnum.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EPropEnum.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropEnum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EPropEnum.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropEnum.SignalSignatures[K]>): void;
 
         block(): void;
 
@@ -4062,15 +4029,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EPropFlags.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropFlags.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EPropFlags.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropFlags.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EPropFlags.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropFlags.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EPropFlags.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropFlags.SignalSignatures[K]>): void;
 
         block(): void;
 
@@ -4255,15 +4219,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EPropNamedIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropNamedIcon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EPropNamedIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropNamedIcon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EPropNamedIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropNamedIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EPropNamedIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropNamedIcon.SignalSignatures[K]>): void;
 
         block(): void;
 
@@ -4448,15 +4409,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EPropNumeric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropNumeric.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EPropNumeric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropNumeric.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EPropNumeric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropNumeric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EPropNumeric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropNumeric.SignalSignatures[K]>): void;
 
         block(): void;
 
@@ -4641,15 +4599,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EPropObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropObject.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EPropObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropObject.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EPropObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EPropObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropObject.SignalSignatures[K]>): void;
 
         block(): void;
 
@@ -4834,15 +4789,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EPropObjects.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropObjects.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EPropObjects.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropObjects.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EPropObjects.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropObjects.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EPropObjects.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropObjects.SignalSignatures[K]>): void;
 
         block(): void;
 
@@ -5027,15 +4979,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EPropText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EPropText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EPropText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EPropText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropText.SignalSignatures[K]>): void;
 
         block(): void;
 
@@ -5220,15 +5169,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EPropUnichar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropUnichar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EPropUnichar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EPropUnichar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EPropUnichar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropUnichar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EPropUnichar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EPropUnichar.SignalSignatures[K]>): void;
 
         block(): void;
 
@@ -5492,15 +5438,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof Editor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Editor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Editor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Editor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Editor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Editor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Editor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Editor.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5708,15 +5651,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EditorProperty.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EditorProperty.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EditorProperty.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EditorProperty.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EditorProperty.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EditorProperty.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EditorProperty.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EditorProperty.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5997,15 +5937,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EditorSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EditorSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EditorSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EditorSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EditorSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EditorSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EditorSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EditorSkeleton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6205,15 +6142,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof EditorTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EditorTable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EditorTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EditorTable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EditorTable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EditorTable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EditorTable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EditorTable.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -6407,15 +6341,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof Inspector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Inspector.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Inspector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Inspector.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Inspector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Inspector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Inspector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Inspector.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -6599,15 +6530,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof NamedIconChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NamedIconChooserDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NamedIconChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NamedIconChooserDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NamedIconChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NamedIconChooserDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NamedIconChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NamedIconChooserDialog.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -6786,15 +6714,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof Palette.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Palette.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Palette.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Palette.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Palette.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Palette.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Palette.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Palette.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -6956,15 +6881,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof Placeholder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Placeholder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Placeholder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Placeholder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Placeholder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Placeholder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Placeholder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Placeholder.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7593,15 +7515,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof Project.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Project.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Project.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Project.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Project.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Project.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Project.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Project.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -8756,15 +8675,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof Property.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Property.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Property.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Property.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Property.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Property.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Property.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Property.SignalSignatures[K]>): void;
 
         // Static methods
         static pop_superuser(): void;
@@ -9163,15 +9079,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof PropertyLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PropertyLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PropertyLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PropertyLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyLabel.SignalSignatures[K]>): void;
 
         // Methods
         get_append_colon(): boolean;
@@ -9477,15 +9390,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof PropertyShell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyShell.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PropertyShell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyShell.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PropertyShell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyShell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PropertyShell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyShell.SignalSignatures[K]>): void;
 
         // Methods
         get_custom_text(): string;
@@ -9714,15 +9624,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof Signal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Signal.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Signal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Signal.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Signal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Signal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Signal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Signal.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -9943,15 +9850,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof SignalEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalEditor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SignalEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalEditor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SignalEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalEditor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SignalEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalEditor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10048,15 +9952,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof SignalModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SignalModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SignalModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SignalModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalModel.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -10830,15 +10731,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Widget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Widget.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -11708,15 +11606,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof WidgetAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetAction.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11876,15 +11771,12 @@ export namespace Gladeui {
         // Signals
         /** @signal */
         connect<K extends keyof WidgetAdaptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetAdaptor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetAdaptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetAdaptor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetAdaptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetAdaptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetAdaptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetAdaptor.SignalSignatures[K]>): void;
 
         // Static methods
         /**

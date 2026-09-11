@@ -164,15 +164,12 @@ export namespace SugarGestures {
         // Signals
         /** @signal */
         connect<K extends keyof EventController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EventController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EventController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EventController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventController.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -295,15 +292,12 @@ export namespace SugarGestures {
         // Signals
         /** @signal */
         connect<K extends keyof LongPressController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LongPressController.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LongPressController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LongPressController.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LongPressController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LongPressController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LongPressController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LongPressController.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -361,15 +355,12 @@ export namespace SugarGestures {
         // Signals
         /** @signal */
         connect<K extends keyof RotateController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RotateController.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RotateController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RotateController.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RotateController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RotateController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RotateController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RotateController.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -441,15 +432,12 @@ export namespace SugarGestures {
         // Signals
         /** @signal */
         connect<K extends keyof SwipeController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwipeController.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SwipeController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwipeController.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SwipeController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SwipeController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SwipeController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SwipeController.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -526,15 +514,12 @@ export namespace SugarGestures {
         // Signals
         /** @signal */
         connect<K extends keyof TouchController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TouchController.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TouchController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TouchController.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TouchController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TouchController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TouchController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TouchController.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -612,15 +597,12 @@ export namespace SugarGestures {
         // Signals
         /** @signal */
         connect<K extends keyof ZoomController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ZoomController.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ZoomController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ZoomController.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ZoomController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ZoomController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ZoomController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ZoomController.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

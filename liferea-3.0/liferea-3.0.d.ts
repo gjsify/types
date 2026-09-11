@@ -406,15 +406,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -530,15 +527,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof Browser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Browser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Browser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Browser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Browser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Browser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -655,15 +649,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof BrowserTabs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BrowserTabs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BrowserTabs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BrowserTabs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BrowserTabs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BrowserTabs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BrowserTabs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BrowserTabs.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -729,15 +720,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof ContentView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContentView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContentView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContentView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentView.SignalSignatures[K]>): void;
     }
 
 
@@ -815,15 +803,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof FeedList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedList.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1052,15 +1037,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof Item.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Item.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1244,15 +1226,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof ItemList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ItemList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ItemList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ItemList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ItemList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ItemList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ItemList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ItemList.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1344,15 +1323,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof ItemListView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ItemListView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ItemListView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ItemListView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ItemListView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ItemListView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ItemListView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ItemListView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1433,15 +1409,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof NetworkMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetworkMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetworkMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetworkMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkMonitor.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1535,15 +1508,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Node.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1853,15 +1823,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof Shell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Shell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Shell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Shell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Shell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Shell.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1953,15 +1920,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof UpdateJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UpdateJob.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UpdateJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UpdateJob.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UpdateJob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UpdateJob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UpdateJob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UpdateJob.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2039,15 +2003,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof UpdateJobQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UpdateJobQueue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UpdateJobQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UpdateJobQueue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UpdateJobQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UpdateJobQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UpdateJobQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UpdateJobQueue.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2118,15 +2079,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof UpdateRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UpdateRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UpdateRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UpdateRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UpdateRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UpdateRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UpdateRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UpdateRequest.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2216,15 +2174,12 @@ export namespace Liferea {
         // Signals
         /** @signal */
         connect<K extends keyof UpdateResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UpdateResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UpdateResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UpdateResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UpdateResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UpdateResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UpdateResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UpdateResult.SignalSignatures[K]>): void;
     }
 
 

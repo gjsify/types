@@ -262,15 +262,12 @@ export namespace PackageKitPlugin {
         // Signals
         /** @signal */
         connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Backend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Backend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Backend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Backend.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -652,15 +649,12 @@ export namespace PackageKitPlugin {
         // Signals
         /** @signal */
         connect<K extends keyof BackendJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackendJob.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BackendJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackendJob.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BackendJob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackendJob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BackendJob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackendJob.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1038,15 +1032,12 @@ export namespace PackageKitPlugin {
         // Signals
         /** @signal */
         connect<K extends keyof Transaction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transaction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Transaction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transaction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Transaction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transaction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Transaction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transaction.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;

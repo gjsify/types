@@ -348,15 +348,12 @@ export namespace Gucharmap {
         // Signals
         /** @signal */
         connect<K extends keyof BlockChaptersModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockChaptersModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BlockChaptersModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockChaptersModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BlockChaptersModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockChaptersModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BlockChaptersModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockChaptersModel.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -438,15 +435,12 @@ export namespace Gucharmap {
         // Signals
         /** @signal */
         connect<K extends keyof BlockCodepointList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockCodepointList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BlockCodepointList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockCodepointList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BlockCodepointList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockCodepointList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BlockCodepointList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockCodepointList.SignalSignatures[K]>): void;
     }
 
 
@@ -481,15 +475,12 @@ export namespace Gucharmap {
         // Signals
         /** @signal */
         connect<K extends keyof ChaptersModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChaptersModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChaptersModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChaptersModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChaptersModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChaptersModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChaptersModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChaptersModel.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1539,15 +1530,12 @@ export namespace Gucharmap {
         // Signals
         /** @signal */
         connect<K extends keyof ChaptersView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChaptersView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChaptersView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChaptersView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChaptersView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChaptersView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChaptersView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChaptersView.SignalSignatures[K]>): void;
 
         // Methods
         get_selected(): string;
@@ -1920,15 +1908,12 @@ export namespace Gucharmap {
         // Signals
         /** @signal */
         connect<K extends keyof Charmap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Charmap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Charmap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Charmap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Charmap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Charmap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Charmap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Charmap.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2241,15 +2226,12 @@ export namespace Gucharmap {
         // Signals
         /** @signal */
         connect<K extends keyof Chartable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Chartable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Chartable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Chartable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Chartable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Chartable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Chartable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Chartable.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2507,15 +2489,12 @@ export namespace Gucharmap {
         // Signals
         /** @signal */
         connect<K extends keyof CodepointList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CodepointList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CodepointList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CodepointList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CodepointList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CodepointList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CodepointList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CodepointList.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2583,15 +2562,12 @@ export namespace Gucharmap {
         // Signals
         /** @signal */
         connect<K extends keyof ScriptChaptersModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptChaptersModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScriptChaptersModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptChaptersModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScriptChaptersModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptChaptersModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScriptChaptersModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptChaptersModel.SignalSignatures[K]>): void;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -2640,15 +2616,12 @@ export namespace Gucharmap {
         // Signals
         /** @signal */
         connect<K extends keyof ScriptCodepointList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptCodepointList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScriptCodepointList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptCodepointList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScriptCodepointList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptCodepointList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScriptCodepointList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptCodepointList.SignalSignatures[K]>): void;
 
         // Methods
         /**

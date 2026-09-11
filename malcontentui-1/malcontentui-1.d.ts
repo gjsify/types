@@ -188,15 +188,12 @@ export namespace MalcontentUi {
         // Signals
         /** @signal */
         connect<K extends keyof RestrictApplicationsDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RestrictApplicationsDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RestrictApplicationsDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RestrictApplicationsDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RestrictApplicationsDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RestrictApplicationsDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RestrictApplicationsDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RestrictApplicationsDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -385,15 +382,12 @@ export namespace MalcontentUi {
         // Signals
         /** @signal */
         connect<K extends keyof RestrictApplicationsSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RestrictApplicationsSelector.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RestrictApplicationsSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RestrictApplicationsSelector.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RestrictApplicationsSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RestrictApplicationsSelector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RestrictApplicationsSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RestrictApplicationsSelector.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -739,15 +733,12 @@ export namespace MalcontentUi {
         // Signals
         /** @signal */
         connect<K extends keyof UserControls.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserControls.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UserControls.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserControls.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UserControls.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserControls.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UserControls.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserControls.SignalSignatures[K]>): void;
 
         // Methods
         /**

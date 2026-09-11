@@ -214,15 +214,12 @@ export namespace GPluginGtk4 {
         // Signals
         /** @signal */
         connect<K extends keyof PluginPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginPage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -381,15 +378,12 @@ export namespace GPluginGtk4 {
         // Signals
         /** @signal */
         connect<K extends keyof PluginRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginRow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginRow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginRow.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -659,15 +653,12 @@ export namespace GPluginGtk4 {
         // Signals
         /** @signal */
         connect<K extends keyof PluginSettingsList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginSettingsList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginSettingsList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginSettingsList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginSettingsList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginSettingsList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginSettingsList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginSettingsList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -830,15 +821,12 @@ export namespace GPluginGtk4 {
         // Signals
         /** @signal */
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]>): void;
 
         // Methods
         /**

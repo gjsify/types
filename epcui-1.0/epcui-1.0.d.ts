@@ -173,15 +173,12 @@ export namespace EpcUi {
         // Signals
         /** @signal */
         connect<K extends keyof PasswordDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PasswordDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PasswordDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PasswordDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -357,15 +354,12 @@ export namespace EpcUi {
         // Signals
         /** @signal */
         connect<K extends keyof ProgressWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProgressWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProgressWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProgressWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressWindow.SignalSignatures[K]>): void;
 
         // Static methods
         /**

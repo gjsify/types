@@ -58,15 +58,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedAtomFormatter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedAtomFormatter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedAtomFormatter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedAtomFormatter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedAtomFormatter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedAtomFormatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedAtomFormatter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedAtomFormatter.SignalSignatures[K]>): void;
     }
 
 
@@ -111,15 +108,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedChannel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedChannel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -503,15 +497,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedEnclosure.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedEnclosure.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedEnclosure.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedEnclosure.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedEnclosure.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedEnclosure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedEnclosure.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedEnclosure.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -612,15 +603,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedFormatter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedFormatter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedFormatter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedFormatter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedFormatter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedFormatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedFormatter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedFormatter.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -712,15 +700,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -953,15 +938,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedParser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1020,15 +1002,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedRssFormatter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedRssFormatter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedRssFormatter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedRssFormatter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedRssFormatter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedRssFormatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedRssFormatter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedRssFormatter.SignalSignatures[K]>): void;
     }
 
 
@@ -1065,15 +1044,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedsGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedsGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedsGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedsGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedsGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedsGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedsGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedsGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1161,15 +1137,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedsPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedsPool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedsPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedsPool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedsPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedsPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedsPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedsPool.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1266,15 +1239,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedsPublisher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedsPublisher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedsPublisher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedsPublisher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedsPublisher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedsPublisher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedsPublisher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedsPublisher.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1385,15 +1355,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedsStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedsStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedsStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedsStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedsStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedsStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedsStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedsStore.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1510,15 +1477,12 @@ export namespace Grss {
         // Signals
         /** @signal */
         connect<K extends keyof FeedsSubscriber.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedsSubscriber.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FeedsSubscriber.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeedsSubscriber.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FeedsSubscriber.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedsSubscriber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FeedsSubscriber.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeedsSubscriber.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

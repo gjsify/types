@@ -4095,15 +4095,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof Address.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Address.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Address.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Address.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Address.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Address.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Address.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Address.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4250,15 +4247,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof BlockFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BlockFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlockFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BlockFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BlockFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlockFile.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4396,15 +4390,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof CertDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CertDB.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CertDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CertDB.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CertDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CertDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CertDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CertDB.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4551,15 +4542,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof CipherContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CipherContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CipherContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CipherContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CipherContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CipherContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CipherContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CipherContext.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -4959,15 +4947,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof DB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DB.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DB.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DB.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -5234,15 +5219,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof DataCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataCache.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5471,15 +5453,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof DataWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataWrapper.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataWrapper.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataWrapper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataWrapper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataWrapper.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -6193,15 +6172,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof FilterDriver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterDriver.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilterDriver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterDriver.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilterDriver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterDriver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilterDriver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterDriver.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6361,15 +6337,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof FilterInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterInputStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilterInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterInputStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilterInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilterInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterInputStream.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6434,15 +6407,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof FilterOutputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterOutputStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilterOutputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterOutputStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilterOutputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterOutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilterOutputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterOutputStream.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6634,15 +6604,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof Folder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Folder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Folder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Folder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Folder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Folder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Folder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Folder.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -8162,15 +8129,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof FolderSummary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FolderSummary.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FolderSummary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FolderSummary.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FolderSummary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FolderSummary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FolderSummary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FolderSummary.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -8643,15 +8607,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof FolderThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FolderThread.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FolderThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FolderThread.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FolderThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FolderThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FolderThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FolderThread.SignalSignatures[K]>): void;
 
         // Methods
         dump(): number;
@@ -8753,15 +8714,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof GpgContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GpgContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GpgContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GpgContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GpgContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GpgContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GpgContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GpgContext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8932,15 +8890,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof HTMLParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HTMLParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HTMLParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HTMLParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HTMLParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HTMLParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HTMLParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HTMLParser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9042,15 +8997,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof Index.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Index.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Index.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -9215,15 +9167,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof IndexCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IndexCursor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IndexCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IndexCursor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IndexCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IndexCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IndexCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IndexCursor.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -9274,15 +9223,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof IndexName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IndexName.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IndexName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IndexName.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IndexName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IndexName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IndexName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IndexName.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -9357,15 +9303,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof InternetAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InternetAddress.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InternetAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InternetAddress.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InternetAddress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InternetAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InternetAddress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InternetAddress.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -9470,15 +9413,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof KeyFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KeyFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KeyFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KeyFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyFile.SignalSignatures[K]>): void;
 
         // Methods
         ["delete"](): number;
@@ -9540,15 +9480,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof KeyTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyTable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KeyTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyTable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KeyTable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyTable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KeyTable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyTable.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9693,15 +9630,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof LocalSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocalSettings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LocalSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LocalSettings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LocalSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocalSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LocalSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LocalSettings.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9839,15 +9773,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof Medium.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Medium.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Medium.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Medium.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Medium.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Medium.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Medium.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Medium.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -10353,15 +10284,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MessageInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MessageInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MessageInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MessageInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageInfo.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -11567,15 +11495,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MessageInfoBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageInfoBase.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MessageInfoBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageInfoBase.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MessageInfoBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageInfoBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MessageInfoBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageInfoBase.SignalSignatures[K]>): void;
     }
 
 
@@ -11654,15 +11579,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilter.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -11788,15 +11710,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterBasic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterBasic.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterBasic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterBasic.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterBasic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterBasic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterBasic.SignalSignatures[K]>): void;
     }
 
 
@@ -11836,15 +11755,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterBestenc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterBestenc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterBestenc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterBestenc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterBestenc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterBestenc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterBestenc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterBestenc.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11905,15 +11821,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterCRLF.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterCRLF.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterCRLF.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterCRLF.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterCRLF.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterCRLF.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterCRLF.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterCRLF.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11969,15 +11882,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterCanon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterCanon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterCanon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterCanon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterCanon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterCanon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterCanon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterCanon.SignalSignatures[K]>): void;
     }
 
 
@@ -12017,15 +11927,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterCharset.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterCharset.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterCharset.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterCharset.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterCharset.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterCharset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterCharset.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterCharset.SignalSignatures[K]>): void;
     }
 
 
@@ -12065,15 +11972,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterEnriched.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterEnriched.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterEnriched.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterEnriched.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterEnriched.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterEnriched.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterEnriched.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterEnriched.SignalSignatures[K]>): void;
     }
 
 
@@ -12110,15 +12014,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterFrom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterFrom.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterFrom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterFrom.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterFrom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterFrom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterFrom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterFrom.SignalSignatures[K]>): void;
     }
 
 
@@ -12158,15 +12059,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterGZip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterGZip.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterGZip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterGZip.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterGZip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterGZip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterGZip.SignalSignatures[K]>): void;
     }
 
 
@@ -12203,15 +12101,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterHTML.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterHTML.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterHTML.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterHTML.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterHTML.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterHTML.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterHTML.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterHTML.SignalSignatures[K]>): void;
     }
 
 
@@ -12251,15 +12146,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterIndex.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterIndex.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterIndex.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterIndex.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterIndex.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterIndex.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterIndex.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterIndex.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12312,15 +12204,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterLinewrap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterLinewrap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterLinewrap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterLinewrap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterLinewrap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterLinewrap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterLinewrap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterLinewrap.SignalSignatures[K]>): void;
     }
 
 
@@ -12357,15 +12246,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterPgp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterPgp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterPgp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterPgp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterPgp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterPgp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterPgp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterPgp.SignalSignatures[K]>): void;
     }
 
 
@@ -12405,15 +12291,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterPreview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterPreview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterPreview.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12478,15 +12361,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterProgress.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterProgress.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterProgress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterProgress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterProgress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterProgress.SignalSignatures[K]>): void;
     }
 
 
@@ -12526,15 +12406,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterToHTML.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterToHTML.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterToHTML.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterToHTML.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterToHTML.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterToHTML.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterToHTML.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterToHTML.SignalSignatures[K]>): void;
     }
 
 
@@ -12574,15 +12451,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterWindows.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterWindows.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterWindows.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterWindows.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterWindows.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterWindows.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterWindows.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterWindows.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12640,15 +12514,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeFilterYenc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterYenc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeFilterYenc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterYenc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeFilterYenc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterYenc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeFilterYenc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterYenc.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12731,15 +12602,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeMessage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeMessage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeMessage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12961,15 +12829,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimeParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimeParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimeParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimeParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeParser.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -13386,15 +13251,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MimePart.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimePart.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MimePart.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimePart.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MimePart.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimePart.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MimePart.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimePart.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -13682,15 +13544,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof Multipart.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Multipart.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Multipart.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Multipart.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Multipart.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Multipart.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Multipart.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Multipart.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -13869,15 +13728,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MultipartEncrypted.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultipartEncrypted.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MultipartEncrypted.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultipartEncrypted.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MultipartEncrypted.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultipartEncrypted.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MultipartEncrypted.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultipartEncrypted.SignalSignatures[K]>): void;
     }
 
 
@@ -13924,15 +13780,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof MultipartSigned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultipartSigned.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MultipartSigned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultipartSigned.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MultipartSigned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultipartSigned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MultipartSigned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultipartSigned.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13998,15 +13851,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof NNTPAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NNTPAddress.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NNTPAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NNTPAddress.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NNTPAddress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NNTPAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NNTPAddress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NNTPAddress.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14065,15 +13915,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof NullOutputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullOutputStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NullOutputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullOutputStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NullOutputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NullOutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NullOutputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NullOutputStream.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14163,15 +14010,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof OfflineFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OfflineFolder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OfflineFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OfflineFolder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OfflineFolder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OfflineFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OfflineFolder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OfflineFolder.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -14379,15 +14223,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof OfflineSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OfflineSettings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OfflineSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OfflineSettings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OfflineSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OfflineSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OfflineSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OfflineSettings.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14517,11 +14358,9 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect_after<K extends keyof OfflineStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OfflineStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OfflineStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OfflineStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OfflineStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OfflineStore.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -14725,11 +14564,9 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect_after<K extends keyof Operation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Operation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Operation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Operation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Operation.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -14816,15 +14653,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof PartitionTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PartitionTable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PartitionTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PartitionTable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PartitionTable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PartitionTable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PartitionTable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PartitionTable.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14967,15 +14801,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SExp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SExp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SExp.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -15110,15 +14941,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SMIMEContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SMIMEContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SMIMEContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SMIMEContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SMIMEContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SMIMEContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SMIMEContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SMIMEContext.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -15250,15 +15078,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof Sasl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sasl.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Sasl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sasl.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Sasl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sasl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Sasl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sasl.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -15564,15 +15389,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslAnonymous.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslAnonymous.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslAnonymous.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslAnonymous.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslAnonymous.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslAnonymous.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslAnonymous.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslAnonymous.SignalSignatures[K]>): void;
     }
 
 
@@ -15612,15 +15434,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslCramMd5.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslCramMd5.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslCramMd5.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslCramMd5.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslCramMd5.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslCramMd5.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslCramMd5.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslCramMd5.SignalSignatures[K]>): void;
     }
 
 
@@ -15660,15 +15479,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslDigestMd5.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslDigestMd5.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslDigestMd5.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslDigestMd5.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslDigestMd5.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslDigestMd5.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslDigestMd5.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslDigestMd5.SignalSignatures[K]>): void;
     }
 
 
@@ -15708,15 +15524,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslGssapi.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslGssapi.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslGssapi.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslGssapi.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslGssapi.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslGssapi.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslGssapi.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslGssapi.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -15773,15 +15586,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslLogin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslLogin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslLogin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslLogin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslLogin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslLogin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslLogin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslLogin.SignalSignatures[K]>): void;
     }
 
 
@@ -15821,15 +15631,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslNTLM.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslNTLM.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslNTLM.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslNTLM.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslNTLM.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslNTLM.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslNTLM.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslNTLM.SignalSignatures[K]>): void;
     }
 
 
@@ -15869,15 +15676,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslPOPB4SMTP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslPOPB4SMTP.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslPOPB4SMTP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslPOPB4SMTP.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslPOPB4SMTP.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslPOPB4SMTP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslPOPB4SMTP.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslPOPB4SMTP.SignalSignatures[K]>): void;
     }
 
 
@@ -15917,15 +15721,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslPlain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslPlain.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslPlain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslPlain.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslPlain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslPlain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslPlain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslPlain.SignalSignatures[K]>): void;
     }
 
 
@@ -15965,15 +15766,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslXOAuth2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslXOAuth2.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslXOAuth2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslXOAuth2.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslXOAuth2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslXOAuth2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslXOAuth2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslXOAuth2.SignalSignatures[K]>): void;
     }
 
 
@@ -16013,15 +15811,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslXOAuth2Google.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslXOAuth2Google.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslXOAuth2Google.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslXOAuth2Google.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslXOAuth2Google.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslXOAuth2Google.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslXOAuth2Google.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslXOAuth2Google.SignalSignatures[K]>): void;
     }
 
 
@@ -16061,15 +15856,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslXOAuth2Outlook.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslXOAuth2Outlook.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslXOAuth2Outlook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslXOAuth2Outlook.SignalSignatures[K]>): void;
     }
 
 
@@ -16109,15 +15901,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslXOAuth2Yahoo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SaslXOAuth2Yahoo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslXOAuth2Yahoo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SaslXOAuth2Yahoo.SignalSignatures[K]>): void;
     }
 
 
@@ -16286,15 +16075,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -17140,15 +16926,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -17925,15 +17708,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -18095,11 +17875,9 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect_after<K extends keyof Store.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Store.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Store.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Store.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Store.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Store.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -19276,15 +19054,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof StoreDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreDB.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StoreDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreDB.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StoreDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoreDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StoreDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoreDB.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -19575,15 +19350,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof StoreSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreSearch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StoreSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreSearch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StoreSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoreSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StoreSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoreSearch.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19856,15 +19628,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof StoreSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreSettings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StoreSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreSettings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StoreSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoreSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StoreSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoreSettings.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19951,15 +19720,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof StoreSummary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreSummary.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StoreSummary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreSummary.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StoreSummary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoreSummary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StoreSummary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoreSummary.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -20190,15 +19956,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Stream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Stream.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -20485,15 +20248,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof StreamBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamBuffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StreamBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamBuffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StreamBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StreamBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamBuffer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -20710,15 +20470,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof StreamFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StreamFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StreamFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StreamFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamFilter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -20898,15 +20655,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof StreamFs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamFs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StreamFs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamFs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StreamFs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamFs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StreamFs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamFs.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21071,15 +20825,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof StreamMem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamMem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StreamMem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamMem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StreamMem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamMem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StreamMem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamMem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21265,15 +21016,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof StreamNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamNull.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StreamNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamNull.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StreamNull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StreamNull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamNull.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21441,15 +21189,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof StreamProcess.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamProcess.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StreamProcess.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamProcess.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StreamProcess.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamProcess.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StreamProcess.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamProcess.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21615,15 +21360,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof TextIndex.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextIndex.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextIndex.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextIndex.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextIndex.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextIndex.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextIndex.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextIndex.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -21682,15 +21424,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof TextIndexCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextIndexCursor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextIndexCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextIndexCursor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextIndexCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextIndexCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextIndexCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextIndexCursor.SignalSignatures[K]>): void;
     }
 
 
@@ -21725,15 +21464,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof TextIndexKeyCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextIndexKeyCursor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextIndexKeyCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextIndexKeyCursor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextIndexKeyCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextIndexKeyCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextIndexKeyCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextIndexKeyCursor.SignalSignatures[K]>): void;
     }
 
 
@@ -21768,15 +21504,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof TextIndexName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextIndexName.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextIndexName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextIndexName.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextIndexName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextIndexName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextIndexName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextIndexName.SignalSignatures[K]>): void;
     }
 
 
@@ -21839,11 +21572,9 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect_after<K extends keyof Transport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transport.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Transport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Transport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transport.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -22099,15 +21830,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof VTrashFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VTrashFolder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VTrashFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VTrashFolder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VTrashFolder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VTrashFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VTrashFolder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VTrashFolder.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22203,15 +21931,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof VeeFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeFolder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VeeFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeFolder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VeeFolder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VeeFolder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeFolder.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22380,15 +22105,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof VeeMessageInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeMessageInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VeeMessageInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeMessageInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VeeMessageInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeMessageInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VeeMessageInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeMessageInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22458,11 +22180,9 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect_after<K extends keyof VeeStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VeeStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VeeStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeStore.SignalSignatures[K]>): void;
 
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
@@ -22519,15 +22239,12 @@ export namespace Camel {
         // Signals
         /** @signal */
         connect<K extends keyof VeeSummary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeSummary.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VeeSummary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeSummary.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VeeSummary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeSummary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VeeSummary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeSummary.SignalSignatures[K]>): void;
     }
 
 

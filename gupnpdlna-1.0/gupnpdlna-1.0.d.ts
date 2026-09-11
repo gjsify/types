@@ -104,15 +104,12 @@ export namespace GUPnPDLNA {
         // Signals
         /** @signal */
         connect<K extends keyof Discoverer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Discoverer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Discoverer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Discoverer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Discoverer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Discoverer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -228,15 +225,12 @@ export namespace GUPnPDLNA {
         // Signals
         /** @signal */
         connect<K extends keyof Information.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Information.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Information.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Information.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Information.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Information.SignalSignatures[K]>): void;
 
         // Methods
         get_info(): GstPbutils.DiscovererInfo;
@@ -323,15 +317,12 @@ export namespace GUPnPDLNA {
         // Signals
         /** @signal */
         connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Profile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Profile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Profile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Profile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Profile.SignalSignatures[K]>): void;
 
         // Methods
         /**

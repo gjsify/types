@@ -103,15 +103,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof ArrowFileReader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrowFileReader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ArrowFileReader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrowFileReader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ArrowFileReader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArrowFileReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ArrowFileReader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArrowFileReader.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -209,15 +206,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof ArrowFileWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrowFileWriter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ArrowFileWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrowFileWriter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ArrowFileWriter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArrowFileWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ArrowFileWriter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArrowFileWriter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -271,15 +265,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof WriterProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WriterProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WriterProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WriterProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WriterProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WriterProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WriterProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WriterProperties.SignalSignatures[K]>): void;
 
         // Methods
         /**

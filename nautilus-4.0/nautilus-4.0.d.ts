@@ -230,15 +230,12 @@ export namespace Nautilus {
         // Signals
         /** @signal */
         connect<K extends keyof Column.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Column.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Column.SignalSignatures[K]>): void;
     }
 
 
@@ -275,15 +272,12 @@ export namespace Nautilus {
         // Signals
         /** @signal */
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Menu.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -393,15 +387,12 @@ export namespace Nautilus {
         // Signals
         /** @signal */
         connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -482,15 +473,12 @@ export namespace Nautilus {
         // Signals
         /** @signal */
         connect<K extends keyof PropertiesItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertiesItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PropertiesItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertiesItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PropertiesItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertiesItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PropertiesItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertiesItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -556,15 +544,12 @@ export namespace Nautilus {
         // Signals
         /** @signal */
         connect<K extends keyof PropertiesModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertiesModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PropertiesModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertiesModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PropertiesModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertiesModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PropertiesModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertiesModel.SignalSignatures[K]>): void;
 
         // Methods
         /**

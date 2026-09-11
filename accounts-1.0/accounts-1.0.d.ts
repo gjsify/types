@@ -285,15 +285,12 @@ export namespace Accounts {
         // Signals
         /** @signal */
         connect<K extends keyof Account.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Account.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Account.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Account.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Account.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Account.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -714,15 +711,12 @@ export namespace Accounts {
         // Signals
         /** @signal */
         connect<K extends keyof AccountService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AccountService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AccountService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AccountService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountService.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -988,15 +982,12 @@ export namespace Accounts {
         // Signals
         /** @signal */
         connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Manager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Manager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Manager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Manager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Manager.SignalSignatures[K]>): void;
 
         // Static methods
         /**

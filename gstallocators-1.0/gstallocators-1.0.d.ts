@@ -254,15 +254,12 @@ export namespace GstAllocators {
         // Signals
         /** @signal */
         connect<K extends keyof DRMDumbAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DRMDumbAllocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DRMDumbAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DRMDumbAllocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DRMDumbAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DRMDumbAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DRMDumbAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DRMDumbAllocator.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -331,15 +328,12 @@ export namespace GstAllocators {
         // Signals
         /** @signal */
         connect<K extends keyof DmaBufAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DmaBufAllocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DmaBufAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DmaBufAllocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DmaBufAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DmaBufAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DmaBufAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DmaBufAllocator.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -401,15 +395,12 @@ export namespace GstAllocators {
         // Signals
         /** @signal */
         connect<K extends keyof FdAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FdAllocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FdAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FdAllocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FdAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FdAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FdAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FdAllocator.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -480,15 +471,12 @@ export namespace GstAllocators {
         // Signals
         /** @signal */
         connect<K extends keyof ShmAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShmAllocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShmAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShmAllocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShmAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShmAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShmAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShmAllocator.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -545,15 +533,12 @@ export namespace GstAllocators {
         // Signals
         /** @signal */
         connect<K extends keyof UdmabufAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UdmabufAllocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UdmabufAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UdmabufAllocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UdmabufAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UdmabufAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UdmabufAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UdmabufAllocator.SignalSignatures[K]>): void;
 
         // Static methods
         /**

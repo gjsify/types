@@ -496,15 +496,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPAddressPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPAddressPool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPAddressPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPAddressPool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPAddressPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPAddressPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPAddressPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPAddressPool.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -614,15 +611,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPAuth.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPAuth.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPAuth.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPAuth.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPAuth.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPAuth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPAuth.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPAuth.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1036,15 +1030,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPClient.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1941,15 +1932,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPMedia.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPMedia.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPMedia.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPMedia.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPMedia.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPMedia.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPMedia.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPMedia.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2959,15 +2947,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPMediaFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPMediaFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPMediaFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPMediaFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPMediaFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPMediaFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPMediaFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPMediaFactory.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3479,15 +3464,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPMediaFactoryURI.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPMediaFactoryURI.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPMediaFactoryURI.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPMediaFactoryURI.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPMediaFactoryURI.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPMediaFactoryURI.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPMediaFactoryURI.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPMediaFactoryURI.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3538,15 +3520,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPMountPoints.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPMountPoints.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPMountPoints.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPMountPoints.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPMountPoints.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPMountPoints.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPMountPoints.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPMountPoints.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3634,15 +3613,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPOnvifClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPOnvifClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPOnvifClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPOnvifClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPOnvifClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPOnvifClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPOnvifClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPOnvifClient.SignalSignatures[K]>): void;
     }
 
 
@@ -3697,15 +3673,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPOnvifMedia.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPOnvifMedia.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPOnvifMedia.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPOnvifMedia.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPOnvifMedia.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPOnvifMedia.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPOnvifMedia.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPOnvifMedia.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3790,15 +3763,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPOnvifMediaFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPOnvifMediaFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPOnvifMediaFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPOnvifMediaFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPOnvifMediaFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPOnvifMediaFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPOnvifMediaFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPOnvifMediaFactory.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3942,15 +3912,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPOnvifServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPOnvifServer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPOnvifServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPOnvifServer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPOnvifServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPOnvifServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPOnvifServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPOnvifServer.SignalSignatures[K]>): void;
     }
 
 
@@ -4069,15 +4036,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPServer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPServer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPServer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPServer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPServer.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4379,15 +4343,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPSession.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPSession.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPSession.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4552,15 +4513,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPSessionMedia.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPSessionMedia.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPSessionMedia.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPSessionMedia.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPSessionMedia.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPSessionMedia.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPSessionMedia.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPSessionMedia.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4698,15 +4656,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPSessionPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPSessionPool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPSessionPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPSessionPool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPSessionPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPSessionPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPSessionPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPSessionPool.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4877,15 +4832,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPStream.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5579,15 +5531,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPStreamTransport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPStreamTransport.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPStreamTransport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPStreamTransport.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPStreamTransport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPStreamTransport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPStreamTransport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPStreamTransport.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5787,15 +5736,12 @@ export namespace GstRtspServer {
         // Signals
         /** @signal */
         connect<K extends keyof RTSPThreadPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPThreadPool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RTSPThreadPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTSPThreadPool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RTSPThreadPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPThreadPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RTSPThreadPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTSPThreadPool.SignalSignatures[K]>): void;
 
         // Static methods
         /**

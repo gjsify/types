@@ -373,15 +373,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof AppInfoManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppInfoManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AppInfoManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppInfoManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AppInfoManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppInfoManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AppInfoManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppInfoManager.SignalSignatures[K]>): void;
 
         // Static methods
         static get_instance(): AppInfoManager;
@@ -521,15 +518,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotatedIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotatedIcon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotatedIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotatedIcon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotatedIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotatedIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotatedIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotatedIcon.SignalSignatures[K]>): void;
 
         // Methods
         to_string(): string;
@@ -602,15 +596,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof Inspector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Inspector.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Inspector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Inspector.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Inspector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Inspector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Inspector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Inspector.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -705,15 +696,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof LauncherEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LauncherEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LauncherEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LauncherEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LauncherEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LauncherEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LauncherEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LauncherEntry.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -800,15 +788,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof LauncherFavorites.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LauncherFavorites.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LauncherFavorites.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LauncherFavorites.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LauncherFavorites.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LauncherFavorites.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LauncherFavorites.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LauncherFavorites.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -892,15 +877,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof ActivationResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActivationResponse.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ActivationResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActivationResponse.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ActivationResponse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActivationResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ActivationResponse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActivationResponse.SignalSignatures[K]>): void;
     }
 
 
@@ -973,15 +955,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof Category.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Category.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Category.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Category.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Category.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Category.SignalSignatures[K]>): void;
     }
 
 
@@ -1076,15 +1055,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Filter.SignalSignatures[K]>): void;
     }
 
 
@@ -1162,15 +1138,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof FilterOption.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterOption.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilterOption.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterOption.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilterOption.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterOption.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilterOption.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterOption.SignalSignatures[K]>): void;
     }
 
 
@@ -1229,15 +1202,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof OptionsFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OptionsFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OptionsFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OptionsFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OptionsFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OptionsFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OptionsFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OptionsFilter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1306,15 +1276,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof RadioOptionFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RadioOptionFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RadioOptionFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RadioOptionFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RadioOptionFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RadioOptionFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RadioOptionFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RadioOptionFilter.SignalSignatures[K]>): void;
 
         // Methods
         get_active_option(): FilterOption;
@@ -1366,15 +1333,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof CheckOptionFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CheckOptionFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CheckOptionFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CheckOptionFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CheckOptionFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CheckOptionFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CheckOptionFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CheckOptionFilter.SignalSignatures[K]>): void;
     }
 
 
@@ -1423,15 +1387,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof CheckOptionFilterCompact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CheckOptionFilterCompact.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CheckOptionFilterCompact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CheckOptionFilterCompact.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CheckOptionFilterCompact.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CheckOptionFilterCompact.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CheckOptionFilterCompact.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CheckOptionFilterCompact.SignalSignatures[K]>): void;
     }
 
 
@@ -1483,15 +1444,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof RatingsFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RatingsFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RatingsFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RatingsFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RatingsFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RatingsFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RatingsFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RatingsFilter.SignalSignatures[K]>): void;
     }
 
 
@@ -1540,15 +1498,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof MultiRangeFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiRangeFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MultiRangeFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiRangeFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MultiRangeFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiRangeFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MultiRangeFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiRangeFilter.SignalSignatures[K]>): void;
 
         // Methods
         get_first_active(): FilterOption;
@@ -1601,15 +1556,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1692,15 +1644,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof LensSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LensSearch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LensSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LensSearch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LensSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LensSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LensSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LensSearch.SignalSignatures[K]>): void;
 
         // Methods
         emit_finished(): void;
@@ -1858,15 +1807,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof Lens.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lens.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Lens.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lens.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Lens.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Lens.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Lens.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Lens.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1952,15 +1898,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof Preview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Preview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Preview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Preview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preview.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2110,15 +2053,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof PreviewAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviewAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreviewAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviewAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreviewAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreviewAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreviewAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreviewAction.SignalSignatures[K]>): void;
 
         /**
          * Build an externalized form of `self` which can be used together with
@@ -2231,15 +2171,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof InfoHint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoHint.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InfoHint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoHint.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InfoHint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfoHint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InfoHint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfoHint.SignalSignatures[K]>): void;
     }
 
 
@@ -2282,15 +2219,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof GenericPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GenericPreview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GenericPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GenericPreview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GenericPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GenericPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GenericPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GenericPreview.SignalSignatures[K]>): void;
     }
 
 
@@ -2363,15 +2297,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof ApplicationPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationPreview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ApplicationPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationPreview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ApplicationPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ApplicationPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationPreview.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2458,15 +2389,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof MusicPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MusicPreview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MusicPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MusicPreview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MusicPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MusicPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MusicPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MusicPreview.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2522,15 +2450,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof MoviePreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MoviePreview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MoviePreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MoviePreview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MoviePreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MoviePreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MoviePreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MoviePreview.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2597,15 +2522,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof SocialPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SocialPreview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SocialPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SocialPreview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SocialPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SocialPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SocialPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SocialPreview.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2679,15 +2601,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof SocialPreviewComment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SocialPreviewComment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SocialPreviewComment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SocialPreviewComment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SocialPreviewComment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SocialPreviewComment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SocialPreviewComment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SocialPreviewComment.SignalSignatures[K]>): void;
     }
 
 
@@ -2743,15 +2662,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof AsyncPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncPreview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AsyncPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncPreview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AsyncPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AsyncPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncPreview.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2900,15 +2816,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof Scope.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scope.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Scope.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scope.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Scope.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Scope.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scope.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3030,15 +2943,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof TrackMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackMetadata.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TrackMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackMetadata.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TrackMetadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TrackMetadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackMetadata.SignalSignatures[K]>): void;
     }
 
 
@@ -3122,15 +3032,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof Playlist.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Playlist.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Playlist.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Playlist.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Playlist.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Playlist.SignalSignatures[K]>): void;
     }
 
 
@@ -3311,15 +3218,12 @@ export namespace Unity {
         // Signals
         /** @signal */
         connect<K extends keyof MusicPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MusicPlayer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MusicPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MusicPlayer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MusicPlayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MusicPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MusicPlayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MusicPlayer.SignalSignatures[K]>): void;
 
         // Methods
         ["export"](): void;

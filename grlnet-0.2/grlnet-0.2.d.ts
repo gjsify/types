@@ -139,15 +139,12 @@ export namespace GrlNet {
         // Signals
         /** @signal */
         connect<K extends keyof Wc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Wc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Wc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Wc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Wc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Wc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Wc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Wc.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;

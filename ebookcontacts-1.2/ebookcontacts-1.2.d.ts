@@ -1847,15 +1847,12 @@ export namespace EBookContacts {
         // Signals
         /** @signal */
         connect<K extends keyof BookIndicesUpdater.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookIndicesUpdater.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookIndicesUpdater.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookIndicesUpdater.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookIndicesUpdater.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookIndicesUpdater.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookIndicesUpdater.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookIndicesUpdater.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3945,15 +3942,12 @@ export namespace EBookContacts {
         // Signals
         /** @signal */
         connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Contact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Contact.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Contact.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Contact.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Contact.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4165,15 +4159,12 @@ export namespace EBookContacts {
         // Signals
         /** @signal */
         connect<K extends keyof SourceBackendSummarySetup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceBackendSummarySetup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SourceBackendSummarySetup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceBackendSummarySetup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SourceBackendSummarySetup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceBackendSummarySetup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SourceBackendSummarySetup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceBackendSummarySetup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4265,15 +4256,12 @@ export namespace EBookContacts {
         // Signals
         /** @signal */
         connect<K extends keyof VCard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VCard.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VCard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VCard.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VCard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VCard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VCard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VCard.SignalSignatures[K]>): void;
 
         // Static methods
         /**

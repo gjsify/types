@@ -201,15 +201,12 @@ export namespace GstHip {
         // Signals
         /** @signal */
         connect<K extends keyof HipAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HipAllocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HipAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HipAllocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HipAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HipAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HipAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HipAllocator.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -290,15 +287,12 @@ export namespace GstHip {
         // Signals
         /** @signal */
         connect<K extends keyof HipBufferPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HipBufferPool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HipBufferPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HipBufferPool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HipBufferPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HipBufferPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HipBufferPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HipBufferPool.SignalSignatures[K]>): void;
     }
 
 
@@ -383,15 +377,12 @@ export namespace GstHip {
         // Signals
         /** @signal */
         connect<K extends keyof HipDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HipDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HipDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HipDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HipDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HipDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HipDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HipDevice.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -470,15 +461,12 @@ export namespace GstHip {
         // Signals
         /** @signal */
         connect<K extends keyof HipEventPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HipEventPool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HipEventPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HipEventPool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HipEventPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HipEventPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HipEventPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HipEventPool.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -531,15 +519,12 @@ export namespace GstHip {
         // Signals
         /** @signal */
         connect<K extends keyof HipPoolAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HipPoolAllocator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HipPoolAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HipPoolAllocator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HipPoolAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HipPoolAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HipPoolAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HipPoolAllocator.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -917,15 +917,12 @@ export namespace Zeitgeist {
         // Signals
         /** @signal */
         connect<K extends keyof DataSourceRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSourceRegistry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataSourceRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSourceRegistry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataSourceRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSourceRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataSourceRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSourceRegistry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1070,15 +1067,12 @@ export namespace Zeitgeist {
         // Signals
         /** @signal */
         connect<K extends keyof Index.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Index.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Index.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1204,15 +1198,12 @@ export namespace Zeitgeist {
         // Signals
         /** @signal */
         connect<K extends keyof Log.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Log.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Log.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Log.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Log.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Log.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default(): Log;
@@ -1556,15 +1547,12 @@ export namespace Zeitgeist {
         // Signals
         /** @signal */
         connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Monitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Monitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Monitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]>): void;
 
         // Methods
         get_templates(): Event[];
@@ -1719,15 +1707,12 @@ export namespace Zeitgeist {
         // Signals
         /** @signal */
         connect<K extends keyof QueuedProxyWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QueuedProxyWrapper.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof QueuedProxyWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QueuedProxyWrapper.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof QueuedProxyWrapper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<QueuedProxyWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof QueuedProxyWrapper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<QueuedProxyWrapper.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1808,15 +1793,12 @@ export namespace Zeitgeist {
         // Signals
         /** @signal */
         connect<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<QueuedProxyWrapperQueuedMethod.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>): void;
 
         // Methods
         get_queued_method(): [GLib.SourceFunc, null];
@@ -1906,15 +1888,12 @@ export namespace Zeitgeist {
         // Signals
         /** @signal */
         connect<K extends keyof DataSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DataSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DataSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DataSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSource.SignalSignatures[K]>): void;
 
         // Methods
         to_variant(): GLib.Variant;
@@ -2048,15 +2027,12 @@ export namespace Zeitgeist {
         // Signals
         /** @signal */
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Event.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2243,15 +2219,12 @@ export namespace Zeitgeist {
         // Signals
         /** @signal */
         connect<K extends keyof Subject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Subject.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Subject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Subject.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Subject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Subject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Subject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Subject.SignalSignatures[K]>): void;
 
         // Methods
         to_variant(): GLib.Variant;
@@ -2380,15 +2353,12 @@ export namespace Zeitgeist {
         // Signals
         /** @signal */
         connect<K extends keyof TimeRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimeRange.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TimeRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimeRange.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TimeRange.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimeRange.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TimeRange.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimeRange.SignalSignatures[K]>): void;
 
         // Methods
         to_variant(): GLib.Variant;
@@ -2439,15 +2409,12 @@ export namespace Zeitgeist {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleResultSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleResultSet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleResultSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleResultSet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleResultSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleResultSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleResultSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleResultSet.SignalSignatures[K]>): void;
 
         size(): number;
 

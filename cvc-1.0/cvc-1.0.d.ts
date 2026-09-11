@@ -137,15 +137,12 @@ export namespace Cvc {
         // Signals
         /** @signal */
         connect<K extends keyof ChannelMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChannelMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChannelMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChannelMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChannelMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChannelMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChannelMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChannelMap.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -304,15 +301,12 @@ export namespace Cvc {
         // Signals
         /** @signal */
         connect<K extends keyof MixerCard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerCard.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MixerCard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerCard.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MixerCard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerCard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MixerCard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerCard.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -482,15 +476,12 @@ export namespace Cvc {
         // Signals
         /** @signal */
         connect<K extends keyof MixerControl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerControl.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MixerControl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerControl.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MixerControl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerControl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MixerControl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerControl.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -741,15 +732,12 @@ export namespace Cvc {
         // Signals
         /** @signal */
         connect<K extends keyof MixerEventRole.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerEventRole.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MixerEventRole.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerEventRole.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MixerEventRole.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerEventRole.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MixerEventRole.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerEventRole.SignalSignatures[K]>): void;
     }
 
 
@@ -804,15 +792,12 @@ export namespace Cvc {
         // Signals
         /** @signal */
         connect<K extends keyof MixerSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerSink.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MixerSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerSink.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MixerSink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MixerSink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerSink.SignalSignatures[K]>): void;
     }
 
 
@@ -867,15 +852,12 @@ export namespace Cvc {
         // Signals
         /** @signal */
         connect<K extends keyof MixerSinkInput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerSinkInput.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MixerSinkInput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerSinkInput.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MixerSinkInput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerSinkInput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MixerSinkInput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerSinkInput.SignalSignatures[K]>): void;
     }
 
 
@@ -930,15 +912,12 @@ export namespace Cvc {
         // Signals
         /** @signal */
         connect<K extends keyof MixerSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MixerSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MixerSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MixerSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerSource.SignalSignatures[K]>): void;
     }
 
 
@@ -993,15 +972,12 @@ export namespace Cvc {
         // Signals
         /** @signal */
         connect<K extends keyof MixerSourceOutput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerSourceOutput.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MixerSourceOutput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerSourceOutput.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MixerSourceOutput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerSourceOutput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MixerSourceOutput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerSourceOutput.SignalSignatures[K]>): void;
     }
 
 
@@ -1270,15 +1246,12 @@ export namespace Cvc {
         // Signals
         /** @signal */
         connect<K extends keyof MixerStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MixerStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MixerStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MixerStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerStream.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1576,15 +1549,12 @@ export namespace Cvc {
         // Signals
         /** @signal */
         connect<K extends keyof MixerUIDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerUIDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MixerUIDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerUIDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MixerUIDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerUIDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MixerUIDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerUIDevice.SignalSignatures[K]>): void;
 
         // Methods
         get_active_profile(): string;

@@ -128,15 +128,12 @@ export namespace Bump {
         // Signals
         /** @signal */
         connect<K extends keyof AsyncPriorityQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncPriorityQueue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AsyncPriorityQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncPriorityQueue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AsyncPriorityQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncPriorityQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AsyncPriorityQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncPriorityQueue.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -238,15 +235,12 @@ export namespace Bump {
         // Signals
         /** @signal */
         connect<K extends keyof Claim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Claim.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Claim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Claim.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Claim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Claim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Claim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Claim.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -461,15 +455,12 @@ export namespace Bump {
         // Signals
         /** @signal */
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Event.SignalSignatures[K]>): void;
 
         // Methods
         reset(): void;
@@ -653,15 +644,12 @@ export namespace Bump {
         // Signals
         /** @signal */
         connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Factory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Factory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Factory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Factory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Factory.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -967,15 +955,12 @@ export namespace Bump {
         // Signals
         /** @signal */
         connect<K extends keyof Lazy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lazy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Lazy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lazy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Lazy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Lazy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Lazy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Lazy.SignalSignatures[K]>): void;
 
         // Methods
         get_pool(): TaskQueue;
@@ -1082,15 +1067,12 @@ export namespace Bump {
         // Signals
         /** @signal */
         connect<K extends keyof ResourceClaim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceClaim.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ResourceClaim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceClaim.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ResourceClaim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceClaim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ResourceClaim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceClaim.SignalSignatures[K]>): void;
 
         // Methods
         get_pool(): ResourcePool;
@@ -1244,15 +1226,12 @@ export namespace Bump {
         // Signals
         /** @signal */
         connect<K extends keyof ResourcePool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourcePool.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ResourcePool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourcePool.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ResourcePool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourcePool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ResourcePool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourcePool.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1467,15 +1446,12 @@ export namespace Bump {
         // Signals
         /** @signal */
         connect<K extends keyof Semaphore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Semaphore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Semaphore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Semaphore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Semaphore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Semaphore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Semaphore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Semaphore.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1621,15 +1597,12 @@ export namespace Bump {
         // Signals
         /** @signal */
         connect<K extends keyof SemaphoreClaim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SemaphoreClaim.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SemaphoreClaim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SemaphoreClaim.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SemaphoreClaim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SemaphoreClaim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SemaphoreClaim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SemaphoreClaim.SignalSignatures[K]>): void;
 
         // Methods
         get_semaphore(): Semaphore;
@@ -1671,15 +1644,12 @@ export namespace Bump {
         // Signals
         /** @signal */
         connect<K extends keyof TaskQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskQueue.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TaskQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskQueue.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TaskQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TaskQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TaskQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TaskQueue.SignalSignatures[K]>): void;
 
         // Static methods
         static get_global(): TaskQueue;

@@ -601,15 +601,12 @@ export namespace DMAP {
         // Signals
         /** @signal */
         connect<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -708,15 +705,12 @@ export namespace DMAP {
         // Signals
         /** @signal */
         connect<K extends keyof GstInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GstInputStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GstInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GstInputStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GstInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GstInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GstInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GstInputStream.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -890,15 +884,12 @@ export namespace DMAP {
         // Signals
         /** @signal */
         connect<K extends keyof MdnsBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MdnsBrowser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MdnsBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MdnsBrowser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MdnsBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MdnsBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MdnsBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MdnsBrowser.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -979,15 +970,12 @@ export namespace DMAP {
         // Signals
         /** @signal */
         connect<K extends keyof MdnsPublisher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MdnsPublisher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MdnsPublisher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MdnsPublisher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MdnsPublisher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MdnsPublisher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MdnsPublisher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MdnsPublisher.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1158,15 +1146,12 @@ export namespace DMAP {
         // Signals
         /** @signal */
         connect<K extends keyof Share.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Share.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Share.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Share.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Share.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Share.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Share.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Share.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

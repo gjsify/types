@@ -124,15 +124,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof DisplayAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayAdapter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DisplayAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayAdapter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DisplayAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DisplayAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DisplayAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DisplayAdapter.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -289,15 +286,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof NullAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullAdapter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NullAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullAdapter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NullAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NullAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NullAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NullAdapter.SignalSignatures[K]>): void;
     }
 
 
@@ -336,15 +330,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof XAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XAdapter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XAdapter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XAdapter.SignalSignatures[K]>): void;
     }
 
 
@@ -427,15 +418,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof KeyboardModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyboardModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KeyboardModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyboardModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KeyboardModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyboardModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KeyboardModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyboardModel.SignalSignatures[K]>): void;
 
         // Methods
         get_groups(): string[];
@@ -498,15 +486,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof KeyboardService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyboardService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KeyboardService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyboardService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KeyboardService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyboardService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KeyboardService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyboardService.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -634,15 +619,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof GroupModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GroupModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GroupModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GroupModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GroupModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GroupModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GroupModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GroupModel.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -722,15 +704,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof LevelModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LevelModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LevelModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LevelModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LevelModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LevelModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LevelModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LevelModel.SignalSignatures[K]>): void;
 
         // Methods
         get_rows(): RowModel[];
@@ -789,15 +768,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof RowModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RowModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RowModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RowModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RowModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RowModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RowModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RowModel.SignalSignatures[K]>): void;
 
         // Methods
         get_columns(): ColumnModel[];
@@ -977,15 +953,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof KeyModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KeyModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KeyModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KeyModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyModel.SignalSignatures[K]>): void;
 
         // Methods
         press(): void;
@@ -1150,15 +1123,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof ColumnModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColumnModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColumnModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColumnModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnModel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1362,15 +1332,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof Scanner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Scanner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Scanner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scanner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Scanner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scanner.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1480,15 +1447,12 @@ export namespace Caribou {
         // Signals
         /** @signal */
         connect<K extends keyof ScannableGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScannableGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScannableGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScannableGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScannableGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScannableGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScannableGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScannableGroup.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

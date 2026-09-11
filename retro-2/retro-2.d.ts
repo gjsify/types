@@ -503,15 +503,12 @@ export namespace Retro {
         // Signals
         /** @signal */
         connect<K extends keyof ControllerIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControllerIterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControllerIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControllerIterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControllerIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControllerIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControllerIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControllerIterator.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -798,15 +795,12 @@ export namespace Retro {
         // Signals
         /** @signal */
         connect<K extends keyof Core.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Core.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Core.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1100,15 +1094,12 @@ export namespace Retro {
         // Signals
         /** @signal */
         connect<K extends keyof CoreDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreDescriptor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CoreDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreDescriptor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CoreDescriptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CoreDescriptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreDescriptor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1374,15 +1365,12 @@ export namespace Retro {
         // Signals
         /** @signal */
         connect<K extends keyof CoreView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CoreView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CoreView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CoreView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1891,15 +1879,12 @@ export namespace Retro {
         // Signals
         /** @signal */
         connect<K extends keyof KeyJoypadMapping.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyJoypadMapping.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KeyJoypadMapping.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyJoypadMapping.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KeyJoypadMapping.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyJoypadMapping.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KeyJoypadMapping.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyJoypadMapping.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1951,15 +1936,12 @@ export namespace Retro {
         // Signals
         /** @signal */
         connect<K extends keyof ModuleIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModuleIterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModuleIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModuleIterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModuleIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModuleIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModuleIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModuleIterator.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2010,15 +1992,12 @@ export namespace Retro {
         // Signals
         /** @signal */
         connect<K extends keyof ModuleQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModuleQuery.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModuleQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModuleQuery.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModuleQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModuleQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModuleQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModuleQuery.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2066,15 +2045,12 @@ export namespace Retro {
         // Signals
         /** @signal */
         connect<K extends keyof Option.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Option.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Option.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Option.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Option.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Option.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Option.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Option.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2142,15 +2118,12 @@ export namespace Retro {
         // Signals
         /** @signal */
         connect<K extends keyof OptionIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OptionIterator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OptionIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OptionIterator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OptionIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OptionIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OptionIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OptionIterator.SignalSignatures[K]>): void;
 
         // Methods
         /**

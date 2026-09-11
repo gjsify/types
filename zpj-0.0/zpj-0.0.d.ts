@@ -204,15 +204,12 @@ export namespace Zpj {
         // Signals
         /** @signal */
         connect<K extends keyof AuthorizationDomain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthorizationDomain.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthorizationDomain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthorizationDomain.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthorizationDomain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthorizationDomain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthorizationDomain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthorizationDomain.SignalSignatures[K]>): void;
 
         // Methods
         get_scope(): string;
@@ -254,15 +251,12 @@ export namespace Zpj {
         // Signals
         /** @signal */
         connect<K extends keyof GoaAuthorizer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GoaAuthorizer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GoaAuthorizer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]>): void;
 
         /**
          * Whether the authorization tokens held by `iface` are valid for
@@ -445,15 +439,12 @@ export namespace Zpj {
         // Signals
         /** @signal */
         connect<K extends keyof Skydrive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Skydrive.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Skydrive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Skydrive.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Skydrive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Skydrive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Skydrive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Skydrive.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1001,15 +992,12 @@ export namespace Zpj {
         // Signals
         /** @signal */
         connect<K extends keyof SkydriveEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SkydriveEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SkydriveEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SkydriveEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SkydriveEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SkydriveEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SkydriveEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SkydriveEntry.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1151,15 +1139,12 @@ export namespace Zpj {
         // Signals
         /** @signal */
         connect<K extends keyof SkydriveFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SkydriveFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SkydriveFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SkydriveFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SkydriveFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SkydriveFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SkydriveFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SkydriveFile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1218,15 +1203,12 @@ export namespace Zpj {
         // Signals
         /** @signal */
         connect<K extends keyof SkydriveFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SkydriveFolder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SkydriveFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SkydriveFolder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SkydriveFolder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SkydriveFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SkydriveFolder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SkydriveFolder.SignalSignatures[K]>): void;
     }
 
 
@@ -1277,15 +1259,12 @@ export namespace Zpj {
         // Signals
         /** @signal */
         connect<K extends keyof SkydrivePhoto.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SkydrivePhoto.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SkydrivePhoto.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SkydrivePhoto.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SkydrivePhoto.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SkydrivePhoto.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SkydrivePhoto.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SkydrivePhoto.SignalSignatures[K]>): void;
     }
 
 
@@ -1370,15 +1349,12 @@ export namespace Zpj {
         // Signals
         /** @signal */
         connect<K extends keyof SkydriveVideo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SkydriveVideo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SkydriveVideo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SkydriveVideo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SkydriveVideo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SkydriveVideo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SkydriveVideo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SkydriveVideo.SignalSignatures[K]>): void;
 
         // Methods
         /**

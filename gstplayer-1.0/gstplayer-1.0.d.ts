@@ -464,15 +464,12 @@ export namespace GstPlayer {
         // Signals
         /** @signal */
         connect<K extends keyof Player.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Player.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Player.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Player.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Player.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -886,15 +883,12 @@ export namespace GstPlayer {
         // Signals
         /** @signal */
         connect<K extends keyof PlayerAudioInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerAudioInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PlayerAudioInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerAudioInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PlayerAudioInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerAudioInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PlayerAudioInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerAudioInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -971,15 +965,12 @@ export namespace GstPlayer {
         // Signals
         /** @signal */
         connect<K extends keyof PlayerGMainContextSignalDispatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerGMainContextSignalDispatcher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PlayerGMainContextSignalDispatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerGMainContextSignalDispatcher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PlayerGMainContextSignalDispatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerGMainContextSignalDispatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PlayerGMainContextSignalDispatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerGMainContextSignalDispatcher.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1030,15 +1021,12 @@ export namespace GstPlayer {
         // Signals
         /** @signal */
         connect<K extends keyof PlayerMediaInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerMediaInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PlayerMediaInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerMediaInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PlayerMediaInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerMediaInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PlayerMediaInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerMediaInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1163,15 +1151,12 @@ export namespace GstPlayer {
         // Signals
         /** @signal */
         connect<K extends keyof PlayerStreamInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerStreamInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PlayerStreamInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerStreamInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PlayerStreamInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerStreamInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PlayerStreamInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerStreamInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1238,15 +1223,12 @@ export namespace GstPlayer {
         // Signals
         /** @signal */
         connect<K extends keyof PlayerSubtitleInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerSubtitleInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PlayerSubtitleInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerSubtitleInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PlayerSubtitleInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerSubtitleInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PlayerSubtitleInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerSubtitleInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1288,15 +1270,12 @@ export namespace GstPlayer {
         // Signals
         /** @signal */
         connect<K extends keyof PlayerVideoInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerVideoInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PlayerVideoInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerVideoInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PlayerVideoInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerVideoInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PlayerVideoInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerVideoInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1380,15 +1359,12 @@ export namespace GstPlayer {
         // Signals
         /** @signal */
         connect<K extends keyof PlayerVideoOverlayVideoRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerVideoOverlayVideoRenderer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PlayerVideoOverlayVideoRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayerVideoOverlayVideoRenderer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PlayerVideoOverlayVideoRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerVideoOverlayVideoRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PlayerVideoOverlayVideoRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayerVideoOverlayVideoRenderer.SignalSignatures[K]>): void;
 
         // Static methods
         /**

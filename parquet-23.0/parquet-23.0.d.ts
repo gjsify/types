@@ -103,15 +103,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof ArrowFileReader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrowFileReader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ArrowFileReader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrowFileReader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ArrowFileReader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArrowFileReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ArrowFileReader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArrowFileReader.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -227,15 +224,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof ArrowFileWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrowFileWriter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ArrowFileWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrowFileWriter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ArrowFileWriter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArrowFileWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ArrowFileWriter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArrowFileWriter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -340,15 +334,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof BooleanStatistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BooleanStatistics.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BooleanStatistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BooleanStatistics.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BooleanStatistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BooleanStatistics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BooleanStatistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BooleanStatistics.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -398,15 +389,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof ByteArrayStatistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ByteArrayStatistics.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ByteArrayStatistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ByteArrayStatistics.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ByteArrayStatistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ByteArrayStatistics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ByteArrayStatistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ByteArrayStatistics.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -471,15 +459,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof ColumnChunkMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnChunkMetadata.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColumnChunkMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnChunkMetadata.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColumnChunkMetadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnChunkMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColumnChunkMetadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnChunkMetadata.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -554,15 +539,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof DoubleStatistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DoubleStatistics.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DoubleStatistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DoubleStatistics.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DoubleStatistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DoubleStatistics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DoubleStatistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DoubleStatistics.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -620,15 +602,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof FileMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileMetadata.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileMetadata.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileMetadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileMetadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileMetadata.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -723,15 +702,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof FixedLengthByteArrayStatistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FixedLengthByteArrayStatistics.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FixedLengthByteArrayStatistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FixedLengthByteArrayStatistics.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FixedLengthByteArrayStatistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FixedLengthByteArrayStatistics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FixedLengthByteArrayStatistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FixedLengthByteArrayStatistics.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -781,15 +757,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof FloatStatistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FloatStatistics.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FloatStatistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FloatStatistics.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FloatStatistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FloatStatistics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FloatStatistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FloatStatistics.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -839,15 +812,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof Int32Statistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int32Statistics.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Int32Statistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int32Statistics.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Int32Statistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int32Statistics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Int32Statistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int32Statistics.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -897,15 +867,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof Int64Statistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int64Statistics.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Int64Statistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Int64Statistics.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Int64Statistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int64Statistics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Int64Statistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Int64Statistics.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -970,15 +937,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof RowGroupMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RowGroupMetadata.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RowGroupMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RowGroupMetadata.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RowGroupMetadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RowGroupMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RowGroupMetadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RowGroupMetadata.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1075,15 +1039,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof Statistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statistics.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Statistics.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statistics.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Statistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Statistics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Statistics.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Statistics.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1164,15 +1125,12 @@ export namespace Parquet {
         // Signals
         /** @signal */
         connect<K extends keyof WriterProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WriterProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WriterProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WriterProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WriterProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WriterProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WriterProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WriterProperties.SignalSignatures[K]>): void;
 
         // Methods
         /**

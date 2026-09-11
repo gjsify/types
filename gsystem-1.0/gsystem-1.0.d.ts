@@ -571,15 +571,12 @@ export namespace GSystem {
         // Signals
         /** @signal */
         connect<K extends keyof Console.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Console.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Console.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Console.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Console.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Console.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -695,15 +692,12 @@ export namespace GSystem {
         // Signals
         /** @signal */
         connect<K extends keyof Subprocess.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Subprocess.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Subprocess.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Subprocess.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Subprocess.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Subprocess.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Subprocess.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Subprocess.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -989,15 +983,12 @@ export namespace GSystem {
         // Signals
         /** @signal */
         connect<K extends keyof SubprocessContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubprocessContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SubprocessContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubprocessContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SubprocessContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubprocessContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SubprocessContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubprocessContext.SignalSignatures[K]>): void;
 
         // Methods
         /**

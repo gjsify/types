@@ -104,15 +104,12 @@ export namespace SocialWebClient {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -191,15 +188,12 @@ export namespace SocialWebClient {
         // Signals
         /** @signal */
         connect<K extends keyof ClientContactView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientContactView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClientContactView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientContactView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClientContactView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientContactView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClientContactView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientContactView.SignalSignatures[K]>): void;
 
         // Methods
         close(): void;
@@ -271,15 +265,12 @@ export namespace SocialWebClient {
         // Signals
         /** @signal */
         connect<K extends keyof ClientItemView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientItemView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClientItemView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientItemView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClientItemView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientItemView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClientItemView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientItemView.SignalSignatures[K]>): void;
 
         // Methods
         close(): void;
@@ -325,15 +316,12 @@ export namespace SocialWebClient {
         // Signals
         /** @signal */
         connect<K extends keyof ClientLastfm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientLastfm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClientLastfm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientLastfm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClientLastfm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientLastfm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClientLastfm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientLastfm.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -413,15 +401,12 @@ export namespace SocialWebClient {
         // Signals
         /** @signal */
         connect<K extends keyof ClientService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClientService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClientService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClientService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientService.SignalSignatures[K]>): void;
 
         // Static methods
         /**

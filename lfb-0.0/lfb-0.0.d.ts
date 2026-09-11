@@ -382,15 +382,12 @@ export namespace Lfb {
         // Signals
         /** @signal */
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Event.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -650,15 +647,12 @@ export namespace Lfb {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusFeedbackHapticProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusFeedbackHapticProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusFeedbackHapticProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusFeedbackHapticProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusFeedbackHapticProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusFeedbackHapticProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusFeedbackHapticProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusFeedbackHapticProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1180,15 +1174,12 @@ export namespace Lfb {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusFeedbackHapticSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusFeedbackHapticSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusFeedbackHapticSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusFeedbackHapticSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusFeedbackHapticSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusFeedbackHapticSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusFeedbackHapticSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusFeedbackHapticSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -1400,15 +1391,12 @@ export namespace Lfb {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusFeedbackProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusFeedbackProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusFeedbackProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusFeedbackProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusFeedbackProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusFeedbackProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusFeedbackProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusFeedbackProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2036,15 +2024,12 @@ export namespace Lfb {
         // Signals
         /** @signal */
         connect<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusFeedbackSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GdbusFeedbackSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusFeedbackSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GdbusFeedbackSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-sigxcpu-Feedback.Profile">"Profile"</link>.

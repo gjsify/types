@@ -430,15 +430,12 @@ export namespace Rest {
         // Signals
         /** @signal */
         connect<K extends keyof OAuth2Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2Proxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuth2Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2Proxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuth2Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuth2Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2Proxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -525,15 +522,12 @@ export namespace Rest {
         // Signals
         /** @signal */
         connect<K extends keyof OAuth2ProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2ProxyCall.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuth2ProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2ProxyCall.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuth2ProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2ProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuth2ProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2ProxyCall.SignalSignatures[K]>): void;
     }
 
 
@@ -670,15 +664,12 @@ export namespace Rest {
         // Signals
         /** @signal */
         connect<K extends keyof OAuthProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuthProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuthProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuthProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuthProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuthProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuthProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuthProxy.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -864,15 +855,12 @@ export namespace Rest {
         // Signals
         /** @signal */
         connect<K extends keyof OAuthProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuthProxyCall.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OAuthProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuthProxyCall.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OAuthProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuthProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OAuthProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuthProxyCall.SignalSignatures[K]>): void;
 
         // Methods
         parse_token_reponse(): void;
@@ -1047,15 +1035,12 @@ export namespace Rest {
         // Signals
         /** @signal */
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1142,15 +1127,12 @@ export namespace Rest {
         // Signals
         /** @signal */
         connect<K extends keyof ProxyAuth.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProxyAuth.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProxyAuth.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProxyAuth.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProxyAuth.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProxyAuth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProxyAuth.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProxyAuth.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1218,15 +1200,12 @@ export namespace Rest {
         // Signals
         /** @signal */
         connect<K extends keyof ProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProxyCall.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProxyCall.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProxyCall.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1463,15 +1442,12 @@ export namespace Rest {
         // Signals
         /** @signal */
         connect<K extends keyof XmlParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XmlParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XmlParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XmlParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XmlParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XmlParser.SignalSignatures[K]>): void;
 
         // Methods
         /**

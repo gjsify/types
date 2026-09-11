@@ -218,15 +218,12 @@ export namespace NMA4 {
         // Signals
         /** @signal */
         connect<K extends keyof BarCode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BarCode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BarCode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BarCode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BarCode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BarCode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BarCode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BarCode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -330,15 +327,12 @@ export namespace NMA4 {
         // Signals
         /** @signal */
         connect<K extends keyof BarCodeWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BarCodeWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BarCodeWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BarCodeWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BarCodeWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BarCodeWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BarCodeWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BarCodeWidget.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -506,15 +500,12 @@ export namespace NMA4 {
         // Signals
         /** @signal */
         connect<K extends keyof CertChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CertChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CertChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CertChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CertChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CertChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CertChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CertChooser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -781,15 +772,12 @@ export namespace NMA4 {
         // Signals
         /** @signal */
         connect<K extends keyof MobileProvidersDatabase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MobileProvidersDatabase.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MobileProvidersDatabase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MobileProvidersDatabase.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MobileProvidersDatabase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MobileProvidersDatabase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MobileProvidersDatabase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MobileProvidersDatabase.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1155,15 +1143,12 @@ export namespace NMA4 {
         // Signals
         /** @signal */
         connect<K extends keyof MobileWizard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MobileWizard.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MobileWizard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MobileWizard.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MobileWizard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MobileWizard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MobileWizard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MobileWizard.SignalSignatures[K]>): void;
 
         // Methods
         destroy(): void;
@@ -1271,15 +1256,12 @@ export namespace NMA4 {
         // Signals
         /** @signal */
         connect<K extends keyof VpnPasswordDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VpnPasswordDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VpnPasswordDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VpnPasswordDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VpnPasswordDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VpnPasswordDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VpnPasswordDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VpnPasswordDialog.SignalSignatures[K]>): void;
 
         // Methods
         focus_password(): void;
@@ -1450,15 +1432,12 @@ export namespace NMA4 {
         // Signals
         /** @signal */
         connect<K extends keyof WifiDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WifiDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WifiDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WifiDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WifiDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WifiDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WifiDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WifiDialog.SignalSignatures[K]>): void;
 
         // Methods
         get_connection(): [NM.Connection, NM.Device, NM.AccessPoint];

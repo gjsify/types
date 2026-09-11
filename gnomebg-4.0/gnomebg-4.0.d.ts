@@ -76,15 +76,12 @@ export namespace GnomeBG {
         // Signals
         /** @signal */
         connect<K extends keyof BG.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BG.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BG.SignalSignatures[K]>): void;
 
         // Methods
         changes_with_time(): boolean;
@@ -273,15 +270,12 @@ export namespace GnomeBG {
         // Signals
         /** @signal */
         connect<K extends keyof BGSlideShow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BGSlideShow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BGSlideShow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BGSlideShow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BGSlideShow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BGSlideShow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BGSlideShow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BGSlideShow.SignalSignatures[K]>): void;
 
         // Methods
         /**

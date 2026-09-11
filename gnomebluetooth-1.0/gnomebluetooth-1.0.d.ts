@@ -700,15 +700,12 @@ export namespace GnomeBluetooth {
         // Signals
         /** @signal */
         connect<K extends keyof Chooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Chooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Chooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Chooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Chooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Chooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Chooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Chooser.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -947,15 +944,12 @@ export namespace GnomeBluetooth {
         // Signals
         /** @signal */
         connect<K extends keyof ChooserButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChooserButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChooserButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChooserButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChooserButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChooserButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChooserButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChooserButton.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1439,15 +1433,12 @@ export namespace GnomeBluetooth {
         // Signals
         /** @signal */
         connect<K extends keyof ChooserCombo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChooserCombo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChooserCombo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChooserCombo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChooserCombo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChooserCombo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChooserCombo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChooserCombo.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -1604,15 +1595,12 @@ export namespace GnomeBluetooth {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1827,15 +1815,12 @@ export namespace GnomeBluetooth {
         // Signals
         /** @signal */
         connect<K extends keyof FilterWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilterWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilterWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilterWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterWidget.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1974,15 +1959,12 @@ export namespace GnomeBluetooth {
         // Signals
         /** @signal */
         connect<K extends keyof SettingsWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SettingsWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SettingsWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SettingsWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsWidget.SignalSignatures[K]>): void;
 
         // Methods
         /**

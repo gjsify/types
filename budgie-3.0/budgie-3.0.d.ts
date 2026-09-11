@@ -305,15 +305,12 @@ export namespace Budgie {
         // Signals
         /** @signal */
         connect<K extends keyof Applet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Applet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Applet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Applet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Applet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Applet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Applet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Applet.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -642,15 +639,12 @@ export namespace Budgie {
         // Signals
         /** @signal */
         connect<K extends keyof AppletInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppletInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AppletInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppletInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AppletInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppletInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AppletInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppletInfo.SignalSignatures[K]>): void;
     }
 
 
@@ -739,15 +733,12 @@ export namespace Budgie {
         // Signals
         /** @signal */
         connect<K extends keyof Popover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Popover.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Popover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Popover.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Popover.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Popover.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Popover.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Popover.SignalSignatures[K]>): void;
     }
 
 
@@ -784,15 +775,12 @@ export namespace Budgie {
         // Signals
         /** @signal */
         connect<K extends keyof PopoverManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PopoverManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PopoverManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PopoverManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PopoverManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PopoverManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PopoverManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PopoverManager.SignalSignatures[K]>): void;
 
         // Methods
         /**

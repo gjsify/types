@@ -480,15 +480,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof Burn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Burn.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Burn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Burn.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Burn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Burn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Burn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Burn.SignalSignatures[K]>): void;
 
         // Static methods
         static library_can_checksum(): boolean;
@@ -736,15 +733,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof BurnDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BurnDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BurnDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BurnDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BurnDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BurnDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -901,15 +895,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof BurnOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnOptions.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BurnOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnOptions.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BurnOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BurnOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BurnOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BurnOptions.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1011,15 +1002,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof BurnSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnSession.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BurnSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnSession.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BurnSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BurnSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BurnSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BurnSession.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1420,15 +1408,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof SessionCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionCfg.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SessionCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionCfg.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SessionCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SessionCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SessionCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SessionCfg.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1521,15 +1506,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof SessionSpan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionSpan.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SessionSpan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionSpan.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SessionSpan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SessionSpan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SessionSpan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SessionSpan.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1612,15 +1594,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof Status.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Status.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Status.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Status.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Status.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1793,15 +1772,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof SumDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SumDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SumDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SumDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SumDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SumDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SumDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SumDialog.SignalSignatures[K]>): void;
     }
 
 
@@ -1913,15 +1889,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof ToolDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ToolDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ToolDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ToolDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ToolDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ToolDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ToolDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ToolDialog.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1976,15 +1949,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof Track.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Track.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Track.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Track.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Track.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Track.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Track.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Track.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2163,15 +2133,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof TrackData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackData.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TrackData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackData.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TrackData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TrackData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackData.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2411,15 +2378,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof TrackDataCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackDataCfg.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TrackDataCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackDataCfg.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TrackDataCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackDataCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TrackDataCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackDataCfg.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3281,15 +3245,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof TrackDisc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackDisc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TrackDisc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackDisc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TrackDisc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackDisc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TrackDisc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackDisc.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3342,15 +3303,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof TrackImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackImage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TrackImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackImage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TrackImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TrackImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackImage.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3454,15 +3412,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof TrackImageCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackImageCfg.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TrackImageCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackImageCfg.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TrackImageCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackImageCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TrackImageCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackImageCfg.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3524,15 +3479,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof TrackStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TrackStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TrackStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TrackStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackStream.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3668,15 +3620,12 @@ export namespace BraseroBurn {
         // Signals
         /** @signal */
         connect<K extends keyof TrackStreamCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackStreamCfg.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TrackStreamCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackStreamCfg.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TrackStreamCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackStreamCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TrackStreamCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackStreamCfg.SignalSignatures[K]>): void;
     }
 
 

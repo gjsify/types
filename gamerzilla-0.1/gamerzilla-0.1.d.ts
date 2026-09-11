@@ -72,15 +72,12 @@ export namespace Gamerzilla {
         // Signals
         /** @signal */
         connect<K extends keyof GamerzillaGobj.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GamerzillaGobj.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GamerzillaGobj.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GamerzillaGobj.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GamerzillaGobj.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GamerzillaGobj.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GamerzillaGobj.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GamerzillaGobj.SignalSignatures[K]>): void;
 
         // Methods
         connect(): void;

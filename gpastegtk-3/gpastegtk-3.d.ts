@@ -173,15 +173,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof SettingsUiPanel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsUiPanel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SettingsUiPanel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsUiPanel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SettingsUiPanel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsUiPanel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SettingsUiPanel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsUiPanel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -332,15 +329,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof SettingsUiStack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsUiStack.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SettingsUiStack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsUiStack.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SettingsUiStack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsUiStack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SettingsUiStack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsUiStack.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -440,15 +434,12 @@ export namespace GPasteGtk {
         // Signals
         /** @signal */
         connect<K extends keyof SettingsUiWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsUiWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SettingsUiWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsUiWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SettingsUiWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsUiWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SettingsUiWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsUiWidget.SignalSignatures[K]>): void;
 
         // Methods
         /**

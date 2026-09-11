@@ -349,15 +349,12 @@ export namespace GExiv2 {
         // Signals
         /** @signal */
         connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Metadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Metadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Metadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1606,15 +1603,12 @@ export namespace GExiv2 {
         // Signals
         /** @signal */
         connect<K extends keyof PreviewImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviewImage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreviewImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviewImage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreviewImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreviewImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreviewImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreviewImage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1711,15 +1705,12 @@ export namespace GExiv2 {
         // Signals
         /** @signal */
         connect<K extends keyof PreviewProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviewProperties.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreviewProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviewProperties.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreviewProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreviewProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreviewProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreviewProperties.SignalSignatures[K]>): void;
 
         // Methods
         /**

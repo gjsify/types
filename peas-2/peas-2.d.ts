@@ -200,15 +200,12 @@ export namespace Peas {
         // Signals
         /** @signal */
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Engine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Engine.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -561,15 +558,12 @@ export namespace Peas {
         // Signals
         /** @signal */
         connect<K extends keyof ExtensionBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtensionBase.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExtensionBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtensionBase.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExtensionBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtensionBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExtensionBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtensionBase.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -736,15 +730,12 @@ export namespace Peas {
         // Signals
         /** @signal */
         connect<K extends keyof ExtensionSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtensionSet.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExtensionSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtensionSet.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExtensionSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtensionSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExtensionSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtensionSet.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -971,15 +962,12 @@ export namespace Peas {
         // Signals
         /** @signal */
         connect<K extends keyof ObjectModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectModule.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ObjectModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectModule.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ObjectModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ObjectModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectModule.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1236,15 +1224,12 @@ export namespace Peas {
         // Signals
         /** @signal */
         connect<K extends keyof PluginInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginInfo.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;

@@ -91,15 +91,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof Builder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Builder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Builder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Builder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Builder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Builder.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -262,15 +259,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof BuilderContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderContainer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuilderContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderContainer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuilderContainer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuilderContainer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderContainer.SignalSignatures[K]>): void;
     }
 
 
@@ -307,15 +301,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof BuilderInitrd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderInitrd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuilderInitrd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderInitrd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuilderInitrd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderInitrd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuilderInitrd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderInitrd.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -362,15 +353,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof BuilderMachine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderMachine.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuilderMachine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderMachine.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuilderMachine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderMachine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuilderMachine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderMachine.SignalSignatures[K]>): void;
     }
 
 
@@ -534,15 +522,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Config.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1057,15 +1042,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigDisk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigDisk.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigDisk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigDisk.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigDisk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigDisk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigDisk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigDisk.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1154,15 +1136,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigInitrd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigInitrd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigInitrd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigInitrd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigInitrd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigInitrd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigInitrd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigInitrd.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1276,15 +1255,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigInteractive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigInteractive.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigInteractive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigInteractive.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigInteractive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigInteractive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigInteractive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigInteractive.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1350,15 +1326,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigMount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMount.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigMount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMount.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigMount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigMount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMount.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1426,15 +1399,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigMountFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigMountFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigMountFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigMountFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountFile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1489,15 +1459,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigMountGuestBind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountGuestBind.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigMountGuestBind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountGuestBind.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigMountGuestBind.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountGuestBind.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigMountGuestBind.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountGuestBind.SignalSignatures[K]>): void;
     }
 
 
@@ -1537,15 +1504,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigMountHostBind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountHostBind.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigMountHostBind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountHostBind.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigMountHostBind.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountHostBind.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigMountHostBind.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountHostBind.SignalSignatures[K]>): void;
     }
 
 
@@ -1595,15 +1559,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigMountHostImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountHostImage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigMountHostImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountHostImage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigMountHostImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountHostImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigMountHostImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountHostImage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1659,15 +1620,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigMountRam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountRam.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigMountRam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountRam.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigMountRam.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountRam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigMountRam.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountRam.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1744,15 +1702,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigNetwork.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetwork.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigNetwork.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetwork.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigNetwork.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetwork.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigNetwork.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetwork.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1874,15 +1829,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigNetworkAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkAddress.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigNetworkAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkAddress.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigNetworkAddress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigNetworkAddress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkAddress.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1967,15 +1919,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigNetworkFilterref.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkFilterref.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigNetworkFilterref.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkFilterref.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigNetworkFilterref.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkFilterref.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigNetworkFilterref.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkFilterref.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2055,15 +2004,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkFilterrefParameter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkFilterrefParameter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkFilterrefParameter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkFilterrefParameter.SignalSignatures[K]>): void;
 
         // Methods
         get_name(): string;
@@ -2140,15 +2086,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigNetworkRoute.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkRoute.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigNetworkRoute.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkRoute.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigNetworkRoute.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkRoute.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigNetworkRoute.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkRoute.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2235,15 +2178,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigService.SignalSignatures[K]>): void;
     }
 
 
@@ -2295,15 +2235,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigServiceGeneric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigServiceGeneric.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigServiceGeneric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigServiceGeneric.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigServiceGeneric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigServiceGeneric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigServiceGeneric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigServiceGeneric.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2363,15 +2300,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigServiceSystemd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigServiceSystemd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigServiceSystemd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigServiceSystemd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigServiceSystemd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigServiceSystemd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigServiceSystemd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigServiceSystemd.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2463,15 +2397,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof Console.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Console.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Console.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Console.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Console.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Console.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2561,15 +2492,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConsoleRaw.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConsoleRaw.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConsoleRaw.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConsoleRaw.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConsoleRaw.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConsoleRaw.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConsoleRaw.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConsoleRaw.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2624,15 +2552,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ConsoleRpc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConsoleRpc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConsoleRpc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConsoleRpc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConsoleRpc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConsoleRpc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConsoleRpc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConsoleRpc.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2702,15 +2627,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2826,15 +2748,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ContextInteractive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextInteractive.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContextInteractive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextInteractive.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContextInteractive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextInteractive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContextInteractive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextInteractive.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2882,15 +2801,12 @@ export namespace LibvirtSandbox {
         // Signals
         /** @signal */
         connect<K extends keyof ContextService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContextService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContextService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContextService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextService.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

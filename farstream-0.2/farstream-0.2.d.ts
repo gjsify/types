@@ -617,15 +617,12 @@ export namespace Farstream {
         // Signals
         /** @signal */
         connect<K extends keyof Conference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Conference.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Conference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Conference.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Conference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Conference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Conference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Conference.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -852,15 +849,12 @@ export namespace Farstream {
         // Signals
         /** @signal */
         connect<K extends keyof ElementAddedNotifier.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ElementAddedNotifier.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ElementAddedNotifier.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ElementAddedNotifier.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ElementAddedNotifier.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ElementAddedNotifier.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ElementAddedNotifier.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ElementAddedNotifier.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -944,15 +938,12 @@ export namespace Farstream {
         // Signals
         /** @signal */
         connect<K extends keyof Participant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Participant.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Participant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Participant.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Participant.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Participant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Participant.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Participant.SignalSignatures[K]>): void;
     }
 
 
@@ -988,15 +979,12 @@ export namespace Farstream {
         // Signals
         /** @signal */
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1344,15 +1332,12 @@ export namespace Farstream {
         // Signals
         /** @signal */
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1834,15 +1819,12 @@ export namespace Farstream {
         // Signals
         /** @signal */
         connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Stream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Stream.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2199,15 +2181,12 @@ export namespace Farstream {
         // Signals
         /** @signal */
         connect<K extends keyof StreamTransmitter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamTransmitter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StreamTransmitter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamTransmitter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StreamTransmitter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamTransmitter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StreamTransmitter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamTransmitter.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2413,15 +2392,12 @@ export namespace Farstream {
         // Signals
         /** @signal */
         connect<K extends keyof Transmitter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transmitter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Transmitter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transmitter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Transmitter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transmitter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Transmitter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transmitter.SignalSignatures[K]>): void;
 
         // Static methods
         /**

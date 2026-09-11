@@ -111,15 +111,12 @@ export namespace TimezoneMap {
         // Signals
         /** @signal */
         connect<K extends keyof TimezoneCompletion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimezoneCompletion.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TimezoneCompletion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimezoneCompletion.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TimezoneCompletion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimezoneCompletion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TimezoneCompletion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimezoneCompletion.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -630,15 +627,12 @@ export namespace TimezoneMap {
         // Signals
         /** @signal */
         connect<K extends keyof TimezoneLocation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimezoneLocation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TimezoneLocation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimezoneLocation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TimezoneLocation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimezoneLocation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TimezoneLocation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimezoneLocation.SignalSignatures[K]>): void;
 
         // Methods
         get_comment(): string;
@@ -795,15 +789,12 @@ export namespace TimezoneMap {
         // Signals
         /** @signal */
         connect<K extends keyof TimezoneMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimezoneMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TimezoneMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimezoneMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TimezoneMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimezoneMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TimezoneMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimezoneMap.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -703,15 +703,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof Annotation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Annotation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Annotation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Annotation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Annotation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Annotation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Annotation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Annotation.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -881,15 +878,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotationAttachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationAttachment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotationAttachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationAttachment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotationAttachment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationAttachment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotationAttachment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationAttachment.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1056,15 +1050,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotationText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotationText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotationText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotationText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationText.SignalSignatures[K]>): void;
 
         // Methods
         get_icon(): AnnotationTextIcon;
@@ -1226,15 +1217,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotationTextMarkup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationTextMarkup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotationTextMarkup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationTextMarkup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotationTextMarkup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationTextMarkup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotationTextMarkup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationTextMarkup.SignalSignatures[K]>): void;
 
         // Methods
         get_markup_type(): AnnotationTextMarkupType;
@@ -1409,15 +1397,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof Attachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Attachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Attachment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Attachment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Attachment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Attachment.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -1486,15 +1471,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof Document.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Document.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Document.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Document.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Document.SignalSignatures[K]>): void;
 
         // Static methods
         static doc_mutex_lock(): void;
@@ -1829,15 +1811,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof FormField.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FormField.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FormField.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FormField.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormField.SignalSignatures[K]>): void;
     }
 
 
@@ -1881,15 +1860,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof FormFieldButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FormFieldButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FormFieldButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FormFieldButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldButton.SignalSignatures[K]>): void;
     }
 
 
@@ -1943,15 +1919,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof FormFieldChoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldChoice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FormFieldChoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldChoice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FormFieldChoice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldChoice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FormFieldChoice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldChoice.SignalSignatures[K]>): void;
     }
 
 
@@ -1991,15 +1964,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof FormFieldSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldSignature.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FormFieldSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldSignature.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FormFieldSignature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldSignature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FormFieldSignature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldSignature.SignalSignatures[K]>): void;
     }
 
 
@@ -2055,15 +2025,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof FormFieldText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FormFieldText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FormFieldText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FormFieldText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldText.SignalSignatures[K]>): void;
     }
 
 
@@ -2105,15 +2072,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]>): void;
 
         // Methods
         get_id(): number;
@@ -2165,15 +2129,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layer.SignalSignatures[K]>): void;
 
         // Methods
         get_rb_group(): number;
@@ -2233,15 +2194,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof Link.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Link.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Link.SignalSignatures[K]>): void;
 
         // Methods
         get_title(): string;
@@ -2378,15 +2336,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof LinkAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LinkAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LinkAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LinkAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkAction.SignalSignatures[K]>): void;
 
         // Methods
         get_action_type(): LinkActionType;
@@ -2540,15 +2495,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof LinkDest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkDest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LinkDest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkDest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LinkDest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkDest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LinkDest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkDest.SignalSignatures[K]>): void;
 
         // Methods
         get_bottom(): number;
@@ -2622,15 +2574,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof Page.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Page.SignalSignatures[K]>): void;
     }
 
 
@@ -2674,15 +2623,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof RenderContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RenderContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RenderContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RenderContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RenderContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RenderContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RenderContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RenderContext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2792,15 +2738,12 @@ export namespace AtrilDocument {
         // Signals
         /** @signal */
         connect<K extends keyof TransitionEffect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransitionEffect.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TransitionEffect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransitionEffect.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TransitionEffect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TransitionEffect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TransitionEffect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TransitionEffect.SignalSignatures[K]>): void;
     }
 
 

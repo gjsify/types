@@ -143,15 +143,12 @@ export namespace EBook {
         // Signals
         /** @signal */
         connect<K extends keyof BookClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookClient.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1621,15 +1618,12 @@ export namespace EBook {
         // Signals
         /** @signal */
         connect<K extends keyof BookClientCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookClientCursor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookClientCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookClientCursor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookClientCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookClientCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookClientCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookClientCursor.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2209,15 +2203,12 @@ export namespace EBook {
         // Signals
         /** @signal */
         connect<K extends keyof BookClientView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookClientView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookClientView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookClientView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookClientView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookClientView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookClientView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookClientView.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2556,15 +2547,12 @@ export namespace EBook {
         // Signals
         /** @signal */
         connect<K extends keyof Destination.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Destination.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Destination.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Destination.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Destination.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Destination.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Destination.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Destination.SignalSignatures[K]>): void;
 
         // Static methods
         /**

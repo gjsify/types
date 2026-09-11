@@ -244,15 +244,12 @@ export namespace ClutterGst {
         // Signals
         /** @signal */
         connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VideoSink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VideoSink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]>): void;
 
         /**
          * Sends the indicated command to the navigation interface.
@@ -523,15 +520,12 @@ export namespace ClutterGst {
         // Signals
         /** @signal */
         connect<K extends keyof VideoTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoTexture.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VideoTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoTexture.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VideoTexture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VideoTexture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoTexture.SignalSignatures[K]>): void;
 
         // Methods
         /**

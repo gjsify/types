@@ -135,15 +135,12 @@ export namespace Libxfce4windowingui {
         // Signals
         /** @signal */
         connect<K extends keyof WindowActionMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowActionMenu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WindowActionMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowActionMenu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WindowActionMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowActionMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WindowActionMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowActionMenu.SignalSignatures[K]>): void;
     }
 
 
@@ -437,15 +434,12 @@ export namespace Libxfce4windowingui {
         // Signals
         /** @signal */
         connect<K extends keyof WindowListMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowListMenu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WindowListMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowListMenu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WindowListMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowListMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WindowListMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowListMenu.SignalSignatures[K]>): void;
     }
 
 

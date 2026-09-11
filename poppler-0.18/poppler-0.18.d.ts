@@ -2212,15 +2212,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof Annot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Annot.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Annot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Annot.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Annot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Annot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Annot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Annot.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2364,15 +2361,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotCircle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotCircle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotCircle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotCircle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotCircle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotCircle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotCircle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotCircle.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2425,15 +2419,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotFileAttachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotFileAttachment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotFileAttachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotFileAttachment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotFileAttachment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotFileAttachment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotFileAttachment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotFileAttachment.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2489,15 +2480,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotFreeText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotFreeText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotFreeText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotFreeText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotFreeText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotFreeText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotFreeText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotFreeText.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2577,15 +2565,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotInk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotInk.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotInk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotInk.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotInk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotInk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotInk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotInk.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2661,15 +2646,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotLine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotLine.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotLine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotLine.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotLine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotLine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotLine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotLine.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2716,15 +2698,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotMarkup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotMarkup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotMarkup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotMarkup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotMarkup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotMarkup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotMarkup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotMarkup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2860,15 +2839,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotMovie.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotMovie.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotMovie.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotMovie.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotMovie.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotMovie.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotMovie.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotMovie.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2921,15 +2897,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotScreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotScreen.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotScreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotScreen.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotScreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotScreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotScreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotScreen.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2977,15 +2950,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotSquare.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotSquare.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotSquare.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotSquare.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotSquare.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotSquare.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotSquare.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotSquare.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3040,15 +3010,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotStamp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotStamp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotStamp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotStamp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotStamp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotStamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotStamp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotStamp.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3111,15 +3078,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotText.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3254,15 +3218,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotTextMarkup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotTextMarkup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotTextMarkup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotTextMarkup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotTextMarkup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotTextMarkup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotTextMarkup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotTextMarkup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3326,15 +3287,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof Attachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Attachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Attachment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Attachment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Attachment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Attachment.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3818,15 +3776,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof Document.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Document.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Document.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Document.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Document.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4344,15 +4299,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof FontInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FontInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FontInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FontInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontInfo.SignalSignatures[K]>): void;
 
         // Methods
         free(): void;
@@ -4420,15 +4372,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof FormField.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FormField.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FormField.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FormField.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormField.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4728,15 +4677,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4815,15 +4761,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Media.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4947,15 +4890,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof Movie.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Movie.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Movie.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Movie.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Movie.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Movie.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Movie.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Movie.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5078,15 +5018,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof PSFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PSFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PSFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PSFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PSFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PSFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PSFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PSFile.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5157,15 +5094,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof Page.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Page.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -5616,15 +5550,12 @@ export namespace Poppler {
         // Signals
         /** @signal */
         connect<K extends keyof StructureElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StructureElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StructureElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StructureElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StructureElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StructureElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StructureElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StructureElement.SignalSignatures[K]>): void;
 
         // Methods
         /**

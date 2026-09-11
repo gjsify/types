@@ -189,15 +189,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof Account.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Account.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Account.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Account.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Account.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Account.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -380,15 +377,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof AccountExporter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountExporter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AccountExporter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountExporter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AccountExporter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountExporter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AccountExporter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountExporter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -475,15 +469,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof Collector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Collector.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Collector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Collector.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Collector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Collector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Collector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Collector.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -566,15 +557,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof DbusAccountProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusAccountProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DbusAccountProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusAccountProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DbusAccountProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusAccountProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DbusAccountProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusAccountProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1085,15 +1073,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof DbusAccountSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusAccountSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DbusAccountSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusAccountSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DbusAccountSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusAccountSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DbusAccountSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusAccountSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.Icon">"Icon"</link>.
@@ -1288,15 +1273,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof DbusObjectManagerClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusObjectManagerClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DbusObjectManagerClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusObjectManagerClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DbusObjectManagerClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusObjectManagerClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DbusObjectManagerClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusObjectManagerClient.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1789,15 +1771,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof DbusObjectProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusObjectProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DbusObjectProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusObjectProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DbusObjectProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusObjectProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DbusObjectProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusObjectProxy.SignalSignatures[K]>): void;
 
         /**
          * The {@link CloudProviders.DbusAccount} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Account.top_of_page">org.freedesktop.CloudProviders.Account</link>, if any.
@@ -1929,15 +1908,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof DbusObjectSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusObjectSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DbusObjectSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusObjectSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DbusObjectSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusObjectSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DbusObjectSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusObjectSkeleton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2104,15 +2080,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof DbusProviderProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusProviderProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DbusProviderProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusProviderProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DbusProviderProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusProviderProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DbusProviderProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusProviderProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2569,15 +2542,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof DbusProviderSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusProviderSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DbusProviderSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DbusProviderSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DbusProviderSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusProviderSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DbusProviderSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DbusProviderSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Provider.Name">"Name"</link>.
@@ -2722,15 +2692,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof Provider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Provider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Provider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Provider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Provider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Provider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Provider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Provider.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2831,15 +2798,12 @@ export namespace CloudProviders {
         // Signals
         /** @signal */
         connect<K extends keyof ProviderExporter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderExporter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProviderExporter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderExporter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProviderExporter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProviderExporter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProviderExporter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProviderExporter.SignalSignatures[K]>): void;
 
         // Methods
         get_name(): string;

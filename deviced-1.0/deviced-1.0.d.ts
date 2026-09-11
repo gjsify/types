@@ -164,15 +164,12 @@ export namespace Deviced {
         // Signals
         /** @signal */
         connect<K extends keyof AppInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AppInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AppInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AppInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppInfo.SignalSignatures[K]>): void;
     }
 
 
@@ -266,15 +263,12 @@ export namespace Deviced {
         // Signals
         /** @signal */
         connect<K extends keyof Browser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Browser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Browser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Browser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Browser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Browser.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -578,15 +572,12 @@ export namespace Deviced {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1310,15 +1301,12 @@ export namespace Deviced {
         // Signals
         /** @signal */
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1454,15 +1442,12 @@ export namespace Deviced {
         // Signals
         /** @signal */
         connect<K extends keyof FlatpakService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlatpakService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlatpakService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlatpakService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlatpakService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlatpakService.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1551,15 +1536,12 @@ export namespace Deviced {
         // Signals
         /** @signal */
         connect<K extends keyof NetworkClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetworkClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetworkClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetworkClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkClient.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1631,15 +1613,12 @@ export namespace Deviced {
         // Signals
         /** @signal */
         connect<K extends keyof NetworkDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetworkDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetworkDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetworkDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkDevice.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1720,15 +1699,12 @@ export namespace Deviced {
         // Signals
         /** @signal */
         connect<K extends keyof ProcessService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProcessService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProcessService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProcessService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProcessService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProcessService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProcessService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProcessService.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1970,15 +1946,12 @@ export namespace Deviced {
         // Signals
         /** @signal */
         connect<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2085,15 +2058,12 @@ export namespace Deviced {
         // Signals
         /** @signal */
         connect<K extends keyof TransferService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransferService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TransferService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransferService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TransferService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TransferService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TransferService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TransferService.SignalSignatures[K]>): void;
 
         // Methods
         /**

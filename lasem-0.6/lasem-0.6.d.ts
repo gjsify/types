@@ -302,15 +302,12 @@ export namespace Lasem {
         // Signals
         /** @signal */
         connect<K extends keyof DomCharacterData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomCharacterData.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomCharacterData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomCharacterData.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomCharacterData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomCharacterData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomCharacterData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomCharacterData.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -375,15 +372,12 @@ export namespace Lasem {
         // Signals
         /** @signal */
         connect<K extends keyof DomDocument.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomDocument.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomDocument.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomDocument.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomDocument.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomDocument.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomDocument.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomDocument.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -539,15 +533,12 @@ export namespace Lasem {
         // Signals
         /** @signal */
         connect<K extends keyof DomDocumentFragment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomDocumentFragment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomDocumentFragment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomDocumentFragment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomDocumentFragment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomDocumentFragment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomDocumentFragment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomDocumentFragment.SignalSignatures[K]>): void;
     }
 
 
@@ -585,15 +576,12 @@ export namespace Lasem {
         // Signals
         /** @signal */
         connect<K extends keyof DomElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomElement.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -670,15 +658,12 @@ export namespace Lasem {
         // Signals
         /** @signal */
         connect<K extends keyof DomNamedNodeMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomNamedNodeMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomNamedNodeMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomNamedNodeMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomNamedNodeMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomNamedNodeMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomNamedNodeMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomNamedNodeMap.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -767,15 +752,12 @@ export namespace Lasem {
         // Signals
         /** @signal */
         connect<K extends keyof DomNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomNode.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -972,15 +954,12 @@ export namespace Lasem {
         // Signals
         /** @signal */
         connect<K extends keyof DomNodeList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomNodeList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomNodeList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomNodeList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomNodeList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomNodeList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomNodeList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomNodeList.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1041,15 +1020,12 @@ export namespace Lasem {
         // Signals
         /** @signal */
         connect<K extends keyof DomText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomText.SignalSignatures[K]>): void;
     }
 
 
@@ -1095,15 +1071,12 @@ export namespace Lasem {
         // Signals
         /** @signal */
         connect<K extends keyof DomView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DomView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DomView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DomView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DomView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DomView.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

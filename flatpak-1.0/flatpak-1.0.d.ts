@@ -681,15 +681,12 @@ export namespace Flatpak {
         // Signals
         /** @signal */
         connect<K extends keyof BundleRef.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BundleRef.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BundleRef.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BundleRef.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BundleRef.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BundleRef.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BundleRef.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BundleRef.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -777,15 +774,12 @@ export namespace Flatpak {
         // Signals
         /** @signal */
         connect<K extends keyof Installation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Installation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Installation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Installation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Installation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Installation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Installation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Installation.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1840,15 +1834,12 @@ export namespace Flatpak {
         // Signals
         /** @signal */
         connect<K extends keyof InstalledRef.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstalledRef.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InstalledRef.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstalledRef.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InstalledRef.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InstalledRef.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InstalledRef.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InstalledRef.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2001,15 +1992,12 @@ export namespace Flatpak {
         // Signals
         /** @signal */
         connect<K extends keyof Instance.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Instance.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Instance.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Instance.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Instance.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Instance.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Instance.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Instance.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2202,15 +2190,12 @@ export namespace Flatpak {
         // Signals
         /** @signal */
         connect<K extends keyof Ref.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Ref.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Ref.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Ref.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Ref.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Ref.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Ref.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Ref.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2366,15 +2351,12 @@ export namespace Flatpak {
         // Signals
         /** @signal */
         connect<K extends keyof RelatedRef.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RelatedRef.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RelatedRef.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RelatedRef.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RelatedRef.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RelatedRef.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RelatedRef.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RelatedRef.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2451,15 +2433,12 @@ export namespace Flatpak {
         // Signals
         /** @signal */
         connect<K extends keyof Remote.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Remote.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Remote.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Remote.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Remote.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2881,15 +2860,12 @@ export namespace Flatpak {
         // Signals
         /** @signal */
         connect<K extends keyof RemoteRef.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteRef.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RemoteRef.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteRef.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RemoteRef.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemoteRef.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RemoteRef.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemoteRef.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3144,15 +3120,12 @@ export namespace Flatpak {
         // Signals
         /** @signal */
         connect<K extends keyof Transaction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transaction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Transaction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transaction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Transaction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transaction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Transaction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transaction.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3834,15 +3807,12 @@ export namespace Flatpak {
         // Signals
         /** @signal */
         connect<K extends keyof TransactionOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransactionOperation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TransactionOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransactionOperation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TransactionOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TransactionOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TransactionOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TransactionOperation.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4036,15 +4006,12 @@ export namespace Flatpak {
         // Signals
         /** @signal */
         connect<K extends keyof TransactionProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransactionProgress.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TransactionProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransactionProgress.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TransactionProgress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TransactionProgress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TransactionProgress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TransactionProgress.SignalSignatures[K]>): void;
 
         // Methods
         /**

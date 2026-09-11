@@ -302,15 +302,12 @@ export namespace GnomeDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof DesktopThumbnailFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DesktopThumbnailFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesktopThumbnailFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesktopThumbnailFactory.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -548,15 +545,12 @@ export namespace GnomeDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof IdleMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IdleMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IdleMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IdleMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IdleMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IdleMonitor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -711,15 +705,12 @@ export namespace GnomeDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PnpIds.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PnpIds.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PnpIds.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PnpIds.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -827,15 +818,12 @@ export namespace GnomeDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof WallClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WallClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WallClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WallClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WallClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WallClock.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -905,15 +893,12 @@ export namespace GnomeDesktop {
         // Signals
         /** @signal */
         connect<K extends keyof XkbInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XkbInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XkbInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XkbInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XkbInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XkbInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**

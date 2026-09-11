@@ -361,15 +361,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotationModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotationModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotationModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotationModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationModel.SignalSignatures[K]>): void;
 
         // Methods
         get_eraser_objects(): boolean;
@@ -521,15 +518,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof AnnotationsContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationsContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnnotationsContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationsContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnnotationsContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationsContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnnotationsContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationsContext.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -649,15 +643,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof AttachmentContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AttachmentContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AttachmentContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AttachmentContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AttachmentContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AttachmentContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AttachmentContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AttachmentContext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -913,15 +904,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof DocumentModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DocumentModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DocumentModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DocumentModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentModel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1106,15 +1094,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof History.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, History.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof History.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, History.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof History.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<History.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof History.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<History.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1221,15 +1206,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof Job.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Job.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Job.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Job.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Job.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1368,15 +1350,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobAnnots.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobAnnots.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobAnnots.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobAnnots.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobAnnots.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobAnnots.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobAnnots.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobAnnots.SignalSignatures[K]>): void;
 
         // Methods
         get_annots(): PapersDocument.Annotation[] | null;
@@ -1418,15 +1397,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobAttachments.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobAttachments.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobAttachments.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobAttachments.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobAttachments.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobAttachments.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobAttachments.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobAttachments.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1471,15 +1447,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobExport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobExport.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobExport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobExport.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobExport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobExport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobExport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobExport.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1540,15 +1513,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobFind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobFind.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobFind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobFind.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobFind.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobFind.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobFind.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobFind.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1610,15 +1580,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobFonts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobFonts.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobFonts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobFonts.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobFonts.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobFonts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobFonts.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobFonts.SignalSignatures[K]>): void;
     }
 
 
@@ -1657,15 +1624,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobLayers.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLayers.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobLayers.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLayers.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobLayers.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLayers.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobLayers.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLayers.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1710,15 +1674,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobLinks.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLinks.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobLinks.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLinks.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobLinks.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLinks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobLinks.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLinks.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1768,15 +1729,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobLoad.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLoad.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobLoad.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLoad.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobLoad.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLoad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobLoad.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLoad.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1883,15 +1841,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobPageData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobPageData.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobPageData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobPageData.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobPageData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobPageData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobPageData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobPageData.SignalSignatures[K]>): void;
     }
 
 
@@ -1930,15 +1885,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobPrint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobPrint.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobPrint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobPrint.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobPrint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobPrint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobPrint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobPrint.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2017,15 +1969,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobRenderTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobRenderTexture.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobRenderTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobRenderTexture.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobRenderTexture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobRenderTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobRenderTexture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobRenderTexture.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2073,15 +2022,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobSave.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobSave.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobSave.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobSave.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobSave.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobSave.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobSave.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobSave.SignalSignatures[K]>): void;
 
         // Methods
         get_uri(): string;
@@ -2123,15 +2069,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobSignatures.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobSignatures.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobSignatures.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobSignatures.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobSignatures.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobSignatures.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobSignatures.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobSignatures.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2179,15 +2122,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof JobThumbnailTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobThumbnailTexture.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JobThumbnailTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobThumbnailTexture.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JobThumbnailTexture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobThumbnailTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JobThumbnailTexture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobThumbnailTexture.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2232,15 +2172,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Metadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Metadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Metadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2364,15 +2301,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof PrintOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PrintOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PrintOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PrintOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintOperation.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2524,15 +2458,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof SearchContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SearchContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SearchContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SearchContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchContext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2625,15 +2556,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof SearchResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SearchResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SearchResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SearchResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchResult.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2729,15 +2657,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof UndoContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UndoContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UndoContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UndoContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UndoContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UndoContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UndoContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UndoContext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2960,15 +2885,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]>): void;
 
         // Static methods
         static get_resource(): Gio.Resource;
@@ -3728,15 +3650,12 @@ export namespace PapersView {
         // Signals
         /** @signal */
         connect<K extends keyof ViewPresentation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ViewPresentation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ViewPresentation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ViewPresentation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ViewPresentation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ViewPresentation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ViewPresentation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ViewPresentation.SignalSignatures[K]>): void;
 
         // Methods
         get_current_page(): number;

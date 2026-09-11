@@ -71,15 +71,12 @@ export namespace SoupGNOME {
         // Signals
         /** @signal */
         connect<K extends keyof CookieJarSqlite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CookieJarSqlite.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CookieJarSqlite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CookieJarSqlite.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CookieJarSqlite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CookieJarSqlite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CookieJarSqlite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CookieJarSqlite.SignalSignatures[K]>): void;
     }
 
 
@@ -114,15 +111,12 @@ export namespace SoupGNOME {
         // Signals
         /** @signal */
         connect<K extends keyof PasswordManagerGNOME.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordManagerGNOME.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PasswordManagerGNOME.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordManagerGNOME.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PasswordManagerGNOME.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordManagerGNOME.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PasswordManagerGNOME.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordManagerGNOME.SignalSignatures[K]>): void;
 
         /**
          * Adds a "sub-feature" of type `type` to the base feature `feature`.
@@ -266,15 +260,12 @@ export namespace SoupGNOME {
         // Signals
         /** @signal */
         connect<K extends keyof ProxyResolverGNOME.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProxyResolverGNOME.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProxyResolverGNOME.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProxyResolverGNOME.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProxyResolverGNOME.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProxyResolverGNOME.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProxyResolverGNOME.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProxyResolverGNOME.SignalSignatures[K]>): void;
 
         /**
          * Asynchronously determines a proxy URI to use for `msg` and calls

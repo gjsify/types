@@ -8396,15 +8396,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ATContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ATContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ATContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ATContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ATContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ATContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ATContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ATContext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8873,15 +8870,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof AboutDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AboutDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AboutDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AboutDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AboutDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AboutDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AboutDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AboutDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9251,15 +9245,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof AccessibleHyperlink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccessibleHyperlink.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AccessibleHyperlink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccessibleHyperlink.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AccessibleHyperlink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccessibleHyperlink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AccessibleHyperlink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccessibleHyperlink.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9659,15 +9650,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ActionBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ActionBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ActionBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ActionBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10117,15 +10105,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ActivateAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActivateAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ActivateAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActivateAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ActivateAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActivateAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ActivateAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActivateAction.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -10290,15 +10275,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Adjustment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Adjustment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Adjustment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Adjustment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Adjustment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Adjustment.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -10620,15 +10602,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof AlertDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AlertDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AlertDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AlertDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AlertDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AlertDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AlertDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AlertDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10848,15 +10827,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof AlternativeTrigger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AlternativeTrigger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AlternativeTrigger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AlternativeTrigger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AlternativeTrigger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AlternativeTrigger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AlternativeTrigger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AlternativeTrigger.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11031,15 +11007,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof AnyFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnyFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AnyFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnyFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AnyFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnyFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AnyFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnyFilter.SignalSignatures[K]>): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -11853,15 +11826,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof AppChooserButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppChooserButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AppChooserButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppChooserButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AppChooserButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppChooserButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AppChooserButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppChooserButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12515,15 +12485,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof AppChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppChooserDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AppChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppChooserDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AppChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppChooserDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AppChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppChooserDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12839,15 +12806,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof AppChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppChooserWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AppChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppChooserWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AppChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppChooserWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AppChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppChooserWidget.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13589,15 +13553,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -14614,15 +14575,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15485,15 +15443,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof AspectFrame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AspectFrame.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AspectFrame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AspectFrame.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AspectFrame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AspectFrame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AspectFrame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AspectFrame.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16152,15 +16107,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Assistant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Assistant.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Assistant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Assistant.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Assistant.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Assistant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Assistant.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Assistant.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16547,15 +16499,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof AssistantPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AssistantPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AssistantPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AssistantPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AssistantPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AssistantPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AssistantPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AssistantPage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16606,15 +16555,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof BinLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BinLayout.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BinLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BinLayout.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BinLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BinLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BinLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BinLayout.SignalSignatures[K]>): void;
     }
 
 
@@ -16742,15 +16688,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof BookmarkList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookmarkList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BookmarkList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BookmarkList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BookmarkList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookmarkList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BookmarkList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BookmarkList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16966,15 +16909,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof BoolFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoolFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BoolFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoolFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BoolFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BoolFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BoolFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BoolFilter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17175,15 +17115,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Box.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Box.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Box.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Box.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Box.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Box.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Box.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Box.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17800,15 +17737,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof BoxLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoxLayout.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BoxLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoxLayout.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BoxLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BoxLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BoxLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BoxLayout.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -18338,15 +18272,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Builder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Builder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Builder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Builder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Builder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Builder.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -18684,15 +18615,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof BuilderCScope.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderCScope.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuilderCScope.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderCScope.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuilderCScope.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderCScope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuilderCScope.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderCScope.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -18843,15 +18771,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof BuilderListItemFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderListItemFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BuilderListItemFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderListItemFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BuilderListItemFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderListItemFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BuilderListItemFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderListItemFactory.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19114,15 +19039,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Button.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Button.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Button.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Button.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Button.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Button.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Button.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Button.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -19779,15 +19701,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CClosureExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CClosureExpression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CClosureExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CClosureExpression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CClosureExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CClosureExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CClosureExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CClosureExpression.SignalSignatures[K]>): void;
     }
 
 
@@ -20044,15 +19963,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Calendar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Calendar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Calendar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Calendar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Calendar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Calendar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Calendar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Calendar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -20602,15 +20518,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CallbackAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallbackAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CallbackAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallbackAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CallbackAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallbackAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CallbackAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallbackAction.SignalSignatures[K]>): void;
     }
 
 
@@ -21052,15 +20965,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellArea.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellArea.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellArea.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellArea.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -22142,15 +22052,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellAreaBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellAreaBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellAreaBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellAreaBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellAreaBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellAreaBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellAreaBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellAreaBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22646,15 +22553,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellAreaContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellAreaContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellAreaContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellAreaContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellAreaContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellAreaContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellAreaContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellAreaContext.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -23142,15 +23046,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRenderer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRenderer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRenderer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -23688,15 +23589,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererAccel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererAccel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererAccel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererAccel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererAccel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererAccel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererAccel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererAccel.SignalSignatures[K]>): void;
     }
 
 
@@ -23887,15 +23785,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererCombo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererCombo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererCombo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererCombo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererCombo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererCombo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererCombo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererCombo.SignalSignatures[K]>): void;
     }
 
 
@@ -24041,15 +23936,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererPixbuf.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererPixbuf.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererPixbuf.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererPixbuf.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererPixbuf.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererPixbuf.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererPixbuf.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererPixbuf.SignalSignatures[K]>): void;
     }
 
 
@@ -24201,15 +24093,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererProgress.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererProgress.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererProgress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererProgress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererProgress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererProgress.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -24379,15 +24268,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererSpin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererSpin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererSpin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererSpin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererSpin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererSpin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererSpin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererSpin.SignalSignatures[K]>): void;
     }
 
 
@@ -24486,15 +24372,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererSpinner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererSpinner.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererSpinner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererSpinner.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererSpinner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererSpinner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererSpinner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererSpinner.SignalSignatures[K]>): void;
     }
 
 
@@ -25155,15 +25038,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererText.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -25289,15 +25169,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererToggle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererToggle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererToggle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererToggle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererToggle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererToggle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererToggle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererToggle.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -25577,15 +25454,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CellView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -26473,15 +26347,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CenterBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CenterBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CenterBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CenterBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CenterBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CenterBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CenterBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CenterBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -27028,15 +26899,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CenterLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CenterLayout.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CenterLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CenterLayout.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CenterLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CenterLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CenterLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CenterLayout.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -27368,15 +27236,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CheckButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CheckButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CheckButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CheckButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CheckButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CheckButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CheckButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CheckButton.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -28023,15 +27888,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ClosureExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClosureExpression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClosureExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClosureExpression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClosureExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClosureExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClosureExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClosureExpression.SignalSignatures[K]>): void;
     }
 
 
@@ -28200,15 +28062,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ColorButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -28893,15 +28752,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ColorChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorChooserDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorChooserDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorChooserDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorChooserDialog.SignalSignatures[K]>): void;
 
         /**
          * The currently selected color, as a {@link Gdk.RGBA} struct.
@@ -29175,15 +29031,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ColorChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorChooserWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorChooserWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorChooserWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorChooserWidget.SignalSignatures[K]>): void;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -29785,15 +29638,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ColorDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -30017,15 +29867,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ColorDialogButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorDialogButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorDialogButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorDialogButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorDialogButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorDialogButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorDialogButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorDialogButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -30740,15 +30587,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ColumnView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColumnView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColumnView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColumnView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -31566,15 +31410,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ColumnViewCell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnViewCell.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColumnViewCell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnViewCell.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColumnViewCell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnViewCell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColumnViewCell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnViewCell.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -31816,15 +31657,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ColumnViewColumn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnViewColumn.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColumnViewColumn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnViewColumn.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColumnViewColumn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnViewColumn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColumnViewColumn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnViewColumn.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -32113,15 +31951,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ColumnViewRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnViewRow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColumnViewRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnViewRow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColumnViewRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnViewRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColumnViewRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnViewRow.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -32372,15 +32207,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ColumnViewSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnViewSorter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColumnViewSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnViewSorter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColumnViewSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnViewSorter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColumnViewSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnViewSorter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -32849,15 +32681,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ComboBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ComboBox.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -33893,15 +33722,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ComboBoxText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ComboBoxText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ComboBoxText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ComboBoxText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ComboBoxText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ComboBoxText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ComboBoxText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ComboBoxText.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -34296,15 +34122,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ConstantExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConstantExpression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConstantExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConstantExpression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConstantExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConstantExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConstantExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConstantExpression.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -34469,15 +34292,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Constraint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Constraint.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Constraint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Constraint.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Constraint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Constraint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Constraint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Constraint.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -34728,15 +34548,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ConstraintGuide.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConstraintGuide.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConstraintGuide.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConstraintGuide.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConstraintGuide.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConstraintGuide.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConstraintGuide.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConstraintGuide.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -35009,15 +34826,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ConstraintLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConstraintLayout.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConstraintLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConstraintLayout.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConstraintLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConstraintLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConstraintLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConstraintLayout.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -35319,15 +35133,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ConstraintLayoutChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConstraintLayoutChild.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConstraintLayoutChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConstraintLayoutChild.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConstraintLayoutChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConstraintLayoutChild.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConstraintLayoutChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConstraintLayoutChild.SignalSignatures[K]>): void;
     }
 
 
@@ -35570,15 +35381,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CssProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CssProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CssProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CssProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CssProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CssProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CssProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CssProvider.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -35694,15 +35502,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CustomFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CustomFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CustomFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CustomFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CustomFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CustomFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CustomFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CustomFilter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -35760,15 +35565,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CustomLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CustomLayout.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CustomLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CustomLayout.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CustomLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CustomLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CustomLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CustomLayout.SignalSignatures[K]>): void;
     }
 
 
@@ -35806,15 +35608,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof CustomSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CustomSorter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CustomSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CustomSorter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CustomSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CustomSorter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CustomSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CustomSorter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -36132,15 +35931,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Dialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Dialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Dialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Dialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dialog.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -36489,15 +36285,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof DirectoryList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DirectoryList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DirectoryList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DirectoryList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -36800,15 +36593,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof DragIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DragIcon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DragIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DragIcon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DragIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DragIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DragIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DragIcon.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -37461,15 +37251,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof DragSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DragSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DragSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DragSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DragSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DragSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DragSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DragSource.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -37743,15 +37530,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof DrawingArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawingArea.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DrawingArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawingArea.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DrawingArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawingArea.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DrawingArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawingArea.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -38329,15 +38113,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof DropControllerMotion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DropControllerMotion.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DropControllerMotion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DropControllerMotion.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DropControllerMotion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DropControllerMotion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DropControllerMotion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DropControllerMotion.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -38645,15 +38426,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof DropDown.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DropDown.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DropDown.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DropDown.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DropDown.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DropDown.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DropDown.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DropDown.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -39408,15 +39186,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof DropTarget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DropTarget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DropTarget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DropTarget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DropTarget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DropTarget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DropTarget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DropTarget.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -39655,15 +39430,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof DropTargetAsync.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DropTargetAsync.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DropTargetAsync.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DropTargetAsync.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DropTargetAsync.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DropTargetAsync.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DropTargetAsync.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DropTargetAsync.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -39839,15 +39611,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EditableLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EditableLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EditableLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EditableLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EditableLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EditableLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EditableLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EditableLabel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -40903,15 +40672,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EmojiChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EmojiChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EmojiChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EmojiChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EmojiChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EmojiChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EmojiChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EmojiChooser.SignalSignatures[K]>): void;
 
         /**
          * Returns the renderer that is used for this {@link Gtk.Native}.
@@ -41973,15 +41739,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entry.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -43614,15 +43377,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EntryBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryBuffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryBuffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryBuffer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -44093,15 +43853,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EntryCompletion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryCompletion.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryCompletion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryCompletion.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryCompletion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryCompletion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryCompletion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryCompletion.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -44701,15 +44458,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EnumList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EnumList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EnumList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EnumList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -44908,15 +44662,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EnumListItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumListItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EnumListItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumListItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EnumListItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumListItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EnumListItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumListItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -45036,15 +44787,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EventController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EventController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EventController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EventController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventController.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -45284,15 +45032,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EventControllerFocus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventControllerFocus.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EventControllerFocus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventControllerFocus.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EventControllerFocus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventControllerFocus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EventControllerFocus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventControllerFocus.SignalSignatures[K]>): void;
     }
 
 
@@ -45363,15 +45108,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EventControllerKey.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventControllerKey.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EventControllerKey.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventControllerKey.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EventControllerKey.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventControllerKey.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EventControllerKey.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventControllerKey.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -45457,15 +45199,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EventControllerLegacy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventControllerLegacy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EventControllerLegacy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventControllerLegacy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EventControllerLegacy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventControllerLegacy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EventControllerLegacy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventControllerLegacy.SignalSignatures[K]>): void;
     }
 
 
@@ -45595,15 +45334,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EventControllerMotion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventControllerMotion.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EventControllerMotion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventControllerMotion.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EventControllerMotion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventControllerMotion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EventControllerMotion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventControllerMotion.SignalSignatures[K]>): void;
     }
 
 
@@ -45726,15 +45462,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EventControllerScroll.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventControllerScroll.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EventControllerScroll.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventControllerScroll.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EventControllerScroll.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventControllerScroll.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EventControllerScroll.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventControllerScroll.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -45801,15 +45534,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof EveryFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EveryFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EveryFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EveryFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EveryFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EveryFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EveryFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EveryFilter.SignalSignatures[K]>): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -46286,15 +46016,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Expander.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expander.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Expander.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expander.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Expander.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Expander.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Expander.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Expander.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -46964,15 +46691,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Expression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Expression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Expression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Expression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Expression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Expression.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -47336,15 +47060,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FileChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooserDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooserDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileChooserDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileChooserDialog.SignalSignatures[K]>): void;
 
         /**
          * The type of operation that the file chooser is performing.
@@ -47970,15 +47691,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FileChooserNative.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooserNative.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileChooserNative.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooserNative.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileChooserNative.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileChooserNative.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileChooserNative.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileChooserNative.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -48749,15 +48467,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FileChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooserWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooserWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileChooserWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileChooserWidget.SignalSignatures[K]>): void;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -49717,15 +49432,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FileDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -50484,15 +50196,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FileFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileFilter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -50772,15 +50481,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FileLauncher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLauncher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileLauncher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLauncher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileLauncher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLauncher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileLauncher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLauncher.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -50981,15 +50687,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Filter.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -51189,15 +50892,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FilterListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterListModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FilterListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilterListModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FilterListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterListModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FilterListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilterListModel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -51566,15 +51266,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Fixed.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Fixed.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Fixed.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Fixed.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Fixed.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Fixed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Fixed.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Fixed.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -52056,15 +51753,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FixedLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FixedLayout.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FixedLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FixedLayout.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FixedLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FixedLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FixedLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FixedLayout.SignalSignatures[K]>): void;
     }
 
 
@@ -52113,15 +51807,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FixedLayoutChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FixedLayoutChild.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FixedLayoutChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FixedLayoutChild.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FixedLayoutChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FixedLayoutChild.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FixedLayoutChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FixedLayoutChild.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -52222,15 +51913,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FlattenListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlattenListModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlattenListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlattenListModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlattenListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlattenListModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlattenListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlattenListModel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -52768,15 +52456,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FlowBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlowBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlowBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlowBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlowBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlowBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlowBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlowBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -53570,15 +53255,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FlowBoxChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlowBoxChild.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlowBoxChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlowBoxChild.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlowBoxChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlowBoxChild.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlowBoxChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlowBoxChild.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -54178,15 +53860,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FontButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FontButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FontButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FontButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -55114,15 +54793,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FontChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontChooserDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FontChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontChooserDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FontChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontChooserDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FontChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontChooserDialog.SignalSignatures[K]>): void;
 
         /**
          * The font description as a string, e.g. "Sans Italic 12".
@@ -55621,15 +55297,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FontChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontChooserWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FontChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontChooserWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FontChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontChooserWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FontChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontChooserWidget.SignalSignatures[K]>): void;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -56479,15 +56152,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FontDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FontDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FontDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FontDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -57023,15 +56693,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof FontDialogButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontDialogButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FontDialogButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontDialogButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FontDialogButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontDialogButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FontDialogButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontDialogButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -57680,15 +57347,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Frame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Frame.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -58490,15 +58154,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GLArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GLArea.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GLArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GLArea.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GLArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GLArea.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GLArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GLArea.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -59266,15 +58927,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Gesture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Gesture.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Gesture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Gesture.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Gesture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Gesture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Gesture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Gesture.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -59604,15 +59262,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GestureClick.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureClick.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GestureClick.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureClick.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GestureClick.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureClick.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GestureClick.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureClick.SignalSignatures[K]>): void;
     }
 
 
@@ -59685,15 +59340,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GestureDrag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureDrag.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GestureDrag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureDrag.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GestureDrag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureDrag.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GestureDrag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureDrag.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -59808,15 +59460,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GestureLongPress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureLongPress.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GestureLongPress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureLongPress.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GestureLongPress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureLongPress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GestureLongPress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureLongPress.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -59912,15 +59561,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GesturePan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GesturePan.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GesturePan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GesturePan.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GesturePan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GesturePan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GesturePan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GesturePan.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -59986,15 +59632,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GestureRotate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureRotate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GestureRotate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureRotate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GestureRotate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureRotate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GestureRotate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureRotate.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -60098,15 +59741,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GestureSingle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureSingle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GestureSingle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureSingle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GestureSingle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureSingle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GestureSingle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureSingle.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -60270,15 +59910,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GestureStylus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureStylus.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GestureStylus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureStylus.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GestureStylus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureStylus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GestureStylus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureStylus.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -60418,15 +60055,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GestureSwipe.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureSwipe.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GestureSwipe.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureSwipe.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GestureSwipe.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureSwipe.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GestureSwipe.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureSwipe.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -60491,15 +60125,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GestureZoom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureZoom.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GestureZoom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GestureZoom.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GestureZoom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureZoom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GestureZoom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GestureZoom.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -60661,15 +60292,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GraphicsOffload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GraphicsOffload.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GraphicsOffload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GraphicsOffload.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GraphicsOffload.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GraphicsOffload.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GraphicsOffload.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GraphicsOffload.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -61339,15 +60967,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Grid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Grid.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -62064,15 +61689,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GridLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GridLayout.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GridLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GridLayout.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GridLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GridLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GridLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GridLayout.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -62250,15 +61872,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GridLayoutChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GridLayoutChild.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GridLayoutChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GridLayoutChild.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GridLayoutChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GridLayoutChild.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GridLayoutChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GridLayoutChild.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -62551,15 +62170,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof GridView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GridView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GridView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GridView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GridView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GridView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GridView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GridView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -63067,15 +62683,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof HeaderBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HeaderBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HeaderBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HeaderBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HeaderBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HeaderBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HeaderBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HeaderBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -63718,15 +63331,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof IMContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IMContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IMContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IMContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IMContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IMContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IMContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IMContext.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -64240,15 +63850,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof IMContextSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IMContextSimple.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IMContextSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IMContextSimple.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IMContextSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IMContextSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IMContextSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IMContextSimple.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -64303,15 +63910,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof IMMulticontext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IMMulticontext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IMMulticontext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IMMulticontext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IMMulticontext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IMMulticontext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IMMulticontext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IMMulticontext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -64437,15 +64041,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof IconPaintable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IconPaintable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IconPaintable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IconPaintable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IconPaintable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IconPaintable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IconPaintable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IconPaintable.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -64928,15 +64529,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof IconTheme.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IconTheme.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IconTheme.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IconTheme.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IconTheme.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IconTheme.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IconTheme.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IconTheme.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -65644,15 +65242,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof IconView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IconView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IconView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IconView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IconView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IconView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IconView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IconView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -67182,15 +66777,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -67909,15 +67501,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof InfoBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InfoBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InfoBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfoBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InfoBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfoBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -68755,15 +68344,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Inscription.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Inscription.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Inscription.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Inscription.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Inscription.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Inscription.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Inscription.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Inscription.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -69520,15 +69106,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof KeyvalTrigger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyvalTrigger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof KeyvalTrigger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyvalTrigger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof KeyvalTrigger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyvalTrigger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof KeyvalTrigger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyvalTrigger.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -70262,15 +69845,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Label.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Label.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Label.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Label.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Label.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Label.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -71379,15 +70959,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof LayoutChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LayoutChild.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LayoutChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LayoutChild.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LayoutChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LayoutChild.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LayoutChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LayoutChild.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -71483,15 +71060,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof LayoutManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LayoutManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LayoutManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LayoutManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LayoutManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LayoutManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LayoutManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LayoutManager.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -72461,15 +72035,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof LevelBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LevelBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LevelBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LevelBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LevelBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LevelBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LevelBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LevelBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -73127,15 +72698,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof LinkButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LinkButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LinkButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LinkButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -73449,15 +73017,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ListBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListBase.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListBase.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListBase.SignalSignatures[K]>): void;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -74271,15 +73836,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ListBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -75088,15 +74650,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ListBoxRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListBoxRow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListBoxRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListBoxRow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListBoxRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListBoxRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListBoxRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListBoxRow.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -75808,15 +75367,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ListHeader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListHeader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListHeader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListHeader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListHeader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListHeader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListHeader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListHeader.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -76028,15 +75584,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ListItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -76263,15 +75816,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ListItemFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListItemFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListItemFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListItemFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListItemFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListItemFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListItemFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListItemFactory.SignalSignatures[K]>): void;
     }
 
 
@@ -76452,15 +76002,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ListStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListStore.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -77822,15 +77369,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ListView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -78332,15 +77876,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof LockButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LockButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LockButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LockButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LockButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LockButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LockButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LockButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -78633,15 +78174,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MapListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapListModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MapListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapListModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MapListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapListModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MapListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapListModel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -78929,15 +78467,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MediaControls.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaControls.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaControls.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaControls.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaControls.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaControls.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaControls.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaControls.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -79409,15 +78944,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MediaFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaFile.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -79895,15 +79427,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MediaStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MediaStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MediaStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MediaStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaStream.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -80809,15 +80338,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MenuButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -81707,15 +81233,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MessageDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MessageDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MessageDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MessageDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -81773,15 +81296,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MnemonicAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MnemonicAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MnemonicAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MnemonicAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MnemonicAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MnemonicAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MnemonicAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MnemonicAction.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -81843,15 +81363,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MnemonicTrigger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MnemonicTrigger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MnemonicTrigger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MnemonicTrigger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MnemonicTrigger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MnemonicTrigger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MnemonicTrigger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MnemonicTrigger.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -81956,15 +81473,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MountOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MountOperation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MountOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MountOperation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MountOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MountOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MountOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MountOperation.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -82074,15 +81588,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MultiFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MultiFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MultiFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MultiFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiFilter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -82392,15 +81903,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MultiSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiSelection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MultiSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiSelection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MultiSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MultiSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiSelection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -82881,15 +82389,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof MultiSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiSorter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MultiSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiSorter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MultiSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiSorter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MultiSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiSorter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -83179,15 +82684,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof NamedAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NamedAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NamedAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NamedAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NamedAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NamedAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NamedAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NamedAction.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -83302,15 +82804,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof NativeDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NativeDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NativeDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NativeDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NativeDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NativeDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NativeDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NativeDialog.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -83470,15 +82969,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof NeverTrigger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NeverTrigger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NeverTrigger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NeverTrigger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NeverTrigger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NeverTrigger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NeverTrigger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NeverTrigger.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -83578,15 +83074,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof NoSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NoSelection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NoSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NoSelection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NoSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NoSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NoSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NoSelection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -84387,15 +83880,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Notebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Notebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Notebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Notebook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Notebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Notebook.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -85309,15 +84799,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof NotebookPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NotebookPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NotebookPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NotebookPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NotebookPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NotebookPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NotebookPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NotebookPage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -85360,15 +84847,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof NothingAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NothingAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NothingAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NothingAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NothingAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NothingAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NothingAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NothingAction.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -85446,15 +84930,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof NumericSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NumericSorter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NumericSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NumericSorter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NumericSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NumericSorter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NumericSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NumericSorter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -85509,15 +84990,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ObjectExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectExpression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ObjectExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectExpression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ObjectExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ObjectExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectExpression.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -85661,15 +85139,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Overlay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Overlay.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Overlay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Overlay.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Overlay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Overlay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Overlay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Overlay.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -86141,15 +85616,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof OverlayLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OverlayLayout.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OverlayLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OverlayLayout.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OverlayLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OverlayLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OverlayLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OverlayLayout.SignalSignatures[K]>): void;
     }
 
 
@@ -86217,15 +85689,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof OverlayLayoutChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OverlayLayoutChild.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OverlayLayoutChild.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OverlayLayoutChild.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OverlayLayoutChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OverlayLayoutChild.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OverlayLayoutChild.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OverlayLayoutChild.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -86370,15 +85839,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PadController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PadController.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PadController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PadController.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PadController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PadController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PadController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PadController.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -86491,15 +85957,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PageSetup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PageSetup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PageSetup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PageSetup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PageSetup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PageSetup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PageSetup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PageSetup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -86800,15 +86263,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PageSetupUnixDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PageSetupUnixDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PageSetupUnixDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PageSetupUnixDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PageSetupUnixDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PageSetupUnixDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PageSetupUnixDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PageSetupUnixDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -87277,15 +86737,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Paned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Paned.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Paned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Paned.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Paned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Paned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Paned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Paned.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -87980,15 +87437,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PasswordEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PasswordEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PasswordEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PasswordEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -88966,15 +88420,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PasswordEntryBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordEntryBuffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PasswordEntryBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordEntryBuffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PasswordEntryBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordEntryBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PasswordEntryBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordEntryBuffer.SignalSignatures[K]>): void;
     }
 
 
@@ -89218,15 +88669,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Picture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Picture.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Picture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Picture.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Picture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Picture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Picture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Picture.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -90070,15 +89518,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Popover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Popover.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Popover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Popover.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Popover.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Popover.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Popover.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Popover.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -90819,15 +90264,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PopoverBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PopoverBin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PopoverBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PopoverBin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PopoverBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PopoverBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PopoverBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PopoverBin.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -91534,15 +90976,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PopoverMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PopoverMenu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PopoverMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PopoverMenu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PopoverMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PopoverMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PopoverMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PopoverMenu.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -91770,15 +91209,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PopoverMenuBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PopoverMenuBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PopoverMenuBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PopoverMenuBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PopoverMenuBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PopoverMenuBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PopoverMenuBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PopoverMenuBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -92278,15 +91714,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PrintContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PrintContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PrintContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PrintContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintContext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -92496,15 +91929,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PrintDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PrintDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PrintDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PrintDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -92894,15 +92324,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PrintJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintJob.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PrintJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintJob.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PrintJob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintJob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PrintJob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintJob.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -93859,15 +93286,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PrintOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PrintOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PrintOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PrintOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintOperation.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -94426,15 +93850,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PrintSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintSettings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PrintSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintSettings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PrintSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PrintSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintSettings.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -95238,15 +94659,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PrintUnixDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintUnixDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PrintUnixDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintUnixDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PrintUnixDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintUnixDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PrintUnixDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintUnixDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -95577,15 +94995,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Printer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Printer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Printer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Printer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Printer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Printer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Printer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Printer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -95959,15 +95374,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ProgressBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProgressBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProgressBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProgressBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -96510,15 +95922,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof PropertyExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyExpression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PropertyExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyExpression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PropertyExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PropertyExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyExpression.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -96756,15 +96165,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Range.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Range.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Range.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Range.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Range.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Range.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Range.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Range.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -97520,15 +96926,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof RecentManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RecentManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RecentManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RecentManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RecentManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RecentManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RecentManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RecentManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -97808,15 +97211,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Revealer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Revealer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Revealer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Revealer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Revealer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Revealer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Revealer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Revealer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -98486,15 +97886,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Scale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Scale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scale.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scale.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -98857,15 +98254,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ScaleButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScaleButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScaleButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScaleButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScaleButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScaleButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScaleButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScaleButton.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -99480,15 +98874,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Scrollbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scrollbar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Scrollbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scrollbar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Scrollbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scrollbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Scrollbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scrollbar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -100383,15 +99774,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ScrolledWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrolledWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScrolledWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrolledWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScrolledWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScrolledWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScrolledWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScrolledWindow.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -101193,15 +100581,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof SearchBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SearchBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SearchBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SearchBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -101968,15 +101353,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof SearchEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SearchEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SearchEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SearchEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -103050,15 +102432,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof SelectionFilterModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SelectionFilterModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SelectionFilterModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SelectionFilterModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SelectionFilterModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SelectionFilterModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SelectionFilterModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SelectionFilterModel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -103281,15 +102660,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Separator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Separator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Separator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Separator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Separator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Separator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Separator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Separator.SignalSignatures[K]>): void;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -105103,15 +104479,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -105216,15 +104589,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Shortcut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shortcut.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Shortcut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shortcut.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Shortcut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Shortcut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Shortcut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Shortcut.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -105324,15 +104694,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutAction.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -105524,15 +104891,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutController.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutController.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutController.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -105918,15 +105282,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutLabel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -106366,15 +105727,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutTrigger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutTrigger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutTrigger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutTrigger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutTrigger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutTrigger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutTrigger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutTrigger.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -106667,15 +106025,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutsGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutsGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutsGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutsGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -106928,15 +106283,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutsSection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsSection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutsSection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsSection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutsSection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsSection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutsSection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsSection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -107266,15 +106618,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutsShortcut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsShortcut.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutsShortcut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsShortcut.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutsShortcut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsShortcut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutsShortcut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsShortcut.SignalSignatures[K]>): void;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -107884,15 +107233,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutsWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutsWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutsWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutsWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsWindow.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -108047,15 +107393,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof SignalAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SignalAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SignalAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SignalAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalAction.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -108193,15 +107536,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof SignalListItemFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalListItemFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SignalListItemFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalListItemFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SignalListItemFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalListItemFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SignalListItemFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalListItemFactory.SignalSignatures[K]>): void;
     }
 
 
@@ -108341,15 +107681,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof SingleSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SingleSelection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SingleSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SingleSelection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SingleSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SingleSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SingleSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SingleSelection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -108968,15 +108305,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof SizeGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SizeGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SizeGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SizeGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SizeGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SizeGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SizeGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SizeGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -109230,15 +108564,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof SliceListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SliceListModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SliceListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SliceListModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SliceListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SliceListModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SliceListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SliceListModel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -109494,15 +108825,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Snapshot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Snapshot.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Snapshot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Snapshot.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Snapshot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Snapshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Snapshot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Snapshot.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -110292,15 +109620,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof SortListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SortListModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SortListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SortListModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SortListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SortListModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SortListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SortListModel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -110620,15 +109945,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Sorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sorter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Sorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sorter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Sorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sorter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Sorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sorter.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -111119,15 +110441,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof SpinButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpinButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SpinButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpinButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SpinButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpinButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SpinButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpinButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -112436,15 +111755,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Spinner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Spinner.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Spinner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Spinner.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Spinner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Spinner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Spinner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Spinner.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -113084,15 +112400,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Stack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stack.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Stack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stack.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Stack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Stack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Stack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Stack.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -113799,15 +113112,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof StackPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StackPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StackPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StackPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StackPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StackPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StackPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StackPage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -114258,15 +113568,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof StackSidebar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StackSidebar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StackSidebar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StackSidebar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StackSidebar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StackSidebar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StackSidebar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StackSidebar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -114765,15 +114072,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof StackSwitcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StackSwitcher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StackSwitcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StackSwitcher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StackSwitcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StackSwitcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StackSwitcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StackSwitcher.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -115297,15 +114601,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Statusbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Statusbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Statusbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Statusbar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -115822,15 +115123,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof StringFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StringFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StringFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StringFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringFilter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -115995,15 +115293,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof StringList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StringList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StringList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StringList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringList.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -116340,15 +115635,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof StringObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringObject.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StringObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringObject.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StringObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StringObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringObject.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -116444,15 +115736,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof StringSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringSorter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StringSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringSorter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StringSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringSorter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StringSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringSorter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -116580,15 +115869,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof StyleContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StyleContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StyleContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StyleContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StyleContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StyleContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StyleContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StyleContext.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -117091,15 +116377,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Svg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Svg.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Svg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Svg.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Svg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Svg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Svg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Svg.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -117747,15 +117030,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof SvgWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SvgWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SvgWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SvgWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SvgWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SvgWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SvgWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SvgWidget.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -118337,15 +117617,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Switch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Switch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Switch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Switch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Switch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Switch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Switch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Switch.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -119554,15 +118831,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Text.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Text.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Text.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Text.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Text.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -121261,15 +120535,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TextBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextBuffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextBuffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextBuffer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -122317,15 +121588,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TextChildAnchor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextChildAnchor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextChildAnchor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextChildAnchor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextChildAnchor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextChildAnchor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextChildAnchor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextChildAnchor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -122454,15 +121722,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TextMark.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextMark.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextMark.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextMark.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextMark.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextMark.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextMark.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextMark.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -123940,15 +123205,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TextTag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextTag.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextTag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextTag.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextTag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextTag.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextTag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextTag.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -124064,15 +123326,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TextTagTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextTagTable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextTagTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextTagTable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextTagTable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextTagTable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextTagTable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextTagTable.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -124968,15 +124227,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TextView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextView.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -126654,15 +125910,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof ToggleButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ToggleButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ToggleButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ToggleButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ToggleButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ToggleButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ToggleButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ToggleButton.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -126924,15 +126177,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Tooltip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tooltip.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tooltip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tooltip.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tooltip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tooltip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tooltip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tooltip.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -127248,15 +126498,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TreeExpander.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeExpander.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeExpander.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeExpander.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeExpander.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeExpander.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeExpander.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeExpander.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -127805,15 +127052,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TreeListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeListModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeListModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeListModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeListModel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -128094,15 +127338,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TreeListRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeListRow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeListRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeListRow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeListRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeListRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeListRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeListRow.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -128255,15 +127496,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TreeListRowSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeListRowSorter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeListRowSorter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeListRowSorter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeListRowSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeListRowSorter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeListRowSorter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeListRowSorter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -128415,15 +127653,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TreeModelFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeModelFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeModelFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeModelFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeModelFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeModelFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeModelFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeModelFilter.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -129322,15 +128557,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TreeModelSort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeModelSort.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeModelSort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeModelSort.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeModelSort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeModelSort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeModelSort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeModelSort.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -130227,15 +129459,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TreeSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeSelection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeSelection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeSelection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -130460,15 +129689,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TreeStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeStore.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -132152,15 +131378,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TreeView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeView.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -133920,15 +133143,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TreeViewColumn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeViewColumn.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeViewColumn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeViewColumn.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeViewColumn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeViewColumn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeViewColumn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeViewColumn.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -134624,15 +133844,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof TryExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TryExpression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TryExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TryExpression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TryExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TryExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TryExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TryExpression.SignalSignatures[K]>): void;
     }
 
 
@@ -134694,15 +133911,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof UriLauncher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UriLauncher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UriLauncher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UriLauncher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UriLauncher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UriLauncher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UriLauncher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UriLauncher.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -134932,15 +134146,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Video.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Video.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Video.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Video.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -135526,15 +134737,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Viewport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Viewport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -136175,15 +135383,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof VolumeButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VolumeButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VolumeButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VolumeButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VolumeButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VolumeButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VolumeButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VolumeButton.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -137437,15 +136642,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Widget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Widget.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -140260,15 +139462,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof WidgetPaintable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetPaintable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetPaintable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetPaintable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetPaintable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetPaintable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetPaintable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetPaintable.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -141091,15 +140290,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Window.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -142466,15 +141662,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof WindowControls.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowControls.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WindowControls.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowControls.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WindowControls.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowControls.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WindowControls.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowControls.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -142957,15 +142150,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof WindowGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WindowGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WindowGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WindowGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -143084,15 +142274,12 @@ export interface Builder {
         // Signals
         /** @signal */
         connect<K extends keyof WindowHandle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowHandle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WindowHandle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowHandle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WindowHandle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowHandle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WindowHandle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowHandle.SignalSignatures[K]>): void;
 
         // Methods
         /**

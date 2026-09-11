@@ -786,15 +786,12 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect<K extends keyof Audio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Audio.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Audio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Audio.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Audio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Audio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Audio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Audio.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -976,15 +973,12 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Channel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Channel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Channel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Channel.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1246,11 +1240,9 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect_after<K extends keyof CursorChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CursorChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CursorChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CursorChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CursorChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CursorChannel.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1448,11 +1440,9 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect_after<K extends keyof DisplayChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DisplayChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DisplayChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DisplayChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DisplayChannel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1652,15 +1642,12 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect<K extends keyof FileTransferTask.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTransferTask.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileTransferTask.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTransferTask.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileTransferTask.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileTransferTask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileTransferTask.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileTransferTask.SignalSignatures[K]>): void;
 
         // Methods
         cancel(): void;
@@ -1738,11 +1725,9 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect_after<K extends keyof InputsChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputsChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InputsChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputsChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InputsChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputsChannel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2118,11 +2103,9 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect_after<K extends keyof MainChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MainChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MainChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MainChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MainChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MainChannel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2442,11 +2425,9 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect_after<K extends keyof PlaybackChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlaybackChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PlaybackChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlaybackChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PlaybackChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlaybackChannel.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2567,11 +2548,9 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect_after<K extends keyof PortChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PortChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PortChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PortChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PortChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PortChannel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2689,15 +2668,12 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect<K extends keyof QmpPort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QmpPort.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof QmpPort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QmpPort.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof QmpPort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<QmpPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof QmpPort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<QmpPort.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2851,11 +2827,9 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect_after<K extends keyof RecordChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RecordChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RecordChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RecordChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RecordChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RecordChannel.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3486,15 +3460,12 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3626,11 +3597,9 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect_after<K extends keyof SmartcardChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SmartcardChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SmartcardChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SmartcardChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SmartcardChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SmartcardChannel.SignalSignatures[K]>): void;
     }
 
 
@@ -3695,15 +3664,12 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect<K extends keyof SmartcardManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SmartcardManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SmartcardManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SmartcardManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SmartcardManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SmartcardManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SmartcardManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SmartcardManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3848,15 +3814,12 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect<K extends keyof URI.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URI.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof URI.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URI.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof URI.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<URI.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof URI.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<URI.SignalSignatures[K]>): void;
 
         // Methods
         get_hostname(): string;
@@ -4091,15 +4054,12 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect<K extends keyof UsbDeviceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UsbDeviceManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UsbDeviceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UsbDeviceManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UsbDeviceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UsbDeviceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UsbDeviceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UsbDeviceManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4420,11 +4380,9 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect_after<K extends keyof UsbredirChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UsbredirChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UsbredirChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UsbredirChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UsbredirChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UsbredirChannel.SignalSignatures[K]>): void;
     }
 
 
@@ -4468,11 +4426,9 @@ export namespace SpiceClientGLib {
         // Signals
         /** @signal */
         connect_after<K extends keyof WebdavChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebdavChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WebdavChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebdavChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WebdavChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebdavChannel.SignalSignatures[K]>): void;
     }
 
 

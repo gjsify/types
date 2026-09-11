@@ -119,15 +119,12 @@ export namespace RestExtras {
         // Signals
         /** @signal */
         connect<K extends keyof FlickrProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlickrProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlickrProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlickrProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlickrProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlickrProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlickrProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlickrProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -247,15 +244,12 @@ export namespace RestExtras {
         // Signals
         /** @signal */
         connect<K extends keyof FlickrProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlickrProxyCall.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FlickrProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlickrProxyCall.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FlickrProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlickrProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FlickrProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlickrProxyCall.SignalSignatures[K]>): void;
     }
 
 
@@ -346,15 +340,12 @@ export namespace RestExtras {
         // Signals
         /** @signal */
         connect<K extends keyof LastfmProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LastfmProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LastfmProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LastfmProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LastfmProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LastfmProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LastfmProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LastfmProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -437,15 +428,12 @@ export namespace RestExtras {
         // Signals
         /** @signal */
         connect<K extends keyof LastfmProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LastfmProxyCall.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LastfmProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LastfmProxyCall.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LastfmProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LastfmProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LastfmProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LastfmProxyCall.SignalSignatures[K]>): void;
     }
 
 
@@ -525,15 +513,12 @@ export namespace RestExtras {
         // Signals
         /** @signal */
         connect<K extends keyof YoutubeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, YoutubeProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof YoutubeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, YoutubeProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof YoutubeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<YoutubeProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof YoutubeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<YoutubeProxy.SignalSignatures[K]>): void;
 
         // Methods
         /**

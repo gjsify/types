@@ -242,15 +242,12 @@ export namespace Avahi {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -323,15 +320,12 @@ export namespace Avahi {
         // Signals
         /** @signal */
         connect<K extends keyof EntryGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -488,15 +482,12 @@ export namespace Avahi {
         // Signals
         /** @signal */
         connect<K extends keyof RecordBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RecordBrowser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RecordBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RecordBrowser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RecordBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RecordBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RecordBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RecordBrowser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -610,15 +601,12 @@ export namespace Avahi {
         // Signals
         /** @signal */
         connect<K extends keyof ServiceBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceBrowser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServiceBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceBrowser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServiceBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServiceBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceBrowser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -731,15 +719,12 @@ export namespace Avahi {
         // Signals
         /** @signal */
         connect<K extends keyof ServiceResolver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceResolver.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServiceResolver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceResolver.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServiceResolver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceResolver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServiceResolver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceResolver.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -131,15 +131,12 @@ export namespace GdkWin32 {
         // Signals
         /** @signal */
         connect<K extends keyof D3D12Texture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, D3D12Texture.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof D3D12Texture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, D3D12Texture.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof D3D12Texture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<D3D12Texture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof D3D12Texture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<D3D12Texture.SignalSignatures[K]>): void;
 
         /**
          * Compute a concrete size for the {@link Gdk.Paintable}.
@@ -661,15 +658,12 @@ export namespace GdkWin32 {
         // Signals
         /** @signal */
         connect<K extends keyof D3D12TextureBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, D3D12TextureBuilder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof D3D12TextureBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, D3D12TextureBuilder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof D3D12TextureBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<D3D12TextureBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof D3D12TextureBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<D3D12TextureBuilder.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -828,15 +822,12 @@ export namespace GdkWin32 {
         // Signals
         /** @signal */
         connect<K extends keyof Win32Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32Display.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Win32Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32Display.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Win32Display.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Win32Display.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32Display.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -918,15 +909,12 @@ export namespace GdkWin32 {
         // Signals
         /** @signal */
         connect<K extends keyof Win32DisplayManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32DisplayManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Win32DisplayManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32DisplayManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Win32DisplayManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32DisplayManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Win32DisplayManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32DisplayManager.SignalSignatures[K]>): void;
     }
 
 
@@ -969,15 +957,12 @@ export namespace GdkWin32 {
         // Signals
         /** @signal */
         connect<K extends keyof Win32Drag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32Drag.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Win32Drag.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32Drag.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Win32Drag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32Drag.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Win32Drag.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32Drag.SignalSignatures[K]>): void;
     }
 
 
@@ -1018,15 +1003,12 @@ export namespace GdkWin32 {
         // Signals
         /** @signal */
         connect<K extends keyof Win32GLContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32GLContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Win32GLContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32GLContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Win32GLContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32GLContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Win32GLContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32GLContext.SignalSignatures[K]>): void;
     }
 
 
@@ -1088,15 +1070,12 @@ export namespace GdkWin32 {
         // Signals
         /** @signal */
         connect<K extends keyof Win32HCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32HCursor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Win32HCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32HCursor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Win32HCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32HCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Win32HCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32HCursor.SignalSignatures[K]>): void;
     }
 
 
@@ -1145,15 +1124,12 @@ export namespace GdkWin32 {
         // Signals
         /** @signal */
         connect<K extends keyof Win32Monitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32Monitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Win32Monitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32Monitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Win32Monitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Win32Monitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32Monitor.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1208,15 +1184,12 @@ export namespace GdkWin32 {
         // Signals
         /** @signal */
         connect<K extends keyof Win32Surface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32Surface.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Win32Surface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Win32Surface.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Win32Surface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32Surface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Win32Surface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Win32Surface.SignalSignatures[K]>): void;
 
         // Static methods
         /**

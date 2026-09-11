@@ -218,15 +218,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof AddDomain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AddDomain.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AddDomain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AddDomain.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AddDomain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AddDomain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AddDomain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AddDomain.SignalSignatures[K]>): void;
     }
 
 
@@ -355,15 +352,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof AddDrive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AddDrive.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AddDrive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AddDrive.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AddDrive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AddDrive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AddDrive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AddDrive.SignalSignatures[K]>): void;
     }
 
 
@@ -420,15 +414,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof AddDriveScratch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AddDriveScratch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AddDriveScratch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AddDriveScratch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AddDriveScratch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AddDriveScratch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AddDriveScratch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AddDriveScratch.SignalSignatures[K]>): void;
     }
 
 
@@ -525,15 +516,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof AddLibvirtDom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AddLibvirtDom.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AddLibvirtDom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AddLibvirtDom.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AddLibvirtDom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AddLibvirtDom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AddLibvirtDom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AddLibvirtDom.SignalSignatures[K]>): void;
     }
 
 
@@ -582,15 +570,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof AugTransform.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AugTransform.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AugTransform.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AugTransform.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AugTransform.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AugTransform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AugTransform.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AugTransform.SignalSignatures[K]>): void;
     }
 
 
@@ -647,15 +632,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BTRFSFilesystemDefragment.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BTRFSFilesystemDefragment.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BTRFSFilesystemDefragment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BTRFSFilesystemDefragment.SignalSignatures[K]>): void;
     }
 
 
@@ -704,15 +686,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof BTRFSFilesystemResize.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BTRFSFilesystemResize.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BTRFSFilesystemResize.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BTRFSFilesystemResize.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BTRFSFilesystemResize.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BTRFSFilesystemResize.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BTRFSFilesystemResize.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BTRFSFilesystemResize.SignalSignatures[K]>): void;
     }
 
 
@@ -761,15 +740,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof BTRFSImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BTRFSImage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BTRFSImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BTRFSImage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BTRFSImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BTRFSImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BTRFSImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BTRFSImage.SignalSignatures[K]>): void;
     }
 
 
@@ -818,15 +794,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BTRFSSubvolumeCreate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BTRFSSubvolumeCreate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BTRFSSubvolumeCreate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BTRFSSubvolumeCreate.SignalSignatures[K]>): void;
     }
 
 
@@ -883,15 +856,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BTRFSSubvolumeSnapshot.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BTRFSSubvolumeSnapshot.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BTRFSSubvolumeSnapshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BTRFSSubvolumeSnapshot.SignalSignatures[K]>): void;
     }
 
 
@@ -948,15 +918,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof BtrfsFsck.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BtrfsFsck.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BtrfsFsck.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BtrfsFsck.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BtrfsFsck.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BtrfsFsck.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BtrfsFsck.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BtrfsFsck.SignalSignatures[K]>): void;
     }
 
 
@@ -1005,15 +972,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof CompressDeviceOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompressDeviceOut.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CompressDeviceOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompressDeviceOut.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CompressDeviceOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompressDeviceOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CompressDeviceOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompressDeviceOut.SignalSignatures[K]>): void;
     }
 
 
@@ -1062,15 +1026,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof CompressOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompressOut.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CompressOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompressOut.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CompressOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompressOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CompressOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompressOut.SignalSignatures[K]>): void;
     }
 
 
@@ -1143,15 +1104,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof CopyAttributes.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CopyAttributes.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CopyAttributes.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CopyAttributes.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CopyAttributes.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CopyAttributes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CopyAttributes.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CopyAttributes.SignalSignatures[K]>): void;
     }
 
 
@@ -1232,15 +1190,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof CopyDeviceToDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CopyDeviceToDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CopyDeviceToDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CopyDeviceToDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CopyDeviceToDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CopyDeviceToDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CopyDeviceToDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CopyDeviceToDevice.SignalSignatures[K]>): void;
     }
 
 
@@ -1321,15 +1276,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof CopyDeviceToFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CopyDeviceToFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CopyDeviceToFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CopyDeviceToFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CopyDeviceToFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CopyDeviceToFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CopyDeviceToFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CopyDeviceToFile.SignalSignatures[K]>): void;
     }
 
 
@@ -1410,15 +1362,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof CopyFileToDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CopyFileToDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CopyFileToDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CopyFileToDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CopyFileToDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CopyFileToDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CopyFileToDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CopyFileToDevice.SignalSignatures[K]>): void;
     }
 
 
@@ -1499,15 +1448,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof CopyFileToFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CopyFileToFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CopyFileToFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CopyFileToFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CopyFileToFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CopyFileToFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CopyFileToFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CopyFileToFile.SignalSignatures[K]>): void;
     }
 
 
@@ -1556,15 +1502,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof CpioOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CpioOut.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CpioOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CpioOut.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CpioOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CpioOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CpioOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CpioOut.SignalSignatures[K]>): void;
     }
 
 
@@ -1645,15 +1588,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof DiskCreate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiskCreate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DiskCreate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiskCreate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DiskCreate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiskCreate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DiskCreate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiskCreate.SignalSignatures[K]>): void;
     }
 
 
@@ -1702,15 +1642,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof DownloadBlocks.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadBlocks.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DownloadBlocks.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadBlocks.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DownloadBlocks.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadBlocks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DownloadBlocks.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadBlocks.SignalSignatures[K]>): void;
     }
 
 
@@ -1767,15 +1704,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof E2fsck.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, E2fsck.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof E2fsck.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, E2fsck.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof E2fsck.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<E2fsck.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof E2fsck.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<E2fsck.SignalSignatures[K]>): void;
     }
 
 
@@ -1840,15 +1774,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Fstrim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Fstrim.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Fstrim.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Fstrim.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Fstrim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Fstrim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Fstrim.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Fstrim.SignalSignatures[K]>): void;
     }
 
 
@@ -1897,15 +1828,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof GlobExpand.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GlobExpand.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GlobExpand.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GlobExpand.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GlobExpand.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GlobExpand.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GlobExpand.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GlobExpand.SignalSignatures[K]>): void;
     }
 
 
@@ -1978,15 +1906,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Grep.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Grep.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Grep.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Grep.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Grep.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Grep.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Grep.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Grep.SignalSignatures[K]>): void;
     }
 
 
@@ -2059,15 +1984,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof HivexOpen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HivexOpen.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HivexOpen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HivexOpen.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HivexOpen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HivexOpen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HivexOpen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HivexOpen.SignalSignatures[K]>): void;
     }
 
 
@@ -2124,15 +2046,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof InspectGetIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InspectGetIcon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InspectGetIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InspectGetIcon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InspectGetIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InspectGetIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InspectGetIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InspectGetIcon.SignalSignatures[K]>): void;
     }
 
 
@@ -2205,15 +2124,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof InternalTest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InternalTest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InternalTest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InternalTest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InternalTest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InternalTest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InternalTest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InternalTest.SignalSignatures[K]>): void;
     }
 
 
@@ -2758,15 +2674,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof InternalTest63Optargs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InternalTest63Optargs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InternalTest63Optargs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InternalTest63Optargs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InternalTest63Optargs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InternalTest63Optargs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InternalTest63Optargs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InternalTest63Optargs.SignalSignatures[K]>): void;
     }
 
 
@@ -2815,15 +2728,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InternalTestOnlyOptargs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InternalTestOnlyOptargs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InternalTestOnlyOptargs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InternalTestOnlyOptargs.SignalSignatures[K]>): void;
     }
 
 
@@ -2872,15 +2782,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof IsBlockdev.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsBlockdev.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IsBlockdev.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsBlockdev.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IsBlockdev.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsBlockdev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IsBlockdev.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsBlockdev.SignalSignatures[K]>): void;
     }
 
 
@@ -2929,15 +2836,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof IsChardev.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsChardev.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IsChardev.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsChardev.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IsChardev.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsChardev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IsChardev.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsChardev.SignalSignatures[K]>): void;
     }
 
 
@@ -2986,15 +2890,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof IsDir.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsDir.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IsDir.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsDir.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IsDir.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsDir.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IsDir.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsDir.SignalSignatures[K]>): void;
     }
 
 
@@ -3043,15 +2944,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof IsFifo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsFifo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IsFifo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsFifo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IsFifo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsFifo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IsFifo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsFifo.SignalSignatures[K]>): void;
     }
 
 
@@ -3100,15 +2998,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof IsFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsFile.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IsFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsFile.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IsFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IsFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsFile.SignalSignatures[K]>): void;
     }
 
 
@@ -3157,15 +3052,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof IsSocket.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsSocket.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IsSocket.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IsSocket.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IsSocket.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsSocket.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IsSocket.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IsSocket.SignalSignatures[K]>): void;
     }
 
 
@@ -3246,15 +3138,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof MDCreate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MDCreate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MDCreate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MDCreate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MDCreate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MDCreate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MDCreate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MDCreate.SignalSignatures[K]>): void;
     }
 
 
@@ -3599,15 +3488,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Mke2fs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mke2fs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Mke2fs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mke2fs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Mke2fs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mke2fs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Mke2fs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mke2fs.SignalSignatures[K]>): void;
     }
 
 
@@ -3688,15 +3574,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Mkfs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mkfs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Mkfs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mkfs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Mkfs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mkfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Mkfs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mkfs.SignalSignatures[K]>): void;
     }
 
 
@@ -3801,15 +3684,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof MkfsBtrfs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MkfsBtrfs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MkfsBtrfs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MkfsBtrfs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MkfsBtrfs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MkfsBtrfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MkfsBtrfs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MkfsBtrfs.SignalSignatures[K]>): void;
     }
 
 
@@ -3858,15 +3738,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Mksquashfs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mksquashfs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Mksquashfs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mksquashfs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Mksquashfs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mksquashfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Mksquashfs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mksquashfs.SignalSignatures[K]>): void;
     }
 
 
@@ -3923,15 +3800,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Mkswap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mkswap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Mkswap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mkswap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Mkswap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mkswap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Mkswap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mkswap.SignalSignatures[K]>): void;
     }
 
 
@@ -3980,15 +3854,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Mktemp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mktemp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Mktemp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mktemp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Mktemp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mktemp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Mktemp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mktemp.SignalSignatures[K]>): void;
     }
 
 
@@ -4037,15 +3908,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Mount9P.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mount9P.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Mount9P.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Mount9P.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Mount9P.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mount9P.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Mount9P.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Mount9P.SignalSignatures[K]>): void;
     }
 
 
@@ -4118,15 +3986,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof MountLocal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MountLocal.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MountLocal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MountLocal.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MountLocal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MountLocal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MountLocal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MountLocal.SignalSignatures[K]>): void;
     }
 
 
@@ -4183,15 +4048,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof NTFSResizeOpts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NTFSResizeOpts.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NTFSResizeOpts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NTFSResizeOpts.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NTFSResizeOpts.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NTFSResizeOpts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NTFSResizeOpts.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NTFSResizeOpts.SignalSignatures[K]>): void;
     }
 
 
@@ -4272,15 +4134,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof NtfscloneOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NtfscloneOut.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NtfscloneOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NtfscloneOut.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NtfscloneOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NtfscloneOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NtfscloneOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NtfscloneOut.SignalSignatures[K]>): void;
     }
 
 
@@ -4329,15 +4188,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Ntfsfix.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Ntfsfix.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Ntfsfix.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Ntfsfix.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Ntfsfix.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Ntfsfix.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Ntfsfix.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Ntfsfix.SignalSignatures[K]>): void;
     }
 
 
@@ -4386,15 +4242,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Remount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Remount.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Remount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Remount.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Remount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Remount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Remount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Remount.SignalSignatures[K]>): void;
     }
 
 
@@ -4451,15 +4304,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Rsync.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Rsync.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Rsync.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Rsync.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Rsync.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Rsync.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Rsync.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Rsync.SignalSignatures[K]>): void;
     }
 
 
@@ -4516,15 +4366,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof RsyncIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RsyncIn.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RsyncIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RsyncIn.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RsyncIn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RsyncIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RsyncIn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RsyncIn.SignalSignatures[K]>): void;
     }
 
 
@@ -4581,15 +4428,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof RsyncOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RsyncOut.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RsyncOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RsyncOut.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RsyncOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RsyncOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RsyncOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RsyncOut.SignalSignatures[K]>): void;
     }
 
 
@@ -4638,15 +4482,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof SelinuxRelabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SelinuxRelabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SelinuxRelabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SelinuxRelabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SelinuxRelabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SelinuxRelabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SelinuxRelabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SelinuxRelabel.SignalSignatures[K]>): void;
     }
 
 
@@ -4749,15 +4590,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17114,15 +16952,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof SetE2attrs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SetE2attrs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SetE2attrs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SetE2attrs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SetE2attrs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SetE2attrs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SetE2attrs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SetE2attrs.SignalSignatures[K]>): void;
     }
 
 
@@ -17171,15 +17006,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Syslinux.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Syslinux.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Syslinux.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Syslinux.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Syslinux.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Syslinux.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Syslinux.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Syslinux.SignalSignatures[K]>): void;
     }
 
 
@@ -17252,15 +17084,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof TarIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TarIn.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TarIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TarIn.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TarIn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TarIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TarIn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TarIn.SignalSignatures[K]>): void;
     }
 
 
@@ -17341,15 +17170,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof TarOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TarOut.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TarOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TarOut.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TarOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TarOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TarOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TarOut.SignalSignatures[K]>): void;
     }
 
 
@@ -17470,15 +17296,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Tune2FS.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tune2FS.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tune2FS.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tune2FS.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tune2FS.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tune2FS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tune2FS.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tune2FS.SignalSignatures[K]>): void;
     }
 
 
@@ -17535,15 +17358,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof Umount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Umount.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Umount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Umount.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Umount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Umount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Umount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Umount.SignalSignatures[K]>): void;
     }
 
 
@@ -17592,15 +17412,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof UmountLocal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UmountLocal.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UmountLocal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UmountLocal.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UmountLocal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UmountLocal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UmountLocal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UmountLocal.SignalSignatures[K]>): void;
     }
 
 
@@ -17697,15 +17514,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof XfsAdmin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XfsAdmin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XfsAdmin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XfsAdmin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XfsAdmin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XfsAdmin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XfsAdmin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XfsAdmin.SignalSignatures[K]>): void;
     }
 
 
@@ -17810,15 +17624,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof XfsGrowfs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XfsGrowfs.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XfsGrowfs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XfsGrowfs.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XfsGrowfs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XfsGrowfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XfsGrowfs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XfsGrowfs.SignalSignatures[K]>): void;
     }
 
 
@@ -17939,15 +17750,12 @@ export namespace Guestfs {
         // Signals
         /** @signal */
         connect<K extends keyof XfsRepair.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XfsRepair.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XfsRepair.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XfsRepair.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XfsRepair.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XfsRepair.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XfsRepair.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XfsRepair.SignalSignatures[K]>): void;
     }
 
 

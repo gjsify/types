@@ -94,15 +94,12 @@ export namespace GdkWayland {
         // Signals
         /** @signal */
         connect<K extends keyof WaylandDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WaylandDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WaylandDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WaylandDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandDevice.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -173,15 +170,12 @@ export namespace GdkWayland {
         // Signals
         /** @signal */
         connect<K extends keyof WaylandDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandDisplay.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WaylandDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandDisplay.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WaylandDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WaylandDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandDisplay.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -270,15 +264,12 @@ export namespace GdkWayland {
         // Signals
         /** @signal */
         connect<K extends keyof WaylandGLContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandGLContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WaylandGLContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandGLContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WaylandGLContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandGLContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WaylandGLContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandGLContext.SignalSignatures[K]>): void;
     }
 
 
@@ -332,15 +323,12 @@ export namespace GdkWayland {
         // Signals
         /** @signal */
         connect<K extends keyof WaylandMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WaylandMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WaylandMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WaylandMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandMonitor.SignalSignatures[K]>): void;
     }
 
 
@@ -387,15 +375,12 @@ export namespace GdkWayland {
         // Signals
         /** @signal */
         connect<K extends keyof WaylandPopup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandPopup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WaylandPopup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandPopup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WaylandPopup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandPopup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WaylandPopup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandPopup.SignalSignatures[K]>): void;
 
         /**
          * Whether to hide on outside clicks.
@@ -517,15 +502,12 @@ export namespace GdkWayland {
         // Signals
         /** @signal */
         connect<K extends keyof WaylandSeat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandSeat.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WaylandSeat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandSeat.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WaylandSeat.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandSeat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WaylandSeat.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandSeat.SignalSignatures[K]>): void;
     }
 
 
@@ -574,15 +556,12 @@ export namespace GdkWayland {
         // Signals
         /** @signal */
         connect<K extends keyof WaylandSurface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandSurface.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WaylandSurface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandSurface.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WaylandSurface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandSurface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WaylandSurface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandSurface.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -651,15 +630,12 @@ export namespace GdkWayland {
         // Signals
         /** @signal */
         connect<K extends keyof WaylandToplevel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandToplevel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WaylandToplevel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandToplevel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WaylandToplevel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandToplevel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WaylandToplevel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandToplevel.SignalSignatures[K]>): void;
 
         // Methods
         /**

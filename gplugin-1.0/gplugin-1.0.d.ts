@@ -270,15 +270,12 @@ export namespace GPlugin {
         // Signals
         /** @signal */
         connect<K extends keyof FileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSource.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -360,15 +357,12 @@ export namespace GPlugin {
         // Signals
         /** @signal */
         connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Loader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Loader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Loader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Loader.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -529,15 +523,12 @@ export namespace GPlugin {
         // Signals
         /** @signal */
         connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Manager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Manager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Manager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Manager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Manager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1169,15 +1160,12 @@ export namespace GPlugin {
         // Signals
         /** @signal */
         connect<K extends keyof PluginInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -235,15 +235,12 @@ export namespace Nemo {
         // Signals
         /** @signal */
         connect<K extends keyof Column.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Column.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Column.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -335,15 +332,12 @@ export namespace Nemo {
         // Signals
         /** @signal */
         connect<K extends keyof DesktopPreferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopPreferences.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DesktopPreferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopPreferences.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DesktopPreferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesktopPreferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DesktopPreferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesktopPreferences.SignalSignatures[K]>): void;
     }
 
 
@@ -380,15 +374,12 @@ export namespace Nemo {
         // Signals
         /** @signal */
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Menu.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -527,15 +518,12 @@ export namespace Nemo {
         // Signals
         /** @signal */
         connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -623,15 +611,12 @@ export namespace Nemo {
         // Signals
         /** @signal */
         connect<K extends keyof PropertyPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PropertyPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PropertyPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PropertyPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyPage.SignalSignatures[K]>): void;
     }
 
 
@@ -736,15 +721,12 @@ export namespace Nemo {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleButton.SignalSignatures[K]>): void;
 
         /**
          * @default null

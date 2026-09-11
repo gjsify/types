@@ -140,15 +140,12 @@ export namespace PeasGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PluginManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -322,15 +319,12 @@ export namespace PeasGtk {
         // Signals
         /** @signal */
         connect<K extends keyof PluginManagerView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginManagerView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PluginManagerView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginManagerView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PluginManagerView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginManagerView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PluginManagerView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginManagerView.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

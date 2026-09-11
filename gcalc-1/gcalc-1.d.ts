@@ -253,15 +253,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionContainer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionContainer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionContainer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionContainer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionContainer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -497,15 +494,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof ExpressionHashMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionHashMap.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExpressionHashMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionHashMap.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExpressionHashMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionHashMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExpressionHashMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionHashMap.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -571,15 +565,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionAcos.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAcos.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionAcos.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAcos.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionAcos.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAcos.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionAcos.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAcos.SignalSignatures[K]>): void;
     }
 
 
@@ -616,15 +607,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionAcosh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAcosh.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionAcosh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAcosh.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionAcosh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAcosh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionAcosh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAcosh.SignalSignatures[K]>): void;
     }
 
 
@@ -661,15 +649,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionAsin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAsin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionAsin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAsin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionAsin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAsin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionAsin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAsin.SignalSignatures[K]>): void;
     }
 
 
@@ -706,15 +691,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionAsinh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAsinh.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionAsinh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAsinh.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionAsinh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAsinh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionAsinh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAsinh.SignalSignatures[K]>): void;
     }
 
 
@@ -751,15 +733,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionAtan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAtan.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionAtan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAtan.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionAtan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAtan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionAtan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAtan.SignalSignatures[K]>): void;
     }
 
 
@@ -796,15 +775,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionAtanh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAtanh.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionAtanh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionAtanh.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionAtanh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAtanh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionAtanh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionAtanh.SignalSignatures[K]>): void;
     }
 
 
@@ -841,15 +817,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionCos.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionCos.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionCos.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionCos.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionCos.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionCos.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionCos.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionCos.SignalSignatures[K]>): void;
     }
 
 
@@ -886,15 +859,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionCosh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionCosh.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionCosh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionCosh.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionCosh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionCosh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionCosh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionCosh.SignalSignatures[K]>): void;
     }
 
 
@@ -931,15 +901,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionExp.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionExp.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionExp.SignalSignatures[K]>): void;
     }
 
 
@@ -976,15 +943,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionLog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionLog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionLog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionLog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionLog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionLog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionLog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionLog.SignalSignatures[K]>): void;
     }
 
 
@@ -1021,15 +985,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionSin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionSin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionSin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionSin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionSin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionSin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionSin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionSin.SignalSignatures[K]>): void;
     }
 
 
@@ -1066,15 +1027,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionSinh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionSinh.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionSinh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionSinh.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionSinh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionSinh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionSinh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionSinh.SignalSignatures[K]>): void;
     }
 
 
@@ -1111,15 +1069,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionSqrt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionSqrt.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionSqrt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionSqrt.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionSqrt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionSqrt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionSqrt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionSqrt.SignalSignatures[K]>): void;
     }
 
 
@@ -1156,15 +1111,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionTan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionTan.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionTan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionTan.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionTan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionTan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionTan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionTan.SignalSignatures[K]>): void;
     }
 
 
@@ -1201,15 +1153,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunctionTanh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionTanh.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunctionTanh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunctionTanh.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunctionTanh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionTanh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunctionTanh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunctionTanh.SignalSignatures[K]>): void;
     }
 
 
@@ -1249,15 +1198,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GExpression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GExpression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GExpression.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1345,15 +1291,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GErrorExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GErrorExpression.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GErrorExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GErrorExpression.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GErrorExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GErrorExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GErrorExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GErrorExpression.SignalSignatures[K]>): void;
     }
 
 
@@ -1390,15 +1333,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GAssign.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GAssign.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GAssign.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GAssign.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GAssign.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GAssign.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GAssign.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GAssign.SignalSignatures[K]>): void;
 
         /**
          * @throws GLib.Error
@@ -1448,15 +1388,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GConstant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GConstant.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GConstant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GConstant.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GConstant.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GConstant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GConstant.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GConstant.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1571,15 +1508,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GDivision.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GDivision.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GDivision.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GDivision.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GDivision.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GDivision.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GDivision.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GDivision.SignalSignatures[K]>): void;
     }
 
 
@@ -1619,15 +1553,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GErrorResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GErrorResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GErrorResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GErrorResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GErrorResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GErrorResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GErrorResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GErrorResult.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -1704,15 +1635,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GFunction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GFunction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GFunction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GFunction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GFunction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GFunction.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1869,15 +1797,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GMathEquation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GMathEquation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GMathEquation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GMathEquation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GMathEquation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GMathEquation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GMathEquation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GMathEquation.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -1930,15 +1855,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GMathEquationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GMathEquationManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GMathEquationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GMathEquationManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GMathEquationManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GMathEquationManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GMathEquationManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GMathEquationManager.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -2012,15 +1934,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GMinus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GMinus.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GMinus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GMinus.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GMinus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GMinus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GMinus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GMinus.SignalSignatures[K]>): void;
     }
 
 
@@ -2057,15 +1976,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GMultiply.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GMultiply.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GMultiply.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GMultiply.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GMultiply.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GMultiply.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GMultiply.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GMultiply.SignalSignatures[K]>): void;
     }
 
 
@@ -2102,15 +2018,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GParser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GParser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GParser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2159,15 +2072,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GPlus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GPlus.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GPlus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GPlus.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GPlus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GPlus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GPlus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GPlus.SignalSignatures[K]>): void;
     }
 
 
@@ -2204,15 +2114,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GPolynomial.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GPolynomial.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GPolynomial.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GPolynomial.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GPolynomial.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GPolynomial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GPolynomial.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GPolynomial.SignalSignatures[K]>): void;
 
         /**
          * @throws GLib.Error
@@ -2259,15 +2166,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GPow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GPow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GPow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GPow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GPow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GPow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GPow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GPow.SignalSignatures[K]>): void;
     }
 
 
@@ -2306,15 +2210,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GResult.SignalSignatures[K]>): void;
 
         /**
          * @read-only
@@ -2374,15 +2275,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GGroup.SignalSignatures[K]>): void;
 
         /** @category Inherited from GCalc.Group */
         get level(): GroupLevel;
@@ -2475,15 +2373,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GSolver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GSolver.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GSolver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GSolver.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GSolver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GSolver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GSolver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GSolver.SignalSignatures[K]>): void;
 
         /** @category Inherited from GCalc.Solver */
         get equation_manager(): MathEquationManager;
@@ -2558,15 +2453,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GTerm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GTerm.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GTerm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GTerm.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GTerm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GTerm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GTerm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GTerm.SignalSignatures[K]>): void;
 
         /**
          * @param t 
@@ -2632,15 +2524,12 @@ export namespace GCalc {
         // Signals
         /** @signal */
         connect<K extends keyof GVariable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GVariable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GVariable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GVariable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GVariable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GVariable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GVariable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GVariable.SignalSignatures[K]>): void;
 
         /** @category Inherited from GCalc.Variable */
         get name(): string;

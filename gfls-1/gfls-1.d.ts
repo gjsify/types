@@ -312,15 +312,12 @@ export namespace Gfls {
         // Signals
         /** @signal */
         connect<K extends keyof AttributeKeys.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AttributeKeys.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AttributeKeys.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AttributeKeys.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AttributeKeys.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AttributeKeys.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AttributeKeys.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AttributeKeys.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -376,15 +373,12 @@ export namespace Gfls {
         // Signals
         /** @signal */
         connect<K extends keyof LoaderConfigSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LoaderConfigSimple.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LoaderConfigSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LoaderConfigSimple.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LoaderConfigSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LoaderConfigSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LoaderConfigSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LoaderConfigSimple.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -434,15 +428,12 @@ export namespace Gfls {
         // Signals
         /** @signal */
         connect<K extends keyof UnsavedDocumentTitles.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnsavedDocumentTitles.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UnsavedDocumentTitles.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnsavedDocumentTitles.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UnsavedDocumentTitles.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnsavedDocumentTitles.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UnsavedDocumentTitles.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnsavedDocumentTitles.SignalSignatures[K]>): void;
 
         // Static methods
         /**

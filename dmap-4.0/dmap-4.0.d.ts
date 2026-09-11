@@ -608,15 +608,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof AvConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AvConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AvConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AvConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AvConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AvConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AvConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AvConnection.SignalSignatures[K]>): void;
     }
 
 
@@ -666,15 +663,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof AvShare.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AvShare.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AvShare.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AvShare.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AvShare.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AvShare.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AvShare.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AvShare.SignalSignatures[K]>): void;
     }
 
 
@@ -865,15 +859,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1007,15 +998,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof ControlConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControlConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControlConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControlConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlConnection.SignalSignatures[K]>): void;
     }
 
 
@@ -1114,15 +1102,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof ControlShare.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlShare.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControlShare.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlShare.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControlShare.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlShare.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControlShare.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlShare.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1236,15 +1221,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof ImageConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ImageConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ImageConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ImageConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageConnection.SignalSignatures[K]>): void;
     }
 
 
@@ -1294,15 +1276,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof ImageShare.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageShare.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ImageShare.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageShare.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ImageShare.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageShare.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ImageShare.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageShare.SignalSignatures[K]>): void;
     }
 
 
@@ -1354,15 +1333,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof MdnsBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MdnsBrowser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MdnsBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MdnsBrowser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MdnsBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MdnsBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MdnsBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MdnsBrowser.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1448,15 +1424,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof MdnsPublisher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MdnsPublisher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MdnsPublisher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MdnsPublisher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MdnsPublisher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MdnsPublisher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MdnsPublisher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MdnsPublisher.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1611,15 +1584,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof MdnsService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MdnsService.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MdnsService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MdnsService.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MdnsService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MdnsService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MdnsService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MdnsService.SignalSignatures[K]>): void;
     }
 
 
@@ -1759,15 +1729,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof Share.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Share.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Share.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Share.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Share.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Share.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Share.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Share.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1934,15 +1901,12 @@ export namespace Dmap {
         // Signals
         /** @signal */
         connect<K extends keyof TranscodeStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TranscodeStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TranscodeStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TranscodeStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TranscodeStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TranscodeStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TranscodeStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TranscodeStream.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

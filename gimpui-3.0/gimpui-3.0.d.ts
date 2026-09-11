@@ -3438,15 +3438,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof AspectPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AspectPreview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AspectPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AspectPreview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AspectPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AspectPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AspectPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AspectPreview.SignalSignatures[K]>): void;
     }
 
 
@@ -3544,15 +3541,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof Browser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Browser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Browser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Browser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Browser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Browser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3704,15 +3698,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof BrushChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BrushChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BrushChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BrushChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BrushChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BrushChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BrushChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BrushChooser.SignalSignatures[K]>): void;
     }
 
 
@@ -3813,15 +3804,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof BusyBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BusyBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BusyBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BusyBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BusyBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BusyBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BusyBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BusyBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3962,15 +3950,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof Button.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Button.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Button.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Button.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Button.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Button.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Button.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Button.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4429,15 +4414,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererColor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererColor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererColor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererColor.SignalSignatures[K]>): void;
     }
 
 
@@ -4552,15 +4534,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof CellRendererToggle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererToggle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CellRendererToggle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererToggle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CellRendererToggle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererToggle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CellRendererToggle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererToggle.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4715,15 +4694,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ChainButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChainButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChainButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChainButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChainButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChainButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChainButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChainButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4883,11 +4859,9 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect_after<K extends keyof ChannelComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChannelComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChannelComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChannelComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChannelComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChannelComboBox.SignalSignatures[K]>): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -5064,15 +5038,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorArea.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorArea.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorArea.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorArea.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5349,15 +5320,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorButton.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5549,15 +5517,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorDisplay.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorDisplay.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorDisplay.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5702,15 +5667,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorDisplayStack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorDisplayStack.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorDisplayStack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorDisplayStack.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorDisplayStack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorDisplayStack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorDisplayStack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorDisplayStack.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -5904,15 +5866,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorHexEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorHexEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorHexEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorHexEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorHexEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorHexEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorHexEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorHexEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6319,15 +6278,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorNotebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorNotebook.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorNotebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorNotebook.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorNotebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorNotebook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorNotebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorNotebook.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6511,15 +6467,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorProfileChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorProfileChooserDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorProfileChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorProfileChooserDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorProfileChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorProfileChooserDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorProfileChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorProfileChooserDialog.SignalSignatures[K]>): void;
 
         /**
          * @default Gtk.FileChooserAction.OPEN
@@ -7520,15 +7473,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorProfileComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorProfileComboBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorProfileComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorProfileComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorProfileComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorProfileComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorProfileComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorProfileComboBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7918,15 +7868,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorProfileStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorProfileStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorProfileStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorProfileStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorProfileStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorProfileStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorProfileStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorProfileStore.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8972,15 +8919,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorProfileView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorProfileView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorProfileView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorProfileView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorProfileView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorProfileView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorProfileView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorProfileView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9236,15 +9180,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorScale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorScale.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorScale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorScale.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorScale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorScale.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorScale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorScale.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9365,15 +9306,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorScaleEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorScaleEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorScaleEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorScaleEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorScaleEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorScaleEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorScaleEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorScaleEntry.SignalSignatures[K]>): void;
     }
 
 
@@ -9489,15 +9427,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorScales.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorScales.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorScales.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorScales.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorScales.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorScales.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorScales.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorScales.SignalSignatures[K]>): void;
 
         // Methods
         get_show_rgb_u8(): boolean;
@@ -9592,15 +9527,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorSelect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorSelect.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorSelect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorSelect.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorSelect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorSelect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorSelect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorSelect.SignalSignatures[K]>): void;
     }
 
 
@@ -9699,15 +9631,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorSelection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorSelection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorSelection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorSelection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorSelection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9915,15 +9844,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ColorSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorSelector.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColorSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorSelector.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColorSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorSelector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColorSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorSelector.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -10344,15 +10270,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof Dialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Dialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Dialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Dialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10531,15 +10454,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof DrawableChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawableChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DrawableChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawableChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DrawableChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawableChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DrawableChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawableChooser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10691,11 +10611,9 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect_after<K extends keyof DrawableComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawableComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DrawableComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawableComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DrawableComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawableComboBox.SignalSignatures[K]>): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -10825,15 +10743,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof DrawablePreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawablePreview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DrawablePreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawablePreview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DrawablePreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawablePreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DrawablePreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawablePreview.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10952,11 +10867,9 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect_after<K extends keyof EnumComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EnumComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EnumComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumComboBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11145,15 +11058,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof EnumLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EnumLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EnumLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EnumLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumLabel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11224,15 +11134,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof EnumStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EnumStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EnumStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EnumStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumStore.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11376,15 +11283,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ExportProcedureDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExportProcedureDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ExportProcedureDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExportProcedureDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ExportProcedureDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExportProcedureDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ExportProcedureDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExportProcedureDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11522,15 +11426,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof FileChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileChooser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11732,15 +11633,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof FontChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FontChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FontChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FontChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontChooser.SignalSignatures[K]>): void;
     }
 
 
@@ -11826,15 +11724,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Frame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Frame.SignalSignatures[K]>): void;
     }
 
 
@@ -11924,15 +11819,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof GradientChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GradientChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GradientChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GradientChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GradientChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GradientChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GradientChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GradientChooser.SignalSignatures[K]>): void;
     }
 
 
@@ -12045,15 +11937,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof HintBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HintBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HintBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HintBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HintBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HintBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HintBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HintBox.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -12197,15 +12086,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ImageChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ImageChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ImageChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ImageChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageChooser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12355,11 +12241,9 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect_after<K extends keyof ImageComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ImageComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ImageComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageComboBox.SignalSignatures[K]>): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -12541,15 +12425,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof IntComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntComboBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IntComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IntComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IntComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntComboBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13076,15 +12957,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof IntRadioFrame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntRadioFrame.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IntRadioFrame.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntRadioFrame.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IntRadioFrame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntRadioFrame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IntRadioFrame.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntRadioFrame.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13205,15 +13083,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof IntStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof IntStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IntStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof IntStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof IntStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IntStore.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -14295,15 +14170,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ItemChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ItemChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ItemChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ItemChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ItemChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ItemChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ItemChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ItemChooser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14465,15 +14337,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof LabelColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelColor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LabelColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelColor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LabelColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelColor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LabelColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelColor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14614,15 +14483,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof LabelEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LabelEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LabelEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LabelEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14758,15 +14624,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof LabelIntWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelIntWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LabelIntWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelIntWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LabelIntWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelIntWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LabelIntWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelIntWidget.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -14910,15 +14773,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof LabelSpin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelSpin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LabelSpin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelSpin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LabelSpin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelSpin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LabelSpin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelSpin.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -15080,15 +14940,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof LabelStringWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelStringWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LabelStringWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelStringWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LabelStringWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelStringWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LabelStringWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelStringWidget.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15197,15 +15054,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof Labeled.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Labeled.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Labeled.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Labeled.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Labeled.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Labeled.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Labeled.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Labeled.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -15369,11 +15223,9 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect_after<K extends keyof LayerComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LayerComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LayerComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LayerComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LayerComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LayerComboBox.SignalSignatures[K]>): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -15505,15 +15357,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof MemsizeEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MemsizeEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MemsizeEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MemsizeEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MemsizeEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MemsizeEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MemsizeEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MemsizeEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15860,15 +15709,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof NumberPairEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NumberPairEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NumberPairEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NumberPairEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NumberPairEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NumberPairEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NumberPairEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NumberPairEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16358,15 +16204,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof OffsetArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OffsetArea.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof OffsetArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OffsetArea.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof OffsetArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OffsetArea.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof OffsetArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OffsetArea.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16525,15 +16368,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof PageSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PageSelector.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PageSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PageSelector.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PageSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PageSelector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PageSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PageSelector.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16761,15 +16601,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof PaletteChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PaletteChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PaletteChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PaletteChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PaletteChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PaletteChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PaletteChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PaletteChooser.SignalSignatures[K]>): void;
     }
 
 
@@ -16872,11 +16709,9 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect_after<K extends keyof PathComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PathComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PathComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathComboBox.SignalSignatures[K]>): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -17026,15 +16861,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof PathEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathEditor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PathEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathEditor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PathEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathEditor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PathEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathEditor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -17191,15 +17023,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof PatternChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PatternChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PatternChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PatternChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PatternChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PatternChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PatternChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PatternChooser.SignalSignatures[K]>): void;
     }
 
 
@@ -17301,15 +17130,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof PickButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PickButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PickButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PickButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PickButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PickButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PickButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PickButton.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -17774,15 +17600,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof Preview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Preview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Preview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Preview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preview.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -18150,15 +17973,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof PreviewArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviewArea.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreviewArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviewArea.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreviewArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreviewArea.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreviewArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreviewArea.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -18415,15 +18235,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ProcBrowserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProcBrowserDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProcBrowserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProcBrowserDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProcBrowserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProcBrowserDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProcBrowserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProcBrowserDialog.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -18564,15 +18381,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ProcedureDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProcedureDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProcedureDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProcedureDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProcedureDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProcedureDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProcedureDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProcedureDialog.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -19096,15 +18910,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ProgressBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProgressBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProgressBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProgressBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressBar.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -19273,15 +19084,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ResourceChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceChooser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ResourceChooser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceChooser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ResourceChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceChooser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ResourceChooser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceChooser.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -19472,15 +19280,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof Ruler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Ruler.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Ruler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Ruler.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Ruler.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Ruler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Ruler.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Ruler.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19846,15 +19651,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ScaleEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScaleEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScaleEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScaleEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScaleEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScaleEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScaleEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScaleEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19990,15 +19792,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ScrolledPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrolledPreview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScrolledPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrolledPreview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScrolledPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScrolledPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScrolledPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScrolledPreview.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -20159,15 +19958,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof SizeEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SizeEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SizeEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SizeEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SizeEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SizeEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SizeEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SizeEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -20552,15 +20348,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof SpinButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpinButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SpinButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpinButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SpinButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpinButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SpinButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpinButton.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -20732,15 +20525,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof SpinScale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpinScale.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SpinScale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpinScale.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SpinScale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpinScale.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SpinScale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpinScale.SignalSignatures[K]>): void;
 
         // Methods
         get_constrain_drag(): boolean;
@@ -20954,15 +20744,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof StringComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringComboBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StringComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StringComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StringComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringComboBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21405,15 +21192,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof UnitComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnitComboBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UnitComboBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnitComboBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UnitComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnitComboBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UnitComboBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnitComboBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21856,15 +21640,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof UnitStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnitStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UnitStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnitStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UnitStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnitStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UnitStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnitStore.SignalSignatures[K]>): void;
 
         // Methods
         get_has_percent(): boolean;
@@ -22487,15 +22268,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof VectorLoadProcedureDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorLoadProcedureDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof VectorLoadProcedureDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorLoadProcedureDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof VectorLoadProcedureDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorLoadProcedureDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof VectorLoadProcedureDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorLoadProcedureDialog.SignalSignatures[K]>): void;
     }
 
 
@@ -22587,15 +22365,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ZoomModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ZoomModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ZoomModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ZoomModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ZoomModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ZoomModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ZoomModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ZoomModel.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -22739,15 +22514,12 @@ export namespace GimpUi {
         // Signals
         /** @signal */
         connect<K extends keyof ZoomPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ZoomPreview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ZoomPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ZoomPreview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ZoomPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ZoomPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ZoomPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ZoomPreview.SignalSignatures[K]>): void;
 
         // Methods
         /**

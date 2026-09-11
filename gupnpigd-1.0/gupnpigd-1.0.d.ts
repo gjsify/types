@@ -117,15 +117,12 @@ export namespace GUPnPIgd {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleIgd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleIgd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleIgd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleIgd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleIgd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleIgd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleIgd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleIgd.SignalSignatures[K]>): void;
 
         // Static methods
         static error_quark(): GLib.Quark;
@@ -216,15 +213,12 @@ export namespace GUPnPIgd {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleIgdThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleIgdThread.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleIgdThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleIgdThread.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleIgdThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleIgdThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleIgdThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleIgdThread.SignalSignatures[K]>): void;
     }
 
 

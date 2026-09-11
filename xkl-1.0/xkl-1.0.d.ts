@@ -216,15 +216,12 @@ export namespace Xkl {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigItem.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -307,15 +304,12 @@ export namespace Xkl {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigRec.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigRec.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigRec.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigRec.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigRec.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigRec.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigRec.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigRec.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -459,15 +453,12 @@ export namespace Xkl {
         // Signals
         /** @signal */
         connect<K extends keyof ConfigRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigRegistry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConfigRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigRegistry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConfigRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConfigRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigRegistry.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -752,15 +743,12 @@ export namespace Xkl {
         // Signals
         /** @signal */
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Engine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Engine.SignalSignatures[K]>): void;
 
         // Static methods
         /**

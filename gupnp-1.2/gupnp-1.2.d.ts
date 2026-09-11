@@ -538,15 +538,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -821,15 +818,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof ContextFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContextFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContextFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContextFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextFilter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1009,15 +1003,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof ContextManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContextManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContextManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContextManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1199,15 +1190,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof ControlPoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlPoint.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ControlPoint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlPoint.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ControlPoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlPoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ControlPoint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlPoint.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1323,15 +1311,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]>): void;
     }
 
 
@@ -1454,15 +1439,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1712,15 +1694,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof DeviceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DeviceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DeviceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DeviceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceProxy.SignalSignatures[K]>): void;
     }
 
 
@@ -1757,15 +1736,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof ResourceFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ResourceFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ResourceFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ResourceFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceFactory.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1928,15 +1904,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof RootDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RootDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RootDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RootDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RootDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RootDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RootDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RootDevice.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2295,15 +2268,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2474,15 +2444,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof ServiceInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServiceInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServiceInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServiceInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2652,15 +2619,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof ServiceIntrospection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceIntrospection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServiceIntrospection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceIntrospection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServiceIntrospection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceIntrospection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServiceIntrospection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceIntrospection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2761,15 +2725,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof ServiceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServiceProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServiceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServiceProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceProxy.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2999,15 +2960,12 @@ export namespace GUPnP {
         // Signals
         /** @signal */
         connect<K extends keyof XMLDoc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XMLDoc.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof XMLDoc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XMLDoc.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof XMLDoc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XMLDoc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof XMLDoc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XMLDoc.SignalSignatures[K]>): void;
 
         // Methods
         /**

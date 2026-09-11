@@ -183,15 +183,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<App.SignalSignatures[K]>): void;
 
         // Methods
         get_exec_path(): Gio.File | null;
@@ -382,15 +379,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Browser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Browser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Browser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Browser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Browser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Browser.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -572,15 +566,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof ClearPrivateData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClearPrivateData.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClearPrivateData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClearPrivateData.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClearPrivateData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClearPrivateData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClearPrivateData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClearPrivateData.SignalSignatures[K]>): void;
     }
 
 
@@ -630,15 +621,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof SuggestionItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SuggestionItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SuggestionItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SuggestionItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionItem.SignalSignatures[K]>): void;
 
         // Methods
         get_search(): string | null;
@@ -696,15 +684,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Completion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Completion.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Completion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Completion.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Completion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Completion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Completion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Completion.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -885,15 +870,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof DatabaseStatement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DatabaseStatement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DatabaseStatement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DatabaseStatement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DatabaseStatement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DatabaseStatement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DatabaseStatement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DatabaseStatement.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1019,15 +1001,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof DatabaseItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DatabaseItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DatabaseItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DatabaseItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DatabaseItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DatabaseItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DatabaseItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DatabaseItem.SignalSignatures[K]>): void;
 
         // Methods
         ["delete"](): globalThis.Promise<boolean>;
@@ -1172,15 +1151,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Database.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Database.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Database.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Database.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Database.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Database.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1701,15 +1677,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof DownloadButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DownloadButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DownloadButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DownloadButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadButton.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1820,15 +1793,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof DownloadItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DownloadItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DownloadItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DownloadItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadItem.SignalSignatures[K]>): void;
 
         // Methods
         cancel(): void;
@@ -1984,15 +1954,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof DownloadRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadRow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DownloadRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadRow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DownloadRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DownloadRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadRow.SignalSignatures[K]>): void;
 
         // Methods
         get_item(): DownloadItem;
@@ -2107,15 +2074,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Favicon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Favicon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Favicon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Favicon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Favicon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Favicon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Favicon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Favicon.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2171,15 +2135,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof HistoryDatabase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HistoryDatabase.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HistoryDatabase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HistoryDatabase.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HistoryDatabase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HistoryDatabase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HistoryDatabase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HistoryDatabase.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2282,15 +2243,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Navigationbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Navigationbar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Navigationbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Navigationbar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Navigationbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Navigationbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Navigationbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Navigationbar.SignalSignatures[K]>): void;
     }
 
 
@@ -2370,15 +2328,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof NetworkCheck.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkCheck.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof NetworkCheck.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkCheck.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof NetworkCheck.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkCheck.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof NetworkCheck.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkCheck.SignalSignatures[K]>): void;
     }
 
 
@@ -2428,15 +2383,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Plugins.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugins.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Plugins.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugins.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Plugins.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugins.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Plugins.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugins.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2559,15 +2511,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof LabelWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LabelWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LabelWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LabelWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelWidget.SignalSignatures[K]>): void;
 
         // Methods
         get_title(): string | null;
@@ -2706,15 +2655,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Preferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Preferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Preferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Preferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preferences.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2906,15 +2852,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof CoreSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreSettings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CoreSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreSettings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CoreSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CoreSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreSettings.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default(): CoreSettings;
@@ -3092,15 +3035,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3231,15 +3171,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Statusbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Statusbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Statusbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Statusbar.SignalSignatures[K]>): void;
 
         // Methods
         get_label(): string | null;
@@ -3354,15 +3291,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof SuggestionRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionRow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SuggestionRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionRow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SuggestionRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SuggestionRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionRow.SignalSignatures[K]>): void;
 
         // Methods
         get_item(): DatabaseItem;
@@ -3490,15 +3424,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Switcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Switcher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Switcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Switcher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Switcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Switcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Switcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Switcher.SignalSignatures[K]>): void;
 
         // Methods
         get_stack(): Gtk.Stack | null;
@@ -3702,15 +3633,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]>): void;
 
         // Methods
         get_id(): string;
@@ -3903,15 +3831,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Tally.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tally.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tally.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tally.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tally.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tally.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tally.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tally.SignalSignatures[K]>): void;
 
         // Methods
         get_tab(): Tab;
@@ -4102,15 +4027,12 @@ export namespace Midori {
         // Signals
         /** @signal */
         connect<K extends keyof Urlbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Urlbar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Urlbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Urlbar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Urlbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Urlbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Urlbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Urlbar.SignalSignatures[K]>): void;
 
         // Methods
         /**

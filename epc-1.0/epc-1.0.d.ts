@@ -367,15 +367,12 @@ export namespace Epc {
         // Signals
         /** @signal */
         connect<K extends keyof Consumer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Consumer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Consumer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Consumer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Consumer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Consumer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Consumer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Consumer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -479,15 +476,12 @@ export namespace Epc {
         // Signals
         /** @signal */
         connect<K extends keyof Dispatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dispatcher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Dispatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dispatcher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Dispatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dispatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Dispatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dispatcher.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -645,15 +639,12 @@ export namespace Epc {
         // Signals
         /** @signal */
         connect<K extends keyof Publisher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Publisher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Publisher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Publisher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Publisher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Publisher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Publisher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Publisher.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -870,15 +861,12 @@ export namespace Epc {
         // Signals
         /** @signal */
         connect<K extends keyof ServiceMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServiceMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServiceMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServiceMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceMonitor.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

@@ -427,15 +427,12 @@ export namespace GSSDP {
         // Signals
         /** @signal */
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -786,15 +783,12 @@ export namespace GSSDP {
         // Signals
         /** @signal */
         connect<K extends keyof ResourceBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceBrowser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ResourceBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceBrowser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ResourceBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ResourceBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceBrowser.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -957,15 +951,12 @@ export namespace GSSDP {
         // Signals
         /** @signal */
         connect<K extends keyof ResourceGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ResourceGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourceGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ResourceGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ResourceGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourceGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**

@@ -158,15 +158,12 @@ export namespace AnacondaWidgets {
         // Signals
         /** @signal */
         connect<K extends keyof BaseStandalone.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseStandalone.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BaseStandalone.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseStandalone.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BaseStandalone.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseStandalone.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BaseStandalone.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseStandalone.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -297,15 +294,12 @@ export namespace AnacondaWidgets {
         // Signals
         /** @signal */
         connect<K extends keyof BaseWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BaseWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BaseWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BaseWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseWindow.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -474,15 +468,12 @@ export namespace AnacondaWidgets {
         // Signals
         /** @signal */
         connect<K extends keyof DiskOverview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiskOverview.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DiskOverview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiskOverview.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DiskOverview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiskOverview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DiskOverview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiskOverview.SignalSignatures[K]>): void;
 
         // Methods
         get_chosen(): boolean;
@@ -574,15 +565,12 @@ export namespace AnacondaWidgets {
         // Signals
         /** @signal */
         connect<K extends keyof HubWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HubWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HubWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HubWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HubWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HubWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HubWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HubWindow.SignalSignatures[K]>): void;
 
         // Methods
         get_spoke_area(): Gtk.Widget;
@@ -685,15 +673,12 @@ export namespace AnacondaWidgets {
         // Signals
         /** @signal */
         connect<K extends keyof LayoutIndicator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LayoutIndicator.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LayoutIndicator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LayoutIndicator.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LayoutIndicator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LayoutIndicator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LayoutIndicator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LayoutIndicator.SignalSignatures[K]>): void;
 
         // Methods
         get_current_layout(): string;
@@ -817,15 +802,12 @@ export namespace AnacondaWidgets {
         // Signals
         /** @signal */
         connect<K extends keyof MountpointSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MountpointSelector.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MountpointSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MountpointSelector.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MountpointSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MountpointSelector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MountpointSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MountpointSelector.SignalSignatures[K]>): void;
 
         // Methods
         get_chosen(): boolean;
@@ -939,15 +921,12 @@ export namespace AnacondaWidgets {
         // Signals
         /** @signal */
         connect<K extends keyof SpokeSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpokeSelector.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SpokeSelector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpokeSelector.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SpokeSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpokeSelector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SpokeSelector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpokeSelector.SignalSignatures[K]>): void;
 
         // Methods
         get_incomplete(): boolean;
@@ -1043,15 +1022,12 @@ export namespace AnacondaWidgets {
         // Signals
         /** @signal */
         connect<K extends keyof SpokeWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpokeWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SpokeWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpokeWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SpokeWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpokeWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SpokeWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpokeWindow.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1167,15 +1143,12 @@ export namespace AnacondaWidgets {
         // Signals
         /** @signal */
         connect<K extends keyof StandaloneWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StandaloneWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StandaloneWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StandaloneWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StandaloneWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StandaloneWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StandaloneWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StandaloneWindow.SignalSignatures[K]>): void;
 
         // Methods
         retranslate(): void;

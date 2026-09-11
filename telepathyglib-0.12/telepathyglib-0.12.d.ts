@@ -7762,15 +7762,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof Account.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Account.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Account.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Account.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Account.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Account.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_addressing(): GLib.Quark;
@@ -9176,15 +9173,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof AccountChannelRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountChannelRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AccountChannelRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountChannelRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AccountChannelRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountChannelRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AccountChannelRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountChannelRequest.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10067,15 +10061,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof AccountManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AccountManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AccountManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AccountManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -10768,15 +10759,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof AccountRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AccountRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccountRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AccountRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AccountRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccountRequest.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11063,15 +11051,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof AddDispatchOperationContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AddDispatchOperationContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AddDispatchOperationContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AddDispatchOperationContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AddDispatchOperationContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AddDispatchOperationContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AddDispatchOperationContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AddDispatchOperationContext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11138,15 +11123,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof AutomaticClientFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AutomaticClientFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AutomaticClientFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AutomaticClientFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AutomaticClientFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AutomaticClientFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AutomaticClientFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AutomaticClientFactory.SignalSignatures[K]>): void;
     }
 
 
@@ -11185,15 +11167,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof AutomaticProxyFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AutomaticProxyFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AutomaticProxyFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AutomaticProxyFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AutomaticProxyFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AutomaticProxyFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AutomaticProxyFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AutomaticProxyFactory.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -11620,15 +11599,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof BaseClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BaseClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BaseClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BaseClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseClient.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -12319,15 +12295,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof BaseConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BaseConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BaseConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BaseConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BaseConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BaseConnection.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -12602,15 +12575,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof BasicProxyFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BasicProxyFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BasicProxyFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BasicProxyFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BasicProxyFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BasicProxyFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BasicProxyFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BasicProxyFactory.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -12973,15 +12943,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof CallChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallChannel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CallChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CallChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CallChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallChannel.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_core(): GLib.Quark;
@@ -13479,15 +13446,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof CallContent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallContent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CallContent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallContent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CallContent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CallContent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallContent.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_core(): GLib.Quark;
@@ -13726,15 +13690,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof CallStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallStream.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CallStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallStream.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CallStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CallStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallStream.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_core(): GLib.Quark;
@@ -13965,15 +13926,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof Capabilities.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Capabilities.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Capabilities.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Capabilities.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Capabilities.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Capabilities.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Capabilities.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Capabilities.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15583,15 +15541,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Channel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Channel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Channel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Channel.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_chat_states(): GLib.Quark;
@@ -16494,15 +16449,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof ChannelDispatchOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChannelDispatchOperation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChannelDispatchOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChannelDispatchOperation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChannelDispatchOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChannelDispatchOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChannelDispatchOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChannelDispatchOperation.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_core(): GLib.Quark;
@@ -17103,15 +17055,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof ChannelDispatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChannelDispatcher.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChannelDispatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChannelDispatcher.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChannelDispatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChannelDispatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChannelDispatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChannelDispatcher.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -17697,15 +17646,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof ChannelRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChannelRequest.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChannelRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChannelRequest.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChannelRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChannelRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChannelRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChannelRequest.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -17817,15 +17763,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof ClientMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientMessage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ClientMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClientMessage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ClientMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ClientMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClientMessage.SignalSignatures[K]>): void;
     }
 
 
@@ -18965,15 +18908,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_aliasing(): GLib.Quark;
@@ -20714,15 +20654,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof ConnectionManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ConnectionManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ConnectionManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ConnectionManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -21426,15 +21363,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Contact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Contact.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Contact.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Contact.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Contact.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22208,15 +22142,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof ContactSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactSearch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContactSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactSearch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContactSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContactSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContactSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContactSearch.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -22573,15 +22504,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof ContactSearchResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactSearchResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ContactSearchResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactSearchResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ContactSearchResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContactSearchResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ContactSearchResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContactSearchResult.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22655,15 +22583,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof DBusDaemon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusDaemon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DBusDaemon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusDaemon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DBusDaemon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusDaemon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DBusDaemon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusDaemon.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -22877,15 +22802,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof DBusTubeChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusTubeChannel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DBusTubeChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusTubeChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DBusTubeChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusTubeChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DBusTubeChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusTubeChannel.SignalSignatures[K]>): void;
 
         // Static methods
         static feature_quark_core(): GLib.Quark;
@@ -23061,15 +22983,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof DebugClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebugClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebugClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebugClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebugClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebugClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebugClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebugClient.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_core(): GLib.Quark;
@@ -23250,15 +23169,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof DebugMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebugMessage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DebugMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DebugMessage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DebugMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebugMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DebugMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DebugMessage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23576,15 +23492,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof FileTransferChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTransferChannel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileTransferChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTransferChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileTransferChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileTransferChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileTransferChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileTransferChannel.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_core(): GLib.Quark;
@@ -23951,15 +23864,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof HandleChannelsContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandleChannelsContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HandleChannelsContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandleChannelsContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HandleChannelsContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HandleChannelsContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HandleChannelsContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HandleChannelsContext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -24057,15 +23967,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof Message.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Message.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Message.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Message.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Message.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Message.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -24485,15 +24392,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof ObserveChannelsContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObserveChannelsContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ObserveChannelsContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObserveChannelsContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ObserveChannelsContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObserveChannelsContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ObserveChannelsContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObserveChannelsContext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -24880,15 +24784,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof Protocol.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Protocol.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Protocol.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Protocol.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Protocol.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Protocol.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Protocol.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Protocol.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_core(): GLib.Quark;
@@ -25513,15 +25414,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -25827,15 +25725,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof RoomInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RoomInfo.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RoomInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RoomInfo.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RoomInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RoomInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RoomInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RoomInfo.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -26011,15 +25906,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof RoomList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RoomList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RoomList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RoomList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RoomList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RoomList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RoomList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RoomList.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -26315,15 +26207,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof SignalledMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalledMessage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SignalledMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalledMessage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SignalledMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalledMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SignalledMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalledMessage.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -26423,15 +26312,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleApprover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleApprover.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleApprover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleApprover.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleApprover.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleApprover.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleApprover.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleApprover.SignalSignatures[K]>): void;
     }
 
 
@@ -26488,15 +26374,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleClientFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleClientFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleClientFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleClientFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleClientFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleClientFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleClientFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleClientFactory.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -26918,15 +26801,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleHandler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleHandler.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleHandler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleHandler.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleHandler.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleHandler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleHandler.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleHandler.SignalSignatures[K]>): void;
     }
 
 
@@ -27029,15 +26909,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleObserver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleObserver.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleObserver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleObserver.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleObserver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleObserver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleObserver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleObserver.SignalSignatures[K]>): void;
     }
 
 
@@ -27140,15 +27017,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof StreamTubeChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamTubeChannel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StreamTubeChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamTubeChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StreamTubeChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamTubeChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StreamTubeChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamTubeChannel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -27354,15 +27228,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof StreamTubeConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamTubeConnection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StreamTubeConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamTubeConnection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StreamTubeConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamTubeConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StreamTubeConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamTubeConnection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -27512,15 +27383,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof TLSCertificate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TLSCertificate.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TLSCertificate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TLSCertificate.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TLSCertificate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TLSCertificate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TLSCertificate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TLSCertificate.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_core(): GLib.Quark;
@@ -27790,15 +27658,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof TLSCertificateRejection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TLSCertificateRejection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TLSCertificateRejection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TLSCertificateRejection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TLSCertificateRejection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TLSCertificateRejection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TLSCertificateRejection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TLSCertificateRejection.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -28288,15 +28153,12 @@ export namespace TelepathyGLib {
         // Signals
         /** @signal */
         connect<K extends keyof TextChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextChannel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextChannel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextChannel.SignalSignatures[K]>): void;
 
         // Static methods
         static get_feature_quark_chat_states(): GLib.Quark;

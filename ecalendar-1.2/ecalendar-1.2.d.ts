@@ -477,15 +477,12 @@ export namespace ECalendar {
         // Signals
         /** @signal */
         connect<K extends keyof Cal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cal.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Cal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cal.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Cal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Cal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cal.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -830,15 +827,12 @@ export namespace ECalendar {
         // Signals
         /** @signal */
         connect<K extends keyof CalClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalClient.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalClient.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalClient.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1529,15 +1523,12 @@ export namespace ECalendar {
         // Signals
         /** @signal */
         connect<K extends keyof CalClientView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalClientView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalClientView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalClientView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalClientView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalClientView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalClientView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalClientView.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1646,15 +1637,12 @@ export namespace ECalendar {
         // Signals
         /** @signal */
         connect<K extends keyof CalComponent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalComponent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalComponent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalComponent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalComponent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalComponent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalComponent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalComponent.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2401,15 +2389,12 @@ export namespace ECalendar {
         // Signals
         /** @signal */
         connect<K extends keyof CalView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CalView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CalView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CalView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CalView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CalView.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

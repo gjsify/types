@@ -143,15 +143,12 @@ export namespace Phosh {
         // Signals
         /** @signal */
         connect<K extends keyof DBusScreenshotProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusScreenshotProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DBusScreenshotProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusScreenshotProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DBusScreenshotProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusScreenshotProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DBusScreenshotProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusScreenshotProxy.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1083,15 +1080,12 @@ export namespace Phosh {
         // Signals
         /** @signal */
         connect<K extends keyof DBusScreenshotSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusScreenshotSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DBusScreenshotSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DBusScreenshotSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DBusScreenshotSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusScreenshotSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DBusScreenshotSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DBusScreenshotSkeleton.SignalSignatures[K]>): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -1978,15 +1972,12 @@ export namespace Phosh {
         // Signals
         /** @signal */
         connect<K extends keyof LayerSurface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LayerSurface.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LayerSurface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LayerSurface.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LayerSurface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LayerSurface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LayerSurface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LayerSurface.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2168,15 +2159,12 @@ export namespace Phosh {
         // Signals
         /** @signal */
         connect<K extends keyof Lockscreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lockscreen.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Lockscreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lockscreen.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Lockscreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Lockscreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Lockscreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Lockscreen.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2296,15 +2284,12 @@ export namespace Phosh {
         // Signals
         /** @signal */
         connect<K extends keyof LockscreenManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LockscreenManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LockscreenManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LockscreenManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LockscreenManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LockscreenManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LockscreenManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LockscreenManager.SignalSignatures[K]>): void;
 
         // Methods
         get_active_time(): number;
@@ -2582,15 +2567,12 @@ export namespace Phosh {
         // Signals
         /** @signal */
         connect<K extends keyof QuickSetting.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QuickSetting.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof QuickSetting.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QuickSetting.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof QuickSetting.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<QuickSetting.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof QuickSetting.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<QuickSetting.SignalSignatures[K]>): void;
 
         // Methods
         get_active(): boolean;
@@ -2716,15 +2698,12 @@ export namespace Phosh {
         // Signals
         /** @signal */
         connect<K extends keyof ScreenshotManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScreenshotManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScreenshotManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScreenshotManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScreenshotManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScreenshotManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScreenshotManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScreenshotManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3328,15 +3307,12 @@ export namespace Phosh {
         // Signals
         /** @signal */
         connect<K extends keyof Shell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Shell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Shell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Shell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Shell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Shell.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4152,15 +4128,12 @@ export namespace Phosh {
         // Signals
         /** @signal */
         connect<K extends keyof StatusIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StatusIcon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StatusIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StatusIcon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StatusIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StatusIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StatusIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StatusIcon.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4345,15 +4318,12 @@ export namespace Phosh {
         // Signals
         /** @signal */
         connect<K extends keyof StatusPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StatusPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StatusPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StatusPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StatusPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StatusPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StatusPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StatusPage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4463,15 +4433,12 @@ export namespace Phosh {
         // Signals
         /** @signal */
         connect<K extends keyof WallClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WallClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WallClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WallClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WallClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WallClock.SignalSignatures[K]>): void;
 
         // Static methods
         /**

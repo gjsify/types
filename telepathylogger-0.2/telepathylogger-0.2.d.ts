@@ -178,15 +178,12 @@ export namespace TelepathyLogger {
         // Signals
         /** @signal */
         connect<K extends keyof CallEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CallEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CallEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CallEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CallEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CallEvent.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -296,15 +293,12 @@ export namespace TelepathyLogger {
         // Signals
         /** @signal */
         connect<K extends keyof Entity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Entity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Entity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Entity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entity.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -423,15 +417,12 @@ export namespace TelepathyLogger {
         // Signals
         /** @signal */
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Event.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -505,15 +496,12 @@ export namespace TelepathyLogger {
         // Signals
         /** @signal */
         connect<K extends keyof LogManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LogManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LogManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LogManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogManager.SignalSignatures[K]>): void;
 
         // Static methods
         static dup_singleton(): LogManager;
@@ -804,15 +792,12 @@ export namespace TelepathyLogger {
         // Signals
         /** @signal */
         connect<K extends keyof LogWalker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogWalker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof LogWalker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LogWalker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof LogWalker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogWalker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof LogWalker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LogWalker.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1008,15 +993,12 @@ export namespace TelepathyLogger {
         // Signals
         /** @signal */
         connect<K extends keyof TextEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextEvent.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TextEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextEvent.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TextEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TextEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextEvent.SignalSignatures[K]>): void;
 
         // Methods
         /**

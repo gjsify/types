@@ -204,15 +204,12 @@ export namespace Cheese {
         // Signals
         /** @signal */
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Camera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Camera.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -432,15 +429,12 @@ export namespace Cheese {
         // Signals
         /** @signal */
         connect<K extends keyof CameraDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CameraDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CameraDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CameraDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraDevice.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -638,15 +632,12 @@ export namespace Cheese {
         // Signals
         /** @signal */
         connect<K extends keyof CameraDeviceMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraDeviceMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CameraDeviceMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraDeviceMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CameraDeviceMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraDeviceMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CameraDeviceMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraDeviceMonitor.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1056,15 +1047,12 @@ export namespace Cheese {
         // Signals
         /** @signal */
         connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Effect.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Effect.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Effect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Effect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Effect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Effect.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1143,15 +1131,12 @@ export namespace Cheese {
         // Signals
         /** @signal */
         connect<K extends keyof FileUtil.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileUtil.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileUtil.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileUtil.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileUtil.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileUtil.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileUtil.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileUtil.SignalSignatures[K]>): void;
 
         // Methods
         /**

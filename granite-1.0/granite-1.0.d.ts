@@ -711,15 +711,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof DrawingBufferSurface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawingBufferSurface.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DrawingBufferSurface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawingBufferSurface.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DrawingBufferSurface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawingBufferSurface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DrawingBufferSurface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawingBufferSurface.SignalSignatures[K]>): void;
 
         // Methods
         get_surface(): cairo.Surface;
@@ -804,15 +801,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof DrawingColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawingColor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DrawingColor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawingColor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DrawingColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawingColor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DrawingColor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawingColor.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -964,15 +958,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof DrawingUtilities.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawingUtilities.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DrawingUtilities.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawingUtilities.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DrawingUtilities.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawingUtilities.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DrawingUtilities.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawingUtilities.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1028,15 +1019,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof ServicesContractorProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesContractorProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServicesContractorProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesContractorProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServicesContractorProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesContractorProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServicesContractorProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesContractorProxy.SignalSignatures[K]>): void;
 
         // Static methods
         static get_instance(): ServicesContractorProxy;
@@ -1099,15 +1087,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof ServicesIconFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesIconFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServicesIconFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesIconFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServicesIconFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesIconFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServicesIconFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesIconFactory.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default(): ServicesIconFactory;
@@ -1164,15 +1149,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof ServicesLogger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesLogger.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServicesLogger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesLogger.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServicesLogger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesLogger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServicesLogger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesLogger.SignalSignatures[K]>): void;
 
         // Static methods
         static get_DisplayLevel(): ServicesLogLevel;
@@ -1228,15 +1210,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof ServicesPaths.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesPaths.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServicesPaths.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesPaths.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServicesPaths.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesPaths.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServicesPaths.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesPaths.SignalSignatures[K]>): void;
 
         // Static methods
         static get_home_folder(): Gio.File;
@@ -1361,15 +1340,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof ServicesSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesSettings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServicesSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesSettings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServicesSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServicesSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesSettings.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1446,15 +1422,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof ServicesSimpleCommand.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesSimpleCommand.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServicesSimpleCommand.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesSimpleCommand.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServicesSimpleCommand.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesSimpleCommand.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServicesSimpleCommand.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesSimpleCommand.SignalSignatures[K]>): void;
 
         // Methods
         run(): void;
@@ -1494,15 +1467,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof ServicesSystem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesSystem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ServicesSystem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServicesSystem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ServicesSystem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ServicesSystem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServicesSystem.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1655,15 +1625,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsAlertView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsAlertView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsAlertView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsAlertView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsAlertView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsAlertView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsAlertView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsAlertView.SignalSignatures[K]>): void;
 
         // Methods
         get_title(): string;
@@ -1788,15 +1755,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsAvatar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsAvatar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsAvatar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsAvatar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsAvatar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsAvatar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsAvatar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsAvatar.SignalSignatures[K]>): void;
 
         // Methods
         get_pixbuf(): GdkPixbuf.Pixbuf | null;
@@ -1870,15 +1834,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsCellRendererBadge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsCellRendererBadge.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsCellRendererBadge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsCellRendererBadge.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsCellRendererBadge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsCellRendererBadge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsCellRendererBadge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsCellRendererBadge.SignalSignatures[K]>): void;
 
         // Methods
         get_text(): string;
@@ -1951,15 +1912,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsCellRendererExpander.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsCellRendererExpander.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsCellRendererExpander.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsCellRendererExpander.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsCellRendererExpander.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsCellRendererExpander.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsCellRendererExpander.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsCellRendererExpander.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2076,15 +2034,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsCollapsiblePaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsCollapsiblePaned.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsCollapsiblePaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsCollapsiblePaned.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsCollapsiblePaned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsCollapsiblePaned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsCollapsiblePaned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsCollapsiblePaned.SignalSignatures[K]>): void;
 
         // Methods
         get_collapse_mode(): CollapseMode;
@@ -2206,15 +2161,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsCompositedWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsCompositedWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsCompositedWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsCompositedWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsCompositedWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsCompositedWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsCompositedWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsCompositedWindow.SignalSignatures[K]>): void;
     }
 
 
@@ -2367,15 +2319,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsDatePicker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsDatePicker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsDatePicker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsDatePicker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsDatePicker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsDatePicker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsDatePicker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsDatePicker.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -2596,15 +2545,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsTab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsTab.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsTab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsTab.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsTab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsTab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsTab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsTab.SignalSignatures[K]>): void;
 
         // Methods
         get_label(): string;
@@ -2976,15 +2922,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsDynamicNotebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsDynamicNotebook.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsDynamicNotebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsDynamicNotebook.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsDynamicNotebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsDynamicNotebook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsDynamicNotebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsDynamicNotebook.SignalSignatures[K]>): void;
 
         // Methods
         get_n_tabs(): number;
@@ -3251,15 +3194,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsModeButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsModeButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsModeButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsModeButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsModeButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsModeButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsModeButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsModeButton.SignalSignatures[K]>): void;
 
         // Methods
         get_selected(): number;
@@ -3427,15 +3367,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsOverlayBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsOverlayBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsOverlayBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsOverlayBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsOverlayBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsOverlayBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsOverlayBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsOverlayBar.SignalSignatures[K]>): void;
 
         // Methods
         get_overlay(): Gtk.Overlay | null;
@@ -3592,15 +3529,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsSourceList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsSourceList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsSourceList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsSourceList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsSourceList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsSourceList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsSourceList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsSourceList.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -3815,15 +3749,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsSourceListItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsSourceListItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsSourceListItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsSourceListItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsSourceListItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsSourceListItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsSourceListItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsSourceListItem.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4013,15 +3944,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsSourceListExpandableItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsSourceListExpandableItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsSourceListExpandableItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsSourceListExpandableItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsSourceListExpandableItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsSourceListExpandableItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsSourceListExpandableItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsSourceListExpandableItem.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4192,15 +4120,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsStorageBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsStorageBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsStorageBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsStorageBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsStorageBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsStorageBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsStorageBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsStorageBar.SignalSignatures[K]>): void;
 
         // Methods
         get_storage(): number;
@@ -4397,15 +4322,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsTimePicker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsTimePicker.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsTimePicker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsTimePicker.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsTimePicker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsTimePicker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsTimePicker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsTimePicker.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4531,15 +4453,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsToast.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsToast.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsToast.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsToast.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsToast.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsToast.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsToast.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsToast.SignalSignatures[K]>): void;
 
         // Methods
         get_title(): string;
@@ -4663,15 +4582,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsWelcomeButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsWelcomeButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsWelcomeButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsWelcomeButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsWelcomeButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsWelcomeButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsWelcomeButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsWelcomeButton.SignalSignatures[K]>): void;
 
         // Methods
         get_title(): string;
@@ -4799,15 +4715,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof WidgetsWelcome.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsWelcome.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetsWelcome.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetsWelcome.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetsWelcome.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsWelcome.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetsWelcome.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetsWelcome.SignalSignatures[K]>): void;
 
         // Methods
         get_title(): string;
@@ -4969,15 +4882,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5140,15 +5050,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof SettingsPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SettingsPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SettingsPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SettingsPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsPage.SignalSignatures[K]>): void;
 
         // Methods
         get_status_type(): SettingsPageStatusType;
@@ -5347,15 +5254,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof SimpleSettingsPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleSettingsPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleSettingsPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleSettingsPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleSettingsPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleSettingsPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleSettingsPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleSettingsPage.SignalSignatures[K]>): void;
 
         // Methods
         get_action_area(): Gtk.ButtonBox;
@@ -5512,15 +5416,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof AccelLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccelLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AccelLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AccelLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AccelLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccelLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AccelLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AccelLabel.SignalSignatures[K]>): void;
 
         // Methods
         get_action_name(): string;
@@ -5689,15 +5590,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof AsyncImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncImage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AsyncImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncImage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AsyncImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AsyncImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncImage.SignalSignatures[K]>): void;
 
         // Methods
         get_gicon_async(): Gio.Icon | null;
@@ -5909,15 +5807,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof Dialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Dialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Dialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Dialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dialog.SignalSignatures[K]>): void;
     }
 
 
@@ -6021,15 +5916,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof HeaderLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HeaderLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HeaderLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HeaderLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HeaderLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HeaderLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HeaderLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HeaderLabel.SignalSignatures[K]>): void;
     }
 
 
@@ -6130,15 +6022,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof HyperTextView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HyperTextView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof HyperTextView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HyperTextView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof HyperTextView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HyperTextView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof HyperTextView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HyperTextView.SignalSignatures[K]>): void;
     }
 
 
@@ -6341,15 +6230,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof MessageDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MessageDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MessageDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MessageDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageDialog.SignalSignatures[K]>): void;
 
         // Methods
         get_primary_text(): string;
@@ -6540,15 +6426,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof ModeSwitch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModeSwitch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ModeSwitch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModeSwitch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ModeSwitch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModeSwitch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ModeSwitch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModeSwitch.SignalSignatures[K]>): void;
 
         // Methods
         get_active(): boolean;
@@ -6747,15 +6630,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof SeekBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SeekBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SeekBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SeekBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SeekBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SeekBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SeekBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SeekBar.SignalSignatures[K]>): void;
 
         // Methods
         get_playback_duration(): number;
@@ -6911,15 +6791,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof SettingsSidebar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsSidebar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SettingsSidebar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsSidebar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SettingsSidebar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsSidebar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SettingsSidebar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsSidebar.SignalSignatures[K]>): void;
 
         // Methods
         get_stack(): Gtk.Stack;
@@ -6976,15 +6853,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]>): void;
 
         // Static methods
         static get_default(): Settings;
@@ -7097,15 +6971,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof SwitchModelButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwitchModelButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SwitchModelButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwitchModelButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SwitchModelButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SwitchModelButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SwitchModelButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SwitchModelButton.SignalSignatures[K]>): void;
 
         // Methods
         get_text(): string;
@@ -7275,15 +7146,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Signals
         /** @signal */
         connect<K extends keyof ValidatedEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValidatedEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ValidatedEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValidatedEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ValidatedEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValidatedEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ValidatedEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValidatedEntry.SignalSignatures[K]>): void;
 
         // Methods
         get_is_valid(): boolean;

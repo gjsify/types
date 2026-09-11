@@ -217,15 +217,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof ActionDescription.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionDescription.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ActionDescription.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ActionDescription.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ActionDescription.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionDescription.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ActionDescription.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ActionDescription.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -416,15 +413,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof Authority.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Authority.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Authority.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Authority.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Authority.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Authority.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Authority.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Authority.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1588,15 +1582,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof AuthorizationResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthorizationResult.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof AuthorizationResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthorizationResult.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof AuthorizationResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthorizationResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof AuthorizationResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthorizationResult.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1700,15 +1691,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof Details.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Details.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Details.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Details.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Details.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Details.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Details.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Details.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -1808,15 +1796,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof Permission.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Permission.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Permission.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Permission.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Permission.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Permission.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Permission.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Permission.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2191,15 +2176,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof SystemBusName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SystemBusName.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SystemBusName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SystemBusName.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SystemBusName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SystemBusName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SystemBusName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SystemBusName.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2411,15 +2393,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof TemporaryAuthorization.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TemporaryAuthorization.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TemporaryAuthorization.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TemporaryAuthorization.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TemporaryAuthorization.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TemporaryAuthorization.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TemporaryAuthorization.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TemporaryAuthorization.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2504,15 +2483,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof UnixGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UnixGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UnixGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UnixGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixGroup.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2631,15 +2607,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof UnixNetgroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixNetgroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UnixNetgroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixNetgroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UnixNetgroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixNetgroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UnixNetgroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixNetgroup.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -2859,15 +2832,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof UnixProcess.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixProcess.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UnixProcess.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixProcess.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UnixProcess.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixProcess.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UnixProcess.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixProcess.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3216,15 +3186,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof UnixSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixSession.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UnixSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixSession.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UnixSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UnixSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixSession.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3762,15 +3729,12 @@ export namespace Polkit {
         // Signals
         /** @signal */
         connect<K extends keyof UnixUser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixUser.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof UnixUser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnixUser.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof UnixUser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixUser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof UnixUser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnixUser.SignalSignatures[K]>): void;
 
         // Static methods
         /**

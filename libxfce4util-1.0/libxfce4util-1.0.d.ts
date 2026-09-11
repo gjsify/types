@@ -624,15 +624,12 @@ export namespace Libxfce4util {
         // Signals
         /** @signal */
         connect<K extends keyof Consolekit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Consolekit.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Consolekit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Consolekit.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Consolekit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Consolekit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Consolekit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Consolekit.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -762,15 +759,12 @@ export namespace Libxfce4util {
         // Signals
         /** @signal */
         connect<K extends keyof Kiosk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Kiosk.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Kiosk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Kiosk.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Kiosk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Kiosk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Kiosk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Kiosk.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -822,15 +816,12 @@ export namespace Libxfce4util {
         // Signals
         /** @signal */
         connect<K extends keyof Systemd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Systemd.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Systemd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Systemd.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Systemd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Systemd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Systemd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Systemd.SignalSignatures[K]>): void;
 
         // Static methods
         /**

@@ -143,15 +143,12 @@ export namespace Thunarx {
         // Signals
         /** @signal */
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Menu.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -265,15 +262,12 @@ export namespace Thunarx {
         // Signals
         /** @signal */
         connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -409,15 +403,12 @@ export namespace Thunarx {
         // Signals
         /** @signal */
         connect<K extends keyof PropertyPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PropertyPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PropertyPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PropertyPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyPage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -482,15 +473,12 @@ export namespace Thunarx {
         // Signals
         /** @signal */
         connect<K extends keyof ProviderFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProviderFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProviderFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProviderFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProviderFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProviderFactory.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -553,15 +541,12 @@ export namespace Thunarx {
         // Signals
         /** @signal */
         connect<K extends keyof ProviderModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderModule.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProviderModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderModule.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProviderModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProviderModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProviderModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProviderModule.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -916,15 +901,12 @@ export namespace Thunarx {
         // Signals
         /** @signal */
         connect<K extends keyof Renamer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renamer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Renamer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renamer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Renamer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Renamer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Renamer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Renamer.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**

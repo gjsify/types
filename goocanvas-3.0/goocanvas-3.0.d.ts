@@ -959,15 +959,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Canvas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Canvas.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -1628,15 +1625,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasAccessibleFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasAccessibleFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasAccessibleFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasAccessibleFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasAccessibleFactory.SignalSignatures[K]>): void;
     }
 
 
@@ -1784,15 +1778,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasEllipse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasEllipse.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasEllipse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasEllipse.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasEllipse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasEllipse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasEllipse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasEllipse.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
@@ -2789,15 +2780,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasEllipseModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasEllipseModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasEllipseModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasEllipseModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasEllipseModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasEllipseModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasEllipseModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasEllipseModel.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
@@ -3600,15 +3588,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasGrid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGrid.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasGrid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGrid.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasGrid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGrid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasGrid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGrid.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
@@ -4838,15 +4823,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasGridModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGridModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasGridModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGridModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasGridModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGridModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasGridModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGridModel.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
@@ -5363,15 +5345,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGroup.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
@@ -6334,15 +6313,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasGroupModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGroupModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasGroupModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGroupModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasGroupModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGroupModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasGroupModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGroupModel.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
@@ -6879,15 +6855,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasImage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasImage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasImage.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
@@ -7875,15 +7848,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasImageModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasImageModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasImageModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasImageModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasImageModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasImageModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasImageModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasImageModel.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
@@ -8318,15 +8288,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemAccessibleFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemAccessibleFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasItemAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasItemAccessibleFactory.SignalSignatures[K]>): void;
     }
 
 
@@ -8614,15 +8581,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasItemModelSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemModelSimple.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasItemModelSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemModelSimple.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasItemModelSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasItemModelSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasItemModelSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasItemModelSimple.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
@@ -9335,15 +9299,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasItemSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemSimple.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasItemSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemSimple.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasItemSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasItemSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasItemSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasItemSimple.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -10425,15 +10386,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasPath.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPath.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasPath.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPath.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasPath.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPath.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasPath.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPath.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
@@ -11402,15 +11360,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasPathModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPathModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasPathModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPathModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasPathModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPathModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasPathModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPathModel.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
@@ -11977,15 +11932,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasPolyline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPolyline.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasPolyline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPolyline.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasPolyline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPolyline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasPolyline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPolyline.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
@@ -13003,15 +12955,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasPolylineModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPolylineModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasPolylineModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPolylineModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasPolylineModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPolylineModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasPolylineModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPolylineModel.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
@@ -13607,15 +13556,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasRect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasRect.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasRect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasRect.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasRect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasRect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasRect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasRect.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
@@ -14662,15 +14608,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasRectModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasRectModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasRectModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasRectModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasRectModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasRectModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasRectModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasRectModel.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
@@ -15125,15 +15068,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasStyle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasStyle.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasStyle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasStyle.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasStyle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasStyle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasStyle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasStyle.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15364,15 +15304,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTable.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTable.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasTable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasTable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasTable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasTable.SignalSignatures[K]>): void;
     }
 
 
@@ -15537,15 +15474,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasTableModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTableModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasTableModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTableModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasTableModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasTableModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasTableModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasTableModel.SignalSignatures[K]>): void;
     }
 
 
@@ -15691,15 +15625,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasText.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasText.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasText.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16699,15 +16630,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasTextModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTextModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasTextModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTextModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasTextModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasTextModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasTextModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasTextModel.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
@@ -17233,15 +17161,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasWidget.SignalSignatures[K]>): void;
 
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
@@ -18121,15 +18046,12 @@ export namespace GooCanvas {
         // Signals
         /** @signal */
         connect<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasWidgetAccessibleFactory.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasWidgetAccessibleFactory.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasWidgetAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasWidgetAccessibleFactory.SignalSignatures[K]>): void;
     }
 
 

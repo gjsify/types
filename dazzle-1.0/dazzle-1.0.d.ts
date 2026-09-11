@@ -747,15 +747,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof Animation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Animation.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Animation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Animation.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Animation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Animation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Animation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Animation.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -887,15 +884,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1108,15 +1102,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -1861,15 +1852,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof Bin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Bin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Bin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Bin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bin.SignalSignatures[K]>): void;
     }
 
 
@@ -1926,15 +1914,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof BindingGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BindingGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BindingGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BindingGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BindingGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BindingGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BindingGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BindingGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2104,15 +2089,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof BoldingLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoldingLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BoldingLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoldingLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BoldingLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BoldingLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BoldingLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BoldingLabel.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -2224,15 +2206,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof Box.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Box.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Box.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Box.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Box.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Box.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Box.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Box.SignalSignatures[K]>): void;
 
         // Methods
         get_max_width_request(): number;
@@ -2375,15 +2354,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof BoxTheatric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoxTheatric.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BoxTheatric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoxTheatric.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BoxTheatric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BoxTheatric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BoxTheatric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BoxTheatric.SignalSignatures[K]>): void;
     }
 
 
@@ -2487,15 +2463,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof CenteringBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CenteringBin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CenteringBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CenteringBin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CenteringBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CenteringBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CenteringBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CenteringBin.SignalSignatures[K]>): void;
     }
 
 
@@ -2567,15 +2540,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ChildPropertyAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChildPropertyAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ChildPropertyAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChildPropertyAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChildPropertyAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChildPropertyAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ChildPropertyAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChildPropertyAction.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3032,15 +3002,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ColumnLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnLayout.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ColumnLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnLayout.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ColumnLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ColumnLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnLayout.SignalSignatures[K]>): void;
 
         // Methods
         get_column_spacing(): number;
@@ -3182,15 +3149,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof CountersWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CountersWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CountersWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CountersWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CountersWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CountersWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CountersWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CountersWindow.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3305,15 +3269,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof CpuGraph.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CpuGraph.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CpuGraph.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CpuGraph.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CpuGraph.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CpuGraph.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CpuGraph.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CpuGraph.SignalSignatures[K]>): void;
     }
 
 
@@ -3355,15 +3316,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof CpuModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CpuModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CpuModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CpuModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CpuModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CpuModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CpuModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CpuModel.SignalSignatures[K]>): void;
     }
 
 
@@ -3421,15 +3379,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof CssProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CssProvider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof CssProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CssProvider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof CssProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CssProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof CssProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CssProvider.SignalSignatures[K]>): void;
 
         /**
          * Returns the {@link Gtk.IconFactory} defined to be in use for `path`, or `null` if none
@@ -3534,15 +3489,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DirectoryModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DirectoryModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DirectoryModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DirectoryModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryModel.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -3724,15 +3676,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DirectoryReaper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryReaper.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DirectoryReaper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectoryReaper.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DirectoryReaper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryReaper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DirectoryReaper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectoryReaper.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3924,15 +3873,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DockBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockBin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockBin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockBin.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4364,15 +4310,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DockBinEdge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockBinEdge.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockBinEdge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockBinEdge.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockBinEdge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockBinEdge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockBinEdge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockBinEdge.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4728,15 +4671,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DockManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockManager.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -4874,15 +4814,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DockOverlay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockOverlay.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockOverlay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockOverlay.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockOverlay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockOverlay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockOverlay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockOverlay.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -5302,15 +5239,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DockOverlayEdge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockOverlayEdge.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockOverlayEdge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockOverlayEdge.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockOverlayEdge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockOverlayEdge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockOverlayEdge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockOverlayEdge.SignalSignatures[K]>): void;
 
         // Methods
         get_edge(): Gtk.PositionType;
@@ -5705,15 +5639,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DockPaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockPaned.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockPaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockPaned.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockPaned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockPaned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockPaned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockPaned.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -6207,15 +6138,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DockRevealer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockRevealer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockRevealer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockRevealer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockRevealer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockRevealer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockRevealer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockRevealer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -6385,15 +6313,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DockStack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockStack.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockStack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockStack.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockStack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockStack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockStack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockStack.SignalSignatures[K]>): void;
 
         // Methods
         get_edge(): Gtk.PositionType;
@@ -6797,15 +6722,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DockTransientGrab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockTransientGrab.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockTransientGrab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockTransientGrab.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockTransientGrab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockTransientGrab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockTransientGrab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockTransientGrab.SignalSignatures[K]>): void;
 
         // Methods
         acquire(): void;
@@ -6974,15 +6896,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DockWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockWidget.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockWidget.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockWidget.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -7411,15 +7330,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof DockWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof DockWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof DockWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof DockWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockWindow.SignalSignatures[K]>): void;
 
         /** @category Inherited from Dazzle.Dock */
         get manager(): DockManager;
@@ -7865,15 +7781,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ElasticBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ElasticBin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ElasticBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ElasticBin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ElasticBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ElasticBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ElasticBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ElasticBin.SignalSignatures[K]>): void;
     }
 
 
@@ -8009,15 +7922,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof EmptyState.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EmptyState.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EmptyState.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EmptyState.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EmptyState.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EmptyState.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EmptyState.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EmptyState.SignalSignatures[K]>): void;
 
         // Methods
         get_icon_name(): string;
@@ -8145,15 +8055,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof EntryBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof EntryBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof EntryBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof EntryBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryBox.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -8359,15 +8266,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof FileChooserEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooserEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileChooserEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooserEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileChooserEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileChooserEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileChooserEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileChooserEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8442,15 +8346,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof FileTransfer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTransfer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FileTransfer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTransfer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FileTransfer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileTransfer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FileTransfer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileTransfer.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8542,15 +8443,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof FuzzyIndex.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FuzzyIndex.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FuzzyIndex.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FuzzyIndex.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FuzzyIndex.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FuzzyIndex.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FuzzyIndex.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FuzzyIndex.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -8692,15 +8590,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof FuzzyIndexBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FuzzyIndexBuilder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FuzzyIndexBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FuzzyIndexBuilder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FuzzyIndexBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FuzzyIndexBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FuzzyIndexBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FuzzyIndexBuilder.SignalSignatures[K]>): void;
 
         // Methods
         get_case_sensitive(): boolean;
@@ -8893,15 +8788,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof FuzzyIndexCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FuzzyIndexCursor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FuzzyIndexCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FuzzyIndexCursor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FuzzyIndexCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FuzzyIndexCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FuzzyIndexCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FuzzyIndexCursor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9293,15 +9185,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof FuzzyIndexMatch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FuzzyIndexMatch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof FuzzyIndexMatch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FuzzyIndexMatch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof FuzzyIndexMatch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FuzzyIndexMatch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof FuzzyIndexMatch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FuzzyIndexMatch.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9374,15 +9263,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof GraphColumn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GraphColumn.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GraphColumn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GraphColumn.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GraphColumn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GraphColumn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GraphColumn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GraphColumn.SignalSignatures[K]>): void;
 
         // Methods
         get_name(): string;
@@ -9477,15 +9363,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof GraphLineRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GraphLineRenderer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GraphLineRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GraphLineRenderer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GraphLineRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GraphLineRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GraphLineRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GraphLineRenderer.SignalSignatures[K]>): void;
 
         // Methods
         get_stroke_color_rgba(): Gdk.RGBA;
@@ -9619,15 +9502,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof GraphModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GraphModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GraphModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GraphModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GraphModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GraphModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GraphModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GraphModel.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -9777,15 +9657,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof GraphView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GraphView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof GraphView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GraphView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof GraphView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GraphView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof GraphView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GraphView.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -9839,15 +9716,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof JoinedMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JoinedMenu.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof JoinedMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JoinedMenu.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof JoinedMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JoinedMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof JoinedMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JoinedMenu.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10003,15 +9877,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ListBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10116,15 +9987,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ListBoxRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListBoxRow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListBoxRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListBoxRow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListBoxRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListBoxRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListBoxRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListBoxRow.SignalSignatures[K]>): void;
 
         /**
          * @default null
@@ -10356,15 +10224,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ListModelFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListModelFilter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListModelFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListModelFilter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListModelFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListModelFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListModelFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListModelFilter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -10534,15 +10399,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ListStoreAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListStoreAdapter.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ListStoreAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListStoreAdapter.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ListStoreAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListStoreAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ListStoreAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListStoreAdapter.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11227,15 +11089,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof MenuButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11411,15 +11270,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof MenuManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MenuManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MenuManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MenuManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11556,15 +11412,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof MultiPaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiPaned.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof MultiPaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiPaned.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof MultiPaned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiPaned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof MultiPaned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiPaned.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -11654,15 +11507,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof Path.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Path.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Path.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11799,15 +11649,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PathBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PathBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PathBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PathBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -11936,15 +11783,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PathElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathElement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PathElement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathElement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PathElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PathElement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathElement.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12066,15 +11910,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PillBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PillBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PillBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PillBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PillBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PillBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PillBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PillBox.SignalSignatures[K]>): void;
 
         // Methods
         get_label(): string;
@@ -12207,15 +12048,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesBin.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesBin.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesBin.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -12344,15 +12182,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesEntry.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12479,15 +12314,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesFileChooserButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesFileChooserButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesFileChooserButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesFileChooserButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesFileChooserButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesFileChooserButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesFileChooserButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesFileChooserButton.SignalSignatures[K]>): void;
     }
 
 
@@ -12571,15 +12403,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesFlowBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesFlowBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesFlowBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesFlowBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesFlowBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesFlowBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesFlowBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesFlowBox.SignalSignatures[K]>): void;
     }
 
 
@@ -12684,15 +12513,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesFontButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesFontButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesFontButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesFontButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesFontButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesFontButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesFontButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesFontButton.SignalSignatures[K]>): void;
     }
 
 
@@ -12811,15 +12637,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -12935,15 +12758,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesPage.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesPage.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesPage.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13078,15 +12898,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesSpinButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesSpinButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesSpinButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesSpinButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesSpinButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesSpinButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesSpinButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesSpinButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -13227,15 +13044,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesSwitch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesSwitch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesSwitch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesSwitch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesSwitch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesSwitch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesSwitch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesSwitch.SignalSignatures[K]>): void;
     }
 
 
@@ -13347,15 +13161,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PreferencesView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PreferencesView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PreferencesView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PreferencesView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesView.SignalSignatures[K]>): void;
 
         // Methods
         get_show_search_entry(): boolean;
@@ -13700,15 +13511,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PriorityBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PriorityBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PriorityBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PriorityBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PriorityBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PriorityBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PriorityBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PriorityBox.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -13849,15 +13657,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ProgressButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProgressButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProgressButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProgressButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressButton.SignalSignatures[K]>): void;
 
         // Methods
         get_progress(): number;
@@ -14318,15 +14123,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ProgressIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressIcon.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProgressIcon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressIcon.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProgressIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProgressIcon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressIcon.SignalSignatures[K]>): void;
 
         // Methods
         get_progress(): number;
@@ -14502,15 +14304,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ProgressMenuButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressMenuButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ProgressMenuButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressMenuButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ProgressMenuButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressMenuButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ProgressMenuButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressMenuButton.SignalSignatures[K]>): void;
 
         // Methods
         get_progress(): number;
@@ -14674,15 +14473,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof PropertiesGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertiesGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof PropertiesGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertiesGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof PropertiesGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertiesGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof PropertiesGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertiesGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15346,15 +15142,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof RadioBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RadioBox.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RadioBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RadioBox.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RadioBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RadioBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RadioBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RadioBox.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15440,15 +15233,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ReadOnlyListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ReadOnlyListModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ReadOnlyListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ReadOnlyListModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ReadOnlyListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ReadOnlyListModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ReadOnlyListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ReadOnlyListModel.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -15624,15 +15414,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof RecursiveFileMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RecursiveFileMonitor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof RecursiveFileMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RecursiveFileMonitor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof RecursiveFileMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RecursiveFileMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof RecursiveFileMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RecursiveFileMonitor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -15775,15 +15562,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ScrolledWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrolledWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ScrolledWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrolledWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ScrolledWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScrolledWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ScrolledWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScrolledWindow.SignalSignatures[K]>): void;
     }
 
 
@@ -15907,15 +15691,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof SearchBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchBar.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SearchBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchBar.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SearchBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SearchBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchBar.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16023,15 +15804,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof SettingsFlagAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsFlagAction.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SettingsFlagAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsFlagAction.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SettingsFlagAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsFlagAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SettingsFlagAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsFlagAction.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -16408,15 +16186,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof SettingsSandwich.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsSandwich.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SettingsSandwich.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingsSandwich.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SettingsSandwich.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsSandwich.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SettingsSandwich.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingsSandwich.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16662,15 +16437,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutAccelDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutAccelDialog.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutAccelDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutAccelDialog.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutAccelDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutAccelDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutAccelDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutAccelDialog.SignalSignatures[K]>): void;
 
         // Methods
         get_accelerator(): string;
@@ -16750,15 +16522,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutContext.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutContext.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutContext.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -16898,15 +16667,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutController.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutController.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutController.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -17119,15 +16885,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutLabel.SignalSignatures[K]>): void;
 
         // Methods
         get_accelerator(): string;
@@ -17247,15 +17010,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutManager.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -17618,15 +17378,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutModel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutModel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutModel.SignalSignatures[K]>): void;
 
         // Static methods
         static ["new"](): Gtk.TreeModel;
@@ -18724,15 +18481,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutSimpleLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutSimpleLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutSimpleLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutSimpleLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutSimpleLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutSimpleLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutSimpleLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutSimpleLabel.SignalSignatures[K]>): void;
 
         // Methods
         get_accel(): string;
@@ -18863,15 +18617,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutTheme.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutTheme.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutTheme.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutTheme.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutTheme.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutTheme.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutTheme.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutTheme.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19119,15 +18870,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutThemeEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutThemeEditor.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutThemeEditor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutThemeEditor.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutThemeEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutThemeEditor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutThemeEditor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutThemeEditor.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19218,15 +18966,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutTooltip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutTooltip.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutTooltip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutTooltip.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutTooltip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutTooltip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutTooltip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutTooltip.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -19445,15 +19190,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutsGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutsGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutsGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutsGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsGroup.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -19648,15 +19390,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutsSection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsSection.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutsSection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsSection.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutsSection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsSection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutsSection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsSection.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -19950,15 +19689,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutsShortcut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsShortcut.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutsShortcut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsShortcut.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutsShortcut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsShortcut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutsShortcut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsShortcut.SignalSignatures[K]>): void;
 
         /**
          * The orientation of the orientable.
@@ -20172,15 +19908,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ShortcutsWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsWindow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ShortcutsWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShortcutsWindow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ShortcutsWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ShortcutsWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutsWindow.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -20291,15 +20024,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof SignalGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SignalGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SignalGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SignalGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SignalGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SignalGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -20473,15 +20203,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof SimpleLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleLabel.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimpleLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleLabel.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimpleLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimpleLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleLabel.SignalSignatures[K]>): void;
 
         // Methods
         get_label(): string;
@@ -20867,15 +20594,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof SimplePopover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimplePopover.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SimplePopover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimplePopover.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SimplePopover.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimplePopover.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SimplePopover.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimplePopover.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -21021,15 +20745,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof Slider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Slider.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Slider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Slider.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Slider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Slider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Slider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Slider.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21142,15 +20863,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof StackList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StackList.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StackList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StackList.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StackList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StackList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StackList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StackList.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -21230,15 +20948,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof StateMachine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StateMachine.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof StateMachine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StateMachine.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof StateMachine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StateMachine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof StateMachine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StateMachine.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -21633,15 +21348,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof Suggestion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Suggestion.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Suggestion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Suggestion.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Suggestion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Suggestion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Suggestion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Suggestion.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -21907,15 +21619,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof SuggestionButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionButton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SuggestionButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionButton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SuggestionButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SuggestionButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionButton.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -22169,15 +21878,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof SuggestionEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionEntry.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SuggestionEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionEntry.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SuggestionEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SuggestionEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionEntry.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -22643,15 +22349,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof SuggestionEntryBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionEntryBuffer.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SuggestionEntryBuffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionEntryBuffer.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SuggestionEntryBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionEntryBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SuggestionEntryBuffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionEntryBuffer.SignalSignatures[K]>): void;
 
         // Methods
         clear(): void;
@@ -22846,15 +22549,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof SuggestionPopover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionPopover.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SuggestionPopover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionPopover.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SuggestionPopover.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionPopover.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SuggestionPopover.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionPopover.SignalSignatures[K]>): void;
 
         // Methods
         activate_selected(): void;
@@ -22995,15 +22695,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof SuggestionRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionRow.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SuggestionRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionRow.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SuggestionRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SuggestionRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionRow.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23187,15 +22884,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]>): void;
 
         // Methods
         get_active(): boolean;
@@ -23552,15 +23246,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof TabStrip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TabStrip.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TabStrip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TabStrip.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TabStrip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TabStrip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TabStrip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TabStrip.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23803,15 +23494,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof TaskCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TaskCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TaskCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TaskCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TaskCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TaskCache.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -23904,15 +23592,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ThemeManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThemeManager.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ThemeManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThemeManager.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ThemeManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThemeManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ThemeManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThemeManager.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -24057,15 +23742,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof ThreeGrid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThreeGrid.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ThreeGrid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThreeGrid.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ThreeGrid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThreeGrid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ThreeGrid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThreeGrid.SignalSignatures[K]>): void;
     }
 
 
@@ -24227,15 +23909,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tree.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -24619,15 +24298,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof TreeBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeBuilder.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeBuilder.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeBuilder.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
@@ -24953,15 +24629,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof TreeNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeNode.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TreeNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeNode.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TreeNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TreeNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeNode.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -25228,15 +24901,12 @@ export namespace Dazzle {
         // Signals
         /** @signal */
         connect<K extends keyof WidgetActionGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetActionGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof WidgetActionGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetActionGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof WidgetActionGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetActionGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof WidgetActionGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetActionGroup.SignalSignatures[K]>): void;
 
         // Static methods
         /**

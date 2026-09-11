@@ -78,15 +78,12 @@ export namespace GnomeCmd {
         // Signals
         /** @signal */
         connect<K extends keyof State.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, State.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof State.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, State.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof State.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<State.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof State.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<State.SignalSignatures[K]>): void;
 
         // Methods
         /**

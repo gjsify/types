@@ -318,6 +318,29 @@ export type SignalCallback<Emitter, Fn> = Fn extends (...args: infer P) => infer
     ? (source: Emitter, ...args: P) => R
     : never
 
+/**
+ * Typed signal methods for subclasses with custom or implemented-interface signals.
+ * Include the parent's SignalSignatures in Signals, then use each member with
+ * a `declare` field to refine the inherited method without replacing it at runtime.
+ * The constraint checks each signal without requiring a string index signature.
+ *
+ * @example
+ * declare connect: GObject.SignalMethods<this, MySignals>["connect"]
+ * declare connect_after: GObject.SignalMethods<this, MySignals>["connect_after"]
+ * declare emit: GObject.SignalMethods<this, MySignals>["emit"]
+ */
+export interface SignalMethods<
+    Emitter,
+    Signals extends Record<keyof Signals, (...args: never[]) => unknown>,
+> {
+    /** Connect a callback, with the emitter prepended to the signal arguments. */
+    connect<K extends keyof Signals>(signal: K, callback: SignalCallback<Emitter, Signals[K]>): number
+    /** Connect a callback to run after the signal's default handler. */
+    connect_after<K extends keyof Signals>(signal: K, callback: SignalCallback<Emitter, Signals[K]>): number
+    /** Emit a signal with its declared arguments, without the emitter. */
+    emit<K extends keyof Signals>(signal: K, ...args: GjsParameters<Signals[K]>): void
+}
+
 // TODO: What about the generated class Closure
 export type TClosure<R = any, P = any> = (...args: P[]) => R
 
@@ -3328,15 +3351,12 @@ export function registerClass<
         // Signals
         /** @signal */
         connect<K extends keyof Binding.SignalSignatures>(signal: K, callback: SignalCallback<this, Binding.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Binding.SignalSignatures>(signal: K, callback: SignalCallback<this, Binding.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Binding.SignalSignatures>(signal: K, ...args: GjsParameters<Binding.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Binding.SignalSignatures>(signal: K, ...args: GjsParameters<Binding.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3487,15 +3507,12 @@ export function registerClass<
         // Signals
         /** @signal */
         connect<K extends keyof BindingGroup.SignalSignatures>(signal: K, callback: SignalCallback<this, BindingGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof BindingGroup.SignalSignatures>(signal: K, callback: SignalCallback<this, BindingGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof BindingGroup.SignalSignatures>(signal: K, ...args: GjsParameters<BindingGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof BindingGroup.SignalSignatures>(signal: K, ...args: GjsParameters<BindingGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -3589,15 +3606,12 @@ export function registerClass<
         // Signals
         /** @signal */
         connect<K extends keyof InitiallyUnowned.SignalSignatures>(signal: K, callback: SignalCallback<this, InitiallyUnowned.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof InitiallyUnowned.SignalSignatures>(signal: K, callback: SignalCallback<this, InitiallyUnowned.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof InitiallyUnowned.SignalSignatures>(signal: K, ...args: GjsParameters<InitiallyUnowned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof InitiallyUnowned.SignalSignatures>(signal: K, ...args: GjsParameters<InitiallyUnowned.SignalSignatures[K]>): void;
     }
 
 
@@ -3692,15 +3706,12 @@ export function registerClass<
         // Signals
         /** @signal */
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GjsParameters<Object.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4267,15 +4278,12 @@ export function registerClass<
         // Signals
         /** @signal */
         connect<K extends keyof ParamSpec.SignalSignatures>(signal: K, callback: SignalCallback<this, ParamSpec.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof ParamSpec.SignalSignatures>(signal: K, callback: SignalCallback<this, ParamSpec.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ParamSpec.SignalSignatures>(signal: K, ...args: GjsParameters<ParamSpec.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof ParamSpec.SignalSignatures>(signal: K, ...args: GjsParameters<ParamSpec.SignalSignatures[K]>): void;
 
         // Static methods
         /**
@@ -4743,15 +4751,12 @@ export function registerClass<
         // Signals
         /** @signal */
         connect<K extends keyof SignalGroup.SignalSignatures>(signal: K, callback: SignalCallback<this, SignalGroup.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof SignalGroup.SignalSignatures>(signal: K, callback: SignalCallback<this, SignalGroup.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof SignalGroup.SignalSignatures>(signal: K, ...args: GjsParameters<SignalGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof SignalGroup.SignalSignatures>(signal: K, ...args: GjsParameters<SignalGroup.SignalSignatures[K]>): void;
 
         // Methods
         /**
@@ -4903,15 +4908,12 @@ export function registerClass<
         // Signals
         /** @signal */
         connect<K extends keyof TypeModule.SignalSignatures>(signal: K, callback: SignalCallback<this, TypeModule.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
         connect_after<K extends keyof TypeModule.SignalSignatures>(signal: K, callback: SignalCallback<this, TypeModule.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof TypeModule.SignalSignatures>(signal: K, ...args: GjsParameters<TypeModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        emit<K extends keyof TypeModule.SignalSignatures>(signal: K, ...args: GjsParameters<TypeModule.SignalSignatures[K]>): void;
 
         // Virtual methods
         /**
