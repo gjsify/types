@@ -27,6 +27,7 @@ import { satisfies } from "semver";
 
 import {
 	closureGaps,
+	classifyGap,
 	describeGap,
 	type PlannablePackage,
 	planPublishOrder,
@@ -319,4 +320,35 @@ test("over the real release, no batch ever contains a dependency of its own memb
 		}
 		i += run.length;
 	}
+});
+
+// --- what a surviving gap means ---------------------------------------------------------
+
+test("a gap on a dependency this run already published is lag, not a defect", () => {
+	const planned = new Map([["@girs/gio-2.0", 0]]);
+	const gap = { package: "@girs/accounts-1.0", dependency: "@girs/gio-2.0", range: "^5.0.0", reason: "absent" as const };
+	assert.equal(classifyGap(gap, planned, 1), "lag");
+	// Same group: the six-member cycle, whose members cannot see each other at their own instant.
+	assert.equal(classifyGap(gap, planned, 0), "lag");
+});
+
+test("a gap on a dependency planned LATER is an ordering defect", () => {
+	const planned = new Map([["@girs/gssdp-1.6", 9]]);
+	const gap = { package: "@girs/rygelcore-2.8", dependency: "@girs/gssdp-1.6", range: "^5.0.0", reason: "absent" as const };
+	assert.equal(classifyGap(gap, planned, 4), "ordering-defect");
+});
+
+test("a gap on something the release never publishes is permanent", () => {
+	const gap = { package: "@girs/a-1.0", dependency: "@girs/ghost-9.9", range: "^5.0.0", reason: "absent" as const };
+	assert.equal(classifyGap(gap, new Map(), 0), "not-in-release");
+});
+
+test("the three verdicts are distinguishable — the same gap, three plans", () => {
+	const gap = { package: "p", dependency: "d", range: "^5.0.0", reason: "absent" as const };
+	const verdicts = [
+		classifyGap(gap, new Map([["d", 0]]), 1),
+		classifyGap(gap, new Map([["d", 2]]), 1),
+		classifyGap(gap, new Map(), 1),
+	];
+	assert.deepEqual(verdicts, ["lag", "ordering-defect", "not-in-release"]);
 });
