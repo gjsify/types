@@ -28,6 +28,7 @@ import { satisfies } from "semver";
 import {
 	closureGaps,
 	classifyGap,
+	formatDuration,
 	describeGap,
 	type PlannablePackage,
 	planPublishOrder,
@@ -35,6 +36,7 @@ import {
 	type RegistryView,
 	runtimeDependencies,
 	stronglyConnectedComponents,
+	sweepDeadlineExceeded,
 	takeIndependentRun,
 } from "./publish-plan.ts";
 
@@ -351,4 +353,22 @@ test("the three verdicts are distinguishable — the same gap, three plans", () 
 		classifyGap(gap, new Map(), 1),
 	];
 	assert.deepEqual(verdicts, ["lag", "ordering-defect", "not-in-release"]);
+});
+
+
+// --- the sweep's own clock ----------------------------------------------------------------
+
+test("the deadline fires only after the budget, and zero disables it", () => {
+	const start = 1_000_000;
+	assert.equal(sweepDeadlineExceeded(start, start + 299 * 60_000, 300), false);
+	assert.equal(sweepDeadlineExceeded(start, start + 301 * 60_000, 300), true);
+	// Zero is off, not "expire immediately" — which is what a plain `now > start + 0` would do.
+	assert.equal(sweepDeadlineExceeded(start, start + 10 * 60 * 60_000, 0), false);
+});
+
+test("durations read at a glance across the three scales", () => {
+	assert.deepEqual(
+		[0, 93, 432, 8040].map(formatDuration),
+		["0s", "1m33s", "7m12s", "2h14m"],
+	);
 });

@@ -370,3 +370,28 @@ export function classifyGap(
 	if (plannedAt === undefined) return "not-in-release";
 	return plannedAt > publishedAtGroup ? "ordering-defect" : "lag";
 }
+
+
+/**
+ * A sweep that no longer fits in its job, named by the publisher rather than by the runner.
+ *
+ * `timeout-minutes` is the only other bound, and a job killed by it says "The job running on
+ * runner … has exceeded the maximum execution time" — which names the runner, not the package
+ * the sweep was on. Keep the budget UNDER the job's own, so this is the message a human reads.
+ *
+ * Zero disables it. Measured for scale: v4.9.0 published 716 packages at 10.7 s each over 2.14 h,
+ * v5.0.0 at 19.2 s over 2.7 h.
+ */
+export function sweepDeadlineExceeded(startedAt: number, now: number, budgetMin: number): boolean {
+	if (budgetMin <= 0) return false;
+	return now - startedAt > budgetMin * 60_000;
+}
+
+/** `93s` · `7m12s` · `2h14m` — a duration a human reads at a glance in a 700-line log. */
+export function formatDuration(seconds: number): string {
+	const s = Math.max(0, Math.round(seconds));
+	if (s < 60) return `${s}s`;
+	const m = Math.floor(s / 60);
+	if (m < 60) return `${m}m${String(s % 60).padStart(2, "0")}s`;
+	return `${Math.floor(m / 60)}h${String(m % 60).padStart(2, "0")}m`;
+}

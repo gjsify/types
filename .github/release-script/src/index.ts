@@ -8,11 +8,13 @@ import {
 	type ClosureGap,
 	closureGaps,
 	classifyGap,
+	formatDuration,
 	describeGap,
 	planPublishOrder,
 	type PublishGroup,
 	type RegistryView,
 	runtimeDependencies,
+	sweepDeadlineExceeded,
 	takeIndependentRun,
 } from "./publish-plan.ts";
 
@@ -985,6 +987,13 @@ class LiveRegistry implements RegistryView {
  * two hours sitting in this loop over 76 gaps that were all lag: 19.2 s per package against the
  * 10.7 s of the release before it.
  */
+/**
+ * Wall-clock budget for the whole sweep. Keep it UNDER release.yml's `timeout-minutes`, so a run
+ * that stops fitting says which package it was on instead of leaving the runner to report that it
+ * exceeded its maximum execution time. Zero disables it.
+ */
+const DEADLINE_MIN = Math.max(0, getEnvInt("NPM_DEADLINE_MIN", 300));
+
 const CLOSURE_LAG_BUDGET_MS = Math.max(0, getEnvInt("NPM_CLOSURE_LAG_MS", 15_000));
 const CLOSURE_LAG_STEP_MS = Math.max(250, getEnvInt("NPM_CLOSURE_LAG_STEP_MS", 5_000));
 
@@ -1083,6 +1092,7 @@ async function publishPendingPackages(
 
 	console.log(`🚀 Phase 2: Publishing ${pendingCount} packages in plan order (batch size: ${BATCH_SIZE})...\n`);
 
+	const startedAt = Date.now();
 	let processed = 0;
 	// A failed PUBLISH and a closure not yet readable are different facts with different
 	// remedies. One counter for both is what printed "76 of 792 package(s) failed to publish"
@@ -1091,6 +1101,17 @@ async function publishPendingPackages(
 	const published: Package[] = [];
 
 	for (let i = 0; i < pendingGroups.length; ) {
+		// Checked between groups, never mid-flight: a publish already in the air is finished and
+		// counted. `--continue-on-error` governs a failing PACKAGE, not a run that no longer fits.
+		if (sweepDeadlineExceeded(startedAt, Date.now(), DEADLINE_MIN)) {
+			const left = pendingGroups.slice(i).reduce((n, group) => n + group.members.length, 0);
+			throw new Error(
+				`sweep deadline of ${DEADLINE_MIN} min reached with ${left} of ${pendingCount} package(s) ` +
+					`unpublished (published: ${processed}, failed: ${publishErrors}). ` +
+					"Raise NPM_DEADLINE_MIN, or find why the registry got slow.",
+			);
+		}
+
 		const run = takeIndependentRun(pendingGroups, i, BATCH_SIZE);
 		const members = run.flatMap((group) => group.members);
 		i += run.length;
@@ -1149,8 +1170,17 @@ async function publishPendingPackages(
 			}
 		}
 
-		const progress = (((processed + publishErrors) / pendingCount) * 100).toFixed(1);
-		console.log(`✅ ${progress}% - Processed: ${processed}, Errors: ${publishErrors}\n`);
+		// Elapsed and ETA on every line, because the run-level `updatedAt` GitHub exposes does NOT
+		// advance while a job streams logs — from the API a sweep that is working looks exactly like
+		// one that is wedged. Reading it that way is what got the 4.8.0 sweep cancelled at 38%.
+		const done = processed + publishErrors;
+		const progress = ((done / pendingCount) * 100).toFixed(1);
+		const elapsedS = (Date.now() - startedAt) / 1000;
+		const etaS = done > 0 ? (elapsedS / done) * (pendingCount - done) : 0;
+		console.log(
+			`✅ ${progress}% - Processed: ${processed}, Errors: ${publishErrors}` +
+				` - elapsed ${formatDuration(elapsedS)}, ETA ${formatDuration(etaS)}\n`,
+		);
 
 		if (i < pendingGroups.length && BATCH_DELAY_MS > 0) {
 			await sleep(BATCH_DELAY_MS);
