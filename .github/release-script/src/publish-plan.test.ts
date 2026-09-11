@@ -29,6 +29,7 @@ import {
 	closureGaps,
 	classifyGap,
 	formatDuration,
+	RESOLUTION_MISS,
 	describeGap,
 	type PlannablePackage,
 	planPublishOrder,
@@ -36,6 +37,7 @@ import {
 	type RegistryView,
 	runtimeDependencies,
 	stronglyConnectedComponents,
+	shouldRetryResolution,
 	sweepDeadlineExceeded,
 	takeIndependentRun,
 } from "./publish-plan.ts";
@@ -371,4 +373,28 @@ test("durations read at a glance across the three scales", () => {
 		[0, 93, 432, 8040].map(formatDuration),
 		["0s", "1m33s", "7m12s", "2h14m"],
 	);
+});
+
+
+// --- asking the registry again, or not --------------------------------------------------
+
+test("a version that is not visible yet is worth asking again, inside the budget", () => {
+	const miss = "npm error code ETARGET\nnpm error notarget No matching version found for @girs/x@5.0.0.";
+	assert.equal(shouldRetryResolution(miss, 0, 5 * 60_000, 10 * 60_000), true);
+	assert.equal(shouldRetryResolution(miss, 0, 11 * 60_000, 10 * 60_000), false);
+});
+
+test("a failure that waiting cannot fix is never retried", () => {
+	// The arm that matters: retrying these turns one clear red into a slow one.
+	for (const hard of ["npm error code E403 Forbidden", "npm error code EINTEGRITY", "tarball is not a gzip"]) {
+		assert.equal(shouldRetryResolution(hard, 0, 1, 10 * 60_000), false, hard);
+	}
+});
+
+test("the miss pattern covers the shapes npm actually prints", () => {
+	assert.deepEqual(
+		["ETARGET", "E404 Not Found", "notarget", "No matching version"].map((s) => RESOLUTION_MISS.test(s)),
+		[true, true, true, true],
+	);
+	assert.equal(RESOLUTION_MISS.test("EPUBLISHCONFLICT"), false);
 });

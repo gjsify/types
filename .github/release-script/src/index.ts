@@ -9,6 +9,7 @@ import {
 	closureGaps,
 	classifyGap,
 	formatDuration,
+	shouldRetryResolution,
 	describeGap,
 	planPublishOrder,
 	type PublishGroup,
@@ -1204,10 +1205,13 @@ async function publishPendingPackages(
  * Measured cost for the full 716-package set on a cold cache: 5.5 minutes, 225 MB unpacked.
  * Against a two-hour sweep that is the cheapest proof available that the release is installable.
  */
-/** npm's vocabulary for "that version is not there (yet)", as opposed to a broken artifact. */
-const RESOLUTION_MISS = /ETARGET|E404|notarget|No matching version/i;
-const INSTALL_ATTEMPTS = Math.max(1, getEnvInt("NPM_INSTALL_ATTEMPTS", 4));
-const INSTALL_RETRY_MS = Math.max(1_000, getEnvInt("NPM_INSTALL_RETRY_MS", 60_000));
+/**
+ * Wall-clock budget for re-asking after a resolution miss, NOT a number of attempts: one attempt
+ * costs 5.5 minutes on the 716-package set and seconds on a single SDK channel, so the same
+ * attempt count means wildly different patience. See `shouldRetryResolution`.
+ */
+const INSTALL_LAG_BUDGET_MS = Math.max(0, getEnvInt("NPM_INSTALL_LAG_MS", 10 * 60_000));
+const INSTALL_RETRY_MS = Math.max(1_000, getEnvInt("NPM_INSTALL_RETRY_MS", 30_000));
 
 async function verifyInstallableClosure(packages: Package[], config: Config): Promise<void> {
 	if (config.dryRun || packages.length === 0) return;
@@ -1216,7 +1220,8 @@ async function verifyInstallableClosure(packages: Package[], config: Config): Pr
 	console.log(`\n🔎 Phase 3: resolving the published set from an empty directory (${packages.length} roots)…`);
 
 	try {
-		for (let attempt = 1; attempt <= INSTALL_ATTEMPTS; attempt++) {
+		const probeStartedAt = Date.now();
+		for (let attempt = 1; ; attempt++) {
 		await writeFile(
 			join(dir, "package.json"),
 			JSON.stringify(
@@ -1247,10 +1252,9 @@ async function verifyInstallableClosure(packages: Package[], config: Config): Pr
 			// and three SDK channels were published cleanly and then reported uninstallable by this
 			// very probe, seconds later. Retry a bounded number of times before believing it —
 			// anything else, and any miss that outlives the budget, still fails.
-			if (RESOLUTION_MISS.test(output) && attempt < INSTALL_ATTEMPTS) {
-				console.log(
-					`⏳ not resolvable yet (attempt ${attempt}/${INSTALL_ATTEMPTS}), waiting ${INSTALL_RETRY_MS / 1000}s…`,
-				);
+			if (shouldRetryResolution(output, probeStartedAt, Date.now(), INSTALL_LAG_BUDGET_MS)) {
+				const waited = formatDuration((Date.now() - probeStartedAt) / 1000);
+				console.log(`⏳ not resolvable yet (attempt ${attempt}, ${waited} of ${INSTALL_LAG_BUDGET_MS / 60_000}m)…`);
 				await sleep(INSTALL_RETRY_MS);
 				continue;
 			}
