@@ -1073,50 +1073,52 @@ async function publishPendingPackages(
 
 	for (let i = 0; i < pendingGroups.length; ) {
 		const run = takeIndependentRun(pendingGroups, i, BATCH_SIZE);
-		const batch = run.flatMap((group) => group.members);
+		const members = run.flatMap((group) => group.members);
 		i += run.length;
 
-		console.log(`📦 Groups ${run[0].index}…${run[run.length - 1].index} (${batch.map((p) => p.name).join(", ")})`);
+		console.log(`📦 Groups ${run[0].index}…${run[run.length - 1].index} (${members.map((p) => p.name).join(", ")})`);
 
-		const batchResults = await Promise.allSettled(
-			batch.map(async (pkg): Promise<BatchResult> => {
+		// `BATCH_SIZE` caps CONCURRENCY, not merely how many groups are taken. A group can hold
+		// more than one package — the six-member cycle does — and publishing a whole group at once
+		// would ignore the operator's pacing on exactly the group where it is least wanted:
+		// release.yml runs at 1 because concurrent provenance signing draws E429.
+		const batchResults = await pMap(
+			members,
+			async (pkg): Promise<BatchResult> => {
+				const action = statuses.get(pkg.name)?.exists ? "update" : "create";
 				try {
-					const action = statuses.get(pkg.name)?.exists ? "update" : "create";
-
 					if (config.dryRun) {
 						console.log(`📦 [DRY RUN] Would ${action} ${pkg.name}@${pkg.version}`);
 						return { result: `dry-run-${action}` as ProcessResult, pkg };
 					}
-
 					await publishPackageWithRetry(pkg, config);
 					return { result: action === "update" ? "updated" : "created", pkg };
 				} catch (error) {
 					const message = error instanceof Error ? error.message : "Unknown error";
 					console.error(`❌ ${pkg.name}: ${message}`);
-
-					if (config.continueOnError) {
-						return { result: "error", pkg, error: message };
-					}
-					throw error;
+					return { result: "error", pkg, error: message };
 				}
-			}),
+			},
+			BATCH_SIZE,
 		);
 
+		const failed: BatchResult[] = [];
 		for (const result of batchResults) {
-			if (result.status === "fulfilled") {
-				if (result.value.result === "error") {
-					errors++;
-				} else {
-					processed++;
-					published.push(result.value.pkg);
-					registry.invalidate(result.value.pkg.name);
-				}
-			} else if (config.continueOnError) {
-				console.error(`❌ Batch error: ${result.reason}`);
+			if (result.result === "error") {
 				errors++;
-			} else {
-				throw result.reason;
+				failed.push(result);
+				continue;
 			}
+			processed++;
+			published.push(result.pkg);
+			registry.invalidate(result.pkg.name);
+		}
+
+		// Without `--continue-on-error` a failed publish stops the sweep — after the batch rather
+		// than mid-flight, so the log says which of the concurrent publishes failed instead of
+		// whichever lost the race to reject first.
+		if (failed.length > 0 && !config.continueOnError) {
+			throw new Error(`${failed.map((f) => `${f.pkg.name}: ${f.error}`).join("; ")}`);
 		}
 
 		// The gate. A dry run publishes nothing, so there is nothing yet for a consumer to resolve
@@ -1179,10 +1181,14 @@ async function verifyInstallableClosure(packages: Package[], config: Config): Pr
 			),
 		);
 
+		// Its own budget, not the per-publish one. Measured: 5.5 minutes for 716 packages on a cold
+		// cache, against a 300 s default — so the probe would have timed out and reported the
+		// release as uninstallable on the first run that used the default.
+		const timeoutSec = Math.max(config.timeoutSec, 15 * 60);
 		const { code, output } = await runNpm(
 			["install", "--no-package-lock", "--no-audit", "--no-fund", "--ignore-scripts", "--registry", config.registry],
 			dir,
-			config.timeoutSec,
+			timeoutSec,
 		);
 
 		if (code !== 0) {
