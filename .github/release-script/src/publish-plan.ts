@@ -395,3 +395,28 @@ export function formatDuration(seconds: number): string {
 	if (m < 60) return `${m}m${String(s % 60).padStart(2, "0")}s`;
 	return `${Math.floor(m / 60)}h${String(m % 60).padStart(2, "0")}m`;
 }
+
+
+/** npm's vocabulary for "that version is not there (yet)", as opposed to a broken artifact. */
+export const RESOLUTION_MISS = /ETARGET|E404|notarget|No matching version/i;
+
+/**
+ * Whether a failed install probe is worth asking again.
+ *
+ * Two things have to be true, and the first matters more than the budget: the failure must LOOK
+ * like a version that is not visible yet. A broken tarball, a 403, a network error — none of
+ * those get better by waiting, and retrying them for ten minutes turns one clear red into a slow
+ * one.
+ *
+ * The budget is wall-clock rather than a number of attempts, because an attempt is not a fixed
+ * cost: probing the 716-package set takes 5.5 minutes on a cold cache, probing one SDK channel
+ * takes seconds. `NPM_INSTALL_ATTEMPTS` × 60 s read the same on paper and meant three minutes for
+ * the channel — which is how `@girs/sdk-gnome-51@5.0.0` was published successfully at 20:12:33
+ * and reported uninstallable at 20:15:35. Measured readability lag on the same registry that day
+ * reached 4m12s (`@girs/matekbd-1.0`), and the packument's own `time` entry is no guide: it said
+ * 20:12:32.972 for a version no install could resolve three minutes later.
+ */
+export function shouldRetryResolution(output: string, startedAt: number, now: number, budgetMs: number): boolean {
+	if (!RESOLUTION_MISS.test(output)) return false;
+	return now - startedAt < budgetMs;
+}
