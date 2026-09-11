@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "check": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types --no-warnings src/publish-plan.test.ts",
+    "test:e2e": "node test/e2e.mjs",
     "start": "node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./src/index.ts"
   },
   "author": "",
@@ -12,6 +14,10 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^24.3.0",
+    "@types/semver": "^7.8.0",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "semver": "^7.8.5"
   }
 }

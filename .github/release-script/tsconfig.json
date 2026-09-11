@@ -5,6 +5,7 @@
 		"strict": true,
 		"rootDir": "src",
 		"verbatimModuleSyntax": true,
+		"allowImportingTsExtensions": true,
 		"noEmit": true
 	},
 	"include": ["src/**/*.ts"]

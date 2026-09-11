@@ -1,0 +1,63 @@
+# The publisher, checked BEFORE it publishes.
+#
+# Until now nothing in this repository ran on a pull request: `release.yml` fires on push to main
+# and `sdk-types.yml` on a dispatch or a schedule, so the script that pushes 716 packages to npm
+# was first executed by the release it was meant to make. A type error, a broken ordering, a gate
+# that no longer goes red — all of it surfaced mid-sweep, with part of the set already public.
+#
+# This runs the same three things a maintainer would: the type check, the plan and gate tests
+# against the recorded v4.9.0 graph, and the end-to-end sweep against a throwaway Verdaccio.
+name: Release Script
+
+on:
+  pull_request:
+    paths:
+      - ".github/release-script/**"
+      - ".github/workflows/release-script.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".github/release-script/**"
+      - ".github/workflows/release-script.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: release-script-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Check, test, publish end to end
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: .github/release-script
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.x
+          package-manager-cache: false
+
+      - run: npm ci
+
+      - name: Type-check
+        run: npm run check
+
+      # The plan and the closure gate, replayed over the recorded v4.9.0 release: 508 red in the
+      # order it actually went out, 0 in the order the planner produces. Both arms, because a
+      # gate that is green on both is measuring the end state, and one that is red on both does
+      # not distinguish sorted from unsorted.
+      - name: Unit tests
+        run: npm test
+
+      # The wiring: that the plan decides what `npm publish` is called on, that the gate is
+      # reached after each group, and that a gap makes the process exit non-zero. Against a real
+      # registry on localhost, so no arm can pass because a stub was too agreeable.
+      - name: End-to-end against a local registry
+        run: npm run test:e2e
