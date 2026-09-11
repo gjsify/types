@@ -34,6 +34,7 @@ import {
 	type RegistryView,
 	runtimeDependencies,
 	stronglyConnectedComponents,
+	takeIndependentRun,
 } from "./publish-plan.ts";
 
 // --- the recorded release ---------------------------------------------------------------
@@ -273,4 +274,49 @@ test("Tarjan does not overflow on a deep chain", () => {
 	const graph = new Map<string, Set<string>>();
 	for (let i = 0; i < 20_000; i++) graph.set(`n${i}`, new Set(i > 0 ? [`n${i - 1}`] : []));
 	assert.equal(stronglyConnectedComponents(graph).length, 20_000);
+});
+
+// --- batching -----------------------------------------------------------------------------
+
+test("a batch never carries a group beside one it depends on", () => {
+	// The pacing knob must not be able to undo the plan. Two independent leaves batch; the
+	// dependent that follows them does not join, however much room the batch has left.
+	const plan = planPublishOrder([
+		{ name: "leaf-a", version: "1", dependencies: {} },
+		{ name: "leaf-b", version: "1", dependencies: {} },
+		{ name: "top", version: "1", dependencies: { "leaf-a": "*", "leaf-b": "*" } },
+	]);
+	assert.deepEqual(
+		takeIndependentRun(plan, 0, 5).map((group) => group.members.map((m) => m.name)),
+		[["leaf-a"], ["leaf-b"]],
+	);
+	assert.deepEqual(
+		takeIndependentRun(plan, 2, 5).map((group) => group.members.map((m) => m.name)),
+		[["top"]],
+	);
+});
+
+test("a batch size of one is one group, independent or not", () => {
+	const plan = planPublishOrder([
+		{ name: "leaf-a", version: "1", dependencies: {} },
+		{ name: "leaf-b", version: "1", dependencies: {} },
+	]);
+	assert.equal(takeIndependentRun(plan, 0, 1).length, 1);
+});
+
+test("over the real release, no batch ever contains a dependency of its own members", () => {
+	const plan = planPublishOrder(RECORDED_PACKAGES);
+	for (let i = 0; i < plan.length; ) {
+		const run = takeIndependentRun(plan, i, 5);
+		const inRun = new Set(run.flatMap((group) => group.members.map((m) => m.name)));
+		for (const group of run) {
+			for (const member of group.members) {
+				for (const dep of Object.keys(member.dependencies)) {
+					const sameGroup = group.members.some((m) => m.name === dep);
+					assert.ok(!inRun.has(dep) || sameGroup, `${member.name} batched beside its dependency ${dep}`);
+				}
+			}
+		}
+		i += run.length;
+	}
 });

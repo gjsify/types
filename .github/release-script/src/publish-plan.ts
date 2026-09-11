@@ -254,6 +254,38 @@ export function planPublishOrder<T extends PlannablePackage>(packages: T[]): Pub
 	return order;
 }
 
+/**
+ * The next run of groups that can go out together: consecutive in the plan AND independent of
+ * one another.
+ *
+ * A publisher's batch size is a PACING knob — release.yml runs at 1, because concurrent
+ * provenance signing draws E429 — and never a licence to publish a dependent beside its
+ * dependency. Checking independence is what lets the knob keep its old meaning without
+ * reintroducing the defect the plan exists to remove.
+ *
+ * Consecutive only: it stops at the first group that depends on the run so far rather than
+ * scanning ahead for another independent one, because reordering past a dependent would make the
+ * publish order differ from the plan, and the plan is what the closure gate is checked against.
+ */
+export function takeIndependentRun<T extends PlannablePackage>(
+	plan: PublishGroup<T>[],
+	from: number,
+	max: number,
+): PublishGroup<T>[] {
+	const run: PublishGroup<T>[] = [plan[from]];
+	const inRun = new Set(plan[from].members.map((member) => member.name));
+	for (let i = from + 1; i < plan.length && run.length < max; i++) {
+		const candidate = plan[i];
+		const dependsOnRun = candidate.members.some((member) =>
+			Object.keys(member.dependencies).some((dep) => inRun.has(dep)),
+		);
+		if (dependsOnRun) break;
+		run.push(candidate);
+		for (const member of candidate.members) inRun.add(member.name);
+	}
+	return run;
+}
+
 /** What the closure check is allowed to ask. Exactly one question, so a fake can answer it. */
 export interface RegistryView {
 	/** Versions published under `name` right now, or `null` when the registry has no such package. */

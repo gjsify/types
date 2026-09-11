@@ -12,6 +12,7 @@ import {
 	type PublishGroup,
 	type RegistryView,
 	runtimeDependencies,
+	takeIndependentRun,
 } from "./publish-plan.ts";
 
 // Configuration and types
@@ -936,16 +937,36 @@ class LiveRegistry implements RegistryView {
 		const cached = this.known.get(name);
 		if (cached) return cached;
 
-		const response = await fetch(getApiUrl(this.registry, name), {
-			headers: { Accept: "application/json", "User-Agent": "ts-for-gir-release-script/1.0.0" },
-			signal: AbortSignal.timeout(API_TIMEOUT_MS),
-		});
-		if (response.status === 404) return null;
-		if (!response.ok) throw new HttpStatusError(response.status, `Registry responded with ${response.status}`);
+		// Retried on a transient status, like every other registry read here. Without it a single
+		// 503 in the middle of a two-hour sweep would fail the run as an ordering defect — the one
+		// diagnosis that would send someone looking in the wrong place.
+		const versions = await withRetry(
+			async () => {
+				const response = await fetch(getApiUrl(this.registry, name), {
+					headers: { Accept: "application/json", "User-Agent": "ts-for-gir-release-script/1.0.0" },
+					signal: AbortSignal.timeout(API_TIMEOUT_MS),
+				});
+				if (response.status === 404) return null;
+				if (!response.ok) {
+					if (isRetryableHttpStatus(response.status)) {
+						throw new HttpStatusError(response.status, `Registry responded with ${response.status}`);
+					}
+					return null;
+				}
+				const data = (await response.json()) as { versions?: Record<string, unknown> };
+				const found = Object.keys(data.versions ?? {});
+				return found.length === 0 ? null : found;
+			},
+			{
+				label: `closure:${name}`,
+				maxRetries: MAX_RETRIES_STATUS,
+				baseDelayMs: RETRY_BASE_MS,
+				maxDelayMs: RETRY_MAX_MS,
+				shouldRetry: (err) => isHttpStatusError(err) && isRetryableHttpStatus(err.status),
+			},
+		);
 
-		const data = (await response.json()) as { versions?: Record<string, unknown> };
-		const versions = Object.keys(data.versions ?? {});
-		if (versions.length === 0) return null;
+		if (versions === null) return null;
 		this.known.set(name, versions);
 		return versions;
 	}
@@ -1003,29 +1024,6 @@ async function verifyGroupClosure(
 	}
 
 	return gaps;
-}
-
-/**
- * The next run of groups that can go out together: consecutive in the plan AND independent of
- * one another.
- *
- * `NPM_BATCH_SIZE` is a PACING knob (batch=1 in release.yml, because concurrent provenance
- * signing draws E429), not a licence to publish a dependent beside its dependency. Checking
- * independence is what lets the knob keep its old meaning without reintroducing the defect.
- */
-function takeIndependentRun<T extends Package>(plan: PublishGroup<T>[], from: number, max: number): PublishGroup<T>[] {
-	const run: PublishGroup<T>[] = [plan[from]];
-	const inRun = new Set(plan[from].members.map((member) => member.name));
-	for (let i = from + 1; i < plan.length && run.length < max; i++) {
-		const candidate = plan[i];
-		const dependsOnRun = candidate.members.some((member) =>
-			Object.keys(member.dependencies).some((dep) => inRun.has(dep)),
-		);
-		if (dependsOnRun) break;
-		run.push(candidate);
-		for (const member of candidate.members) inRun.add(member.name);
-	}
-	return run;
 }
 
 // Phase 2: Publish what needs publishing, in topological order, checking the closure as we go
