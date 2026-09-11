@@ -264,12 +264,17 @@ jobs:
             console.log(`${manifest.name}@${manifest.version}: ${subpaths.length} subpaths`);
           ' "$manifest" '${{ matrix.channel.package }}' '${{ steps.channel_plan.outputs.version }}' '${{ steps.sdk.outputs.commit }}'
 
-      - name: Type-check the release script
-        if: steps.channel_plan.outputs.rebuild == 'true' && !inputs.dry_run
+      # NOT gated on `dry_run`: `npm ci` is what puts `semver` on disk, and the publisher
+      # imports it whether or not it ends up publishing. Gating the install on the run being
+      # real made a dry run fail on a missing module — a failure about the harness, not about
+      # the channel it was asked to check.
+      - name: Check and test the release script
+        if: steps.channel_plan.outputs.rebuild == 'true'
         working-directory: .github/release-script
         run: |
           npm ci
           npm run check
+          npm test
 
       # Same publisher as release.yml, pointed at `sdk/` — including its retry policy and its
       # refusal to treat "this version already exists" as success.

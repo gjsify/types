@@ -60,14 +60,24 @@ jobs:
           npm --version
 
       # The publisher is TypeScript executed with type STRIPPING, which does no
-      # checking whatsoever — so a type error in the script that publishes 703
+      # checking whatsoever — so a type error in the script that publishes 716
       # packages would first surface at release time, halfway through a sweep.
       # The package has had a `check` script all along; nothing ran it.
-      - name: Type-check the release script
+      #
+      # `npm ci` is also what puts `semver` on disk for the publish step below: the
+      # closure gate asks whether a declared RANGE is satisfiable, and reimplementing
+      # that would be a second truth about the one question npm already answers.
+      #
+      # `npm test` runs the plan and the gate against the recorded v4.9.0 graph,
+      # including the arm that must be RED — see publish-plan.test.ts. It is on the
+      # critical path on purpose: a publisher whose ordering is broken should never
+      # reach the first `npm publish`.
+      - name: Check and test the release script
         working-directory: .github/release-script
         run: |
           npm ci
           npm run check
+          npm test
 
       # Both auth paths stay supported, and the token decides which one runs.
       #

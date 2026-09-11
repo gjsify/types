@@ -1,6 +1,19 @@
 import { spawn } from "node:child_process";
-import { readdir, readFile, stat } from "node:fs/promises";
-import { basename, dirname, join } from "node:path";
+import { mkdtemp, readdir, readFile, rm, stat, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { basename, dirname, join, resolve } from "node:path";
+import { satisfies } from "semver";
+
+import {
+	type ClosureGap,
+	closureGaps,
+	describeGap,
+	planPublishOrder,
+	type PublishGroup,
+	type RegistryView,
+	runtimeDependencies,
+	takeIndependentRun,
+} from "./publish-plan.ts";
 
 // Configuration and types
 interface Config {
@@ -18,6 +31,15 @@ interface Config {
 	 * of the two happened to be on disk — and silently report success for the other.
 	 */
 	root: string;
+	/**
+	 * Publish nothing; only ask whether what is ALREADY on the registry resolves.
+	 *
+	 * The same gate `publishPendingPackages` runs after every group, pointed at the current state
+	 * instead of at a sweep in progress. It exists so the invariant can be asked at any time —
+	 * after a release that was interrupted, or when a consumer reports a `notarget` and nobody
+	 * knows yet which repository the cause lives in.
+	 */
+	verifyOnly: boolean;
 	/**
 	 * How this run authenticates to npm. BOTH are supported on purpose.
 	 *
@@ -37,6 +59,12 @@ interface Package {
 	name: string;
 	version: string;
 	rootFolder: string;
+	/**
+	 * Every RUNTIME dependency, name → range. This is what decides the publish ORDER and what
+	 * the closure gate checks — see `publish-plan.ts`. `devDependencies` are excluded: they are
+	 * not installed for a consumer, so they can neither break an install nor constrain a sweep.
+	 */
+	dependencies: Record<string, string>;
 }
 
 interface PackageStatus {
@@ -363,6 +391,7 @@ function showUsage(): void {
 	console.log("  --dry-run, -d           Show what would be published without actually publishing");
 	console.log("  --continue-on-error, -c Continue processing even if some packages fail");
 	console.log("  --root <dir>            Scan only <dir> for packages (default: the whole repository)");
+	console.log("  --verify-only           Publish nothing; check that what is already published resolves");
 	console.log("  --help, -h              Show this help message");
 	console.log("");
 	console.log("Environment variables:");
@@ -371,6 +400,21 @@ function showUsage(): void {
 	console.log("  NPM_TIMEOUT_SEC        Timeout in seconds (default: 300)");
 	console.log("  NPM_STATUS_CONCURRENCY Max parallel status checks (default: 20)");
 	console.log("");
+}
+
+/**
+ * Is this the public npm registry? Decides `--provenance`, and nothing else.
+ *
+ * Matched on the HOST, not on a substring of the URL: `https://evil.example/registry.npmjs.org/`
+ * contains the name and is not npm.
+ */
+function isPublicNpmRegistry(url: string): boolean {
+	try {
+		const host = new URL(url).host.toLowerCase();
+		return host === "registry.npmjs.org" || host === "registry.yarnpkg.com";
+	} catch {
+		return false;
+	}
 }
 
 function normalizeRegistryUrl(url: string): string {
@@ -388,12 +432,13 @@ function getApiUrl(registry: string, packageName: string): string {
 	return `${baseUrl}${encodeURIComponent(packageName)}`;
 }
 
-function parseArgs(): Pick<Config, "dryRun" | "continueOnError" | "root"> {
+function parseArgs(): Pick<Config, "dryRun" | "continueOnError" | "root" | "verifyOnly"> {
 	const args = process.argv;
 	return {
 		dryRun: args.includes("--dry-run") || args.includes("-d"),
 		continueOnError: args.includes("--continue-on-error") || args.includes("-c"),
 		root: parseRoot(args),
+		verifyOnly: args.includes("--verify-only"),
 	};
 }
 
@@ -489,6 +534,7 @@ async function parsePackageJson(packageFile: string): Promise<Package> {
 		name: data.name,
 		version: data.version,
 		rootFolder: dirname(packageFile),
+		dependencies: runtimeDependencies(data),
 	};
 }
 
@@ -606,7 +652,13 @@ async function publishPackageOnce(pkg: Package, config: Config): Promise<void> {
 		const env = { ...process.env } as NodeJS.ProcessEnv;
 		if (config.authMode === "token" && config.token) env.NODE_AUTH_TOKEN = config.token;
 		else delete env.NODE_AUTH_TOKEN;
-		const args = ["publish", "--tag", "latest", "--access", "public", "--provenance", "--registry", config.registry];
+		// `--provenance` is a public-npm feature: it needs a sigstore-backed registry and a CI
+		// provider npm recognises. Asking for it against any other registry makes the publish fail
+		// for a reason that has nothing to do with the package — which is also what made this
+		// script untestable end to end, since a local registry could never get past the first
+		// publish. The flag is therefore tied to the registry it belongs to, not to the run.
+		const args = ["publish", "--tag", "latest", "--access", "public", "--registry", config.registry];
+		if (isPublicNpmRegistry(config.registry)) args.push("--provenance");
 
 		const proc = spawn("npm", args, {
 			cwd: pkg.rootFolder,
@@ -620,6 +672,10 @@ async function publishPackageOnce(pkg: Package, config: Config): Promise<void> {
 		proc.stderr.on("data", (data) => {
 			stderr += data.toString();
 		});
+		// stdout is piped and MUST be drained. An undrained pipe fills at 64 KB and the child
+		// blocks on its next write — forever, or until the timeout above turns a chatty publish
+		// into "timed out", which reads like a slow registry rather than a full buffer.
+		proc.stdout.on("data", () => {});
 
 		proc.on("error", (err) => {
 			clearTimeout(timeoutId);
@@ -677,14 +733,28 @@ async function publishPackageWithRetry(pkg: Package, config: Config): Promise<vo
 }
 
 async function collectPackages(root: string): Promise<Package[]> {
-	// Get project root (3 levels up from .github/release-script/src/)
-	const scriptDir = new URL(".", import.meta.url).pathname;
-	const projectRoot = join(scriptDir, "..", "..", "..", root);
+	// Relative to the WORKING DIRECTORY, not to where this file happens to live.
+	//
+	// It used to be three levels up from `.github/release-script/src/`, which meant the scan
+	// target was this repository no matter where you stood — so `--root` could name a directory
+	// inside it and nothing else. Both workflows run from the repository root, so they are
+	// unaffected; what changes is that pointing the publisher at another tree is now possible at
+	// all, which is what lets it be tested end to end against a throwaway registry. `parseRoot`
+	// still refuses absolute paths and `..`, so `--root` cannot climb out of where it was run.
+	const projectRoot = resolve(process.cwd(), root);
 
 	console.log(`📁 Scanning ${projectRoot} for packages...`);
 
 	const packageFiles = await findAllPackageFiles(projectRoot);
 	console.log(`📦 Found ${packageFiles.length} package.json files`);
+
+	// A sweep over nothing used to report "completed successfully". Whatever the cause — the wrong
+	// working directory, a `--root` that does not exist yet, a generation step that was skipped —
+	// a publisher that publishes nothing has not succeeded, and saying so here names the cause
+	// while the summary at the end would not.
+	if (packageFiles.length === 0) {
+		throw new Error(`no package.json found under ${projectRoot} — nothing to publish`);
+	}
 
 	const packages = await Promise.all(packageFiles.map((file) => parsePackageJson(file)));
 
@@ -717,7 +787,7 @@ const WHOAMI_TIMEOUT_MS = 30_000;
  * `--dry-run` still works everywhere; only the writing path is gated.
  */
 function assertRunningInCi(config: Config): void {
-	if (config.dryRun) return;
+	if (config.dryRun || config.verifyOnly) return;
 	const inCi = process.env.GITHUB_ACTIONS === "true" || process.env.CI === "true";
 	if (inCi) return;
 	if (process.env.ALLOW_PUBLISH_OUTSIDE_CI === "1") {
@@ -731,7 +801,7 @@ function assertRunningInCi(config: Config): void {
 }
 
 async function assertCanAuthenticate(config: Config): Promise<void> {
-	if (config.dryRun) return;
+	if (config.dryRun || config.verifyOnly) return;
 
 	if (config.authMode === "oidc") {
 		console.log("🔐 Auth mode: OIDC (npm Trusted Publishing) — no token configured");
@@ -839,94 +909,356 @@ async function checkAllStatuses(
 	return statuses;
 }
 
-// Phase 2: Publish only packages that need it, in batches
+/**
+ * The registry, asked live, with a POSITIVE-only cache.
+ *
+ * Only "yes, these versions are there" is cached. A negative is never cached, because a negative
+ * is the interesting answer and it is the one that changes: the whole point of the closure gate
+ * is to ask again a moment later and see whether the registry's replicas have caught up.
+ */
+class LiveRegistry implements RegistryView {
+	private readonly known = new Map<string, string[]>();
+
+	constructor(private readonly registry: string) {}
+
+	/** Seed from Phase 1, which already fetched every package in the run. */
+	seed(statuses: Map<string, PackageStatus>): void {
+		for (const [name, status] of statuses) {
+			if (status.exists && status.versions.length > 0) this.known.set(name, status.versions);
+		}
+	}
+
+	/** A package this run just published — drop any stale "what the registry had before" answer. */
+	invalidate(name: string): void {
+		this.known.delete(name);
+	}
+
+	async publishedVersions(name: string): Promise<string[] | null> {
+		const cached = this.known.get(name);
+		if (cached) return cached;
+
+		// Retried on a transient status, like every other registry read here. Without it a single
+		// 503 in the middle of a two-hour sweep would fail the run as an ordering defect — the one
+		// diagnosis that would send someone looking in the wrong place.
+		const versions = await withRetry(
+			async () => {
+				const response = await fetch(getApiUrl(this.registry, name), {
+					headers: { Accept: "application/json", "User-Agent": "ts-for-gir-release-script/1.0.0" },
+					signal: AbortSignal.timeout(API_TIMEOUT_MS),
+				});
+				if (response.status === 404) return null;
+				if (!response.ok) {
+					if (isRetryableHttpStatus(response.status)) {
+						throw new HttpStatusError(response.status, `Registry responded with ${response.status}`);
+					}
+					return null;
+				}
+				const data = (await response.json()) as { versions?: Record<string, unknown> };
+				const found = Object.keys(data.versions ?? {});
+				return found.length === 0 ? null : found;
+			},
+			{
+				label: `closure:${name}`,
+				maxRetries: MAX_RETRIES_STATUS,
+				baseDelayMs: RETRY_BASE_MS,
+				maxDelayMs: RETRY_MAX_MS,
+				shouldRetry: (err) => isHttpStatusError(err) && isRetryableHttpStatus(err.status),
+			},
+		);
+
+		if (versions === null) return null;
+		this.known.set(name, versions);
+		return versions;
+	}
+}
+
+/**
+ * How long a gap may be blamed on registry lag before it is called an ordering defect.
+ *
+ * A package this process uploaded is not instantly visible to every read replica, so the first
+ * look after a publish can legitimately answer "not there". That window is seconds. Waiting
+ * longer than this would turn the gate's whole purpose — being red DURING the window — into a
+ * slow green, so the budget is bounded and small.
+ */
+const CLOSURE_LAG_BUDGET_MS = Math.max(0, getEnvInt("NPM_CLOSURE_LAG_MS", 60_000));
+const CLOSURE_LAG_STEP_MS = Math.max(250, getEnvInt("NPM_CLOSURE_LAG_STEP_MS", 5_000));
+
+/**
+ * THE invariant, checked after every publish group: a consumer installing what we just published
+ * can resolve it. Asked of the registry, not of our own bookkeeping — "we published it" is the
+ * answer we already have.
+ *
+ * Edges inside the group are exempt. They must be: the `@girs` graph has a six-member cycle
+ * (cairo-1.0 · gio-2.0 · gjs · glib-2.0 · gmodule-2.0 · gobject-2.0), and no order makes a cycle
+ * member's closure complete at its own publish instant. See `publish-plan.ts`.
+ */
+async function verifyGroupClosure(
+	group: PublishGroup<Package>,
+	registry: LiveRegistry,
+	plannedGroupOf: Map<string, number>,
+): Promise<ClosureGap[]> {
+	const deadline = Date.now() + CLOSURE_LAG_BUDGET_MS;
+	let gaps = await closureGaps(group.members, registry, satisfies);
+
+	while (gaps.length > 0 && Date.now() < deadline) {
+		console.log(
+			`⏳ group ${group.index}: ${gaps.length} dependency/ies not resolvable yet, re-asking the registry…`,
+		);
+		await sleep(CLOSURE_LAG_STEP_MS);
+		for (const gap of gaps) registry.invalidate(gap.dependency);
+		gaps = await closureGaps(group.members, registry, satisfies);
+	}
+
+	for (const gap of gaps) {
+		// A GitHub annotation, so the failure is visible at the moment it happens rather than only
+		// in the 700-package log tail. The message names the package AND the repository, which is
+		// what `npm error notarget No matching version found for @girs/pango-1.0@^4.9.0` does not.
+		console.log(`::error title=Incomplete closure::${describeGap(gap)}`);
+		const plannedAt = plannedGroupOf.get(gap.dependency);
+		if (plannedAt !== undefined && plannedAt > group.index) {
+			throw new Error(
+				`publish plan is wrong: ${gap.package} (group ${group.index}) needs ${gap.dependency}, ` +
+					`which this run does not publish until group ${plannedAt}. Stopping rather than widening the window.`,
+			);
+		}
+	}
+
+	return gaps;
+}
+
+// Phase 2: Publish what needs publishing, in topological order, checking the closure as we go
 async function publishPendingPackages(
 	packages: Package[],
 	statuses: Map<string, PackageStatus>,
 	config: Config,
-): Promise<{ alreadyPublished: number; processed: number; errors: number }> {
-	// Split into already-published and needs-publish
-	const needsPublish: { pkg: Package; isUpdate: boolean }[] = [];
-	let alreadyPublished = 0;
+	registry: LiveRegistry,
+): Promise<{ alreadyPublished: number; processed: number; errors: number; published: Package[] }> {
+	// The plan is built over the WHOLE set, not over the subset that needs publishing. A package
+	// that is already on the registry is still a dependency, and leaving it out of the graph would
+	// make the remaining order look like it had no constraints.
+	const plan = planPublishOrder(packages);
+	const plannedGroupOf = new Map<string, number>();
+	for (const group of plan) for (const member of group.members) plannedGroupOf.set(member.name, group.index);
+	const cycles = plan.filter((group) => group.members.length > 1);
+	console.log(
+		`🧭 Publish plan: ${plan.length} group(s) over ${packages.length} package(s)` +
+			(cycles.length > 0
+				? `, ${cycles.length} of them a dependency cycle: ` +
+					cycles.map((group) => `{${group.members.map((m) => m.name).join(" ")}}`).join(", ")
+				: ", no cycles"),
+	);
 
-	for (const pkg of packages) {
+	const isPublished = (pkg: Package) => {
 		const status = statuses.get(pkg.name);
-		if (status?.exists && status.versions.includes(pkg.version)) {
-			alreadyPublished++;
-			continue;
-		}
-		needsPublish.push({ pkg, isUpdate: status?.exists ?? false });
+		return status?.exists === true && status.versions.includes(pkg.version);
+	};
+
+	const alreadyPublished = packages.filter(isPublished).length;
+	const pendingGroups = plan
+		.map((group) => ({ ...group, members: group.members.filter((member) => !isPublished(member)) }))
+		.filter((group) => group.members.length > 0);
+	const pendingCount = pendingGroups.reduce((n, group) => n + group.members.length, 0);
+
+	console.log(`📊 ${alreadyPublished} already published, ${pendingCount} to publish\n`);
+
+	if (pendingCount === 0) {
+		return { alreadyPublished, processed: 0, errors: 0, published: [] };
 	}
 
-	console.log(`📊 ${alreadyPublished} already published, ${needsPublish.length} to publish\n`);
-
-	if (needsPublish.length === 0) {
-		return { alreadyPublished, processed: 0, errors: 0 };
-	}
-
-	console.log(`🚀 Phase 2: Publishing ${needsPublish.length} packages (batch size: ${BATCH_SIZE})...\n`);
+	console.log(`🚀 Phase 2: Publishing ${pendingCount} packages in plan order (batch size: ${BATCH_SIZE})...\n`);
 
 	let processed = 0;
 	let errors = 0;
+	const published: Package[] = [];
 
-	for (let i = 0; i < needsPublish.length; i += BATCH_SIZE) {
-		const batch = needsPublish.slice(i, i + BATCH_SIZE);
-		const batchNum = Math.floor(i / BATCH_SIZE) + 1;
-		const totalBatches = Math.ceil(needsPublish.length / BATCH_SIZE);
+	for (let i = 0; i < pendingGroups.length; ) {
+		const run = takeIndependentRun(pendingGroups, i, BATCH_SIZE);
+		const members = run.flatMap((group) => group.members);
+		i += run.length;
 
-		console.log(`📦 Batch ${batchNum}/${totalBatches} (${batch.map((b) => b.pkg.name).join(", ")})`);
+		console.log(`📦 Groups ${run[0].index}…${run[run.length - 1].index} (${members.map((p) => p.name).join(", ")})`);
 
-		const batchResults = await Promise.allSettled(
-			batch.map(async ({ pkg, isUpdate }): Promise<BatchResult> => {
+		// `BATCH_SIZE` caps CONCURRENCY, not merely how many groups are taken. A group can hold
+		// more than one package — the six-member cycle does — and publishing a whole group at once
+		// would ignore the operator's pacing on exactly the group where it is least wanted:
+		// release.yml runs at 1 because concurrent provenance signing draws E429.
+		const batchResults = await pMap(
+			members,
+			async (pkg): Promise<BatchResult> => {
+				const action = statuses.get(pkg.name)?.exists ? "update" : "create";
 				try {
-					const action = isUpdate ? "update" : "create";
-
 					if (config.dryRun) {
 						console.log(`📦 [DRY RUN] Would ${action} ${pkg.name}@${pkg.version}`);
 						return { result: `dry-run-${action}` as ProcessResult, pkg };
 					}
-
 					await publishPackageWithRetry(pkg, config);
-					return { result: isUpdate ? "updated" : "created", pkg };
+					return { result: action === "update" ? "updated" : "created", pkg };
 				} catch (error) {
 					const message = error instanceof Error ? error.message : "Unknown error";
 					console.error(`❌ ${pkg.name}: ${message}`);
-
-					if (config.continueOnError) {
-						return { result: "error", pkg, error: message };
-					}
-					throw error;
+					return { result: "error", pkg, error: message };
 				}
-			}),
+			},
+			BATCH_SIZE,
 		);
 
+		const failed: BatchResult[] = [];
 		for (const result of batchResults) {
-			if (result.status === "fulfilled") {
-				if (result.value.result === "error") {
-					errors++;
-				} else {
-					processed++;
-				}
-			} else if (config.continueOnError) {
-				console.error(`❌ Batch error: ${result.reason}`);
+			if (result.result === "error") {
 				errors++;
-			} else {
-				throw result.reason;
+				failed.push(result);
+				continue;
+			}
+			processed++;
+			published.push(result.pkg);
+			registry.invalidate(result.pkg.name);
+		}
+
+		// Without `--continue-on-error` a failed publish stops the sweep — after the batch rather
+		// than mid-flight, so the log says which of the concurrent publishes failed instead of
+		// whichever lost the race to reject first.
+		if (failed.length > 0 && !config.continueOnError) {
+			throw new Error(`${failed.map((f) => `${f.pkg.name}: ${f.error}`).join("; ")}`);
+		}
+
+		// The gate. A dry run publishes nothing, so there is nothing yet for a consumer to resolve
+		// and the check would be red on every unreleased version — it is skipped, and said so.
+		if (!config.dryRun) {
+			for (const group of run) {
+				const gaps = await verifyGroupClosure(group, registry, plannedGroupOf);
+				if (gaps.length > 0) {
+					errors += gaps.length;
+					if (!config.continueOnError) {
+						throw new Error(`group ${group.index} published with an incomplete closure: ${describeGap(gaps[0])}`);
+					}
+				}
 			}
 		}
 
-		const progress = (((i + BATCH_SIZE) / needsPublish.length) * 100).toFixed(1);
-		console.log(
-			`✅ Batch ${batchNum}/${totalBatches} done (${progress}%) - Processed: ${processed}, Errors: ${errors}\n`,
-		);
+		const progress = ((processed + errors) / pendingCount * 100).toFixed(1);
+		console.log(`✅ ${progress}% - Processed: ${processed}, Errors: ${errors}\n`);
 
-		// Delay between batches (not after the last one)
-		if (i + BATCH_SIZE < needsPublish.length && BATCH_DELAY_MS > 0) {
+		if (i < pendingGroups.length && BATCH_DELAY_MS > 0) {
 			await sleep(BATCH_DELAY_MS);
 		}
 	}
 
-	return { alreadyPublished, processed, errors };
+	return { alreadyPublished, processed, errors, published };
+}
+
+/**
+ * The last word, and the only one that is not our own: a REAL `npm install` of the whole
+ * published set into an empty directory.
+ *
+ * Everything above asks the registry what it holds. This asks npm to actually resolve and
+ * download it, which is a strictly stronger question and catches two things the packument
+ * cannot. A range nobody can satisfy — the `notarget` a consumer sees — and a version that
+ * exists in the metadata while its TARBALL does not: measured on `@girs/sdk-gnome-master@4.7.0`,
+ * where publish reported success, `npm view` listed the version with an attestation, and
+ * `npm install` answered E404.
+ *
+ * Measured cost for the full 716-package set on a cold cache: 5.5 minutes, 225 MB unpacked.
+ * Against a two-hour sweep that is the cheapest proof available that the release is installable.
+ */
+async function verifyInstallableClosure(packages: Package[], config: Config): Promise<void> {
+	if (config.dryRun || packages.length === 0) return;
+
+	const dir = await mkdtemp(join(tmpdir(), "girs-closure-"));
+	console.log(`\n🔎 Phase 3: resolving the published set from an empty directory (${packages.length} roots)…`);
+
+	try {
+		await writeFile(
+			join(dir, "package.json"),
+			JSON.stringify(
+				{
+					name: "closure-probe",
+					version: "1.0.0",
+					private: true,
+					dependencies: Object.fromEntries(packages.map((pkg) => [pkg.name, pkg.version])),
+				},
+				null,
+				2,
+			),
+		);
+
+		// Its own budget, not the per-publish one. Measured: 5.5 minutes for 716 packages on a cold
+		// cache, against a 300 s default — so the probe would have timed out and reported the
+		// release as uninstallable on the first run that used the default.
+		const timeoutSec = Math.max(config.timeoutSec, 15 * 60);
+		const { code, output } = await runNpm(
+			["install", "--no-package-lock", "--no-audit", "--no-fund", "--ignore-scripts", "--registry", config.registry],
+			dir,
+			timeoutSec,
+		);
+
+		if (code !== 0) {
+			// npm's own words, because they are the words the consumer would have seen.
+			console.log(`::error title=Published set is not installable::${output.trim().split("\n").slice(-3).join(" ")}`);
+			throw new Error(`the published set does not install:\n${output.trim()}`);
+		}
+		console.log(`✅ the published set installs from an empty directory`);
+	} finally {
+		await rm(dir, { recursive: true, force: true });
+	}
+}
+
+/** Run npm somewhere and collect what it said. Used by the closure probe, not by publishing. */
+function runNpm(args: string[], cwd: string, timeoutSec: number): Promise<{ code: number; output: string }> {
+	return new Promise((resolve, reject) => {
+		const proc = spawn("npm", args, { cwd, env: process.env, shell: true, stdio: "pipe" });
+		let output = "";
+		const timeoutId = setTimeout(() => {
+			proc.kill("SIGKILL");
+			reject(new Error(`npm ${args[0]} timed out after ${timeoutSec}s`));
+		}, timeoutSec * 1000);
+		proc.stdout.on("data", (chunk) => {
+			output += chunk.toString();
+		});
+		proc.stderr.on("data", (chunk) => {
+			output += chunk.toString();
+		});
+		proc.on("error", (err) => {
+			clearTimeout(timeoutId);
+			reject(err);
+		});
+		proc.on("exit", (code) => {
+			clearTimeout(timeoutId);
+			resolve({ code: code ?? 1, output });
+		});
+	});
+}
+
+/**
+ * `--verify-only`: the gate, asked of the CURRENT registry instead of of a sweep in progress.
+ *
+ * Only packages that are actually published at their declared version are checked — an
+ * unpublished one has no closure to be incomplete. Same grouping, so the same cycle exemption
+ * applies; a member of a strongly connected component is checked only once every member of it
+ * is up, because until then no order could have made it resolvable.
+ */
+async function verifyPublishedClosure(
+	packages: Package[],
+	statuses: Map<string, PackageStatus>,
+	registry: LiveRegistry,
+): Promise<ClosureGap[]> {
+	const isPublished = (pkg: Package) => {
+		const status = statuses.get(pkg.name);
+		return status?.exists === true && status.versions.includes(pkg.version);
+	};
+
+	const plan = planPublishOrder(packages);
+	const gaps: ClosureGap[] = [];
+	let checked = 0;
+
+	for (const group of plan) {
+		if (!group.members.every(isPublished)) continue;
+		checked += group.members.length;
+		gaps.push(...(await closureGaps(group.members, registry, satisfies)));
+	}
+
+	console.log(`\n🔎 Verified the closure of ${checked} published package(s) in ${plan.length} group(s)`);
+	for (const gap of gaps) console.log(`::error title=Incomplete closure::${describeGap(gap)}`);
+	return gaps;
 }
 
 async function main(): Promise<void> {
@@ -957,8 +1289,35 @@ async function main(): Promise<void> {
 		// Phase 1: Check all statuses in parallel
 		const statuses = await checkAllStatuses(packages, config.registry);
 
-		// Phase 2: Publish only what's needed
-		const { alreadyPublished, processed, errors } = await publishPendingPackages(packages, statuses, config);
+		const registry = new LiveRegistry(config.registry);
+		registry.seed(statuses);
+
+		if (config.verifyOnly) {
+			const gaps = await verifyPublishedClosure(packages, statuses, registry);
+			if (gaps.length > 0) {
+				throw new Error(
+					`${gaps.length} unresolvable dependency/ies in the published set:\n  ` +
+						gaps.map(describeGap).join("\n  "),
+				);
+			}
+			console.log("✅ every published package resolves against the registry");
+			return;
+		}
+
+		// Phase 2: Publish only what's needed, in topological order, gated after every group
+		const { alreadyPublished, processed, errors } = await publishPendingPackages(
+			packages,
+			statuses,
+			config,
+			registry,
+		);
+
+		// Phase 3: prove the whole set installs. Only after a sweep that published something and
+		// reported no errors — a failed sweep is already red, and a five-minute install that is
+		// certain to fail adds nothing but noise to the log that has to be read.
+		if (processed > 0 && errors === 0) {
+			await verifyInstallableClosure(packages, config);
+		}
 
 		// Final summary
 		console.log("📊 Final Summary:");
