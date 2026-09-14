@@ -130,6 +130,31 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
+// `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
+//
+// The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint
+// `accessibility { … }` block is typed by GTK's ARIA table instead, and the two disagree
+// where it matters: `orientation` is settable on a `GtkLabel` that implements no
+// `GtkOrientable` and has no such property, and `checked` is a `GtkAccessibleTristate`, so
+// `checked: true` means the number 1 and not the boolean. A consumer typing those slots
+// from the widget gets both wrong, silently.
+//
+// Read from each member's own documentation, which is where GTK keeps the table --
+// `gtk_accessible_property_init_value()` is the C half and is not introspectable, the
+// sentence is. Complete or absent, never partial: a member whose documentation states no
+// value type fails generation and names itself, because a missing row is indistinguishable
+// from "GTK has no such name" and the plausible fallback emits `true` where GTK means 1.
+export const ARIA_VALUE_TYPES = {};
+
+// The same keys, for the `'enum'` rows only -> the GType of the enum.
+//
+// The join on from a kind to a number, and a table of its own for the reason `PROP_ENUMS`
+// is one: folding the GType into `ARIA_VALUE_TYPES` would make its values a mix of six
+// reserved words and arbitrary GTypes, and telling them apart would be the consumer's
+// problem. With this, `ARIA_VALUE_TYPES[k] === 'enum'` is the whole test, and
+// `ENUM_NICKS[ARIA_VALUE_ENUMS[k]]` is the nick list.
+export const ARIA_VALUE_ENUMS = {};
+
 export const SLOT_CANDIDATES = {};
 
 export const SINCE = {};

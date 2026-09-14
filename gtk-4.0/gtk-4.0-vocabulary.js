@@ -1310,6 +1310,92 @@ export const PROP_ENUMS = {
     'GtkWindowControls.side': 'GtkPackType',
 };
 
+// `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
+//
+// The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint
+// `accessibility { … }` block is typed by GTK's ARIA table instead, and the two disagree
+// where it matters: `orientation` is settable on a `GtkLabel` that implements no
+// `GtkOrientable` and has no such property, and `checked` is a `GtkAccessibleTristate`, so
+// `checked: true` means the number 1 and not the boolean. A consumer typing those slots
+// from the widget gets both wrong, silently.
+//
+// Read from each member's own documentation, which is where GTK keeps the table --
+// `gtk_accessible_property_init_value()` is the C half and is not introspectable, the
+// sentence is. Complete or absent, never partial: a member whose documentation states no
+// value type fails generation and names itself, because a missing row is indistinguishable
+// from "GTK has no such name" and the plausible fallback emits `true` where GTK means 1.
+export const ARIA_VALUE_TYPES = {
+    'GtkAccessibleProperty.autocomplete': 'enum',
+    'GtkAccessibleProperty.description': 'string',
+    'GtkAccessibleProperty.has-popup': 'boolean',
+    'GtkAccessibleProperty.help-text': 'string',
+    'GtkAccessibleProperty.key-shortcuts': 'string',
+    'GtkAccessibleProperty.label': 'string',
+    'GtkAccessibleProperty.level': 'integer',
+    'GtkAccessibleProperty.modal': 'boolean',
+    'GtkAccessibleProperty.multi-line': 'boolean',
+    'GtkAccessibleProperty.multi-selectable': 'boolean',
+    'GtkAccessibleProperty.orientation': 'enum',
+    'GtkAccessibleProperty.placeholder': 'string',
+    'GtkAccessibleProperty.read-only': 'boolean',
+    'GtkAccessibleProperty.required': 'boolean',
+    'GtkAccessibleProperty.role-description': 'string',
+    'GtkAccessibleProperty.sort': 'enum',
+    'GtkAccessibleProperty.value-max': 'double',
+    'GtkAccessibleProperty.value-min': 'double',
+    'GtkAccessibleProperty.value-now': 'double',
+    'GtkAccessibleProperty.value-text': 'string',
+    'GtkAccessibleRelation.active-descendant': 'reference',
+    'GtkAccessibleRelation.col-count': 'integer',
+    'GtkAccessibleRelation.col-index': 'integer',
+    'GtkAccessibleRelation.col-index-text': 'string',
+    'GtkAccessibleRelation.col-span': 'integer',
+    'GtkAccessibleRelation.controlled-by': 'reference',
+    'GtkAccessibleRelation.controls': 'reference',
+    'GtkAccessibleRelation.described-by': 'reference',
+    'GtkAccessibleRelation.description-for': 'reference',
+    'GtkAccessibleRelation.details': 'reference',
+    'GtkAccessibleRelation.details-for': 'reference',
+    'GtkAccessibleRelation.error-message': 'reference',
+    'GtkAccessibleRelation.error-message-for': 'reference',
+    'GtkAccessibleRelation.flow-from': 'reference',
+    'GtkAccessibleRelation.flow-to': 'reference',
+    'GtkAccessibleRelation.label-for': 'reference',
+    'GtkAccessibleRelation.labelled-by': 'reference',
+    'GtkAccessibleRelation.owns': 'reference',
+    'GtkAccessibleRelation.pos-in-set': 'integer',
+    'GtkAccessibleRelation.row-count': 'integer',
+    'GtkAccessibleRelation.row-index': 'integer',
+    'GtkAccessibleRelation.row-index-text': 'string',
+    'GtkAccessibleRelation.row-span': 'integer',
+    'GtkAccessibleRelation.set-size': 'integer',
+    'GtkAccessibleState.busy': 'boolean',
+    'GtkAccessibleState.checked': 'enum',
+    'GtkAccessibleState.disabled': 'boolean',
+    'GtkAccessibleState.expanded': 'boolean',
+    'GtkAccessibleState.hidden': 'boolean',
+    'GtkAccessibleState.invalid': 'enum',
+    'GtkAccessibleState.pressed': 'enum',
+    'GtkAccessibleState.selected': 'boolean',
+    'GtkAccessibleState.visited': 'boolean',
+};
+
+// The same keys, for the `'enum'` rows only -> the GType of the enum.
+//
+// The join on from a kind to a number, and a table of its own for the reason `PROP_ENUMS`
+// is one: folding the GType into `ARIA_VALUE_TYPES` would make its values a mix of six
+// reserved words and arbitrary GTypes, and telling them apart would be the consumer's
+// problem. With this, `ARIA_VALUE_TYPES[k] === 'enum'` is the whole test, and
+// `ENUM_NICKS[ARIA_VALUE_ENUMS[k]]` is the nick list.
+export const ARIA_VALUE_ENUMS = {
+    'GtkAccessibleProperty.autocomplete': 'GtkAccessibleAutocomplete',
+    'GtkAccessibleProperty.orientation': 'GtkOrientation',
+    'GtkAccessibleProperty.sort': 'GtkAccessibleSort',
+    'GtkAccessibleState.checked': 'GtkAccessibleTristate',
+    'GtkAccessibleState.invalid': 'GtkAccessibleInvalidState',
+    'GtkAccessibleState.pressed': 'GtkAccessibleTristate',
+};
+
 export const SLOT_CANDIDATES = {
     GtkActionBar: {
         'center': 'set_center_widget',
