@@ -115,7 +115,17 @@ jobs:
             echo "@ts-for-gir/cli@${wanted} did not appear within 20 minutes" >&2
             exit 1
           fi
-          echo "version=$(npm view @ts-for-gir/cli version)" >> "$GITHUB_OUTPUT"
+          # A read that FAILED must not become a version. `set -e` does not look inside a
+          # command substitution that expands into `echo`, so a registry hiccup here wrote an
+          # EMPTY version and the run carried on — and `@ts-for-gir/cli@` is not an error to
+          # npm, it resolves to `latest`. That is precisely the unpinned generator the comment
+          # above forbids, arrived at by a failed lookup rather than by a choice.
+          current=$(npm view @ts-for-gir/cli version)
+          if [ -z "$current" ]; then
+            echo "npm did not name a current @ts-for-gir/cli version" >&2
+            exit 1
+          fi
+          echo "version=${current}" >> "$GITHUB_OUTPUT"
 
       # A generator without `--bundle` does NOT fail on the flag — yargs ignores what it does
       # not know — it quietly emits per-namespace packages named `@girs/gtk-4.0` instead, into
@@ -135,6 +145,12 @@ jobs:
       - name: Require a generator that can bundle
         env:
           GENERATOR: ${{ steps.generator.outputs.version }}
+          # Retrying against npm's own cache retries ONE answer. The registry serves a
+          # packument `cache-control: public, max-age=300` (measured, abbreviated form too),
+          # and npm does not re-check data it still considers fresh, so the loop below would
+          # spend its first ten attempts re-reading a single snapshot — the whole point of
+          # waiting, spent on the copy that says the dependency is not there.
+          npm_config_prefer_online: "true"
         run: |
           set -euo pipefail
           err="${RUNNER_TEMP}/require-bundle.err"
