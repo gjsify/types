@@ -1,5 +1,12 @@
 # Publishes the ~700 per-namespace `@girs/*` packages from the committed tree.
 #
+# The operational warnings below live in a workflow header, not in a README, because this
+# repository has no README, CONTRIBUTING or AGENTS.md to put them in: its root is ~700
+# GENERATED namespace directories that the type generator rewrites wholesale on every release.
+# `.github/` is the part of the tree the generator does not touch, so it is where prose
+# survives. Please do not "tidy" this into a README — there isn't one, and a new one would be
+# the first thing a regeneration removes.
+#
 # ⚠️  A MERGE TO `main` PUBLISHES. This workflow triggers on `push: main`, not only on a
 # release, so ANY merge — a one-line workflow fix, a typo in a comment — starts a full publish
 # sweep of every package in the tree. That is usually harmless, because a package whose version
