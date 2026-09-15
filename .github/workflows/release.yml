@@ -1,3 +1,35 @@
+# Publishes the ~700 per-namespace `@girs/*` packages from the committed tree.
+#
+# The operational warnings below live in a workflow header, not in a README, because this
+# repository has no README, CONTRIBUTING or AGENTS.md to put them in: its root is ~700
+# GENERATED namespace directories that the type generator rewrites wholesale on every release.
+# `.github/` is the part of the tree the generator does not touch, so it is where prose
+# survives. Please do not "tidy" this into a README — there isn't one, and a new one would be
+# the first thing a regeneration removes.
+#
+# ⚠️  A MERGE TO `main` PUBLISHES. This workflow triggers on `push: main`, not only on a
+# release, so ANY merge — a one-line workflow fix, a typo in a comment — starts a full publish
+# sweep of every package in the tree. That is usually harmless, because a package whose version
+# npm already serves is reported as already published and skipped, so the sweep is a no-op that
+# costs an hour of runner time. It is NOT harmless when the tree carries versions the registry
+# does not have yet: then the merge publishes them, and publishing is irreversible.
+#
+# Measured, so this is not hypothetical: merging PR #20 (a change to `sdk-types.yml`, touching
+# nothing else) started run 35017963560, which reported `714 already published, 2 to publish`
+# and published `@girs/clutter-7@5.2.0` and `@girs/meta-8@5.2.0`. Those two were genuinely
+# missing and the publish was the right outcome — but it was a SIDE EFFECT of a merge, not a
+# decision anybody made. Before merging anything here, know which versions in the tree the
+# registry is missing; `npm view` will not tell you reliably (see below).
+#
+# ⚠️  READING npm TELLS YOU WHAT npm CACHED. A packument is served
+# `cache-control: public, max-age=300`, the abbreviated form npm installs from included, and
+# npm ships `prefer-online=false`, so it does not re-check data it still considers fresh.
+# A retry loop polling npm every 30 seconds therefore spends its first ten attempts re-reading
+# ONE five-minute-old snapshot: twenty attempts, two real lookups. Anyone writing a retry
+# against the registry needs `npm_config_prefer_online=true` (see the `Require a generator that
+# can bundle` step in `sdk-types.yml`), and anyone VERIFYING what got published needs a real
+# cache buster — `curl -H 'Cache-Control: no-cache' ".../@girs%2fname?cb=$(date +%s)"` — because
+# `npm view` and a bare `curl` will both hand back a stale packument and look authoritative.
 name: Release CI
 
 on:
