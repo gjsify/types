@@ -200,7 +200,23 @@ function isTerminalNpmError(message: string): boolean {
  * already-published before this is ever consulted. The two 409-shaped
  * conditions must never collapse into one rule.
  */
-const RETRYABLE_NPM_CODES = new Set(["E409", "E500", "E502", "E503", "E504", "ETIMEDOUT", "ECONNRESET"]);
+const RETRYABLE_NPM_CODES = new Set([
+	"E409",
+	"E500",
+	"E502",
+	"E503",
+	"E504",
+	"ETIMEDOUT",
+	"ECONNRESET",
+	// The 5.2.0 release, again: `@girs/clutter-7` and `@girs/meta-8` died on
+	//     npm error code IDENTITY_TOKEN_READ_ERROR
+	//     npm error error retrieving identity token
+	// — the OIDC token read for Trusted Publishing hiccuping 1h26m and 2h50m
+	// into a 3h10m sweep. Transient by nature, retried ZERO times, because the
+	// code was in neither list. Two packages sat at 5.1.0 while the other 714
+	// were at 5.2.0, and nothing was red enough to say which two.
+	"IDENTITY_TOKEN_READ_ERROR",
+]);
 
 function isRetryableNpmError(message: string): boolean {
 	const code = npmErrorCode(message);
@@ -214,18 +230,52 @@ function isRetryableNpmError(message: string): boolean {
  * `shouldRetry` closure that actually decides was not, which is how a code that
  * is neither terminal nor rate-limited came to mean "give up".
  */
-function isRetryablePublishError(message: string): boolean {
+export type PublishErrorVerdict = "terminal" | "retry" | "unknown";
+
+/**
+ * THREE answers, because the third one is what kept going wrong. Twice now a
+ * defect has been fixed by adding a code to one of the two lists, and twice the
+ * partition stayed the same shape: two named halves and an unnamed remainder
+ * that silently meant "give up". `E409` in the 4.2.0 release, then
+ * `IDENTITY_TOKEN_READ_ERROR` in 5.2.0 — each time the code we had already been
+ * bitten by got named and the next one stayed invisible.
+ *
+ * So "I do not recognise this" is now a value the caller must handle, not the
+ * absence of one. Naming it is the whole point: a fourth occurrence should cost
+ * one line, not another three-hour diagnosis from a registry diff.
+ */
+function classifyPublishError(message: string): PublishErrorVerdict {
 	// A settled answer wins over every other signal, so a message that happens
 	// to contain a transport word cannot resurrect it.
-	if (isTerminalNpmError(message)) return false;
+	if (isTerminalNpmError(message)) return "terminal";
 	const lower = message.toLowerCase();
-	return (
+	if (
 		isRateLimitedError(message) ||
 		isRetryableNpmError(message) ||
 		lower.includes("econnreset") ||
 		lower.includes("etimedout") ||
 		lower.includes("socket hang up")
-	);
+	) {
+		return "retry";
+	}
+	return "unknown";
+}
+
+/**
+ * An unrecognised error DEFAULTS TO RETRY: a publish that fails once and would
+ * have worked costs a broken release nobody notices for hours, while a retry
+ * that was never going to work costs seconds — but only if the budget is small.
+ * Measured against this repository's own settings (`NPM_MAX_RETRIES=10`,
+ * base 5 s, cap 300 s) the FULL budget is 11 attempts and 25 minutes of sleep
+ * per package: at that price a systematic unrecognised code would exhaust the
+ * 360-minute job after about 12 of 716 packages, turning "two packages missing"
+ * into "the release stopped". Two retries keeps the premise true — an unknown
+ * costs ~35 s and still catches the transient blip this exists for.
+ */
+const UNKNOWN_CODE_MAX_RETRIES = 2;
+
+function isRetryablePublishError(message: string): boolean {
+	return classifyPublishError(message) !== "terminal";
 }
 
 /**
@@ -240,7 +290,15 @@ function isRetryablePublishError(message: string): boolean {
  * Vector 2 is the incident, verbatim in shape: npm prints the tarball shasum on
  * every attempt, and `838bf765429e…` carries "429" at offset 8.
  */
-const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean; terminal: boolean; retryable: boolean }[] = [
+const CLASSIFIER_VECTORS: {
+	name: string;
+	message: string;
+	rateLimited: boolean;
+	terminal: boolean;
+	retryable: boolean;
+	/** Omitted where it follows from `terminal`; REQUIRED for the unknown case. */
+	verdict?: PublishErrorVerdict;
+}[] = [
 	{
 		name: "E429 is a rate limit",
 		message: "npm error code E429\nnpm error 429 Too Many Requests",
@@ -322,6 +380,42 @@ const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean;
 		terminal: true,
 		retryable: false,
 	},
+	{
+		name: "IDENTITY_TOKEN_READ_ERROR is retryable — the 5.2.0 incident, verbatim",
+		message: "npm error code IDENTITY_TOKEN_READ_ERROR\nnpm error error retrieving identity token\nnpm error cause undefined",
+		rateLimited: false,
+		terminal: false,
+		retryable: true,
+		verdict: "retry",
+	},
+	{
+		// THE vector the partition kept missing. It is deliberately a code that
+		// does not exist: the test must fail the day someone makes "unrecognised"
+		// mean "give up" again, and it cannot do that if it is written against a
+		// code the classifier already knows.
+		name: "an unrecognised code is UNKNOWN, and unknown retries",
+		message: "npm error code EWATERMELON\nnpm error something nobody has seen yet",
+		rateLimited: false,
+		terminal: false,
+		retryable: true,
+		verdict: "unknown",
+	},
+	{
+		name: "no code line at all is UNKNOWN, not terminal",
+		message: "publish exited with status 1",
+		rateLimited: false,
+		terminal: false,
+		retryable: true,
+		verdict: "unknown",
+	},
+	{
+		name: "an unknown code must not be resurrected into a rate limit by a shasum",
+		message: "npm error code EWATERMELON\nnpm notice shasum 838bf765429ea1b2c3d4",
+		rateLimited: false,
+		terminal: false,
+		retryable: true,
+		verdict: "unknown",
+	},
 ];
 
 function selfTestClassifier(): void {
@@ -335,6 +429,13 @@ function selfTestClassifier(): void {
 		}
 		if (isRetryablePublishError(v.message) !== v.retryable) {
 			failures.push(`${v.name}: expected retryable=${v.retryable}`);
+		}
+		// The three-way answer, not the boolean: "unknown" and "retry" both
+		// retry, so a vector that only checked `retryable` would pass while the
+		// unknown case quietly collapsed back into one of the named halves.
+		const expected = v.verdict ?? (v.terminal ? "terminal" : "retry");
+		if (classifyPublishError(v.message) !== expected) {
+			failures.push(`${v.name}: expected verdict=${expected}, got ${classifyPublishError(v.message)}`);
 		}
 	}
 	if (failures.length > 0) {
@@ -364,7 +465,8 @@ interface RetryConfig {
 	maxRetries: number;
 	baseDelayMs: number;
 	maxDelayMs: number;
-	shouldRetry: (error: unknown) => boolean;
+	/** `attempt` is 0-based: the budget a verdict gets can differ per verdict. */
+	shouldRetry: (error: unknown, attempt: number) => boolean;
 	onRetry?: (attempt: number, waitMs: number, error: unknown) => void;
 }
 
@@ -373,7 +475,7 @@ async function withRetry<T>(fn: () => Promise<T>, config: RetryConfig): Promise<
 		try {
 			return await fn();
 		} catch (error) {
-			if (attempt < config.maxRetries && config.shouldRetry(error)) {
+			if (attempt < config.maxRetries && config.shouldRetry(error, attempt)) {
 				const wait = calcBackoffMs(attempt, config.baseDelayMs, config.maxDelayMs);
 				config.onRetry?.(attempt + 1, wait, error);
 				await sleep(wait);
@@ -716,6 +818,25 @@ async function publishPackageOnce(pkg: Package, config: Config): Promise<void> {
 	});
 }
 
+/** Codes already announced, so one bad release cannot emit 716 identical warnings. */
+const announcedUnknownCodes = new Set<string>();
+
+/**
+ * Kept OUT of `classifyPublishError` on purpose: that function stays pure so the
+ * startup self-test can run the real decision rather than a copy of it.
+ */
+function announceUnknownPublishError(message: string, pkg: Package): void {
+	const code = npmErrorCode(message) ?? "(no npm error code)";
+	console.log(`❓ ${pkg.name}@${pkg.version}: unrecognised npm error ${code} — retrying as a precaution`);
+	if (announcedUnknownCodes.has(code)) return;
+	announcedUnknownCodes.add(code);
+	console.log(
+		`::warning::unrecognised npm error code ${code} — the retry classifier knows neither that it is ` +
+			"permanent nor that it is transient, so it is being retried. If it is transient, add it to " +
+			"RETRYABLE_NPM_CODES; if it is permanent, add it to TERMINAL_NPM_CODES.",
+	);
+}
+
 async function publishPackageWithRetry(pkg: Package, config: Config): Promise<void> {
 	await withRetry(
 		() => publishPackageOnce(pkg, config),
@@ -724,7 +845,16 @@ async function publishPackageWithRetry(pkg: Package, config: Config): Promise<vo
 			maxRetries: MAX_RETRIES_PUBLISH,
 			baseDelayMs: RETRY_BASE_MS,
 			maxDelayMs: RETRY_MAX_MS,
-			shouldRetry: (err) => isRetryablePublishError(err instanceof Error ? err.message : String(err)),
+			shouldRetry: (err, attempt) => {
+				const message = err instanceof Error ? err.message : String(err);
+				const verdict = classifyPublishError(message);
+				if (verdict !== "unknown") return verdict === "retry";
+				// Say so, loudly and by name. The next unrecognised code has to be
+				// findable by reading the log rather than by diffing 716 package
+				// versions against the registry, which is how this one was found.
+				announceUnknownPublishError(message, pkg);
+				return attempt < UNKNOWN_CODE_MAX_RETRIES;
+			},
 			onRetry: (attempt, wait, err) => {
 				const message = err instanceof Error ? err.message : String(err);
 				console.log(`⏳ ${pkg.name}@${pkg.version} retry ${attempt}/${MAX_RETRIES_PUBLISH} in ${wait}ms: ${message}`);
