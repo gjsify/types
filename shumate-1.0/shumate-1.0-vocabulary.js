@@ -1,6 +1,6 @@
 // The widget vocabulary of Shumate-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.7.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+// GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.7.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ListModel Gio.Initable Gdk.Paintable
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,49 +11,87 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: '1.7.0',
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object'],
+    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Gio.ListModel', 'Gio.Initable', 'Gdk.Paintable'],
     inlinedBases: [],
     unsettableProps: [],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
     ShumateCompass: ['viewport'],
+    ShumateDataSource: ['max-zoom-level', 'min-zoom-level'],
+    ShumateDataSourceRequest: ['x', 'y', 'zoom-level'],
+    ShumateFileCache: ['cache-dir', 'cache-key', 'size-limit'],
     ShumateLayer: ['viewport'],
     ShumateLicense: ['extra-text', 'xalign'],
     ShumateLocation: ['latitude', 'longitude'],
     ShumateMap: ['animate-zoom', 'go-to-duration', 'zoom-on-double-click'],
     ShumateMapLayer: ['map-source'],
+    ShumateMapSource: ['id', 'license', 'license-uri', 'max-zoom-level', 'min-zoom-level', 'name', 'projection', 'tile-size'],
     ShumateMarker: ['child', 'selectable', 'x-hotspot', 'y-hotspot'],
     ShumateMarkerLayer: ['selection-mode'],
     ShumatePathLayer: ['closed', 'fill', 'fill-color', 'outline-color', 'outline-width', 'stroke', 'stroke-color', 'stroke-width'],
+    ShumateRasterRenderer: ['data-source'],
     ShumateScale: ['max-width', 'unit', 'viewport'],
     ShumateSimpleMap: ['map-source', 'show-zoom-buttons'],
+    ShumateSymbolEvent: ['n-press'],
+    ShumateTile: ['fade-in', 'paintable', 'scale-factor', 'size', 'state', 'x', 'y', 'zoom-level'],
+    ShumateTileDownloader: ['url-template'],
+    ShumateVectorReaderIter: ['reader'],
+    ShumateVectorRenderer: ['sprite-sheet', 'style-json'],
+    ShumateVectorSprite: ['height', 'scale-factor', 'source-paintable', 'source-rect', 'width'],
+    ShumateViewport: ['max-zoom-level', 'min-zoom-level', 'reference-map-source', 'rotation', 'zoom-level'],
 };
 
 export const OWN_SIGNALS = {
+    ShumateDataSource: ['received-data'],
     ShumateMap: ['animation-completed'],
     ShumateMapLayer: ['map-loaded', 'symbol-clicked', 'tile-error'],
+    ShumateMapSource: ['modified'],
     ShumateMarkerLayer: ['marker-selected', 'marker-unselected'],
     ShumateSimpleMap: ['symbol-clicked'],
+    ShumateViewport: ['changed'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
     ShumateCompass: ['ShumateCompass', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ShumateCoordinate: ['ShumateCoordinate', 'ShumateLocation'],
+    ShumateDataSourceRequest: ['ShumateDataSourceRequest'],
+    ShumateFileCache: ['ShumateFileCache'],
     ShumateLicense: ['ShumateLicense', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     ShumateMap: ['ShumateMap', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     ShumateMapLayer: ['ShumateMapLayer', 'ShumateLayer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ShumateMapSourceRegistry: ['ShumateMapSourceRegistry'],
     ShumateMarker: ['ShumateMarker', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'ShumateLocation'],
     ShumateMarkerLayer: ['ShumateMarkerLayer', 'ShumateLayer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     ShumatePathLayer: ['ShumatePathLayer', 'ShumateLayer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     ShumatePoint: ['ShumatePoint', 'ShumateMarker', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'ShumateLocation'],
+    ShumateRasterRenderer: ['ShumateRasterRenderer', 'ShumateMapSource'],
     ShumateScale: ['ShumateScale', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     ShumateSimpleMap: ['ShumateSimpleMap', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ShumateSymbolEvent: ['ShumateSymbolEvent', 'ShumateLocation'],
+    ShumateTile: ['ShumateTile'],
+    ShumateTileDownloader: ['ShumateTileDownloader', 'ShumateDataSource'],
+    ShumateVectorReader: ['ShumateVectorReader'],
+    ShumateVectorReaderIter: ['ShumateVectorReaderIter'],
+    ShumateVectorRenderer: ['ShumateVectorRenderer', 'ShumateMapSource'],
+    ShumateVectorSprite: ['ShumateVectorSprite', 'GtkSymbolicPaintable'],
+    ShumateVectorSpriteSheet: ['ShumateVectorSpriteSheet'],
+    ShumateViewport: ['ShumateViewport', 'ShumateLocation'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -69,7 +107,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -131,11 +169,12 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
@@ -158,11 +197,13 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
+    'ShumateMapSource.projection': 'ShumateMapProjection',
     'ShumateMarkerLayer.selection-mode': 'GtkSelectionMode',
     'ShumateScale.unit': 'ShumateUnit',
+    'ShumateTile.state': 'ShumateState',
 };
 
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
@@ -206,10 +247,31 @@ export const SLOT_CANDIDATES = {
 };
 
 export const SINCE = {
+    'ShumateDataSource.max-zoom-level': '1.1',
+    'ShumateDataSource.min-zoom-level': '1.1',
+    'ShumateDataSourceRequest': '1.1',
+    'ShumateDataSourceRequest.x': '1.1',
+    'ShumateDataSourceRequest.y': '1.1',
+    'ShumateDataSourceRequest.zoom-level': '1.1',
     'ShumateMapLayer::map-loaded': '1.4',
     'ShumateMapLayer::symbol-clicked': '1.1',
     'ShumateMapLayer::tile-error': '1.4',
+    'ShumateMapSource::modified': '1.7',
     'ShumateMarker.x-hotspot': '1.5',
     'ShumateMarker.y-hotspot': '1.5',
     'ShumateSimpleMap::symbol-clicked': '1.1',
+    'ShumateSymbolEvent': '1.1',
+    'ShumateSymbolEvent.n-press': '1.5',
+    'ShumateTile.scale-factor': '1.1',
+    'ShumateVectorReader': '1.2',
+    'ShumateVectorReaderIter': '1.2',
+    'ShumateVectorRenderer.sprite-sheet': '1.1',
+    'ShumateVectorSprite': '1.1',
+    'ShumateVectorSprite.height': '1.1',
+    'ShumateVectorSprite.scale-factor': '1.1',
+    'ShumateVectorSprite.source-paintable': '1.1',
+    'ShumateVectorSprite.source-rect': '1.1',
+    'ShumateVectorSprite.width': '1.1',
+    'ShumateVectorSpriteSheet': '1.1',
+    'ShumateViewport::changed': '1.6',
 };

@@ -1,6 +1,6 @@
 // The widget vocabulary of GtkSource-5 as runtime data.
 //
-// GENERATED — do not edit. Provenance: GtkSource-5 — library 5.21.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+// GENERATED — do not edit. Provenance: GtkSource-5 — library 5.21.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Gio.ListModel
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,46 +11,119 @@ export const PROVENANCE = {
     version: '5',
     libraryVersion: '5.21.0',
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object'],
+    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Gio.ListModel'],
     inlinedBases: [],
     unsettableProps: [],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
+    GtkSourceBuffer: ['highlight-matching-brackets', 'highlight-syntax', 'implicit-trailing-newline', 'language', 'style-scheme'],
+    GtkSourceCompletion: ['page-size', 'remember-info-visibility', 'select-on-show', 'show-icons', 'view'],
     GtkSourceCompletionCell: ['column', 'markup', 'paintable', 'text', 'widget'],
+    GtkSourceCompletionContext: ['completion'],
+    GtkSourceCompletionSnippets: ['priority', 'title'],
+    GtkSourceCompletionWords: ['minimum-word-size', 'priority', 'proposals-batch-size', 'scan-batch-size', 'title'],
+    GtkSourceFile: ['location'],
+    GtkSourceFileLoader: ['buffer', 'file', 'input-stream', 'location', 'max-size'],
+    GtkSourceFileSaver: ['buffer', 'compression-type', 'encoding', 'file', 'flags', 'location', 'newline-type'],
     GtkSourceGutter: ['view', 'window-type'],
     GtkSourceGutterRenderer: ['alignment-mode', 'xalign', 'xpad', 'yalign', 'ypad'],
     GtkSourceGutterRendererPixbuf: ['gicon', 'icon-name', 'paintable', 'pixbuf'],
     GtkSourceGutterRendererText: ['markup', 'text'],
+    GtkSourceHover: ['hover-delay'],
+    GtkSourceLanguageManager: ['search-path'],
     GtkSourceMap: ['font-desc', 'view'],
+    GtkSourceMark: ['category'],
+    GtkSourceMarkAttributes: ['background', 'gicon', 'icon-name', 'pixbuf'],
+    GtkSourcePrintCompositor: ['body-font-name', 'buffer', 'footer-font-name', 'header-font-name', 'highlight-syntax', 'line-numbers-font-name', 'print-footer', 'print-header', 'print-line-numbers', 'tab-width', 'wrap-mode'],
+    GtkSourceRegion: ['buffer'],
+    GtkSourceSearchContext: ['buffer', 'highlight', 'match-style', 'settings'],
+    GtkSourceSearchSettings: ['at-word-boundaries', 'case-sensitive', 'regex-enabled', 'search-text', 'visible-only', 'wrap-around'],
+    GtkSourceSnippet: ['description', 'language-id', 'name', 'trigger'],
+    GtkSourceSnippetChunk: ['context', 'focus-position', 'spec', 'text', 'text-set', 'tooltip-text'],
+    GtkSourceSnippetManager: ['search-path'],
+    GtkSourceSpaceDrawer: ['enable-matrix', 'matrix'],
+    GtkSourceStyle: ['background', 'background-set', 'bold', 'bold-set', 'foreground', 'foreground-set', 'italic', 'italic-set', 'line-background', 'line-background-set', 'pango-underline', 'scale', 'scale-set', 'strikethrough', 'strikethrough-set', 'underline-color', 'underline-color-set', 'underline-set', 'weight', 'weight-set'],
+    GtkSourceStyleScheme: ['id'],
     GtkSourceStyleSchemeChooser: ['style-scheme'],
+    GtkSourceStyleSchemeManager: ['search-path'],
     GtkSourceStyleSchemePreview: ['scheme', 'selected'],
+    GtkSourceTag: ['draw-spaces', 'draw-spaces-set'],
     GtkSourceView: ['auto-indent', 'background-pattern', 'enable-snippets', 'highlight-current-line', 'indent-on-tab', 'indent-width', 'indenter', 'insert-spaces-instead-of-tabs', 'right-margin-position', 'show-line-marks', 'show-line-numbers', 'show-right-margin', 'smart-backspace', 'smart-home-end', 'tab-width'],
 };
 
 export const OWN_SIGNALS = {
+    GtkSourceAnnotationProvider: ['changed'],
+    GtkSourceAnnotations: ['changed'],
+    GtkSourceBuffer: ['bracket-matched', 'cursor-moved', 'highlight-updated', 'source-mark-updated'],
+    GtkSourceCompletion: ['hide', 'provider-added', 'provider-removed', 'show'],
+    GtkSourceCompletionContext: ['provider-model-changed'],
     GtkSourceGutterRenderer: ['activate', 'query-activatable', 'query-data'],
+    GtkSourceMarkAttributes: ['query-tooltip-markup', 'query-tooltip-text'],
+    GtkSourceSnippetContext: ['changed'],
     GtkSourceStyleSchemePreview: ['activate'],
     GtkSourceView: ['change-case', 'change-number', 'join-lines', 'line-mark-activated', 'move-lines', 'move-to-matching-bracket', 'move-words', 'push-snippet', 'show-completion', 'smart-home-end'],
+    GtkSourceVimIMContext: ['edit', 'execute-command', 'format-text', 'write'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
+    GtkSourceAnnotation: ['GtkSourceAnnotation'],
+    GtkSourceAnnotationProvider: ['GtkSourceAnnotationProvider'],
+    GtkSourceAnnotations: ['GtkSourceAnnotations'],
+    GtkSourceBuffer: ['GtkSourceBuffer', 'GtkTextBuffer'],
+    GtkSourceCompletion: ['GtkSourceCompletion'],
     GtkSourceCompletionCell: ['GtkSourceCompletionCell', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GtkSourceCompletionContext: ['GtkSourceCompletionContext'],
+    GtkSourceCompletionSnippets: ['GtkSourceCompletionSnippets', 'GtkSourceCompletionProvider'],
+    GtkSourceCompletionWords: ['GtkSourceCompletionWords', 'GtkSourceCompletionProvider'],
+    GtkSourceFile: ['GtkSourceFile'],
+    GtkSourceFileLoader: ['GtkSourceFileLoader'],
+    GtkSourceFileSaver: ['GtkSourceFileSaver'],
     GtkSourceGutter: ['GtkSourceGutter', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GtkSourceGutterLines: ['GtkSourceGutterLines'],
     GtkSourceGutterRendererPixbuf: ['GtkSourceGutterRendererPixbuf', 'GtkSourceGutterRenderer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     GtkSourceGutterRendererText: ['GtkSourceGutterRendererText', 'GtkSourceGutterRenderer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GtkSourceHover: ['GtkSourceHover'],
+    GtkSourceHoverContext: ['GtkSourceHoverContext'],
     GtkSourceHoverDisplay: ['GtkSourceHoverDisplay', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GtkSourceLanguage: ['GtkSourceLanguage'],
+    GtkSourceLanguageManager: ['GtkSourceLanguageManager'],
     GtkSourceMap: ['GtkSourceMap', 'GtkSourceView', 'GtkTextView', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
+    GtkSourceMark: ['GtkSourceMark', 'GtkTextMark'],
+    GtkSourceMarkAttributes: ['GtkSourceMarkAttributes'],
+    GtkSourcePrintCompositor: ['GtkSourcePrintCompositor'],
+    GtkSourceRegion: ['GtkSourceRegion'],
+    GtkSourceSearchContext: ['GtkSourceSearchContext'],
+    GtkSourceSearchSettings: ['GtkSourceSearchSettings'],
+    GtkSourceSnippet: ['GtkSourceSnippet'],
+    GtkSourceSnippetChunk: ['GtkSourceSnippetChunk'],
+    GtkSourceSnippetContext: ['GtkSourceSnippetContext'],
+    GtkSourceSnippetManager: ['GtkSourceSnippetManager'],
+    GtkSourceSpaceDrawer: ['GtkSourceSpaceDrawer'],
+    GtkSourceStyle: ['GtkSourceStyle'],
+    GtkSourceStyleScheme: ['GtkSourceStyleScheme'],
     GtkSourceStyleSchemeChooserButton: ['GtkSourceStyleSchemeChooserButton', 'GtkButton', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget', 'GtkSourceStyleSchemeChooser'],
     GtkSourceStyleSchemeChooserWidget: ['GtkSourceStyleSchemeChooserWidget', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkSourceStyleSchemeChooser'],
+    GtkSourceStyleSchemeManager: ['GtkSourceStyleSchemeManager'],
     GtkSourceStyleSchemePreview: ['GtkSourceStyleSchemePreview', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
+    GtkSourceTag: ['GtkSourceTag', 'GtkTextTag'],
     GtkSourceView: ['GtkSourceView', 'GtkTextView', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
+    GtkSourceVimIMContext: ['GtkSourceVimIMContext', 'GtkIMContext'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -65,6 +138,8 @@ export const ENUM_NICKS = {
     GtkSourceNewlineType: ['lf', 'cr', 'cr-lf'],
     GtkSourceSmartHomeEndType: ['disabled', 'before', 'after', 'always'],
     GtkSourceViewGutterPosition: ['lines', 'marks'],
+    PangoUnderline: ['none', 'single', 'double', 'low', 'error', 'single-line', 'double-line', 'error-line'],
+    PangoWeight: ['thin', 'ultralight', 'light', 'semilight', 'book', 'normal', 'medium', 'semibold', 'bold', 'ultrabold', 'heavy', 'ultraheavy'],
 };
 
 // The number behind each of those nicks, read from GIR's own `value` attribute.
@@ -72,7 +147,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -119,6 +194,26 @@ export const ENUM_VALUES = {
     'GtkSourceSmartHomeEndType.disabled': 0,
     'GtkSourceViewGutterPosition.lines': -30,
     'GtkSourceViewGutterPosition.marks': -20,
+    'PangoUnderline.double': 2,
+    'PangoUnderline.double-line': 6,
+    'PangoUnderline.error': 4,
+    'PangoUnderline.error-line': 7,
+    'PangoUnderline.low': 3,
+    'PangoUnderline.none': 0,
+    'PangoUnderline.single': 1,
+    'PangoUnderline.single-line': 5,
+    'PangoWeight.bold': 700,
+    'PangoWeight.book': 380,
+    'PangoWeight.heavy': 900,
+    'PangoWeight.light': 300,
+    'PangoWeight.medium': 500,
+    'PangoWeight.normal': 400,
+    'PangoWeight.semibold': 600,
+    'PangoWeight.semilight': 350,
+    'PangoWeight.thin': 100,
+    'PangoWeight.ultrabold': 800,
+    'PangoWeight.ultraheavy': 1000,
+    'PangoWeight.ultralight': 200,
 };
 
 // The nicks GIR marks `deprecated="1"`.
@@ -147,11 +242,12 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
@@ -195,12 +291,18 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
     'GtkSourceCompletionCell.column': 'GtkSourceCompletionColumn',
+    'GtkSourceFileSaver.compression-type': 'GtkSourceCompressionType',
+    'GtkSourceFileSaver.flags': 'GtkSourceFileSaverFlags',
+    'GtkSourceFileSaver.newline-type': 'GtkSourceNewlineType',
     'GtkSourceGutter.window-type': 'GtkTextWindowType',
     'GtkSourceGutterRenderer.alignment-mode': 'GtkSourceGutterRendererAlignmentMode',
+    'GtkSourcePrintCompositor.wrap-mode': 'GtkWrapMode',
+    'GtkSourceStyle.pango-underline': 'PangoUnderline',
+    'GtkSourceStyle.weight': 'PangoWeight',
     'GtkSourceView.background-pattern': 'GtkSourceBackgroundPatternType',
     'GtkSourceView.smart-home-end': 'GtkSourceSmartHomeEndType',
 };
@@ -240,5 +342,17 @@ export const SLOT_CANDIDATES = {
 };
 
 export const SINCE = {
+    'GtkSourceAnnotation': '5.18',
+    'GtkSourceAnnotationProvider': '5.18',
+    'GtkSourceAnnotationProvider::changed': '5.18',
+    'GtkSourceAnnotations': '5.18',
+    'GtkSourceCompletionContext::provider-model-changed': '5.6',
+    'GtkSourceFileLoader.max-size': '5.22',
+    'GtkSourceSearchSettings.visible-only': '5.12',
     'GtkSourceStyleSchemePreview': '5.4',
+    'GtkSourceVimIMContext': '5.4',
+    'GtkSourceVimIMContext::edit': '5.4',
+    'GtkSourceVimIMContext::execute-command': '5.4',
+    'GtkSourceVimIMContext::format-text': '5.4',
+    'GtkSourceVimIMContext::write': '5.4',
 };

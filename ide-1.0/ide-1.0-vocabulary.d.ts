@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Ide-1.0.
  *
- * GENERATED — do not edit. Provenance: Ide-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
+ * GENERATED — do not edit. Provenance: Ide-1.0 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap Gio.ListModel Gio.Initable Gio.AsyncInitable GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application
  *
- * 24 concrete widgets, 25 declarations, 12 enum nick unions, 3 slot candidates.
+ * 93 instantiable GTypes (of which 24 concrete widgets), 102 declarations (1 inlined from a namespace whose vocabulary does not emit them), 12 enum nick unions, 3 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -24,12 +24,17 @@
  * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
  */
 
+import type GLib from '@girs/glib-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
+import type GtkSource from '@girs/gtksource-3.0';
 import type Ide from './ide-1.0.js';
 import type Pango from '@girs/pango-1.0';
-import type { DzlBinConstructOnly, DzlBinProps, DzlDockBinConstructOnly, DzlDockBinEdgeConstructOnly, DzlDockBinEdgeProps, DzlDockBinProps, DzlDockConstructOnly, DzlDockItemConstructOnly, DzlDockItemProps, DzlDockOverlayConstructOnly, DzlDockOverlayProps, DzlDockProps, DzlDockRevealerConstructOnly, DzlDockRevealerProps, DzlPreferencesConstructOnly, DzlPreferencesProps, DzlPreferencesViewConstructOnly, DzlPreferencesViewProps, DzlProgressButtonConstructOnly, DzlProgressButtonProps } from '@girs/dazzle-1.0/vocabulary';
-import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDirectionTypeNick, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkEventBoxConstructOnly, GtkEventBoxProps, GtkHeaderBarConstructOnly, GtkHeaderBarProps, GtkInfoBarConstructOnly, GtkInfoBarProps, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkMenuButtonConstructOnly, GtkMenuButtonProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkToggleButtonConstructOnly, GtkToggleButtonProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
-import type { GtkSourceMapConstructOnly, GtkSourceMapProps, GtkSourceViewConstructOnly, GtkSourceViewProps } from '@girs/gtksource-3.0/vocabulary';
+import type Peas from '@girs/peas-1.0';
+import type { DzlApplicationConstructOnly, DzlApplicationProps, DzlBinConstructOnly, DzlBinProps, DzlDockBinConstructOnly, DzlDockBinEdgeConstructOnly, DzlDockBinEdgeProps, DzlDockBinProps, DzlDockConstructOnly, DzlDockItemConstructOnly, DzlDockItemProps, DzlDockOverlayConstructOnly, DzlDockOverlayProps, DzlDockProps, DzlDockRevealerConstructOnly, DzlDockRevealerProps, DzlPreferencesConstructOnly, DzlPreferencesProps, DzlPreferencesViewConstructOnly, DzlPreferencesViewProps, DzlProgressButtonConstructOnly, DzlProgressButtonProps } from '@girs/dazzle-1.0/vocabulary';
+import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkApplicationConstructOnly, GtkApplicationProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDirectionTypeNick, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkEventBoxConstructOnly, GtkEventBoxProps, GtkHeaderBarConstructOnly, GtkHeaderBarProps, GtkInfoBarConstructOnly, GtkInfoBarProps, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkMenuButtonConstructOnly, GtkMenuButtonProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkTextBufferConstructOnly, GtkTextBufferProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkToggleButtonConstructOnly, GtkToggleButtonProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
+import type { GtkSourceBufferConstructOnly, GtkSourceBufferProps, GtkSourceCompletionProviderConstructOnly, GtkSourceCompletionProviderProps, GtkSourceCompletionWordsConstructOnly, GtkSourceCompletionWordsProps, GtkSourceMapConstructOnly, GtkSourceMapProps, GtkSourceNewlineTypeNick, GtkSourceViewConstructOnly, GtkSourceViewProps } from '@girs/gtksource-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -64,6 +69,265 @@ export type IdeVcsConfigTypeNick = 'full-name' | 'email';
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
+/** `GApplication` is the core class for application support. */
+export interface GApplicationProps {
+    /**
+     * The group of actions that the application exports.
+     * @since 2.28
+     * @deprecated since 2.32: Use the [iface@Gio.ActionMap] interface instead.
+     */
+    'action-group'?: Gio.ActionGroup;
+    /**
+     * The unique identifier for the application.
+     * @since 2.28
+     * @default NULL
+     */
+    'application-id'?: string | null;
+    /**
+     * Flags specifying the behaviour of the application.
+     * @since 2.28
+     * @default G_APPLICATION_FLAGS_NONE
+     */
+    flags?: number;
+    /**
+     * Time (in milliseconds) to stay alive after becoming idle.
+     * @since 2.28
+     * @default 0
+     */
+    'inactivity-timeout'?: number;
+    /**
+     * The base resource path for the application.
+     * @since 2.28
+     * @default NULL
+     */
+    'resource-base-path'?: string | null;
+    /**
+     * The human-readable version number of the application.
+     * @since 2.80
+     * @default NULL
+     */
+    version?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GApplicationConstructOnly = never;
+
+export interface IdeApplicationProps extends DzlApplicationProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeApplicationConstructOnly = DzlApplicationConstructOnly;
+
+export interface IdeBackForwardItemProps extends IdeObjectProps {
+    mark?: Gtk.TextMark;
+    /** The #IdeBackForwardItem:uri property contains the location for the back/forward item. */
+    uri?: Ide.Uri | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBackForwardItemConstructOnly = IdeObjectConstructOnly | 'uri';
+
+export interface IdeBackForwardListProps extends IdeObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBackForwardListConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeBufferProps extends GtkSourceBufferProps {
+    context?: Ide.Context;
+    file?: Ide.File;
+    'highlight-diagnostics'?: boolean;
+    'style-scheme-name'?: string;
+    title?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBufferConstructOnly = GtkSourceBufferConstructOnly | 'context';
+
+export interface IdeBufferChangeMonitorProps extends IdeObjectProps {
+    buffer?: Ide.Buffer;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBufferChangeMonitorConstructOnly = IdeObjectConstructOnly | 'buffer';
+
+export interface IdeBufferManagerProps extends IdeObjectProps {
+    'auto-save'?: boolean;
+    'auto-save-timeout'?: number;
+    'focus-buffer'?: Ide.Buffer;
+    'minimum-word-size'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBufferManagerConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeBuildManagerProps extends IdeObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBuildManagerConstructOnly = IdeObjectConstructOnly;
+
+/** The #IdeBuildPipeline is responsible for managing the build process for Builder. */
+export interface IdeBuildPipelineProps extends IdeObjectProps {
+    /** Gets the "busy" property. */
+    busy?: boolean;
+    /** The configuration to use for the build pipeline. */
+    configuration?: Ide.Configuration;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBuildPipelineConstructOnly = IdeObjectConstructOnly | 'configuration';
+
+export interface IdeBuildStageProps extends IdeObjectProps {
+    /** Most build systems will preserve stderr for the processes they call, such as gcc, clang, and others. */
+    'check-stdout'?: boolean;
+    /** The "completed" property is set to %TRUE after the pipeline has completed processing the stage. */
+    completed?: boolean;
+    /** If the build stage is disabled. */
+    disabled?: boolean;
+    /** The name of the build stage. */
+    name?: string;
+    /** The "stdout-path" property allows a build stage to redirect its log messages to a stdout file. */
+    'stdout-path'?: string;
+    /** If the build stage is transient. */
+    transient?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBuildStageConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeBuildStageLauncherProps extends IdeBuildStageProps {
+    'clean-launcher'?: Ide.SubprocessLauncher | null;
+    'ignore-exit-status'?: boolean;
+    launcher?: Ide.SubprocessLauncher;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBuildStageLauncherConstructOnly = IdeBuildStageConstructOnly;
+
+export interface IdeBuildStageMkdirsProps extends IdeBuildStageProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBuildStageMkdirsConstructOnly = IdeBuildStageConstructOnly;
+
+export interface IdeBuildStageTransferProps extends IdeBuildStageProps {
+    'disable-when-metered'?: boolean;
+    transfer?: Ide.Transfer;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBuildStageTransferConstructOnly = IdeBuildStageConstructOnly | 'transfer';
+
+export interface IdeBuildSystemProps extends IdeObjectProps {
+    context?: Ide.Context;
+    'project-file'?: Gio.File;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBuildSystemConstructOnly = IdeObjectConstructOnly | 'context' | 'project-file';
+
+export interface IdeBuildconfigConfigurationProps extends IdeConfigurationProps {
+    postbuild?: string[];
+    prebuild?: string[];
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBuildconfigConfigurationConstructOnly = IdeConfigurationConstructOnly;
+
+export interface IdeBuildconfigConfigurationProviderProps extends IdeConfigurationProviderProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeBuildconfigConfigurationProviderConstructOnly = IdeConfigurationProviderConstructOnly;
+
+export interface IdeCompletionResultsProps {
+    query?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeCompletionResultsConstructOnly = 'query';
+
+export interface IdeCompletionWordsProps extends GtkSourceCompletionWordsProps, GtkSourceCompletionProviderProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeCompletionWordsConstructOnly = GtkSourceCompletionWordsConstructOnly | GtkSourceCompletionProviderConstructOnly;
+
+export interface IdeConfigurationProps extends IdeObjectProps {
+    'app-id'?: string | null;
+    'build-commands'?: string[];
+    'config-opts'?: string;
+    debug?: boolean;
+    device?: Ide.Device | null;
+    'device-id'?: string;
+    dirty?: boolean;
+    'display-name'?: string;
+    id?: string;
+    parallelism?: number;
+    'post-install-commands'?: string[];
+    prefix?: string;
+    runtime?: Ide.Runtime | null;
+    'runtime-id'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeConfigurationConstructOnly = IdeObjectConstructOnly | 'id';
+
+export interface IdeConfigurationManagerProps extends IdeObjectProps {
+    current?: Ide.Configuration;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeConfigurationManagerConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeConfigurationProviderProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeConfigurationProviderConstructOnly = never;
+
+export interface IdeContextProps {
+    'project-file'?: Gio.File;
+    'root-build-dir'?: string;
+    'snippets-manager'?: Ide.SourceSnippetsManager;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeContextConstructOnly = 'project-file';
+
+export interface IdeCursorProps {
+    'ide-source-view'?: Ide.SourceView;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeCursorConstructOnly = never;
+
+export interface IdeDeviceProps extends IdeObjectProps {
+    'display-name'?: string | null;
+    id?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeDeviceConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeDeviceManagerProps extends IdeObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeDeviceManagerConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeDiagnosticsManagerProps extends IdeObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeDiagnosticsManagerConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeDirectoryBuildSystemProps extends IdeObjectProps, IdeBuildSystemProps {
+    'project-file'?: Gio.File;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeDirectoryBuildSystemConstructOnly = IdeObjectConstructOnly | IdeBuildSystemConstructOnly | 'project-file';
+
+export interface IdeDirectoryVcsProps extends IdeObjectProps, IdeVcsProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeDirectoryVcsConstructOnly = IdeObjectConstructOnly | IdeVcsConstructOnly;
+
+export interface IdeDoapProps {
+    'bug-database'?: string;
+    category?: string;
+    description?: string;
+    'download-page'?: string;
+    homepage?: string;
+    languages?: string;
+    name?: string;
+    shortdesc?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeDoapConstructOnly = never;
+
+export interface IdeDoapPersonProps {
+    email?: string;
+    name?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeDoapPersonConstructOnly = never;
+
 export interface IdeEditorPerspectiveProps extends DzlDockOverlayProps, DzlDockProps, DzlDockItemProps, GtkBuildableProps, IdePerspectiveProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -74,6 +338,123 @@ export interface IdeEditorViewProps extends IdeLayoutViewProps, GtkBuildableProp
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type IdeEditorViewConstructOnly = IdeLayoutViewConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | 'document';
+
+export interface IdeEnvironmentProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeEnvironmentConstructOnly = never;
+
+export interface IdeEnvironmentVariableProps {
+    key?: string;
+    value?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeEnvironmentVariableConstructOnly = never;
+
+export interface IdeExtensionAdapterProps extends IdeObjectProps {
+    engine?: Peas.Engine;
+    'interface-type'?: GObject.GType;
+    key?: string;
+    value?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeExtensionAdapterConstructOnly = IdeObjectConstructOnly | 'engine' | 'interface-type';
+
+export interface IdeExtensionSetAdapterProps extends IdeObjectProps {
+    engine?: Peas.Engine;
+    'interface-type'?: GObject.GType;
+    key?: string;
+    value?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeExtensionSetAdapterConstructOnly = IdeObjectConstructOnly | 'engine' | 'interface-type';
+
+export interface IdeFileProps extends IdeObjectProps {
+    file?: Gio.File;
+    path?: string;
+    'temporary-id'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeFileConstructOnly = IdeObjectConstructOnly | 'file' | 'path' | 'temporary-id';
+
+export interface IdeFileSettingsProps extends IdeObjectProps {
+    encoding?: string;
+    'encoding-set'?: boolean;
+    file?: Ide.File;
+    'indent-style'?: IdeIndentStyleNick | Ide.IndentStyle;
+    'indent-style-set'?: boolean;
+    'indent-width'?: number;
+    'indent-width-set'?: boolean;
+    'insert-trailing-newline'?: boolean;
+    'insert-trailing-newline-set'?: boolean;
+    'newline-type'?: GtkSourceNewlineTypeNick | GtkSource.NewlineType;
+    'newline-type-set'?: boolean;
+    'overwrite-braces'?: boolean;
+    'overwrite-braces-set'?: boolean;
+    'right-margin-position'?: number;
+    'right-margin-position-set'?: boolean;
+    settled?: boolean;
+    'show-right-margin'?: boolean;
+    'show-right-margin-set'?: boolean;
+    'tab-width'?: number;
+    'tab-width-set'?: boolean;
+    'trim-trailing-whitespace'?: boolean;
+    'trim-trailing-whitespace-set'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeFileSettingsConstructOnly = IdeObjectConstructOnly | 'file';
+
+export interface IdeFormatterProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeFormatterConstructOnly = never;
+
+export interface IdeFormatterOptionsProps {
+    'insert-spaces'?: boolean;
+    'tab-width'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeFormatterOptionsConstructOnly = never;
+
+export interface IdeHighlightEngineProps extends IdeObjectProps {
+    buffer?: Ide.Buffer;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeHighlightEngineConstructOnly = IdeObjectConstructOnly | 'buffer';
+
+export interface IdeHighlighterProps extends IdeObjectProps {
+    context?: Ide.Context;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeHighlighterConstructOnly = IdeObjectConstructOnly | 'context';
+
+export interface IdeLangservClientProps extends IdeObjectProps {
+    'io-stream'?: Gio.IOStream;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeLangservClientConstructOnly = IdeObjectConstructOnly | 'io-stream';
+
+export interface IdeLangservFormatterProps extends IdeObjectProps, IdeFormatterProps {
+    client?: Ide.LangservClient;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeLangservFormatterConstructOnly = IdeObjectConstructOnly | IdeFormatterConstructOnly;
+
+export interface IdeLangservHighlighterProps extends IdeObjectProps, IdeHighlighterProps {
+    client?: Ide.LangservClient | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeLangservHighlighterConstructOnly = IdeObjectConstructOnly | IdeHighlighterConstructOnly;
+
+export interface IdeLangservSymbolNodeProps extends IdeSymbolNodeProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeLangservSymbolNodeConstructOnly = IdeSymbolNodeConstructOnly;
+
+export interface IdeLangservSymbolTreeProps extends IdeSymbolTreeProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeLangservSymbolTreeConstructOnly = IdeSymbolTreeConstructOnly;
 
 export interface IdeLayoutProps extends DzlDockBinProps, DzlDockProps, DzlDockItemProps, GtkBuildableProps {
 }
@@ -100,6 +481,17 @@ export interface IdeLayoutViewProps extends GtkBoxProps, GtkBuildableProps, GtkO
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type IdeLayoutViewConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface IdeLocalDeviceProps extends IdeDeviceProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeLocalDeviceConstructOnly = IdeDeviceConstructOnly;
+
+export interface IdeObjectProps {
+    context?: Ide.Context;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeObjectConstructOnly = 'context';
 
 export interface IdeOmniBarProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
 }
@@ -135,20 +527,178 @@ export interface IdePerspectiveProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type IdePerspectiveConstructOnly = never;
 
+export interface IdePkconTransferProps extends IdeTransferProps {
+    packages?: string[];
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdePkconTransferConstructOnly = IdeTransferConstructOnly | 'packages';
+
 export interface IdePreferencesPerspectiveProps extends DzlPreferencesViewProps, DzlPreferencesProps, GtkBuildableProps, IdePerspectiveProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type IdePreferencesPerspectiveConstructOnly = DzlPreferencesViewConstructOnly | DzlPreferencesConstructOnly | GtkBuildableConstructOnly | IdePerspectiveConstructOnly;
+
+export interface IdeProgressProps {
+    fraction?: number;
+    message?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeProgressConstructOnly = never;
+
+export interface IdeProjectProps extends IdeObjectProps {
+    root?: Ide.ProjectItem;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeProjectConstructOnly = IdeObjectConstructOnly | 'root';
+
+export interface IdeProjectEditProps {
+    range?: Ide.SourceRange | null;
+    replacement?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeProjectEditConstructOnly = never;
+
+export interface IdeProjectFileProps extends IdeProjectItemProps {
+    file?: Gio.File;
+    'file-info'?: Gio.FileInfo;
+    path?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeProjectFileConstructOnly = IdeProjectItemConstructOnly;
+
+export interface IdeProjectFilesProps extends IdeProjectItemProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeProjectFilesConstructOnly = IdeProjectItemConstructOnly;
+
+/** This class contains information about a project that can be loaded. */
+export interface IdeProjectInfoProps {
+    'build-system-name'?: string;
+    description?: string;
+    directory?: Gio.File | null;
+    doap?: Ide.Doap | null;
+    file?: Gio.File | null;
+    'is-recent'?: boolean;
+    languages?: string[];
+    'last-modified-at'?: GLib.DateTime | null;
+    name?: string;
+    priority?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeProjectInfoConstructOnly = never;
+
+export interface IdeProjectItemProps extends IdeObjectProps {
+    parent?: Ide.ProjectItem | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeProjectItemConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeRecentProjectsProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeRecentProjectsConstructOnly = never;
 
 export interface IdeRunButtonProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type IdeRunButtonConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
+export interface IdeRunManagerProps extends IdeObjectProps {
+    'build-target'?: Ide.BuildTarget;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeRunManagerConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeRunnerProps extends IdeObjectProps {
+    argv?: string[];
+    'clear-env'?: boolean;
+    /** If the runner has "failed". */
+    failed?: boolean;
+    /** The "run-on-host" property indicates the program should be run on the host machine rather than inside the application sandbox. */
+    'run-on-host'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeRunnerConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeRuntimeProps extends IdeObjectProps {
+    'display-name'?: string;
+    id?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeRuntimeConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeRuntimeManagerProps extends IdeObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeRuntimeManagerConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeSearchContextProps extends IdeObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSearchContextConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeSearchEngineProps extends IdeObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSearchEngineConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeSearchResultProps extends IdeObjectProps {
+    provider?: Ide.SearchProvider;
+    score?: number;
+    subtitle?: string;
+    title?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSearchResultConstructOnly = IdeObjectConstructOnly | 'score' | 'subtitle' | 'title';
+
+/** In Builder, we need support for settings at the user level (their chosen defaults) as well as defaults for a project. */
+export interface IdeSettingsProps extends IdeObjectProps {
+    'ignore-project-settings'?: boolean;
+    'relative-path'?: string;
+    'schema-id'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSettingsConstructOnly = IdeObjectConstructOnly | 'ignore-project-settings' | 'relative-path' | 'schema-id';
+
 export interface IdeSourceMapProps extends GtkSourceMapProps, GtkBuildableProps, GtkScrollableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type IdeSourceMapConstructOnly = GtkSourceMapConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly;
+
+export interface IdeSourceSnippetProps {
+    description?: string;
+    language?: string;
+    'snippet-text'?: string;
+    trigger?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSourceSnippetConstructOnly = never;
+
+export interface IdeSourceSnippetChunkProps {
+    context?: Ide.SourceSnippetContext;
+    spec?: string;
+    'tab-stop'?: number;
+    text?: string;
+    'text-set'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSourceSnippetChunkConstructOnly = never;
+
+/** This class is currently used primary as a hashtable. */
+export interface IdeSourceSnippetContextProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSourceSnippetContextConstructOnly = never;
+
+export interface IdeSourceSnippetsProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSourceSnippetsConstructOnly = never;
+
+export interface IdeSourceSnippetsManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSourceSnippetsManagerConstructOnly = never;
 
 export interface IdeSourceViewProps extends GtkSourceViewProps, GtkBuildableProps, GtkScrollableProps {
     'back-forward-list'?: Ide.BackForwardList | null;
@@ -180,11 +730,54 @@ export interface IdeSourceViewModeProps extends GtkWidgetProps, GtkBuildableProp
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type IdeSourceViewModeConstructOnly = GtkWidgetConstructOnly | GtkBuildableConstructOnly;
 
+export interface IdeSubprocessLauncherProps {
+    'clean-env'?: boolean;
+    cwd?: string;
+    environ?: string[];
+    flags?: number;
+    'run-on-host'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSubprocessLauncherConstructOnly = never;
+
+export interface IdeSubprocessSupervisorProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSubprocessSupervisorConstructOnly = never;
+
+export interface IdeSymbolNodeProps extends IdeObjectProps {
+    flags?: number;
+    kind?: IdeSymbolKindNick | Ide.SymbolKind;
+    name?: string;
+    'use-markup'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSymbolNodeConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeSymbolTreeProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeSymbolTreeConstructOnly = never;
+
+export interface IdeTransferProps {
+    'icon-name'?: string;
+    progress?: number;
+    status?: string;
+    title?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeTransferConstructOnly = never;
+
 export interface IdeTransferButtonProps extends DzlProgressButtonProps, GtkActionableProps, GtkActivatableProps, GtkBuildableProps {
     transfer?: Ide.Transfer;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type IdeTransferButtonConstructOnly = DzlProgressButtonConstructOnly | GtkActionableConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly | 'transfer';
+
+export interface IdeTransferManagerProps extends IdeObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeTransferManagerConstructOnly = IdeObjectConstructOnly;
 
 export interface IdeTransferRowProps extends GtkListBoxRowProps, GtkBuildableProps {
     transfer?: Ide.Transfer | null;
@@ -202,6 +795,17 @@ export interface IdeTransfersProgressIconProps extends GtkDrawingAreaProps, GtkB
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type IdeTransfersProgressIconConstructOnly = GtkDrawingAreaConstructOnly | GtkBuildableConstructOnly;
+
+export interface IdeUnsavedFilesProps extends IdeObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeUnsavedFilesConstructOnly = IdeObjectConstructOnly;
+
+export interface IdeVcsProps extends IdeObjectProps {
+    context?: Ide.Context;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type IdeVcsConstructOnly = IdeObjectConstructOnly | 'context';
 
 export interface IdeWorkbenchProps extends GtkApplicationWindowProps, GtkBuildableProps {
     /** This property is used internally by Builder to avoid creating the greeter when opening a new workspace that is only for loading a project. */
@@ -418,7 +1022,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -470,7 +1078,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -484,7 +1099,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -496,8 +1121,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -535,10 +1160,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -562,7 +1188,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

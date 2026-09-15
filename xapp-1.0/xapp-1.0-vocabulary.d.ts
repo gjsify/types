@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for XApp-1.0.
  *
- * GENERATED — do not edit. Provenance: XApp-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: XApp-1.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface Gio.AsyncInitable Gio.DBusObjectManager Gio.Initable Gio.DBusObject Gio.DBusInterface — inlined base(s) their owner's vocabulary does not emit: Gio.DBusObjectManagerClient Gio.DBusObjectProxy Gio.DBusObjectSkeleton Gio.DBusProxy Gio.DBusInterfaceSkeleton — prop(s) no TypeScript value satisfies: Gio.DBusObjectManagerClient.get-proxy-type-destroy-notify Gio.DBusObjectManagerClient.get-proxy-type-func Gio.DBusObjectManagerClient.get-proxy-type-user-data
  *
- * 5 concrete widgets, 5 declarations, 3 enum nick unions, 1 slot candidates.
+ * 20 instantiable GTypes (of which 5 concrete widgets), 28 declarations (5 inlined from a namespace whose vocabulary does not emit them), 4 enum nick unions, 1 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -24,6 +24,8 @@
  * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
  */
 
+import type GLib from '@girs/glib-2.0';
+import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type XApp from './xapp-1.0.js';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkIconSizeNick, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
@@ -38,6 +40,7 @@ import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableCons
 // Re-measure with `scripts/check-nick-derivation.mjs` in ts-for-gir.
 // ---------------------------------------------------------------------------
 
+export type GBusTypeNick = 'starter' | 'none' | 'system' | 'session';
 export type XAppIconSizeNick = '16' | '22' | '24' | '32' | '48' | '96';
 export type XAppScrollDirectionNick = 'up' | 'down' | 'left' | 'right';
 export type XAppStatusIconStateNick = 'native' | 'fallback' | 'no-support';
@@ -51,6 +54,164 @@ export type XAppStatusIconStateNick = 'native' | 'fallback' | 'no-support';
 // because GObject installs interface properties on the implementor at runtime while
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
+
+/** Abstract base class for D-Bus interfaces on the service side. */
+export interface GDBusInterfaceSkeletonProps {
+    /**
+     * Flags from the #GDBusInterfaceSkeletonFlags enumeration.
+     * @since 2.30
+     * @default G_DBUS_INTERFACE_SKELETON_FLAGS_NONE
+     */
+    'g-flags'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GDBusInterfaceSkeletonConstructOnly = never;
+
+/** `GDBusObjectManagerClient` is used to create, monitor and delete object proxies for remote objects exported by a [class@Gio.DBusObjectManagerServer] (or any code implementing the [org.freedesktop.DBu… */
+export interface GDBusObjectManagerClientProps {
+    /**
+     * If this property is not %G_BUS_TYPE_NONE, then #GDBusObjectManagerClient:connection must be %NULL and will be set to the #GDBusConnection obtained by calling g_bus_get() with the value of this proper…
+     * @since 2.30
+     * @default G_BUS_TYPE_NONE
+     */
+    'bus-type'?: GBusTypeNick | Gio.BusType;
+    /**
+     * The #GDBusConnection to use.
+     * @since 2.30
+     */
+    connection?: Gio.DBusConnection;
+    /**
+     * Flags from the #GDBusObjectManagerClientFlags enumeration.
+     * @since 2.30
+     * @default G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE
+     */
+    flags?: number;
+    /**
+     * A #GDestroyNotify for the #gpointer user_data in #GDBusObjectManagerClient:get-proxy-type-user-data.
+     * @since 2.30
+     */
+    'get-proxy-type-destroy-notify'?: never;
+    /**
+     * The #GDBusProxyTypeFunc to use when determining what #GType to use for interface proxies or %NULL.
+     * @since 2.30
+     */
+    'get-proxy-type-func'?: never;
+    /**
+     * The #gpointer user_data to pass to #GDBusObjectManagerClient:get-proxy-type-func.
+     * @since 2.30
+     */
+    'get-proxy-type-user-data'?: never;
+    /**
+     * The well-known name or unique name that the manager is for.
+     * @since 2.30
+     * @default NULL
+     */
+    name?: string;
+    /**
+     * The object path the manager is for.
+     * @since 2.30
+     * @default NULL
+     */
+    'object-path'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GDBusObjectManagerClientConstructOnly = 'bus-type' | 'connection' | 'flags' | 'get-proxy-type-destroy-notify' | 'get-proxy-type-func' | 'get-proxy-type-user-data' | 'name' | 'object-path';
+
+/** A `GDBusObjectProxy` is an object used to represent a remote object with one or more D-Bus interfaces. */
+export interface GDBusObjectProxyProps {
+    /**
+     * The connection of the proxy.
+     * @since 2.30
+     */
+    'g-connection'?: Gio.DBusConnection;
+    /**
+     * The object path of the proxy.
+     * @since 2.30
+     * @default NULL
+     */
+    'g-object-path'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GDBusObjectProxyConstructOnly = 'g-connection' | 'g-object-path';
+
+/** A `GDBusObjectSkeleton` instance is essentially a group of D-Bus interfaces. */
+export interface GDBusObjectSkeletonProps {
+    /**
+     * The object path where the object is exported.
+     * @since 2.30
+     * @default NULL
+     */
+    'g-object-path'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GDBusObjectSkeletonConstructOnly = never;
+
+/** `GDBusProxy` is a base class used for proxies to access a D-Bus interface on a remote object. */
+export interface GDBusProxyProps {
+    /**
+     * If this property is not %G_BUS_TYPE_NONE, then #GDBusProxy:g-connection must be %NULL and will be set to the #GDBusConnection obtained by calling g_bus_get() with the value of this property.
+     * @since 2.26
+     * @default G_BUS_TYPE_NONE
+     */
+    'g-bus-type'?: GBusTypeNick | Gio.BusType;
+    /**
+     * The #GDBusConnection the proxy is for.
+     * @since 2.26
+     */
+    'g-connection'?: Gio.DBusConnection;
+    /**
+     * The timeout to use if -1 (specifying default timeout) is passed as @timeout_msec in the g_dbus_proxy_call() and g_dbus_proxy_call_sync() functions.
+     * @since 2.26
+     * @default -1
+     */
+    'g-default-timeout'?: number;
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     * @since 2.26
+     * @default G_DBUS_PROXY_FLAGS_NONE
+     */
+    'g-flags'?: number;
+    /**
+     * Ensure that interactions with this proxy conform to the given interface.
+     * @since 2.26
+     */
+    'g-interface-info'?: Gio.DBusInterfaceInfo | null;
+    /**
+     * The D-Bus interface name the proxy is for.
+     * @since 2.26
+     * @default NULL
+     */
+    'g-interface-name'?: string;
+    /**
+     * The well-known or unique name that the proxy is for.
+     * @since 2.26
+     * @default NULL
+     */
+    'g-name'?: string | null;
+    /**
+     * The object path the proxy is for.
+     * @since 2.26
+     * @default NULL
+     */
+    'g-object-path'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GDBusProxyConstructOnly = 'g-bus-type' | 'g-connection' | 'g-flags' | 'g-interface-name' | 'g-name' | 'g-object-path';
+
+export interface XAppDarkModeManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppDarkModeManagerConstructOnly = never;
+
+export interface XAppFavoritesProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppFavoritesConstructOnly = never;
+
+export interface XAppGpuOffloadHelperProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppGpuOffloadHelperConstructOnly = never;
 
 export interface XAppGtkWindowProps extends GtkWindowProps, GtkBuildableProps {
 }
@@ -91,6 +252,42 @@ export interface XAppIconChooserDialogProps extends GtkDialogProps, GtkBuildable
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type XAppIconChooserDialogConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly;
 
+export interface XAppKbdLayoutControllerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppKbdLayoutControllerConstructOnly = never;
+
+export interface XAppMonitorBlankerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppMonitorBlankerConstructOnly = never;
+
+/** The #XAppObject type is a specialized container of interfaces. */
+export interface XAppObjectProps {
+    /** The #XAppStatusIconInterface instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>, if any. */
+    'status-icon-interface'?: XApp.StatusIconInterface | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppObjectConstructOnly = never;
+
+/** The #XAppObjectManagerClient structure contains only private data and should only be accessed using the provided API. */
+export interface XAppObjectManagerClientProps extends GDBusObjectManagerClientProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppObjectManagerClientConstructOnly = GDBusObjectManagerClientConstructOnly;
+
+/** The #XAppObjectProxy structure contains only private data and should only be accessed using the provided API. */
+export interface XAppObjectProxyProps extends GDBusObjectProxyProps, XAppObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppObjectProxyConstructOnly = GDBusObjectProxyConstructOnly | XAppObjectConstructOnly;
+
+/** The #XAppObjectSkeleton structure contains only private data and should only be accessed using the provided API. */
+export interface XAppObjectSkeletonProps extends GDBusObjectSkeletonProps, XAppObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppObjectSkeletonConstructOnly = GDBusObjectSkeletonConstructOnly | XAppObjectConstructOnly;
+
 export interface XAppPreferencesWindowProps extends GtkWindowProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -101,6 +298,130 @@ export interface XAppStackSidebarProps extends GtkBinProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type XAppStackSidebarConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
+
+export interface XAppStatusIconProps {
+    /**
+     * The icon size that is preferred by icon monitor/host - this is usually a product of some calculation based on the panel size.
+     * @default 0
+     */
+    'icon-size'?: number;
+    /**
+     * The name of the icon for sorting purposes.
+     * @default NULL
+     */
+    name?: string;
+    /** A #GtkMenu to use when requested by the remote monitor via a left (or primary) click. */
+    'primary-menu'?: Gtk.Widget;
+    /** A #GtkMenu to use when requested by the remote monitor via a right (or secondary) click. */
+    'secondary-menu'?: Gtk.Widget;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppStatusIconConstructOnly = never;
+
+/** Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>. */
+export interface XAppStatusIconInterfaceProps {
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconName">"IconName"</link>.
+     * @default NULL
+     */
+    'icon-name'?: string | null;
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconSize">"IconSize"</link>.
+     * @default 0
+     */
+    'icon-size'?: number;
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Label">"Label"</link>.
+     * @default NULL
+     */
+    label?: string | null;
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Metadata">"Metadata"</link>.
+     * @default NULL
+     */
+    metadata?: string | null;
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Name">"Name"</link>.
+     * @default NULL
+     */
+    name?: string | null;
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.PrimaryMenuIsOpen">"PrimaryMenuIsOpen"</link>.
+     * @default FALSE
+     */
+    'primary-menu-is-open'?: boolean;
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.SecondaryMenuIsOpen">"SecondaryMenuIsOpen"</link>.
+     * @default FALSE
+     */
+    'secondary-menu-is-open'?: boolean;
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.TooltipText">"TooltipText"</link>.
+     * @default NULL
+     */
+    'tooltip-text'?: string | null;
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Visible">"Visible"</link>.
+     * @default FALSE
+     */
+    visible?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppStatusIconInterfaceConstructOnly = never;
+
+/** The #XAppStatusIconInterfaceProxy structure contains only private data and should only be accessed using the provided API. */
+export interface XAppStatusIconInterfaceProxyProps extends GDBusProxyProps, XAppStatusIconInterfaceProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppStatusIconInterfaceProxyConstructOnly = GDBusProxyConstructOnly | XAppStatusIconInterfaceConstructOnly;
+
+/** The #XAppStatusIconInterfaceSkeleton structure contains only private data and should only be accessed using the provided API. */
+export interface XAppStatusIconInterfaceSkeletonProps extends GDBusInterfaceSkeletonProps, XAppStatusIconInterfaceProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppStatusIconInterfaceSkeletonConstructOnly = GDBusInterfaceSkeletonConstructOnly | XAppStatusIconInterfaceConstructOnly;
+
+export interface XAppStatusIconMonitorProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppStatusIconMonitorConstructOnly = never;
+
+export interface XAppStyleManagerProps {
+    /** The widget to be styled. */
+    widget?: Gtk.Widget;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppStyleManagerConstructOnly = never;
+
+/** Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-net-hadess-SwitcherooControl.top_of_page">net.hadess.SwitcherooControl</link>. */
+export interface XAppSwitcherooControlProps {
+    /** Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.GPUs">"GPUs"</link>. */
+    gpus?: GLib.Variant | null;
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.HasDualGpu">"HasDualGpu"</link>.
+     * @default FALSE
+     */
+    'has-dual-gpu'?: boolean;
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.NumGPUs">"NumGPUs"</link>.
+     * @default 0
+     */
+    'num-gpus'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppSwitcherooControlConstructOnly = never;
+
+/** The #XAppSwitcherooControlProxy structure contains only private data and should only be accessed using the provided API. */
+export interface XAppSwitcherooControlProxyProps extends GDBusProxyProps, XAppSwitcherooControlProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppSwitcherooControlProxyConstructOnly = GDBusProxyConstructOnly | XAppSwitcherooControlConstructOnly;
+
+/** The #XAppSwitcherooControlSkeleton structure contains only private data and should only be accessed using the provided API. */
+export interface XAppSwitcherooControlSkeletonProps extends GDBusInterfaceSkeletonProps, XAppSwitcherooControlProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type XAppSwitcherooControlSkeletonConstructOnly = GDBusInterfaceSkeletonConstructOnly | XAppSwitcherooControlConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -157,7 +478,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -209,7 +534,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -223,7 +555,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -235,8 +577,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -274,10 +616,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -301,7 +644,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

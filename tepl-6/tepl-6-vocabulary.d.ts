@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Tepl-6.
  *
- * GENERATED — do not edit. Provenance: Tepl-6 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: Tepl-6 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
  *
- * 19 concrete widgets, 21 declarations, 4 enum nick unions, 4 slot candidates.
+ * 36 instantiable GTypes (of which 19 concrete widgets), 39 declarations, 4 enum nick unions, 4 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -24,9 +24,12 @@
  * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
  */
 
+import type Gio from '@girs/gio-2.0';
+import type Gtk from '@girs/gtk-3.0';
+import type GtkSource from '@girs/gtksource-300';
 import type Tepl from './tepl-6.js';
-import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkGridConstructOnly, GtkGridProps, GtkInfoBarConstructOnly, GtkInfoBarProps, GtkMenuButtonConstructOnly, GtkMenuButtonProps, GtkNotebookConstructOnly, GtkNotebookProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkStatusbarConstructOnly, GtkStatusbarProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkToggleButtonConstructOnly, GtkToggleButtonProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
-import type { GtkSourceViewConstructOnly, GtkSourceViewProps } from '@girs/gtksource-300/vocabulary';
+import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkGridConstructOnly, GtkGridProps, GtkInfoBarConstructOnly, GtkInfoBarProps, GtkMenuButtonConstructOnly, GtkMenuButtonProps, GtkNotebookConstructOnly, GtkNotebookProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkStatusbarConstructOnly, GtkStatusbarProps, GtkTextBufferConstructOnly, GtkTextBufferProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkToggleButtonConstructOnly, GtkToggleButtonProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
+import type { GtkSourceBufferConstructOnly, GtkSourceBufferProps, GtkSourceGutterRendererConstructOnly, GtkSourceGutterRendererProps, GtkSourceViewConstructOnly, GtkSourceViewProps } from '@girs/gtksource-300/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -53,10 +56,139 @@ export type TeplSettingsThemeVariantNick = 'system' | 'light' | 'dark';
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
+export interface TeplAbstractFactoryProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplAbstractFactoryConstructOnly = never;
+
+export interface TeplApplicationProps {
+    /**
+     * The #GtkApplication.
+     * @since 2.0
+     */
+    application?: Gtk.Application;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplApplicationConstructOnly = 'application';
+
+export interface TeplApplicationWindowProps extends TeplTabGroupProps {
+    /**
+     * The #GtkApplicationWindow.
+     * @since 2.0
+     */
+    'application-window'?: Gtk.ApplicationWindow;
+    /**
+     * Whether to handle the #GtkWindow:title.
+     * @since 4.0
+     * @default FALSE
+     */
+    'handle-title'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplApplicationWindowConstructOnly = TeplTabGroupConstructOnly | 'application-window';
+
+export interface TeplBufferProps extends GtkSourceBufferProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplBufferConstructOnly = GtkSourceBufferConstructOnly;
+
+export interface TeplCodeCommentViewProps {
+    /**
+     * The associated #GtkSourceView widget.
+     * @since 6.14
+     */
+    'source-view'?: GtkSource.View | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplCodeCommentViewConstructOnly = 'source-view';
+
+export interface TeplFileProps {
+    /**
+     * The location.
+     * @since 1.0
+     */
+    location?: Gio.File;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplFileConstructOnly = never;
+
+export interface TeplFileLoaderProps {
+    /**
+     * The #TeplBuffer to load the content into.
+     * @since 1.0
+     */
+    buffer?: Tepl.Buffer | null;
+    /**
+     * The #TeplFile.
+     * @since 1.0
+     */
+    file?: Tepl.File | null;
+    /**
+     * The #GFile to load.
+     * @since 1.0
+     */
+    location?: Gio.File | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplFileLoaderConstructOnly = 'buffer' | 'file' | 'location';
+
+export interface TeplFileSaverProps {
+    /**
+     * The #TeplBuffer to save.
+     * @since 1.0
+     */
+    buffer?: Tepl.Buffer;
+    /**
+     * The #TeplFile.
+     * @since 1.0
+     */
+    file?: Tepl.File;
+    /**
+     * File saving flags.
+     * @since 1.0
+     * @default TEPL_FILE_SAVER_FLAGS_NONE
+     */
+    flags?: number;
+    /**
+     * The #GFile where to save the buffer.
+     * @since 1.0
+     */
+    location?: Gio.File;
+    /**
+     * The newline type.
+     * @since 1.0
+     * @default TEPL_NEWLINE_TYPE_LF
+     */
+    'newline-type'?: TeplNewlineTypeNick | Tepl.NewlineType;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplFileSaverConstructOnly = 'buffer' | 'file' | 'location';
+
+export interface TeplFoldRegionProps {
+    /**
+     * The #GtkTextBuffer where the fold region is applied.
+     * @since 1.0
+     */
+    buffer?: Gtk.TextBuffer | null;
+    /**
+     * Whether the #TeplFoldRegion is folded or not.
+     * @since 1.0
+     * @default FALSE
+     */
+    folded?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplFoldRegionConstructOnly = 'buffer';
+
 export interface TeplGotoLineBarProps extends GtkGridProps, GtkBuildableProps, GtkOrientableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplGotoLineBarConstructOnly = GtkGridConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface TeplGutterRendererFoldsProps extends GtkSourceGutterRendererProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplGutterRendererFoldsConstructOnly = GtkSourceGutterRendererConstructOnly;
 
 export interface TeplInfoBarProps extends GtkInfoBarProps, GtkBuildableProps, GtkOrientableProps {
     /**
@@ -101,6 +233,16 @@ export interface TeplLineColumnIndicatorProps extends GtkBinProps, GtkBuildableP
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplLineColumnIndicatorConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
+export interface TeplMetadataProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplMetadataConstructOnly = never;
+
+export interface TeplMetadataManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplMetadataManagerConstructOnly = never;
+
 export interface TeplNotebookProps extends GtkNotebookProps, GtkBuildableProps, TeplTabGroupProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -117,10 +259,75 @@ export interface TeplOverwriteIndicatorProps extends GtkBinProps, GtkBuildablePr
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplOverwriteIndicatorConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
+export interface TeplPanelProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplPanelConstructOnly = never;
+
 export interface TeplPanel1Props extends GtkGridProps, GtkBuildableProps, GtkOrientableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplPanel1ConstructOnly = GtkGridConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface TeplPanelItemProps {
+    /**
+     * The icon name.
+     * @since 6.11
+     * @default NULL
+     */
+    'icon-name'?: string | null;
+    /**
+     * The name.
+     * @since 6.11
+     * @default NULL
+     */
+    name?: string;
+    /**
+     * The position.
+     * @since 6.11
+     * @default 0
+     */
+    position?: number;
+    /**
+     * The title.
+     * @since 6.11
+     * @default NULL
+     */
+    title?: string | null;
+    /**
+     * The #GtkWidget (the main content).
+     * @since 6.11
+     */
+    widget?: Gtk.Widget | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplPanelItemConstructOnly = 'icon-name' | 'name' | 'position' | 'title' | 'widget';
+
+export interface TeplPanelNotebookProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplPanelNotebookConstructOnly = never;
+
+export interface TeplPanelSimpleProps extends TeplPanelProps {
+    /**
+     * The #TeplPanelItem currently shown.
+     * @since 6.11
+     */
+    'active-item'?: Tepl.PanelItem | null;
+    /**
+     * The name of the #TeplPanelSimple:active-item.
+     * @since 6.11
+     * @default NULL
+     */
+    'active-item-name'?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplPanelSimpleConstructOnly = TeplPanelConstructOnly;
+
+export interface TeplPanelStackProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplPanelStackConstructOnly = never;
 
 export interface TeplPanelSwitcherMenuProps extends GtkBinProps, GtkBuildableProps {
 }
@@ -142,6 +349,11 @@ export interface TeplProgressInfoBarProps extends TeplInfoBarProps, GtkBuildable
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplProgressInfoBarConstructOnly = TeplInfoBarConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | 'has-cancel-button';
+
+export interface TeplSettingsProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type TeplSettingsConstructOnly = never;
 
 export interface TeplSpaceDrawerPrefsProps extends GtkGridProps, GtkBuildableProps, GtkOrientableProps {
 }
@@ -368,7 +580,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -420,7 +636,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -434,7 +657,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -446,8 +679,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -485,10 +718,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -512,7 +746,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

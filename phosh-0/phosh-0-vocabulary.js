@@ -1,6 +1,6 @@
 // The widget vocabulary of Phosh-0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Phosh-0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Phosh.LayerSurface.layer-shell Phosh.LayerSurface.wl-output
+// GENERATED — do not edit. Provenance: Phosh-0 — dropped empty base(s): GObject.Object Gio.AsyncInitable Gio.DBusInterface Gio.Initable GObject.InitiallyUnowned Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap — inlined base(s) their owner's vocabulary does not emit: Gio.DBusProxy Gio.DBusInterfaceSkeleton — prop(s) no TypeScript value satisfies: Phosh.LayerSurface.layer-shell Phosh.LayerSurface.wl-output
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,41 +11,66 @@ export const PROVENANCE = {
     version: '0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
-    inlinedBases: [],
+    droppedBases: ['GObject.Object', 'Gio.AsyncInitable', 'Gio.DBusInterface', 'Gio.Initable', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface', 'Gio.ActionGroup', 'Gio.ActionMap'],
+    inlinedBases: ['Gio.DBusProxy', 'Gio.DBusInterfaceSkeleton'],
     unsettableProps: ['Phosh.LayerSurface.layer-shell', 'Phosh.LayerSurface.wl-output'],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
+    GDBusInterfaceSkeleton: ['g-flags'],
+    GDBusProxy: ['g-bus-type', 'g-connection', 'g-default-timeout', 'g-flags', 'g-interface-info', 'g-interface-name', 'g-name', 'g-object-path'],
     PhoshLayerSurface: ['anchor', 'exclusive-zone', 'height', 'kbd-interactivity', 'layer', 'layer-shell', 'margin-bottom', 'margin-left', 'margin-right', 'margin-top', 'namespace', 'width', 'wl-output'],
     PhoshLockscreen: ['require-unlock'],
+    PhoshLockscreenManager: ['locked'],
     PhoshQuickSetting: ['active', 'can-show-status', 'long-press-action-name', 'long-press-action-target', 'showing-status', 'status-icon', 'status-page'],
+    PhoshShell: ['docked', 'locked', 'log-domains', 'overview-visible'],
     PhoshStatusIcon: ['extra-widget', 'icon-name', 'icon-size', 'info', 'pixel-size', 'priority'],
     PhoshStatusPage: ['content', 'footer', 'header', 'title'],
 };
 
 export const OWN_SIGNALS = {
+    GDBusInterfaceSkeleton: ['g-authorize-method'],
+    GDBusProxy: ['g-properties-changed', 'g-signal'],
+    PhoshDBusScreenshot: ['handle-flash-area', 'handle-pick-color', 'handle-screenshot', 'handle-screenshot-area', 'handle-screenshot-window', 'handle-select-area'],
     PhoshLayerSurface: ['configured'],
     PhoshLockscreen: ['lockscreen-unlock', 'wakeup-output'],
+    PhoshLockscreenManager: ['wakeup-outputs'],
     PhoshQuickSetting: ['clicked', 'hide-status', 'long-pressed', 'show-status'],
+    PhoshShell: ['ready'],
     PhoshStatusPage: ['done'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
+    PhoshDBusScreenshotProxy: ['PhoshDBusScreenshotProxy', 'GDBusProxy', 'PhoshDBusScreenshot'],
+    PhoshDBusScreenshotSkeleton: ['PhoshDBusScreenshotSkeleton', 'GDBusInterfaceSkeleton', 'PhoshDBusScreenshot'],
     PhoshLayerSurface: ['PhoshLayerSurface', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     PhoshLockscreen: ['PhoshLockscreen', 'PhoshLayerSurface', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    PhoshLockscreenManager: ['PhoshLockscreenManager'],
     PhoshQuickSetting: ['PhoshQuickSetting', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    PhoshScreenshotManager: ['PhoshScreenshotManager', 'PhoshDBusScreenshotSkeleton', 'GDBusInterfaceSkeleton', 'PhoshDBusScreenshot'],
+    PhoshShell: ['PhoshShell'],
     PhoshStatusIcon: ['PhoshStatusIcon', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     PhoshStatusPage: ['PhoshStatusPage', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    PhoshWallClock: ['PhoshWallClock'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
+    GBusType: ['starter', 'none', 'system', 'session'],
     PhoshLockscreenPage: ['info', 'extra', 'unlock'],
 };
 
@@ -54,7 +79,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -64,6 +89,10 @@ export const ENUM_NICKS = {
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
 export const ENUM_VALUES = {
+    'GBusType.none': 0,
+    'GBusType.session': 2,
+    'GBusType.starter': -1,
+    'GBusType.system': 1,
     'PhoshLockscreenPage.extra': 1,
     'PhoshLockscreenPage.info': 0,
     'PhoshLockscreenPage.unlock': 2,
@@ -95,15 +124,26 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
-export const FLAG_VALUES = {};
+export const FLAG_VALUES = {
+    'GDBusInterfaceSkeletonFlags.handle-method-invocations-in-thread': 1,
+    'GDBusInterfaceSkeletonFlags.none': 0,
+    'GDBusProxyFlags.do-not-auto-start': 4,
+    'GDBusProxyFlags.do-not-auto-start-at-construction': 16,
+    'GDBusProxyFlags.do-not-connect-signals': 2,
+    'GDBusProxyFlags.do-not-load-properties': 1,
+    'GDBusProxyFlags.get-invalidated-properties': 8,
+    'GDBusProxyFlags.no-match-rule': 32,
+    'GDBusProxyFlags.none': 0,
+};
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
 // `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
@@ -122,9 +162,12 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
+    'GDBusInterfaceSkeleton.g-flags': 'GDBusInterfaceSkeletonFlags',
+    'GDBusProxy.g-bus-type': 'GBusType',
+    'GDBusProxy.g-flags': 'GDBusProxyFlags',
     'PhoshStatusIcon.icon-size': 'GtkIconSize',
 };
 
@@ -171,4 +214,20 @@ export const SLOT_CANDIDATES = {
     },
 };
 
-export const SINCE = {};
+export const SINCE = {
+    'GDBusInterfaceSkeleton': '2.30',
+    'GDBusInterfaceSkeleton.g-flags': '2.30',
+    'GDBusInterfaceSkeleton::g-authorize-method': '2.30',
+    'GDBusProxy': '2.26',
+    'GDBusProxy.g-bus-type': '2.26',
+    'GDBusProxy.g-connection': '2.26',
+    'GDBusProxy.g-default-timeout': '2.26',
+    'GDBusProxy.g-flags': '2.26',
+    'GDBusProxy.g-interface-info': '2.26',
+    'GDBusProxy.g-interface-name': '2.26',
+    'GDBusProxy.g-name': '2.26',
+    'GDBusProxy.g-object-path': '2.26',
+    'GDBusProxy::g-properties-changed': '2.26',
+    'GDBusProxy::g-signal': '2.26',
+    'PhoshShell::ready': '0.11.0',
+};

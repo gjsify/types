@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Entangle-0.1.
  *
- * GENERATED — do not edit. Provenance: Entangle-0.1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
+ * GENERATED — do not edit. Provenance: Entangle-0.1 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application
  *
- * 12 concrete widgets, 13 declarations, 0 enum nick unions, 0 slot candidates.
+ * 36 instantiable GTypes (of which 12 concrete widgets), 41 declarations (1 inlined from a namespace whose vocabulary does not emit them), 0 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -25,7 +25,11 @@
  */
 
 import type Entangle from './entangle-0.1.js';
-import type { GtkAboutDialogConstructOnly, GtkAboutDialogProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkExpanderConstructOnly, GtkExpanderProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
+import type GExiv2 from '@girs/gexiv2-0.16';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type Gio from '@girs/gio-2.0';
+import type GstBase from '@girs/gstbase-1.0';
+import type { GtkAboutDialogConstructOnly, GtkAboutDialogProps, GtkApplicationConstructOnly, GtkApplicationProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkExpanderConstructOnly, GtkExpanderProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -49,6 +53,59 @@ import type { GtkAboutDialogConstructOnly, GtkAboutDialogProps, GtkApplicationWi
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
+export interface EntangleApplicationProps extends GtkApplicationProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleApplicationConstructOnly = GtkApplicationConstructOnly;
+
+export interface EntangleCameraProps {
+    /** @default FALSE */
+    'has-capture'?: boolean;
+    /** @default FALSE */
+    'has-preview'?: boolean;
+    /** @default FALSE */
+    'has-settings'?: boolean;
+    /** @default FALSE */
+    'has-viewfinder'?: boolean;
+    /** @default NULL */
+    model?: string;
+    /** @default NULL */
+    port?: string;
+    progress?: Entangle.Progress;
+    /** @default NULL */
+    serial?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleCameraConstructOnly = 'has-capture' | 'has-preview' | 'has-settings' | 'has-viewfinder' | 'model' | 'port' | 'serial';
+
+export interface EntangleCameraAutomataProps {
+    camera?: Entangle.Camera;
+    /** @default TRUE */
+    'delete-file'?: boolean;
+    session?: Entangle.Session;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleCameraAutomataConstructOnly = never;
+
+export interface EntangleCameraFileProps {
+    data?: Uint8Array[];
+    /** @default NULL */
+    folder?: string;
+    /** @default NULL */
+    mimetype?: string;
+    /** @default NULL */
+    name?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleCameraFileConstructOnly = 'folder' | 'name';
+
+export interface EntangleCameraListProps {
+    /** @default FALSE */
+    active?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleCameraListConstructOnly = 'active';
+
 export interface EntangleCameraManagerProps extends GtkApplicationWindowProps, EntangleProgressProps, GtkBuildableProps {
     camera?: Entangle.Camera;
 }
@@ -61,11 +118,73 @@ export interface EntangleCameraPickerProps extends GtkDialogProps, GtkBuildableP
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EntangleCameraPickerConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly;
 
+export interface EntangleCameraPreferencesProps {
+    camera?: Entangle.Camera;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleCameraPreferencesConstructOnly = never;
+
 export interface EntangleCameraSupportProps extends GtkDialogProps, GtkBuildableProps {
     'camera-list'?: Entangle.CameraList;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EntangleCameraSupportConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly;
+
+export interface EntangleColourProfileProps {
+    data?: Uint8Array[];
+    /** @default NULL */
+    filename?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleColourProfileConstructOnly = 'data' | 'filename';
+
+export interface EntangleColourProfileTransformProps {
+    'dst-profile'?: Entangle.ColourProfile;
+    'src-profile'?: Entangle.ColourProfile;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleColourProfileTransformConstructOnly = 'dst-profile' | 'src-profile';
+
+export interface EntangleControlProps {
+    /** @default FALSE */
+    dirty?: boolean;
+    /** @default 0 */
+    id?: number;
+    /** @default NULL */
+    info?: string;
+    /** @default NULL */
+    label?: string;
+    /** @default NULL */
+    path?: string;
+    /** @default FALSE */
+    readonly?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleControlConstructOnly = 'dirty' | 'id' | 'info' | 'label' | 'path' | 'readonly';
+
+export interface EntangleControlButtonProps extends EntangleControlProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleControlButtonConstructOnly = EntangleControlConstructOnly;
+
+export interface EntangleControlChoiceProps extends EntangleControlProps {
+    /** @default NULL */
+    value?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleControlChoiceConstructOnly = EntangleControlConstructOnly;
+
+export interface EntangleControlDateProps extends EntangleControlProps {
+    /** @default 0 */
+    value?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleControlDateConstructOnly = EntangleControlConstructOnly;
+
+export interface EntangleControlGroupProps extends EntangleControlProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleControlGroupConstructOnly = EntangleControlConstructOnly;
 
 export interface EntangleControlPanelProps extends GtkExpanderProps, GtkBuildableProps {
     'camera-prefs'?: Entangle.CameraPreferences;
@@ -73,10 +192,48 @@ export interface EntangleControlPanelProps extends GtkExpanderProps, GtkBuildabl
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EntangleControlPanelConstructOnly = GtkExpanderConstructOnly | GtkBuildableConstructOnly | 'camera-prefs';
 
+export interface EntangleControlRangeProps extends EntangleControlProps {
+    /** @default 0.000000 */
+    'range-max'?: number;
+    /** @default 0.000000 */
+    'range-min'?: number;
+    /** @default 0.000000 */
+    'range-step'?: number;
+    /** @default 0.000000 */
+    value?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleControlRangeConstructOnly = EntangleControlConstructOnly | 'range-max' | 'range-min' | 'range-step';
+
+export interface EntangleControlTextProps extends EntangleControlProps {
+    /** @default NULL */
+    value?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleControlTextConstructOnly = EntangleControlConstructOnly;
+
+export interface EntangleControlToggleProps extends EntangleControlProps {
+    /** @default FALSE */
+    value?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleControlToggleConstructOnly = EntangleControlConstructOnly;
+
+export interface EntangleDeviceManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleDeviceManagerConstructOnly = never;
+
 export interface EntangleHelpAboutProps extends GtkAboutDialogProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EntangleHelpAboutConstructOnly = GtkAboutDialogConstructOnly | GtkBuildableConstructOnly;
+
+export interface EntangleImageProps extends EntangleMediaProps {
+    pixbuf?: GdkPixbuf.Pixbuf;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleImageConstructOnly = EntangleMediaConstructOnly;
 
 export interface EntangleImageDisplayProps extends GtkDrawingAreaProps, GtkBuildableProps {
     /** @default 1.690000 */
@@ -108,6 +265,21 @@ export interface EntangleImageHistogramProps extends GtkDrawingAreaProps, GtkBui
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EntangleImageHistogramConstructOnly = GtkDrawingAreaConstructOnly | GtkBuildableConstructOnly;
 
+export interface EntangleImageLoaderProps extends EntanglePixbufLoaderProps {
+    /** @default FALSE */
+    'embedded-preview'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleImageLoaderConstructOnly = EntanglePixbufLoaderConstructOnly | 'embedded-preview';
+
+export interface EntangleMediaProps {
+    /** @default NULL */
+    filename?: string;
+    metadata?: GExiv2.Metadata;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleMediaConstructOnly = 'filename';
+
 export interface EntangleMediaPopupProps extends GtkWindowProps, GtkBuildableProps {
     media?: Entangle.Media;
 }
@@ -120,6 +292,71 @@ export interface EntangleMediaStatusbarProps extends GtkBoxProps, GtkBuildablePr
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EntangleMediaStatusbarConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
+export interface EntanglePixbufLoaderProps {
+    'colour-transform'?: Entangle.ColourProfileTransform | null;
+    /** @default FALSE */
+    'with-metadata'?: boolean;
+    /** @default 1 */
+    workers?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntanglePixbufLoaderConstructOnly = 'with-metadata' | 'workers';
+
+export interface EntanglePreferencesProps {
+    /** @default FALSE */
+    'capture-continuous-preview'?: boolean;
+    /** @default TRUE */
+    'capture-delete-file'?: boolean;
+    /** @default FALSE */
+    'capture-electronic-shutter'?: boolean;
+    /** @default NULL */
+    'capture-filename-pattern'?: string;
+    /** @default NULL */
+    'capture-last-session'?: string;
+    /** @default FALSE */
+    'capture-sync-clock'?: boolean;
+    /** @default TRUE */
+    'cms-detect-system-profile'?: boolean;
+    /** @default FALSE */
+    'cms-enabled'?: boolean;
+    'cms-monitor-profile'?: Entangle.ColourProfile;
+    'cms-rgb-profile'?: Entangle.ColourProfile;
+    /** @default 1.33 */
+    'img-aspect-ratio'?: string;
+    /** @default #000000 */
+    'img-background'?: string;
+    /** @default FALSE */
+    'img-embedded-preview'?: boolean;
+    /** @default TRUE */
+    'img-flip-horizontally'?: boolean;
+    /** @default TRUE */
+    'img-flip-vertically'?: boolean;
+    /** @default FALSE */
+    'img-focus-point'?: boolean;
+    /** @default 4 */
+    'img-grid-lines'?: number;
+    /** @default #FFFFFF */
+    'img-highlight'?: string;
+    /** @default FALSE */
+    'img-mask-enabled'?: boolean;
+    /** @default 90 */
+    'img-mask-opacity'?: number;
+    /** @default 3 */
+    'img-onion-layers'?: number;
+    /** @default FALSE */
+    'img-onion-skin'?: boolean;
+    /** @default TRUE */
+    'img-overexposure-highlighting'?: boolean;
+    /** @default TRUE */
+    'interface-auto-connect'?: boolean;
+    /** @default FALSE */
+    'interface-histogram-linear'?: boolean;
+    /** @default FALSE */
+    'interface-screen-blank'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntanglePreferencesConstructOnly = never;
+
 export interface EntanglePreferencesDisplayProps extends GtkDialogProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -130,10 +367,31 @@ export interface EntangleProgressProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EntangleProgressConstructOnly = never;
 
+export interface EntangleScriptProps {
+    /** @default Untitled script */
+    title?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleScriptConstructOnly = never;
+
 export interface EntangleScriptConfigProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EntangleScriptConfigConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface EntangleScriptSimpleProps extends EntangleScriptProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleScriptSimpleConstructOnly = EntangleScriptConstructOnly;
+
+export interface EntangleSessionProps {
+    /** @default NULL */
+    directory?: string;
+    /** @default NULL */
+    'filename-pattern'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleSessionConstructOnly = 'directory' | 'filename-pattern';
 
 export interface EntangleSessionBrowserProps extends GtkDrawingAreaProps, GtkBuildableProps, GtkScrollableProps {
     session?: Entangle.Session;
@@ -141,6 +399,63 @@ export interface EntangleSessionBrowserProps extends GtkDrawingAreaProps, GtkBui
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EntangleSessionBrowserConstructOnly = GtkDrawingAreaConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly;
+
+export interface EntangleThumbnailLoaderProps extends EntanglePixbufLoaderProps {
+    /** @default 128 */
+    height?: number;
+    /** @default 128 */
+    width?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleThumbnailLoaderConstructOnly = EntanglePixbufLoaderConstructOnly | 'height' | 'width';
+
+export interface EntangleVideoProps extends EntangleMediaProps {
+    source?: GstBase.BaseSrc;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EntangleVideoConstructOnly = EntangleMediaConstructOnly;
+
+/** `GApplication` is the core class for application support. */
+export interface GApplicationProps {
+    /**
+     * The group of actions that the application exports.
+     * @since 2.28
+     * @deprecated since 2.32: Use the [iface@Gio.ActionMap] interface instead.
+     */
+    'action-group'?: Gio.ActionGroup;
+    /**
+     * The unique identifier for the application.
+     * @since 2.28
+     * @default NULL
+     */
+    'application-id'?: string | null;
+    /**
+     * Flags specifying the behaviour of the application.
+     * @since 2.28
+     * @default G_APPLICATION_FLAGS_NONE
+     */
+    flags?: number;
+    /**
+     * Time (in milliseconds) to stay alive after becoming idle.
+     * @since 2.28
+     * @default 0
+     */
+    'inactivity-timeout'?: number;
+    /**
+     * The base resource path for the application.
+     * @since 2.28
+     * @default NULL
+     */
+    'resource-base-path'?: string | null;
+    /**
+     * The human-readable version number of the application.
+     * @since 2.80
+     * @default NULL
+     */
+    version?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GApplicationConstructOnly = never;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -244,7 +559,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -296,7 +615,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -310,7 +636,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -322,8 +658,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -361,10 +697,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -388,7 +725,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

@@ -3,7 +3,7 @@
  *
  * GENERATED — do not edit. Provenance: Handy-1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
  *
- * 29 concrete widgets, 30 declarations, 11 enum nick unions, 24 slot candidates.
+ * 37 instantiable GTypes (of which 29 concrete widgets), 38 declarations, 11 enum nick unions, 24 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -24,6 +24,8 @@
  * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
  */
 
+import type GObject from '@girs/gobject-2.0';
+import type Gdk from '@girs/gdk-3.0';
 import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type Handy from './handy-1.js';
@@ -307,6 +309,12 @@ export interface HdyDeckProps extends GtkContainerProps, GtkBuildableProps, GtkO
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type HdyDeckConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | HdySwipeableConstructOnly;
 
+/** An object representing an [struct@GObject.EnumValue]. */
+export interface HdyEnumValueObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdyEnumValueObjectConstructOnly = never;
+
 /** A [class@Gtk.ListBoxRow] used to reveal widgets. */
 export interface HdyExpanderRowProps extends HdyPreferencesRowProps, GtkActionableProps, GtkBuildableProps {
     /**
@@ -498,6 +506,24 @@ export interface HdyHeaderBarProps extends GtkContainerProps, GtkBuildableProps 
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type HdyHeaderBarConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly;
+
+/** An object handling composite title bars. */
+export interface HdyHeaderGroupProps extends GtkBuildableProps {
+    /**
+     * Whether the elements of the group should all receive the full decoration.
+     * @since 1.0
+     * @default FALSE
+     */
+    'decorate-all'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdyHeaderGroupConstructOnly = GtkBuildableConstructOnly;
+
+/** A child object for [class@HeaderGroup]. */
+export interface HdyHeaderGroupChildProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdyHeaderGroupChildConstructOnly = never;
 
 /** A keypad for dialing numbers The `HdyKeypad` widget is a keypad for entering numbers such as phone numbers or PIN codes. */
 export interface HdyKeypadProps extends GtkBinProps, GtkBuildableProps {
@@ -776,6 +802,64 @@ export interface HdyStatusPageProps extends GtkBinProps, GtkBuildableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type HdyStatusPageConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
+/** A class for managing application-wide styling. */
+export interface HdyStyleManagerProps {
+    /**
+     * The requested application color scheme.
+     * @since 1.6
+     * @default HDY_COLOR_SCHEME_DEFAULT
+     */
+    'color-scheme'?: HdyColorSchemeNick | Handy.ColorScheme;
+    /**
+     * The display the style manager is associated with.
+     * @since 1.6
+     */
+    display?: Gdk.Display;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdyStyleManagerConstructOnly = 'display';
+
+/** An object for syncing swipeable widgets. */
+export interface HdySwipeGroupProps extends GtkBuildableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdySwipeGroupConstructOnly = GtkBuildableConstructOnly;
+
+/** Swipe tracker used in [class@Carousel] and [class@Leaflet]. */
+export interface HdySwipeTrackerProps extends GtkOrientableProps {
+    /**
+     * Whether to allow swiping for more than one snap point at a time.
+     * @since 1.2
+     * @default FALSE
+     */
+    'allow-long-swipes'?: boolean;
+    /**
+     * Whether to allow dragging with mouse pointer.
+     * @since 1.0
+     * @default FALSE
+     */
+    'allow-mouse-drag'?: boolean;
+    /**
+     * Whether the swipe tracker is enabled.
+     * @since 1.0
+     * @default TRUE
+     */
+    enabled?: boolean;
+    /**
+     * Whether to reverse the swipe direction.
+     * @since 1.0
+     * @default FALSE
+     */
+    reversed?: boolean;
+    /**
+     * The widget the swipe tracker is attached to.
+     * @since 1.0
+     */
+    swipeable?: Handy.Swipeable;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdySwipeTrackerConstructOnly = GtkOrientableConstructOnly | 'swipeable';
+
 /** An interface for swipeable widgets. */
 export interface HdySwipeableProps extends GtkWidgetProps {
 }
@@ -826,6 +910,62 @@ export interface HdyTabBarProps extends GtkBinProps, GtkBuildableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type HdyTabBarConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
+/** An auxiliary class used by [class@TabView]. */
+export interface HdyTabPageProps {
+    /**
+     * The child of the page.
+     * @since 1.2
+     */
+    child?: Gtk.Widget;
+    /**
+     * The icon of the page.
+     * @since 1.2
+     */
+    icon?: Gio.Icon | null;
+    /**
+     * Whether the indicator icon is activatable.
+     * @since 1.2
+     * @default FALSE
+     */
+    'indicator-activatable'?: boolean;
+    /**
+     * An indicator icon for the page.
+     * @since 1.2
+     */
+    'indicator-icon'?: Gio.Icon | null;
+    /**
+     * Whether the page is loading.
+     * @since 1.2
+     * @default FALSE
+     */
+    loading?: boolean;
+    /**
+     * Whether the page needs attention.
+     * @since 1.2
+     * @default FALSE
+     */
+    'needs-attention'?: boolean;
+    /**
+     * The parent page of the page.
+     * @since 1.2
+     */
+    parent?: Handy.TabPage | null;
+    /**
+     * The title of the page.
+     * @since 1.2
+     * @default NULL
+     */
+    title?: string | null;
+    /**
+     * The tooltip of the page.
+     * @since 1.2
+     * @default NULL
+     */
+    tooltip?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdyTabPageConstructOnly = 'child' | 'parent';
+
 /** A dynamic tabbed container. */
 export interface HdyTabViewProps extends GtkBinProps, GtkBuildableProps {
     /**
@@ -864,6 +1004,17 @@ export interface HdyTitleBarProps extends GtkBinProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type HdyTitleBarConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
+
+/** An object representing a [struct@GObject.Value]. */
+export interface HdyValueObjectProps {
+    /**
+     * The contained value.
+     * @since 1.0
+     */
+    value?: GObject.Value;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdyValueObjectConstructOnly = 'value';
 
 /** An adaptive view switcher. */
 export interface HdyViewSwitcherProps extends GtkBinProps, GtkBuildableProps {
@@ -1217,7 +1368,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -1269,7 +1424,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -1283,7 +1445,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -1295,8 +1467,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -1334,10 +1506,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -1361,7 +1534,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

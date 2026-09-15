@@ -1,6 +1,6 @@
 // The widget vocabulary of Ide-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Ide-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
+// GENERATED — do not edit. Provenance: Ide-1.0 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap Gio.ListModel Gio.Initable Gio.AsyncInitable GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,71 +11,225 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface', 'Gio.ActionGroup', 'Gio.ActionMap'],
-    inlinedBases: [],
+    droppedBases: ['GObject.Object', 'Gio.ActionGroup', 'Gio.ActionMap', 'Gio.ListModel', 'Gio.Initable', 'Gio.AsyncInitable', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    inlinedBases: ['Gio.Application'],
     unsettableProps: [],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
+    GApplication: ['action-group', 'application-id', 'flags', 'inactivity-timeout', 'resource-base-path', 'version'],
+    IdeBackForwardItem: ['mark', 'uri'],
+    IdeBuffer: ['context', 'file', 'highlight-diagnostics', 'style-scheme-name', 'title'],
+    IdeBufferChangeMonitor: ['buffer'],
+    IdeBufferManager: ['auto-save', 'auto-save-timeout', 'focus-buffer', 'minimum-word-size'],
+    IdeBuildPipeline: ['busy', 'configuration'],
+    IdeBuildStage: ['check-stdout', 'completed', 'disabled', 'name', 'stdout-path', 'transient'],
+    IdeBuildStageLauncher: ['clean-launcher', 'ignore-exit-status', 'launcher'],
+    IdeBuildStageTransfer: ['disable-when-metered', 'transfer'],
+    IdeBuildSystem: ['context', 'project-file'],
+    IdeBuildconfigConfiguration: ['postbuild', 'prebuild'],
+    IdeCompletionResults: ['query'],
+    IdeConfiguration: ['app-id', 'build-commands', 'config-opts', 'debug', 'device', 'device-id', 'dirty', 'display-name', 'id', 'parallelism', 'post-install-commands', 'prefix', 'runtime', 'runtime-id'],
+    IdeConfigurationManager: ['current'],
+    IdeContext: ['project-file', 'root-build-dir', 'snippets-manager'],
+    IdeCursor: ['ide-source-view'],
+    IdeDevice: ['display-name', 'id'],
+    IdeDirectoryBuildSystem: ['project-file'],
+    IdeDoap: ['bug-database', 'category', 'description', 'download-page', 'homepage', 'languages', 'name', 'shortdesc'],
+    IdeDoapPerson: ['email', 'name'],
     IdeEditorView: ['document'],
+    IdeEnvironmentVariable: ['key', 'value'],
+    IdeExtensionAdapter: ['engine', 'interface-type', 'key', 'value'],
+    IdeExtensionSetAdapter: ['engine', 'interface-type', 'key', 'value'],
+    IdeFile: ['file', 'path', 'temporary-id'],
+    IdeFileSettings: ['encoding', 'encoding-set', 'file', 'indent-style', 'indent-style-set', 'indent-width', 'indent-width-set', 'insert-trailing-newline', 'insert-trailing-newline-set', 'newline-type', 'newline-type-set', 'overwrite-braces', 'overwrite-braces-set', 'right-margin-position', 'right-margin-position-set', 'settled', 'show-right-margin', 'show-right-margin-set', 'tab-width', 'tab-width-set', 'trim-trailing-whitespace', 'trim-trailing-whitespace-set'],
+    IdeFormatterOptions: ['insert-spaces', 'tab-width'],
+    IdeHighlightEngine: ['buffer'],
+    IdeHighlighter: ['context'],
+    IdeLangservClient: ['io-stream'],
+    IdeLangservFormatter: ['client'],
+    IdeLangservHighlighter: ['client'],
     IdeLayoutStack: ['active-view'],
+    IdeObject: ['context'],
     IdeOmniSearchDisplay: ['context'],
     IdeOmniSearchGroup: ['provider'],
     IdeOmniSearchRow: ['icon-name', 'result'],
+    IdePkconTransfer: ['packages'],
+    IdeProgress: ['fraction', 'message'],
+    IdeProject: ['root'],
+    IdeProjectEdit: ['range', 'replacement'],
+    IdeProjectFile: ['file', 'file-info', 'path'],
+    IdeProjectInfo: ['build-system-name', 'description', 'directory', 'doap', 'file', 'is-recent', 'languages', 'last-modified-at', 'name', 'priority'],
+    IdeProjectItem: ['parent'],
+    IdeRunManager: ['build-target'],
+    IdeRunner: ['argv', 'clear-env', 'failed', 'run-on-host'],
+    IdeRuntime: ['display-name', 'id'],
+    IdeSearchResult: ['provider', 'score', 'subtitle', 'title'],
+    IdeSettings: ['ignore-project-settings', 'relative-path', 'schema-id'],
+    IdeSourceSnippet: ['description', 'language', 'snippet-text', 'trigger'],
+    IdeSourceSnippetChunk: ['context', 'spec', 'tab-stop', 'text', 'text-set'],
     IdeSourceView: ['back-forward-list', 'count', 'enable-word-completion', 'font-desc', 'font-name', 'indent-style', 'insert-matching-brace', 'overscroll', 'overwrite-braces', 'rubberband-search', 'scroll-offset', 'search-direction', 'show-grid-lines', 'show-line-changes', 'show-line-diagnostics', 'show-search-bubbles', 'show-search-shadow', 'snippet-completion', 'spell-checking'],
+    IdeSubprocessLauncher: ['clean-env', 'cwd', 'environ', 'flags', 'run-on-host'],
+    IdeSymbolNode: ['flags', 'kind', 'name', 'use-markup'],
+    IdeTransfer: ['icon-name', 'progress', 'status', 'title'],
     IdeTransferButton: ['transfer'],
     IdeTransferRow: ['transfer'],
     IdeTransfersProgressIcon: ['progress'],
+    IdeVcs: ['context'],
     IdeWorkbench: ['disable-greeter', 'visible-perspective', 'visible-perspective-name'],
     IdeWorkbenchMessage: ['id', 'subtitle', 'title'],
 };
 
 export const OWN_SIGNALS = {
+    GApplication: ['activate', 'command-line', 'handle-local-options', 'name-lost', 'open', 'shutdown', 'startup'],
+    IdeBackForwardList: ['navigate-to'],
+    IdeBuffer: ['cursor-moved', 'destroy', 'line-flags-changed', 'loaded', 'saved', 'symbol-resolver-loaded'],
+    IdeBufferChangeMonitor: ['changed'],
+    IdeBufferManager: ['buffer-focus-enter', 'buffer-focus-leave', 'buffer-loaded', 'buffer-saved', 'buffer-unloaded', 'create-buffer', 'load-buffer', 'save-buffer'],
+    IdeBuildManager: ['build-failed', 'build-finished', 'build-started'],
+    IdeBuildPipeline: ['diagnostic', 'finished', 'started'],
+    IdeBuildStage: ['chain', 'query', 'reap'],
+    IdeConfiguration: ['changed'],
+    IdeConfigurationManager: ['invalidate'],
+    IdeContext: ['loaded'],
+    IdeDeviceManager: ['device-added', 'device-removed'],
+    IdeDiagnosticsManager: ['changed'],
     IdeEditorPerspective: ['view-added', 'view-removed'],
     IdeEditorView: ['request-documentation'],
+    IdeEnvironment: ['changed'],
+    IdeExtensionSetAdapter: ['extension-added', 'extension-removed'],
+    IdeLangservClient: ['notification', 'published-diagnostics', 'supports-language'],
     IdeLayoutGrid: ['empty'],
     IdeLayoutStack: ['empty', 'split'],
+    IdeObject: ['destroy'],
     IdeOmniSearchDisplay: ['activate', 'result-activated'],
     IdeOmniSearchEntry: ['clear-search', 'move-next-result', 'move-previous-result'],
     IdeOmniSearchGroup: ['result-activated', 'result-selected'],
+    IdeProject: ['file-renamed', 'file-trashed'],
+    IdeRunManager: ['run', 'stopped'],
+    IdeRunner: ['exited', 'spawned'],
+    IdeSearchContext: ['completed', 'count-set', 'result-added', 'result-removed'],
+    IdeSettings: ['changed'],
     IdeSourceMap: ['hide-map', 'show-map'],
+    IdeSourceSnippetContext: ['changed'],
     IdeSourceView: ['action', 'add-cursor', 'append-to-count', 'begin-macro', 'begin-rename', 'begin-user-action', 'capture-modifier', 'clear-count', 'clear-modifier', 'clear-search', 'clear-selection', 'clear-snippets', 'cycle-completion', 'decrease-font-size', 'delete-selection', 'duplicate-entire-line', 'end-macro', 'end-user-action', 'find-references', 'focus-location', 'format-selection', 'goto-definition', 'hide-completion', 'increase-font-size', 'indent-selection', 'insert-modifier', 'jump', 'move-error', 'move-search', 'movement', 'paste-clipboard-extended', 'pop-selection', 'pop-snippet', 'push-selection', 'push-snippet', 'rebuild-highlight', 'reindent', 'remove-cursors', 'replay-macro', 'request-documentation', 'reset-font-size', 'restore-insert-mark', 'save-command', 'save-insert-mark', 'save-search-char', 'select-inner', 'select-tag', 'selection-theatric', 'set-mode', 'set-overwrite', 'set-search-text', 'sort', 'swap-selection-bounds'],
     IdeSourceViewMode: ['action', 'add-cursor', 'append-to-count', 'backspace', 'begin-macro', 'begin-rename', 'begin-user-action', 'capture-modifier', 'change-case', 'change-number', 'clear-count', 'clear-modifier', 'clear-search', 'clear-selection', 'clear-snippets', 'copy-clipboard', 'cut-clipboard', 'cycle-completion', 'decrease-font-size', 'delete-from-cursor', 'delete-selection', 'duplicate-entire-line', 'end-macro', 'end-user-action', 'find-references', 'format-selection', 'goto-definition', 'hide-completion', 'increase-font-size', 'indent-selection', 'insert-at-cursor', 'insert-modifier', 'join-lines', 'move-cursor', 'move-error', 'move-lines', 'move-search', 'move-to-matching-bracket', 'move-viewport', 'move-words', 'movement', 'paste-clipboard', 'paste-clipboard-extended', 'pop-selection', 'preedit-changed', 'push-selection', 'rebuild-highlight', 'redo', 'reindent', 'remove-cursors', 'replay-macro', 'request-documentation', 'reset-font-size', 'restore-insert-mark', 'save-command', 'save-insert-mark', 'save-search-char', 'select-all', 'select-inner', 'select-tag', 'selection-theatric', 'set-anchor', 'set-mode', 'set-overwrite', 'set-search-text', 'show-completion', 'sort', 'swap-selection-bounds', 'toggle-cursor-visible', 'toggle-overwrite', 'undo'],
+    IdeSubprocessSupervisor: ['spawned', 'supervise', 'unsupervise'],
+    IdeTransferManager: ['all-transfers-completed', 'transfer-completed', 'transfer-failed'],
     IdeTransferRow: ['cancelled'],
+    IdeVcs: ['changed'],
     IdeWorkbench: ['action', 'set-perspective', 'unload'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
+    IdeApplication: ['IdeApplication', 'DzlApplication', 'GtkApplication', 'GApplication'],
+    IdeBackForwardItem: ['IdeBackForwardItem', 'IdeObject'],
+    IdeBackForwardList: ['IdeBackForwardList', 'IdeObject'],
+    IdeBuffer: ['IdeBuffer', 'GtkSourceBuffer', 'GtkTextBuffer'],
+    IdeBufferChangeMonitor: ['IdeBufferChangeMonitor', 'IdeObject'],
+    IdeBufferManager: ['IdeBufferManager', 'IdeObject'],
+    IdeBuildManager: ['IdeBuildManager', 'IdeObject'],
+    IdeBuildPipeline: ['IdeBuildPipeline', 'IdeObject'],
+    IdeBuildStage: ['IdeBuildStage', 'IdeObject'],
+    IdeBuildStageLauncher: ['IdeBuildStageLauncher', 'IdeBuildStage', 'IdeObject'],
+    IdeBuildStageMkdirs: ['IdeBuildStageMkdirs', 'IdeBuildStage', 'IdeObject'],
+    IdeBuildStageTransfer: ['IdeBuildStageTransfer', 'IdeBuildStage', 'IdeObject'],
+    IdeBuildconfigConfiguration: ['IdeBuildconfigConfiguration', 'IdeConfiguration', 'IdeObject'],
+    IdeBuildconfigConfigurationProvider: ['IdeBuildconfigConfigurationProvider', 'IdeConfigurationProvider'],
+    IdeCompletionResults: ['IdeCompletionResults'],
+    IdeCompletionWords: ['IdeCompletionWords', 'GtkSourceCompletionWords', 'GtkSourceCompletionProvider'],
+    IdeConfiguration: ['IdeConfiguration', 'IdeObject'],
+    IdeConfigurationManager: ['IdeConfigurationManager', 'IdeObject'],
+    IdeContext: ['IdeContext'],
+    IdeCursor: ['IdeCursor'],
+    IdeDeviceManager: ['IdeDeviceManager', 'IdeObject'],
+    IdeDiagnosticsManager: ['IdeDiagnosticsManager', 'IdeObject'],
+    IdeDirectoryBuildSystem: ['IdeDirectoryBuildSystem', 'IdeObject', 'IdeBuildSystem'],
+    IdeDirectoryVcs: ['IdeDirectoryVcs', 'IdeObject', 'IdeVcs'],
+    IdeDoap: ['IdeDoap'],
+    IdeDoapPerson: ['IdeDoapPerson'],
     IdeEditorPerspective: ['IdeEditorPerspective', 'DzlDockOverlay', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'DzlDock', 'DzlDockItem', 'GtkBuildable', 'IdePerspective'],
     IdeEditorView: ['IdeEditorView', 'IdeLayoutView', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    IdeEnvironment: ['IdeEnvironment'],
+    IdeEnvironmentVariable: ['IdeEnvironmentVariable'],
+    IdeExtensionAdapter: ['IdeExtensionAdapter', 'IdeObject'],
+    IdeExtensionSetAdapter: ['IdeExtensionSetAdapter', 'IdeObject'],
+    IdeFile: ['IdeFile', 'IdeObject'],
+    IdeFileSettings: ['IdeFileSettings', 'IdeObject'],
+    IdeFormatterOptions: ['IdeFormatterOptions'],
+    IdeHighlightEngine: ['IdeHighlightEngine', 'IdeObject'],
+    IdeLangservClient: ['IdeLangservClient', 'IdeObject'],
+    IdeLangservFormatter: ['IdeLangservFormatter', 'IdeObject', 'IdeFormatter'],
+    IdeLangservHighlighter: ['IdeLangservHighlighter', 'IdeObject', 'IdeHighlighter'],
+    IdeLangservSymbolNode: ['IdeLangservSymbolNode', 'IdeSymbolNode', 'IdeObject'],
+    IdeLangservSymbolTree: ['IdeLangservSymbolTree', 'IdeSymbolTree'],
     IdeLayout: ['IdeLayout', 'DzlDockBin', 'GtkContainer', 'GtkWidget', 'DzlDock', 'DzlDockItem', 'GtkBuildable'],
     IdeLayoutGrid: ['IdeLayoutGrid', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     IdeLayoutPane: ['IdeLayoutPane', 'DzlDockBinEdge', 'DzlDockRevealer', 'DzlBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'DzlDockItem', 'GtkBuildable'],
     IdeLayoutStack: ['IdeLayoutStack', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     IdeLayoutView: ['IdeLayoutView', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    IdeLocalDevice: ['IdeLocalDevice', 'IdeDevice', 'IdeObject'],
+    IdeObject: ['IdeObject'],
     IdeOmniBar: ['IdeOmniBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     IdeOmniSearchDisplay: ['IdeOmniSearchDisplay', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     IdeOmniSearchEntry: ['IdeOmniSearchEntry', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
     IdeOmniSearchGroup: ['IdeOmniSearchGroup', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     IdeOmniSearchRow: ['IdeOmniSearchRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkActionable'],
+    IdePkconTransfer: ['IdePkconTransfer', 'IdeTransfer'],
     IdePreferencesPerspective: ['IdePreferencesPerspective', 'DzlPreferencesView', 'GtkBin', 'GtkContainer', 'GtkWidget', 'DzlPreferences', 'GtkBuildable', 'IdePerspective'],
+    IdeProgress: ['IdeProgress'],
+    IdeProject: ['IdeProject', 'IdeObject'],
+    IdeProjectEdit: ['IdeProjectEdit'],
+    IdeProjectFile: ['IdeProjectFile', 'IdeProjectItem', 'IdeObject'],
+    IdeProjectFiles: ['IdeProjectFiles', 'IdeProjectItem', 'IdeObject'],
+    IdeProjectInfo: ['IdeProjectInfo'],
+    IdeProjectItem: ['IdeProjectItem', 'IdeObject'],
+    IdeRecentProjects: ['IdeRecentProjects'],
     IdeRunButton: ['IdeRunButton', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    IdeRunManager: ['IdeRunManager', 'IdeObject'],
+    IdeRunner: ['IdeRunner', 'IdeObject'],
+    IdeRuntime: ['IdeRuntime', 'IdeObject'],
+    IdeRuntimeManager: ['IdeRuntimeManager', 'IdeObject'],
+    IdeSearchContext: ['IdeSearchContext', 'IdeObject'],
+    IdeSearchEngine: ['IdeSearchEngine', 'IdeObject'],
+    IdeSearchResult: ['IdeSearchResult', 'IdeObject'],
+    IdeSettings: ['IdeSettings', 'IdeObject'],
     IdeSourceMap: ['IdeSourceMap', 'GtkSourceMap', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
+    IdeSourceSnippet: ['IdeSourceSnippet'],
+    IdeSourceSnippetChunk: ['IdeSourceSnippetChunk'],
+    IdeSourceSnippetContext: ['IdeSourceSnippetContext'],
+    IdeSourceSnippets: ['IdeSourceSnippets'],
+    IdeSourceSnippetsManager: ['IdeSourceSnippetsManager'],
     IdeSourceView: ['IdeSourceView', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
     IdeSourceViewMode: ['IdeSourceViewMode', 'GtkWidget', 'GtkBuildable'],
+    IdeSubprocessLauncher: ['IdeSubprocessLauncher'],
+    IdeSubprocessSupervisor: ['IdeSubprocessSupervisor'],
+    IdeSymbolNode: ['IdeSymbolNode', 'IdeObject'],
+    IdeTransfer: ['IdeTransfer'],
     IdeTransferButton: ['IdeTransferButton', 'DzlProgressButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    IdeTransferManager: ['IdeTransferManager', 'IdeObject'],
     IdeTransferRow: ['IdeTransferRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkActionable'],
     IdeTransfersButton: ['IdeTransfersButton', 'GtkMenuButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
     IdeTransfersProgressIcon: ['IdeTransfersProgressIcon', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
+    IdeUnsavedFiles: ['IdeUnsavedFiles', 'IdeObject'],
     IdeWorkbench: ['IdeWorkbench', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     IdeWorkbenchHeaderBar: ['IdeWorkbenchHeaderBar', 'GtkHeaderBar', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     IdeWorkbenchMessage: ['IdeWorkbenchMessage', 'GtkInfoBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -98,7 +252,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -269,15 +423,37 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
 export const FLAG_VALUES = {
+    'GApplicationFlags.allow-replacement': 128,
+    'GApplicationFlags.can-override-app-id': 64,
+    'GApplicationFlags.default-flags': 0,
+    'GApplicationFlags.flags-none': 0,
+    'GApplicationFlags.handles-command-line': 8,
+    'GApplicationFlags.handles-open': 4,
+    'GApplicationFlags.is-launcher': 2,
+    'GApplicationFlags.is-service': 1,
+    'GApplicationFlags.non-unique': 32,
+    'GApplicationFlags.replace': 256,
+    'GApplicationFlags.send-environment': 16,
+    'GSubprocessFlags.inherit-fds': 128,
+    'GSubprocessFlags.none': 0,
+    'GSubprocessFlags.search-path-from-envp': 256,
+    'GSubprocessFlags.stderr-merge': 64,
+    'GSubprocessFlags.stderr-pipe': 16,
+    'GSubprocessFlags.stderr-silence': 32,
+    'GSubprocessFlags.stdin-inherit': 2,
+    'GSubprocessFlags.stdin-pipe': 1,
+    'GSubprocessFlags.stdout-pipe': 4,
+    'GSubprocessFlags.stdout-silence': 8,
     'IdeBufferLineFlags.added': 1,
     'IdeBufferLineFlags.changed': 2,
     'IdeBufferLineFlags.deleted': 4,
@@ -322,11 +498,17 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
+    'GApplication.flags': 'GApplicationFlags',
+    'IdeFileSettings.indent-style': 'IdeIndentStyle',
+    'IdeFileSettings.newline-type': 'GtkSourceNewlineType',
     'IdeSourceView.indent-style': 'IdeIndentStyle',
     'IdeSourceView.search-direction': 'GtkDirectionType',
+    'IdeSubprocessLauncher.flags': 'GSubprocessFlags',
+    'IdeSymbolNode.flags': 'IdeSymbolFlags',
+    'IdeSymbolNode.kind': 'IdeSymbolKind',
 };
 
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
@@ -364,4 +546,14 @@ export const SLOT_CANDIDATES = {
     },
 };
 
-export const SINCE = {};
+export const SINCE = {
+    'GApplication': '2.28',
+    'GApplication.action-group': '2.28',
+    'GApplication.application-id': '2.28',
+    'GApplication.flags': '2.28',
+    'GApplication.inactivity-timeout': '2.28',
+    'GApplication.resource-base-path': '2.28',
+    'GApplication.version': '2.80',
+    'GApplication::handle-local-options': '2.40',
+    'GApplication::name-lost': '2.60',
+};

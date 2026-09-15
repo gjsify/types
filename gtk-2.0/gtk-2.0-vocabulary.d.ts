@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Gtk-2.0.
  *
- * GENERATED — do not edit. Provenance: Gtk-2.0 — library 2.24.33 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Gtk.Notebook.group Gtk.Object.user-data
+ * GENERATED — do not edit. Provenance: Gtk-2.0 — library 2.24.33 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Atk.Object Gio.MountOperation — prop(s) no TypeScript value satisfies: Gtk.Notebook.group Gtk.Object.user-data
  *
- * 105 concrete widgets, 129 declarations, 94 enum nick unions, 20 slot candidates.
+ * 161 instantiable GTypes (of which 105 concrete widgets), 194 declarations (2 inlined from a namespace whose vocabulary does not emit them), 101 enum nick unions, 20 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -24,6 +24,7 @@
  * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
  */
 
+import type Atk from '@girs/atk-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type Gdk from '@girs/gdk-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
@@ -41,6 +42,8 @@ import type Pango from '@girs/pango-1.0';
 // Re-measure with `scripts/check-nick-derivation.mjs` in ts-for-gir.
 // ---------------------------------------------------------------------------
 
+export type AtkRoleNick = 'invalid' | 'accelerator-label' | 'alert' | 'animation' | 'arrow' | 'calendar' | 'canvas' | 'check-box' | 'check-menu-item' | 'color-chooser' | 'column-header' | 'combo-box' | 'date-editor' | 'desktop-icon' | 'desktop-frame' | 'dial' | 'dialog' | 'directory-pane' | 'drawing-area' | 'file-chooser' | 'filler' | 'font-chooser' | 'frame' | 'glass-pane' | 'html-container' | 'icon' | 'image' | 'internal-frame' | 'label' | 'layered-pane' | 'list' | 'list-item' | 'menu' | 'menu-bar' | 'menu-item' | 'option-pane' | 'page-tab' | 'page-tab-list' | 'panel' | 'password-text' | 'popup-menu' | 'progress-bar' | 'button' | 'radio-button' | 'radio-menu-item' | 'root-pane' | 'row-header' | 'scroll-bar' | 'scroll-pane' | 'separator' | 'slider' | 'split-pane' | 'spin-button' | 'statusbar' | 'table' | 'table-cell' | 'table-column-header' | 'table-row-header' | 'tear-off-menu-item' | 'terminal' | 'text' | 'toggle-button' | 'tool-bar' | 'tool-tip' | 'tree' | 'tree-table' | 'unknown' | 'viewport' | 'window' | 'header' | 'footer' | 'paragraph' | 'ruler' | 'application' | 'autocomplete' | 'edit-bar' | 'embedded' | 'entry' | 'chart' | 'caption' | 'document-frame' | 'heading' | 'page' | 'section' | 'redundant-object' | 'form' | 'link' | 'input-method-window' | 'table-row' | 'tree-item' | 'document-spreadsheet' | 'document-presentation' | 'document-text' | 'document-web' | 'document-email' | 'comment' | 'list-box' | 'grouping' | 'image-map' | 'notification' | 'info-bar' | 'level-bar' | 'title-bar' | 'block-quote' | 'audio' | 'video' | 'definition' | 'article' | 'landmark' | 'log' | 'marquee' | 'math' | 'rating' | 'timer' | 'description-list' | 'description-term' | 'description-value' | 'static' | 'math-fraction' | 'math-root' | 'subscript' | 'superscript' | 'footnote' | 'content-deletion' | 'content-insertion' | 'mark' | 'suggestion' | 'push-button-menu' | 'switch' | 'last-defined' | 'push-button';
+export type GPasswordSaveNick = 'never' | 'for-session' | 'permanently';
 export type GdkExtensionModeNick = 'none' | 'all' | 'cursor';
 export type GdkGravityNick = 'north-west' | 'north' | 'north-east' | 'west' | 'center' | 'east' | 'south-west' | 'south' | 'south-east' | 'static';
 export type GdkWindowTypeHintNick = 'normal' | 'dialog' | 'menu' | 'toolbar' | 'splashscreen' | 'utility' | 'dock' | 'desktop' | 'dropdown-menu' | 'popup-menu' | 'tooltip' | 'notification' | 'combo' | 'dnd';
@@ -133,7 +136,12 @@ export type GtkWidgetHelpTypeNick = 'tooltip' | 'whats-this';
 export type GtkWindowPositionNick = 'none' | 'center' | 'mouse' | 'center-always' | 'center-on-parent';
 export type GtkWindowTypeNick = 'toplevel' | 'popup';
 export type GtkWrapModeNick = 'none' | 'char' | 'word' | 'word-char';
+export type PangoAlignmentNick = 'left' | 'center' | 'right';
 export type PangoEllipsizeModeNick = 'none' | 'start' | 'middle' | 'end';
+export type PangoStretchNick = 'ultra-condensed' | 'extra-condensed' | 'condensed' | 'semi-condensed' | 'normal' | 'semi-expanded' | 'expanded' | 'extra-expanded' | 'ultra-expanded';
+export type PangoStyleNick = 'normal' | 'oblique' | 'italic';
+export type PangoUnderlineNick = 'none' | 'single' | 'double' | 'low' | 'error' | 'single-line' | 'double-line' | 'error-line';
+export type PangoVariantNick = 'normal' | 'small-caps' | 'all-small-caps' | 'petite-caps' | 'all-petite-caps' | 'unicase' | 'title-caps';
 export type PangoWrapModeNick = 'word' | 'char' | 'word-char' | 'none';
 
 // ---------------------------------------------------------------------------
@@ -145,6 +153,113 @@ export type PangoWrapModeNick = 'word' | 'char' | 'word-char' | 'none';
 // because GObject installs interface properties on the implementor at runtime while
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
+
+/** The base object class for the Accessibility Toolkit API. */
+export interface AtkObjectProps {
+    /** @default NULL */
+    'accessible-description'?: string;
+    /** @default NULL */
+    'accessible-help-text'?: string;
+    /** @default NULL */
+    'accessible-id'?: string;
+    /** @default NULL */
+    'accessible-name'?: string;
+    'accessible-parent'?: Atk.Object;
+    /** @default ATK_ROLE_UNKNOWN */
+    'accessible-role'?: AtkRoleNick | Atk.Role;
+    /**
+     * Table caption.
+     * @default NULL
+     * @deprecated Since 1.3.
+     */
+    'accessible-table-caption'?: string;
+    'accessible-table-caption-object'?: Atk.Object;
+    /**
+     * Accessible table column description.
+     * @default NULL
+     * @deprecated Since 2.12.
+     */
+    'accessible-table-column-description'?: string;
+    /**
+     * Accessible table column header.
+     * @deprecated Since 2.12.
+     */
+    'accessible-table-column-header'?: Atk.Object;
+    /**
+     * Accessible table row description.
+     * @default NULL
+     * @deprecated Since 2.12.
+     */
+    'accessible-table-row-description'?: string;
+    /**
+     * Accessible table row header.
+     * @deprecated Since 2.12.
+     */
+    'accessible-table-row-header'?: Atk.Object;
+    'accessible-table-summary'?: Atk.Object;
+    /**
+     * Numeric value of this object, in case being and AtkValue.
+     * @default 0.000000
+     * @deprecated Since 2.12.
+     */
+    'accessible-value'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AtkObjectConstructOnly = never;
+
+/** `GMountOperation` provides a mechanism for interacting with the user. */
+export interface GMountOperationProps {
+    /**
+     * Whether to use an anonymous user when authenticating.
+     * @default FALSE
+     */
+    anonymous?: boolean;
+    /**
+     * The index of the user's choice when a question is asked during the mount operation.
+     * @default 0
+     */
+    choice?: number;
+    /**
+     * The domain to use for the mount operation.
+     * @default NULL
+     */
+    domain?: string | null;
+    /**
+     * Whether the device to be unlocked is a TCRYPT hidden volume.
+     * @since 2.58
+     * @default FALSE
+     */
+    'is-tcrypt-hidden-volume'?: boolean;
+    /**
+     * Whether the device to be unlocked is a TCRYPT system volume.
+     * @since 2.58
+     * @default FALSE
+     */
+    'is-tcrypt-system-volume'?: boolean;
+    /**
+     * The password that is used for authentication when carrying out the mount operation.
+     * @default NULL
+     */
+    password?: string | null;
+    /**
+     * Determines if and how the password information should be saved.
+     * @default G_PASSWORD_SAVE_NEVER
+     */
+    'password-save'?: GPasswordSaveNick | Gio.PasswordSave;
+    /**
+     * The VeraCrypt PIM value, when unlocking a VeraCrypt volume.
+     * @since 2.58
+     * @default 0
+     */
+    pim?: number;
+    /**
+     * The user name that is used for authentication when carrying out the mount operation.
+     * @default NULL
+     */
+    username?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GMountOperationConstructOnly = never;
 
 /** The #GtkAboutDialog offers a simple way to display information about a program like its logo, name, copyright, website and license. */
 export interface GtkAboutDialogProps extends GtkDialogProps, GtkBuildableProps {
@@ -232,6 +347,12 @@ export interface GtkAboutDialogProps extends GtkDialogProps, GtkBuildableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkAboutDialogConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly;
 
+/** A #GtkAccelGroup represents a group of keyboard accelerators, typically attached to a toplevel #GtkWindow (with gtk_window_add_accel_group()). */
+export interface GtkAccelGroupProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkAccelGroupConstructOnly = never;
+
 /** The #GtkAccelLabel widget is a subclass of #GtkLabel that also displays an accelerator key on the right of the label text, e.g. */
 export interface GtkAccelLabelProps extends GtkLabelProps, GtkBuildableProps {
     'accel-closure'?: GObject.Closure;
@@ -239,6 +360,88 @@ export interface GtkAccelLabelProps extends GtkLabelProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkAccelLabelConstructOnly = GtkLabelConstructOnly | GtkBuildableConstructOnly;
+
+export interface GtkAccelMapProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkAccelMapConstructOnly = never;
+
+export interface GtkAccessibleProps extends AtkObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkAccessibleConstructOnly = AtkObjectConstructOnly;
+
+/** Actions represent operations that the user can be perform, along with some information how it should be presented in the interface. */
+export interface GtkActionProps extends GtkBuildableProps {
+    'action-group'?: Gtk.ActionGroup;
+    /**
+     * If %TRUE, the action's menu item proxies will ignore the #GtkSettings:gtk-menu-images setting and always show their image, if available.
+     * @since 2.20
+     * @default FALSE
+     */
+    'always-show-image'?: boolean;
+    /**
+     * The #GIcon displayed in the #GtkAction.
+     * @since 2.16
+     */
+    gicon?: Gio.Icon;
+    /** @default TRUE */
+    'hide-if-empty'?: boolean;
+    /**
+     * The name of the icon from the icon theme.
+     * @since 2.10
+     * @default NULL
+     */
+    'icon-name'?: string;
+    /** @default FALSE */
+    'is-important'?: boolean;
+    /**
+     * The label used for menu items and buttons that activate this action.
+     * @default NULL
+     */
+    label?: string;
+    /** @default NULL */
+    name?: string;
+    /** @default TRUE */
+    sensitive?: boolean;
+    /**
+     * A shorter label that may be used on toolbar buttons.
+     * @default NULL
+     */
+    'short-label'?: string;
+    /**
+     * The stock icon displayed in widgets representing this action.
+     * @default NULL
+     */
+    'stock-id'?: string;
+    /** @default NULL */
+    tooltip?: string;
+    /** @default TRUE */
+    visible?: boolean;
+    /** @default TRUE */
+    'visible-horizontal'?: boolean;
+    /**
+     * When %TRUE, toolitem proxies for this action are represented in the toolbar overflow menu.
+     * @since 2.6
+     * @default TRUE
+     */
+    'visible-overflown'?: boolean;
+    /** @default TRUE */
+    'visible-vertical'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkActionConstructOnly = GtkBuildableConstructOnly | 'name';
+
+export interface GtkActionGroupProps extends GtkBuildableProps {
+    /** @default NULL */
+    name?: string;
+    /** @default TRUE */
+    sensitive?: boolean;
+    /** @default TRUE */
+    visible?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkActionGroupConstructOnly = GtkBuildableConstructOnly | 'name';
 
 /** Activatable widgets can be connected to a #GtkAction and reflects the state of its action. */
 export interface GtkActivatableProps {
@@ -256,6 +459,47 @@ export interface GtkActivatableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkActivatableConstructOnly = never;
+
+export interface GtkAdjustmentProps extends GtkObjectProps {
+    /**
+     * The minimum value of the adjustment.
+     * @since 2.4
+     * @default 0.000000
+     */
+    lower?: number;
+    /**
+     * The page increment of the adjustment.
+     * @since 2.4
+     * @default 0.000000
+     */
+    'page-increment'?: number;
+    /**
+     * The page size of the adjustment.
+     * @since 2.4
+     * @default 0.000000
+     */
+    'page-size'?: number;
+    /**
+     * The step increment of the adjustment.
+     * @since 2.4
+     * @default 0.000000
+     */
+    'step-increment'?: number;
+    /**
+     * The maximum value of the adjustment.
+     * @since 2.4
+     * @default 0.000000
+     */
+    upper?: number;
+    /**
+     * The value of the adjustment.
+     * @since 2.4
+     * @default 0.000000
+     */
+    value?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkAdjustmentConstructOnly = GtkObjectConstructOnly;
 
 /** The #GtkAlignment widget controls the alignment and size of its child widget. */
 export interface GtkAlignmentProps extends GtkBinProps, GtkBuildableProps {
@@ -345,6 +589,17 @@ export interface GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkBuildableConstructOnly = never;
+
+export interface GtkBuilderProps {
+    /**
+     * The translation domain used when translating property values that have been marked as translatable in interface descriptions.
+     * @since 2.12
+     * @default NULL
+     */
+    'translation-domain'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkBuilderConstructOnly = never;
 
 export interface GtkButtonProps extends GtkBinProps, GtkActivatableProps, GtkBuildableProps {
     /** @default TRUE */
@@ -505,6 +760,327 @@ export interface GtkCellLayoutProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkCellLayoutConstructOnly = never;
 
+export interface GtkCellRendererProps extends GtkObjectProps {
+    /** @default NULL */
+    'cell-background'?: string;
+    'cell-background-gdk'?: Gdk.Color;
+    /** @default FALSE */
+    'cell-background-set'?: boolean;
+    /** @default -1 */
+    height?: number;
+    /** @default FALSE */
+    'is-expanded'?: boolean;
+    /** @default FALSE */
+    'is-expander'?: boolean;
+    /** @default GTK_CELL_RENDERER_MODE_INERT */
+    mode?: GtkCellRendererModeNick | Gtk.CellRendererMode;
+    /** @default TRUE */
+    sensitive?: boolean;
+    /** @default TRUE */
+    visible?: boolean;
+    /** @default -1 */
+    width?: number;
+    /** @default 0.500000 */
+    xalign?: number;
+    /** @default 0 */
+    xpad?: number;
+    /** @default 0.500000 */
+    yalign?: number;
+    /** @default 0 */
+    ypad?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkCellRendererConstructOnly = GtkObjectConstructOnly;
+
+export interface GtkCellRendererAccelProps extends GtkCellRendererTextProps {
+    /**
+     * The keyval of the accelerator.
+     * @since 2.10
+     * @default 0
+     */
+    'accel-key'?: number;
+    /**
+     * Determines if the edited accelerators are GTK+ accelerators.
+     * @since 2.10
+     * @default GTK_CELL_RENDERER_ACCEL_MODE_GTK
+     */
+    'accel-mode'?: GtkCellRendererAccelModeNick | Gtk.CellRendererAccelMode;
+    /**
+     * The modifier mask of the accelerator.
+     * @since 2.10
+     * @default 0
+     */
+    'accel-mods'?: number;
+    /**
+     * The hardware keycode of the accelerator.
+     * @since 2.10
+     * @default 0
+     */
+    keycode?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkCellRendererAccelConstructOnly = GtkCellRendererTextConstructOnly;
+
+export interface GtkCellRendererComboProps extends GtkCellRendererTextProps {
+    /**
+     * If %TRUE, the cell renderer will include an entry and allow to enter values other than the ones in the popup list.
+     * @since 2.6
+     * @default TRUE
+     */
+    'has-entry'?: boolean;
+    /**
+     * Holds a tree model containing the possible values for the combo box.
+     * @since 2.6
+     */
+    model?: Gtk.TreeModel;
+    /**
+     * Specifies the model column which holds the possible values for the combo box.
+     * @since 2.6
+     * @default -1
+     */
+    'text-column'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkCellRendererComboConstructOnly = GtkCellRendererTextConstructOnly;
+
+export interface GtkCellRendererPixbufProps extends GtkCellRendererProps {
+    /**
+     * Specifies whether the rendered pixbuf should be colorized according to the #GtkCellRendererState.
+     * @since 2.8
+     * @default FALSE
+     */
+    'follow-state'?: boolean;
+    /**
+     * The GIcon representing the icon to display.
+     * @since 2.14
+     */
+    gicon?: Gio.Icon;
+    /**
+     * The name of the themed icon to display.
+     * @since 2.8
+     * @default NULL
+     */
+    'icon-name'?: string;
+    pixbuf?: GdkPixbuf.Pixbuf;
+    'pixbuf-expander-closed'?: GdkPixbuf.Pixbuf;
+    'pixbuf-expander-open'?: GdkPixbuf.Pixbuf;
+    /** @default NULL */
+    'stock-detail'?: string;
+    /** @default NULL */
+    'stock-id'?: string;
+    /** @default 1 */
+    'stock-size'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkCellRendererPixbufConstructOnly = GtkCellRendererConstructOnly;
+
+export interface GtkCellRendererProgressProps extends GtkCellRendererProps {
+    /**
+     * The "orientation" property controls the direction and growth direction of the progress bar (left-to-right, right-to-left, top-to-bottom or bottom-to-top).
+     * @since 2.12
+     * @default GTK_PROGRESS_LEFT_TO_RIGHT
+     */
+    orientation?: GtkProgressBarOrientationNick | Gtk.ProgressBarOrientation;
+    /**
+     * Setting this to a non-negative value causes the cell renderer to enter "activity mode", where a block bounces back and forth to indicate that some progress is made, without specifying exactly how muc…
+     * @since 2.12
+     * @default -1
+     */
+    pulse?: number;
+    /**
+     * The "text" property determines the label which will be drawn over the progress bar.
+     * @since 2.6
+     * @default NULL
+     */
+    text?: string;
+    /**
+     * The "text-xalign" property controls the horizontal alignment of the text in the progress bar.
+     * @since 2.12
+     * @default 0.500000
+     */
+    'text-xalign'?: number;
+    /**
+     * The "text-yalign" property controls the vertical alignment of the text in the progress bar.
+     * @since 2.12
+     * @default 0.500000
+     */
+    'text-yalign'?: number;
+    /**
+     * The "value" property determines the percentage to which the progress bar will be "filled in".
+     * @since 2.6
+     * @default 0
+     */
+    value?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkCellRendererProgressConstructOnly = GtkCellRendererConstructOnly;
+
+export interface GtkCellRendererSpinProps extends GtkCellRendererTextProps {
+    /**
+     * The adjustment that holds the value of the spinbutton.
+     * @since 2.10
+     */
+    adjustment?: Gtk.Adjustment;
+    /**
+     * The acceleration rate when you hold down a button.
+     * @since 2.10
+     * @default 0.000000
+     */
+    'climb-rate'?: number;
+    /**
+     * The number of decimal places to display.
+     * @since 2.10
+     * @default 0
+     */
+    digits?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkCellRendererSpinConstructOnly = GtkCellRendererTextConstructOnly;
+
+/** GtkCellRendererSpinner renders a spinning animation in a cell, very similar to #GtkSpinner. */
+export interface GtkCellRendererSpinnerProps extends GtkCellRendererProps {
+    /** @default FALSE */
+    active?: boolean;
+    /**
+     * Pulse of the spinner.
+     * @since 2.20
+     * @default 0
+     */
+    pulse?: number;
+    /**
+     * The #GtkIconSize value that specifies the size of the rendered spinner.
+     * @since 2.20
+     * @default GTK_ICON_SIZE_MENU
+     */
+    size?: GtkIconSizeNick | Gtk.IconSize;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkCellRendererSpinnerConstructOnly = GtkCellRendererConstructOnly;
+
+export interface GtkCellRendererTextProps extends GtkCellRendererProps {
+    /** @default FALSE */
+    'align-set'?: boolean;
+    /**
+     * Specifies how to align the lines of text with respect to each other.
+     * @since 2.10
+     * @default PANGO_ALIGN_LEFT
+     */
+    alignment?: PangoAlignmentNick | Pango.Alignment;
+    attributes?: Pango.AttrList;
+    /** @default NULL */
+    background?: string;
+    'background-gdk'?: Gdk.Color;
+    /** @default FALSE */
+    'background-set'?: boolean;
+    /** @default FALSE */
+    editable?: boolean;
+    /** @default FALSE */
+    'editable-set'?: boolean;
+    /**
+     * Specifies the preferred place to ellipsize the string, if the cell renderer does not have enough room to display the entire string.
+     * @since 2.6
+     * @default PANGO_ELLIPSIZE_NONE
+     */
+    ellipsize?: PangoEllipsizeModeNick | Pango.EllipsizeMode;
+    /** @default FALSE */
+    'ellipsize-set'?: boolean;
+    /** @default NULL */
+    family?: string;
+    /** @default FALSE */
+    'family-set'?: boolean;
+    /** @default NULL */
+    font?: string;
+    'font-desc'?: Pango.FontDescription;
+    /** @default NULL */
+    foreground?: string;
+    'foreground-gdk'?: Gdk.Color;
+    /** @default FALSE */
+    'foreground-set'?: boolean;
+    /** @default NULL */
+    language?: string;
+    /** @default FALSE */
+    'language-set'?: boolean;
+    /** @default NULL */
+    markup?: string;
+    /** @default 0 */
+    rise?: number;
+    /** @default FALSE */
+    'rise-set'?: boolean;
+    /** @default 1.000000 */
+    scale?: number;
+    /** @default FALSE */
+    'scale-set'?: boolean;
+    /** @default FALSE */
+    'single-paragraph-mode'?: boolean;
+    /** @default 0 */
+    size?: number;
+    /** @default 0.000000 */
+    'size-points'?: number;
+    /** @default FALSE */
+    'size-set'?: boolean;
+    /** @default PANGO_STRETCH_NORMAL */
+    stretch?: PangoStretchNick | Pango.Stretch;
+    /** @default FALSE */
+    'stretch-set'?: boolean;
+    /** @default FALSE */
+    strikethrough?: boolean;
+    /** @default FALSE */
+    'strikethrough-set'?: boolean;
+    /** @default PANGO_STYLE_NORMAL */
+    style?: PangoStyleNick | Pango.Style;
+    /** @default FALSE */
+    'style-set'?: boolean;
+    /** @default NULL */
+    text?: string;
+    /** @default PANGO_UNDERLINE_NONE */
+    underline?: PangoUnderlineNick | Pango.Underline;
+    /** @default FALSE */
+    'underline-set'?: boolean;
+    /** @default PANGO_VARIANT_NORMAL */
+    variant?: PangoVariantNick | Pango.Variant;
+    /** @default FALSE */
+    'variant-set'?: boolean;
+    /** @default 400 */
+    weight?: number;
+    /** @default FALSE */
+    'weight-set'?: boolean;
+    /**
+     * The desired width of the cell, in characters.
+     * @since 2.6
+     * @default -1
+     */
+    'width-chars'?: number;
+    /**
+     * Specifies how to break the string into multiple lines, if the cell renderer does not have enough room to display the entire string.
+     * @since 2.8
+     * @default PANGO_WRAP_CHAR
+     */
+    'wrap-mode'?: PangoWrapModeNick | Pango.WrapMode;
+    /**
+     * Specifies the width at which the text is wrapped.
+     * @since 2.8
+     * @default -1
+     */
+    'wrap-width'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkCellRendererTextConstructOnly = GtkCellRendererConstructOnly;
+
+export interface GtkCellRendererToggleProps extends GtkCellRendererProps {
+    /** @default TRUE */
+    activatable?: boolean;
+    /** @default FALSE */
+    active?: boolean;
+    /** @default FALSE */
+    inconsistent?: boolean;
+    /** @default 13 */
+    'indicator-size'?: number;
+    /** @default FALSE */
+    radio?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkCellRendererToggleConstructOnly = GtkCellRendererConstructOnly;
+
 export interface GtkCellViewProps extends GtkWidgetProps, GtkBuildableProps, GtkCellLayoutProps {
     /** @default NULL */
     background?: string;
@@ -532,6 +1108,11 @@ export interface GtkCheckMenuItemProps extends GtkMenuItemProps, GtkActivatableP
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkCheckMenuItemConstructOnly = GtkMenuItemConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly;
+
+export interface GtkClipboardProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkClipboardConstructOnly = never;
 
 export interface GtkColorButtonProps extends GtkButtonProps, GtkActivatableProps, GtkBuildableProps {
     /**
@@ -901,6 +1482,67 @@ export interface GtkEntryProps extends GtkWidgetProps, GtkBuildableProps, GtkCel
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkEntryConstructOnly = GtkWidgetConstructOnly | GtkBuildableConstructOnly | GtkCellEditableConstructOnly | GtkEditableConstructOnly;
 
+/** The #GtkEntryBuffer class contains the actual text displayed in a #GtkEntry widget. */
+export interface GtkEntryBufferProps {
+    /**
+     * The maximum length (in characters) of the text in the buffer.
+     * @since 2.18
+     * @default 0
+     */
+    'max-length'?: number;
+    /**
+     * The contents of the buffer.
+     * @since 2.18
+     */
+    text?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkEntryBufferConstructOnly = never;
+
+export interface GtkEntryCompletionProps extends GtkBuildableProps, GtkCellLayoutProps {
+    /**
+     * Determines whether the common prefix of the possible completions should be inserted automatically in the entry.
+     * @since 2.6
+     * @default FALSE
+     */
+    'inline-completion'?: boolean;
+    /**
+     * Determines whether the possible completions on the popup will appear in the entry as you navigate through them.
+     * @since 2.12
+     * @default FALSE
+     */
+    'inline-selection'?: boolean;
+    /** @default 1 */
+    'minimum-key-length'?: number;
+    model?: Gtk.TreeModel;
+    /**
+     * Determines whether the possible completions should be shown in a popup window.
+     * @since 2.6
+     * @default TRUE
+     */
+    'popup-completion'?: boolean;
+    /**
+     * Determines whether the completions popup window will be resized to the width of the entry.
+     * @since 2.8
+     * @default TRUE
+     */
+    'popup-set-width'?: boolean;
+    /**
+     * Determines whether the completions popup window will shown for a single possible completion.
+     * @since 2.8
+     * @default TRUE
+     */
+    'popup-single-match'?: boolean;
+    /**
+     * The column of the model containing the strings.
+     * @since 2.6
+     * @default -1
+     */
+    'text-column'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkEntryCompletionConstructOnly = GtkBuildableConstructOnly | GtkCellLayoutConstructOnly;
+
 export interface GtkEventBoxProps extends GtkBinProps, GtkBuildableProps {
     /** @default FALSE */
     'above-child'?: boolean;
@@ -1000,6 +1642,11 @@ export interface GtkFileChooserWidgetProps extends GtkVBoxProps, GtkBuildablePro
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkFileChooserWidgetConstructOnly = GtkVBoxConstructOnly | GtkBuildableConstructOnly | GtkFileChooserConstructOnly | GtkOrientableConstructOnly;
+
+export interface GtkFileFilterProps extends GtkObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkFileFilterConstructOnly = GtkObjectConstructOnly;
 
 export interface GtkFileSelectionProps extends GtkDialogProps, GtkBuildableProps {
     /** @default NULL */
@@ -1149,6 +1796,32 @@ export interface GtkHandleBoxProps extends GtkBinProps, GtkBuildableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkHandleBoxConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
+/** #GtkIMContext defines the interface for GTK+ input methods. */
+export interface GtkIMContextProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkIMContextConstructOnly = never;
+
+export interface GtkIMContextSimpleProps extends GtkIMContextProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkIMContextSimpleConstructOnly = GtkIMContextConstructOnly;
+
+export interface GtkIMMulticontextProps extends GtkIMContextProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkIMMulticontextConstructOnly = GtkIMContextConstructOnly;
+
+export interface GtkIconFactoryProps extends GtkBuildableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkIconFactoryConstructOnly = GtkBuildableConstructOnly;
+
+export interface GtkIconThemeProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkIconThemeConstructOnly = never;
+
 export interface GtkIconViewProps extends GtkContainerProps, GtkBuildableProps, GtkCellLayoutProps {
     /**
      * The column-spacing property specifies the space which is inserted between the columns of the icon view.
@@ -1242,6 +1915,11 @@ export interface GtkIconViewProps extends GtkContainerProps, GtkBuildableProps, 
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkIconViewConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly | GtkCellLayoutConstructOnly;
 
+export interface GtkIdentifierProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkIdentifierConstructOnly = never;
+
 /** The #GtkImage widget displays an image. */
 export interface GtkImageProps extends GtkMiscProps, GtkBuildableProps {
     /** @default NULL */
@@ -1327,6 +2005,11 @@ export interface GtkItemProps extends GtkBinProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkItemConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
+
+export interface GtkItemFactoryProps extends GtkObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkItemFactoryConstructOnly = GtkObjectConstructOnly;
 
 export interface GtkLabelProps extends GtkMiscProps, GtkBuildableProps {
     /**
@@ -1429,6 +2112,11 @@ export interface GtkListItemProps extends GtkItemProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkListItemConstructOnly = GtkItemConstructOnly | GtkBuildableConstructOnly;
+
+export interface GtkListStoreProps extends GtkBuildableProps, GtkTreeDragDestProps, GtkTreeDragSourceProps, GtkTreeModelProps, GtkTreeSortableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkListStoreConstructOnly = GtkBuildableConstructOnly | GtkTreeDragDestConstructOnly | GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly | GtkTreeSortableConstructOnly;
 
 export interface GtkMenuProps extends GtkMenuShellProps, GtkBuildableProps {
     /**
@@ -1598,6 +2286,14 @@ export interface GtkMiscProps extends GtkWidgetProps, GtkBuildableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkMiscConstructOnly = GtkWidgetConstructOnly | GtkBuildableConstructOnly;
 
+/** This should not be accessed directly. */
+export interface GtkMountOperationProps extends GMountOperationProps {
+    parent?: Gtk.Window;
+    screen?: Gdk.Screen;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkMountOperationConstructOnly = GMountOperationConstructOnly;
+
 export interface GtkNotebookProps extends GtkContainerProps, GtkBuildableProps {
     /** @default FALSE */
     'enable-popup'?: boolean;
@@ -1666,6 +2362,11 @@ export interface GtkOrientableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkOrientableConstructOnly = never;
 
+export interface GtkPageSetupProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkPageSetupConstructOnly = never;
+
 export interface GtkPanedProps extends GtkContainerProps, GtkBuildableProps, GtkOrientableProps {
     /** @default 0 */
     position?: number;
@@ -1692,6 +2393,113 @@ export interface GtkPreviewProps extends GtkWidgetProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkPreviewConstructOnly = GtkWidgetConstructOnly | GtkBuildableConstructOnly;
+
+export interface GtkPrintContextProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkPrintContextConstructOnly = never;
+
+export interface GtkPrintOperationProps extends GtkPrintOperationPreviewProps {
+    /**
+     * Determines whether the print operation may run asynchronously or not.
+     * @since 2.10
+     * @default FALSE
+     */
+    'allow-async'?: boolean;
+    /**
+     * The current page in the document.
+     * @since 2.10
+     * @default -1
+     */
+    'current-page'?: number;
+    /**
+     * Used as the label of the tab containing custom widgets.
+     * @since 2.10
+     * @default NULL
+     */
+    'custom-tab-label'?: string;
+    /**
+     * The #GtkPageSetup used by default.
+     * @since 2.10
+     */
+    'default-page-setup'?: Gtk.PageSetup;
+    /**
+     * If %TRUE, page size combo box and orientation combo box are embedded into page setup page.
+     * @since 2.18
+     * @default FALSE
+     */
+    'embed-page-setup'?: boolean;
+    /**
+     * The name of a file to generate instead of showing the print dialog.
+     * @since 2.10
+     * @default NULL
+     */
+    'export-filename'?: string;
+    /**
+     * Determines whether there is a selection in your application.
+     * @since 2.18
+     * @default FALSE
+     */
+    'has-selection'?: boolean;
+    /**
+     * A string used to identify the job (e.g.
+     * @since 2.10
+     */
+    'job-name'?: string;
+    /**
+     * The number of pages in the document.
+     * @since 2.10
+     * @default -1
+     */
+    'n-pages'?: number;
+    /**
+     * The #GtkPrintSettings used for initializing the dialog.
+     * @since 2.10
+     */
+    'print-settings'?: Gtk.PrintSettings;
+    /**
+     * Determines whether to show a progress dialog during the print operation.
+     * @since 2.10
+     * @default FALSE
+     */
+    'show-progress'?: boolean;
+    /**
+     * If %TRUE, the print operation will support print of selection.
+     * @since 2.18
+     * @default FALSE
+     */
+    'support-selection'?: boolean;
+    /**
+     * If %TRUE, the print operation will try to continue report on the status of the print job in the printer queues and printer.
+     * @since 2.10
+     * @default FALSE
+     */
+    'track-print-status'?: boolean;
+    /**
+     * The transformation for the cairo context obtained from #GtkPrintContext is set up in such a way that distances are measured in units of @unit.
+     * @since 2.10
+     * @default GTK_UNIT_PIXEL
+     */
+    unit?: GtkUnitNick | Gtk.Unit;
+    /**
+     * If %TRUE, the transformation for the cairo context obtained from #GtkPrintContext puts the origin at the top left corner of the page (which may not be the top left corner of the sheet, depending on p…
+     * @since 2.10
+     * @default FALSE
+     */
+    'use-full-page'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkPrintOperationConstructOnly = GtkPrintOperationPreviewConstructOnly;
+
+export interface GtkPrintOperationPreviewProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkPrintOperationPreviewConstructOnly = never;
+
+export interface GtkPrintSettingsProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkPrintSettingsConstructOnly = never;
 
 export interface GtkProgressProps extends GtkWidgetProps, GtkBuildableProps {
     /** @default FALSE */
@@ -1733,6 +2541,28 @@ export interface GtkProgressBarProps extends GtkProgressProps, GtkBuildableProps
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkProgressBarConstructOnly = GtkProgressConstructOnly | GtkBuildableConstructOnly;
+
+export interface GtkRadioActionProps extends GtkToggleActionProps, GtkBuildableProps {
+    /**
+     * The value property of the currently active member of the group to which this action belongs.
+     * @since 2.10
+     * @default 0
+     */
+    'current-value'?: number;
+    /**
+     * Sets a new group for a radio action.
+     * @since 2.4
+     */
+    group?: Gtk.RadioAction;
+    /**
+     * The value is an arbitrary integer which can be used as a convenient way to determine which action in the group is currently active in an ::activate or ::changed signal handler.
+     * @since 2.4
+     * @default 0
+     */
+    value?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkRadioActionConstructOnly = GtkToggleActionConstructOnly | GtkBuildableConstructOnly;
 
 export interface GtkRadioButtonProps extends GtkCheckButtonProps, GtkActivatableProps, GtkBuildableProps {
     group?: Gtk.RadioButton;
@@ -1797,6 +2627,18 @@ export interface GtkRangeProps extends GtkWidgetProps, GtkBuildableProps, GtkOri
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkRangeConstructOnly = GtkWidgetConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface GtkRcStyleProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkRcStyleConstructOnly = never;
+
+export interface GtkRecentActionProps extends GtkActionProps, GtkBuildableProps, GtkRecentChooserProps {
+    /** @default FALSE */
+    'show-numbers'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkRecentActionConstructOnly = GtkActionConstructOnly | GtkBuildableConstructOnly | GtkRecentChooserConstructOnly;
 
 export interface GtkRecentChooserProps {
     /**
@@ -1877,6 +2719,29 @@ export interface GtkRecentChooserWidgetProps extends GtkVBoxProps, GtkBuildableP
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkRecentChooserWidgetConstructOnly = GtkVBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | GtkRecentChooserConstructOnly;
+
+export interface GtkRecentFilterProps extends GtkObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkRecentFilterConstructOnly = GtkObjectConstructOnly;
+
+export interface GtkRecentManagerProps {
+    /**
+     * The full path to the file to be used to store and read the recently used resources list
+     * @since 2.10
+     * @default NULL
+     */
+    filename?: string;
+    /**
+     * The maximum number of items to be returned by the gtk_recent_manager_get_items() function.
+     * @since 2.10
+     * @default -1
+     * @deprecated since 2.22: Setting this property does not have any effect.
+     */
+    limit?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkRecentManagerConstructOnly = 'filename';
 
 export interface GtkRulerProps extends GtkWidgetProps, GtkBuildableProps, GtkOrientableProps {
     /** @default 0.000000 */
@@ -1966,6 +2831,264 @@ export interface GtkSeparatorToolItemProps extends GtkToolItemProps, GtkActivata
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkSeparatorToolItemConstructOnly = GtkToolItemConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly;
 
+export interface GtkSettingsProps {
+    /** @default FALSE */
+    'gtk-alternative-button-order'?: boolean;
+    /**
+     * Controls the direction of the sort indicators in sorted list and tree views.
+     * @since 2.12
+     * @default FALSE
+     */
+    'gtk-alternative-sort-arrows'?: boolean;
+    /**
+     * Whether mnemonics should be automatically shown and hidden when the user presses the mnemonic activator.
+     * @since 2.20
+     * @default FALSE
+     */
+    'gtk-auto-mnemonics'?: boolean;
+    /** @default TRUE */
+    'gtk-button-images'?: boolean;
+    /** @default FALSE */
+    'gtk-can-change-accels'?: boolean;
+    /** @default black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90 */
+    'gtk-color-palette'?: string;
+    /**
+     * A palette of named colors for use in themes.
+     * @since 2.10
+     */
+    'gtk-color-scheme'?: string;
+    /**
+     * Whether the cursor should blink.
+     * @default TRUE
+     */
+    'gtk-cursor-blink'?: boolean;
+    /** @default 1200 */
+    'gtk-cursor-blink-time'?: number;
+    /**
+     * Time after which the cursor stops blinking, in seconds.
+     * @since 2.12
+     * @default 2147483647
+     */
+    'gtk-cursor-blink-timeout'?: number;
+    /** @default NULL */
+    'gtk-cursor-theme-name'?: string;
+    /** @default 0 */
+    'gtk-cursor-theme-size'?: number;
+    /** @default 8 */
+    'gtk-dnd-drag-threshold'?: number;
+    /** @default 5 */
+    'gtk-double-click-distance'?: number;
+    /** @default 250 */
+    'gtk-double-click-time'?: number;
+    /**
+     * Whether menu items should have visible accelerators which can be activated.
+     * @since 2.12
+     * @default TRUE
+     */
+    'gtk-enable-accels'?: boolean;
+    /** @default TRUE */
+    'gtk-enable-animations'?: boolean;
+    /**
+     * Whether to play any event sounds at all.
+     * @since 2.14
+     * @default TRUE
+     */
+    'gtk-enable-event-sounds'?: boolean;
+    /**
+     * Whether to play event sounds as feedback to user input.
+     * @since 2.14
+     * @default TRUE
+     */
+    'gtk-enable-input-feedback-sounds'?: boolean;
+    /**
+     * Whether labels and menu items should have visible mnemonics which can be activated.
+     * @since 2.12
+     * @default TRUE
+     */
+    'gtk-enable-mnemonics'?: boolean;
+    /**
+     * Whether tooltips should be shown on widgets.
+     * @since 2.14
+     * @default TRUE
+     */
+    'gtk-enable-tooltips'?: boolean;
+    /**
+     * How long to show the last input character in hidden entries.
+     * @since 2.10
+     * @default 0
+     */
+    'gtk-entry-password-hint-timeout'?: number;
+    /** @default TRUE */
+    'gtk-entry-select-on-focus'?: boolean;
+    /**
+     * When %TRUE, keyboard navigation and other input-related errors will cause a beep.
+     * @since 2.12
+     * @default TRUE
+     */
+    'gtk-error-bell'?: boolean;
+    /** @default NULL */
+    'gtk-fallback-icon-theme'?: string;
+    /** @default NULL */
+    'gtk-file-chooser-backend'?: string;
+    /** @default Sans 10 */
+    'gtk-font-name'?: string;
+    /** @default 0 */
+    'gtk-fontconfig-timestamp'?: number;
+    /**
+     * A list of icon sizes.
+     * @default NULL
+     */
+    'gtk-icon-sizes'?: string;
+    /** @default hicolor */
+    'gtk-icon-theme-name'?: string;
+    /**
+     * Which IM (input method) module should be used by default.
+     * @default NULL
+     */
+    'gtk-im-module'?: string;
+    /** @default GTK_IM_PREEDIT_CALLBACK */
+    'gtk-im-preedit-style'?: GtkIMPreeditStyleNick | Gtk.IMPreeditStyle;
+    /** @default GTK_IM_STATUS_CALLBACK */
+    'gtk-im-status-style'?: GtkIMStatusStyleNick | Gtk.IMStatusStyle;
+    /** @default NULL */
+    'gtk-key-theme-name'?: string;
+    /**
+     * When %TRUE, keyboard navigation should be able to reach all widgets by using the cursor keys only.
+     * @since 2.12
+     * @default FALSE
+     */
+    'gtk-keynav-cursor-only'?: boolean;
+    /**
+     * When %TRUE, some widgets will wrap around when doing keyboard navigation, such as menus, menubars and notebooks.
+     * @since 2.12
+     * @default TRUE
+     */
+    'gtk-keynav-wrap-around'?: boolean;
+    /** @default TRUE */
+    'gtk-label-select-on-focus'?: boolean;
+    /** @default F10 */
+    'gtk-menu-bar-accel'?: string;
+    /** @default 0 */
+    'gtk-menu-bar-popup-delay'?: number;
+    /** @default TRUE */
+    'gtk-menu-images'?: boolean;
+    /** @default 1000 */
+    'gtk-menu-popdown-delay'?: number;
+    /** @default 225 */
+    'gtk-menu-popup-delay'?: number;
+    /** @default NULL */
+    'gtk-modules'?: string;
+    /**
+     * Whether a click in a #GtkRange trough should scroll to the click position or scroll by a single page in the respective direction.
+     * @since 2.24
+     * @default FALSE
+     */
+    'gtk-primary-button-warps-slider'?: boolean;
+    /**
+     * A comma-separated list of print backends to use in the print dialog.
+     * @since 2.10
+     * @default file,cups
+     */
+    'gtk-print-backends'?: string;
+    /**
+     * A command to run for displaying the print preview.
+     * @since 2.10
+     * @default evince --unlink-tempfile --preview --print-settings %s %f
+     */
+    'gtk-print-preview-command'?: string;
+    /**
+     * The number of recently used files that should be displayed by default by #GtkRecentChooser implementations and by the #GtkFileChooser.
+     * @since 2.12
+     * @default 50
+     */
+    'gtk-recent-files-limit'?: number;
+    /**
+     * The maximum age, in days, of the items inside the recently used resources list.
+     * @since 2.14
+     * @default 30
+     */
+    'gtk-recent-files-max-age'?: number;
+    /**
+     * Where the contents of scrolled windows are located with respect to the scrollbars, if not overridden by the scrolled window's own placement.
+     * @since 2.10
+     * @default GTK_CORNER_TOP_LEFT
+     */
+    'gtk-scrolled-window-placement'?: GtkCornerTypeNick | Gtk.CornerType;
+    /** @default TRUE */
+    'gtk-show-input-method-menu'?: boolean;
+    /** @default TRUE */
+    'gtk-show-unicode-menu'?: boolean;
+    /**
+     * The XDG sound theme to use for event sounds.
+     * @since 2.14
+     * @default freedesktop
+     */
+    'gtk-sound-theme-name'?: string;
+    /** @default TRUE */
+    'gtk-split-cursor'?: boolean;
+    /** @default Raleigh */
+    'gtk-theme-name'?: string;
+    /** @default 500 */
+    'gtk-timeout-expand'?: number;
+    /** @default 200 */
+    'gtk-timeout-initial'?: number;
+    /** @default 20 */
+    'gtk-timeout-repeat'?: number;
+    /** @default GTK_ICON_SIZE_LARGE_TOOLBAR */
+    'gtk-toolbar-icon-size'?: GtkIconSizeNick | Gtk.IconSize;
+    /** @default GTK_TOOLBAR_BOTH */
+    'gtk-toolbar-style'?: GtkToolbarStyleNick | Gtk.ToolbarStyle;
+    /**
+     * Amount of time, in milliseconds, after which the browse mode will be disabled.
+     * @since 2.12
+     * @default 500
+     */
+    'gtk-tooltip-browse-mode-timeout'?: number;
+    /**
+     * Controls the time after which tooltips will appear when browse mode is enabled, in milliseconds.
+     * @since 2.12
+     * @default 60
+     */
+    'gtk-tooltip-browse-timeout'?: number;
+    /**
+     * Time, in milliseconds, after which a tooltip could appear if the cursor is hovering on top of a widget.
+     * @since 2.12
+     * @default 500
+     */
+    'gtk-tooltip-timeout'?: number;
+    /**
+     * When %TRUE, there are no motion notify events delivered on this screen, and widgets can't use the pointer hovering them for any essential functionality.
+     * @since 2.10
+     * @default FALSE
+     */
+    'gtk-touchscreen-mode'?: boolean;
+    /** @default -1 */
+    'gtk-xft-antialias'?: number;
+    /** @default -1 */
+    'gtk-xft-dpi'?: number;
+    /** @default -1 */
+    'gtk-xft-hinting'?: number;
+    /** @default NULL */
+    'gtk-xft-hintstyle'?: string;
+    /** @default NULL */
+    'gtk-xft-rgba'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSettingsConstructOnly = never;
+
+export interface GtkSizeGroupProps extends GtkBuildableProps {
+    /**
+     * If %TRUE, unmapped widgets are ignored when determining the size of the group.
+     * @since 2.8
+     * @default FALSE
+     */
+    'ignore-hidden'?: boolean;
+    /** @default GTK_SIZE_GROUP_HORIZONTAL */
+    mode?: GtkSizeGroupModeNick | Gtk.SizeGroupMode;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSizeGroupConstructOnly = GtkBuildableConstructOnly;
+
 /** Together with #GtkPlug, #GtkSocket provides the ability to embed widgets from one process into another process in a fashion that is transparent to the user. */
 export interface GtkSocketProps extends GtkContainerProps, GtkBuildableProps {
 }
@@ -2000,6 +3123,56 @@ export interface GtkSpinnerProps extends GtkDrawingAreaProps, GtkBuildableProps 
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkSpinnerConstructOnly = GtkDrawingAreaConstructOnly | GtkBuildableConstructOnly;
 
+export interface GtkStatusIconProps {
+    /**
+     * Whether or not the status icon is blinking.
+     * @default FALSE
+     * @deprecated since 2.22: This property will be removed in GTK+ 3
+     */
+    blinking?: boolean;
+    /** @default NULL */
+    file?: string;
+    /**
+     * The #GIcon displayed in the #GtkStatusIcon.
+     * @since 2.14
+     */
+    gicon?: Gio.Icon;
+    /**
+     * Enables or disables the emission of #GtkStatusIcon::query-tooltip on @status_icon.
+     * @since 2.16
+     * @default FALSE
+     */
+    'has-tooltip'?: boolean;
+    /** @default NULL */
+    'icon-name'?: string;
+    pixbuf?: GdkPixbuf.Pixbuf;
+    screen?: Gdk.Screen;
+    /** @default NULL */
+    stock?: string;
+    /**
+     * The title of this tray icon.
+     * @since 2.18
+     * @default NULL
+     */
+    title?: string;
+    /**
+     * Sets the text of tooltip to be the given string, which is marked up with the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * @since 2.16
+     * @default NULL
+     */
+    'tooltip-markup'?: string;
+    /**
+     * Sets the text of tooltip to be the given string.
+     * @since 2.16
+     * @default NULL
+     */
+    'tooltip-text'?: string;
+    /** @default TRUE */
+    visible?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkStatusIconConstructOnly = never;
+
 export interface GtkStatusbarProps extends GtkHBoxProps, GtkBuildableProps, GtkOrientableProps {
     /**
      * Whether the statusbar has a grip for resizing the toplevel window.
@@ -2010,6 +3183,11 @@ export interface GtkStatusbarProps extends GtkHBoxProps, GtkBuildableProps, GtkO
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkStatusbarConstructOnly = GtkHBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface GtkStyleProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkStyleConstructOnly = never;
 
 export interface GtkTableProps extends GtkContainerProps, GtkBuildableProps {
     /** @default 0 */
@@ -2030,6 +3208,192 @@ export interface GtkTearoffMenuItemProps extends GtkMenuItemProps, GtkActivatabl
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkTearoffMenuItemConstructOnly = GtkMenuItemConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly;
+
+export interface GtkTextBufferProps {
+    'tag-table'?: Gtk.TextTagTable;
+    /**
+     * The text content of the buffer.
+     * @since 2.8
+     */
+    text?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTextBufferConstructOnly = 'tag-table';
+
+export interface GtkTextChildAnchorProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTextChildAnchorConstructOnly = never;
+
+export interface GtkTextLayoutProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTextLayoutConstructOnly = never;
+
+export interface GtkTextMarkProps {
+    /** @default FALSE */
+    'left-gravity'?: boolean;
+    /** @default NULL */
+    name?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTextMarkConstructOnly = 'left-gravity' | 'name';
+
+export interface GtkTextTagProps {
+    /**
+     * Whether the margins accumulate or override each other.
+     * @since 2.12
+     * @default FALSE
+     */
+    'accumulative-margin'?: boolean;
+    /** @default NULL */
+    background?: string;
+    /** @default FALSE */
+    'background-full-height'?: boolean;
+    /** @default FALSE */
+    'background-full-height-set'?: boolean;
+    'background-gdk'?: Gdk.Color;
+    /** @default FALSE */
+    'background-set'?: boolean;
+    'background-stipple'?: Gdk.Pixmap;
+    /** @default FALSE */
+    'background-stipple-set'?: boolean;
+    /** @default GTK_TEXT_DIR_NONE */
+    direction?: GtkTextDirectionNick | Gtk.TextDirection;
+    /** @default TRUE */
+    editable?: boolean;
+    /** @default FALSE */
+    'editable-set'?: boolean;
+    /** @default NULL */
+    family?: string;
+    /** @default FALSE */
+    'family-set'?: boolean;
+    /**
+     * Font description as string, e.g.
+     * @default NULL
+     */
+    font?: string;
+    'font-desc'?: Pango.FontDescription;
+    /** @default NULL */
+    foreground?: string;
+    'foreground-gdk'?: Gdk.Color;
+    /** @default FALSE */
+    'foreground-set'?: boolean;
+    'foreground-stipple'?: Gdk.Pixmap;
+    /** @default FALSE */
+    'foreground-stipple-set'?: boolean;
+    /** @default 0 */
+    indent?: number;
+    /** @default FALSE */
+    'indent-set'?: boolean;
+    /**
+     * Whether this text is hidden.
+     * @since 2.8
+     * @default FALSE
+     */
+    invisible?: boolean;
+    /** @default FALSE */
+    'invisible-set'?: boolean;
+    /** @default GTK_JUSTIFY_LEFT */
+    justification?: GtkJustificationNick | Gtk.Justification;
+    /** @default FALSE */
+    'justification-set'?: boolean;
+    /**
+     * The language this text is in, as an ISO code.
+     * @default NULL
+     */
+    language?: string;
+    /** @default FALSE */
+    'language-set'?: boolean;
+    /** @default 0 */
+    'left-margin'?: number;
+    /** @default FALSE */
+    'left-margin-set'?: boolean;
+    /** @default NULL */
+    name?: string;
+    /**
+     * The paragraph background color as a string.
+     * @since 2.8
+     * @default NULL
+     */
+    'paragraph-background'?: string;
+    /**
+     * The paragraph background color as a as a (possibly unallocated) #GdkColor.
+     * @since 2.8
+     */
+    'paragraph-background-gdk'?: Gdk.Color;
+    /** @default FALSE */
+    'paragraph-background-set'?: boolean;
+    /** @default 0 */
+    'pixels-above-lines'?: number;
+    /** @default FALSE */
+    'pixels-above-lines-set'?: boolean;
+    /** @default 0 */
+    'pixels-below-lines'?: number;
+    /** @default FALSE */
+    'pixels-below-lines-set'?: boolean;
+    /** @default 0 */
+    'pixels-inside-wrap'?: number;
+    /** @default FALSE */
+    'pixels-inside-wrap-set'?: boolean;
+    /** @default 0 */
+    'right-margin'?: number;
+    /** @default FALSE */
+    'right-margin-set'?: boolean;
+    /** @default 0 */
+    rise?: number;
+    /** @default FALSE */
+    'rise-set'?: boolean;
+    /** @default 1.000000 */
+    scale?: number;
+    /** @default FALSE */
+    'scale-set'?: boolean;
+    /** @default 0 */
+    size?: number;
+    /** @default 0.000000 */
+    'size-points'?: number;
+    /** @default FALSE */
+    'size-set'?: boolean;
+    /** @default PANGO_STRETCH_NORMAL */
+    stretch?: PangoStretchNick | Pango.Stretch;
+    /** @default FALSE */
+    'stretch-set'?: boolean;
+    /** @default FALSE */
+    strikethrough?: boolean;
+    /** @default FALSE */
+    'strikethrough-set'?: boolean;
+    /** @default PANGO_STYLE_NORMAL */
+    style?: PangoStyleNick | Pango.Style;
+    /** @default FALSE */
+    'style-set'?: boolean;
+    tabs?: Pango.TabArray;
+    /** @default FALSE */
+    'tabs-set'?: boolean;
+    /** @default PANGO_UNDERLINE_NONE */
+    underline?: PangoUnderlineNick | Pango.Underline;
+    /** @default FALSE */
+    'underline-set'?: boolean;
+    /** @default PANGO_VARIANT_NORMAL */
+    variant?: PangoVariantNick | Pango.Variant;
+    /** @default FALSE */
+    'variant-set'?: boolean;
+    /** @default 400 */
+    weight?: number;
+    /** @default FALSE */
+    'weight-set'?: boolean;
+    /** @default GTK_WRAP_NONE */
+    'wrap-mode'?: GtkWrapModeNick | Gtk.WrapMode;
+    /** @default FALSE */
+    'wrap-mode-set'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTextTagConstructOnly = 'name';
+
+/** You may wish to begin by reading the <link linkend="TextWidget">text widget conceptual overview</link> which gives an overview of all the objects and data types related to the text widget and how the… */
+export interface GtkTextTagTableProps extends GtkBuildableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTextTagTableConstructOnly = GtkBuildableConstructOnly;
 
 export interface GtkTextViewProps extends GtkContainerProps, GtkBuildableProps {
     /** @default TRUE */
@@ -2079,6 +3443,22 @@ export interface GtkTipsQueryProps extends GtkLabelProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkTipsQueryConstructOnly = GtkLabelConstructOnly | GtkBuildableConstructOnly;
+
+export interface GtkToggleActionProps extends GtkActionProps, GtkBuildableProps {
+    /**
+     * If the toggle action should be active in or not.
+     * @since 2.10
+     * @default FALSE
+     */
+    active?: boolean;
+    /**
+     * Whether the proxies for this action look like radio action proxies.
+     * @default FALSE
+     */
+    'draw-as-radio'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkToggleActionConstructOnly = GtkActionConstructOnly | GtkBuildableConstructOnly;
 
 export interface GtkToggleButtonProps extends GtkButtonProps, GtkActivatableProps, GtkBuildableProps {
     /** @default FALSE */
@@ -2204,6 +3584,59 @@ export interface GtkToolbarProps extends GtkContainerProps, GtkBuildableProps, G
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkToolbarConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | GtkToolShellConstructOnly;
 
+export interface GtkTooltipProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTooltipConstructOnly = never;
+
+export interface GtkTooltipsProps extends GtkObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTooltipsConstructOnly = GtkObjectConstructOnly;
+
+export interface GtkTreeDragDestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTreeDragDestConstructOnly = never;
+
+export interface GtkTreeDragSourceProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTreeDragSourceConstructOnly = never;
+
+export interface GtkTreeModelProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTreeModelConstructOnly = never;
+
+export interface GtkTreeModelFilterProps extends GtkTreeDragSourceProps, GtkTreeModelProps {
+    'child-model'?: Gtk.TreeModel;
+    'virtual-root'?: Gtk.TreePath;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTreeModelFilterConstructOnly = GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly | 'child-model' | 'virtual-root';
+
+export interface GtkTreeModelSortProps extends GtkTreeDragSourceProps, GtkTreeModelProps, GtkTreeSortableProps {
+    model?: Gtk.TreeModel;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTreeModelSortConstructOnly = GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly | GtkTreeSortableConstructOnly | 'model';
+
+export interface GtkTreeSelectionProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTreeSelectionConstructOnly = never;
+
+export interface GtkTreeSortableProps extends GtkTreeModelProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTreeSortableConstructOnly = GtkTreeModelConstructOnly;
+
+export interface GtkTreeStoreProps extends GtkBuildableProps, GtkTreeDragDestProps, GtkTreeDragSourceProps, GtkTreeModelProps, GtkTreeSortableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTreeStoreConstructOnly = GtkBuildableConstructOnly | GtkTreeDragDestConstructOnly | GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly | GtkTreeSortableConstructOnly;
+
 export interface GtkTreeViewProps extends GtkContainerProps, GtkBuildableProps {
     /** @default GTK_TREE_VIEW_GRID_LINES_NONE */
     'enable-grid-lines'?: GtkTreeViewGridLinesNick | Gtk.TreeViewGridLines;
@@ -2262,6 +3695,56 @@ export interface GtkTreeViewProps extends GtkContainerProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkTreeViewConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly;
+
+export interface GtkTreeViewColumnProps extends GtkObjectProps, GtkBuildableProps, GtkCellLayoutProps {
+    /** @default 0.000000 */
+    alignment?: number;
+    /** @default FALSE */
+    clickable?: boolean;
+    /** @default FALSE */
+    expand?: boolean;
+    /** @default 1 */
+    'fixed-width'?: number;
+    /** @default -1 */
+    'max-width'?: number;
+    /** @default -1 */
+    'min-width'?: number;
+    /** @default FALSE */
+    reorderable?: boolean;
+    /** @default FALSE */
+    resizable?: boolean;
+    /** @default GTK_TREE_VIEW_COLUMN_GROW_ONLY */
+    sizing?: GtkTreeViewColumnSizingNick | Gtk.TreeViewColumnSizing;
+    /**
+     * Logical sort column ID this column sorts on when selected for sorting.
+     * @since 2.18
+     * @default -1
+     */
+    'sort-column-id'?: number;
+    /** @default FALSE */
+    'sort-indicator'?: boolean;
+    /** @default GTK_SORT_ASCENDING */
+    'sort-order'?: GtkSortTypeNick | Gtk.SortType;
+    /** @default 0 */
+    spacing?: number;
+    title?: string;
+    /** @default TRUE */
+    visible?: boolean;
+    widget?: Gtk.Widget;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkTreeViewColumnConstructOnly = GtkObjectConstructOnly | GtkBuildableConstructOnly | GtkCellLayoutConstructOnly;
+
+export interface GtkUIManagerProps extends GtkBuildableProps {
+    /**
+     * The "add-tearoffs" property controls whether generated menus have tearoff menu items.
+     * @since 2.4
+     * @default FALSE
+     */
+    'add-tearoffs'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkUIManagerConstructOnly = GtkBuildableConstructOnly;
 
 /** A #GtkVBox is a container that organizes child widgets into a single column. */
 export interface GtkVBoxProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
@@ -2481,6 +3964,11 @@ export interface GtkWindowProps extends GtkBinProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkWindowConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly | 'type';
+
+export interface GtkWindowGroupProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkWindowGroupConstructOnly = never;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -3272,7 +4760,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -3324,7 +4816,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -3338,7 +4837,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -3350,8 +4859,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -3389,10 +4898,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -3416,7 +4926,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

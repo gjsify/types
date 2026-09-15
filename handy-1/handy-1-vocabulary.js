@@ -14,6 +14,7 @@ export const PROVENANCE = {
     droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface', 'Gio.ActionGroup', 'Gio.ActionMap'],
     inlinedBases: [],
     unsettableProps: [],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
@@ -28,6 +29,7 @@ export const OWN_PROPS = {
     HdyExpanderRow: ['enable-expansion', 'expanded', 'icon-name', 'show-enable-switch', 'subtitle', 'use-underline'],
     HdyFlap: ['content', 'flap', 'flap-position', 'fold-duration', 'fold-policy', 'locked', 'modal', 'reveal-duration', 'reveal-flap', 'separator', 'swipe-to-close', 'swipe-to-open', 'transition-type'],
     HdyHeaderBar: ['centering-policy', 'custom-title', 'decoration-layout', 'decoration-layout-set', 'has-subtitle', 'interpolate-size', 'show-close-button', 'spacing', 'subtitle', 'title', 'transition-duration'],
+    HdyHeaderGroup: ['decorate-all'],
     HdyKeypad: ['column-spacing', 'end-action', 'entry', 'letters-visible', 'row-spacing', 'start-action', 'symbols-visible'],
     HdyLeaflet: ['can-swipe-back', 'can-swipe-forward', 'child-transition-duration', 'hhomogeneous-folded', 'hhomogeneous-unfolded', 'interpolate-size', 'mode-transition-duration', 'transition-type', 'vhomogeneous-folded', 'vhomogeneous-unfolded', 'visible-child', 'visible-child-name'],
     HdyPreferencesGroup: ['description', 'title', 'use-markup'],
@@ -37,9 +39,13 @@ export const OWN_PROPS = {
     HdySearchBar: ['search-mode-enabled', 'show-close-button'],
     HdySqueezer: ['homogeneous', 'interpolate-size', 'transition-duration', 'transition-type', 'xalign', 'yalign'],
     HdyStatusPage: ['description', 'icon-name', 'title'],
+    HdyStyleManager: ['color-scheme', 'display'],
+    HdySwipeTracker: ['allow-long-swipes', 'allow-mouse-drag', 'enabled', 'reversed', 'swipeable'],
     HdyTabBar: ['autohide', 'end-action-widget', 'expand-tabs', 'extra-drag-dest-targets', 'inverted', 'start-action-widget', 'view'],
+    HdyTabPage: ['child', 'icon', 'indicator-activatable', 'indicator-icon', 'loading', 'needs-attention', 'parent', 'title', 'tooltip'],
     HdyTabView: ['default-icon', 'menu-model', 'selected-page', 'shortcut-widget'],
     HdyTitleBar: ['selection-mode'],
+    HdyValueObject: ['value'],
     HdyViewSwitcher: ['narrow-ellipsize', 'policy', 'stack'],
     HdyViewSwitcherBar: ['policy', 'reveal', 'stack'],
     HdyViewSwitcherTitle: ['policy', 'stack', 'subtitle', 'title', 'view-switcher-enabled'],
@@ -48,11 +54,20 @@ export const OWN_PROPS = {
 export const OWN_SIGNALS = {
     HdyActionRow: ['activated'],
     HdyCarousel: ['page-changed'],
+    HdyHeaderGroup: ['update-decoration-layouts'],
+    HdySwipeTracker: ['begin-swipe', 'end-swipe', 'update-swipe'],
     HdySwipeable: ['child-switched'],
     HdyTabBar: ['extra-drag-data-received'],
     HdyTabView: ['close-page', 'create-window', 'indicator-activated', 'page-attached', 'page-detached', 'page-reordered', 'setup-menu'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
     HdyActionRow: ['HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
     HdyApplicationWindow: ['HdyApplicationWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
@@ -63,9 +78,12 @@ export const DECLS = {
     HdyClamp: ['HdyClamp', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     HdyComboRow: ['HdyComboRow', 'HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
     HdyDeck: ['HdyDeck', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
+    HdyEnumValueObject: ['HdyEnumValueObject'],
     HdyExpanderRow: ['HdyExpanderRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
     HdyFlap: ['HdyFlap', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
     HdyHeaderBar: ['HdyHeaderBar', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    HdyHeaderGroup: ['HdyHeaderGroup', 'GtkBuildable'],
+    HdyHeaderGroupChild: ['HdyHeaderGroupChild'],
     HdyKeypad: ['HdyKeypad', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     HdyLeaflet: ['HdyLeaflet', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
     HdyPreferencesGroup: ['HdyPreferencesGroup', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
@@ -75,9 +93,14 @@ export const DECLS = {
     HdySearchBar: ['HdySearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     HdySqueezer: ['HdySqueezer', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     HdyStatusPage: ['HdyStatusPage', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    HdyStyleManager: ['HdyStyleManager'],
+    HdySwipeGroup: ['HdySwipeGroup', 'GtkBuildable'],
+    HdySwipeTracker: ['HdySwipeTracker', 'GtkOrientable'],
     HdyTabBar: ['HdyTabBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    HdyTabPage: ['HdyTabPage'],
     HdyTabView: ['HdyTabView', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     HdyTitleBar: ['HdyTitleBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    HdyValueObject: ['HdyValueObject'],
     HdyViewSwitcher: ['HdyViewSwitcher', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     HdyViewSwitcherBar: ['HdyViewSwitcherBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     HdyViewSwitcherTitle: ['HdyViewSwitcherTitle', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
@@ -85,10 +108,11 @@ export const DECLS = {
     HdyWindowHandle: ['HdyWindowHandle', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -110,7 +134,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -181,11 +205,12 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
@@ -208,7 +233,7 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
     'HdyDeck.transition-type': 'HdyDeckTransitionType',
@@ -218,6 +243,7 @@ export const PROP_ENUMS = {
     'HdyHeaderBar.centering-policy': 'HdyCenteringPolicy',
     'HdyLeaflet.transition-type': 'HdyLeafletTransitionType',
     'HdySqueezer.transition-type': 'HdySqueezerTransitionType',
+    'HdyStyleManager.color-scheme': 'HdyColorScheme',
     'HdyViewSwitcher.narrow-ellipsize': 'PangoEllipsizeMode',
     'HdyViewSwitcher.policy': 'HdyViewSwitcherPolicy',
     'HdyViewSwitcherBar.policy': 'HdyViewSwitcherPolicy',
@@ -349,6 +375,7 @@ export const SINCE = {
     'HdyDeck.vhomogeneous': '1.0',
     'HdyDeck.visible-child': '1.0',
     'HdyDeck.visible-child-name': '1.0',
+    'HdyEnumValueObject': '1.0',
     'HdyExpanderRow': '1.0',
     'HdyExpanderRow.enable-expansion': '1.0',
     'HdyExpanderRow.expanded': '1.0',
@@ -382,6 +409,10 @@ export const SINCE = {
     'HdyHeaderBar.subtitle': '1.0',
     'HdyHeaderBar.title': '1.0',
     'HdyHeaderBar.transition-duration': '1.0',
+    'HdyHeaderGroup': '1.0',
+    'HdyHeaderGroup.decorate-all': '1.0',
+    'HdyHeaderGroup::update-decoration-layouts': '1.0',
+    'HdyHeaderGroupChild': '1.0',
     'HdyKeypad': '1.0',
     'HdyKeypad.column-spacing': '1.0',
     'HdyKeypad.end-action': '1.0',
@@ -430,6 +461,19 @@ export const SINCE = {
     'HdyStatusPage.description': '1.2',
     'HdyStatusPage.icon-name': '1.2',
     'HdyStatusPage.title': '1.2',
+    'HdyStyleManager': '1.6',
+    'HdyStyleManager.color-scheme': '1.6',
+    'HdyStyleManager.display': '1.6',
+    'HdySwipeGroup': '1.0',
+    'HdySwipeTracker': '1.0',
+    'HdySwipeTracker.allow-long-swipes': '1.2',
+    'HdySwipeTracker.allow-mouse-drag': '1.0',
+    'HdySwipeTracker.enabled': '1.0',
+    'HdySwipeTracker.reversed': '1.0',
+    'HdySwipeTracker.swipeable': '1.0',
+    'HdySwipeTracker::begin-swipe': '1.0',
+    'HdySwipeTracker::end-swipe': '1.0',
+    'HdySwipeTracker::update-swipe': '1.0',
     'HdySwipeable': '1.0',
     'HdySwipeable::child-switched': '1.0',
     'HdyTabBar': '1.2',
@@ -441,6 +485,16 @@ export const SINCE = {
     'HdyTabBar.start-action-widget': '1.2',
     'HdyTabBar.view': '1.2',
     'HdyTabBar::extra-drag-data-received': '1.2',
+    'HdyTabPage': '1.2',
+    'HdyTabPage.child': '1.2',
+    'HdyTabPage.icon': '1.2',
+    'HdyTabPage.indicator-activatable': '1.2',
+    'HdyTabPage.indicator-icon': '1.2',
+    'HdyTabPage.loading': '1.2',
+    'HdyTabPage.needs-attention': '1.2',
+    'HdyTabPage.parent': '1.2',
+    'HdyTabPage.title': '1.2',
+    'HdyTabPage.tooltip': '1.2',
     'HdyTabView': '1.2',
     'HdyTabView.default-icon': '1.2',
     'HdyTabView.menu-model': '1.2',
@@ -455,6 +509,8 @@ export const SINCE = {
     'HdyTabView::setup-menu': '1.2',
     'HdyTitleBar': '1.0',
     'HdyTitleBar.selection-mode': '1.0',
+    'HdyValueObject': '1.0',
+    'HdyValueObject.value': '1.0',
     'HdyViewSwitcher': '1.0',
     'HdyViewSwitcher.narrow-ellipsize': '1.0',
     'HdyViewSwitcher.policy': '1.0',

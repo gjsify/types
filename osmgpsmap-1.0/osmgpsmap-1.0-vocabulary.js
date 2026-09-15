@@ -1,6 +1,6 @@
 // The widget vocabulary of OsmGpsMap-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: OsmGpsMap-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: OsmGpsMap-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — prop(s) no TypeScript value satisfies: OsmGpsMap.MapPolygon.track OsmGpsMap.MapTrack.track
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -13,25 +13,43 @@ export const PROVENANCE = {
     childHolders: 0,
     droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
     inlinedBases: [],
-    unsettableProps: [],
+    unsettableProps: ['OsmGpsMap.MapPolygon.track', 'OsmGpsMap.MapTrack.track'],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
     OsmGpsMap: ['auto-center', 'auto-center-threshold', 'auto-download', 'drag-limit', 'gps-track-highlight-radius', 'gps-track-point-radius', 'gps-track-width', 'image-format', 'map-source', 'map-x', 'map-y', 'max-zoom', 'min-zoom', 'proxy-uri', 'record-trip-history', 'repo-uri', 'show-gps-point', 'show-trip-history', 'tile-cache', 'tile-cache-base', 'tile-zoom-offset', 'user-agent', 'zoom'],
+    OsmGpsMapImage: ['pixbuf', 'point', 'rotation', 'x-align', 'y-align', 'z-order'],
+    OsmGpsMapOsd: ['dpad-radius', 'osd-x', 'osd-y', 'show-coordinates', 'show-copyright', 'show-crosshair', 'show-dpad', 'show-gps-in-dpad', 'show-gps-in-zoom', 'show-scale', 'show-zoom'],
+    OsmGpsMapPolygon: ['breakable', 'editable', 'shade-alpha', 'shaded', 'track', 'visible'],
+    OsmGpsMapTrack: ['alpha', 'color', 'editable', 'line-width', 'track', 'visible'],
 };
 
 export const OWN_SIGNALS = {
     OsmGpsMap: ['changed'],
+    OsmGpsMapTrack: ['point-added', 'point-changed', 'point-inserted', 'point-removed'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
     OsmGpsMap: ['OsmGpsMap', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
+    OsmGpsMapImage: ['OsmGpsMapImage'],
+    OsmGpsMapOsd: ['OsmGpsMapOsd', 'OsmGpsMapLayer'],
+    OsmGpsMapPolygon: ['OsmGpsMapPolygon'],
+    OsmGpsMapTrack: ['OsmGpsMapTrack'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {};
@@ -41,7 +59,7 @@ export const ENUM_NICKS = {};
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -78,11 +96,12 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
@@ -105,7 +124,7 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
@@ -138,4 +157,5 @@ export const SLOT_CANDIDATES = {};
 
 export const SINCE = {
     'OsmGpsMap.user-agent': '1.2.0',
+    'OsmGpsMapOsd.show-copyright': '1.2.0',
 };

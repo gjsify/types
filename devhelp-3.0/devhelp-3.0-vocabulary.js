@@ -14,12 +14,15 @@ export const PROVENANCE = {
     droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
+    DhBookListDirectory: ['directory'],
     DhBookTree: ['profile'],
     DhNotebook: ['profile'],
     DhSearchBar: ['notebook'],
+    DhSettings: ['fixed-font', 'group-books-by-language', 'use-system-fonts', 'variable-font'],
     DhSidebar: ['profile'],
     DhTab: ['web-view'],
     DhTabLabel: ['tab'],
@@ -28,26 +31,48 @@ export const OWN_PROPS = {
 
 export const OWN_SIGNALS = {
     DhAssistantView: ['open-uri'],
+    DhBook: ['deleted', 'updated'],
+    DhBookList: ['add-book', 'remove-book'],
     DhBookTree: ['link-selected'],
+    DhSettings: ['books-disabled-changed', 'fonts-changed'],
     DhSidebar: ['link-selected'],
     DhWebView: ['open-new-tab'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
     DhAssistantView: ['DhAssistantView', 'WebKitWebView', 'WebKitWebViewBase', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DhBook: ['DhBook'],
+    DhBookList: ['DhBookList'],
+    DhBookListBuilder: ['DhBookListBuilder'],
+    DhBookListDirectory: ['DhBookListDirectory', 'DhBookList'],
+    DhBookManager: ['DhBookManager'],
     DhBookTree: ['DhBookTree', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
+    DhCompletion: ['DhCompletion'],
+    DhKeywordModel: ['DhKeywordModel', 'GtkTreeModel'],
     DhNotebook: ['DhNotebook', 'GtkNotebook', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DhProfile: ['DhProfile'],
+    DhProfileBuilder: ['DhProfileBuilder'],
     DhSearchBar: ['DhSearchBar', 'GtkSearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DhSettings: ['DhSettings'],
+    DhSettingsBuilder: ['DhSettingsBuilder'],
     DhSidebar: ['DhSidebar', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     DhTab: ['DhTab', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     DhTabLabel: ['DhTabLabel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     DhWebView: ['DhWebView', 'WebKitWebView', 'WebKitWebViewBase', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -59,7 +84,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -107,11 +132,12 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
@@ -137,7 +163,7 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
@@ -169,9 +195,18 @@ export const ARIA_VALUE_ENUMS = {};
 export const SLOT_CANDIDATES = {};
 
 export const SINCE = {
+    'DhBookList::add-book': '3.30',
+    'DhBookList::remove-book': '3.30',
+    'DhBookListDirectory.directory': '3.30',
     'DhBookTree.profile': '3.30',
     'DhNotebook.profile': '3.30',
     'DhSearchBar.notebook': '3.30',
+    'DhSettings.fixed-font': '3.30',
+    'DhSettings.group-books-by-language': '3.30',
+    'DhSettings.use-system-fonts': '3.30',
+    'DhSettings.variable-font': '3.30',
+    'DhSettings::books-disabled-changed': '3.30',
+    'DhSettings::fonts-changed': '3.30',
     'DhSidebar.profile': '3.30',
     'DhTab.web-view': '3.30',
     'DhTabLabel.tab': '3.30',

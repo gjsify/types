@@ -14,15 +14,19 @@ export const PROVENANCE = {
     droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: ['GimpUi.Dialog.help-func'],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
     GimpAspectPreview: ['drawable'],
     GimpBusyBox: ['message'],
+    GimpCellRendererColor: ['color', 'icon-size', 'opaque'],
+    GimpCellRendererToggle: ['icon-name', 'icon-size', 'override-background'],
     GimpChainButton: ['active', 'icon-size', 'position'],
     GimpColorArea: ['color', 'drag-mask', 'draw-border', 'type'],
     GimpColorButton: ['area-height', 'area-width', 'color', 'color-config', 'continuous-update', 'title', 'type'],
     GimpColorProfileComboBox: ['dialog', 'model'],
+    GimpColorProfileStore: ['history'],
     GimpColorScale: ['channel'],
     GimpColorScales: ['show-hsv', 'show-rgb-u8'],
     GimpColorSelection: ['config'],
@@ -31,11 +35,13 @@ export const OWN_PROPS = {
     GimpDrawablePreview: ['drawable'],
     GimpEnumComboBox: ['model'],
     GimpEnumLabel: ['enum-type', 'enum-value'],
+    GimpEnumStore: ['enum-type'],
     GimpFileChooser: ['action', 'file', 'label', 'title'],
     GimpHintBox: ['hint', 'icon-name'],
     GimpImageChooser: ['image', 'label', 'title'],
     GimpIntComboBox: ['ellipsize', 'label', 'layout', 'value'],
     GimpIntRadioFrame: ['store', 'value'],
+    GimpIntStore: ['user-data-type'],
     GimpItemChooser: ['item', 'item-type', 'label', 'title'],
     GimpLabelColor: ['editable', 'value'],
     GimpLabelEntry: ['value'],
@@ -52,15 +58,19 @@ export const OWN_PROPS = {
     GimpRuler: ['lower', 'max-size', 'orientation', 'position', 'unit', 'upper'],
     GimpSpinScale: ['label'],
     GimpStringComboBox: ['ellipsize', 'id-column', 'label-column', 'value'],
+    GimpUnitStore: ['has-percent', 'has-pixels', 'long-format', 'num-values', 'short-format'],
+    GimpZoomModel: ['maximum', 'minimum', 'value'],
     GimpZoomPreview: ['drawable', 'model'],
 };
 
 export const OWN_SIGNALS = {
     GimpBrowser: ['search', 'stop-search'],
     GimpButton: ['extended-clicked'],
+    GimpCellRendererToggle: ['clicked'],
     GimpChainButton: ['toggled'],
     GimpColorArea: ['color-changed'],
     GimpColorButton: ['color-changed'],
+    GimpColorDisplayStack: ['added', 'changed', 'removed', 'reordered'],
     GimpColorHexEntry: ['color-changed'],
     GimpColorSelection: ['color-changed'],
     GimpColorSelector: ['channel-changed', 'color-changed', 'model-visible-changed', 'simulation'],
@@ -80,22 +90,34 @@ export const OWN_SIGNALS = {
     GimpProcBrowserDialog: ['row-activated', 'selection-changed'],
     GimpResourceChooser: ['resource-set'],
     GimpSizeEntry: ['refval-changed', 'unit-changed', 'value-changed'],
+    GimpZoomModel: ['zoomed'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
     GimpAspectPreview: ['GimpAspectPreview', 'GimpPreview', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GimpBrowser: ['GimpBrowser', 'GtkPaned', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GimpBrushChooser: ['GimpBrushChooser', 'GimpResourceChooser', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GimpBusyBox: ['GimpBusyBox', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GimpButton: ['GimpButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    GimpCellRendererColor: ['GimpCellRendererColor', 'GtkCellRenderer'],
+    GimpCellRendererToggle: ['GimpCellRendererToggle', 'GtkCellRendererToggle', 'GtkCellRenderer'],
     GimpChainButton: ['GimpChainButton', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GimpChannelComboBox: ['GimpChannelComboBox', 'GimpIntComboBox', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
     GimpColorArea: ['GimpColorArea', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
     GimpColorButton: ['GimpColorButton', 'GimpButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    GimpColorDisplayStack: ['GimpColorDisplayStack'],
     GimpColorHexEntry: ['GimpColorHexEntry', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
     GimpColorNotebook: ['GimpColorNotebook', 'GimpColorSelector', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GimpColorProfileChooserDialog: ['GimpColorProfileChooserDialog', 'GtkFileChooserDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkFileChooser'],
     GimpColorProfileComboBox: ['GimpColorProfileComboBox', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
+    GimpColorProfileStore: ['GimpColorProfileStore', 'GtkListStore', 'GtkBuildable', 'GtkTreeDragDest', 'GtkTreeDragSource', 'GtkTreeModel', 'GtkTreeSortable'],
     GimpColorProfileView: ['GimpColorProfileView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
     GimpColorScale: ['GimpColorScale', 'GtkScale', 'GtkRange', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GimpColorScaleEntry: ['GimpColorScaleEntry', 'GimpScaleEntry', 'GimpLabelSpin', 'GimpLabeled', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
@@ -108,6 +130,7 @@ export const DECLS = {
     GimpDrawablePreview: ['GimpDrawablePreview', 'GimpScrolledPreview', 'GimpPreview', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GimpEnumComboBox: ['GimpEnumComboBox', 'GimpIntComboBox', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
     GimpEnumLabel: ['GimpEnumLabel', 'GtkLabel', 'GtkMisc', 'GtkWidget', 'GtkBuildable'],
+    GimpEnumStore: ['GimpEnumStore', 'GimpIntStore', 'GtkListStore', 'GtkBuildable', 'GtkTreeDragDest', 'GtkTreeDragSource', 'GtkTreeModel', 'GtkTreeSortable'],
     GimpExportProcedureDialog: ['GimpExportProcedureDialog', 'GimpProcedureDialog', 'GimpDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     GimpFileChooser: ['GimpFileChooser', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GimpFontChooser: ['GimpFontChooser', 'GimpResourceChooser', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
@@ -118,6 +141,7 @@ export const DECLS = {
     GimpImageComboBox: ['GimpImageComboBox', 'GimpIntComboBox', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
     GimpIntComboBox: ['GimpIntComboBox', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
     GimpIntRadioFrame: ['GimpIntRadioFrame', 'GimpFrame', 'GtkFrame', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    GimpIntStore: ['GimpIntStore', 'GtkListStore', 'GtkBuildable', 'GtkTreeDragDest', 'GtkTreeDragSource', 'GtkTreeModel', 'GtkTreeSortable'],
     GimpItemChooser: ['GimpItemChooser', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GimpLabelColor: ['GimpLabelColor', 'GimpLabeled', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GimpLabelEntry: ['GimpLabelEntry', 'GimpLabeled', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
@@ -146,14 +170,17 @@ export const DECLS = {
     GimpSpinScale: ['GimpSpinScale', 'GimpSpinButton', 'GtkSpinButton', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable', 'GtkOrientable'],
     GimpStringComboBox: ['GimpStringComboBox', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
     GimpUnitComboBox: ['GimpUnitComboBox', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
+    GimpUnitStore: ['GimpUnitStore', 'GtkTreeModel'],
     GimpVectorLoadProcedureDialog: ['GimpVectorLoadProcedureDialog', 'GimpProcedureDialog', 'GimpDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    GimpZoomModel: ['GimpZoomModel'],
     GimpZoomPreview: ['GimpZoomPreview', 'GimpScrolledPreview', 'GimpPreview', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -177,7 +204,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -267,11 +294,12 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
@@ -327,7 +355,7 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
     'GimpChainButton.icon-size': 'GtkIconSize',
@@ -398,6 +426,7 @@ export const SINCE = {
     'GimpColorButton.type': '2.4',
     'GimpColorProfileComboBox.dialog': '2.4',
     'GimpColorProfileComboBox.model': '2.4',
+    'GimpColorProfileStore.history': '2.4',
     'GimpColorScale.channel': '2.8',
     'GimpDialog.help-func': '2.2',
     'GimpDialog.help-id': '2.2',
@@ -409,6 +438,7 @@ export const SINCE = {
     'GimpDrawableChooser.title': '3.0',
     'GimpEnumLabel.enum-type': '2.8',
     'GimpEnumLabel.enum-value': '2.8',
+    'GimpEnumStore.enum-type': '2.4',
     'GimpFileChooser': '3.0',
     'GimpFileChooser.action': '3.0',
     'GimpFileChooser.file': '3.0',
@@ -424,6 +454,7 @@ export const SINCE = {
     'GimpIntComboBox.value': '3.0',
     'GimpIntRadioFrame.store': '3.0',
     'GimpIntRadioFrame.value': '3.0',
+    'GimpIntStore.user-data-type': '2.4',
     'GimpItemChooser': '3.2',
     'GimpItemChooser.item': '3.0',
     'GimpItemChooser.item-type': '3.0',

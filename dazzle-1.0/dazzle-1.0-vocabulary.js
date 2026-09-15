@@ -1,6 +1,6 @@
 // The widget vocabulary of Dazzle-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Dazzle-1.0 — library 3.44.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
+// GENERATED — do not edit. Provenance: Dazzle-1.0 — library 3.44.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap Atk.ImplementorIface Gio.Action Gio.ListModel Gio.AsyncInitable Gio.MenuModel Gio.Initable — inlined base(s) their owner's vocabulary does not emit: Gio.Application — prop(s) no TypeScript value satisfies: Dazzle.BoxTheatric.surface Dazzle.TaskCache.key-copy-func Dazzle.TaskCache.key-destroy-func Dazzle.TaskCache.key-equal-func Dazzle.TaskCache.key-hash-func Dazzle.TaskCache.populate-callback Dazzle.TaskCache.populate-callback-data Dazzle.TaskCache.populate-callback-data-destroy Dazzle.TaskCache.value-copy-func Dazzle.TaskCache.value-destroy-func
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,33 +11,49 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: '3.44.0',
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface', 'Gio.ActionGroup', 'Gio.ActionMap'],
-    inlinedBases: [],
-    unsettableProps: [],
+    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Gio.ActionGroup', 'Gio.ActionMap', 'Atk.ImplementorIface', 'Gio.Action', 'Gio.ListModel', 'Gio.AsyncInitable', 'Gio.MenuModel', 'Gio.Initable'],
+    inlinedBases: ['Gio.Application'],
+    unsettableProps: ['Dazzle.BoxTheatric.surface', 'Dazzle.TaskCache.key-copy-func', 'Dazzle.TaskCache.key-destroy-func', 'Dazzle.TaskCache.key-equal-func', 'Dazzle.TaskCache.key-hash-func', 'Dazzle.TaskCache.populate-callback', 'Dazzle.TaskCache.populate-callback-data', 'Dazzle.TaskCache.populate-callback-data-destroy', 'Dazzle.TaskCache.value-copy-func', 'Dazzle.TaskCache.value-destroy-func'],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
+    DzlAnimation: ['duration', 'frame-clock', 'mode', 'target'],
     DzlApplicationWindow: ['fullscreen'],
+    DzlBindingGroup: ['source'],
     DzlBoldingLabel: ['bold'],
     DzlBox: ['max-width-request'],
+    DzlBoxTheatric: ['alpha', 'background', 'height', 'icon', 'surface', 'target', 'width', 'x', 'y'],
     DzlCenteringBin: ['max-width-request'],
     DzlColumnLayout: ['column-spacing', 'column-width', 'max-columns', 'row-spacing'],
     DzlCpuGraph: ['max-samples', 'timespan'],
+    DzlCssProvider: ['base-path'],
+    DzlDirectoryModel: ['directory'],
     DzlDock: ['manager'],
     DzlDockBin: ['bottom-visible', 'left-visible', 'right-visible', 'top-visible'],
     DzlDockBinEdge: ['edge'],
     DzlDockOverlayEdge: ['edge', 'position'],
     DzlDockRevealer: ['position', 'position-set', 'reveal-child', 'transition-duration', 'transition-type'],
     DzlDockStack: ['edge', 'show-pinned-button', 'style'],
+    DzlDockTransientGrab: ['timeout'],
     DzlDockWidget: ['can-close', 'gicon', 'icon-name', 'manager', 'title'],
     DzlEmptyState: ['icon-name', 'pixel-size', 'resource', 'subtitle', 'title'],
     DzlEntryBox: ['max-width-chars'],
     DzlFileChooserEntry: ['action', 'create-folders', 'do-overwrite-confirmation', 'file', 'filter', 'local-only', 'max-width-chars', 'show-hidden', 'title'],
+    DzlFileTransfer: ['flags'],
+    DzlFuzzyIndexBuilder: ['case-sensitive'],
+    DzlFuzzyIndexCursor: ['case-sensitive', 'index', 'max-matches', 'query', 'tables'],
+    DzlFuzzyIndexMatch: ['document', 'key', 'priority', 'score'],
+    DzlGraphColumn: ['name', 'value-type'],
+    DzlGraphLineRenderer: ['column', 'line-width', 'stroke-color', 'stroke-color-rgba'],
+    DzlGraphModel: ['max-samples', 'timespan', 'value-max', 'value-min'],
     DzlGraphView: ['model'],
     DzlListBox: ['property-name', 'row-type', 'row-type-name'],
+    DzlListStoreAdapter: ['model'],
     DzlMenuButton: ['icon-name', 'menu-id', 'model', 'show-accels', 'show-arrow', 'show-icons', 'transitions-enabled'],
     DzlMultiPaned: ['orientation'],
     DzlPathBar: ['path'],
+    DzlPathElement: ['icon-name', 'id', 'title'],
     DzlPillBox: ['label'],
     DzlPreferencesBin: ['keywords', 'path', 'priority', 'schema-id'],
     DzlPreferencesEntry: ['text', 'title'],
@@ -51,32 +67,55 @@ export const OWN_PROPS = {
     DzlProgressButton: ['progress', 'show-progress'],
     DzlProgressIcon: ['progress'],
     DzlProgressMenuButton: ['progress', 'show-progress', 'show-theatric', 'theatric-icon-name', 'transition-duration'],
+    DzlPropertiesGroup: ['object', 'object-type'],
     DzlRadioBox: ['active-id', 'show-more'],
+    DzlReadOnlyListModel: ['base-model'],
+    DzlRecursiveFileMonitor: ['root'],
     DzlSearchBar: ['search-mode-enabled', 'show-close-button'],
+    DzlSettingsFlagAction: ['flag-nick', 'schema-id', 'schema-key'],
+    DzlSettingsSandwich: ['path', 'schema-id'],
     DzlShortcutAccelDialog: ['accelerator', 'shortcut-title'],
+    DzlShortcutContext: ['name', 'use-binding-sets'],
+    DzlShortcutController: ['manager', 'widget'],
     DzlShortcutLabel: ['accelerator', 'chord'],
+    DzlShortcutManager: ['theme', 'theme-name', 'user-dir'],
+    DzlShortcutModel: ['manager', 'theme'],
     DzlShortcutSimpleLabel: ['accel', 'action', 'command', 'show-accel', 'title'],
+    DzlShortcutTheme: ['name', 'parent-name', 'subtitle', 'title'],
     DzlShortcutThemeEditor: ['theme'],
+    DzlShortcutTooltip: ['accel', 'command-id', 'title', 'widget'],
     DzlShortcutsGroup: ['accel-size-group', 'title', 'title-size-group', 'view'],
     DzlShortcutsSection: ['max-height', 'section-name', 'title', 'view-name'],
     DzlShortcutsShortcut: ['accel-size-group', 'accelerator', 'action-name', 'direction', 'icon', 'icon-set', 'shortcut-type', 'subtitle', 'subtitle-set', 'title', 'title-size-group'],
     DzlShortcutsWindow: ['section-name', 'view-name'],
+    DzlSignalGroup: ['target', 'target-type'],
     DzlSimpleLabel: ['label', 'width-chars', 'xalign'],
     DzlSimplePopover: ['button-text', 'message', 'ready', 'text', 'title'],
     DzlSlider: ['position'],
+    DzlStateMachine: ['state'],
+    DzlSuggestion: ['icon-name', 'id', 'secondary-icon-name', 'subtitle', 'title'],
     DzlSuggestionEntry: ['activate-on-single-click', 'compact', 'model', 'suggestion'],
+    DzlSuggestionEntryBuffer: ['suggestion'],
     DzlSuggestionPopover: ['model', 'relative-to', 'selected', 'subtitle-ellipsize', 'title-ellipsize'],
     DzlSuggestionRow: ['orientation', 'suggestion'],
     DzlTab: ['active', 'can-close', 'edge', 'style', 'title', 'widget'],
     DzlTabStrip: ['edge', 'stack', 'style'],
+    DzlTaskCache: ['key-copy-func', 'key-destroy-func', 'key-equal-func', 'key-hash-func', 'populate-callback', 'populate-callback-data', 'populate-callback-data-destroy', 'time-to-live', 'value-copy-func', 'value-destroy-func'],
     DzlThreeGrid: ['column-spacing', 'row-spacing'],
     DzlTree: ['always-expand', 'context-menu', 'root', 'selection', 'show-icons'],
+    DzlTreeNode: ['children-possible', 'expanded-icon-name', 'gicon', 'icon-name', 'item', 'reset-on-collapse', 'text', 'tree', 'use-dim-label', 'use-markup'],
+    DzlWidgetActionGroup: ['widget'],
+    GApplication: ['action-group', 'application-id', 'flags', 'inactivity-timeout', 'resource-base-path', 'version'],
 };
 
 export const OWN_SIGNALS = {
+    DzlAnimation: ['tick'],
+    DzlDirectoryReaper: ['remove-file'],
     DzlDockBinEdge: ['move-to-bin-child'],
     DzlDockItem: ['manager-set', 'needs-attention', 'presented'],
+    DzlDockManager: ['register-dock', 'unregister-dock'],
     DzlDockOverlay: ['hide-edges'],
+    DzlGraphModel: ['changed'],
     DzlMultiPaned: ['resize-drag-begin', 'resize-drag-end'],
     DzlPathBar: ['element-selected', 'populate-menu'],
     DzlPreferencesBin: ['preference-activated'],
@@ -85,45 +124,84 @@ export const OWN_SIGNALS = {
     DzlPreferencesSpinButton: ['activate'],
     DzlPreferencesSwitch: ['activated'],
     DzlRadioBox: ['changed'],
+    DzlRecursiveFileMonitor: ['changed'],
     DzlSearchBar: ['activate', 'reveal'],
+    DzlShortcutController: ['reset', 'set-context-named'],
+    DzlShortcutManager: ['changed'],
     DzlShortcutThemeEditor: ['changed'],
     DzlShortcutsSection: ['change-current-page'],
     DzlShortcutsWindow: ['close', 'search'],
+    DzlSignalGroup: ['bind', 'unbind'],
     DzlSimplePopover: ['activate', 'changed', 'insert-text'],
     DzlStackList: ['header-activated', 'row-activated'],
+    DzlSuggestion: ['replace-typed-text', 'suggest-suffix'],
     DzlSuggestionEntry: ['action', 'activate-suggestion', 'hide-suggestions', 'move-suggestion', 'show-suggestions', 'suggestion-activated', 'suggestion-selected'],
     DzlSuggestionPopover: ['suggestion-activated'],
     DzlTab: ['clicked'],
     DzlTree: ['action', 'populate-popup'],
+    DzlTreeBuilder: ['added', 'build-children', 'build-node', 'drag-data-get', 'drag-data-received', 'drag-node-delete', 'drag-node-received', 'node-activated', 'node-collapsed', 'node-draggable', 'node-droppable', 'node-expanded', 'node-popup', 'node-selected', 'node-unselected', 'removed'],
+    GApplication: ['activate', 'command-line', 'handle-local-options', 'name-lost', 'open', 'shutdown', 'startup'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
+    DzlAnimation: ['DzlAnimation'],
+    DzlApplication: ['DzlApplication', 'GtkApplication', 'GApplication'],
     DzlApplicationWindow: ['DzlApplicationWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlBin: ['DzlBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DzlBindingGroup: ['DzlBindingGroup'],
     DzlBoldingLabel: ['DzlBoldingLabel', 'GtkLabel', 'GtkMisc', 'GtkWidget', 'GtkBuildable'],
     DzlBox: ['DzlBox', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    DzlBoxTheatric: ['DzlBoxTheatric'],
     DzlCenteringBin: ['DzlCenteringBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DzlChildPropertyAction: ['DzlChildPropertyAction'],
     DzlColumnLayout: ['DzlColumnLayout', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlCountersWindow: ['DzlCountersWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlCpuGraph: ['DzlCpuGraph', 'DzlGraphView', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
+    DzlCpuModel: ['DzlCpuModel', 'DzlGraphModel'],
+    DzlCssProvider: ['DzlCssProvider', 'GtkCssProvider', 'GtkStyleProvider'],
+    DzlDirectoryModel: ['DzlDirectoryModel'],
+    DzlDirectoryReaper: ['DzlDirectoryReaper'],
     DzlDockBin: ['DzlDockBin', 'GtkContainer', 'GtkWidget', 'DzlDock', 'DzlDockItem', 'GtkBuildable'],
     DzlDockBinEdge: ['DzlDockBinEdge', 'DzlDockRevealer', 'DzlBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'DzlDockItem', 'GtkBuildable'],
+    DzlDockManager: ['DzlDockManager'],
     DzlDockOverlay: ['DzlDockOverlay', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'DzlDock', 'DzlDockItem', 'GtkBuildable'],
     DzlDockOverlayEdge: ['DzlDockOverlayEdge', 'DzlBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'DzlDockItem', 'GtkBuildable'],
     DzlDockPaned: ['DzlDockPaned', 'DzlMultiPaned', 'GtkContainer', 'GtkWidget', 'DzlDockItem', 'GtkBuildable', 'GtkOrientable'],
     DzlDockRevealer: ['DzlDockRevealer', 'DzlBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlDockStack: ['DzlDockStack', 'GtkBox', 'GtkContainer', 'GtkWidget', 'DzlDockItem', 'GtkBuildable', 'GtkOrientable'],
+    DzlDockTransientGrab: ['DzlDockTransientGrab'],
     DzlDockWidget: ['DzlDockWidget', 'DzlBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'DzlDockItem', 'GtkBuildable'],
     DzlDockWindow: ['DzlDockWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'DzlDock', 'DzlDockItem', 'GtkBuildable'],
     DzlElasticBin: ['DzlElasticBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlEmptyState: ['DzlEmptyState', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlEntryBox: ['DzlEntryBox', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     DzlFileChooserEntry: ['DzlFileChooserEntry', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DzlFileTransfer: ['DzlFileTransfer'],
+    DzlFuzzyIndex: ['DzlFuzzyIndex'],
+    DzlFuzzyIndexBuilder: ['DzlFuzzyIndexBuilder'],
+    DzlFuzzyIndexCursor: ['DzlFuzzyIndexCursor'],
+    DzlFuzzyIndexMatch: ['DzlFuzzyIndexMatch'],
+    DzlGraphColumn: ['DzlGraphColumn'],
+    DzlGraphLineRenderer: ['DzlGraphLineRenderer', 'DzlGraphRenderer'],
+    DzlGraphModel: ['DzlGraphModel'],
     DzlGraphView: ['DzlGraphView', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
+    DzlJoinedMenu: ['DzlJoinedMenu'],
     DzlListBox: ['DzlListBox', 'GtkListBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DzlListModelFilter: ['DzlListModelFilter'],
+    DzlListStoreAdapter: ['DzlListStoreAdapter', 'GtkTreeModel'],
     DzlMenuButton: ['DzlMenuButton', 'GtkMenuButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    DzlMenuManager: ['DzlMenuManager'],
     DzlMultiPaned: ['DzlMultiPaned', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    DzlPath: ['DzlPath'],
     DzlPathBar: ['DzlPathBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    DzlPathElement: ['DzlPathElement'],
     DzlPillBox: ['DzlPillBox', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlPreferencesBin: ['DzlPreferencesBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlPreferencesEntry: ['DzlPreferencesEntry', 'DzlPreferencesBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
@@ -139,35 +217,56 @@ export const DECLS = {
     DzlProgressButton: ['DzlProgressButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
     DzlProgressIcon: ['DzlProgressIcon', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
     DzlProgressMenuButton: ['DzlProgressMenuButton', 'GtkMenuButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    DzlPropertiesGroup: ['DzlPropertiesGroup'],
     DzlRadioBox: ['DzlRadioBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DzlReadOnlyListModel: ['DzlReadOnlyListModel'],
+    DzlRecursiveFileMonitor: ['DzlRecursiveFileMonitor'],
     DzlScrolledWindow: ['DzlScrolledWindow', 'GtkScrolledWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlSearchBar: ['DzlSearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DzlSettingsFlagAction: ['DzlSettingsFlagAction'],
+    DzlSettingsSandwich: ['DzlSettingsSandwich'],
     DzlShortcutAccelDialog: ['DzlShortcutAccelDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DzlShortcutContext: ['DzlShortcutContext'],
+    DzlShortcutController: ['DzlShortcutController'],
     DzlShortcutLabel: ['DzlShortcutLabel', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    DzlShortcutManager: ['DzlShortcutManager'],
+    DzlShortcutModel: ['DzlShortcutModel', 'GtkTreeStore', 'GtkBuildable', 'GtkTreeDragDest', 'GtkTreeDragSource', 'GtkTreeModel', 'GtkTreeSortable'],
     DzlShortcutSimpleLabel: ['DzlShortcutSimpleLabel', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    DzlShortcutTheme: ['DzlShortcutTheme'],
     DzlShortcutThemeEditor: ['DzlShortcutThemeEditor', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DzlShortcutTooltip: ['DzlShortcutTooltip'],
     DzlShortcutsGroup: ['DzlShortcutsGroup', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     DzlShortcutsSection: ['DzlShortcutsSection', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     DzlShortcutsShortcut: ['DzlShortcutsShortcut', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     DzlShortcutsWindow: ['DzlShortcutsWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DzlSignalGroup: ['DzlSignalGroup'],
     DzlSimpleLabel: ['DzlSimpleLabel', 'GtkWidget', 'GtkBuildable'],
     DzlSimplePopover: ['DzlSimplePopover', 'GtkPopover', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlSlider: ['DzlSlider', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlStackList: ['DzlStackList', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DzlStateMachine: ['DzlStateMachine', 'GtkBuildable'],
+    DzlSuggestion: ['DzlSuggestion'],
     DzlSuggestionButton: ['DzlSuggestionButton', 'GtkStack', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlSuggestionEntry: ['DzlSuggestionEntry', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
+    DzlSuggestionEntryBuffer: ['DzlSuggestionEntryBuffer', 'GtkEntryBuffer'],
     DzlSuggestionPopover: ['DzlSuggestionPopover', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlSuggestionRow: ['DzlSuggestionRow', 'DzlListBoxRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable', 'GtkOrientable'],
     DzlTab: ['DzlTab', 'DzlBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
     DzlTabStrip: ['DzlTabStrip', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    DzlTaskCache: ['DzlTaskCache'],
+    DzlThemeManager: ['DzlThemeManager'],
     DzlThreeGrid: ['DzlThreeGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     DzlTree: ['DzlTree', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
+    DzlTreeBuilder: ['DzlTreeBuilder'],
+    DzlTreeNode: ['DzlTreeNode'],
+    DzlWidgetActionGroup: ['DzlWidgetActionGroup'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -186,7 +285,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -258,11 +357,12 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
@@ -276,6 +376,17 @@ export const FLAG_VALUES = {
     'DzlTabStyle.both': 3,
     'DzlTabStyle.icons': 2,
     'DzlTabStyle.text': 1,
+    'GApplicationFlags.allow-replacement': 128,
+    'GApplicationFlags.can-override-app-id': 64,
+    'GApplicationFlags.default-flags': 0,
+    'GApplicationFlags.flags-none': 0,
+    'GApplicationFlags.handles-command-line': 8,
+    'GApplicationFlags.handles-open': 4,
+    'GApplicationFlags.is-launcher': 2,
+    'GApplicationFlags.is-service': 1,
+    'GApplicationFlags.non-unique': 32,
+    'GApplicationFlags.replace': 256,
+    'GApplicationFlags.send-environment': 16,
 };
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
@@ -295,15 +406,17 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
+    'DzlAnimation.mode': 'DzlAnimationMode',
     'DzlDockBinEdge.edge': 'GtkPositionType',
     'DzlDockOverlayEdge.edge': 'GtkPositionType',
     'DzlDockRevealer.transition-type': 'DzlDockRevealerTransitionType',
     'DzlDockStack.edge': 'GtkPositionType',
     'DzlDockStack.style': 'DzlTabStyle',
     'DzlFileChooserEntry.action': 'GtkFileChooserAction',
+    'DzlFileTransfer.flags': 'DzlFileTransferFlags',
     'DzlMultiPaned.orientation': 'GtkOrientation',
     'DzlPreferencesFileChooserButton.action': 'GtkFileChooserAction',
     'DzlPreferencesGroup.mode': 'GtkSelectionMode',
@@ -317,6 +430,7 @@ export const PROP_ENUMS = {
     'DzlTab.style': 'DzlTabStyle',
     'DzlTabStrip.edge': 'GtkPositionType',
     'DzlTabStrip.style': 'DzlTabStyle',
+    'GApplication.flags': 'GApplicationFlags',
 };
 
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
@@ -364,10 +478,28 @@ export const SLOT_CANDIDATES = {
 };
 
 export const SINCE = {
+    'DzlDirectoryReaper::remove-file': '3.32',
     'DzlMenuButton.menu-id': '3.26',
+    'DzlMenuManager': '3.26',
+    'DzlPathElement.icon-name': '3.26',
+    'DzlPathElement.id': '3.26',
+    'DzlPathElement.title': '3.26',
+    'DzlReadOnlyListModel.base-model': '3.30',
+    'DzlRecursiveFileMonitor::changed': '3.28',
+    'DzlShortcutTooltip.title': '3.32',
     'DzlShortcutsShortcut.action-name': '3.22',
     'DzlSuggestionEntry.activate-on-single-click': '3.30',
     'DzlSuggestionEntry.compact': '3.34',
     'DzlSuggestionEntry.suggestion': '3.30',
     'DzlSuggestionEntry::suggestion-selected': '3.30',
+    'DzlTreeNode.reset-on-collapse': '3.28',
+    'GApplication': '2.28',
+    'GApplication.action-group': '2.28',
+    'GApplication.application-id': '2.28',
+    'GApplication.flags': '2.28',
+    'GApplication.inactivity-timeout': '2.28',
+    'GApplication.resource-base-path': '2.28',
+    'GApplication.version': '2.80',
+    'GApplication::handle-local-options': '2.40',
+    'GApplication::name-lost': '2.60',
 };

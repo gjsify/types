@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Shumate-1.0.
  *
- * GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.7.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+ * GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.7.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ListModel Gio.Initable Gdk.Paintable
  *
- * 10 concrete widgets, 12 declarations, 5 enum nick unions, 4 slot candidates.
+ * 24 instantiable GTypes (of which 10 concrete widgets), 28 declarations, 5 enum nick unions, 4 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -27,7 +27,7 @@
 import type Gdk from '@girs/gdk-4.0';
 import type Gtk from '@girs/gtk-4.0';
 import type Shumate from './shumate-1.0.js';
-import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkSelectionModeNick, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-4.0/vocabulary';
+import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkSelectionModeNick, GtkSymbolicPaintableConstructOnly, GtkSymbolicPaintableProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-4.0/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -62,6 +62,75 @@ export interface ShumateCompassProps extends GtkWidgetProps, GtkAccessibleProps,
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type ShumateCompassConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
+
+/** A simple object implementing [iface@Location]. */
+export interface ShumateCoordinateProps extends ShumateLocationProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateCoordinateConstructOnly = ShumateLocationConstructOnly;
+
+/** The base class used to retrieve tiles as [struct@GLib.Bytes]. */
+export interface ShumateDataSourceProps {
+    /**
+     * The maximum zoom level
+     * @since 1.1
+     * @default 30
+     */
+    'max-zoom-level'?: number;
+    /**
+     * The minimum zoom level
+     * @since 1.1
+     * @default 0
+     */
+    'min-zoom-level'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateDataSourceConstructOnly = never;
+
+/** Represents a request to a [class@DataSource] for a tile. */
+export interface ShumateDataSourceRequestProps {
+    /**
+     * The X coordinate of the requested tile.
+     * @since 1.1
+     * @default 0
+     */
+    x?: number;
+    /**
+     * The Y coordinate of the requested tile.
+     * @since 1.1
+     * @default 0
+     */
+    y?: number;
+    /**
+     * The zoom level of the requested tile.
+     * @since 1.1
+     * @default 0
+     */
+    'zoom-level'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateDataSourceRequestConstructOnly = 'x' | 'y' | 'zoom-level';
+
+/** A cache that stores and retrieves tiles from the file system. */
+export interface ShumateFileCacheProps {
+    /**
+     * The directory where the tile database is stored.
+     * @default NULL
+     */
+    'cache-dir'?: string;
+    /**
+     * The key used to store and retrieve tiles from the cache.
+     * @default NULL
+     */
+    'cache-key'?: string;
+    /**
+     * The cache size limit in bytes.
+     * @default 100000000
+     */
+    'size-limit'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateFileCacheConstructOnly = 'cache-dir' | 'cache-key';
 
 /** Every layer (overlay that moves together with the map) has to inherit this class and implement its virtual methods. */
 export interface ShumateLayerProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -130,6 +199,58 @@ export interface ShumateMapLayerProps extends ShumateLayerProps, GtkAccessiblePr
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type ShumateMapLayerConstructOnly = ShumateLayerConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
+
+/** The base class for all map sources. */
+export interface ShumateMapSourceProps {
+    /**
+     * The id of the map source
+     * @default NULL
+     */
+    id?: string;
+    /**
+     * The usage license of the map source
+     * @default NULL
+     */
+    license?: string;
+    /**
+     * The usage license's uri for more information
+     * @default NULL
+     */
+    'license-uri'?: string;
+    /**
+     * The maximum zoom level
+     * @default 18
+     */
+    'max-zoom-level'?: number;
+    /**
+     * The minimum zoom level
+     * @default 0
+     */
+    'min-zoom-level'?: number;
+    /**
+     * The name of the map source
+     * @default NULL
+     */
+    name?: string;
+    /**
+     * The map projection of the map source
+     * @default SHUMATE_MAP_PROJECTION_MERCATOR
+     */
+    projection?: ShumateMapProjectionNick | Shumate.MapProjection;
+    /**
+     * The tile size of the map source
+     * @default 256
+     */
+    'tile-size'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateMapSourceConstructOnly = never;
+
+/** This object allows you to hold [class@MapSource] instances, you can access a default set of sources with [method@MapSourceRegistry.populate_defaults]. */
+export interface ShumateMapSourceRegistryProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateMapSourceRegistryConstructOnly = never;
 
 /** Markers represent points of interest on a map. */
 export interface ShumateMarkerProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, ShumateLocationProps {
@@ -210,6 +331,13 @@ export interface ShumatePointProps extends ShumateMarkerProps, GtkAccessibleProp
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type ShumatePointConstructOnly = ShumateMarkerConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | ShumateLocationConstructOnly;
 
+export interface ShumateRasterRendererProps extends ShumateMapSourceProps {
+    /** The data source that provides image tiles to display. */
+    'data-source'?: Shumate.DataSource;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateRasterRendererConstructOnly = ShumateMapSourceConstructOnly | 'data-source';
+
 /** A widget displaying a scale. */
 export interface ShumateScaleProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
     /**
@@ -236,6 +364,170 @@ export interface ShumateSimpleMapProps extends GtkWidgetProps, GtkAccessibleProp
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type ShumateSimpleMapConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
+
+/** An object containing the details of a map feature that has been clicked. */
+export interface ShumateSymbolEventProps extends ShumateLocationProps {
+    /**
+     * The number of clicks/presses triggering the symbol event.
+     * @since 1.5
+     * @default 1
+     */
+    'n-press'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateSymbolEventConstructOnly = ShumateLocationConstructOnly;
+
+/** An object that represents map tiles. */
+export interface ShumateTileProps {
+    /**
+     * Specifies whether the tile should fade in when loading
+     * @default FALSE
+     */
+    'fade-in'?: boolean;
+    /** The [iface@Gdk.Paintable] backing the tile */
+    paintable?: Gdk.Paintable | null;
+    /**
+     * The scale factor of the widget the tile will be displayed in.
+     * @since 1.1
+     * @default 1.000000
+     */
+    'scale-factor'?: number;
+    /**
+     * The size of the tile in pixels
+     * @default 256
+     */
+    size?: number;
+    /**
+     * The state of the tile
+     * @default SHUMATE_STATE_NONE
+     */
+    state?: ShumateStateNick | Shumate.State;
+    /**
+     * The x position of the tile
+     * @default 0
+     */
+    x?: number;
+    /**
+     * The y position of the tile
+     * @default 0
+     */
+    y?: number;
+    /**
+     * The zoom level of the tile
+     * @default 0
+     */
+    'zoom-level'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateTileConstructOnly = never;
+
+/** A [class@DataSource] that asynchronously downloads tiles from an online service using a given template. */
+export interface ShumateTileDownloaderProps extends ShumateDataSourceProps {
+    /**
+     * A template for construting the URL to download a tile from.
+     * @default NULL
+     */
+    'url-template'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateTileDownloaderConstructOnly = ShumateDataSourceConstructOnly | 'url-template';
+
+/** Provides low-level access to the contents of a vector tile. */
+export interface ShumateVectorReaderProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateVectorReaderConstructOnly = never;
+
+/** Reads the layers and features of a vector tile. */
+export interface ShumateVectorReaderIterProps {
+    reader?: Shumate.VectorReader;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateVectorReaderIterConstructOnly = 'reader';
+
+/** A [class@MapSource] that renders tiles from a given vector data source. */
+export interface ShumateVectorRendererProps extends ShumateMapSourceProps {
+    /**
+     * The sprite sheet used to render icons and textures.
+     * @since 1.1
+     */
+    'sprite-sheet'?: Shumate.VectorSpriteSheet;
+    /**
+     * A map style, in [Mapbox Style Specification](https://docs.mapbox.com/mapbox-gl-js/style-spec/) format.
+     * @default NULL
+     */
+    'style-json'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateVectorRendererConstructOnly = ShumateMapSourceConstructOnly | 'style-json';
+
+/** A sprite used to draw textures or icons. */
+export interface ShumateVectorSpriteProps extends GtkSymbolicPaintableProps {
+    /**
+     * The height at which the sprite should be drawn, in pixels.
+     * @since 1.1
+     * @default 0
+     */
+    height?: number;
+    /**
+     * The intended scale factor of the sprite.
+     * @since 1.1
+     * @default 1.000000
+     */
+    'scale-factor'?: number;
+    /**
+     * The [iface@Gdk.Paintable] used to draw the sprite.
+     * @since 1.1
+     */
+    'source-paintable'?: Gdk.Paintable;
+    /**
+     * The area of the source rectangle to draw, or %NULL to use the entire paintable.
+     * @since 1.1
+     */
+    'source-rect'?: Gdk.Rectangle | null;
+    /**
+     * The width at which the sprite should be drawn, in pixels.
+     * @since 1.1
+     * @default 0
+     */
+    width?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateVectorSpriteConstructOnly = GtkSymbolicPaintableConstructOnly | 'height' | 'scale-factor' | 'source-paintable' | 'source-rect' | 'width';
+
+/** A collection of [class@VectorSprite]s. */
+export interface ShumateVectorSpriteSheetProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateVectorSpriteSheetConstructOnly = never;
+
+/** The object holding the coordinate, zoom-level, and rotation state of the current view. */
+export interface ShumateViewportProps extends ShumateLocationProps {
+    /**
+     * The highest allowed level of zoom of the content.
+     * @default 20
+     */
+    'max-zoom-level'?: number;
+    /**
+     * The lowest allowed level of zoom of the content.
+     * @default 0
+     */
+    'min-zoom-level'?: number;
+    /** The reference #ShumateMapSource being displayed */
+    'reference-map-source'?: Shumate.MapSource | null;
+    /**
+     * The rotation of the map view, in radians clockwise from up being due north
+     * @default 0.000000
+     */
+    rotation?: number;
+    /**
+     * The level of zoom of the content.
+     * @default 3.000000
+     */
+    'zoom-level'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type ShumateViewportConstructOnly = ShumateLocationConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -333,7 +625,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -385,7 +681,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -399,7 +702,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -411,8 +724,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -450,10 +763,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -477,7 +791,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

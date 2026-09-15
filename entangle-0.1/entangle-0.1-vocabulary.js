@@ -1,6 +1,6 @@
 // The widget vocabulary of Entangle-0.1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Entangle-0.1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
+// GENERATED — do not edit. Provenance: Entangle-0.1 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,49 +11,112 @@ export const PROVENANCE = {
     version: '0.1',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface', 'Gio.ActionGroup', 'Gio.ActionMap'],
-    inlinedBases: [],
+    droppedBases: ['GObject.Object', 'Gio.ActionGroup', 'Gio.ActionMap', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    inlinedBases: ['Gio.Application'],
     unsettableProps: [],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
+    EntangleCamera: ['has-capture', 'has-preview', 'has-settings', 'has-viewfinder', 'model', 'port', 'progress', 'serial'],
+    EntangleCameraAutomata: ['camera', 'delete-file', 'session'],
+    EntangleCameraFile: ['data', 'folder', 'mimetype', 'name'],
+    EntangleCameraList: ['active'],
     EntangleCameraManager: ['camera'],
     EntangleCameraPicker: ['cameras'],
+    EntangleCameraPreferences: ['camera'],
     EntangleCameraSupport: ['camera-list'],
+    EntangleColourProfile: ['data', 'filename'],
+    EntangleColourProfileTransform: ['dst-profile', 'src-profile'],
+    EntangleControl: ['dirty', 'id', 'info', 'label', 'path', 'readonly'],
+    EntangleControlChoice: ['value'],
+    EntangleControlDate: ['value'],
     EntangleControlPanel: ['camera-prefs'],
+    EntangleControlRange: ['range-max', 'range-min', 'range-step', 'value'],
+    EntangleControlText: ['value'],
+    EntangleControlToggle: ['value'],
+    EntangleImage: ['pixbuf'],
     EntangleImageDisplay: ['aspect-ratio', 'autoscale', 'flip-horizontally', 'flip-vertically', 'focus-point', 'image', 'mask-enabled', 'mask-opacity', 'overexposure-highlighting', 'scale'],
     EntangleImageHistogram: ['image'],
+    EntangleImageLoader: ['embedded-preview'],
+    EntangleMedia: ['filename', 'metadata'],
     EntangleMediaPopup: ['media'],
     EntangleMediaStatusbar: ['media'],
+    EntanglePixbufLoader: ['colour-transform', 'with-metadata', 'workers'],
+    EntanglePreferences: ['capture-continuous-preview', 'capture-delete-file', 'capture-electronic-shutter', 'capture-filename-pattern', 'capture-last-session', 'capture-sync-clock', 'cms-detect-system-profile', 'cms-enabled', 'cms-monitor-profile', 'cms-rgb-profile', 'img-aspect-ratio', 'img-background', 'img-embedded-preview', 'img-flip-horizontally', 'img-flip-vertically', 'img-focus-point', 'img-grid-lines', 'img-highlight', 'img-mask-enabled', 'img-mask-opacity', 'img-onion-layers', 'img-onion-skin', 'img-overexposure-highlighting', 'interface-auto-connect', 'interface-histogram-linear', 'interface-screen-blank'],
+    EntangleScript: ['title'],
+    EntangleSession: ['directory', 'filename-pattern'],
     EntangleSessionBrowser: ['session', 'thumbnail-loader'],
+    EntangleThumbnailLoader: ['height', 'width'],
+    EntangleVideo: ['source'],
+    GApplication: ['action-group', 'application-id', 'flags', 'inactivity-timeout', 'resource-base-path', 'version'],
 };
 
 export const OWN_SIGNALS = {
+    EntangleCamera: ['camera-closed', 'camera-controls-changed', 'camera-file-added', 'camera-file-captured', 'camera-file-deleted', 'camera-file-downloaded', 'camera-file-previewed', 'camera-opened'],
+    EntangleCameraAutomata: ['camera-capture-begin', 'camera-capture-end'],
+    EntangleCameraList: ['camera-added', 'camera-removed'],
     EntangleCameraManager: ['closed'],
     EntangleCameraPicker: ['picker-connect', 'picker-refresh'],
+    EntangleDeviceManager: ['device-added', 'device-removed'],
     EntangleMediaPopup: ['popup-close'],
+    EntanglePixbufLoader: ['metadata-loaded', 'metadata-unloaded', 'pixbuf-loaded', 'pixbuf-unloaded'],
+    EntangleSession: ['session-media-added', 'session-media-removed'],
     EntangleSessionBrowser: ['selection-changed'],
+    GApplication: ['activate', 'command-line', 'handle-local-options', 'name-lost', 'open', 'shutdown', 'startup'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
+    EntangleApplication: ['EntangleApplication', 'GtkApplication', 'GApplication'],
+    EntangleCamera: ['EntangleCamera'],
+    EntangleCameraAutomata: ['EntangleCameraAutomata'],
+    EntangleCameraFile: ['EntangleCameraFile'],
+    EntangleCameraList: ['EntangleCameraList'],
     EntangleCameraManager: ['EntangleCameraManager', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'EntangleProgress', 'GtkBuildable'],
     EntangleCameraPicker: ['EntangleCameraPicker', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    EntangleCameraPreferences: ['EntangleCameraPreferences'],
     EntangleCameraSupport: ['EntangleCameraSupport', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    EntangleColourProfile: ['EntangleColourProfile'],
+    EntangleColourProfileTransform: ['EntangleColourProfileTransform'],
+    EntangleControlButton: ['EntangleControlButton', 'EntangleControl'],
+    EntangleControlChoice: ['EntangleControlChoice', 'EntangleControl'],
+    EntangleControlDate: ['EntangleControlDate', 'EntangleControl'],
+    EntangleControlGroup: ['EntangleControlGroup', 'EntangleControl'],
     EntangleControlPanel: ['EntangleControlPanel', 'GtkExpander', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    EntangleControlRange: ['EntangleControlRange', 'EntangleControl'],
+    EntangleControlText: ['EntangleControlText', 'EntangleControl'],
+    EntangleControlToggle: ['EntangleControlToggle', 'EntangleControl'],
+    EntangleDeviceManager: ['EntangleDeviceManager'],
     EntangleHelpAbout: ['EntangleHelpAbout', 'GtkAboutDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    EntangleImage: ['EntangleImage', 'EntangleMedia'],
     EntangleImageDisplay: ['EntangleImageDisplay', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
     EntangleImageHistogram: ['EntangleImageHistogram', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
+    EntangleImageLoader: ['EntangleImageLoader', 'EntanglePixbufLoader'],
+    EntangleMedia: ['EntangleMedia'],
     EntangleMediaPopup: ['EntangleMediaPopup', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     EntangleMediaStatusbar: ['EntangleMediaStatusbar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    EntanglePreferences: ['EntanglePreferences'],
     EntanglePreferencesDisplay: ['EntanglePreferencesDisplay', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     EntangleScriptConfig: ['EntangleScriptConfig', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    EntangleScriptSimple: ['EntangleScriptSimple', 'EntangleScript'],
+    EntangleSession: ['EntangleSession'],
     EntangleSessionBrowser: ['EntangleSessionBrowser', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
+    EntangleThumbnailLoader: ['EntangleThumbnailLoader', 'EntanglePixbufLoader'],
+    EntangleVideo: ['EntangleVideo', 'EntangleMedia'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {};
@@ -63,7 +126,7 @@ export const ENUM_NICKS = {};
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -100,15 +163,28 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
-export const FLAG_VALUES = {};
+export const FLAG_VALUES = {
+    'GApplicationFlags.allow-replacement': 128,
+    'GApplicationFlags.can-override-app-id': 64,
+    'GApplicationFlags.default-flags': 0,
+    'GApplicationFlags.flags-none': 0,
+    'GApplicationFlags.handles-command-line': 8,
+    'GApplicationFlags.handles-open': 4,
+    'GApplicationFlags.is-launcher': 2,
+    'GApplicationFlags.is-service': 1,
+    'GApplicationFlags.non-unique': 32,
+    'GApplicationFlags.replace': 256,
+    'GApplicationFlags.send-environment': 16,
+};
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
 // `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
@@ -127,9 +203,11 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
-export const PROP_ENUMS = {};
+export const PROP_ENUMS = {
+    'GApplication.flags': 'GApplicationFlags',
+};
 
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
@@ -158,4 +236,14 @@ export const ARIA_VALUE_ENUMS = {};
 
 export const SLOT_CANDIDATES = {};
 
-export const SINCE = {};
+export const SINCE = {
+    'GApplication': '2.28',
+    'GApplication.action-group': '2.28',
+    'GApplication.application-id': '2.28',
+    'GApplication.flags': '2.28',
+    'GApplication.inactivity-timeout': '2.28',
+    'GApplication.resource-base-path': '2.28',
+    'GApplication.version': '2.80',
+    'GApplication::handle-local-options': '2.40',
+    'GApplication::name-lost': '2.60',
+};

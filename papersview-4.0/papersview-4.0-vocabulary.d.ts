@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for PapersView-4.0.
  *
- * GENERATED — do not edit. Provenance: PapersView-4.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+ * GENERATED — do not edit. Provenance: PapersView-4.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned
  *
- * 2 concrete widgets, 2 declarations, 4 enum nick unions, 0 slot candidates.
+ * 25 instantiable GTypes (of which 2 concrete widgets), 27 declarations, 4 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -24,6 +24,8 @@
  * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
  */
 
+import type Gdk from '@girs/gdk-4.0';
+import type Pango from '@girs/pango-1.0';
 import type PapersDocument from '@girs/papersdocument-4.0';
 import type PapersView from './papersview-4.0.js';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-4.0/vocabulary';
@@ -52,6 +54,186 @@ export type PpsSizingModeNick = 'fit-page' | 'fit-width' | 'free' | 'automatic';
 // because GObject installs interface properties on the implementor at runtime while
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
+
+export interface PpsAnnotationModelProps {
+    /** @default pencil */
+    'active-tool-str'?: string;
+    /** @default TRUE */
+    'eraser-objects'?: boolean;
+    /** @default 5.000000 */
+    'eraser-radius'?: number;
+    'highlight-color'?: Gdk.RGBA;
+    /** @default 5.000000 */
+    'highlight-radius'?: number;
+    'pen-color'?: Gdk.RGBA;
+    /** @default 1.000000 */
+    'pen-radius'?: number;
+    'text-color'?: Gdk.RGBA;
+    'text-font'?: Pango.FontDescription;
+    /** @default 8.000000 */
+    'text-font-size'?: number;
+    /** @default 0 */
+    tool?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsAnnotationModelConstructOnly = never;
+
+export interface PpsAnnotationsContextProps extends PpsUndoHandlerProps {
+    'document-model'?: PapersView.DocumentModel;
+    'undo-context'?: PapersView.UndoContext;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsAnnotationsContextConstructOnly = PpsUndoHandlerConstructOnly | 'document-model' | 'undo-context';
+
+export interface PpsAttachmentContextProps {
+    'document-model'?: PapersView.DocumentModel;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsAttachmentContextConstructOnly = 'document-model';
+
+export interface PpsDocumentModelProps {
+    /** @default PPS_ANNOTATION_EDITING_STATE_NONE */
+    'annotation-editing-state'?: number;
+    'annotation-model'?: PapersView.AnnotationModel;
+    /** @default TRUE */
+    continuous?: boolean;
+    document?: PapersDocument.Document;
+    /** @default FALSE */
+    'dual-odd-left'?: boolean;
+    /** @default FALSE */
+    'inverted-colors'?: boolean;
+    /** @default 5.000000 */
+    'max-scale'?: number;
+    /** @default 0.250000 */
+    'min-scale'?: number;
+    /** @default -1 */
+    page?: number;
+    /** @default PPS_PAGE_LAYOUT_SINGLE */
+    'page-layout'?: PpsPageLayoutNick | PapersView.PageLayout;
+    /** @default 0 */
+    rotation?: number;
+    /** @default FALSE */
+    rtl?: boolean;
+    /** @default 1.000000 */
+    scale?: number;
+    /** @default PPS_SIZING_FIT_WIDTH */
+    'sizing-mode'?: PpsSizingModeNick | PapersView.SizingMode;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsDocumentModelConstructOnly = 'annotation-model';
+
+export interface PpsHistoryProps {
+    'document-model'?: PapersView.DocumentModel;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsHistoryConstructOnly = 'document-model';
+
+export interface PpsJobProps {
+    document?: PapersDocument.Document;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobConstructOnly = 'document';
+
+export interface PpsJobAnnotsProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobAnnotsConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobAttachmentsProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobAttachmentsConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobExportProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobExportConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobFindProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobFindConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobFontsProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobFontsConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobLayersProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobLayersConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobLinksProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobLinksConstructOnly = PpsJobConstructOnly;
+
+/** A job class to load an #PpsDocument Supports loading in different forms depending on the options being set. */
+export interface PpsJobLoadProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobLoadConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobPageDataProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobPageDataConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobPrintProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobPrintConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobRenderTextureProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobRenderTextureConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobSaveProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobSaveConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobSignaturesProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobSignaturesConstructOnly = PpsJobConstructOnly;
+
+export interface PpsJobThumbnailTextureProps extends PpsJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsJobThumbnailTextureConstructOnly = PpsJobConstructOnly;
+
+export interface PpsMetadataProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsMetadataConstructOnly = never;
+
+export interface PpsSearchContextProps {
+    'document-model'?: PapersView.DocumentModel;
+    'search-term'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsSearchContextConstructOnly = 'document-model';
+
+export interface PpsSearchResultProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsSearchResultConstructOnly = never;
+
+/** This context singleton manages two stacks of #PpsUndoAction that contain actions that may be undone or redone. */
+export interface PpsUndoContextProps {
+    'document-model'?: PapersView.DocumentModel;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsUndoContextConstructOnly = 'document-model';
+
+/** This interface is implemented by objects (e.g. */
+export interface PpsUndoHandlerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PpsUndoHandlerConstructOnly = never;
 
 export interface PpsViewProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkScrollableProps {
     'annotations-context'?: PapersView.AnnotationsContext;
@@ -105,7 +287,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -157,7 +343,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -171,7 +364,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -183,8 +386,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -222,10 +425,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -249,7 +453,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

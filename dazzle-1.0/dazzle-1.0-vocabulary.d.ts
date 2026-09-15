@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Dazzle-1.0.
  *
- * GENERATED — do not edit. Provenance: Dazzle-1.0 — library 3.44.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
+ * GENERATED — do not edit. Provenance: Dazzle-1.0 — library 3.44.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap Atk.ImplementorIface Gio.Action Gio.ListModel Gio.AsyncInitable Gio.MenuModel Gio.Initable — inlined base(s) their owner's vocabulary does not emit: Gio.Application — prop(s) no TypeScript value satisfies: Dazzle.BoxTheatric.surface Dazzle.TaskCache.key-copy-func Dazzle.TaskCache.key-destroy-func Dazzle.TaskCache.key-equal-func Dazzle.TaskCache.key-hash-func Dazzle.TaskCache.populate-callback Dazzle.TaskCache.populate-callback-data Dazzle.TaskCache.populate-callback-data-destroy Dazzle.TaskCache.value-copy-func Dazzle.TaskCache.value-destroy-func
  *
- * 64 concrete widgets, 68 declarations, 8 enum nick unions, 6 slot candidates.
+ * 109 instantiable GTypes (of which 64 concrete widgets), 115 declarations (1 inlined from a namespace whose vocabulary does not emit them), 8 enum nick unions, 6 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -27,10 +27,11 @@
 import type Dazzle from './dazzle-1.0.js';
 import type GLib from '@girs/glib-2.0';
 import type GObject from '@girs/gobject-2.0';
+import type Gdk from '@girs/gdk-3.0';
 import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type Pango from '@girs/pango-1.0';
-import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkEventBoxConstructOnly, GtkEventBoxProps, GtkFileChooserActionNick, GtkLabelConstructOnly, GtkLabelProps, GtkListBoxConstructOnly, GtkListBoxProps, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkMenuButtonConstructOnly, GtkMenuButtonProps, GtkMiscConstructOnly, GtkMiscProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkOrientationNick, GtkPopoverConstructOnly, GtkPopoverProps, GtkPositionTypeNick, GtkScrollableConstructOnly, GtkScrollableProps, GtkScrolledWindowConstructOnly, GtkScrolledWindowProps, GtkSelectionModeNick, GtkShortcutTypeNick, GtkStackConstructOnly, GtkStackProps, GtkTextDirectionNick, GtkToggleButtonConstructOnly, GtkToggleButtonProps, GtkTreeViewConstructOnly, GtkTreeViewProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
+import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkApplicationConstructOnly, GtkApplicationProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkContainerConstructOnly, GtkContainerProps, GtkCssProviderConstructOnly, GtkCssProviderProps, GtkDialogConstructOnly, GtkDialogProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryBufferConstructOnly, GtkEntryBufferProps, GtkEntryConstructOnly, GtkEntryProps, GtkEventBoxConstructOnly, GtkEventBoxProps, GtkFileChooserActionNick, GtkLabelConstructOnly, GtkLabelProps, GtkListBoxConstructOnly, GtkListBoxProps, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkMenuButtonConstructOnly, GtkMenuButtonProps, GtkMiscConstructOnly, GtkMiscProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkOrientationNick, GtkPopoverConstructOnly, GtkPopoverProps, GtkPositionTypeNick, GtkScrollableConstructOnly, GtkScrollableProps, GtkScrolledWindowConstructOnly, GtkScrolledWindowProps, GtkSelectionModeNick, GtkShortcutTypeNick, GtkStackConstructOnly, GtkStackProps, GtkStyleProviderConstructOnly, GtkStyleProviderProps, GtkTextDirectionNick, GtkToggleButtonConstructOnly, GtkToggleButtonProps, GtkTreeDragDestConstructOnly, GtkTreeDragDestProps, GtkTreeDragSourceConstructOnly, GtkTreeDragSourceProps, GtkTreeModelConstructOnly, GtkTreeModelProps, GtkTreeSortableConstructOnly, GtkTreeSortableProps, GtkTreeStoreConstructOnly, GtkTreeStoreProps, GtkTreeViewConstructOnly, GtkTreeViewProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -61,6 +62,29 @@ export type PangoEllipsizeModeNick = 'none' | 'start' | 'middle' | 'end';
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
+export interface DzlAnimationProps {
+    /**
+     * The "duration" property is the total number of milliseconds that the animation should run before being completed.
+     * @default 250
+     */
+    duration?: number;
+    'frame-clock'?: Gdk.FrameClock;
+    /**
+     * The "mode" property is the Alpha function that should be used to determine the offset within the animation based on the current offset in the animations duration.
+     * @default DZL_ANIMATION_LINEAR
+     */
+    mode?: DzlAnimationModeNick | Dazzle.AnimationMode;
+    /** The "target" property is the #GObject that should have its properties animated. */
+    target?: GObject.Object;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlAnimationConstructOnly = 'duration' | 'frame-clock' | 'mode' | 'target';
+
+export interface DzlApplicationProps extends GtkApplicationProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlApplicationConstructOnly = GtkApplicationConstructOnly;
+
 export interface DzlApplicationWindowProps extends GtkApplicationWindowProps, GtkBuildableProps {
     /**
      * The "fullscreen" property denotes if the window is in the fullscreen state.
@@ -76,6 +100,14 @@ export interface DzlBinProps extends GtkBinProps, GtkBuildableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlBinConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
+/** #DzlBindingGroup manages to simplify the process of binding many properties from a #GObject as a group. */
+export interface DzlBindingGroupProps {
+    /** The source object used for binding properties. */
+    source?: GObject.Object | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlBindingGroupConstructOnly = never;
+
 export interface DzlBoldingLabelProps extends GtkLabelProps, GtkBuildableProps {
     /** @default FALSE */
     bold?: boolean;
@@ -90,6 +122,26 @@ export interface DzlBoxProps extends GtkBoxProps, GtkBuildableProps, GtkOrientab
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlBoxConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
+export interface DzlBoxTheatricProps {
+    /** @default 1.000000 */
+    alpha?: number;
+    /** @default #000000 */
+    background?: string;
+    /** @default 0 */
+    height?: number;
+    icon?: Gio.Icon;
+    surface?: never;
+    target?: Gtk.Widget;
+    /** @default 0 */
+    width?: number;
+    /** @default 0 */
+    x?: number;
+    /** @default 0 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlBoxTheatricConstructOnly = 'surface' | 'target';
+
 /** First off, you probably want to use GtkBox with a center widget instead of this widget. */
 export interface DzlCenteringBinProps extends GtkBinProps, GtkBuildableProps {
     /** @default -1 */
@@ -97,6 +149,11 @@ export interface DzlCenteringBinProps extends GtkBinProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlCenteringBinConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
+
+export interface DzlChildPropertyActionProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlChildPropertyActionConstructOnly = never;
 
 export interface DzlColumnLayoutProps extends GtkContainerProps, GtkBuildableProps {
     /** @default 24 */
@@ -124,6 +181,29 @@ export interface DzlCpuGraphProps extends DzlGraphViewProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlCpuGraphConstructOnly = DzlGraphViewConstructOnly | GtkBuildableConstructOnly | 'max-samples' | 'timespan';
+
+export interface DzlCpuModelProps extends DzlGraphModelProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlCpuModelConstructOnly = DzlGraphModelConstructOnly;
+
+export interface DzlCssProviderProps extends GtkCssProviderProps, GtkStyleProviderProps {
+    /** @default NULL */
+    'base-path'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlCssProviderConstructOnly = GtkCssProviderConstructOnly | GtkStyleProviderConstructOnly | 'base-path';
+
+export interface DzlDirectoryModelProps {
+    directory?: Gio.File;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlDirectoryModelConstructOnly = never;
+
+export interface DzlDirectoryReaperProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlDirectoryReaperConstructOnly = never;
 
 export interface DzlDockProps extends GtkContainerProps {
     manager?: Dazzle.DockManager;
@@ -155,6 +235,11 @@ export interface DzlDockItemProps extends GtkWidgetProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlDockItemConstructOnly = GtkWidgetConstructOnly;
+
+export interface DzlDockManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlDockManagerConstructOnly = never;
 
 export interface DzlDockOverlayProps extends GtkEventBoxProps, DzlDockProps, DzlDockItemProps, GtkBuildableProps {
 }
@@ -201,6 +286,13 @@ export interface DzlDockStackProps extends Omit<GtkBoxProps, 'style'>, Omit<DzlD
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlDockStackConstructOnly = GtkBoxConstructOnly | DzlDockItemConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface DzlDockTransientGrabProps {
+    /** @default 0 */
+    timeout?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlDockTransientGrabConstructOnly = never;
 
 export interface DzlDockWidgetProps extends DzlBinProps, DzlDockItemProps, GtkBuildableProps {
     /** @default FALSE */
@@ -268,11 +360,98 @@ export interface DzlFileChooserEntryProps extends GtkBinProps, GtkBuildableProps
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlFileChooserEntryConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
+export interface DzlFileTransferProps {
+    /** @default DZL_FILE_TRANSFER_FLAGS_NONE */
+    flags?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlFileTransferConstructOnly = never;
+
+export interface DzlFuzzyIndexProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlFuzzyIndexConstructOnly = never;
+
+export interface DzlFuzzyIndexBuilderProps {
+    /** @default FALSE */
+    'case-sensitive'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlFuzzyIndexBuilderConstructOnly = never;
+
+export interface DzlFuzzyIndexCursorProps {
+    /** @default FALSE */
+    'case-sensitive'?: boolean;
+    index?: Dazzle.FuzzyIndex;
+    /** @default 0 */
+    'max-matches'?: number;
+    /** @default NULL */
+    query?: string;
+    tables?: GLib.VariantDict;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlFuzzyIndexCursorConstructOnly = 'case-sensitive' | 'index' | 'max-matches' | 'query' | 'tables';
+
+export interface DzlFuzzyIndexMatchProps {
+    document?: GLib.Variant;
+    /** @default NULL */
+    key?: string;
+    /** @default 0 */
+    priority?: number;
+    /** @default 0.000000 */
+    score?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlFuzzyIndexMatchConstructOnly = 'document' | 'key' | 'priority' | 'score';
+
+export interface DzlGraphColumnProps {
+    /** @default NULL */
+    name?: string;
+    'value-type'?: GObject.GType;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlGraphColumnConstructOnly = 'value-type';
+
+export interface DzlGraphLineRendererProps extends DzlGraphRendererProps {
+    /** @default 0 */
+    column?: number;
+    /** @default 1.000000 */
+    'line-width'?: number;
+    /** @default NULL */
+    'stroke-color'?: string;
+    'stroke-color-rgba'?: Gdk.RGBA;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlGraphLineRendererConstructOnly = DzlGraphRendererConstructOnly;
+
+export interface DzlGraphModelProps {
+    /** @default 120 */
+    'max-samples'?: number;
+    /** @default 60000000 */
+    timespan?: bigint | number;
+    /** @default 100.000000 */
+    'value-max'?: number;
+    /** @default 100.000000 */
+    'value-min'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlGraphModelConstructOnly = never;
+
+export interface DzlGraphRendererProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlGraphRendererConstructOnly = never;
+
 export interface DzlGraphViewProps extends GtkDrawingAreaProps, GtkBuildableProps {
     model?: Dazzle.GraphModel | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlGraphViewConstructOnly = GtkDrawingAreaConstructOnly | GtkBuildableConstructOnly;
+
+export interface DzlJoinedMenuProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlJoinedMenuConstructOnly = never;
 
 export interface DzlListBoxProps extends GtkListBoxProps, GtkBuildableProps {
     /** @default NULL */
@@ -288,6 +467,17 @@ export interface DzlListBoxRowProps extends GtkListBoxRowProps, GtkActionablePro
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlListBoxRowConstructOnly = GtkListBoxRowConstructOnly | GtkActionableConstructOnly | GtkBuildableConstructOnly;
+
+export interface DzlListModelFilterProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlListModelFilterConstructOnly = never;
+
+export interface DzlListStoreAdapterProps extends GtkTreeModelProps {
+    model?: Gio.ListModel;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlListStoreAdapterConstructOnly = GtkTreeModelConstructOnly;
 
 export interface DzlMenuButtonProps extends GtkMenuButtonProps, GtkActionableProps, GtkActivatableProps, GtkBuildableProps {
     /** @default NULL */
@@ -311,6 +501,12 @@ export interface DzlMenuButtonProps extends GtkMenuButtonProps, GtkActionablePro
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlMenuButtonConstructOnly = GtkMenuButtonConstructOnly | GtkActionableConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly;
 
+/** The goal of #DzlMenuManager is to simplify the process of merging multiple GtkBuilder .ui files containing menus into a single representation of the application menus. */
+export interface DzlMenuManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlMenuManagerConstructOnly = never;
+
 /** This widget is similar to #GtkPaned except that it allows adding more than two children to the widget. */
 export interface DzlMultiPanedProps extends GtkContainerProps, GtkBuildableProps, GtkOrientableProps {
     /** @default GTK_ORIENTATION_VERTICAL */
@@ -319,11 +515,39 @@ export interface DzlMultiPanedProps extends GtkContainerProps, GtkBuildableProps
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlMultiPanedConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
+export interface DzlPathProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlPathConstructOnly = never;
+
 export interface DzlPathBarProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     path?: Dazzle.Path;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlPathBarConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface DzlPathElementProps {
+    /**
+     * The icon-name of the icon to display next to the path element in the path bar.
+     * @since 3.26
+     * @default NULL
+     */
+    'icon-name'?: string | null;
+    /**
+     * The id property is an application specific identifier for the element within the path.
+     * @since 3.26
+     * @default NULL
+     */
+    id?: string;
+    /**
+     * The title property should contain the display text that should be shown to represent the element in the #DzlPathBar.
+     * @since 3.26
+     * @default NULL
+     */
+    title?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlPathElementConstructOnly = 'icon-name' | 'id' | 'title';
 
 export interface DzlPillBoxProps extends GtkEventBoxProps, GtkBuildableProps {
     /** @default NULL */
@@ -477,6 +701,13 @@ export interface DzlProgressMenuButtonProps extends GtkMenuButtonProps, GtkActio
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlProgressMenuButtonConstructOnly = GtkMenuButtonConstructOnly | GtkActionableConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly;
 
+export interface DzlPropertiesGroupProps {
+    object?: GObject.Object;
+    'object-type'?: GObject.GType;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlPropertiesGroupConstructOnly = 'object-type';
+
 export interface DzlRadioBoxProps extends GtkBinProps, GtkBuildableProps {
     /** @default NULL */
     'active-id'?: string;
@@ -485,6 +716,22 @@ export interface DzlRadioBoxProps extends GtkBinProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlRadioBoxConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
+
+export interface DzlReadOnlyListModelProps {
+    /**
+     * The "base-model" property is the #GListModel that will be wrapped.
+     * @since 3.30
+     */
+    'base-model'?: Gio.ListModel;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlReadOnlyListModelConstructOnly = 'base-model';
+
+export interface DzlRecursiveFileMonitorProps {
+    root?: Gio.File;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlRecursiveFileMonitorConstructOnly = 'root';
 
 export interface DzlScrolledWindowProps extends GtkScrolledWindowProps, GtkBuildableProps {
 }
@@ -500,6 +747,26 @@ export interface DzlSearchBarProps extends GtkBinProps, GtkBuildableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlSearchBarConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
+export interface DzlSettingsFlagActionProps {
+    /** @default NULL */
+    'flag-nick'?: string;
+    /** @default NULL */
+    'schema-id'?: string;
+    /** @default NULL */
+    'schema-key'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlSettingsFlagActionConstructOnly = 'flag-nick' | 'schema-id';
+
+export interface DzlSettingsSandwichProps {
+    /** @default NULL */
+    path?: string;
+    /** @default NULL */
+    'schema-id'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlSettingsSandwichConstructOnly = 'path' | 'schema-id';
+
 export interface DzlShortcutAccelDialogProps extends GtkDialogProps, GtkBuildableProps {
     /** @default NULL */
     accelerator?: string;
@@ -509,6 +776,22 @@ export interface DzlShortcutAccelDialogProps extends GtkDialogProps, GtkBuildabl
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlShortcutAccelDialogConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly;
 
+export interface DzlShortcutContextProps {
+    /** @default NULL */
+    name?: string;
+    /** @default TRUE */
+    'use-binding-sets'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlShortcutContextConstructOnly = 'name';
+
+export interface DzlShortcutControllerProps {
+    manager?: Dazzle.ShortcutManager;
+    widget?: Gtk.Widget;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlShortcutControllerConstructOnly = 'widget';
+
 export interface DzlShortcutLabelProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     /** @default NULL */
     accelerator?: string;
@@ -516,6 +799,23 @@ export interface DzlShortcutLabelProps extends GtkBoxProps, GtkBuildableProps, G
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlShortcutLabelConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface DzlShortcutManagerProps {
+    theme?: Dazzle.ShortcutTheme;
+    /** @default NULL */
+    'theme-name'?: string;
+    /** @default NULL */
+    'user-dir'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlShortcutManagerConstructOnly = never;
+
+export interface DzlShortcutModelProps extends GtkTreeStoreProps, GtkBuildableProps, GtkTreeDragDestProps, GtkTreeDragSourceProps, GtkTreeModelProps, GtkTreeSortableProps {
+    manager?: Dazzle.ShortcutManager;
+    theme?: Dazzle.ShortcutTheme;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlShortcutModelConstructOnly = GtkTreeStoreConstructOnly | GtkBuildableConstructOnly | GtkTreeDragDestConstructOnly | GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly | GtkTreeSortableConstructOnly;
 
 export interface DzlShortcutSimpleLabelProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     /** @default NULL */
@@ -532,11 +832,40 @@ export interface DzlShortcutSimpleLabelProps extends GtkBoxProps, GtkBuildablePr
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlShortcutSimpleLabelConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
+export interface DzlShortcutThemeProps {
+    /** @default NULL */
+    name?: string;
+    /** @default NULL */
+    'parent-name'?: string | null;
+    /** @default NULL */
+    subtitle?: string;
+    /** @default NULL */
+    title?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlShortcutThemeConstructOnly = 'name';
+
 export interface DzlShortcutThemeEditorProps extends GtkBinProps, GtkBuildableProps {
     theme?: Dazzle.ShortcutTheme | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlShortcutThemeEditorConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
+
+export interface DzlShortcutTooltipProps {
+    /** @default NULL */
+    accel?: string | null;
+    /** @default NULL */
+    'command-id'?: string | null;
+    /**
+     * The "title" property contains an alternate title for the tooltip instead of discovering the title from the shortcut manager.
+     * @since 3.32
+     * @default NULL
+     */
+    title?: string | null;
+    widget?: Gtk.Widget | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlShortcutTooltipConstructOnly = never;
 
 export interface DzlShortcutsGroupProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     /** The size group for the accelerator portion of shortcuts in this group. */
@@ -640,6 +969,16 @@ export interface DzlShortcutsWindowProps extends GtkWindowProps, GtkBuildablePro
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlShortcutsWindowConstructOnly = GtkWindowConstructOnly | GtkBuildableConstructOnly;
 
+/** #DzlSignalGroup manages to simplify the process of connecting many signals to a #GObject as a group. */
+export interface DzlSignalGroupProps {
+    /** The target instance used when connecting signals. */
+    target?: GObject.Object | null;
+    /** The GType of the target property. */
+    'target-type'?: GObject.GType;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlSignalGroupConstructOnly = 'target-type';
+
 export interface DzlSimpleLabelProps extends GtkWidgetProps, GtkBuildableProps {
     /** @default NULL */
     label?: string;
@@ -678,6 +1017,28 @@ export interface DzlStackListProps extends GtkBinProps, GtkBuildableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlStackListConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
+export interface DzlStateMachineProps extends GtkBuildableProps {
+    /** @default NULL */
+    state?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlStateMachineConstructOnly = GtkBuildableConstructOnly;
+
+export interface DzlSuggestionProps {
+    /** @default NULL */
+    'icon-name'?: string;
+    /** @default NULL */
+    id?: string;
+    /** @default NULL */
+    'secondary-icon-name'?: string;
+    /** @default NULL */
+    subtitle?: string;
+    /** @default NULL */
+    title?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlSuggestionConstructOnly = never;
+
 export interface DzlSuggestionButtonProps extends GtkStackProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -705,6 +1066,12 @@ export interface DzlSuggestionEntryProps extends GtkEntryProps, GtkBuildableProp
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlSuggestionEntryConstructOnly = GtkEntryConstructOnly | GtkBuildableConstructOnly | GtkCellEditableConstructOnly | GtkEditableConstructOnly;
+
+export interface DzlSuggestionEntryBufferProps extends GtkEntryBufferProps {
+    suggestion?: Dazzle.Suggestion | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlSuggestionEntryBufferConstructOnly = GtkEntryBufferConstructOnly;
 
 export interface DzlSuggestionPopoverProps extends GtkWindowProps, GtkBuildableProps {
     model?: Dazzle.Suggestion | null;
@@ -752,6 +1119,30 @@ export interface DzlTabStripProps extends Omit<GtkBoxProps, 'style'>, GtkBuildab
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlTabStripConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
+export interface DzlTaskCacheProps {
+    'key-copy-func'?: never;
+    'key-destroy-func'?: never;
+    'key-equal-func'?: never;
+    'key-hash-func'?: never;
+    'populate-callback'?: never;
+    'populate-callback-data'?: never;
+    'populate-callback-data-destroy'?: never;
+    /**
+     * This is the number of milliseconds before an item should be evicted from the cache.
+     * @default 30000
+     */
+    'time-to-live'?: bigint | number;
+    'value-copy-func'?: never;
+    'value-destroy-func'?: never;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlTaskCacheConstructOnly = 'key-copy-func' | 'key-destroy-func' | 'key-equal-func' | 'key-hash-func' | 'populate-callback' | 'populate-callback-data' | 'populate-callback-data-destroy' | 'time-to-live' | 'value-copy-func' | 'value-destroy-func';
+
+export interface DzlThemeManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlThemeManagerConstructOnly = never;
+
 export interface DzlThreeGridProps extends GtkContainerProps, GtkBuildableProps {
     /** @default 0 */
     'column-spacing'?: number;
@@ -772,6 +1163,100 @@ export interface DzlTreeProps extends GtkTreeViewProps, GtkBuildableProps, GtkSc
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type DzlTreeConstructOnly = GtkTreeViewConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly | 'always-expand';
+
+export interface DzlTreeBuilderProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlTreeBuilderConstructOnly = never;
+
+export interface DzlTreeNodeProps {
+    /**
+     * This property allows for more lazy loading of nodes.
+     * @default FALSE
+     */
+    'children-possible'?: boolean;
+    /** @default NULL */
+    'expanded-icon-name'?: string;
+    /** The cached GIcon to display. */
+    gicon?: Gio.Icon;
+    /**
+     * An icon-name to display on the row.
+     * @default NULL
+     */
+    'icon-name'?: string;
+    /** An optional #GObject to associate with the node. */
+    item?: GObject.Object;
+    /**
+     * The "reset-on-collapse" property denotes that all children should be removed from the node when it's row is collapsed.
+     * @since 3.28
+     * @default FALSE
+     */
+    'reset-on-collapse'?: boolean;
+    /**
+     * Text to display on the tree node.
+     * @default NULL
+     */
+    text?: string;
+    /** The tree the node belongs to. */
+    tree?: Dazzle.Tree;
+    /** @default FALSE */
+    'use-dim-label'?: boolean;
+    /**
+     * If the "text" property includes #GMarkup.
+     * @default FALSE
+     */
+    'use-markup'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlTreeNodeConstructOnly = never;
+
+export interface DzlWidgetActionGroupProps {
+    widget?: Gtk.Widget;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type DzlWidgetActionGroupConstructOnly = 'widget';
+
+/** `GApplication` is the core class for application support. */
+export interface GApplicationProps {
+    /**
+     * The group of actions that the application exports.
+     * @since 2.28
+     * @deprecated since 2.32: Use the [iface@Gio.ActionMap] interface instead.
+     */
+    'action-group'?: Gio.ActionGroup;
+    /**
+     * The unique identifier for the application.
+     * @since 2.28
+     * @default NULL
+     */
+    'application-id'?: string | null;
+    /**
+     * Flags specifying the behaviour of the application.
+     * @since 2.28
+     * @default G_APPLICATION_FLAGS_NONE
+     */
+    flags?: number;
+    /**
+     * Time (in milliseconds) to stay alive after becoming idle.
+     * @since 2.28
+     * @default 0
+     */
+    'inactivity-timeout'?: number;
+    /**
+     * The base resource path for the application.
+     * @since 2.28
+     * @default NULL
+     */
+    'resource-base-path'?: string | null;
+    /**
+     * The human-readable version number of the application.
+     * @since 2.80
+     * @default NULL
+     */
+    version?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GApplicationConstructOnly = never;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -1250,7 +1735,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -1302,7 +1791,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -1316,7 +1812,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -1328,8 +1834,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -1367,10 +1873,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -1394,7 +1901,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

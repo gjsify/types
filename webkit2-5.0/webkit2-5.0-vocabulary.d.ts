@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for WebKit2-5.0.
  *
- * GENERATED — do not edit. Provenance: WebKit2-5.0 — library 2.38.5 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+ * GENERATED — do not edit. Provenance: WebKit2-5.0 — library 2.38.5 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned
  *
- * 2 concrete widgets, 2 declarations, 27 enum nick unions, 0 slot candidates.
+ * 48 instantiable GTypes (of which 2 concrete widgets), 50 declarations, 27 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -24,6 +24,10 @@
  * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
  */
 
+import type GLib from '@girs/glib-2.0';
+import type Gdk from '@girs/gdk-4.0';
+import type Gio from '@girs/gio-2.0';
+import type Gtk from '@girs/gtk-4.0';
 import type WebKit2 from './webkit2-5.0.js';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-4.0/vocabulary';
 
@@ -74,6 +78,726 @@ export type WebKitWebProcessTerminationReasonNick = 'crashed' | 'exceeded-memory
 // because GObject installs interface properties on the implementor at runtime while
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
+
+/** Represents an authentication request. */
+export interface WebKitAuthenticationRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitAuthenticationRequestConstructOnly = never;
+
+/** Automation Session. */
+export interface WebKitAutomationSessionProps {
+    /**
+     * The session unique identifier.
+     * @since 2.18
+     * @default NULL
+     */
+    id?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitAutomationSessionConstructOnly = 'id';
+
+/** List of visited pages. */
+export interface WebKitBackForwardListProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitBackForwardListConstructOnly = never;
+
+/** One item of the #WebKitBackForwardList. */
+export interface WebKitBackForwardListItemProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitBackForwardListItemConstructOnly = never;
+
+/** A request to open a color chooser. */
+export interface WebKitColorChooserRequestProps {
+    /**
+     * The #GdkRGBA color of the request
+     * @since 2.8
+     */
+    rgba?: Gdk.RGBA;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitColorChooserRequestConstructOnly = never;
+
+/** Represents the context menu in a #WebKitWebView. */
+export interface WebKitContextMenuProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitContextMenuConstructOnly = never;
+
+/** One item of a #WebKitContextMenu. */
+export interface WebKitContextMenuItemProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitContextMenuItemConstructOnly = never;
+
+/** Defines how to handle cookies in a #WebKitWebContext. */
+export interface WebKitCookieManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitCookieManagerConstructOnly = never;
+
+/** A permission request for accessing user's audio/video devices. */
+export interface WebKitDeviceInfoPermissionRequestProps extends WebKitPermissionRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitDeviceInfoPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+
+/** Object used to communicate with the application when downloading. */
+export interface WebKitDownloadProps {
+    /**
+     * Whether or not the download is allowed to overwrite an existing file on disk.
+     * @since 2.6
+     * @default FALSE
+     */
+    'allow-overwrite'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitDownloadConstructOnly = never;
+
+/** Web editor state. */
+export interface WebKitEditorStateProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitEditorStateConstructOnly = never;
+
+/** Provides access to the icons associated with web sites. */
+export interface WebKitFaviconDatabaseProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitFaviconDatabaseConstructOnly = never;
+
+/** A request to open a file chooser. */
+export interface WebKitFileChooserRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitFileChooserRequestConstructOnly = never;
+
+/** Controls text search in a #WebKitWebView. */
+export interface WebKitFindControllerProps {
+    /** The #WebKitWebView this controller is associated to. */
+    'web-view'?: WebKit2.WebView;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitFindControllerConstructOnly = 'web-view';
+
+/** Represents a form submission request. */
+export interface WebKitFormSubmissionRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitFormSubmissionRequestConstructOnly = never;
+
+/** Geolocation manager. */
+export interface WebKitGeolocationManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitGeolocationManagerConstructOnly = never;
+
+/** A permission request for sharing the user's location. */
+export interface WebKitGeolocationPermissionRequestProps extends WebKitPermissionRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitGeolocationPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+
+/** Result of a Hit Test. */
+export interface WebKitHitTestResultProps {
+    /**
+     * Bitmask of #WebKitHitTestResultContext flags representing the context of the #WebKitHitTestResult.
+     * @default 0
+     */
+    context?: number;
+    /**
+     * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE is present in #WebKitHitTestResult:context
+     * @default NULL
+     */
+    'image-uri'?: string;
+    /**
+     * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK is present in #WebKitHitTestResult:context
+     * @default NULL
+     */
+    'link-label'?: string;
+    /**
+     * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK is present in #WebKitHitTestResult:context
+     * @default NULL
+     */
+    'link-title'?: string;
+    /**
+     * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK is present in #WebKitHitTestResult:context
+     * @default NULL
+     */
+    'link-uri'?: string;
+    /**
+     * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA is present in #WebKitHitTestResult:context
+     * @default NULL
+     */
+    'media-uri'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitHitTestResultConstructOnly = 'context' | 'image-uri' | 'link-label' | 'link-title' | 'link-uri' | 'media-uri';
+
+/** A permission request for installing missing media plugins. */
+export interface WebKitInstallMissingMediaPluginsPermissionRequestProps extends WebKitPermissionRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitInstallMissingMediaPluginsPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+
+/** A permission request for using an EME Content Decryption Module. */
+export interface WebKitMediaKeySystemPermissionRequestProps extends WebKitPermissionRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitMediaKeySystemPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+
+/** A policy decision for navigation actions. */
+export interface WebKitNavigationPolicyDecisionProps extends WebKitPolicyDecisionProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitNavigationPolicyDecisionConstructOnly = WebKitPolicyDecisionConstructOnly;
+
+/** Holds information about a notification that should be shown to the user. */
+export interface WebKitNotificationProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitNotificationConstructOnly = never;
+
+/** A permission request for displaying web notifications. */
+export interface WebKitNotificationPermissionRequestProps extends WebKitPermissionRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitNotificationPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+
+/** Represents the dropdown menu of a `select` element in a #WebKitWebView. */
+export interface WebKitOptionMenuProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitOptionMenuConstructOnly = never;
+
+/** A permission request. */
+export interface WebKitPermissionRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitPermissionRequestConstructOnly = never;
+
+/** Represents a plugin, enabling fine-grained control. */
+export interface WebKitPluginProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitPluginConstructOnly = never;
+
+/** A permission request for locking the pointer. */
+export interface WebKitPointerLockPermissionRequestProps extends WebKitPermissionRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitPointerLockPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+
+/** A pending policy decision. */
+export interface WebKitPolicyDecisionProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitPolicyDecisionConstructOnly = never;
+
+/** Allows to embed a custom widget in print dialog. */
+export interface WebKitPrintCustomWidgetProps {
+    /**
+     * The title of the custom widget.
+     * @since 2.16
+     * @default NULL
+     */
+    title?: string;
+    /**
+     * The custom #GtkWidget that will be embedded in the dialog.
+     * @since 2.16
+     */
+    widget?: Gtk.Widget;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitPrintCustomWidgetConstructOnly = 'title' | 'widget';
+
+/** Controls a print operation. */
+export interface WebKitPrintOperationProps {
+    /** The initial #GtkPageSetup for the print operation. */
+    'page-setup'?: Gtk.PageSetup;
+    /** The initial #GtkPrintSettings for the print operation. */
+    'print-settings'?: Gtk.PrintSettings;
+    /** The #WebKitWebView that will be printed. */
+    'web-view'?: WebKit2.WebView;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitPrintOperationConstructOnly = 'web-view';
+
+/** A policy decision for resource responses. */
+export interface WebKitResponsePolicyDecisionProps extends WebKitPolicyDecisionProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitResponsePolicyDecisionConstructOnly = WebKitPolicyDecisionConstructOnly;
+
+/** Controls security settings in a #WebKitWebContext. */
+export interface WebKitSecurityManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitSecurityManagerConstructOnly = never;
+
+/** Control the behaviour of a #WebKitWebView. */
+export interface WebKitSettingsProps {
+    /**
+     * Whether file access is allowed from file URLs.
+     * @since 2.10
+     * @default FALSE
+     */
+    'allow-file-access-from-file-urls'?: boolean;
+    /**
+     * Determine whether it's allowed to create and run modal dialogs from a #WebKitWebView through JavaScript with <function>window.showModalDialog</function>.
+     * @default FALSE
+     */
+    'allow-modal-dialogs'?: boolean;
+    /**
+     * Whether or not the top frame is allowed to navigate to data URLs.
+     * @since 2.28
+     * @default FALSE
+     */
+    'allow-top-navigation-to-data-urls'?: boolean;
+    /**
+     * Whether or not JavaScript running in the context of a file scheme URL should be allowed to access content from any origin.
+     * @since 2.14
+     * @default FALSE
+     */
+    'allow-universal-access-from-file-urls'?: boolean;
+    /**
+     * Determines whether images should be automatically loaded or not.
+     * @default TRUE
+     */
+    'auto-load-images'?: boolean;
+    /**
+     * The font family used as the default for content using a cursive font.
+     * @default serif
+     */
+    'cursive-font-family'?: string;
+    /**
+     * The default text charset used when interpreting content with an unspecified charset.
+     * @default iso-8859-1
+     */
+    'default-charset'?: string;
+    /**
+     * The font family to use as the default for content that does not specify a font.
+     * @default sans-serif
+     */
+    'default-font-family'?: string;
+    /**
+     * The default font size in pixels to use for content displayed if no font size is specified.
+     * @default 16
+     */
+    'default-font-size'?: number;
+    /**
+     * The default font size in pixels to use for content displayed in monospace font if no font size is specified.
+     * @default 13
+     */
+    'default-monospace-font-size'?: number;
+    /**
+     * Whether to draw compositing borders and repaint counters on layers drawn with accelerated compositing.
+     * @default FALSE
+     */
+    'draw-compositing-indicators'?: boolean;
+    /**
+     * Enable or disable accelerated 2D canvas.
+     * @since 2.2
+     * @default FALSE
+     * @deprecated since 2.32.
+     */
+    'enable-accelerated-2d-canvas'?: boolean;
+    /**
+     * Enable or disable horizontal swipe gesture for back-forward navigation.
+     * @since 2.24
+     * @default FALSE
+     */
+    'enable-back-forward-navigation-gestures'?: boolean;
+    /**
+     * Whether to enable accessibility enhanced keyboard navigation.
+     * @default FALSE
+     */
+    'enable-caret-browsing'?: boolean;
+    /**
+     * Determines whether or not developer tools, such as the Web Inspector, are enabled.
+     * @default FALSE
+     */
+    'enable-developer-extras'?: boolean;
+    /**
+     * Determines whether or not to prefetch domain names.
+     * @default FALSE
+     */
+    'enable-dns-prefetching'?: boolean;
+    /**
+     * Enable or disable support for Encrypted Media API on pages.
+     * @since 2.20
+     * @default FALSE
+     */
+    'enable-encrypted-media'?: boolean;
+    /**
+     * Whether to enable the frame flattening.
+     * @default FALSE
+     * @deprecated since 2.38
+     */
+    'enable-frame-flattening'?: boolean;
+    /**
+     * Whether to enable the Javascript Fullscreen API.
+     * @default TRUE
+     */
+    'enable-fullscreen'?: boolean;
+    /**
+     * Whether to enable HTML5 client-side SQL database support (IndexedDB).
+     * @default TRUE
+     */
+    'enable-html5-database'?: boolean;
+    /**
+     * Whether to enable HTML5 local storage support.
+     * @default TRUE
+     */
+    'enable-html5-local-storage'?: boolean;
+    /**
+     * Determines whether or not hyperlink auditing is enabled.
+     * @default TRUE
+     */
+    'enable-hyperlink-auditing'?: boolean;
+    /**
+     * Determines whether or not Java is enabled on the page.
+     * @default FALSE
+     * @deprecated since 2.38
+     */
+    'enable-java'?: boolean;
+    /**
+     * Determines whether or not JavaScript executes within a page.
+     * @default TRUE
+     */
+    'enable-javascript'?: boolean;
+    /**
+     * Determines whether or not JavaScript markup is allowed in document.
+     * @since 2.24
+     * @default TRUE
+     */
+    'enable-javascript-markup'?: boolean;
+    /**
+     * Enable or disable support for media playback on pages.
+     * @since 2.26
+     * @default TRUE
+     */
+    'enable-media'?: boolean;
+    /**
+     * Enable or disable support for MediaCapabilities on pages.
+     * @since 2.22
+     * @default FALSE
+     */
+    'enable-media-capabilities'?: boolean;
+    /**
+     * Enable or disable support for MediaStream on pages.
+     * @since 2.4
+     * @default FALSE
+     */
+    'enable-media-stream'?: boolean;
+    /**
+     * Enable or disable support for MediaSource on pages.
+     * @since 2.4
+     * @default TRUE
+     */
+    'enable-mediasource'?: boolean;
+    /**
+     * Enable or disable the Mock Capture Devices.
+     * @since 2.24
+     * @default FALSE
+     */
+    'enable-mock-capture-devices'?: boolean;
+    /**
+     * Whether to enable HTML5 offline web application cache support.
+     * @default TRUE
+     */
+    'enable-offline-web-application-cache'?: boolean;
+    /**
+     * Enable or disable the page cache.
+     * @default TRUE
+     */
+    'enable-page-cache'?: boolean;
+    /**
+     * Determines whether or not plugins on the page are enabled.
+     * @default FALSE
+     * @deprecated since 2.32
+     */
+    'enable-plugins'?: boolean;
+    /**
+     * Determines whether or not private browsing is enabled.
+     * @default FALSE
+     * @deprecated since 2.16.: Use #WebKitWebView:is-ephemeral or #WebKitWebsiteDataManager:is-ephemeral instead.
+     */
+    'enable-private-browsing'?: boolean;
+    /**
+     * Determines whether or not text areas can be resized.
+     * @default TRUE
+     */
+    'enable-resizable-text-areas'?: boolean;
+    /**
+     * Whether to turn on site-specific quirks.
+     * @default TRUE
+     */
+    'enable-site-specific-quirks'?: boolean;
+    /**
+     * Enable or disable smooth scrolling.
+     * @default TRUE
+     */
+    'enable-smooth-scrolling'?: boolean;
+    /**
+     * Whether to enable Spatial Navigation.
+     * @since 2.4
+     * @default FALSE
+     */
+    'enable-spatial-navigation'?: boolean;
+    /**
+     * Determines whether the tab key cycles through the elements on the page.
+     * @default TRUE
+     */
+    'enable-tabs-to-links'?: boolean;
+    /**
+     * Enable or disable support for WebAudio on pages.
+     * @default TRUE
+     */
+    'enable-webaudio'?: boolean;
+    /**
+     * Enable or disable support for WebGL on pages.
+     * @default TRUE
+     */
+    'enable-webgl'?: boolean;
+    /**
+     * Enable WebRTC support for loaded pages.
+     * @since 2.38
+     * @default FALSE
+     */
+    'enable-webrtc'?: boolean;
+    /**
+     * Enable or disable writing console messages to stdout.
+     * @since 2.2
+     * @default FALSE
+     */
+    'enable-write-console-messages-to-stdout'?: boolean;
+    /**
+     * Whether to enable the XSS auditor.
+     * @default TRUE
+     * @deprecated since 2.38
+     */
+    'enable-xss-auditor'?: boolean;
+    /**
+     * The font family used as the default for content using a fantasy font.
+     * @default serif
+     */
+    'fantasy-font-family'?: string;
+    /**
+     * The #WebKitHardwareAccelerationPolicy to decide how to enable and disable hardware acceleration.
+     * @since 2.16
+     * @default WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS
+     */
+    'hardware-acceleration-policy'?: WebKitHardwareAccelerationPolicyNick | WebKit2.HardwareAccelerationPolicy;
+    /**
+     * Whether JavaScript can access the clipboard.
+     * @default FALSE
+     */
+    'javascript-can-access-clipboard'?: boolean;
+    /**
+     * Whether JavaScript can open popup windows automatically without user intervention.
+     * @default FALSE
+     */
+    'javascript-can-open-windows-automatically'?: boolean;
+    /**
+     * Determines whether a site can load favicons irrespective of the value of #WebKitSettings:auto-load-images.
+     * @default FALSE
+     */
+    'load-icons-ignoring-image-load-setting'?: boolean;
+    /**
+     * List of media content types requiring hardware support, split by semicolons (:).
+     * @since 2.30
+     * @default NULL
+     */
+    'media-content-types-requiring-hardware-support'?: string;
+    /**
+     * Whether media playback is full-screen only or inline playback is allowed.
+     * @default TRUE
+     */
+    'media-playback-allows-inline'?: boolean;
+    /**
+     * Whether a user gesture (such as clicking the play button) would be required to start media playback or load media.
+     * @default FALSE
+     */
+    'media-playback-requires-user-gesture'?: boolean;
+    /**
+     * The minimum font size in pixels used to display text.
+     * @default 0
+     */
+    'minimum-font-size'?: number;
+    /**
+     * The font family used as the default for content using a monospace font.
+     * @default monospace
+     */
+    'monospace-font-family'?: string;
+    /**
+     * The font family used as the default for content using a pictograph font.
+     * @default serif
+     */
+    'pictograph-font-family'?: string;
+    /**
+     * Whether background images should be drawn during printing.
+     * @default TRUE
+     */
+    'print-backgrounds'?: boolean;
+    /**
+     * The font family used as the default for content using a sans-serif font.
+     * @default sans-serif
+     */
+    'sans-serif-font-family'?: string;
+    /**
+     * The font family used as the default for content using a serif font.
+     * @default serif
+     */
+    'serif-font-family'?: string;
+    /**
+     * The user-agent string used by WebKit.
+     * @default NULL
+     */
+    'user-agent'?: string;
+    /**
+     * Whether #WebKitWebView:zoom-level affects only the text of the page or all the contents.
+     * @default FALSE
+     */
+    'zoom-text-only'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitSettingsConstructOnly = never;
+
+/** Represents a URI request. */
+export interface WebKitURIRequestProps {
+    /**
+     * The URI to which the request will be made.
+     * @default about:blank
+     */
+    uri?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitURIRequestConstructOnly = never;
+
+/** Represents an URI response. */
+export interface WebKitURIResponseProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitURIResponseConstructOnly = never;
+
+/** Represents a URI scheme request. */
+export interface WebKitURISchemeRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitURISchemeRequestConstructOnly = never;
+
+/** Represents a URI scheme response. */
+export interface WebKitURISchemeResponseProps {
+    /**
+     * The input stream to read from.
+     * @since 2.36
+     */
+    stream?: Gio.InputStream;
+    /**
+     * The input stream length in bytes, `-1` for unknown length.
+     * @since 2.36
+     * @default -1
+     */
+    'stream-length'?: bigint | number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitURISchemeResponseConstructOnly = 'stream' | 'stream-length';
+
+/** Handles storage of user content filters on disk. */
+export interface WebKitUserContentFilterStoreProps {
+    /**
+     * The directory used for filter storage.
+     * @since 2.24
+     * @default NULL
+     */
+    path?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitUserContentFilterStoreConstructOnly = 'path';
+
+/** Manages user-defined content which affects web pages. */
+export interface WebKitUserContentManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitUserContentManagerConstructOnly = never;
+
+/** A permission request for accessing user's audio/video devices. */
+export interface WebKitUserMediaPermissionRequestProps extends WebKitPermissionRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitUserMediaPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+
+/** Message that can be sent between the UI process and web extensions. */
+export interface WebKitUserMessageProps {
+    /**
+     * The UNIX file descriptors of the user message.
+     * @since 2.28
+     */
+    'fd-list'?: Gio.UnixFDList | null;
+    /**
+     * The name of the user message.
+     * @since 2.28
+     * @default NULL
+     */
+    name?: string;
+    /**
+     * The parameters of the user message as a #GVariant, or %NULL if the message doesn't include parameters.
+     * @since 2.28
+     */
+    parameters?: GLib.Variant | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitUserMessageConstructOnly = 'fd-list' | 'name' | 'parameters';
+
+/** Manages aspects common to all #WebKitWebView<!-- -->s The #WebKitWebContext manages all aspects common to all #WebKitWebView<!-- -->s. */
+export interface WebKitWebContextProps {
+    /**
+     * The directory where local storage data will be saved.
+     * @since 2.8
+     * @default NULL
+     * @deprecated since 2.10.: Use #WebKitWebsiteDataManager:local-storage-directory instead.
+     */
+    'local-storage-directory'?: string;
+    /**
+     * The #WebKitMemoryPressureSettings applied to the web processes created by this context.
+     * @since 2.34
+     */
+    'memory-pressure-settings'?: WebKit2.MemoryPressureSettings;
+    /**
+     * Whether swap Web processes on cross-site navigations is enabled.
+     * @since 2.28
+     * @default FALSE
+     */
+    'process-swap-on-cross-site-navigation-enabled'?: boolean;
+    /**
+     * The timezone override for this web context.
+     * @since 2.38
+     * @default NULL
+     */
+    'time-zone-override'?: string;
+    /**
+     * The #WebKitWebsiteDataManager associated with this context.
+     * @since 2.10
+     */
+    'website-data-manager'?: WebKit2.WebsiteDataManager;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitWebContextConstructOnly = 'local-storage-directory' | 'memory-pressure-settings' | 'process-swap-on-cross-site-navigation-enabled' | 'time-zone-override' | 'website-data-manager';
+
+/** Access to the WebKit inspector. */
+export interface WebKitWebInspectorProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitWebInspectorConstructOnly = never;
+
+/** Represents a resource at the end of a URI. */
+export interface WebKitWebResourceProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitWebResourceConstructOnly = never;
 
 /** The central class of the WPE WebKit and WebKitGTK APIs. */
 export interface WebKitWebViewProps extends WebKitWebViewBaseProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -174,6 +898,146 @@ export interface WebKitWebViewBaseProps extends GtkWidgetProps, GtkAccessiblePro
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type WebKitWebViewBaseConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
+/** A permission request for accessing website data from third-party domains. */
+export interface WebKitWebsiteDataAccessPermissionRequestProps extends WebKitPermissionRequestProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitWebsiteDataAccessPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+
+/** Manages data stored locally by web sites. */
+export interface WebKitWebsiteDataManagerProps {
+    /**
+     * The base directory for Website cache.
+     * @since 2.10
+     * @default NULL
+     */
+    'base-cache-directory'?: string | null;
+    /**
+     * The base directory for Website data.
+     * @since 2.10
+     * @default NULL
+     */
+    'base-data-directory'?: string | null;
+    /**
+     * The directory where HTTP disk cache will be stored.
+     * @since 2.10
+     * @default NULL
+     */
+    'disk-cache-directory'?: string | null;
+    /**
+     * The directory where DOM cache will be stored.
+     * @since 2.30
+     * @default NULL
+     */
+    'dom-cache-directory'?: string | null;
+    /**
+     * The directory where the HTTP Strict-Transport-Security (HSTS) cache will be stored.
+     * @since 2.26
+     * @default NULL
+     */
+    'hsts-cache-directory'?: string | null;
+    /**
+     * The directory where IndexedDB databases will be stored.
+     * @since 2.10
+     * @default NULL
+     */
+    'indexeddb-directory'?: string | null;
+    /**
+     * Whether the #WebKitWebsiteDataManager is ephemeral.
+     * @since 2.16
+     * @default FALSE
+     */
+    'is-ephemeral'?: boolean;
+    /**
+     * The directory where Intelligent Tracking Prevention (ITP) data will be stored.
+     * @since 2.30
+     * @default NULL
+     */
+    'itp-directory'?: string | null;
+    /**
+     * The directory where local storage data will be stored.
+     * @since 2.10
+     * @default NULL
+     */
+    'local-storage-directory'?: string | null;
+    /**
+     * The directory where offline web application cache will be stored.
+     * @since 2.10
+     * @default NULL
+     */
+    'offline-application-cache-directory'?: string | null;
+    /**
+     * The directory where service workers registrations will be stored.
+     * @since 2.30
+     * @default NULL
+     */
+    'service-worker-registrations-directory'?: string | null;
+    /**
+     * The directory where WebSQL databases will be stored.
+     * @since 2.10
+     * @default NULL
+     * @deprecated since 2.24.: WebSQL is no longer supported.
+     */
+    'websql-directory'?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitWebsiteDataManagerConstructOnly = 'base-cache-directory' | 'base-data-directory' | 'disk-cache-directory' | 'dom-cache-directory' | 'hsts-cache-directory' | 'indexeddb-directory' | 'is-ephemeral' | 'itp-directory' | 'local-storage-directory' | 'offline-application-cache-directory' | 'service-worker-registrations-directory' | 'websql-directory';
+
+/** View specific website policies. */
+export interface WebKitWebsitePoliciesProps {
+    /**
+     * The #WebKitAutoplayPolicy of #WebKitWebsitePolicies.
+     * @since 2.30
+     * @default WEBKIT_AUTOPLAY_ALLOW_WITHOUT_SOUND
+     */
+    autoplay?: WebKitAutoplayPolicyNick | WebKit2.AutoplayPolicy;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitWebsitePoliciesConstructOnly = 'autoplay';
+
+/** Window properties of a #WebKitWebView. */
+export interface WebKitWindowPropertiesProps {
+    /**
+     * Whether window will be displayed fullscreen.
+     * @default FALSE
+     */
+    fullscreen?: boolean;
+    /** The size and position of the window on the screen. */
+    geometry?: Gdk.Rectangle;
+    /**
+     * Whether the locationbar should be visible for the window.
+     * @default TRUE
+     */
+    'locationbar-visible'?: boolean;
+    /**
+     * Whether the menubar should be visible for the window.
+     * @default TRUE
+     */
+    'menubar-visible'?: boolean;
+    /**
+     * Whether the window can be resized.
+     * @default TRUE
+     */
+    resizable?: boolean;
+    /**
+     * Whether the scrollbars should be visible for the window.
+     * @default TRUE
+     */
+    'scrollbars-visible'?: boolean;
+    /**
+     * Whether the statusbar should be visible for the window.
+     * @default TRUE
+     */
+    'statusbar-visible'?: boolean;
+    /**
+     * Whether the toolbar should be visible for the window.
+     * @default TRUE
+     */
+    'toolbar-visible'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type WebKitWindowPropertiesConstructOnly = 'fullscreen' | 'geometry' | 'locationbar-visible' | 'menubar-visible' | 'resizable' | 'scrollbars-visible' | 'statusbar-visible' | 'toolbar-visible';
+
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
 //
@@ -206,7 +1070,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -258,7 +1126,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -272,7 +1147,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -284,8 +1169,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -323,10 +1208,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -350,7 +1236,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

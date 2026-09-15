@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for GooCanvas-2.0.
  *
- * GENERATED — do not edit. Provenance: GooCanvas-2.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: GooCanvas-2.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Atk.ObjectFactory
  *
- * 1 concrete widgets, 1 declarations, 10 enum nick unions, 0 slot candidates.
+ * 26 instantiable GTypes (of which 1 concrete widgets), 28 declarations, 13 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -25,8 +25,10 @@
  */
 
 import type Gdk from '@girs/gdk-3.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GooCanvas from './goocanvas-2.0.js';
 import type Gtk from '@girs/gtk-3.0';
+import type Pango from '@girs/pango-1.0';
 import type { GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkUnitNick, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -49,6 +51,9 @@ export type GooCanvasAnchorTypeNick = 'center' | 'north' | 'north-west' | 'north
 export type GooCanvasAnimateTypeNick = 'freeze' | 'reset' | 'restart' | 'bounce';
 export type GooCanvasItemVisibilityNick = 'hidden' | 'invisible' | 'visible' | 'visible-above-threshold';
 export type GooCanvasPathCommandTypeNick = 'move-to' | 'close-path' | 'line-to' | 'horizontal-line-to' | 'vertical-line-to' | 'curve-to' | 'smooth-curve-to' | 'quadratic-curve-to' | 'smooth-quadratic-curve-to' | 'elliptical-arc';
+export type PangoAlignmentNick = 'left' | 'center' | 'right';
+export type PangoEllipsizeModeNick = 'none' | 'start' | 'middle' | 'end';
+export type PangoWrapModeNick = 'word' | 'char' | 'word-char' | 'none';
 
 // ---------------------------------------------------------------------------
 // Property surfaces — one interface per GIR DECLARATION, mirroring GIR's own
@@ -109,6 +114,648 @@ export interface GooCanvasProps extends GtkContainerProps, GtkBuildableProps, Gt
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GooCanvasConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly;
 
+export interface GooCanvasAccessibleFactoryProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasAccessibleFactoryConstructOnly = never;
+
+/** GooCanvasEllipse represents an ellipse item. */
+export interface GooCanvasEllipseProps extends GooCanvasItemSimpleProps, GooCanvasItemProps {
+    /** @default 0.000000 */
+    'center-x'?: number;
+    /** @default 0.000000 */
+    'center-y'?: number;
+    /** @default 0.000000 */
+    height?: number;
+    /** @default 0.000000 */
+    'radius-x'?: number;
+    /** @default 0.000000 */
+    'radius-y'?: number;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasEllipseConstructOnly = GooCanvasItemSimpleConstructOnly | GooCanvasItemConstructOnly;
+
+/** GooCanvasEllipseModel represents a model for ellipse items. */
+export interface GooCanvasEllipseModelProps extends GooCanvasItemModelSimpleProps, GooCanvasItemModelProps {
+    /** @default 0.000000 */
+    'center-x'?: number;
+    /** @default 0.000000 */
+    'center-y'?: number;
+    /** @default 0.000000 */
+    height?: number;
+    /** @default 0.000000 */
+    'radius-x'?: number;
+    /** @default 0.000000 */
+    'radius-y'?: number;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasEllipseModelConstructOnly = GooCanvasItemModelSimpleConstructOnly | GooCanvasItemModelConstructOnly;
+
+/** GooCanvasGrid represents a grid item. */
+export interface GooCanvasGridProps extends GooCanvasItemSimpleProps, GooCanvasItemProps {
+    /** @default NULL */
+    'border-color'?: string;
+    /**
+     * The color to use for the border, specified as a GdkRGBA.
+     * @since 2.0.1
+     */
+    'border-color-gdk-rgba'?: Gdk.RGBA;
+    /** @default 0 */
+    'border-color-rgba'?: number;
+    'border-pattern'?: GooCanvas.CairoPattern;
+    'border-pixbuf'?: GdkPixbuf.Pixbuf;
+    /** @default -1.000000 */
+    'border-width'?: number;
+    /** @default 0.000000 */
+    height?: number;
+    /** @default NULL */
+    'horz-grid-line-color'?: string;
+    /**
+     * The color to use for the horizontal grid lines, specified as a GdkRGBA.
+     * @since 2.0.1
+     */
+    'horz-grid-line-color-gdk-rgba'?: Gdk.RGBA;
+    /** @default 0 */
+    'horz-grid-line-color-rgba'?: number;
+    'horz-grid-line-pattern'?: GooCanvas.CairoPattern;
+    'horz-grid-line-pixbuf'?: GdkPixbuf.Pixbuf;
+    /** @default -1.000000 */
+    'horz-grid-line-width'?: number;
+    /** @default TRUE */
+    'show-horz-grid-lines'?: boolean;
+    /** @default TRUE */
+    'show-vert-grid-lines'?: boolean;
+    /** @default NULL */
+    'vert-grid-line-color'?: string;
+    /**
+     * The color to use for the vertical grid lines, specified as a GdkRGBA.
+     * @since 2.0.1
+     */
+    'vert-grid-line-color-gdk-rgba'?: Gdk.RGBA;
+    /** @default 0 */
+    'vert-grid-line-color-rgba'?: number;
+    'vert-grid-line-pattern'?: GooCanvas.CairoPattern;
+    'vert-grid-line-pixbuf'?: GdkPixbuf.Pixbuf;
+    /** @default -1.000000 */
+    'vert-grid-line-width'?: number;
+    /** @default FALSE */
+    'vert-grid-lines-on-top'?: boolean;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    'x-offset'?: number;
+    /** @default 10.000000 */
+    'x-step'?: number;
+    /** @default 0.000000 */
+    y?: number;
+    /** @default 0.000000 */
+    'y-offset'?: number;
+    /** @default 10.000000 */
+    'y-step'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasGridConstructOnly = GooCanvasItemSimpleConstructOnly | GooCanvasItemConstructOnly;
+
+/** GooCanvasGridModel represents a model for grid items. */
+export interface GooCanvasGridModelProps extends GooCanvasItemModelSimpleProps, GooCanvasItemModelProps {
+    /** @default NULL */
+    'border-color'?: string;
+    'border-color-gdk-rgba'?: Gdk.RGBA;
+    /** @default 0 */
+    'border-color-rgba'?: number;
+    'border-pattern'?: GooCanvas.CairoPattern;
+    'border-pixbuf'?: GdkPixbuf.Pixbuf;
+    /** @default -1.000000 */
+    'border-width'?: number;
+    /** @default 0.000000 */
+    height?: number;
+    /** @default NULL */
+    'horz-grid-line-color'?: string;
+    'horz-grid-line-color-gdk-rgba'?: Gdk.RGBA;
+    /** @default 0 */
+    'horz-grid-line-color-rgba'?: number;
+    'horz-grid-line-pattern'?: GooCanvas.CairoPattern;
+    'horz-grid-line-pixbuf'?: GdkPixbuf.Pixbuf;
+    /** @default -1.000000 */
+    'horz-grid-line-width'?: number;
+    /** @default TRUE */
+    'show-horz-grid-lines'?: boolean;
+    /** @default TRUE */
+    'show-vert-grid-lines'?: boolean;
+    /** @default NULL */
+    'vert-grid-line-color'?: string;
+    'vert-grid-line-color-gdk-rgba'?: Gdk.RGBA;
+    /** @default 0 */
+    'vert-grid-line-color-rgba'?: number;
+    'vert-grid-line-pattern'?: GooCanvas.CairoPattern;
+    'vert-grid-line-pixbuf'?: GdkPixbuf.Pixbuf;
+    /** @default -1.000000 */
+    'vert-grid-line-width'?: number;
+    /** @default FALSE */
+    'vert-grid-lines-on-top'?: boolean;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    'x-offset'?: number;
+    /** @default 10.000000 */
+    'x-step'?: number;
+    /** @default 0.000000 */
+    y?: number;
+    /** @default 0.000000 */
+    'y-offset'?: number;
+    /** @default 10.000000 */
+    'y-step'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasGridModelConstructOnly = GooCanvasItemModelSimpleConstructOnly | GooCanvasItemModelConstructOnly;
+
+/** #GooCanvasGroup represents a group of items. */
+export interface GooCanvasGroupProps extends GooCanvasItemSimpleProps, GooCanvasItemProps {
+    /** @default -1.000000 */
+    height?: number;
+    /** @default -1.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasGroupConstructOnly = GooCanvasItemSimpleConstructOnly | GooCanvasItemConstructOnly;
+
+/** #GooCanvasGroupModel represents a group of items. */
+export interface GooCanvasGroupModelProps extends GooCanvasItemModelSimpleProps, GooCanvasItemModelProps {
+    /** @default -1.000000 */
+    height?: number;
+    /** @default -1.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasGroupModelConstructOnly = GooCanvasItemModelSimpleConstructOnly | GooCanvasItemModelConstructOnly;
+
+/** GooCanvasImage represents an image item. */
+export interface GooCanvasImageProps extends GooCanvasItemSimpleProps, GooCanvasItemProps {
+    /** @default 1.000000 */
+    alpha?: number;
+    /** @default 0.000000 */
+    height?: number;
+    pattern?: GooCanvas.CairoPattern;
+    pixbuf?: GdkPixbuf.Pixbuf;
+    /** @default FALSE */
+    'scale-to-fit'?: boolean;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasImageConstructOnly = GooCanvasItemSimpleConstructOnly | GooCanvasItemConstructOnly;
+
+/** GooCanvasImageModel represent a model for image items. */
+export interface GooCanvasImageModelProps extends GooCanvasItemModelSimpleProps, GooCanvasItemModelProps {
+    /** @default 1.000000 */
+    alpha?: number;
+    /** @default 0.000000 */
+    height?: number;
+    pattern?: GooCanvas.CairoPattern;
+    pixbuf?: GdkPixbuf.Pixbuf;
+    /** @default FALSE */
+    'scale-to-fit'?: boolean;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasImageModelConstructOnly = GooCanvasItemModelSimpleConstructOnly | GooCanvasItemModelConstructOnly;
+
+/** #GooCanvasItem defines the interface that canvas items must implement, and contains methods for operating on canvas items. */
+export interface GooCanvasItemProps {
+    /** @default FALSE */
+    'can-focus'?: boolean;
+    /** @default NULL */
+    description?: string;
+    parent?: GooCanvas.CanvasItem;
+    /** @default GOO_CANVAS_EVENTS_VISIBLE_MASK | GOO_CANVAS_EVENTS_PAINTED_MASK | GOO_CANVAS_EVENTS_FILL_MASK | GOO_CANVAS_EVENTS_STROKE_MASK */
+    'pointer-events'?: number;
+    /** @default NULL */
+    title?: string;
+    /**
+     * The tooltip to display for the item, or %NULL to display no tooltip.
+     * @default NULL
+     */
+    tooltip?: string;
+    transform?: GooCanvas.CairoMatrix;
+    /** @default GOO_CANVAS_ITEM_VISIBLE */
+    visibility?: GooCanvasItemVisibilityNick | GooCanvas.CanvasItemVisibility;
+    /** @default 0.000000 */
+    'visibility-threshold'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasItemConstructOnly = never;
+
+export interface GooCanvasItemAccessibleFactoryProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasItemAccessibleFactoryConstructOnly = never;
+
+/** #GooCanvasItemModel defines the interface that models for canvas items must implement, and contains methods for operating on canvas item models. */
+export interface GooCanvasItemModelProps {
+    /** @default FALSE */
+    'can-focus'?: boolean;
+    /** @default NULL */
+    description?: string;
+    parent?: GooCanvas.CanvasItemModel;
+    /** @default GOO_CANVAS_EVENTS_VISIBLE_MASK | GOO_CANVAS_EVENTS_PAINTED_MASK | GOO_CANVAS_EVENTS_FILL_MASK | GOO_CANVAS_EVENTS_STROKE_MASK */
+    'pointer-events'?: number;
+    /** @default NULL */
+    title?: string;
+    /** @default NULL */
+    tooltip?: string;
+    transform?: GooCanvas.CairoMatrix;
+    /** @default GOO_CANVAS_ITEM_VISIBLE */
+    visibility?: GooCanvasItemVisibilityNick | GooCanvas.CanvasItemVisibility;
+    /** @default 0.000000 */
+    'visibility-threshold'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasItemModelConstructOnly = never;
+
+/** #GooCanvasItemModelSimple is used as a base class for the standard canvas item models. */
+export interface GooCanvasItemModelSimpleProps extends GooCanvasItemModelProps {
+    /** @default CAIRO_ANTIALIAS_GRAY */
+    antialias?: GooCairoAntialiasNick | GooCanvas.CairoAntialias;
+    /** @default CAIRO_FILL_RULE_WINDING */
+    'clip-fill-rule'?: GooCairoFillRuleNick | GooCanvas.CairoFillRule;
+    /**
+     * The sequence of commands describing the clip path of the item, specified as a string using the same syntax as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector Graphics (SVG)</ulink…
+     * @default NULL
+     */
+    'clip-path'?: string;
+    /** @default NULL */
+    'fill-color'?: string;
+    'fill-color-gdk-rgba'?: Gdk.RGBA;
+    /** @default 0 */
+    'fill-color-rgba'?: number;
+    'fill-pattern'?: GooCanvas.CairoPattern;
+    'fill-pixbuf'?: GdkPixbuf.Pixbuf;
+    /** @default CAIRO_FILL_RULE_WINDING */
+    'fill-rule'?: GooCairoFillRuleNick | GooCanvas.CairoFillRule;
+    /** @default NULL */
+    font?: string;
+    'font-desc'?: Pango.FontDescription;
+    /** @default CAIRO_HINT_METRICS_OFF */
+    'hint-metrics'?: GooCairoHintMetricsNick | GooCanvas.CairoHintMetrics;
+    /** @default CAIRO_LINE_CAP_BUTT */
+    'line-cap'?: GooCairoLineCapNick | GooCanvas.CairoLineCap;
+    'line-dash'?: GooCanvas.CanvasLineDash;
+    /** @default CAIRO_LINE_JOIN_MITER */
+    'line-join'?: GooCairoLineJoinNick | GooCanvas.CairoLineJoin;
+    /** @default 10.000000 */
+    'line-join-miter-limit'?: number;
+    /** @default 2.000000 */
+    'line-width'?: number;
+    /** @default CAIRO_OPERATOR_OVER */
+    operator?: GooCairoOperatorNick | GooCanvas.CairoOperator;
+    /** @default NULL */
+    'stroke-color'?: string;
+    'stroke-color-gdk-rgba'?: Gdk.RGBA;
+    /** @default 0 */
+    'stroke-color-rgba'?: number;
+    'stroke-pattern'?: GooCanvas.CairoPattern;
+    'stroke-pixbuf'?: GdkPixbuf.Pixbuf;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasItemModelSimpleConstructOnly = GooCanvasItemModelConstructOnly;
+
+/** #GooCanvasItemSimple is used as a base class for all of the standard canvas items. */
+export interface GooCanvasItemSimpleProps extends GooCanvasItemProps {
+    /** @default CAIRO_ANTIALIAS_GRAY */
+    antialias?: GooCairoAntialiasNick | GooCanvas.CairoAntialias;
+    /** @default CAIRO_FILL_RULE_WINDING */
+    'clip-fill-rule'?: GooCairoFillRuleNick | GooCanvas.CairoFillRule;
+    /**
+     * The sequence of commands describing the clip path of the item, specified as a string using the same syntax as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector Graphics (SVG)</ulink…
+     * @default NULL
+     */
+    'clip-path'?: string;
+    /** @default NULL */
+    'fill-color'?: string;
+    /**
+     * The color to use to paint the interior of the item, specified as a GdkRGBA.
+     * @since 2.0.1
+     */
+    'fill-color-gdk-rgba'?: Gdk.RGBA;
+    /** @default 0 */
+    'fill-color-rgba'?: number;
+    'fill-pattern'?: GooCanvas.CairoPattern;
+    'fill-pixbuf'?: GdkPixbuf.Pixbuf;
+    /** @default CAIRO_FILL_RULE_WINDING */
+    'fill-rule'?: GooCairoFillRuleNick | GooCanvas.CairoFillRule;
+    /** @default NULL */
+    font?: string;
+    'font-desc'?: Pango.FontDescription;
+    /** @default CAIRO_HINT_METRICS_OFF */
+    'hint-metrics'?: GooCairoHintMetricsNick | GooCanvas.CairoHintMetrics;
+    /** @default CAIRO_LINE_CAP_BUTT */
+    'line-cap'?: GooCairoLineCapNick | GooCanvas.CairoLineCap;
+    'line-dash'?: GooCanvas.CanvasLineDash;
+    /** @default CAIRO_LINE_JOIN_MITER */
+    'line-join'?: GooCairoLineJoinNick | GooCanvas.CairoLineJoin;
+    /** @default 10.000000 */
+    'line-join-miter-limit'?: number;
+    /** @default 2.000000 */
+    'line-width'?: number;
+    /** @default CAIRO_OPERATOR_OVER */
+    operator?: GooCairoOperatorNick | GooCanvas.CairoOperator;
+    /** @default NULL */
+    'stroke-color'?: string;
+    /**
+     * The color to use for the item's perimeter, specified as a GdkRGBA.
+     * @since 2.0.1
+     */
+    'stroke-color-gdk-rgba'?: Gdk.RGBA;
+    /** @default 0 */
+    'stroke-color-rgba'?: number;
+    'stroke-pattern'?: GooCanvas.CairoPattern;
+    'stroke-pixbuf'?: GdkPixbuf.Pixbuf;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasItemSimpleConstructOnly = GooCanvasItemConstructOnly;
+
+/** GooCanvasPath represents a path item, which is a series of one or more lines, bezier curves, or elliptical arcs. */
+export interface GooCanvasPathProps extends GooCanvasItemSimpleProps, GooCanvasItemProps {
+    /**
+     * The sequence of path commands, specified as a string using the same syntax as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector Graphics (SVG)</ulink> path element.
+     * @default NULL
+     */
+    data?: string;
+    /** @default 0.000000 */
+    height?: number;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasPathConstructOnly = GooCanvasItemSimpleConstructOnly | GooCanvasItemConstructOnly;
+
+/** GooCanvasPathModel represents a model for path items, which are a series of one or more lines, bezier curves, or elliptical arcs. */
+export interface GooCanvasPathModelProps extends GooCanvasItemModelSimpleProps, GooCanvasItemModelProps {
+    /** @default NULL */
+    data?: string;
+    /** @default 0.000000 */
+    height?: number;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasPathModelConstructOnly = GooCanvasItemModelSimpleConstructOnly | GooCanvasItemModelConstructOnly;
+
+/** GooCanvasPolyline represents a polyline item, which is a series of one or more lines, with optional arrows at either end. */
+export interface GooCanvasPolylineProps extends GooCanvasItemSimpleProps, GooCanvasItemProps {
+    /** @default 5.000000 */
+    'arrow-length'?: number;
+    /** @default 4.000000 */
+    'arrow-tip-length'?: number;
+    /** @default 4.000000 */
+    'arrow-width'?: number;
+    /** @default FALSE */
+    'close-path'?: boolean;
+    /** @default FALSE */
+    'end-arrow'?: boolean;
+    /** @default 0.000000 */
+    height?: number;
+    points?: GooCanvas.CanvasPoints;
+    /** @default FALSE */
+    'start-arrow'?: boolean;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasPolylineConstructOnly = GooCanvasItemSimpleConstructOnly | GooCanvasItemConstructOnly;
+
+/** GooCanvasPolylineModel represents a model for polyline items, which are a series of one or more lines, with optional arrows at either end. */
+export interface GooCanvasPolylineModelProps extends GooCanvasItemModelSimpleProps, GooCanvasItemModelProps {
+    /** @default 5.000000 */
+    'arrow-length'?: number;
+    /** @default 4.000000 */
+    'arrow-tip-length'?: number;
+    /** @default 4.000000 */
+    'arrow-width'?: number;
+    /** @default FALSE */
+    'close-path'?: boolean;
+    /** @default FALSE */
+    'end-arrow'?: boolean;
+    /** @default 0.000000 */
+    height?: number;
+    points?: GooCanvas.CanvasPoints;
+    /** @default FALSE */
+    'start-arrow'?: boolean;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasPolylineModelConstructOnly = GooCanvasItemModelSimpleConstructOnly | GooCanvasItemModelConstructOnly;
+
+/** GooCanvasRect represents a rectangle item. */
+export interface GooCanvasRectProps extends GooCanvasItemSimpleProps, GooCanvasItemProps {
+    /** @default 0.000000 */
+    height?: number;
+    /** @default 0.000000 */
+    'radius-x'?: number;
+    /** @default 0.000000 */
+    'radius-y'?: number;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasRectConstructOnly = GooCanvasItemSimpleConstructOnly | GooCanvasItemConstructOnly;
+
+/** GooCanvasRectModel represents a model for rectangle items. */
+export interface GooCanvasRectModelProps extends GooCanvasItemModelSimpleProps, GooCanvasItemModelProps {
+    /** @default 0.000000 */
+    height?: number;
+    /** @default 0.000000 */
+    'radius-x'?: number;
+    /** @default 0.000000 */
+    'radius-y'?: number;
+    /** @default 0.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasRectModelConstructOnly = GooCanvasItemModelSimpleConstructOnly | GooCanvasItemModelConstructOnly;
+
+/** #GooCanvasStyle provides support for cascading style properties for canvas items. */
+export interface GooCanvasStyleProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasStyleConstructOnly = never;
+
+/** #GooCanvasTable is a table container used to lay out other canvas items. */
+export interface GooCanvasTableProps extends GooCanvasGroupProps, GooCanvasItemProps {
+    /** @default 0.000000 */
+    'column-spacing'?: number;
+    /** @default FALSE */
+    'homogeneous-columns'?: boolean;
+    /** @default FALSE */
+    'homogeneous-rows'?: boolean;
+    /** @default 0.000000 */
+    'horz-grid-line-width'?: number;
+    /** @default 0.000000 */
+    'row-spacing'?: number;
+    /** @default 0.000000 */
+    'vert-grid-line-width'?: number;
+    /** @default 0.000000 */
+    'x-border-spacing'?: number;
+    /** @default 0.000000 */
+    'y-border-spacing'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasTableConstructOnly = GooCanvasGroupConstructOnly | GooCanvasItemConstructOnly;
+
+/** #GooCanvasTableModel is a model for a table container used to lay out other canvas items. */
+export interface GooCanvasTableModelProps extends GooCanvasGroupModelProps, GooCanvasItemModelProps {
+    /** @default 0.000000 */
+    'column-spacing'?: number;
+    /** @default FALSE */
+    'homogeneous-columns'?: boolean;
+    /** @default FALSE */
+    'homogeneous-rows'?: boolean;
+    /** @default 0.000000 */
+    'horz-grid-line-width'?: number;
+    /** @default 0.000000 */
+    'row-spacing'?: number;
+    /** @default 0.000000 */
+    'vert-grid-line-width'?: number;
+    /** @default 0.000000 */
+    'x-border-spacing'?: number;
+    /** @default 0.000000 */
+    'y-border-spacing'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasTableModelConstructOnly = GooCanvasGroupModelConstructOnly | GooCanvasItemModelConstructOnly;
+
+/** GooCanvasText represents a text item. */
+export interface GooCanvasTextProps extends GooCanvasItemSimpleProps, GooCanvasItemProps {
+    /** @default PANGO_ALIGN_LEFT */
+    alignment?: PangoAlignmentNick | Pango.Alignment;
+    /** @default GOO_CANVAS_ANCHOR_NORTH_WEST */
+    anchor?: GooCanvasAnchorTypeNick | GooCanvas.CanvasAnchorType;
+    /** @default PANGO_ELLIPSIZE_NONE */
+    ellipsize?: PangoEllipsizeModeNick | Pango.EllipsizeMode;
+    /** @default -1.000000 */
+    height?: number;
+    /** @default NULL */
+    text?: string;
+    /** @default FALSE */
+    'use-markup'?: boolean;
+    /** @default -1.000000 */
+    width?: number;
+    /** @default PANGO_WRAP_WORD */
+    wrap?: PangoWrapModeNick | Pango.WrapMode;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasTextConstructOnly = GooCanvasItemSimpleConstructOnly | GooCanvasItemConstructOnly;
+
+/** GooCanvasTextModel represents a model for text items. */
+export interface GooCanvasTextModelProps extends GooCanvasItemModelSimpleProps, GooCanvasItemModelProps {
+    /** @default PANGO_ALIGN_LEFT */
+    alignment?: PangoAlignmentNick | Pango.Alignment;
+    /** @default GOO_CANVAS_ANCHOR_NORTH_WEST */
+    anchor?: GooCanvasAnchorTypeNick | GooCanvas.CanvasAnchorType;
+    /** @default PANGO_ELLIPSIZE_NONE */
+    ellipsize?: PangoEllipsizeModeNick | Pango.EllipsizeMode;
+    /** @default -1.000000 */
+    height?: number;
+    /** @default NULL */
+    text?: string;
+    /** @default FALSE */
+    'use-markup'?: boolean;
+    /** @default -1.000000 */
+    width?: number;
+    /** @default PANGO_WRAP_WORD */
+    wrap?: PangoWrapModeNick | Pango.WrapMode;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasTextModelConstructOnly = GooCanvasItemModelSimpleConstructOnly | GooCanvasItemModelConstructOnly;
+
+/** GooCanvasWidget provides support for placing any GtkWidget in the canvas. */
+export interface GooCanvasWidgetProps extends GooCanvasItemSimpleProps, GooCanvasItemProps {
+    /** @default GOO_CANVAS_ANCHOR_NORTH_WEST */
+    anchor?: GooCanvasAnchorTypeNick | GooCanvas.CanvasAnchorType;
+    /** @default -1.000000 */
+    height?: number;
+    widget?: Gtk.Widget;
+    /** @default -1.000000 */
+    width?: number;
+    /** @default 0.000000 */
+    x?: number;
+    /** @default 0.000000 */
+    y?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasWidgetConstructOnly = GooCanvasItemSimpleConstructOnly | GooCanvasItemConstructOnly;
+
+export interface GooCanvasWidgetAccessibleFactoryProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GooCanvasWidgetAccessibleFactoryConstructOnly = never;
+
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
 //
@@ -134,7 +781,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -186,7 +837,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -200,7 +858,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -212,8 +880,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -251,10 +919,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -278,7 +947,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Eom-1.0.
  *
- * GENERATED — do not edit. Provenance: Eom-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
+ * GENERATED — do not edit. Provenance: Eom-1.0 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application
  *
- * 8 concrete widgets, 8 declarations, 12 enum nick unions, 3 slot candidates.
+ * 22 instantiable GTypes (of which 8 concrete widgets), 23 declarations (1 inlined from a namespace whose vocabulary does not emit them), 12 enum nick unions, 3 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -26,8 +26,10 @@
 
 import type Eom from './eom-1.0.js';
 import type Gdk from '@girs/gdk-3.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
-import type { GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkFileChooserConstructOnly, GtkFileChooserDialogConstructOnly, GtkFileChooserDialogProps, GtkFileChooserProps, GtkGridConstructOnly, GtkGridProps, GtkIconViewConstructOnly, GtkIconViewProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkStatusbarConstructOnly, GtkStatusbarProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
+import type { GtkApplicationConstructOnly, GtkApplicationProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkFileChooserConstructOnly, GtkFileChooserDialogConstructOnly, GtkFileChooserDialogProps, GtkFileChooserProps, GtkGridConstructOnly, GtkGridProps, GtkIconViewConstructOnly, GtkIconViewProps, GtkListStoreConstructOnly, GtkListStoreProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkStatusbarConstructOnly, GtkStatusbarProps, GtkTreeDragDestConstructOnly, GtkTreeDragDestProps, GtkTreeDragSourceConstructOnly, GtkTreeDragSourceProps, GtkTreeModelConstructOnly, GtkTreeModelProps, GtkTreeSortableConstructOnly, GtkTreeSortableProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -62,10 +64,78 @@ export type EomWindowModeNick = 'unknown' | 'normal' | 'fullscreen' | 'slideshow
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
+export interface EomApplicationProps extends GtkApplicationProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomApplicationConstructOnly = GtkApplicationConstructOnly;
+
+export interface EomClipboardHandlerProps {
+    pixbuf?: GdkPixbuf.Pixbuf;
+    /** @default NULL */
+    uri?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomClipboardHandlerConstructOnly = 'pixbuf' | 'uri';
+
 export interface EomFileChooserProps extends GtkFileChooserDialogProps, GtkBuildableProps, GtkFileChooserProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EomFileChooserConstructOnly = GtkFileChooserDialogConstructOnly | GtkBuildableConstructOnly | GtkFileChooserConstructOnly;
+
+export interface EomImageProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomImageConstructOnly = never;
+
+export interface EomImageSaveInfoProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomImageSaveInfoConstructOnly = never;
+
+export interface EomJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomJobConstructOnly = never;
+
+export interface EomJobCopyProps extends EomJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomJobCopyConstructOnly = EomJobConstructOnly;
+
+export interface EomJobLoadProps extends EomJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomJobLoadConstructOnly = EomJobConstructOnly;
+
+export interface EomJobModelProps extends EomJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomJobModelConstructOnly = EomJobConstructOnly;
+
+export interface EomJobSaveProps extends EomJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomJobSaveConstructOnly = EomJobConstructOnly;
+
+export interface EomJobSaveAsProps extends EomJobSaveProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomJobSaveAsConstructOnly = EomJobSaveConstructOnly;
+
+export interface EomJobThumbnailProps extends EomJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomJobThumbnailConstructOnly = EomJobConstructOnly;
+
+export interface EomJobTransformProps extends EomJobProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomJobTransformConstructOnly = EomJobConstructOnly;
+
+export interface EomListStoreProps extends GtkListStoreProps, GtkBuildableProps, GtkTreeDragDestProps, GtkTreeDragSourceProps, GtkTreeModelProps, GtkTreeSortableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomListStoreConstructOnly = GtkListStoreConstructOnly | GtkBuildableConstructOnly | GtkTreeDragDestConstructOnly | GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly | GtkTreeSortableConstructOnly;
 
 export interface EomPropertiesDialogProps extends GtkDialogProps, GtkBuildableProps {
     /** @default FALSE */
@@ -133,6 +203,11 @@ export interface EomThumbViewProps extends GtkIconViewProps, GtkBuildableProps, 
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EomThumbViewConstructOnly = GtkIconViewConstructOnly | GtkBuildableConstructOnly | GtkCellLayoutConstructOnly | GtkOrientableConstructOnly | GtkScrollableConstructOnly;
 
+export interface EomTransformProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type EomTransformConstructOnly = never;
+
 export interface EomWindowProps extends GtkApplicationWindowProps, GtkBuildableProps {
     /**
      * Determines the position of the image collection in the window relative to the image.
@@ -152,6 +227,48 @@ export interface EomWindowProps extends GtkApplicationWindowProps, GtkBuildableP
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EomWindowConstructOnly = GtkApplicationWindowConstructOnly | GtkBuildableConstructOnly | 'startup-flags';
+
+/** `GApplication` is the core class for application support. */
+export interface GApplicationProps {
+    /**
+     * The group of actions that the application exports.
+     * @since 2.28
+     * @deprecated since 2.32: Use the [iface@Gio.ActionMap] interface instead.
+     */
+    'action-group'?: Gio.ActionGroup;
+    /**
+     * The unique identifier for the application.
+     * @since 2.28
+     * @default NULL
+     */
+    'application-id'?: string | null;
+    /**
+     * Flags specifying the behaviour of the application.
+     * @since 2.28
+     * @default G_APPLICATION_FLAGS_NONE
+     */
+    flags?: number;
+    /**
+     * Time (in milliseconds) to stay alive after becoming idle.
+     * @since 2.28
+     * @default 0
+     */
+    'inactivity-timeout'?: number;
+    /**
+     * The base resource path for the application.
+     * @since 2.28
+     * @default NULL
+     */
+    'resource-base-path'?: string | null;
+    /**
+     * The human-readable version number of the application.
+     * @since 2.80
+     * @default NULL
+     */
+    version?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GApplicationConstructOnly = never;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -233,7 +350,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -285,7 +406,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -299,7 +427,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -311,8 +449,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -350,10 +488,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -377,7 +516,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

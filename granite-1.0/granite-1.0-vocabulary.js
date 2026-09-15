@@ -14,25 +14,32 @@ export const PROVENANCE = {
     droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
     GraniteAccelLabel: ['accel-string', 'action-name', 'label'],
     GraniteAsyncImage: ['auto-size-request', 'gicon-async', 'load-on-realize', 'size-async'],
+    GraniteDrawingBufferSurface: ['height', 'surface', 'width'],
     GraniteMessageDialog: ['badge-icon', 'buttons', 'custom-bin', 'image-icon', 'primary-label', 'primary-text', 'secondary-label', 'secondary-text'],
     GraniteModeSwitch: ['active', 'primary-icon-gicon', 'primary-icon-name', 'primary-icon-tooltip-text', 'secondary-icon-gicon', 'secondary-icon-name', 'secondary-icon-tooltip-text'],
     GraniteSeekBar: ['duration-label', 'is-grabbing', 'is-hovering', 'playback-duration', 'playback-progress', 'progression-label', 'scale'],
+    GraniteSettings: ['prefers-color-scheme'],
     GraniteSettingsSidebar: ['stack', 'visible-child-name'],
     GraniteSwitchModelButton: ['description', 'text'],
     GraniteValidatedEntry: ['is-valid', 'min-length', 'regex'],
     GraniteWidgetsAlertView: ['description', 'icon-name', 'title'],
     GraniteWidgetsAvatar: ['pixbuf'],
+    GraniteWidgetsCellRendererBadge: ['text'],
+    GraniteWidgetsCellRendererExpander: ['is-category-expander'],
     GraniteWidgetsCollapsiblePaned: ['collapse-mode'],
     GraniteWidgetsDatePicker: ['date', 'format'],
     GraniteWidgetsDynamicNotebook: ['add-button-tooltip', 'add-button-visible', 'allow-drag', 'allow-duplication', 'allow-new-window', 'allow-pinning', 'allow-restoring', 'current', 'force-left', 'group-name', 'max-restorable-tabs', 'menu', 'new-tab-label', 'restore-tab-label', 'show-tabs', 'tab-bar-behavior', 'tabs-closable'],
     GraniteWidgetsModeButton: ['selected'],
     GraniteWidgetsOverlayBar: ['active', 'label', 'overlay', 'status'],
     GraniteWidgetsSourceList: ['ellipsize-mode', 'root', 'selected'],
+    GraniteWidgetsSourceListExpandableItem: ['collapsible', 'expanded'],
+    GraniteWidgetsSourceListItem: ['activatable', 'activatable-tooltip', 'badge', 'editable', 'icon', 'markup', 'name', 'parent', 'selectable', 'tooltip', 'visible'],
     GraniteWidgetsStorageBar: ['inner-margin-sides', 'storage', 'total-usage'],
     GraniteWidgetsTab: ['close-tab-label', 'duplicate-tab-label', 'ellipsize-mode', 'icon', 'label', 'menu', 'new-window-label', 'page', 'pinnable', 'pinned', 'restore-data', 'tooltip', 'working'],
     GraniteWidgetsTimePicker: ['format-12', 'format-24', 'time'],
@@ -42,30 +49,53 @@ export const OWN_PROPS = {
 };
 
 export const OWN_SIGNALS = {
+    GraniteServicesContractorProxy: ['contracts-changed'],
+    GraniteServicesSimpleCommand: ['done', 'error-changed', 'output-changed', 'standard-changed'],
     GraniteWidgetsAlertView: ['action-activated'],
     GraniteWidgetsDatePicker: ['date-changed'],
     GraniteWidgetsDynamicNotebook: ['close-tab-requested', 'new-tab-requested', 'tab-added', 'tab-duplicated', 'tab-moved', 'tab-removed', 'tab-reordered', 'tab-restored', 'tab-switched'],
     GraniteWidgetsModeButton: ['mode-added', 'mode-changed', 'mode-removed'],
     GraniteWidgetsSourceList: ['item-selected'],
+    GraniteWidgetsSourceListExpandableItem: ['child-added', 'child-removed', 'toggled'],
+    GraniteWidgetsSourceListItem: ['action-activated', 'activated', 'edited'],
     GraniteWidgetsTimePicker: ['time-changed'],
     GraniteWidgetsToast: ['closed', 'default-action'],
     GraniteWidgetsWelcome: ['activated'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
     GraniteAccelLabel: ['GraniteAccelLabel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GraniteAsyncImage: ['GraniteAsyncImage', 'GtkImage', 'GtkMisc', 'GtkWidget', 'GtkBuildable'],
     GraniteDialog: ['GraniteDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    GraniteDrawingBufferSurface: ['GraniteDrawingBufferSurface'],
+    GraniteDrawingColor: ['GraniteDrawingColor', 'GraniteServicesSettingsSerializable'],
+    GraniteDrawingUtilities: ['GraniteDrawingUtilities'],
     GraniteHeaderLabel: ['GraniteHeaderLabel', 'GtkLabel', 'GtkMisc', 'GtkWidget', 'GtkBuildable'],
     GraniteHyperTextView: ['GraniteHyperTextView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
     GraniteMessageDialog: ['GraniteMessageDialog', 'GraniteDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     GraniteModeSwitch: ['GraniteModeSwitch', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GraniteSeekBar: ['GraniteSeekBar', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    GraniteServicesContractorProxy: ['GraniteServicesContractorProxy'],
+    GraniteServicesIconFactory: ['GraniteServicesIconFactory'],
+    GraniteServicesLogger: ['GraniteServicesLogger'],
+    GraniteServicesPaths: ['GraniteServicesPaths'],
+    GraniteServicesSimpleCommand: ['GraniteServicesSimpleCommand'],
+    GraniteServicesSystem: ['GraniteServicesSystem'],
+    GraniteSettings: ['GraniteSettings'],
     GraniteSettingsSidebar: ['GraniteSettingsSidebar', 'GtkScrolledWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     GraniteSwitchModelButton: ['GraniteSwitchModelButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
     GraniteValidatedEntry: ['GraniteValidatedEntry', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
     GraniteWidgetsAlertView: ['GraniteWidgetsAlertView', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GraniteWidgetsAvatar: ['GraniteWidgetsAvatar', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    GraniteWidgetsCellRendererBadge: ['GraniteWidgetsCellRendererBadge', 'GtkCellRenderer'],
+    GraniteWidgetsCellRendererExpander: ['GraniteWidgetsCellRendererExpander', 'GtkCellRenderer'],
     GraniteWidgetsCollapsiblePaned: ['GraniteWidgetsCollapsiblePaned', 'GtkPaned', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GraniteWidgetsCompositedWindow: ['GraniteWidgetsCompositedWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     GraniteWidgetsDatePicker: ['GraniteWidgetsDatePicker', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
@@ -73,6 +103,8 @@ export const DECLS = {
     GraniteWidgetsModeButton: ['GraniteWidgetsModeButton', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GraniteWidgetsOverlayBar: ['GraniteWidgetsOverlayBar', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     GraniteWidgetsSourceList: ['GraniteWidgetsSourceList', 'GtkScrolledWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    GraniteWidgetsSourceListExpandableItem: ['GraniteWidgetsSourceListExpandableItem', 'GraniteWidgetsSourceListItem'],
+    GraniteWidgetsSourceListItem: ['GraniteWidgetsSourceListItem'],
     GraniteWidgetsStorageBar: ['GraniteWidgetsStorageBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GraniteWidgetsTab: ['GraniteWidgetsTab', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     GraniteWidgetsTimePicker: ['GraniteWidgetsTimePicker', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
@@ -81,10 +113,11 @@ export const DECLS = {
     GraniteWidgetsWelcomeButton: ['GraniteWidgetsWelcomeButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -104,7 +137,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -183,11 +216,12 @@ export const ENUM_VALUES_UNREADABLE = {
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
@@ -210,10 +244,11 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
     'GraniteMessageDialog.buttons': 'GtkButtonsType',
+    'GraniteSettings.prefers-color-scheme': 'GraniteSettingsColorScheme',
     'GraniteWidgetsCollapsiblePaned.collapse-mode': 'GraniteCollapseMode',
     'GraniteWidgetsDynamicNotebook.tab-bar-behavior': 'GraniteWidgetsDynamicNotebookTabBarBehavior',
     'GraniteWidgetsSourceList.ellipsize-mode': 'PangoEllipsizeMode',

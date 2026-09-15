@@ -3,7 +3,7 @@
  *
  * GENERATED — do not edit. Provenance: Handy-0.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
  *
- * 22 concrete widgets, 23 declarations, 10 enum nick unions, 12 slot candidates.
+ * 26 instantiable GTypes (of which 22 concrete widgets), 27 declarations, 10 enum nick unions, 12 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -24,6 +24,7 @@
  * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
  */
 
+import type GObject from '@girs/gobject-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type Handy from './handy-0.0.js';
 import type Pango from '@girs/pango-1.0';
@@ -163,6 +164,11 @@ export interface HdyDialogProps extends GtkDialogProps, GtkBuildableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type HdyDialogConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly;
 
+export interface HdyEnumValueObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdyEnumValueObjectConstructOnly = never;
+
 export interface HdyExpanderRowProps extends HdyActionRowProps, GtkActionableProps, GtkBuildableProps {
     /**
      * %TRUE if the expansion is enabled.
@@ -224,6 +230,13 @@ export interface HdyHeaderBarProps extends GtkContainerProps, GtkBuildableProps 
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type HdyHeaderBarConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly;
+
+export interface HdyHeaderGroupProps extends GtkBuildableProps {
+    /** The the currently focused header bar. */
+    focus?: Gtk.HeaderBar | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdyHeaderGroupConstructOnly = GtkBuildableConstructOnly;
 
 export interface HdyKeypadProps extends GtkGridProps, GtkBuildableProps, GtkOrientableProps {
     entry?: Gtk.Widget;
@@ -415,6 +428,11 @@ export interface HdySqueezerProps extends GtkContainerProps, GtkBuildableProps, 
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type HdySqueezerConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
+export interface HdySwipeGroupProps extends GtkBuildableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdySwipeGroupConstructOnly = GtkBuildableConstructOnly;
+
 export interface HdySwipeableProps extends GtkWidgetProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -426,6 +444,12 @@ export interface HdyTitleBarProps extends GtkBinProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type HdyTitleBarConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
+
+export interface HdyValueObjectProps {
+    value?: GObject.Value;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type HdyValueObjectConstructOnly = 'value';
 
 export interface HdyViewSwitcherProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     /**
@@ -673,7 +697,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -725,7 +753,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -739,7 +774,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -751,8 +796,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -790,10 +835,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -817,7 +863,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

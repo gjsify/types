@@ -14,6 +14,7 @@ export const PROVENANCE = {
     droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
@@ -26,6 +27,7 @@ export const OWN_PROPS = {
     HdyDialerCycleButton: ['cycle-timeout'],
     HdyExpanderRow: ['enable-expansion', 'expanded', 'show-enable-switch'],
     HdyHeaderBar: ['centering-policy', 'custom-title', 'decoration-layout', 'decoration-layout-set', 'has-subtitle', 'interpolate-size', 'show-close-button', 'spacing', 'subtitle', 'title', 'transition-duration'],
+    HdyHeaderGroup: ['focus'],
     HdyKeypad: ['entry', 'left-action', 'only-digits', 'right-action', 'show-symbols'],
     HdyLeaflet: ['can-swipe-back', 'can-swipe-forward', 'child-transition-duration', 'child-transition-type', 'hhomogeneous-folded', 'hhomogeneous-unfolded', 'interpolate-size', 'mode-transition-duration', 'mode-transition-type', 'transition-type', 'vhomogeneous-folded', 'vhomogeneous-unfolded', 'visible-child', 'visible-child-name'],
     HdyPaginator: ['allow-mouse-drag', 'animation-duration', 'center-content', 'indicator-spacing', 'indicator-style', 'interactive', 'spacing'],
@@ -35,6 +37,7 @@ export const OWN_PROPS = {
     HdySearchBar: ['search-mode-enabled', 'show-close-button'],
     HdySqueezer: ['homogeneous', 'interpolate-size', 'transition-duration', 'transition-type'],
     HdyTitleBar: ['selection-mode'],
+    HdyValueObject: ['value'],
     HdyViewSwitcher: ['icon-size', 'narrow-ellipsize', 'policy', 'stack'],
     HdyViewSwitcherBar: ['icon-size', 'policy', 'reveal', 'stack'],
 };
@@ -46,6 +49,13 @@ export const OWN_SIGNALS = {
     HdySwipeable: ['begin-swipe', 'end-swipe', 'switch-child', 'update-swipe'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
     HdyActionRow: ['HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
     HdyArrows: ['HdyArrows', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
@@ -55,8 +65,10 @@ export const DECLS = {
     HdyDialerButton: ['HdyDialerButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
     HdyDialerCycleButton: ['HdyDialerCycleButton', 'HdyDialerButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
     HdyDialog: ['HdyDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    HdyEnumValueObject: ['HdyEnumValueObject'],
     HdyExpanderRow: ['HdyExpanderRow', 'HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
     HdyHeaderBar: ['HdyHeaderBar', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    HdyHeaderGroup: ['HdyHeaderGroup', 'GtkBuildable'],
     HdyKeypad: ['HdyKeypad', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     HdyLeaflet: ['HdyLeaflet', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
     HdyPaginator: ['HdyPaginator', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
@@ -66,15 +78,18 @@ export const DECLS = {
     HdyPreferencesWindow: ['HdyPreferencesWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     HdySearchBar: ['HdySearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     HdySqueezer: ['HdySqueezer', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    HdySwipeGroup: ['HdySwipeGroup', 'GtkBuildable'],
     HdyTitleBar: ['HdyTitleBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    HdyValueObject: ['HdyValueObject'],
     HdyViewSwitcher: ['HdyViewSwitcher', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     HdyViewSwitcherBar: ['HdyViewSwitcherBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -95,7 +110,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -164,11 +179,12 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
@@ -191,7 +207,7 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
     'HdyArrows.direction': 'HdyArrowsDirection',

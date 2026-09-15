@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Gspell-1.
  *
- * GENERATED — do not edit. Provenance: Gspell-1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: Gspell-1 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
  *
- * 3 concrete widgets, 4 declarations, 0 enum nick unions, 0 slot candidates.
+ * 9 instantiable GTypes (of which 3 concrete widgets), 11 declarations, 0 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -25,6 +25,7 @@
  */
 
 import type Gspell from './gspell-1.js';
+import type Gtk from '@girs/gtk-3.0';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -49,12 +50,50 @@ import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableCons
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
+export interface GspellCheckerProps {
+    /** The #GspellLanguage used. */
+    language?: Gspell.Language | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GspellCheckerConstructOnly = never;
+
 export interface GspellCheckerDialogProps extends GtkDialogProps, GtkBuildableProps {
     /** The #GspellNavigator to use. */
     'spell-navigator'?: Gspell.Navigator;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GspellCheckerDialogConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly | 'spell-navigator';
+
+export interface GspellEntryProps {
+    /**
+     * The #GtkEntry.
+     * @since 1.4
+     */
+    entry?: Gtk.Entry;
+    /**
+     * Whether the inline spell checking is enabled.
+     * @since 1.4
+     * @default FALSE
+     */
+    'inline-spell-checking'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GspellEntryConstructOnly = 'entry';
+
+export interface GspellEntryBufferProps {
+    /**
+     * The #GtkEntryBuffer.
+     * @since 1.4
+     */
+    buffer?: Gtk.EntryBuffer;
+    /**
+     * The #GspellChecker.
+     * @since 1.4
+     */
+    'spell-checker'?: Gspell.Checker | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GspellEntryBufferConstructOnly = 'buffer';
 
 export interface GspellLanguageChooserProps {
     /** The selected #GspellLanguage. */
@@ -74,6 +113,45 @@ export interface GspellLanguageChooserDialogProps extends GtkDialogProps, Gspell
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GspellLanguageChooserDialogConstructOnly = GtkDialogConstructOnly | GspellLanguageChooserConstructOnly | GtkBuildableConstructOnly;
+
+export interface GspellNavigatorProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GspellNavigatorConstructOnly = never;
+
+export interface GspellNavigatorTextViewProps extends GspellNavigatorProps {
+    /** The #GtkTextView. */
+    view?: Gtk.TextView;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GspellNavigatorTextViewConstructOnly = GspellNavigatorConstructOnly | 'view';
+
+export interface GspellTextBufferProps {
+    /** The #GtkTextBuffer. */
+    buffer?: Gtk.TextBuffer;
+    /** The #GspellChecker. */
+    'spell-checker'?: Gspell.Checker | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GspellTextBufferConstructOnly = 'buffer';
+
+export interface GspellTextViewProps {
+    /**
+     * When the context menu is shown, whether to add a sub-menu to select the language for the spell checking.
+     * @since 1.2
+     * @default FALSE
+     */
+    'enable-language-menu'?: boolean;
+    /**
+     * Whether the inline spell checking is enabled.
+     * @default FALSE
+     */
+    'inline-spell-checking'?: boolean;
+    /** The #GtkTextView. */
+    view?: Gtk.TextView;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GspellTextViewConstructOnly = 'view';
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -114,7 +192,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -166,7 +248,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -180,7 +269,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -192,8 +291,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -231,10 +330,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -258,7 +358,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

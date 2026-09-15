@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for GtkSource-300.
  *
- * GENERATED — do not edit. Provenance: GtkSource-300 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: GtkSource-300 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
  *
- * 2 concrete widgets, 2 declarations, 9 enum nick unions, 0 slot candidates.
+ * 24 instantiable GTypes (of which 2 concrete widgets), 26 declarations, 9 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -24,8 +24,13 @@
  * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
  */
 
+import type GLib from '@girs/glib-2.0';
+import type Gdk from '@girs/gdk-3.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type Gio from '@girs/gio-2.0';
+import type Gtk from '@girs/gtk-3.0';
 import type GtkSource from './gtksource-300.js';
-import type { GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
+import type { GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkTextBufferConstructOnly, GtkTextBufferProps, GtkTextMarkConstructOnly, GtkTextMarkProps, GtkTextTagConstructOnly, GtkTextTagProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkTextWindowTypeNick, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps, GtkWrapModeNick } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -57,10 +62,486 @@ export type GtkSourceViewGutterPositionNick = 'lines' | 'marks';
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
+export interface GtkSourceBufferProps extends GtkTextBufferProps {
+    /**
+     * Whether to highlight matching brackets in the buffer.
+     * @default TRUE
+     */
+    'highlight-matching-brackets'?: boolean;
+    /**
+     * Whether to highlight syntax in the buffer.
+     * @default TRUE
+     */
+    'highlight-syntax'?: boolean;
+    /**
+     * Whether the buffer has an implicit trailing newline.
+     * @since 3.14
+     * @default TRUE
+     */
+    'implicit-trailing-newline'?: boolean;
+    language?: GtkSource.Language | null;
+    /**
+     * Number of undo levels for the buffer.
+     * @default -1
+     */
+    'max-undo-levels'?: number;
+    /** Style scheme. */
+    'style-scheme'?: GtkSource.StyleScheme | null;
+    'undo-manager'?: GtkSource.UndoManager | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceBufferConstructOnly = GtkTextBufferConstructOnly;
+
+export interface GtkSourceCompletionProps {
+    /**
+     * Number of keyboard accelerators to show for the first proposals.
+     * @default 5
+     */
+    accelerators?: number;
+    /**
+     * Determines the popup delay (in milliseconds) at which the completion will be shown for interactive completion.
+     * @default 250
+     */
+    'auto-complete-delay'?: number;
+    /**
+     * The scroll page size of the proposals in the completion window.
+     * @default 5
+     */
+    'proposal-page-size'?: number;
+    /**
+     * The scroll page size of the provider pages in the completion window.
+     * @default 5
+     */
+    'provider-page-size'?: number;
+    /**
+     * Determines whether the visibility of the info window should be saved when the completion is hidden, and restored when the completion is shown again.
+     * @default FALSE
+     */
+    'remember-info-visibility'?: boolean;
+    /**
+     * Determines whether the first proposal should be selected when the completion is first shown.
+     * @default TRUE
+     */
+    'select-on-show'?: boolean;
+    /**
+     * Determines whether provider headers should be shown in the proposal list.
+     * @default TRUE
+     */
+    'show-headers'?: boolean;
+    /**
+     * Determines whether provider and proposal icons should be shown in the completion popup.
+     * @default TRUE
+     */
+    'show-icons'?: boolean;
+    /** The #GtkSourceView bound to the completion object. */
+    view?: GtkSource.View | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceCompletionConstructOnly = 'view';
+
+export interface GtkSourceCompletionContextProps {
+    /**
+     * The completion activation
+     * @default GTK_SOURCE_COMPLETION_ACTIVATION_USER_REQUESTED
+     */
+    activation?: number;
+    /** The #GtkSourceCompletion associated with the context. */
+    completion?: GtkSource.Completion;
+    /** The #GtkTextIter at which the completion is invoked. */
+    iter?: Gtk.TextIter;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceCompletionContextConstructOnly = 'completion';
+
 export interface GtkSourceCompletionInfoProps extends GtkWindowProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkSourceCompletionInfoConstructOnly = GtkWindowConstructOnly | GtkBuildableConstructOnly;
+
+export interface GtkSourceCompletionItemProps extends GtkSourceCompletionProposalProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceCompletionItemConstructOnly = GtkSourceCompletionProposalConstructOnly;
+
+export interface GtkSourceCompletionProposalProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceCompletionProposalConstructOnly = never;
+
+export interface GtkSourceFileProps {
+    /**
+     * The #GFile.
+     * @since 3.14
+     */
+    location?: Gio.File | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceFileConstructOnly = never;
+
+export interface GtkSourceFileLoaderProps {
+    /**
+     * The #GtkSourceBuffer to load the contents into.
+     * @since 3.14
+     */
+    buffer?: GtkSource.Buffer | null;
+    /**
+     * The #GtkSourceFile.
+     * @since 3.14
+     */
+    file?: GtkSource.File | null;
+    /**
+     * The #GInputStream to load.
+     * @since 3.14
+     */
+    'input-stream'?: Gio.InputStream | null;
+    /**
+     * The #GFile to load, or %NULL to load the contents from the #GtkSourceFileLoader:input-stream.
+     * @since 3.14
+     */
+    location?: Gio.File | null;
+    /**
+     * The maximum number of bytes to read.
+     * @since 299.6
+     * @default 200000000
+     */
+    'max-size'?: bigint | number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceFileLoaderConstructOnly = 'buffer' | 'file' | 'input-stream' | 'location';
+
+export interface GtkSourceFileSaverProps {
+    /**
+     * The #GtkSourceBuffer to save.
+     * @since 3.14
+     */
+    buffer?: GtkSource.Buffer;
+    /**
+     * The compression type.
+     * @since 3.14
+     * @default GTK_SOURCE_COMPRESSION_TYPE_NONE
+     */
+    'compression-type'?: GtkSourceCompressionTypeNick | GtkSource.CompressionType;
+    /**
+     * The file's encoding.
+     * @since 3.14
+     */
+    encoding?: GtkSource.Encoding;
+    /**
+     * The #GtkSourceFile.
+     * @since 3.14
+     */
+    file?: GtkSource.File;
+    /**
+     * File saving flags.
+     * @since 3.14
+     * @default GTK_SOURCE_FILE_SAVER_FLAGS_NONE
+     */
+    flags?: number;
+    /**
+     * The #GFile where to save the buffer.
+     * @since 3.14
+     */
+    location?: Gio.File;
+    /**
+     * The newline type.
+     * @since 3.14
+     * @default GTK_SOURCE_NEWLINE_TYPE_LF
+     */
+    'newline-type'?: GtkSourceNewlineTypeNick | GtkSource.NewlineType;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceFileSaverConstructOnly = 'buffer' | 'file' | 'location';
+
+export interface GtkSourceGutterProps {
+    /** The #GtkSourceView of the gutter. */
+    view?: GtkSource.View;
+    /**
+     * The text window type on which the window is placed.
+     * @default GTK_TEXT_WINDOW_PRIVATE
+     */
+    'window-type'?: GtkTextWindowTypeNick | Gtk.TextWindowType;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceGutterConstructOnly = 'view' | 'window-type';
+
+export interface GtkSourceGutterRendererProps {
+    /**
+     * The alignment mode of the renderer.
+     * @default GTK_SOURCE_GUTTER_RENDERER_ALIGNMENT_MODE_CELL
+     */
+    'alignment-mode'?: GtkSourceGutterRendererAlignmentModeNick | GtkSource.GutterRendererAlignmentMode;
+    'background-rgba'?: Gdk.RGBA;
+    /** @default FALSE */
+    'background-set'?: boolean;
+    /** @default 0 */
+    size?: number;
+    /**
+     * The visibility of the renderer.
+     * @default TRUE
+     */
+    visible?: boolean;
+    /**
+     * The horizontal alignment of the renderer.
+     * @default 0.000000
+     */
+    xalign?: number;
+    /**
+     * The left and right padding of the renderer.
+     * @default 0
+     */
+    xpad?: number;
+    /**
+     * The vertical alignment of the renderer.
+     * @default 0.000000
+     */
+    yalign?: number;
+    /**
+     * The top and bottom padding of the renderer.
+     * @default 0
+     */
+    ypad?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceGutterRendererConstructOnly = never;
+
+export interface GtkSourceGutterRendererPixbufProps extends GtkSourceGutterRendererProps {
+    gicon?: Gio.Icon;
+    /** @default NULL */
+    'icon-name'?: string;
+    pixbuf?: GdkPixbuf.Pixbuf;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceGutterRendererPixbufConstructOnly = GtkSourceGutterRendererConstructOnly;
+
+export interface GtkSourceGutterRendererTextProps extends GtkSourceGutterRendererProps {
+    /** @default NULL */
+    markup?: string;
+    /** @default NULL */
+    text?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceGutterRendererTextConstructOnly = GtkSourceGutterRendererConstructOnly;
+
+export interface GtkSourceLanguageProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceLanguageConstructOnly = never;
+
+export interface GtkSourceLanguageManagerProps {
+    'search-path'?: string[];
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceLanguageManagerConstructOnly = never;
+
+export interface GtkSourceMarkProps extends GtkTextMarkProps {
+    /**
+     * The category of the #GtkSourceMark, classifies the mark and controls which pixbuf is used and with which priority it is drawn.
+     * @default NULL
+     */
+    category?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceMarkConstructOnly = GtkTextMarkConstructOnly | 'category';
+
+export interface GtkSourceMarkAttributesProps {
+    /** A color used for background of a line. */
+    background?: Gdk.RGBA;
+    /** A #GIcon that may be a base of a rendered icon. */
+    gicon?: Gio.Icon;
+    /**
+     * An icon name that may be a base of a rendered icon.
+     * @default NULL
+     */
+    'icon-name'?: string;
+    /** A #GdkPixbuf that may be a base of a rendered icon. */
+    pixbuf?: GdkPixbuf.Pixbuf;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceMarkAttributesConstructOnly = never;
+
+export interface GtkSourcePrintCompositorProps {
+    /**
+     * Name of the font used for the text body.
+     * @since 2.2
+     * @default NULL
+     */
+    'body-font-name'?: string;
+    /**
+     * The GtkSourceBuffer object to print.
+     * @since 2.2
+     */
+    buffer?: GtkSource.Buffer;
+    /**
+     * Name of the font used to print page footer.
+     * @since 2.2
+     * @default NULL
+     */
+    'footer-font-name'?: string;
+    /**
+     * Name of the font used to print page header.
+     * @since 2.2
+     * @default NULL
+     */
+    'header-font-name'?: string;
+    /**
+     * Whether to print the document with highlighted syntax.
+     * @since 2.2
+     * @default TRUE
+     */
+    'highlight-syntax'?: boolean;
+    /**
+     * Name of the font used to print line numbers on the left margin.
+     * @since 2.2
+     * @default NULL
+     */
+    'line-numbers-font-name'?: string;
+    /**
+     * Whether to print a footer in each page.
+     * @since 2.2
+     * @default FALSE
+     */
+    'print-footer'?: boolean;
+    /**
+     * Whether to print a header in each page.
+     * @since 2.2
+     * @default FALSE
+     */
+    'print-header'?: boolean;
+    /**
+     * Interval of printed line numbers.
+     * @since 2.2
+     * @default 1
+     */
+    'print-line-numbers'?: number;
+    /**
+     * Width of a tab character expressed in spaces.
+     * @since 2.2
+     * @default 8
+     */
+    'tab-width'?: number;
+    /**
+     * Whether to wrap lines never, at word boundaries, or at character boundaries.
+     * @since 2.2
+     * @default GTK_WRAP_NONE
+     */
+    'wrap-mode'?: GtkWrapModeNick | Gtk.WrapMode;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourcePrintCompositorConstructOnly = 'buffer';
+
+export interface GtkSourceRegionProps {
+    /**
+     * The #GtkTextBuffer.
+     * @since 3.22
+     */
+    buffer?: Gtk.TextBuffer | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceRegionConstructOnly = 'buffer';
+
+export interface GtkSourceSearchContextProps {
+    /**
+     * The #GtkSourceBuffer associated to the search context.
+     * @since 3.10
+     */
+    buffer?: GtkSource.Buffer;
+    /**
+     * Highlight the search occurrences.
+     * @since 3.10
+     * @default TRUE
+     */
+    highlight?: boolean;
+    /**
+     * A #GtkSourceStyle, or %NULL for theme's scheme default style.
+     * @since 299.2
+     */
+    'match-style'?: GtkSource.Style;
+    /**
+     * The #GtkSourceSearchSettings associated to the search context.
+     * @since 3.10
+     */
+    settings?: GtkSource.SearchSettings;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceSearchContextConstructOnly = 'buffer' | 'settings';
+
+export interface GtkSourceSearchSettingsProps {
+    /**
+     * If %TRUE, a search match must start and end a word.
+     * @since 3.10
+     * @default FALSE
+     */
+    'at-word-boundaries'?: boolean;
+    /**
+     * Whether the search is case sensitive.
+     * @since 3.10
+     * @default FALSE
+     */
+    'case-sensitive'?: boolean;
+    /**
+     * Search by regular expressions with #GtkSourceSearchSettings:search-text as the pattern.
+     * @since 3.10
+     * @default FALSE
+     */
+    'regex-enabled'?: boolean;
+    /**
+     * A search string, or %NULL if the search is disabled.
+     * @since 3.10
+     * @default NULL
+     */
+    'search-text'?: string | null;
+    /**
+     * For a forward search, continue at the beginning of the buffer if no search occurrence is found.
+     * @since 3.10
+     * @default FALSE
+     */
+    'wrap-around'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceSearchSettingsConstructOnly = never;
+
+export interface GtkSourceSpaceDrawerProps {
+    /**
+     * Whether the #GtkSourceSpaceDrawer:matrix property is enabled.
+     * @since 3.24
+     * @default FALSE
+     */
+    'enable-matrix'?: boolean;
+    /**
+     * The :matrix property is a #GVariant property to specify where and what kind of white spaces to draw.
+     * @since 3.24
+     */
+    matrix?: GLib.Variant;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceSpaceDrawerConstructOnly = never;
+
+export interface GtkSourceStyleSchemeProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceStyleSchemeConstructOnly = never;
+
+export interface GtkSourceStyleSchemeManagerProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceStyleSchemeManagerConstructOnly = never;
+
+export interface GtkSourceTagProps extends GtkTextTagProps {
+    /**
+     * Whether to draw white spaces.
+     * @since 3.20
+     * @default FALSE
+     */
+    'draw-spaces'?: boolean;
+    /**
+     * Whether the #GtkSourceTag:draw-spaces property is set and must be taken into account.
+     * @since 3.20
+     * @default FALSE
+     */
+    'draw-spaces-set'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSourceTagConstructOnly = GtkTextTagConstructOnly;
 
 export interface GtkSourceViewProps extends GtkTextViewProps, GtkBuildableProps, GtkScrollableProps {
     /**
@@ -161,7 +642,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -213,7 +698,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -227,7 +719,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -239,8 +741,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -278,10 +780,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -305,7 +808,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

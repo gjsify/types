@@ -1,6 +1,6 @@
 // The widget vocabulary of WebKit2-4.1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: WebKit2-4.1 — library 2.53.91 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: WebKit2-4.1 — library 2.53.91 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,28 +11,119 @@ export const PROVENANCE = {
     version: '4.1',
     libraryVersion: '2.53.91',
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
+    WebKitAutomationSession: ['id'],
+    WebKitColorChooserRequest: ['rgba'],
+    WebKitDownload: ['allow-overwrite'],
+    WebKitFindController: ['web-view'],
+    WebKitHitTestResult: ['context', 'image-uri', 'link-label', 'link-title', 'link-uri', 'media-uri'],
+    WebKitPrintCustomWidget: ['title', 'widget'],
+    WebKitPrintOperation: ['page-setup', 'print-settings', 'web-view'],
+    WebKitSettings: ['allow-file-access-from-file-urls', 'allow-modal-dialogs', 'allow-top-navigation-to-data-urls', 'allow-universal-access-from-file-urls', 'auto-load-images', 'cursive-font-family', 'default-charset', 'default-font-family', 'default-font-size', 'default-monospace-font-size', 'disable-web-security', 'draw-compositing-indicators', 'enable-2d-canvas-acceleration', 'enable-accelerated-2d-canvas', 'enable-back-forward-navigation-gestures', 'enable-caret-browsing', 'enable-developer-extras', 'enable-dns-prefetching', 'enable-encrypted-media', 'enable-frame-flattening', 'enable-fullscreen', 'enable-html5-database', 'enable-html5-local-storage', 'enable-hyperlink-auditing', 'enable-java', 'enable-javascript', 'enable-javascript-markup', 'enable-media', 'enable-media-capabilities', 'enable-media-stream', 'enable-mediasource', 'enable-mock-capture-devices', 'enable-offline-web-application-cache', 'enable-page-cache', 'enable-plugins', 'enable-private-browsing', 'enable-resizable-text-areas', 'enable-site-specific-quirks', 'enable-smooth-scrolling', 'enable-spatial-navigation', 'enable-tabs-to-links', 'enable-webaudio', 'enable-webgl', 'enable-webrtc', 'enable-write-console-messages-to-stdout', 'enable-xss-auditor', 'fantasy-font-family', 'hardware-acceleration-policy', 'javascript-can-access-clipboard', 'javascript-can-open-windows-automatically', 'load-icons-ignoring-image-load-setting', 'math-font-family', 'media-content-types-requiring-hardware-support', 'media-playback-allows-inline', 'media-playback-requires-user-gesture', 'minimum-font-size', 'monospace-font-family', 'pictograph-font-family', 'print-backgrounds', 'sans-serif-font-family', 'serif-font-family', 'user-agent', 'webrtc-udp-ports-range', 'zoom-text-only'],
+    WebKitURIRequest: ['uri'],
+    WebKitURISchemeResponse: ['stream', 'stream-length'],
+    WebKitUserContentFilterStore: ['path'],
+    WebKitUserMessage: ['fd-list', 'name', 'parameters'],
+    WebKitWebContext: ['local-storage-directory', 'memory-pressure-settings', 'process-swap-on-cross-site-navigation-enabled', 'time-zone-override', 'use-system-appearance-for-scrollbars', 'website-data-manager'],
     WebKitWebView: ['automation-presentation-type', 'camera-capture-state', 'default-content-security-policy', 'display-capture-state', 'editable', 'is-controlled-by-automation', 'is-ephemeral', 'is-muted', 'magnification', 'microphone-capture-state', 'related-view', 'settings', 'user-content-manager', 'web-context', 'web-extension-mode', 'website-policies', 'zoom-level'],
+    WebKitWebsiteDataManager: ['base-cache-directory', 'base-data-directory', 'disk-cache-directory', 'dom-cache-directory', 'hsts-cache-directory', 'indexeddb-directory', 'is-ephemeral', 'itp-directory', 'local-storage-directory', 'offline-application-cache-directory', 'origin-storage-ratio', 'service-worker-registrations-directory', 'total-storage-ratio', 'websql-directory'],
+    WebKitWebsitePolicies: ['autoplay', 'custom-user-agent'],
+    WebKitWindowProperties: ['fullscreen', 'geometry', 'locationbar-visible', 'menubar-visible', 'resizable', 'scrollbars-visible', 'statusbar-visible', 'toolbar-visible'],
 };
 
 export const OWN_SIGNALS = {
+    WebKitAuthenticationRequest: ['authenticated', 'cancelled'],
+    WebKitAutomationSession: ['create-web-view', 'will-close'],
+    WebKitBackForwardList: ['changed'],
+    WebKitColorChooserRequest: ['finished'],
+    WebKitCookieManager: ['changed'],
+    WebKitDownload: ['created-destination', 'decide-destination', 'failed', 'finished', 'received-data'],
+    WebKitEditorState: ['changed'],
+    WebKitFaviconDatabase: ['favicon-changed'],
+    WebKitFindController: ['counted-matches', 'failed-to-find-text', 'found-text'],
+    WebKitGeolocationManager: ['start', 'stop'],
+    WebKitNotification: ['clicked', 'closed'],
+    WebKitOptionMenu: ['close'],
+    WebKitPrintCustomWidget: ['apply', 'update'],
+    WebKitPrintOperation: ['create-custom-widget', 'failed', 'finished'],
+    WebKitUserContentManager: ['script-message-received', 'script-message-with-reply-received'],
+    WebKitWebContext: ['automation-started', 'download-started', 'initialize-notification-permissions', 'initialize-web-extensions', 'user-message-received'],
+    WebKitWebInspector: ['attach', 'bring-to-front', 'closed', 'detach', 'open-window'],
+    WebKitWebResource: ['failed', 'failed-with-tls-errors', 'finished', 'received-data', 'sent-request'],
     WebKitWebView: ['authenticate', 'close', 'context-menu', 'context-menu-dismissed', 'create', 'decide-policy', 'enter-fullscreen', 'insecure-content-detected', 'leave-fullscreen', 'load-changed', 'load-failed', 'load-failed-with-tls-errors', 'mouse-target-changed', 'permission-request', 'print', 'query-permission-state', 'ready-to-show', 'resource-load-started', 'run-as-modal', 'run-color-chooser', 'run-file-chooser', 'script-dialog', 'show-notification', 'show-option-menu', 'submit-form', 'user-message-received', 'web-process-crashed', 'web-process-terminated'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
+    WebKitAuthenticationRequest: ['WebKitAuthenticationRequest'],
+    WebKitAutomationSession: ['WebKitAutomationSession'],
+    WebKitBackForwardList: ['WebKitBackForwardList'],
+    WebKitBackForwardListItem: ['WebKitBackForwardListItem'],
+    WebKitClipboardPermissionRequest: ['WebKitClipboardPermissionRequest', 'WebKitPermissionRequest'],
+    WebKitColorChooserRequest: ['WebKitColorChooserRequest'],
+    WebKitContextMenu: ['WebKitContextMenu'],
+    WebKitContextMenuItem: ['WebKitContextMenuItem'],
+    WebKitCookieManager: ['WebKitCookieManager'],
+    WebKitDeviceInfoPermissionRequest: ['WebKitDeviceInfoPermissionRequest', 'WebKitPermissionRequest'],
+    WebKitDownload: ['WebKitDownload'],
+    WebKitEditorState: ['WebKitEditorState'],
+    WebKitFaviconDatabase: ['WebKitFaviconDatabase'],
+    WebKitFileChooserRequest: ['WebKitFileChooserRequest'],
+    WebKitFindController: ['WebKitFindController'],
+    WebKitFormSubmissionRequest: ['WebKitFormSubmissionRequest'],
+    WebKitGeolocationManager: ['WebKitGeolocationManager'],
+    WebKitGeolocationPermissionRequest: ['WebKitGeolocationPermissionRequest', 'WebKitPermissionRequest'],
+    WebKitHitTestResult: ['WebKitHitTestResult'],
+    WebKitInstallMissingMediaPluginsPermissionRequest: ['WebKitInstallMissingMediaPluginsPermissionRequest', 'WebKitPermissionRequest'],
+    WebKitMediaKeySystemPermissionRequest: ['WebKitMediaKeySystemPermissionRequest', 'WebKitPermissionRequest'],
+    WebKitNavigationPolicyDecision: ['WebKitNavigationPolicyDecision', 'WebKitPolicyDecision'],
+    WebKitNotification: ['WebKitNotification'],
+    WebKitNotificationPermissionRequest: ['WebKitNotificationPermissionRequest', 'WebKitPermissionRequest'],
+    WebKitOptionMenu: ['WebKitOptionMenu'],
+    WebKitPlugin: ['WebKitPlugin'],
+    WebKitPointerLockPermissionRequest: ['WebKitPointerLockPermissionRequest', 'WebKitPermissionRequest'],
+    WebKitPrintCustomWidget: ['WebKitPrintCustomWidget'],
+    WebKitPrintOperation: ['WebKitPrintOperation'],
+    WebKitResponsePolicyDecision: ['WebKitResponsePolicyDecision', 'WebKitPolicyDecision'],
+    WebKitSecurityManager: ['WebKitSecurityManager'],
+    WebKitSettings: ['WebKitSettings'],
+    WebKitURIRequest: ['WebKitURIRequest'],
+    WebKitURIResponse: ['WebKitURIResponse'],
+    WebKitURISchemeRequest: ['WebKitURISchemeRequest'],
+    WebKitURISchemeResponse: ['WebKitURISchemeResponse'],
+    WebKitUserContentFilterStore: ['WebKitUserContentFilterStore'],
+    WebKitUserContentManager: ['WebKitUserContentManager'],
+    WebKitUserMediaPermissionRequest: ['WebKitUserMediaPermissionRequest', 'WebKitPermissionRequest'],
+    WebKitUserMessage: ['WebKitUserMessage'],
+    WebKitWebContext: ['WebKitWebContext'],
+    WebKitWebInspector: ['WebKitWebInspector'],
+    WebKitWebResource: ['WebKitWebResource'],
     WebKitWebView: ['WebKitWebView', 'WebKitWebViewBase', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     WebKitWebViewBase: ['WebKitWebViewBase', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    WebKitWebsiteDataAccessPermissionRequest: ['WebKitWebsiteDataAccessPermissionRequest', 'WebKitPermissionRequest'],
+    WebKitWebsiteDataManager: ['WebKitWebsiteDataManager'],
+    WebKitWebsitePolicies: ['WebKitWebsitePolicies'],
+    WebKitWindowProperties: ['WebKitWindowProperties'],
+    WebKitXRPermissionRequest: ['WebKitXRPermissionRequest', 'WebKitPermissionRequest'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -73,7 +164,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -255,11 +346,12 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
@@ -334,14 +426,16 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
+    'WebKitSettings.hardware-acceleration-policy': 'WebKitHardwareAccelerationPolicy',
     'WebKitWebView.automation-presentation-type': 'WebKitAutomationBrowsingContextPresentation',
     'WebKitWebView.camera-capture-state': 'WebKitMediaCaptureState',
     'WebKitWebView.display-capture-state': 'WebKitMediaCaptureState',
     'WebKitWebView.microphone-capture-state': 'WebKitMediaCaptureState',
     'WebKitWebView.web-extension-mode': 'WebKitWebExtensionMode',
+    'WebKitWebsitePolicies.autoplay': 'WebKitAutoplayPolicy',
 };
 
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
@@ -372,6 +466,80 @@ export const ARIA_VALUE_ENUMS = {};
 export const SLOT_CANDIDATES = {};
 
 export const SINCE = {
+    'WebKitAuthenticationRequest::authenticated': '2.30',
+    'WebKitAuthenticationRequest::cancelled': '2.2',
+    'WebKitAutomationSession': '2.18',
+    'WebKitAutomationSession.id': '2.18',
+    'WebKitAutomationSession::create-web-view': '2.18',
+    'WebKitAutomationSession::will-close': '2.46',
+    'WebKitClipboardPermissionRequest': '2.42',
+    'WebKitColorChooserRequest.rgba': '2.8',
+    'WebKitColorChooserRequest::finished': '2.8',
+    'WebKitDeviceInfoPermissionRequest': '2.24',
+    'WebKitDownload.allow-overwrite': '2.6',
+    'WebKitEditorState': '2.10',
+    'WebKitEditorState::changed': '2.44',
+    'WebKitGeolocationManager': '2.26',
+    'WebKitGeolocationManager::start': '2.26',
+    'WebKitGeolocationManager::stop': '2.26',
+    'WebKitInstallMissingMediaPluginsPermissionRequest': '2.10',
+    'WebKitNotification': '2.8',
+    'WebKitNotification::clicked': '2.12',
+    'WebKitNotification::closed': '2.8',
+    'WebKitNotificationPermissionRequest': '2.8',
+    'WebKitOptionMenu': '2.18',
+    'WebKitOptionMenu::close': '2.18',
+    'WebKitPointerLockPermissionRequest': '2.28',
+    'WebKitPrintCustomWidget': '2.16',
+    'WebKitPrintCustomWidget.title': '2.16',
+    'WebKitPrintCustomWidget.widget': '2.16',
+    'WebKitPrintCustomWidget::apply': '2.16',
+    'WebKitPrintCustomWidget::update': '2.16',
+    'WebKitPrintOperation::create-custom-widget': '2.16',
+    'WebKitSettings.allow-file-access-from-file-urls': '2.10',
+    'WebKitSettings.allow-top-navigation-to-data-urls': '2.28',
+    'WebKitSettings.allow-universal-access-from-file-urls': '2.14',
+    'WebKitSettings.disable-web-security': '2.40',
+    'WebKitSettings.enable-2d-canvas-acceleration': '2.46',
+    'WebKitSettings.enable-accelerated-2d-canvas': '2.2',
+    'WebKitSettings.enable-back-forward-navigation-gestures': '2.24',
+    'WebKitSettings.enable-encrypted-media': '2.20',
+    'WebKitSettings.enable-javascript-markup': '2.24',
+    'WebKitSettings.enable-media': '2.26',
+    'WebKitSettings.enable-media-capabilities': '2.22',
+    'WebKitSettings.enable-media-stream': '2.4',
+    'WebKitSettings.enable-mediasource': '2.4',
+    'WebKitSettings.enable-mock-capture-devices': '2.24',
+    'WebKitSettings.enable-spatial-navigation': '2.4',
+    'WebKitSettings.enable-webrtc': '2.38',
+    'WebKitSettings.enable-write-console-messages-to-stdout': '2.2',
+    'WebKitSettings.hardware-acceleration-policy': '2.16',
+    'WebKitSettings.math-font-family': '2.52',
+    'WebKitSettings.media-content-types-requiring-hardware-support': '2.30',
+    'WebKitSettings.webrtc-udp-ports-range': '2.48',
+    'WebKitURISchemeResponse.stream': '2.36',
+    'WebKitURISchemeResponse.stream-length': '2.36',
+    'WebKitUserContentFilterStore': '2.24',
+    'WebKitUserContentFilterStore.path': '2.24',
+    'WebKitUserContentManager': '2.6',
+    'WebKitUserContentManager::script-message-received': '2.8',
+    'WebKitUserContentManager::script-message-with-reply-received': '2.40',
+    'WebKitUserMediaPermissionRequest': '2.8',
+    'WebKitUserMessage': '2.28',
+    'WebKitUserMessage.fd-list': '2.28',
+    'WebKitUserMessage.name': '2.28',
+    'WebKitUserMessage.parameters': '2.28',
+    'WebKitWebContext.local-storage-directory': '2.8',
+    'WebKitWebContext.memory-pressure-settings': '2.34',
+    'WebKitWebContext.process-swap-on-cross-site-navigation-enabled': '2.28',
+    'WebKitWebContext.time-zone-override': '2.38',
+    'WebKitWebContext.use-system-appearance-for-scrollbars': '2.30',
+    'WebKitWebContext.website-data-manager': '2.10',
+    'WebKitWebContext::automation-started': '2.18',
+    'WebKitWebContext::initialize-notification-permissions': '2.16',
+    'WebKitWebContext::initialize-web-extensions': '2.4',
+    'WebKitWebContext::user-message-received': '2.28',
+    'WebKitWebResource::failed-with-tls-errors': '2.8',
     'WebKitWebView.automation-presentation-type': '2.28',
     'WebKitWebView.camera-capture-state': '2.34',
     'WebKitWebView.default-content-security-policy': '2.38',
@@ -395,4 +563,24 @@ export const SINCE = {
     'WebKitWebView::show-option-menu': '2.18',
     'WebKitWebView::user-message-received': '2.28',
     'WebKitWebView::web-process-terminated': '2.20',
+    'WebKitWebsiteDataAccessPermissionRequest': '2.30',
+    'WebKitWebsiteDataManager': '2.10',
+    'WebKitWebsiteDataManager.base-cache-directory': '2.10',
+    'WebKitWebsiteDataManager.base-data-directory': '2.10',
+    'WebKitWebsiteDataManager.disk-cache-directory': '2.10',
+    'WebKitWebsiteDataManager.dom-cache-directory': '2.30',
+    'WebKitWebsiteDataManager.hsts-cache-directory': '2.26',
+    'WebKitWebsiteDataManager.indexeddb-directory': '2.10',
+    'WebKitWebsiteDataManager.is-ephemeral': '2.16',
+    'WebKitWebsiteDataManager.itp-directory': '2.30',
+    'WebKitWebsiteDataManager.local-storage-directory': '2.10',
+    'WebKitWebsiteDataManager.offline-application-cache-directory': '2.10',
+    'WebKitWebsiteDataManager.origin-storage-ratio': '2.42',
+    'WebKitWebsiteDataManager.service-worker-registrations-directory': '2.30',
+    'WebKitWebsiteDataManager.total-storage-ratio': '2.42',
+    'WebKitWebsiteDataManager.websql-directory': '2.10',
+    'WebKitWebsitePolicies': '2.30',
+    'WebKitWebsitePolicies.autoplay': '2.30',
+    'WebKitWebsitePolicies.custom-user-agent': '2.54',
+    'WebKitXRPermissionRequest': '2.52',
 };

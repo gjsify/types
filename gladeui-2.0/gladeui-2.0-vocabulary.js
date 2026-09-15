@@ -1,6 +1,6 @@
 // The widget vocabulary of Gladeui-2.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Gladeui-2.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Gladeui.EditorProperty.property-def
+// GENERATED — do not edit. Provenance: Gladeui-2.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface GObject.ParamSpec — prop(s) no TypeScript value satisfies: Gladeui.EditorProperty.property-def Gladeui.Property.class Gladeui.Signal.class Gladeui.SignalModel.signals Gladeui.Widget.properties Gladeui.WidgetAction.definition
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,38 +11,63 @@ export const PROVENANCE = {
     version: '2.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface', 'GObject.ParamSpec'],
     inlinedBases: [],
-    unsettableProps: ['Gladeui.EditorProperty.property-def'],
+    unsettableProps: ['Gladeui.EditorProperty.property-def', 'Gladeui.Property.class', 'Gladeui.Signal.class', 'Gladeui.SignalModel.signals', 'Gladeui.Widget.properties', 'Gladeui.WidgetAction.definition'],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
     GladeAdaptorChooser: ['project'],
     GladeBaseEditor: ['container'],
+    GladeCellRendererIcon: ['activatable', 'active'],
     GladeDesignView: ['project'],
     GladeEditor: ['show-boder', 'show-class-field', 'widget'],
     GladeEditorProperty: ['custom-text', 'disable-check', 'property-def', 'use-command'],
     GladeEditorTable: ['page-type'],
     GladeInspector: ['project'],
     GladePalette: ['item-appearance', 'project', 'show-selector-button', 'use-small-item-icons'],
+    GladeProject: ['css-provider-path', 'license', 'resource-path', 'template', 'translation-domain'],
+    GladeProperty: ['class', 'enabled', 'i18n-comment', 'i18n-context', 'i18n-translatable', 'precision', 'sensitive'],
     GladePropertyLabel: ['append-colon', 'custom-text', 'custom-tooltip', 'packing', 'property', 'property-name'],
     GladePropertyShell: ['custom-text', 'disable-check', 'editor-type', 'packing', 'property-name', 'use-command'],
+    GladeSignal: ['after', 'class', 'detail', 'handler', 'support-warning', 'swapped', 'userdata'],
     GladeSignalEditor: ['glade-widget'],
+    GladeSignalModel: ['signals', 'widget'],
+    GladeWidget: ['adaptor', 'anarchist', 'composite', 'internal', 'internal-name', 'name', 'object', 'parent', 'project', 'properties', 'reason', 'template', 'template-exact', 'toplevel-height', 'toplevel-width'],
+    GladeWidgetAction: ['definition', 'sensitive', 'visible'],
+    GladeWidgetAdaptor: ['book', 'catalog', 'generic-name', 'icon-name', 'name', 'query', 'special-child-type', 'title', 'type'],
 };
 
 export const OWN_SIGNALS = {
+    GladeApp: ['doc-search', 'signal-editor-created', 'widget-adaptor-registered'],
     GladeBaseEditor: ['build-child', 'change-type', 'child-selected', 'delete-child', 'get-display-name', 'move-child'],
+    GladeCellRendererIcon: ['activate'],
     GladeEditorProperty: ['commit', 'value-changed'],
     GladeInspector: ['item-activated', 'selection-changed'],
     GladeNamedIconChooserDialog: ['icon-activated', 'selection-changed'],
     GladePalette: ['refresh'],
+    GladeProject: ['activate-signal-handler', 'add-signal-handler', 'add-widget', 'change-signal-handler', 'changed', 'close', 'load-progress', 'parse-began', 'parse-finished', 'remove-signal-handler', 'remove-widget', 'selection-changed', 'targets-changed', 'widget-name-changed', 'widget-visibility-changed'],
+    GladeProperty: ['tooltip-changed', 'value-changed'],
     GladePropertyShell: ['post-commit', 'pre-commit'],
     GladeSignalEditor: ['callback-suggestions', 'detail-suggestions', 'signal-activated'],
+    GladeWidget: ['add-signal-handler', 'button-press-event', 'button-release-event', 'change-signal-handler', 'motion-notify-event', 'remove-signal-handler', 'support-changed'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
     GladeAdaptorChooser: ['GladeAdaptorChooser', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    GladeApp: ['GladeApp'],
     GladeBaseEditor: ['GladeBaseEditor', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    GladeCellRendererIcon: ['GladeCellRendererIcon', 'GtkCellRendererPixbuf', 'GtkCellRenderer'],
+    GladeClipboard: ['GladeClipboard'],
+    GladeCommand: ['GladeCommand'],
     GladeDesignView: ['GladeDesignView', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GladeEPropBool: ['GladeEPropBool', 'GladeEditorProperty', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GladeEditable', 'GtkBuildable', 'GtkOrientable'],
     GladeEPropCheck: ['GladeEPropCheck', 'GladeEditorProperty', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GladeEditable', 'GtkBuildable', 'GtkOrientable'],
@@ -62,16 +87,25 @@ export const DECLS = {
     GladeInspector: ['GladeInspector', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GladeNamedIconChooserDialog: ['GladeNamedIconChooserDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     GladePalette: ['GladePalette', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    GladeParamObjects: ['GladeParamObjects'],
     GladePlaceholder: ['GladePlaceholder', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
+    GladeProject: ['GladeProject', 'GtkTreeDragSource', 'GtkTreeModel'],
+    GladeProperty: ['GladeProperty'],
     GladePropertyLabel: ['GladePropertyLabel', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GladeEditable', 'GtkBuildable'],
     GladePropertyShell: ['GladePropertyShell', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GladeEditable', 'GtkBuildable', 'GtkOrientable'],
+    GladeSignal: ['GladeSignal'],
     GladeSignalEditor: ['GladeSignalEditor', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    GladeSignalModel: ['GladeSignalModel', 'GtkTreeDragSource', 'GtkTreeModel'],
+    GladeWidget: ['GladeWidget'],
+    GladeWidgetAction: ['GladeWidgetAction'],
+    GladeWidgetAdaptor: ['GladeWidgetAdaptor'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -93,7 +127,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -187,11 +221,12 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
@@ -231,7 +266,7 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
     'GladeEditorTable.page-type': 'GladeEditorPageType',

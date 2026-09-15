@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Midori-0.6.
  *
- * GENERATED — do not edit. Provenance: Midori-0.6 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
+ * GENERATED — do not edit. Provenance: Midori-0.6 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface Gio.ListModel Gio.Initable — inlined base(s) their owner's vocabulary does not emit: Gio.Application Peas.Engine
  *
- * 15 concrete widgets, 15 declarations, 3 enum nick unions, 7 slot candidates.
+ * 26 instantiable GTypes (of which 15 concrete widgets), 29 declarations (2 inlined from a namespace whose vocabulary does not emit them), 3 enum nick unions, 7 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -30,7 +30,7 @@ import type Gtk from '@girs/gtk-3.0';
 import type Midori from './midori-0.6.js';
 import type WebKit2 from '@girs/webkit2-4.0';
 import type cairo from '@girs/cairo-1.0';
-import type { GtkActionBarConstructOnly, GtkActionBarProps, GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkEventBoxConstructOnly, GtkEventBoxProps, GtkImageConstructOnly, GtkImageProps, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkMiscConstructOnly, GtkMiscProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkStatusbarConstructOnly, GtkStatusbarProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
+import type { GtkActionBarConstructOnly, GtkActionBarProps, GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkApplicationConstructOnly, GtkApplicationProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkEventBoxConstructOnly, GtkEventBoxProps, GtkImageConstructOnly, GtkImageProps, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkMiscConstructOnly, GtkMiscProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkStatusbarConstructOnly, GtkStatusbarProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 import type { WebKitWebViewBaseConstructOnly, WebKitWebViewBaseProps, WebKitWebViewConstructOnly, WebKitWebViewProps } from '@girs/webkit2-4.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -57,6 +57,54 @@ export type MidoriStartupTypeNick = 'speed-dial' | 'homepage' | 'last-open-pages
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
+/** `GApplication` is the core class for application support. */
+export interface GApplicationProps {
+    /**
+     * The group of actions that the application exports.
+     * @since 2.28
+     * @deprecated since 2.32: Use the [iface@Gio.ActionMap] interface instead.
+     */
+    'action-group'?: Gio.ActionGroup;
+    /**
+     * The unique identifier for the application.
+     * @since 2.28
+     * @default NULL
+     */
+    'application-id'?: string | null;
+    /**
+     * Flags specifying the behaviour of the application.
+     * @since 2.28
+     * @default G_APPLICATION_FLAGS_NONE
+     */
+    flags?: number;
+    /**
+     * Time (in milliseconds) to stay alive after becoming idle.
+     * @since 2.28
+     * @default 0
+     */
+    'inactivity-timeout'?: number;
+    /**
+     * The base resource path for the application.
+     * @since 2.28
+     * @default NULL
+     */
+    'resource-base-path'?: string | null;
+    /**
+     * The human-readable version number of the application.
+     * @since 2.80
+     * @default NULL
+     */
+    version?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GApplicationConstructOnly = never;
+
+export interface MidoriAppProps extends GtkApplicationProps {
+    'exec-path'?: Gio.File | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriAppConstructOnly = GtkApplicationConstructOnly;
+
 export interface MidoriBrowserProps extends GtkApplicationWindowProps {
     'is-fullscreen'?: boolean;
     'is-loading'?: boolean;
@@ -74,10 +122,76 @@ export interface MidoriClearPrivateDataProps extends GtkDialogProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type MidoriClearPrivateDataConstructOnly = GtkDialogConstructOnly;
 
+export interface MidoriCompletionProps {
+    incognito?: boolean;
+    key?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriCompletionConstructOnly = never;
+
+export interface MidoriCoreSettingsProps extends MidoriSettingsProps {
+    'auto-load-images'?: boolean;
+    'close-buttons-on-tabs'?: boolean;
+    'enable-caret-browsing'?: boolean;
+    'enable-javascript'?: boolean;
+    'enable-plugins'?: boolean;
+    'enable-spell-checking'?: boolean;
+    'first-party-cookies-only'?: boolean;
+    homepage?: string;
+    'http-proxy'?: string;
+    'http-proxy-port'?: number;
+    'last-window-height'?: number;
+    'last-window-width'?: number;
+    'load-on-startup'?: MidoriStartupTypeNick | Midori.StartupType;
+    'location-entry-search'?: string;
+    'maximum-history-age'?: number;
+    'proxy-type'?: MidoriProxyTypeNick | Midori.ProxyType;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriCoreSettingsConstructOnly = MidoriSettingsConstructOnly;
+
+export interface MidoriDatabaseProps extends MidoriLoggableProps {
+    'first-use'?: boolean;
+    key?: string | null;
+    path?: string;
+    readonly?: boolean;
+    table?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriDatabaseConstructOnly = MidoriLoggableConstructOnly;
+
+export interface MidoriDatabaseItemProps {
+    database?: Midori.Database | null;
+    date?: bigint | number;
+    id?: bigint | number;
+    title?: string | null;
+    uri?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriDatabaseItemConstructOnly = never;
+
+export interface MidoriDatabaseStatementProps {
+    database?: Midori.Database | null;
+    query?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriDatabaseStatementConstructOnly = never;
+
 export interface MidoriDownloadButtonProps extends GtkButtonProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type MidoriDownloadButtonConstructOnly = GtkButtonConstructOnly;
+
+export interface MidoriDownloadItemProps {
+    basename?: string | null;
+    download?: WebKit2.Download | null;
+    error?: string | null;
+    filename?: string | null;
+    loading?: boolean;
+    progress?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriDownloadItemConstructOnly = never;
 
 export interface MidoriDownloadRowProps extends GtkListBoxRowProps {
     item?: Midori.DownloadItem;
@@ -92,6 +206,11 @@ export interface MidoriFaviconProps extends GtkImageProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type MidoriFaviconConstructOnly = GtkImageConstructOnly;
 
+export interface MidoriHistoryDatabaseProps extends MidoriDatabaseProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriHistoryDatabaseConstructOnly = MidoriDatabaseConstructOnly;
+
 export interface MidoriLabelWidgetProps extends GtkBoxProps {
     label?: Gtk.Label;
     title?: string | null;
@@ -99,6 +218,11 @@ export interface MidoriLabelWidgetProps extends GtkBoxProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type MidoriLabelWidgetConstructOnly = GtkBoxConstructOnly;
+
+export interface MidoriLoggableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriLoggableConstructOnly = never;
 
 export interface MidoriNavigationbarProps extends GtkActionBarProps {
 }
@@ -110,16 +234,34 @@ export interface MidoriNetworkCheckProps extends GtkActionBarProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type MidoriNetworkCheckConstructOnly = GtkActionBarConstructOnly;
 
+export interface MidoriPluginsProps extends PeasEngineProps, MidoriLoggableProps {
+    'builtin-path'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriPluginsConstructOnly = PeasEngineConstructOnly | MidoriLoggableConstructOnly;
+
 export interface MidoriPreferencesProps extends GtkDialogProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type MidoriPreferencesConstructOnly = GtkDialogConstructOnly;
+
+export interface MidoriSettingsProps {
+    filename?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriSettingsConstructOnly = never;
 
 export interface MidoriStatusbarProps extends GtkStatusbarProps {
     label?: string | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type MidoriStatusbarConstructOnly = GtkStatusbarConstructOnly;
+
+export interface MidoriSuggestionItemProps extends MidoriDatabaseItemProps {
+    search?: string | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type MidoriSuggestionItemConstructOnly = MidoriDatabaseItemConstructOnly;
 
 export interface MidoriSuggestionRowProps extends GtkListBoxRowProps {
     item?: Midori.DatabaseItem;
@@ -171,6 +313,20 @@ export interface MidoriUrlbarProps extends GtkEntryProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type MidoriUrlbarConstructOnly = GtkEntryConstructOnly;
+
+/** The #PeasEngine structure contains only private data and should only be accessed using the provided API. */
+export interface PeasEngineProps {
+    /** The list of loaded plugins. */
+    'loaded-plugins'?: string[];
+    /**
+     * If non-global plugin loaders should be used.
+     * @since 1.14
+     * @default FALSE
+     */
+    'nonglobal-loaders'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type PeasEngineConstructOnly = 'nonglobal-loaders';
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -306,7 +462,11 @@ export interface Widgets {
     };
 }
 
-/** Every GType this namespace can create. A consumer derives its own tag map. */
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
 export type WidgetGType = keyof Widgets;
 
 // ---------------------------------------------------------------------------
@@ -358,7 +518,14 @@ export const PROVENANCE: {
     readonly childHolders: number;
     readonly droppedBases: readonly string[];
     readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
     readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */
@@ -372,7 +539,17 @@ export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
  */
 export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
-/** Widget GType -> every declaration its members come from, self first. */
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
 
 /** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
@@ -384,8 +561,8 @@ export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
 /**
  * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
  *
- * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 129 enums a
- * GTK 4 vocabulary carries -- 104 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
  * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
  * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
  *
@@ -423,10 +600,11 @@ export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
  * nothing about a single member's number, and the number is what a host without GI needs.
- * 21 writable widget properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared
- * bare `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`
- * among them. Counting is worst here: 95 of 121 Gtk-4.0 bitfield members disagree with their
- * position, against 29 of 685 enumeration members.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
  *
  * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
  * here is resolvable and a SET still is not.
@@ -450,7 +628,7 @@ export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
  *
  * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
  * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
- * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 57 of the 438
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
  * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
  * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
  * resolves against SOME module.

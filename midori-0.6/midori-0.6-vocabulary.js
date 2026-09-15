@@ -1,6 +1,6 @@
 // The widget vocabulary of Midori-0.6 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Midori-0.6 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
+// GENERATED — do not edit. Provenance: Midori-0.6 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface Gio.ListModel Gio.Initable — inlined base(s) their owner's vocabulary does not emit: Gio.Application Peas.Engine
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,41 +11,75 @@ export const PROVENANCE = {
     version: '0.6',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface', 'Gio.ActionGroup', 'Gio.ActionMap'],
-    inlinedBases: [],
+    droppedBases: ['GObject.Object', 'Gio.ActionGroup', 'Gio.ActionMap', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface', 'Gio.ListModel', 'Gio.Initable'],
+    inlinedBases: ['Gio.Application', 'Peas.Engine'],
     unsettableProps: [],
+    unresolvedProps: [],
 };
 
 export const OWN_PROPS = {
+    GApplication: ['action-group', 'application-id', 'flags', 'inactivity-timeout', 'resource-base-path', 'version'],
+    MidoriApp: ['exec-path'],
     MidoriBrowser: ['is-fullscreen', 'is-loading', 'is-locked', 'tab', 'trash', 'uri', 'web-context'],
+    MidoriCompletion: ['incognito', 'key'],
+    MidoriCoreSettings: ['auto-load-images', 'close-buttons-on-tabs', 'enable-caret-browsing', 'enable-javascript', 'enable-plugins', 'enable-spell-checking', 'first-party-cookies-only', 'homepage', 'http-proxy', 'http-proxy-port', 'last-window-height', 'last-window-width', 'load-on-startup', 'location-entry-search', 'maximum-history-age', 'proxy-type'],
+    MidoriDatabase: ['first-use', 'key', 'path', 'readonly', 'table'],
+    MidoriDatabaseItem: ['database', 'date', 'id', 'title', 'uri'],
+    MidoriDatabaseStatement: ['database', 'query'],
+    MidoriDownloadItem: ['basename', 'download', 'error', 'filename', 'loading', 'progress'],
     MidoriDownloadRow: ['item'],
     MidoriFavicon: ['surface', 'uri'],
     MidoriLabelWidget: ['label', 'title', 'widget'],
+    MidoriPlugins: ['builtin-path'],
+    MidoriSettings: ['filename'],
     MidoriStatusbar: ['label'],
+    MidoriSuggestionItem: ['search'],
     MidoriSuggestionRow: ['item', 'key', 'location', 'regex'],
     MidoriSwitcher: ['show-close-buttons', 'stack'],
     MidoriTab: ['can-go-back', 'can-go-forward', 'color', 'display-title', 'display-uri', 'item', 'link-uri', 'pinned', 'progress', 'secure'],
     MidoriTally: ['active', 'show-close', 'tab', 'title', 'uri'],
     MidoriUrlbar: ['key', 'location', 'regex', 'secure', 'uri'],
+    PeasEngine: ['loaded-plugins', 'nonglobal-loaders'],
 };
 
 export const OWN_SIGNALS = {
+    GApplication: ['activate', 'command-line', 'handle-local-options', 'name-lost', 'open', 'shutdown', 'startup'],
     MidoriBrowser: ['default-tab'],
     MidoriDownloadButton: ['show-downloads'],
+    MidoriDownloadItem: ['finished'],
     MidoriTally: ['clicked'],
+    PeasEngine: ['load-plugin', 'unload-plugin'],
 };
 
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
 export const DECLS = {
+    MidoriApp: ['MidoriApp', 'GtkApplication', 'GApplication'],
     MidoriBrowser: ['MidoriBrowser', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     MidoriClearPrivateData: ['MidoriClearPrivateData', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    MidoriCompletion: ['MidoriCompletion'],
+    MidoriCoreSettings: ['MidoriCoreSettings', 'MidoriSettings'],
+    MidoriDatabase: ['MidoriDatabase', 'MidoriLoggable'],
+    MidoriDatabaseItem: ['MidoriDatabaseItem'],
+    MidoriDatabaseStatement: ['MidoriDatabaseStatement'],
     MidoriDownloadButton: ['MidoriDownloadButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    MidoriDownloadItem: ['MidoriDownloadItem'],
     MidoriDownloadRow: ['MidoriDownloadRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
     MidoriFavicon: ['MidoriFavicon', 'GtkImage', 'GtkMisc', 'GtkWidget', 'GtkBuildable'],
+    MidoriHistoryDatabase: ['MidoriHistoryDatabase', 'MidoriDatabase', 'MidoriLoggable'],
     MidoriLabelWidget: ['MidoriLabelWidget', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     MidoriNavigationbar: ['MidoriNavigationbar', 'GtkActionBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     MidoriNetworkCheck: ['MidoriNetworkCheck', 'GtkActionBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    MidoriPlugins: ['MidoriPlugins', 'PeasEngine', 'MidoriLoggable'],
     MidoriPreferences: ['MidoriPreferences', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    MidoriSettings: ['MidoriSettings'],
     MidoriStatusbar: ['MidoriStatusbar', 'GtkStatusbar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    MidoriSuggestionItem: ['MidoriSuggestionItem', 'MidoriDatabaseItem'],
     MidoriSuggestionRow: ['MidoriSuggestionRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
     MidoriSwitcher: ['MidoriSwitcher', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     MidoriTab: ['MidoriTab', 'WebKitWebView', 'WebKitWebViewBase', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
@@ -53,10 +87,11 @@ export const DECLS = {
     MidoriUrlbar: ['MidoriUrlbar', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
 };
 
-// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
-// and descend from `GObject.Object`. A renderer places them like a container; a check
-// asking "is this a widget" must not count them. Derived from the accessor pair, never
-// from a list — the count is in the provenance line above.
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
@@ -70,7 +105,7 @@ export const ENUM_NICKS = {
 // It ships because position in `ENUM_NICKS` is not the value and a consumer with no
 // typelib has no other way to learn it: a surface without GI still has to hand GObject an
 // integer. The alternative a consumer reaches for first is counting, and counting is wrong
-// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
 // `GtkResponseType` runs -1 down to
 // -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
 // 1001001000 where counting answers 0.
@@ -117,15 +152,28 @@ export const ENUM_VALUES_UNREADABLE = {};
 // The number behind each member of a registered BITFIELD, keyed the same way.
 //
 // `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
-// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
-// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
-// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
-// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
-// bitfield members disagree with their position, against 29 of 685 enumeration members.
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
-export const FLAG_VALUES = {};
+export const FLAG_VALUES = {
+    'GApplicationFlags.allow-replacement': 128,
+    'GApplicationFlags.can-override-app-id': 64,
+    'GApplicationFlags.default-flags': 0,
+    'GApplicationFlags.flags-none': 0,
+    'GApplicationFlags.handles-command-line': 8,
+    'GApplicationFlags.handles-open': 4,
+    'GApplicationFlags.is-launcher': 2,
+    'GApplicationFlags.is-service': 1,
+    'GApplicationFlags.non-unique': 32,
+    'GApplicationFlags.replace': 256,
+    'GApplicationFlags.send-environment': 16,
+};
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
 // `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
@@ -144,9 +192,13 @@ export const FLAG_VALUES_UNREADABLE = {};
 // one are both entries a consumer would resolve wrongly, so neither is written.
 //
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
-// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
-export const PROP_ENUMS = {};
+export const PROP_ENUMS = {
+    'GApplication.flags': 'GApplicationFlags',
+    'MidoriCoreSettings.load-on-startup': 'MidoriStartupType',
+    'MidoriCoreSettings.proxy-type': 'MidoriProxyType',
+};
 
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
@@ -191,4 +243,15 @@ export const SLOT_CANDIDATES = {
     },
 };
 
-export const SINCE = {};
+export const SINCE = {
+    'GApplication': '2.28',
+    'GApplication.action-group': '2.28',
+    'GApplication.application-id': '2.28',
+    'GApplication.flags': '2.28',
+    'GApplication.inactivity-timeout': '2.28',
+    'GApplication.resource-base-path': '2.28',
+    'GApplication.version': '2.80',
+    'GApplication::handle-local-options': '2.40',
+    'GApplication::name-lost': '2.60',
+    'PeasEngine.nonglobal-loaders': '1.14',
+};
