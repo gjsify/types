@@ -122,16 +122,41 @@ jobs:
       # a directory this workflow then hands to the publisher. The manifest check downstream
       # would catch it, but only after a full generation and only by accident. Asked here, the
       # answer is one line and the failure names the cause.
+      #
+      # The install is ALSO where the release race is waited out. `plan.mjs` already knows that
+      # a version npm serves is a claim rather than the artifact; the same holds one level up,
+      # for a package's dependency CLOSURE. Measured on the 5.2.0 release: npm served
+      # `@ts-for-gir/cli@5.2.0` at 14:37:54 and `@ts-for-gir/templates@5.2.0`, which that CLI
+      # depends on, only at 14:39:22. The step above waits for the CLI to be VISIBLE, so this
+      # one ran 88 seconds before the CLI was INSTALLABLE: `npx` died with ETARGET on the
+      # dependency, `grep` read an empty stream, and the run blamed the release for missing a
+      # flag it carries — leaving all four channels skipped and stuck on the old generator.
+      # So a FAILING INSTALL is retried, and only an install that succeeded may judge the flag.
       - name: Require a generator that can bundle
         env:
           GENERATOR: ${{ steps.generator.outputs.version }}
         run: |
           set -euo pipefail
-          if ! npx --yes "@ts-for-gir/cli@${GENERATOR}" generate --help | grep -q -- "--bundle"; then
-            echo "@ts-for-gir/cli@${GENERATOR} has no --bundle: the channels need a release that carries it" >&2
-            exit 1
-          fi
-          echo "::notice::generator ${GENERATOR} supports --bundle"
+          err="${RUNNER_TEMP}/require-bundle.err"
+          for attempt in $(seq 1 20); do
+            if help=$(npx --yes "@ts-for-gir/cli@${GENERATOR}" generate --help 2> "$err"); then
+              case "$help" in
+                *--bundle*)
+                  echo "::notice::generator ${GENERATOR} supports --bundle (attempt ${attempt})"
+                  exit 0
+                  ;;
+              esac
+              echo "@ts-for-gir/cli@${GENERATOR} installs but has no --bundle:" >&2
+              echo "the channels need a release that carries it" >&2
+              exit 1
+            fi
+            echo "attempt ${attempt}: @ts-for-gir/cli@${GENERATOR} is not installable yet" >&2
+            tail -n 3 "$err" >&2
+            sleep 30
+          done
+          echo "@ts-for-gir/cli@${GENERATOR} never became installable within 10 minutes" >&2
+          cat "$err" >&2
+          exit 1
 
   channel:
     name: ${{ matrix.channel.package }}
