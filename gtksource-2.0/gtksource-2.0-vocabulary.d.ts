@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for GtkSource-2.0.
  *
- * GENERATED — do not edit. Provenance: GtkSource-2.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: GtkSource-2.0 — dropped empty base(s): Atk.ImplementorIface
  *
  * 14 instantiable GTypes (of which 2 concrete widgets), 15 declarations, 0 enum nick unions, 1 slot candidates.
  *
@@ -27,6 +27,7 @@
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Gtk from '@girs/gtk-2.0';
 import type GtkSource from './gtksource-2.0.js';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkObjectConstructOnly, GtkObjectProps, GtkTextBufferConstructOnly, GtkTextBufferProps, GtkTextMarkConstructOnly, GtkTextMarkProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkTextWindowTypeNick, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps, GtkWrapModeNick } from '@girs/gtk-2.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -122,14 +123,14 @@ export interface GtkSourceCompletionProps extends GtkObjectProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkSourceCompletionConstructOnly = GtkObjectConstructOnly | 'view';
 
-export interface GtkSourceCompletionContextProps {
+export interface GtkSourceCompletionContextProps extends GInitiallyUnownedProps {
     /** The #GtkSourceCompletion associated with the context. */
     completion?: GtkSource.Completion;
     /** The #GtkTextIter at which the completion is invoked. */
     iter?: Gtk.TextIter;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceCompletionContextConstructOnly = 'completion';
+export type GtkSourceCompletionContextConstructOnly = GInitiallyUnownedConstructOnly | 'completion';
 
 export interface GtkSourceCompletionInfoProps extends GtkWindowProps, GtkBuildableProps {
     /** @default -1 */
@@ -144,7 +145,7 @@ export interface GtkSourceCompletionInfoProps extends GtkWindowProps, GtkBuildab
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkSourceCompletionInfoConstructOnly = GtkWindowConstructOnly | GtkBuildableConstructOnly;
 
-export interface GtkSourceCompletionItemProps extends GtkSourceCompletionProposalProps {
+export interface GtkSourceCompletionItemProps extends GObjectProps, GtkSourceCompletionProposalProps {
     /** Icon to be shown for this proposal. */
     icon?: GdkPixbuf.Pixbuf;
     /**
@@ -169,14 +170,14 @@ export interface GtkSourceCompletionItemProps extends GtkSourceCompletionProposa
     text?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceCompletionItemConstructOnly = GtkSourceCompletionProposalConstructOnly;
+export type GtkSourceCompletionItemConstructOnly = GObjectConstructOnly | GtkSourceCompletionProposalConstructOnly;
 
-export interface GtkSourceCompletionProposalProps {
+export interface GtkSourceCompletionProposalProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceCompletionProposalConstructOnly = never;
+export type GtkSourceCompletionProposalConstructOnly = GObjectConstructOnly;
 
-export interface GtkSourceGutterProps {
+export interface GtkSourceGutterProps extends GObjectProps {
     /** The #GtkSourceView of the gutter */
     view?: GtkSource.View;
     /**
@@ -186,18 +187,18 @@ export interface GtkSourceGutterProps {
     'window-type'?: GtkTextWindowTypeNick | Gtk.TextWindowType;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceGutterConstructOnly = 'view' | 'window-type';
+export type GtkSourceGutterConstructOnly = GObjectConstructOnly | 'view' | 'window-type';
 
-export interface GtkSourceLanguageProps {
+export interface GtkSourceLanguageProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceLanguageConstructOnly = never;
+export type GtkSourceLanguageConstructOnly = GObjectConstructOnly;
 
-export interface GtkSourceLanguageManagerProps {
+export interface GtkSourceLanguageManagerProps extends GObjectProps {
     'search-path'?: string[];
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceLanguageManagerConstructOnly = never;
+export type GtkSourceLanguageManagerConstructOnly = GObjectConstructOnly;
 
 export interface GtkSourceMarkProps extends GtkTextMarkProps {
     /**
@@ -209,7 +210,7 @@ export interface GtkSourceMarkProps extends GtkTextMarkProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkSourceMarkConstructOnly = GtkTextMarkConstructOnly | 'category';
 
-export interface GtkSourcePrintCompositorProps {
+export interface GtkSourcePrintCompositorProps extends GObjectProps {
     /**
      * Name of the font used for the text body.
      * @since 2.2
@@ -277,9 +278,9 @@ export interface GtkSourcePrintCompositorProps {
     'wrap-mode'?: GtkWrapModeNick | Gtk.WrapMode;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourcePrintCompositorConstructOnly = 'buffer';
+export type GtkSourcePrintCompositorConstructOnly = GObjectConstructOnly | 'buffer';
 
-export interface GtkSourceStyleProps {
+export interface GtkSourceStyleProps extends GObjectProps {
     /** @default NULL */
     background?: string;
     /** @default FALSE */
@@ -310,9 +311,9 @@ export interface GtkSourceStyleProps {
     'underline-set'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceStyleConstructOnly = 'background' | 'background-set' | 'bold' | 'bold-set' | 'foreground' | 'foreground-set' | 'italic' | 'italic-set' | 'line-background' | 'line-background-set' | 'strikethrough' | 'strikethrough-set' | 'underline' | 'underline-set';
+export type GtkSourceStyleConstructOnly = GObjectConstructOnly | 'background' | 'background-set' | 'bold' | 'bold-set' | 'foreground' | 'foreground-set' | 'italic' | 'italic-set' | 'line-background' | 'line-background-set' | 'strikethrough' | 'strikethrough-set' | 'underline' | 'underline-set';
 
-export interface GtkSourceStyleSchemeProps {
+export interface GtkSourceStyleSchemeProps extends GObjectProps {
     /**
      * Style scheme id, a unique string used to identify the style scheme in #GtkSourceStyleSchemeManager.
      * @default NULL
@@ -320,13 +321,13 @@ export interface GtkSourceStyleSchemeProps {
     id?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceStyleSchemeConstructOnly = 'id';
+export type GtkSourceStyleSchemeConstructOnly = GObjectConstructOnly | 'id';
 
-export interface GtkSourceStyleSchemeManagerProps {
+export interface GtkSourceStyleSchemeManagerProps extends GObjectProps {
     'search-path'?: string[];
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceStyleSchemeManagerConstructOnly = never;
+export type GtkSourceStyleSchemeManagerConstructOnly = GObjectConstructOnly;
 
 export interface GtkSourceViewProps extends GtkTextViewProps, GtkBuildableProps {
     /** @default FALSE */
@@ -469,6 +470,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./gstpbutils-1.0.d.ts"]
+  "include": ["./gstpbutils-1.0.d.ts","./gstpbutils-1.0-vocabulary.d.ts"]
 }
 
 

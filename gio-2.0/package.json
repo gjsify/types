@@ -1,6 +1,6 @@
 {
     "name": "@girs/gio-2.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "libraryVersion": "2.89.4",
     "description": "GJS TypeScript type definitions for Gio-2.0, generated from library version 2.89.4",
     "type": "module",
@@ -17,6 +17,11 @@
         "import": "./gio-2.0-import.js",
         "default": "./gio-2.0-import.js"
       },
+      "./vocabulary": {
+        "types": "./gio-2.0-vocabulary.d.ts",
+        "import": "./gio-2.0-vocabulary.js",
+        "default": "./gio-2.0-vocabulary.js"
+      },
       "./gio-2.0": {
         "types": "./gio-2.0.d.ts",
         "import": "./gio-2.0.js",
@@ -32,10 +37,10 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

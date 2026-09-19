@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./gnomecmd-1.0.d.ts"]
+  "include": ["./gnomecmd-1.0.d.ts","./gnomecmd-1.0-vocabulary.d.ts"]
 }
 
 

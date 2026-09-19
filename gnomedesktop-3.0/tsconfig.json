@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./gnomedesktop-3.0.d.ts"]
+  "include": ["./gnomedesktop-3.0.d.ts","./gnomedesktop-3.0-vocabulary.d.ts"]
 }
 
 

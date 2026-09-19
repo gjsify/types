@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./mediaart-2.0.d.ts"]
+  "include": ["./mediaart-2.0.d.ts","./mediaart-2.0-vocabulary.d.ts"]
 }
 
 

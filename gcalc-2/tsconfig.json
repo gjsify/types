@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gcalc-2.d.ts"]
+  "include": ["./gcalc-2.d.ts","./gcalc-2-vocabulary.d.ts"]
 }
 
 

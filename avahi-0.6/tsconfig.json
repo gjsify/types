@@ -32,7 +32,7 @@
       ]
 }
   },
-  "include": ["./avahi-0.6.d.ts"]
+  "include": ["./avahi-0.6.d.ts","./avahi-0.6-vocabulary.d.ts"]
 }
 
 

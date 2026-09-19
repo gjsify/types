@@ -1,6 +1,6 @@
 {
     "name": "@girs/javascriptcore-4.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "libraryVersion": "2.47.2",
     "description": "GJS TypeScript type definitions for JavaScriptCore-4.0, generated from library version 2.47.2",
     "type": "module",
@@ -17,6 +17,11 @@
         "import": "./javascriptcore-4.0-import.js",
         "default": "./javascriptcore-4.0-import.js"
       },
+      "./vocabulary": {
+        "types": "./javascriptcore-4.0-vocabulary.d.ts",
+        "import": "./javascriptcore-4.0-vocabulary.js",
+        "default": "./javascriptcore-4.0-vocabulary.js"
+      },
       "./javascriptcore-4.0": {
         "types": "./javascriptcore-4.0.d.ts",
         "import": "./javascriptcore-4.0.js",
@@ -32,9 +37,9 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

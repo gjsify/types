@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./cogl-8.d.ts"]
+  "include": ["./cogl-8.d.ts","./cogl-8-vocabulary.d.ts"]
 }
 
 

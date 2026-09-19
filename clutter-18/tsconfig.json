@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./clutter-18.d.ts"]
+  "include": ["./clutter-18.d.ts","./clutter-18-vocabulary.d.ts"]
 }
 
 

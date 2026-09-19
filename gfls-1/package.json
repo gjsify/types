@@ -1,6 +1,6 @@
 {
     "name": "@girs/gfls-1",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for Gfls-1",
     "type": "module",
     "module": "gfls-1.js",
@@ -15,6 +15,11 @@
         "types": "./gfls-1-import.d.ts",
         "import": "./gfls-1-import.js",
         "default": "./gfls-1-import.js"
+      },
+      "./vocabulary": {
+        "types": "./gfls-1-vocabulary.d.ts",
+        "import": "./gfls-1-vocabulary.js",
+        "default": "./gfls-1-vocabulary.js"
       },
       "./gfls-1": {
         "types": "./gfls-1.d.ts",
@@ -31,20 +36,20 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gtk-3.0": "^5.2.0",
-      "@girs/xlib-2.0": "^5.2.0",
-      "@girs/gdk-3.0": "^5.2.0",
-      "@girs/cairo-1.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/pango-1.0": "^5.2.0",
-      "@girs/harfbuzz-0.0": "^5.2.0",
-      "@girs/freetype2-2.0": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0",
-      "@girs/gdkpixbuf-2.0": "^5.2.0",
-      "@girs/atk-1.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gtk-3.0": "^5.3.0",
+      "@girs/xlib-2.0": "^5.3.0",
+      "@girs/gdk-3.0": "^5.3.0",
+      "@girs/cairo-1.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/pango-1.0": "^5.3.0",
+      "@girs/harfbuzz-0.0": "^5.3.0",
+      "@girs/freetype2-2.0": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0",
+      "@girs/gdkpixbuf-2.0": "^5.3.0",
+      "@girs/atk-1.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./accountsservice-1.0.d.ts"]
+  "include": ["./accountsservice-1.0.d.ts","./accountsservice-1.0-vocabulary.d.ts"]
 }
 
 

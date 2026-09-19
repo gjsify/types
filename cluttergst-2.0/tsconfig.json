@@ -80,7 +80,7 @@
       ]
 }
   },
-  "include": ["./cluttergst-2.0.d.ts"]
+  "include": ["./cluttergst-2.0.d.ts","./cluttergst-2.0-vocabulary.d.ts"]
 }
 
 

@@ -1,6 +1,6 @@
 // The widget vocabulary of GPasteGtk-3 as runtime data.
 //
-// GENERATED — do not edit. Provenance: GPasteGtk-3 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: GPasteGtk-3 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '3',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['GPasteGtk'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {};
@@ -29,9 +31,9 @@ export const OWN_SIGNALS = {};
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GPasteGtkSettingsUiPanel: ['GPasteGtkSettingsUiPanel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    GPasteGtkSettingsUiStack: ['GPasteGtkSettingsUiStack', 'GtkStack', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GPasteGtkSettingsUiWidget: ['GPasteGtkSettingsUiWidget', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    GPasteGtkSettingsUiPanel: ['GPasteGtkSettingsUiPanel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    GPasteGtkSettingsUiStack: ['GPasteGtkSettingsUiStack', 'GtkStack', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GPasteGtkSettingsUiWidget: ['GPasteGtkSettingsUiWidget', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

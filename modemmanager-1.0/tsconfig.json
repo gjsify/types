@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./modemmanager-1.0.d.ts"]
+  "include": ["./modemmanager-1.0.d.ts","./modemmanager-1.0-vocabulary.d.ts"]
 }
 
 

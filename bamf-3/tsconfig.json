@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./bamf-3.d.ts"]
+  "include": ["./bamf-3.d.ts","./bamf-3-vocabulary.d.ts"]
 }
 
 

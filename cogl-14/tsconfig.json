@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./cogl-14.d.ts"]
+  "include": ["./cogl-14.d.ts","./cogl-14-vocabulary.d.ts"]
 }
 
 

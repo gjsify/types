@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./gstva-1.0.d.ts"]
+  "include": ["./gstva-1.0.d.ts","./gstva-1.0-vocabulary.d.ts"]
 }
 
 

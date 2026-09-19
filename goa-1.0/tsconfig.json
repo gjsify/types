@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./goa-1.0.d.ts"]
+  "include": ["./goa-1.0.d.ts","./goa-1.0-vocabulary.d.ts"]
 }
 
 

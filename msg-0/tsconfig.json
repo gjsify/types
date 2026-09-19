@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./msg-0.d.ts"]
+  "include": ["./msg-0.d.ts","./msg-0-vocabulary.d.ts"]
 }
 
 

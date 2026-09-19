@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./cogl-51.d.ts"]
+  "include": ["./cogl-51.d.ts","./cogl-51-vocabulary.d.ts"]
 }
 
 

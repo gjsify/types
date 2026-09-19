@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./sugargestures-1.0.d.ts"]
+  "include": ["./sugargestures-1.0.d.ts","./sugargestures-1.0-vocabulary.d.ts"]
 }
 
 

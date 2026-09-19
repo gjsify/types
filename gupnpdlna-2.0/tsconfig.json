@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./gupnpdlna-2.0.d.ts"]
+  "include": ["./gupnpdlna-2.0.d.ts","./gupnpdlna-2.0-vocabulary.d.ts"]
 }
 
 

@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./libmsi-1.0.d.ts"]
+  "include": ["./libmsi-1.0.d.ts","./libmsi-1.0-vocabulary.d.ts"]
 }
 
 

@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./rygelrenderergst-2.6.d.ts"]
+  "include": ["./rygelrenderergst-2.6.d.ts","./rygelrenderergst-2.6-vocabulary.d.ts"]
 }
 
 

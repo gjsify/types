@@ -1,6 +1,6 @@
 {
     "name": "@girs/meta-17",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for Meta-17",
     "type": "module",
     "module": "meta-17.js",
@@ -15,6 +15,11 @@
         "types": "./meta-17-import.d.ts",
         "import": "./meta-17-import.js",
         "default": "./meta-17-import.js"
+      },
+      "./vocabulary": {
+        "types": "./meta-17-vocabulary.d.ts",
+        "import": "./meta-17-vocabulary.js",
+        "default": "./meta-17-vocabulary.js"
       },
       "./meta-17": {
         "types": "./meta-17.d.ts",
@@ -31,24 +36,24 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/xlib-2.0": "^5.2.0",
-      "@girs/xfixes-4.0": "^5.2.0",
-      "@girs/mtk-17": "^5.2.0",
-      "@girs/graphene-1.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0",
-      "@girs/gdesktopenums-3.0": "^5.2.0",
-      "@girs/cogl-17": "^5.2.0",
-      "@girs/gl-1.0": "^5.2.0",
-      "@girs/clutter-17": "^5.2.0",
-      "@girs/pango-1.0": "^5.2.0",
-      "@girs/cairo-1.0": "^5.2.0",
-      "@girs/harfbuzz-0.0": "^5.2.0",
-      "@girs/freetype2-2.0": "^5.2.0",
-      "@girs/atk-1.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/xlib-2.0": "^5.3.0",
+      "@girs/xfixes-4.0": "^5.3.0",
+      "@girs/mtk-17": "^5.3.0",
+      "@girs/graphene-1.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0",
+      "@girs/gdesktopenums-3.0": "^5.3.0",
+      "@girs/cogl-17": "^5.3.0",
+      "@girs/gl-1.0": "^5.3.0",
+      "@girs/clutter-17": "^5.3.0",
+      "@girs/pango-1.0": "^5.3.0",
+      "@girs/cairo-1.0": "^5.3.0",
+      "@girs/harfbuzz-0.0": "^5.3.0",
+      "@girs/freetype2-2.0": "^5.3.0",
+      "@girs/atk-1.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

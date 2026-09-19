@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./gci-1.d.ts"]
+  "include": ["./gci-1.d.ts","./gci-1-vocabulary.d.ts"]
 }
 
 

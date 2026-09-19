@@ -1,6 +1,6 @@
 {
     "name": "@girs/arrow-1.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "libraryVersion": "16.1.0",
     "description": "GJS TypeScript type definitions for Arrow-1.0, generated from library version 16.1.0",
     "type": "module",
@@ -17,6 +17,11 @@
         "import": "./arrow-1.0-import.js",
         "default": "./arrow-1.0-import.js"
       },
+      "./vocabulary": {
+        "types": "./arrow-1.0-vocabulary.d.ts",
+        "import": "./arrow-1.0-vocabulary.js",
+        "default": "./arrow-1.0-vocabulary.js"
+      },
       "./arrow-1.0": {
         "types": "./arrow-1.0.d.ts",
         "import": "./arrow-1.0.js",
@@ -32,11 +37,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

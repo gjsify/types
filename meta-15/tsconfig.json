@@ -80,7 +80,7 @@
       ]
 }
   },
-  "include": ["./meta-15.d.ts"]
+  "include": ["./meta-15.d.ts","./meta-15-vocabulary.d.ts"]
 }
 
 

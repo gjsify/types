@@ -1,6 +1,6 @@
 {
     "name": "@girs/libsitra-0.1",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for Libsitra-0.1",
     "type": "module",
     "module": "libsitra-0.1.js",
@@ -15,6 +15,11 @@
         "types": "./libsitra-0.1-import.d.ts",
         "import": "./libsitra-0.1-import.js",
         "default": "./libsitra-0.1-import.js"
+      },
+      "./vocabulary": {
+        "types": "./libsitra-0.1-vocabulary.d.ts",
+        "import": "./libsitra-0.1-vocabulary.js",
+        "default": "./libsitra-0.1-vocabulary.js"
       },
       "./libsitra-0.1": {
         "types": "./libsitra-0.1.d.ts",
@@ -31,13 +36,13 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0",
-      "@girs/json-1.0": "^5.2.0",
-      "@girs/gee-0.8": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0",
+      "@girs/json-1.0": "^5.3.0",
+      "@girs/gee-0.8": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

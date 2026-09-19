@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./notify-0.7.d.ts"]
+  "include": ["./notify-0.7.d.ts","./notify-0.7-vocabulary.d.ts"]
 }
 
 

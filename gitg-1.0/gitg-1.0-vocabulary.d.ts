@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Gitg-1.0.
  *
- * GENERATED — do not edit. Provenance: Gitg-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Ggit.Branch Ggit.Ref Ggit.ObjectFactoryBase Ggit.Commit Ggit.Object Gio.Initable Ggit.Remote — inlined base(s) their owner's vocabulary does not emit: Ggit.Native Ggit.Repository — prop(s) no TypeScript value satisfies: Ggit.Native.native
+ * GENERATED — do not edit. Provenance: Gitg-1.0 — dropped empty base(s): Atk.ImplementorIface
  *
- * 42 instantiable GTypes (of which 11 concrete widgets), 48 declarations (2 inlined from a namespace whose vocabulary does not emit them), 10 enum nick unions, 1 slot candidates.
+ * 42 instantiable GTypes (of which 11 concrete widgets), 46 declarations, 10 enum nick unions, 1 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -29,6 +29,9 @@ import type Gee from '@girs/gee-0.8';
 import type Ggit from '@girs/ggit-1.0';
 import type Gio from '@girs/gio-2.0';
 import type Gitg from './gitg-1.0.js';
+import type { GgitBranchConstructOnly, GgitBranchProps, GgitCommitConstructOnly, GgitCommitProps, GgitNativeConstructOnly, GgitNativeProps, GgitObjectConstructOnly, GgitObjectFactoryBaseConstructOnly, GgitObjectFactoryBaseProps, GgitObjectProps, GgitRefConstructOnly, GgitRefProps, GgitRemoteConstructOnly, GgitRemoteProps, GgitRepositoryConstructOnly, GgitRepositoryProps } from '@girs/ggit-1.0/vocabulary';
+import type { GInitableConstructOnly, GInitableProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkCellRendererConstructOnly, GtkCellRendererProps, GtkCellRendererTextConstructOnly, GtkCellRendererTextProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkGridConstructOnly, GtkGridProps, GtkListBoxConstructOnly, GtkListBoxProps, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkToolShellConstructOnly, GtkToolShellProps, GtkToolbarConstructOnly, GtkToolbarProps, GtkTreeDragDestConstructOnly, GtkTreeDragDestProps, GtkTreeDragSourceConstructOnly, GtkTreeDragSourceProps, GtkTreeModelConstructOnly, GtkTreeModelProps, GtkTreeSortableConstructOnly, GtkTreeSortableProps, GtkTreeStoreConstructOnly, GtkTreeStoreProps, GtkTreeViewConstructOnly, GtkTreeViewProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -62,28 +65,6 @@ export type GitgSidebarHintNick = 'none' | 'header' | 'separator' | 'dummy';
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-/** Represents a generic native object. */
-export interface GgitNativeProps {
-    native?: never;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GgitNativeConstructOnly = 'native';
-
-/** Represents an existing git repository including all of it's object contents. */
-export interface GgitRepositoryProps extends GgitNativeProps {
-    'clone-options'?: Ggit.CloneOptions;
-    /** @default FALSE */
-    init?: boolean;
-    /** @default FALSE */
-    'is-bare'?: boolean;
-    location?: Gio.File | null;
-    /** @default NULL */
-    url?: string;
-    workdir?: Gio.File | null;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GgitRepositoryConstructOnly = GgitNativeConstructOnly | 'clone-options' | 'init' | 'is-bare' | 'location' | 'url';
-
 export interface GitgAsyncProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -94,20 +75,20 @@ export interface GitgAuthenticationDialogProps extends GtkDialogProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GitgAuthenticationDialogConstructOnly = GtkDialogConstructOnly;
 
-export interface GitgAvatarCacheProps {
+export interface GitgAvatarCacheProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgAvatarCacheConstructOnly = never;
+export type GitgAvatarCacheConstructOnly = GObjectConstructOnly;
 
-export interface GitgBranchProps {
+export interface GitgBranchProps extends GgitBranchProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgBranchConstructOnly = never;
+export type GitgBranchConstructOnly = GgitBranchConstructOnly;
 
-export interface GitgBranchBaseProps extends GitgRefProps, GitgBranchProps {
+export interface GitgBranchBaseProps extends GgitBranchProps, GitgRefProps, GitgBranchProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgBranchBaseConstructOnly = GitgRefConstructOnly | GitgBranchConstructOnly;
+export type GitgBranchBaseConstructOnly = GgitBranchConstructOnly | GitgRefConstructOnly | GitgBranchConstructOnly;
 
 export interface GitgCellRendererLanesProps extends GtkCellRendererTextProps {
     commit?: Gitg.Commit | null;
@@ -119,41 +100,41 @@ export interface GitgCellRendererLanesProps extends GtkCellRendererTextProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GitgCellRendererLanesConstructOnly = GtkCellRendererTextConstructOnly;
 
-export interface GitgColorProps {
+export interface GitgColorProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgColorConstructOnly = never;
+export type GitgColorConstructOnly = GObjectConstructOnly;
 
-export interface GitgCommitProps {
+export interface GitgCommitProps extends GgitCommitProps {
     mylane?: number;
     tag?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgCommitConstructOnly = never;
+export type GitgCommitConstructOnly = GgitCommitConstructOnly;
 
 export interface GitgCommitListViewProps extends GtkTreeViewProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GitgCommitListViewConstructOnly = GtkTreeViewConstructOnly | GtkBuildableConstructOnly;
 
-export interface GitgCommitModelProps extends GtkTreeModelProps {
+export interface GitgCommitModelProps extends GObjectProps, GtkTreeModelProps {
     limit?: number;
     repository?: Gitg.Repository;
     'sort-mode'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgCommitModelConstructOnly = GtkTreeModelConstructOnly;
+export type GitgCommitModelConstructOnly = GObjectConstructOnly | GtkTreeModelConstructOnly;
 
 export interface GitgCredentialsManagerProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GitgCredentialsManagerConstructOnly = never;
 
-export interface GitgDateProps {
+export interface GitgDateProps extends GObjectProps, GInitableProps {
     'date-string'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgDateConstructOnly = never;
+export type GitgDateConstructOnly = GObjectConstructOnly | GInitableConstructOnly;
 
 export interface GitgDiffStatProps extends GtkDrawingAreaProps {
     added?: number;
@@ -196,35 +177,35 @@ export interface GitgEntryHistoryProps extends GtkEntryProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GitgEntryHistoryConstructOnly = GtkEntryConstructOnly;
 
-export interface GitgFontManagerProps {
+export interface GitgFontManagerProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgFontManagerConstructOnly = never;
+export type GitgFontManagerConstructOnly = GObjectConstructOnly;
 
 export interface GitgGPGUtilsProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GitgGPGUtilsConstructOnly = never;
 
-export interface GitgHookProps {
+export interface GitgHookProps extends GObjectProps {
     environment?: Gee.HashMap;
     name?: string;
     'working-directory'?: Gio.File | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgHookConstructOnly = never;
+export type GitgHookConstructOnly = GObjectConstructOnly;
 
 export interface GitgLabelRendererProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GitgLabelRendererConstructOnly = never;
 
-export interface GitgLaneProps {
+export interface GitgLaneProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgLaneConstructOnly = never;
+export type GitgLaneConstructOnly = GObjectConstructOnly;
 
-export interface GitgLanesProps {
+export interface GitgLanesProps extends GObjectProps {
     'inactive-collapse'?: number;
     'inactive-enabled'?: boolean;
     'inactive-gap'?: number;
@@ -232,13 +213,13 @@ export interface GitgLanesProps {
     'miss-commits'?: Gee.LinkedList;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgLanesConstructOnly = never;
+export type GitgLanesConstructOnly = GObjectConstructOnly;
 
-export interface GitgParsedRefNameProps {
+export interface GitgParsedRefNameProps extends GObjectProps {
     rtype?: GitgRefTypeNick | Gitg.RefType;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgParsedRefNameConstructOnly = never;
+export type GitgParsedRefNameConstructOnly = GObjectConstructOnly;
 
 export interface GitgPatchSetProps {
 }
@@ -251,28 +232,28 @@ export interface GitgProgressBinProps extends GtkBinProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GitgProgressBinConstructOnly = GtkBinConstructOnly;
 
-export interface GitgRefProps {
+export interface GitgRefProps extends GgitRefProps {
     'd-parsed-name'?: Gitg.ParsedRefName;
     'd-pushes'?: Gitg.Ref[] | null;
     state?: GitgRefStateNick | Gitg.RefState;
     working?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgRefConstructOnly = never;
+export type GitgRefConstructOnly = GgitRefConstructOnly;
 
-export interface GitgRefBaseProps extends GitgRefProps {
+export interface GitgRefBaseProps extends GgitRefProps, GitgRefProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgRefBaseConstructOnly = GitgRefConstructOnly;
+export type GitgRefBaseConstructOnly = GgitRefConstructOnly | GitgRefConstructOnly;
 
-export interface GitgRemoteProps {
+export interface GitgRemoteProps extends GgitRemoteProps {
     'credentials-provider'?: Gitg.CredentialsProvider | null;
     'fetch-specs'?: string[] | null;
     'push-specs'?: string[] | null;
     state?: GitgRemoteStateNick | Gitg.RemoteState;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgRemoteConstructOnly = never;
+export type GitgRemoteConstructOnly = GgitRemoteConstructOnly;
 
 export interface GitgRepositoryProps extends GgitRepositoryProps {
 }
@@ -313,10 +294,10 @@ export interface GitgSidebarProps extends Omit<GtkTreeViewProps, 'model'> {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GitgSidebarConstructOnly = GtkTreeViewConstructOnly;
 
-export interface GitgSidebarItemProps {
+export interface GitgSidebarItemProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgSidebarItemConstructOnly = never;
+export type GitgSidebarItemConstructOnly = GObjectConstructOnly;
 
 export interface GitgSidebarStoreProps extends GtkTreeStoreProps {
 }
@@ -328,35 +309,35 @@ export interface GitgSidebarStoreSidebarHeaderProps extends GitgSidebarStoreSide
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GitgSidebarStoreSidebarHeaderConstructOnly = GitgSidebarStoreSidebarTextConstructOnly;
 
-export interface GitgSidebarStoreSidebarTextProps extends GitgSidebarItemProps {
+export interface GitgSidebarStoreSidebarTextProps extends GObjectProps, GitgSidebarItemProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgSidebarStoreSidebarTextConstructOnly = GitgSidebarItemConstructOnly;
+export type GitgSidebarStoreSidebarTextConstructOnly = GObjectConstructOnly | GitgSidebarItemConstructOnly;
 
-export interface GitgStageProps {
+export interface GitgStageProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgStageConstructOnly = never;
+export type GitgStageConstructOnly = GObjectConstructOnly;
 
-export interface GitgStageStatusEnumeratorProps {
+export interface GitgStageStatusEnumeratorProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgStageStatusEnumeratorConstructOnly = never;
+export type GitgStageStatusEnumeratorConstructOnly = GObjectConstructOnly;
 
-export interface GitgStageStatusFileProps extends GitgStageStatusItemProps {
+export interface GitgStageStatusFileProps extends GObjectProps, GitgStageStatusItemProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgStageStatusFileConstructOnly = GitgStageStatusItemConstructOnly;
+export type GitgStageStatusFileConstructOnly = GObjectConstructOnly | GitgStageStatusItemConstructOnly;
 
-export interface GitgStageStatusItemProps {
+export interface GitgStageStatusItemProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgStageStatusItemConstructOnly = never;
+export type GitgStageStatusItemConstructOnly = GObjectConstructOnly;
 
-export interface GitgStageStatusSubmoduleProps extends GitgStageStatusItemProps {
+export interface GitgStageStatusSubmoduleProps extends GObjectProps, GitgStageStatusItemProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GitgStageStatusSubmoduleConstructOnly = GitgStageStatusItemConstructOnly;
+export type GitgStageStatusSubmoduleConstructOnly = GObjectConstructOnly | GitgStageStatusItemConstructOnly;
 
 export interface GitgTextConvProps {
 }
@@ -539,6 +520,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

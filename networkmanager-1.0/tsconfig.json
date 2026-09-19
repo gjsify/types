@@ -32,7 +32,7 @@
       ]
 }
   },
-  "include": ["./networkmanager-1.0.d.ts"]
+  "include": ["./networkmanager-1.0.d.ts","./networkmanager-1.0-vocabulary.d.ts"]
 }
 
 

@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./passim-1.0.d.ts"]
+  "include": ["./passim-1.0.d.ts","./passim-1.0-vocabulary.d.ts"]
 }
 
 

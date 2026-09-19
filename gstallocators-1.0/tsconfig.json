@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gstallocators-1.0.d.ts"]
+  "include": ["./gstallocators-1.0.d.ts","./gstallocators-1.0-vocabulary.d.ts"]
 }
 
 

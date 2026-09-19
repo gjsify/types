@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./webkitwebextension-6.0.d.ts"]
+  "include": ["./webkitwebextension-6.0.d.ts","./webkitwebextension-6.0-vocabulary.d.ts"]
 }
 
 

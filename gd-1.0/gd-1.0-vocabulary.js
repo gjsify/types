@@ -1,6 +1,6 @@
 // The widget vocabulary of Gd-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Gd-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: Gd-1.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Gd'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -45,23 +47,23 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GdHeaderBar: ['GdHeaderBar', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdHeaderMenuButton: ['GdHeaderMenuButton', 'GtkMenuButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GdHeaderButton', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    GdHeaderRadioButton: ['GdHeaderRadioButton', 'GtkRadioButton', 'GtkCheckButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GdHeaderButton', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    GdHeaderSimpleButton: ['GdHeaderSimpleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GdHeaderButton', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    GdHeaderToggleButton: ['GdHeaderToggleButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GdHeaderButton', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    GdMainIconView: ['GdMainIconView', 'GtkIconView', 'GtkContainer', 'GtkWidget', 'GdMainViewGeneric', 'GtkBuildable', 'GtkCellLayout', 'GtkScrollable'],
-    GdMainListView: ['GdMainListView', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GdMainViewGeneric', 'GtkBuildable', 'GtkScrollable'],
-    GdMainToolbar: ['GdMainToolbar', 'GtkToolbar', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'GtkToolShell'],
-    GdMainView: ['GdMainView', 'GtkScrolledWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdRevealer: ['GdRevealer', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdStack: ['GdStack', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdStackSwitcher: ['GdStackSwitcher', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    GdStyledTextRenderer: ['GdStyledTextRenderer', 'GtkCellRendererText', 'GtkCellRenderer'],
-    GdTaggedEntry: ['GdTaggedEntry', 'GtkSearchEntry', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
-    GdTaggedEntryTag: ['GdTaggedEntryTag'],
-    GdTogglePixbufRenderer: ['GdTogglePixbufRenderer', 'GtkCellRendererPixbuf', 'GtkCellRenderer'],
-    GdTwoLinesRenderer: ['GdTwoLinesRenderer', 'GtkCellRendererText', 'GtkCellRenderer'],
+    GdHeaderBar: ['GdHeaderBar', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdHeaderMenuButton: ['GdHeaderMenuButton', 'GtkMenuButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdHeaderButton', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    GdHeaderRadioButton: ['GdHeaderRadioButton', 'GtkRadioButton', 'GtkCheckButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdHeaderButton', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    GdHeaderSimpleButton: ['GdHeaderSimpleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdHeaderButton', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    GdHeaderToggleButton: ['GdHeaderToggleButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdHeaderButton', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    GdMainIconView: ['GdMainIconView', 'GtkIconView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdMainViewGeneric', 'GtkBuildable', 'GtkCellLayout', 'GtkScrollable'],
+    GdMainListView: ['GdMainListView', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdMainViewGeneric', 'GtkBuildable', 'GtkScrollable'],
+    GdMainToolbar: ['GdMainToolbar', 'GtkToolbar', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'GtkToolShell'],
+    GdMainView: ['GdMainView', 'GtkScrolledWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdRevealer: ['GdRevealer', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdStack: ['GdStack', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdStackSwitcher: ['GdStackSwitcher', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    GdStyledTextRenderer: ['GdStyledTextRenderer', 'GtkCellRendererText', 'GtkCellRenderer', 'GInitiallyUnowned', 'GObject'],
+    GdTaggedEntry: ['GdTaggedEntry', 'GtkSearchEntry', 'GtkEntry', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
+    GdTaggedEntryTag: ['GdTaggedEntryTag', 'GObject'],
+    GdTogglePixbufRenderer: ['GdTogglePixbufRenderer', 'GtkCellRendererPixbuf', 'GtkCellRenderer', 'GInitiallyUnowned', 'GObject'],
+    GdTwoLinesRenderer: ['GdTwoLinesRenderer', 'GtkCellRendererText', 'GtkCellRenderer', 'GInitiallyUnowned', 'GObject'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -71,7 +73,9 @@ export const DECLS = {
 // count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
-export const ENUM_NICKS = {};
+export const ENUM_NICKS = {
+    GtkOrientation: ['horizontal', 'vertical'],
+};
 
 // The number behind each of those nicks, read from GIR's own `value` attribute.
 //
@@ -87,7 +91,10 @@ export const ENUM_NICKS = {};
 // from an INSTALLED library instead gets two provenances for one table, and a member the
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
-export const ENUM_VALUES = {};
+export const ENUM_VALUES = {
+    'GtkOrientation.horizontal': 0,
+    'GtkOrientation.vertical': 1,
+};
 
 // The nicks GIR marks `deprecated="1"`.
 //

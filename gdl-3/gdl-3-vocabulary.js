@@ -1,6 +1,6 @@
 // The widget vocabulary of Gdl-3 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Gdl-3 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Gdl.DockObject.pixbuf-icon
+// GENERATED — do not edit. Provenance: Gdl-3 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Gdl.DockObject.pixbuf-icon
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '3',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: ['Gdl.DockObject.pixbuf-icon'],
     unresolvedProps: [],
+    identifierPrefixes: ['Gdl'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -48,21 +50,21 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GdlDock: ['GdlDock', 'GdlDockObject', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdlDockBar: ['GdlDockBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    GdlDockItem: ['GdlDockItem', 'GdlDockObject', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdlDockItemButtonImage: ['GdlDockItemButtonImage', 'GtkWidget', 'GtkBuildable'],
-    GdlDockItemGrip: ['GdlDockItemGrip', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdlDockLayout: ['GdlDockLayout'],
-    GdlDockMaster: ['GdlDockMaster'],
-    GdlDockNotebook: ['GdlDockNotebook', 'GdlDockItem', 'GdlDockObject', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdlDockObject: ['GdlDockObject', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdlDockPaned: ['GdlDockPaned', 'GdlDockItem', 'GdlDockObject', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    GdlDock: ['GdlDock', 'GdlDockObject', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdlDockBar: ['GdlDockBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    GdlDockItem: ['GdlDockItem', 'GdlDockObject', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdlDockItemButtonImage: ['GdlDockItemButtonImage', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdlDockItemGrip: ['GdlDockItemGrip', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdlDockLayout: ['GdlDockLayout', 'GObject'],
+    GdlDockMaster: ['GdlDockMaster', 'GObject'],
+    GdlDockNotebook: ['GdlDockNotebook', 'GdlDockItem', 'GdlDockObject', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdlDockObject: ['GdlDockObject', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdlDockPaned: ['GdlDockPaned', 'GdlDockItem', 'GdlDockObject', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
     GdlDockParam: ['GdlDockParam'],
-    GdlDockPlaceholder: ['GdlDockPlaceholder', 'GdlDockObject', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdlDockTablabel: ['GdlDockTablabel', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdlPreviewWindow: ['GdlPreviewWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GdlSwitcher: ['GdlSwitcher', 'GtkNotebook', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    GdlDockPlaceholder: ['GdlDockPlaceholder', 'GdlDockObject', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdlDockTablabel: ['GdlDockTablabel', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdlPreviewWindow: ['GdlPreviewWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GdlSwitcher: ['GdlSwitcher', 'GtkNotebook', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -76,6 +78,8 @@ export const ENUM_NICKS = {
     GdlDockBarStyle: ['icons', 'text', 'both', 'auto'],
     GdlDockPlacement: ['none', 'top', 'bottom', 'right', 'left', 'center', 'floating'],
     GdlSwitcherStyle: ['text', 'icon', 'both', 'toolbar', 'tabs', 'none'],
+    GtkOrientation: ['horizontal', 'vertical'],
+    GtkPositionType: ['left', 'right', 'top', 'bottom'],
 };
 
 // The number behind each of those nicks, read from GIR's own `value` attribute.
@@ -110,6 +114,12 @@ export const ENUM_VALUES = {
     'GdlSwitcherStyle.tabs': 4,
     'GdlSwitcherStyle.text': 0,
     'GdlSwitcherStyle.toolbar': 3,
+    'GtkOrientation.horizontal': 0,
+    'GtkOrientation.vertical': 1,
+    'GtkPositionType.bottom': 3,
+    'GtkPositionType.left': 0,
+    'GtkPositionType.right': 1,
+    'GtkPositionType.top': 2,
 };
 
 // The nicks GIR marks `deprecated="1"`.

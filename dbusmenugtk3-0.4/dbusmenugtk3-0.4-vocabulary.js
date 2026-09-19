@@ -1,6 +1,6 @@
 // The widget vocabulary of DbusmenuGtk3-0.4 as runtime data.
 //
-// GENERATED — do not edit. Provenance: DbusmenuGtk3-0.4 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Dbusmenu.Client
+// GENERATED — do not edit. Provenance: DbusmenuGtk3-0.4 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,20 +11,19 @@ export const PROVENANCE = {
     version: '0.4',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
-    inlinedBases: ['Dbusmenu.Client'],
+    droppedBases: ['Atk.ImplementorIface'],
+    inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['DbusmenuGtk'],
+    requiredVocabularies: ['@girs/dbusmenu-0.4/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
-    DbusmenuClient: ['dbus-name', 'dbus-object', 'group-events'],
     DbusmenuGtkMenu: ['dbus-name', 'dbus-object'],
 };
 
-export const OWN_SIGNALS = {
-    DbusmenuClient: ['event-result', 'icon-theme-dirs-changed', 'item-activate', 'layout-updated', 'new-menuitem', 'root-changed'],
-};
+export const OWN_SIGNALS = {};
 
 // Every GType this namespace can INSTANTIATE -> the declarations its members come from.
 //
@@ -34,8 +33,8 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    DbusmenuGtkClient: ['DbusmenuGtkClient', 'DbusmenuClient'],
-    DbusmenuGtkMenu: ['DbusmenuGtkMenu', 'GtkMenu', 'GtkMenuShell', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DbusmenuGtkClient: ['DbusmenuGtkClient', 'DbusmenuClient', 'GObject'],
+    DbusmenuGtkMenu: ['DbusmenuGtkMenu', 'GtkMenu', 'GtkMenuShell', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./xdp-1.0.d.ts"]
+  "include": ["./xdp-1.0.d.ts","./xdp-1.0-vocabulary.d.ts"]
 }
 
 

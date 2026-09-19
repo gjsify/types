@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./polkitagent-1.0.d.ts"]
+  "include": ["./polkitagent-1.0.d.ts","./polkitagent-1.0-vocabulary.d.ts"]
 }
 
 

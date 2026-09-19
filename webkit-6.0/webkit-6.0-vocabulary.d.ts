@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for WebKit-6.0.
  *
- * GENERATED — do not edit. Provenance: WebKit-6.0 — library 2.53.91 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Gio.Icon Gio.LoadableIcon Gio.Initable
+ * GENERATED — do not edit. Provenance: WebKit-6.0 — library 2.53.91
  *
  * 50 instantiable GTypes (of which 2 concrete widgets), 52 declarations, 29 enum nick unions, 0 slot candidates.
  *
@@ -29,6 +29,8 @@ import type Gdk from '@girs/gdk-4.0';
 import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-4.0';
 import type WebKit from './webkit-6.0.js';
+import type { GIconConstructOnly, GIconProps, GInitableConstructOnly, GInitableProps, GLoadableIconConstructOnly, GLoadableIconProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-4.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -82,13 +84,13 @@ export type WebKitXRSessionModeNick = 'inline' | 'immersive-vr' | 'immersive-ar'
 // ---------------------------------------------------------------------------
 
 /** Represents an authentication request. */
-export interface WebKitAuthenticationRequestProps {
+export interface WebKitAuthenticationRequestProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitAuthenticationRequestConstructOnly = never;
+export type WebKitAuthenticationRequestConstructOnly = GObjectConstructOnly;
 
 /** Automation Session. */
-export interface WebKitAutomationSessionProps {
+export interface WebKitAutomationSessionProps extends GObjectProps {
     /**
      * The session unique identifier.
      * @since 2.18
@@ -97,28 +99,28 @@ export interface WebKitAutomationSessionProps {
     id?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitAutomationSessionConstructOnly = 'id';
+export type WebKitAutomationSessionConstructOnly = GObjectConstructOnly | 'id';
 
 /** List of visited pages. */
-export interface WebKitBackForwardListProps {
+export interface WebKitBackForwardListProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitBackForwardListConstructOnly = never;
+export type WebKitBackForwardListConstructOnly = GObjectConstructOnly;
 
 /** One item of the #WebKitBackForwardList. */
-export interface WebKitBackForwardListItemProps {
+export interface WebKitBackForwardListItemProps extends GInitiallyUnownedProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitBackForwardListItemConstructOnly = never;
+export type WebKitBackForwardListItemConstructOnly = GInitiallyUnownedConstructOnly;
 
 /** A permission request for reading clipboard contents. */
-export interface WebKitClipboardPermissionRequestProps extends WebKitPermissionRequestProps {
+export interface WebKitClipboardPermissionRequestProps extends GObjectProps, WebKitPermissionRequestProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitClipboardPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+export type WebKitClipboardPermissionRequestConstructOnly = GObjectConstructOnly | WebKitPermissionRequestConstructOnly;
 
 /** A request to open a color chooser. */
-export interface WebKitColorChooserRequestProps {
+export interface WebKitColorChooserRequestProps extends GObjectProps {
     /**
      * The #GdkRGBA color of the request
      * @since 2.8
@@ -126,34 +128,34 @@ export interface WebKitColorChooserRequestProps {
     rgba?: Gdk.RGBA;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitColorChooserRequestConstructOnly = never;
+export type WebKitColorChooserRequestConstructOnly = GObjectConstructOnly;
 
 /** Represents the context menu in a #WebKitWebView. */
-export interface WebKitContextMenuProps {
+export interface WebKitContextMenuProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitContextMenuConstructOnly = never;
+export type WebKitContextMenuConstructOnly = GObjectConstructOnly;
 
 /** One item of a #WebKitContextMenu. */
-export interface WebKitContextMenuItemProps {
+export interface WebKitContextMenuItemProps extends GInitiallyUnownedProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitContextMenuItemConstructOnly = never;
+export type WebKitContextMenuItemConstructOnly = GInitiallyUnownedConstructOnly;
 
 /** Defines how to handle cookies in a #WebKitWebContext. */
-export interface WebKitCookieManagerProps {
+export interface WebKitCookieManagerProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitCookieManagerConstructOnly = never;
+export type WebKitCookieManagerConstructOnly = GObjectConstructOnly;
 
 /** A permission request for enumerating the user's media devices WebKitDeviceInfoPermissionRequest represents a request for permission to whether WebKit should be allowed to access the user's devices in… */
-export interface WebKitDeviceInfoPermissionRequestProps extends WebKitPermissionRequestProps {
+export interface WebKitDeviceInfoPermissionRequestProps extends GObjectProps, WebKitPermissionRequestProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitDeviceInfoPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+export type WebKitDeviceInfoPermissionRequestConstructOnly = GObjectConstructOnly | WebKitPermissionRequestConstructOnly;
 
 /** Object used to communicate with the application when downloading. */
-export interface WebKitDownloadProps {
+export interface WebKitDownloadProps extends GObjectProps {
     /**
      * Whether or not the download is allowed to overwrite an existing file on disk.
      * @since 2.6
@@ -162,54 +164,54 @@ export interface WebKitDownloadProps {
     'allow-overwrite'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitDownloadConstructOnly = never;
+export type WebKitDownloadConstructOnly = GObjectConstructOnly;
 
 /** Web editor state. */
-export interface WebKitEditorStateProps {
+export interface WebKitEditorStateProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitEditorStateConstructOnly = never;
+export type WebKitEditorStateConstructOnly = GObjectConstructOnly;
 
 /** Provides access to the icons associated with web sites. */
-export interface WebKitFaviconDatabaseProps {
+export interface WebKitFaviconDatabaseProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitFaviconDatabaseConstructOnly = never;
+export type WebKitFaviconDatabaseConstructOnly = GObjectConstructOnly;
 
 /** A request to open a file chooser. */
-export interface WebKitFileChooserRequestProps {
+export interface WebKitFileChooserRequestProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitFileChooserRequestConstructOnly = never;
+export type WebKitFileChooserRequestConstructOnly = GObjectConstructOnly;
 
 /** Controls text search in a #WebKitWebView. */
-export interface WebKitFindControllerProps {
+export interface WebKitFindControllerProps extends GObjectProps {
     /** The #WebKitWebView this controller is associated to. */
     'web-view'?: WebKit.WebView;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitFindControllerConstructOnly = 'web-view';
+export type WebKitFindControllerConstructOnly = GObjectConstructOnly | 'web-view';
 
 /** Represents a form submission request. */
-export interface WebKitFormSubmissionRequestProps {
+export interface WebKitFormSubmissionRequestProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitFormSubmissionRequestConstructOnly = never;
+export type WebKitFormSubmissionRequestConstructOnly = GObjectConstructOnly;
 
 /** Geolocation manager. */
-export interface WebKitGeolocationManagerProps {
+export interface WebKitGeolocationManagerProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitGeolocationManagerConstructOnly = never;
+export type WebKitGeolocationManagerConstructOnly = GObjectConstructOnly;
 
 /** A permission request for sharing the user's location. */
-export interface WebKitGeolocationPermissionRequestProps extends WebKitPermissionRequestProps {
+export interface WebKitGeolocationPermissionRequestProps extends GObjectProps, WebKitPermissionRequestProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitGeolocationPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+export type WebKitGeolocationPermissionRequestConstructOnly = GObjectConstructOnly | WebKitPermissionRequestConstructOnly;
 
 /** Result of a Hit Test. */
-export interface WebKitHitTestResultProps {
+export interface WebKitHitTestResultProps extends GObjectProps {
     /**
      * Bitmask of #WebKitHitTestResultContext flags representing the context of the #WebKitHitTestResult.
      * @default 0
@@ -242,9 +244,9 @@ export interface WebKitHitTestResultProps {
     'media-uri'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitHitTestResultConstructOnly = 'context' | 'image-uri' | 'link-label' | 'link-title' | 'link-uri' | 'media-uri';
+export type WebKitHitTestResultConstructOnly = GObjectConstructOnly | 'context' | 'image-uri' | 'link-label' | 'link-title' | 'link-uri' | 'media-uri';
 
-export interface WebKitImageProps {
+export interface WebKitImageProps extends GObjectProps, GIconProps, GLoadableIconProps {
     /**
      * The image height in pixels.
      * @since 2.52
@@ -265,13 +267,13 @@ export interface WebKitImageProps {
     width?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitImageConstructOnly = 'height' | 'stride' | 'width';
+export type WebKitImageConstructOnly = GObjectConstructOnly | GIconConstructOnly | GLoadableIconConstructOnly | 'height' | 'stride' | 'width';
 
 /** A permission request for using an EME Content Decryption Module. */
-export interface WebKitMediaKeySystemPermissionRequestProps extends WebKitPermissionRequestProps {
+export interface WebKitMediaKeySystemPermissionRequestProps extends GObjectProps, WebKitPermissionRequestProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitMediaKeySystemPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+export type WebKitMediaKeySystemPermissionRequestConstructOnly = GObjectConstructOnly | WebKitPermissionRequestConstructOnly;
 
 /** A policy decision for navigation actions. */
 export interface WebKitNavigationPolicyDecisionProps extends WebKitPolicyDecisionProps {
@@ -280,7 +282,7 @@ export interface WebKitNavigationPolicyDecisionProps extends WebKitPolicyDecisio
 export type WebKitNavigationPolicyDecisionConstructOnly = WebKitPolicyDecisionConstructOnly;
 
 /** Manages network configuration. */
-export interface WebKitNetworkSessionProps {
+export interface WebKitNetworkSessionProps extends GObjectProps {
     /**
      * The base caches directory used to create the #WebKitWebsiteDataManager.
      * @since 2.40
@@ -301,46 +303,46 @@ export interface WebKitNetworkSessionProps {
     'is-ephemeral'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitNetworkSessionConstructOnly = 'cache-directory' | 'data-directory' | 'is-ephemeral';
+export type WebKitNetworkSessionConstructOnly = GObjectConstructOnly | 'cache-directory' | 'data-directory' | 'is-ephemeral';
 
 /** Holds information about a notification that should be shown to the user. */
-export interface WebKitNotificationProps {
+export interface WebKitNotificationProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitNotificationConstructOnly = never;
+export type WebKitNotificationConstructOnly = GObjectConstructOnly;
 
 /** A permission request for displaying web notifications. */
-export interface WebKitNotificationPermissionRequestProps extends WebKitPermissionRequestProps {
+export interface WebKitNotificationPermissionRequestProps extends GObjectProps, WebKitPermissionRequestProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitNotificationPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+export type WebKitNotificationPermissionRequestConstructOnly = GObjectConstructOnly | WebKitPermissionRequestConstructOnly;
 
 /** Represents the dropdown menu of a `select` element in a #WebKitWebView. */
-export interface WebKitOptionMenuProps {
+export interface WebKitOptionMenuProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitOptionMenuConstructOnly = never;
+export type WebKitOptionMenuConstructOnly = GObjectConstructOnly;
 
 /** A permission request. */
-export interface WebKitPermissionRequestProps {
+export interface WebKitPermissionRequestProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitPermissionRequestConstructOnly = never;
+export type WebKitPermissionRequestConstructOnly = GObjectConstructOnly;
 
 /** A permission request for locking the pointer. */
-export interface WebKitPointerLockPermissionRequestProps extends WebKitPermissionRequestProps {
+export interface WebKitPointerLockPermissionRequestProps extends GObjectProps, WebKitPermissionRequestProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitPointerLockPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+export type WebKitPointerLockPermissionRequestConstructOnly = GObjectConstructOnly | WebKitPermissionRequestConstructOnly;
 
 /** A pending policy decision. */
-export interface WebKitPolicyDecisionProps {
+export interface WebKitPolicyDecisionProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitPolicyDecisionConstructOnly = never;
+export type WebKitPolicyDecisionConstructOnly = GObjectConstructOnly;
 
 /** Controls a print operation. */
-export interface WebKitPrintOperationProps {
+export interface WebKitPrintOperationProps extends GObjectProps {
     /** The initial #GtkPageSetup for the print operation. */
     'page-setup'?: Gtk.PageSetup;
     /** The initial #GtkPrintSettings for the print operation. */
@@ -349,7 +351,7 @@ export interface WebKitPrintOperationProps {
     'web-view'?: WebKit.WebView;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitPrintOperationConstructOnly = 'web-view';
+export type WebKitPrintOperationConstructOnly = GObjectConstructOnly | 'web-view';
 
 /** A policy decision for resource responses. */
 export interface WebKitResponsePolicyDecisionProps extends WebKitPolicyDecisionProps {
@@ -358,13 +360,13 @@ export interface WebKitResponsePolicyDecisionProps extends WebKitPolicyDecisionP
 export type WebKitResponsePolicyDecisionConstructOnly = WebKitPolicyDecisionConstructOnly;
 
 /** Controls security settings in a #WebKitWebContext. */
-export interface WebKitSecurityManagerProps {
+export interface WebKitSecurityManagerProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitSecurityManagerConstructOnly = never;
+export type WebKitSecurityManagerConstructOnly = GObjectConstructOnly;
 
 /** Control the behaviour of a #WebKitWebView. */
-export interface WebKitSettingsProps {
+export interface WebKitSettingsProps extends GObjectProps {
     /**
      * Whether file access is allowed from file URLs.
      * @since 2.10
@@ -681,10 +683,10 @@ export interface WebKitSettingsProps {
     'zoom-text-only'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitSettingsConstructOnly = never;
+export type WebKitSettingsConstructOnly = GObjectConstructOnly;
 
 /** Represents a URI request. */
-export interface WebKitURIRequestProps {
+export interface WebKitURIRequestProps extends GObjectProps {
     /**
      * The URI to which the request will be made.
      * @default about:blank
@@ -692,22 +694,22 @@ export interface WebKitURIRequestProps {
     uri?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitURIRequestConstructOnly = never;
+export type WebKitURIRequestConstructOnly = GObjectConstructOnly;
 
 /** Represents an URI response. */
-export interface WebKitURIResponseProps {
+export interface WebKitURIResponseProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitURIResponseConstructOnly = never;
+export type WebKitURIResponseConstructOnly = GObjectConstructOnly;
 
 /** Represents a URI scheme request. */
-export interface WebKitURISchemeRequestProps {
+export interface WebKitURISchemeRequestProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitURISchemeRequestConstructOnly = never;
+export type WebKitURISchemeRequestConstructOnly = GObjectConstructOnly;
 
 /** Represents a URI scheme response. */
-export interface WebKitURISchemeResponseProps {
+export interface WebKitURISchemeResponseProps extends GObjectProps {
     /**
      * The input stream to read from.
      * @since 2.36
@@ -721,10 +723,10 @@ export interface WebKitURISchemeResponseProps {
     'stream-length'?: bigint | number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitURISchemeResponseConstructOnly = 'stream' | 'stream-length';
+export type WebKitURISchemeResponseConstructOnly = GObjectConstructOnly | 'stream' | 'stream-length';
 
 /** Handles storage of user content filters on disk. */
-export interface WebKitUserContentFilterStoreProps {
+export interface WebKitUserContentFilterStoreProps extends GObjectProps {
     /**
      * The directory used for filter storage.
      * @since 2.24
@@ -733,22 +735,22 @@ export interface WebKitUserContentFilterStoreProps {
     path?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitUserContentFilterStoreConstructOnly = 'path';
+export type WebKitUserContentFilterStoreConstructOnly = GObjectConstructOnly | 'path';
 
 /** Manages user-defined content which affects web pages. */
-export interface WebKitUserContentManagerProps {
+export interface WebKitUserContentManagerProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitUserContentManagerConstructOnly = never;
+export type WebKitUserContentManagerConstructOnly = GObjectConstructOnly;
 
 /** A permission request for accessing user's audio/video devices. */
-export interface WebKitUserMediaPermissionRequestProps extends WebKitPermissionRequestProps {
+export interface WebKitUserMediaPermissionRequestProps extends GObjectProps, WebKitPermissionRequestProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitUserMediaPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+export type WebKitUserMediaPermissionRequestConstructOnly = GObjectConstructOnly | WebKitPermissionRequestConstructOnly;
 
 /** Message that can be sent between the UI process and web process extensions. */
-export interface WebKitUserMessageProps {
+export interface WebKitUserMessageProps extends GInitiallyUnownedProps {
     /**
      * The UNIX file descriptors of the user message.
      * @since 2.28
@@ -767,10 +769,10 @@ export interface WebKitUserMessageProps {
     parameters?: GLib.Variant | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitUserMessageConstructOnly = 'fd-list' | 'name' | 'parameters';
+export type WebKitUserMessageConstructOnly = GInitiallyUnownedConstructOnly | 'fd-list' | 'name' | 'parameters';
 
 /** Manages aspects common to all #WebKitWebView<!-- -->s The #WebKitWebContext manages all aspects common to all #WebKitWebView<!-- -->s. */
-export interface WebKitWebContextProps {
+export interface WebKitWebContextProps extends GObjectProps {
     /**
      * The #WebKitMemoryPressureSettings applied to the web processes created by this context.
      * @since 2.34
@@ -784,10 +786,10 @@ export interface WebKitWebContextProps {
     'time-zone-override'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitWebContextConstructOnly = 'memory-pressure-settings' | 'time-zone-override';
+export type WebKitWebContextConstructOnly = GObjectConstructOnly | 'memory-pressure-settings' | 'time-zone-override';
 
 /** Represents a [WebExtension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions). */
-export interface WebKitWebExtensionProps {
+export interface WebKitWebExtensionProps extends GObjectProps, GInitableProps {
     /**
      * A string pointing to the folder containing the extension manifest and resources.
      * @since 2.52
@@ -796,19 +798,19 @@ export interface WebKitWebExtensionProps {
     path?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitWebExtensionConstructOnly = 'path';
+export type WebKitWebExtensionConstructOnly = GObjectConstructOnly | GInitableConstructOnly | 'path';
 
 /** Access to the WebKit inspector. */
-export interface WebKitWebInspectorProps {
+export interface WebKitWebInspectorProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitWebInspectorConstructOnly = never;
+export type WebKitWebInspectorConstructOnly = GObjectConstructOnly;
 
 /** Represents a resource at the end of a URI. */
-export interface WebKitWebResourceProps {
+export interface WebKitWebResourceProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitWebResourceConstructOnly = never;
+export type WebKitWebResourceConstructOnly = GObjectConstructOnly;
 
 /** The central class of the WPE WebKit and WebKitGTK APIs. */
 export interface WebKitWebViewProps extends WebKitWebViewBaseProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -914,13 +916,13 @@ export interface WebKitWebViewBaseProps extends GtkWidgetProps, GtkAccessiblePro
 export type WebKitWebViewBaseConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** A permission request for accessing website data from third-party domains. */
-export interface WebKitWebsiteDataAccessPermissionRequestProps extends WebKitPermissionRequestProps {
+export interface WebKitWebsiteDataAccessPermissionRequestProps extends GObjectProps, WebKitPermissionRequestProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitWebsiteDataAccessPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+export type WebKitWebsiteDataAccessPermissionRequestConstructOnly = GObjectConstructOnly | WebKitPermissionRequestConstructOnly;
 
 /** Manages data stored locally by web sites. */
-export interface WebKitWebsiteDataManagerProps {
+export interface WebKitWebsiteDataManagerProps extends GObjectProps {
     /**
      * The base directory for caches.
      * @since 2.10
@@ -953,10 +955,10 @@ export interface WebKitWebsiteDataManagerProps {
     'total-storage-ratio'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitWebsiteDataManagerConstructOnly = 'base-cache-directory' | 'base-data-directory' | 'is-ephemeral' | 'origin-storage-ratio' | 'total-storage-ratio';
+export type WebKitWebsiteDataManagerConstructOnly = GObjectConstructOnly | 'base-cache-directory' | 'base-data-directory' | 'is-ephemeral' | 'origin-storage-ratio' | 'total-storage-ratio';
 
 /** View specific website policies. */
-export interface WebKitWebsitePoliciesProps {
+export interface WebKitWebsitePoliciesProps extends GObjectProps {
     /**
      * The #WebKitAutoplayPolicy of #WebKitWebsitePolicies.
      * @since 2.30
@@ -971,10 +973,10 @@ export interface WebKitWebsitePoliciesProps {
     'custom-user-agent'?: string | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitWebsitePoliciesConstructOnly = 'autoplay' | 'custom-user-agent';
+export type WebKitWebsitePoliciesConstructOnly = GObjectConstructOnly | 'autoplay' | 'custom-user-agent';
 
 /** Window properties of a #WebKitWebView. */
-export interface WebKitWindowPropertiesProps {
+export interface WebKitWindowPropertiesProps extends GObjectProps {
     /**
      * Whether window will be displayed fullscreen.
      * @default FALSE
@@ -1014,13 +1016,13 @@ export interface WebKitWindowPropertiesProps {
     'toolbar-visible'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitWindowPropertiesConstructOnly = 'fullscreen' | 'geometry' | 'locationbar-visible' | 'menubar-visible' | 'resizable' | 'scrollbars-visible' | 'statusbar-visible' | 'toolbar-visible';
+export type WebKitWindowPropertiesConstructOnly = GObjectConstructOnly | 'fullscreen' | 'geometry' | 'locationbar-visible' | 'menubar-visible' | 'resizable' | 'scrollbars-visible' | 'statusbar-visible' | 'toolbar-visible';
 
 /** A permission request for accessing virtual reality (VR) and augmented reality (AR) devices, including sensors and head-mounted displays. */
-export interface WebKitXRPermissionRequestProps extends WebKitPermissionRequestProps {
+export interface WebKitXRPermissionRequestProps extends GObjectProps, WebKitPermissionRequestProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WebKitXRPermissionRequestConstructOnly = WebKitPermissionRequestConstructOnly;
+export type WebKitXRPermissionRequestConstructOnly = GObjectConstructOnly | WebKitPermissionRequestConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -1118,6 +1120,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

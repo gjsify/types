@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./matemenu-2.0.d.ts"]
+  "include": ["./matemenu-2.0.d.ts","./matemenu-2.0-vocabulary.d.ts"]
 }
 
 

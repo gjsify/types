@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gdm-1.0.d.ts"]
+  "include": ["./gdm-1.0.d.ts","./gdm-1.0-vocabulary.d.ts"]
 }
 
 

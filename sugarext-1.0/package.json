@@ -1,6 +1,6 @@
 {
     "name": "@girs/sugarext-1.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for SugarExt-1.0",
     "type": "module",
     "module": "sugarext-1.0.js",
@@ -15,6 +15,11 @@
         "types": "./sugarext-1.0-import.d.ts",
         "import": "./sugarext-1.0-import.js",
         "default": "./sugarext-1.0-import.js"
+      },
+      "./vocabulary": {
+        "types": "./sugarext-1.0-vocabulary.d.ts",
+        "import": "./sugarext-1.0-vocabulary.js",
+        "default": "./sugarext-1.0-vocabulary.js"
       },
       "./sugarext-1.0": {
         "types": "./sugarext-1.0.d.ts",
@@ -31,21 +36,21 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/sugargestures-1.0": "^5.2.0",
-      "@girs/gtk-3.0": "^5.2.0",
-      "@girs/xlib-2.0": "^5.2.0",
-      "@girs/gdk-3.0": "^5.2.0",
-      "@girs/cairo-1.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/pango-1.0": "^5.2.0",
-      "@girs/harfbuzz-0.0": "^5.2.0",
-      "@girs/freetype2-2.0": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0",
-      "@girs/gdkpixbuf-2.0": "^5.2.0",
-      "@girs/atk-1.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/sugargestures-1.0": "^5.3.0",
+      "@girs/gtk-3.0": "^5.3.0",
+      "@girs/xlib-2.0": "^5.3.0",
+      "@girs/gdk-3.0": "^5.3.0",
+      "@girs/cairo-1.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/pango-1.0": "^5.3.0",
+      "@girs/harfbuzz-0.0": "^5.3.0",
+      "@girs/freetype2-2.0": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0",
+      "@girs/gdkpixbuf-2.0": "^5.3.0",
+      "@girs/atk-1.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

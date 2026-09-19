@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./gstglx11-1.0.d.ts"]
+  "include": ["./gstglx11-1.0.d.ts","./gstglx11-1.0-vocabulary.d.ts"]
 }
 
 

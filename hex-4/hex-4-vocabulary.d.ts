@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Hex-4.
  *
- * GENERATED — do not edit. Provenance: Hex-4 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned
+ * GENERATED — do not edit. Provenance: Hex-4
  *
  * 3 instantiable GTypes (of which 1 concrete widgets), 3 declarations, 0 enum nick unions, 0 slot candidates.
  *
@@ -27,6 +27,7 @@
 import type Gdk from '@girs/gdk-4.0';
 import type Gio from '@girs/gio-2.0';
 import type Hex from './hex-4.js';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-4.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -52,12 +53,12 @@ import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstr
 // ---------------------------------------------------------------------------
 
 /** `HexDocument` is an object which allows raw data to be loaded, saved and manipulated, intended primarily to be used with the `HexWidget` widget. */
-export interface HexDocumentProps {
+export interface HexDocumentProps extends GObjectProps {
     buffer?: Hex.Buffer;
     file?: Gio.File;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type HexDocumentConstructOnly = never;
+export type HexDocumentConstructOnly = GObjectConstructOnly;
 
 /** #HexWidget is a widget which can display #HexDocument data as a side-by-side representation of offets, hexadecimal nibbles, and ASCII characters. */
 export interface HexWidgetProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -89,12 +90,12 @@ export interface HexWidgetProps extends GtkWidgetProps, GtkAccessibleProps, GtkB
 export type HexWidgetConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | 'document';
 
 /** `HexWidgetMark` is a `GObject` which contains the metadata associated with a mark for a hex document. */
-export interface HexWidgetMarkProps {
+export interface HexWidgetMarkProps extends GObjectProps {
     /** The custom color of the `HexWidgetMark`, if applicable. */
     'custom-color'?: Gdk.RGBA;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type HexWidgetMarkConstructOnly = never;
+export type HexWidgetMarkConstructOnly = GObjectConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -185,6 +186,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

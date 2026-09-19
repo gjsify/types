@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./colorhug-1.0.d.ts"]
+  "include": ["./colorhug-1.0.d.ts","./colorhug-1.0-vocabulary.d.ts"]
 }
 
 

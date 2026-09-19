@@ -1,6 +1,6 @@
 {
     "name": "@girs/gconf-2.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for GConf-2.0",
     "type": "module",
     "module": "gconf-2.0.js",
@@ -15,6 +15,11 @@
         "types": "./gconf-2.0-import.d.ts",
         "import": "./gconf-2.0-import.js",
         "default": "./gconf-2.0-import.js"
+      },
+      "./vocabulary": {
+        "types": "./gconf-2.0-vocabulary.d.ts",
+        "import": "./gconf-2.0-vocabulary.js",
+        "default": "./gconf-2.0-vocabulary.js"
       },
       "./gconf-2.0": {
         "types": "./gconf-2.0.d.ts",
@@ -31,9 +36,9 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

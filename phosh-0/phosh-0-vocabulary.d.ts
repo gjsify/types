@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Phosh-0.
  *
- * GENERATED — do not edit. Provenance: Phosh-0 — dropped empty base(s): GObject.Object Gio.AsyncInitable Gio.DBusInterface Gio.Initable GObject.InitiallyUnowned Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap — inlined base(s) their owner's vocabulary does not emit: Gio.DBusProxy Gio.DBusInterfaceSkeleton — prop(s) no TypeScript value satisfies: Phosh.LayerSurface.layer-shell Phosh.LayerSurface.wl-output
+ * GENERATED — do not edit. Provenance: Phosh-0 — dropped empty base(s): Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.DBusInterfaceSkeleton — prop(s) no TypeScript value satisfies: Phosh.LayerSurface.layer-shell Phosh.LayerSurface.wl-output
  *
- * 11 instantiable GTypes (of which 5 concrete widgets), 14 declarations (2 inlined from a namespace whose vocabulary does not emit them), 2 enum nick unions, 7 slot candidates.
+ * 11 instantiable GTypes (of which 5 concrete widgets), 13 declarations (1 inlined from a namespace whose vocabulary does not emit them), 1 enum nick unions, 7 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -24,9 +24,10 @@
  * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
  */
 
-import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type Phosh from './phosh-0.js';
+import type { GActionGroupConstructOnly, GActionGroupProps, GActionMapConstructOnly, GActionMapProps, GAsyncInitableConstructOnly, GAsyncInitableProps, GDBusInterfaceConstructOnly, GDBusInterfaceProps, GDBusProxyConstructOnly, GDBusProxyProps, GInitableConstructOnly, GInitableProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkIconSizeNick, GtkOrientableConstructOnly, GtkOrientableProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -39,7 +40,6 @@ import type { GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps
 // Re-measure with `scripts/check-nick-derivation.mjs` in ts-for-gir.
 // ---------------------------------------------------------------------------
 
-export type GBusTypeNick = 'starter' | 'none' | 'system' | 'session';
 export type PhoshLockscreenPageNick = 'info' | 'extra' | 'unlock';
 
 // ---------------------------------------------------------------------------
@@ -53,7 +53,7 @@ export type PhoshLockscreenPageNick = 'info' | 'extra' | 'unlock';
 // ---------------------------------------------------------------------------
 
 /** Abstract base class for D-Bus interfaces on the service side. */
-export interface GDBusInterfaceSkeletonProps {
+export interface GDBusInterfaceSkeletonProps extends GObjectProps, GDBusInterfaceProps {
     /**
      * Flags from the #GDBusInterfaceSkeletonFlags enumeration.
      * @since 2.30
@@ -62,77 +62,25 @@ export interface GDBusInterfaceSkeletonProps {
     'g-flags'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GDBusInterfaceSkeletonConstructOnly = never;
-
-/** `GDBusProxy` is a base class used for proxies to access a D-Bus interface on a remote object. */
-export interface GDBusProxyProps {
-    /**
-     * If this property is not %G_BUS_TYPE_NONE, then #GDBusProxy:g-connection must be %NULL and will be set to the #GDBusConnection obtained by calling g_bus_get() with the value of this property.
-     * @since 2.26
-     * @default G_BUS_TYPE_NONE
-     */
-    'g-bus-type'?: GBusTypeNick | Gio.BusType;
-    /**
-     * The #GDBusConnection the proxy is for.
-     * @since 2.26
-     */
-    'g-connection'?: Gio.DBusConnection;
-    /**
-     * The timeout to use if -1 (specifying default timeout) is passed as @timeout_msec in the g_dbus_proxy_call() and g_dbus_proxy_call_sync() functions.
-     * @since 2.26
-     * @default -1
-     */
-    'g-default-timeout'?: number;
-    /**
-     * Flags from the #GDBusProxyFlags enumeration.
-     * @since 2.26
-     * @default G_DBUS_PROXY_FLAGS_NONE
-     */
-    'g-flags'?: number;
-    /**
-     * Ensure that interactions with this proxy conform to the given interface.
-     * @since 2.26
-     */
-    'g-interface-info'?: Gio.DBusInterfaceInfo | null;
-    /**
-     * The D-Bus interface name the proxy is for.
-     * @since 2.26
-     * @default NULL
-     */
-    'g-interface-name'?: string;
-    /**
-     * The well-known or unique name that the proxy is for.
-     * @since 2.26
-     * @default NULL
-     */
-    'g-name'?: string | null;
-    /**
-     * The object path the proxy is for.
-     * @since 2.26
-     * @default NULL
-     */
-    'g-object-path'?: string;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GDBusProxyConstructOnly = 'g-bus-type' | 'g-connection' | 'g-flags' | 'g-interface-name' | 'g-name' | 'g-object-path';
+export type GDBusInterfaceSkeletonConstructOnly = GObjectConstructOnly | GDBusInterfaceConstructOnly;
 
 /** Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-gnome-Shell-Screenshot.top_of_page">org.gnome.Shell.Screenshot</link>. */
-export interface PhoshDBusScreenshotProps {
+export interface PhoshDBusScreenshotProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PhoshDBusScreenshotConstructOnly = never;
+export type PhoshDBusScreenshotConstructOnly = GObjectConstructOnly;
 
 /** The #PhoshDBusScreenshotProxy structure contains only private data and should only be accessed using the provided API. */
-export interface PhoshDBusScreenshotProxyProps extends GDBusProxyProps, PhoshDBusScreenshotProps {
+export interface PhoshDBusScreenshotProxyProps extends GDBusProxyProps, GAsyncInitableProps, GDBusInterfaceProps, GInitableProps, PhoshDBusScreenshotProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PhoshDBusScreenshotProxyConstructOnly = GDBusProxyConstructOnly | PhoshDBusScreenshotConstructOnly;
+export type PhoshDBusScreenshotProxyConstructOnly = GDBusProxyConstructOnly | GAsyncInitableConstructOnly | GDBusInterfaceConstructOnly | GInitableConstructOnly | PhoshDBusScreenshotConstructOnly;
 
 /** The #PhoshDBusScreenshotSkeleton structure contains only private data and should only be accessed using the provided API. */
-export interface PhoshDBusScreenshotSkeletonProps extends GDBusInterfaceSkeletonProps, PhoshDBusScreenshotProps {
+export interface PhoshDBusScreenshotSkeletonProps extends GDBusInterfaceSkeletonProps, GDBusInterfaceProps, PhoshDBusScreenshotProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PhoshDBusScreenshotSkeletonConstructOnly = GDBusInterfaceSkeletonConstructOnly | PhoshDBusScreenshotConstructOnly;
+export type PhoshDBusScreenshotSkeletonConstructOnly = GDBusInterfaceSkeletonConstructOnly | GDBusInterfaceConstructOnly | PhoshDBusScreenshotConstructOnly;
 
 /** A #GtkWindow rendered as a LayerSurface by the compositor #PhoshLayerSurface allows to use a Wayland surface backed by the layer-shell protocol as #GtkWindow. */
 export interface PhoshLayerSurfaceProps extends GtkWindowProps, GtkBuildableProps {
@@ -202,7 +150,7 @@ export interface PhoshLockscreenProps extends PhoshLayerSurfaceProps, GtkBuildab
 export type PhoshLockscreenConstructOnly = PhoshLayerSurfaceConstructOnly | GtkBuildableConstructOnly;
 
 /** The singleton that manages screen locking The #PhoshLockscreenManager is responsible for putting the #PhoshLockscreen on the primary output and a #PhoshLockshield on other outputs when the session be… */
-export interface PhoshLockscreenManagerProps {
+export interface PhoshLockscreenManagerProps extends GObjectProps {
     /**
      * Whether the screen is locked
      * @default FALSE
@@ -210,7 +158,7 @@ export interface PhoshLockscreenManagerProps {
     locked?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PhoshLockscreenManagerConstructOnly = never;
+export type PhoshLockscreenManagerConstructOnly = GObjectConstructOnly;
 
 /** A `PhoshQuickSetting` represents a state of an entity (like Wi-Fi, Bluetooth) using an icon and label. */
 export interface PhoshQuickSettingProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
@@ -248,13 +196,13 @@ export interface PhoshQuickSettingProps extends GtkBoxProps, GtkBuildableProps, 
 export type PhoshQuickSettingConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
 /** Screenshot interaction The #PhoshScreenshotManager is responsible for taking screenshots. */
-export interface PhoshScreenshotManagerProps extends PhoshDBusScreenshotSkeletonProps, PhoshDBusScreenshotProps {
+export interface PhoshScreenshotManagerProps extends PhoshDBusScreenshotSkeletonProps, GDBusInterfaceProps, PhoshDBusScreenshotProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PhoshScreenshotManagerConstructOnly = PhoshDBusScreenshotSkeletonConstructOnly | PhoshDBusScreenshotConstructOnly;
+export type PhoshScreenshotManagerConstructOnly = PhoshDBusScreenshotSkeletonConstructOnly | GDBusInterfaceConstructOnly | PhoshDBusScreenshotConstructOnly;
 
 /** The shell singleton #PhoshShell is responsible for instantiating the GUI parts of the shell#PhoshTopPanel, #PhoshHome,… and the managers that interface with DBus #PhoshMonitorManager, #PhoshFeedbackM… */
-export interface PhoshShellProps {
+export interface PhoshShellProps extends GObjectProps, GActionGroupProps, GActionMapProps {
     /**
      * Whether the device is currently docked.
      * @default FALSE
@@ -274,7 +222,7 @@ export interface PhoshShellProps {
     'overview-visible'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PhoshShellConstructOnly = never;
+export type PhoshShellConstructOnly = GObjectConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly;
 
 /** Base class for status icons used in the Phosh's top-bar or in [type@QuickSetting]s. */
 export interface PhoshStatusIconProps extends GtkBinProps, GtkBuildableProps {
@@ -327,10 +275,10 @@ export interface PhoshStatusPageProps extends GtkBinProps, GtkBuildableProps {
 export type PhoshStatusPageConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
 /** Wall clock used for fetching date and time */
-export interface PhoshWallClockProps {
+export interface PhoshWallClockProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PhoshWallClockConstructOnly = never;
+export type PhoshWallClockConstructOnly = GObjectConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -460,6 +408,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

@@ -1,6 +1,6 @@
 // The widget vocabulary of GtkSource-2.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: GtkSource-2.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: GtkSource-2.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '2.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['GtkSource'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-2.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -51,20 +53,20 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GtkSourceBuffer: ['GtkSourceBuffer', 'GtkTextBuffer'],
-    GtkSourceCompletion: ['GtkSourceCompletion', 'GtkObject'],
-    GtkSourceCompletionContext: ['GtkSourceCompletionContext'],
-    GtkSourceCompletionInfo: ['GtkSourceCompletionInfo', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkObject', 'GtkBuildable'],
-    GtkSourceCompletionItem: ['GtkSourceCompletionItem', 'GtkSourceCompletionProposal'],
-    GtkSourceGutter: ['GtkSourceGutter'],
-    GtkSourceLanguage: ['GtkSourceLanguage'],
-    GtkSourceLanguageManager: ['GtkSourceLanguageManager'],
-    GtkSourceMark: ['GtkSourceMark', 'GtkTextMark'],
-    GtkSourcePrintCompositor: ['GtkSourcePrintCompositor'],
-    GtkSourceStyle: ['GtkSourceStyle'],
-    GtkSourceStyleScheme: ['GtkSourceStyleScheme'],
-    GtkSourceStyleSchemeManager: ['GtkSourceStyleSchemeManager'],
-    GtkSourceView: ['GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkObject', 'GtkBuildable'],
+    GtkSourceBuffer: ['GtkSourceBuffer', 'GtkTextBuffer', 'GObject'],
+    GtkSourceCompletion: ['GtkSourceCompletion', 'GtkObject', 'GInitiallyUnowned', 'GObject'],
+    GtkSourceCompletionContext: ['GtkSourceCompletionContext', 'GInitiallyUnowned', 'GObject'],
+    GtkSourceCompletionInfo: ['GtkSourceCompletionInfo', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkObject', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GtkSourceCompletionItem: ['GtkSourceCompletionItem', 'GObject', 'GtkSourceCompletionProposal'],
+    GtkSourceGutter: ['GtkSourceGutter', 'GObject'],
+    GtkSourceLanguage: ['GtkSourceLanguage', 'GObject'],
+    GtkSourceLanguageManager: ['GtkSourceLanguageManager', 'GObject'],
+    GtkSourceMark: ['GtkSourceMark', 'GtkTextMark', 'GObject'],
+    GtkSourcePrintCompositor: ['GtkSourcePrintCompositor', 'GObject'],
+    GtkSourceStyle: ['GtkSourceStyle', 'GObject'],
+    GtkSourceStyleScheme: ['GtkSourceStyleScheme', 'GObject'],
+    GtkSourceStyleSchemeManager: ['GtkSourceStyleSchemeManager', 'GObject'],
+    GtkSourceView: ['GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkObject', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -74,7 +76,10 @@ export const DECLS = {
 // count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
-export const ENUM_NICKS = {};
+export const ENUM_NICKS = {
+    GtkTextWindowType: ['private', 'widget', 'text', 'left', 'right', 'top', 'bottom'],
+    GtkWrapMode: ['none', 'char', 'word', 'word-char'],
+};
 
 // The number behind each of those nicks, read from GIR's own `value` attribute.
 //
@@ -90,7 +95,19 @@ export const ENUM_NICKS = {};
 // from an INSTALLED library instead gets two provenances for one table, and a member the
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
-export const ENUM_VALUES = {};
+export const ENUM_VALUES = {
+    'GtkTextWindowType.bottom': 6,
+    'GtkTextWindowType.left': 3,
+    'GtkTextWindowType.private': 0,
+    'GtkTextWindowType.right': 4,
+    'GtkTextWindowType.text': 2,
+    'GtkTextWindowType.top': 5,
+    'GtkTextWindowType.widget': 1,
+    'GtkWrapMode.char': 1,
+    'GtkWrapMode.none': 0,
+    'GtkWrapMode.word': 2,
+    'GtkWrapMode.word-char': 3,
+};
 
 // The nicks GIR marks `deprecated="1"`.
 //

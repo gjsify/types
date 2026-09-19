@@ -1,6 +1,6 @@
 // The widget vocabulary of MxGtk-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: MxGtk-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: MxGtk-1.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['MxGtk'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-2.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -33,8 +35,8 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    MxGtkFrame: ['MxGtkFrame', 'GtkFrame', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkObject', 'GtkBuildable'],
-    MxGtkLightSwitch: ['MxGtkLightSwitch', 'GtkDrawingArea', 'GtkWidget', 'GtkObject', 'GtkBuildable'],
+    MxGtkFrame: ['MxGtkFrame', 'GtkFrame', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkObject', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    MxGtkLightSwitch: ['MxGtkLightSwitch', 'GtkDrawingArea', 'GtkWidget', 'GtkObject', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

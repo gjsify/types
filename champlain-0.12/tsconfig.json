@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./champlain-0.12.d.ts"]
+  "include": ["./champlain-0.12.d.ts","./champlain-0.12-vocabulary.d.ts"]
 }
 
 

@@ -89,7 +89,7 @@
       ]
 }
   },
-  "include": ["./st-12.d.ts"]
+  "include": ["./st-12.d.ts","./st-12-vocabulary.d.ts"]
 }
 
 

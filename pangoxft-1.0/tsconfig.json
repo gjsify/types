@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./pangoxft-1.0.d.ts"]
+  "include": ["./pangoxft-1.0.d.ts","./pangoxft-1.0-vocabulary.d.ts"]
 }
 
 

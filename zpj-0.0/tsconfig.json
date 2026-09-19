@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./zpj-0.0.d.ts"]
+  "include": ["./zpj-0.0.d.ts","./zpj-0.0-vocabulary.d.ts"]
 }
 
 

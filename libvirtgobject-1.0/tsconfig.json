@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./libvirtgobject-1.0.d.ts"]
+  "include": ["./libvirtgobject-1.0.d.ts","./libvirtgobject-1.0-vocabulary.d.ts"]
 }
 
 

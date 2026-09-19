@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Handy-1.
  *
- * GENERATED — do not edit. Provenance: Handy-1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
+ * GENERATED — do not edit. Provenance: Handy-1 — dropped empty base(s): Atk.ImplementorIface
  *
- * 37 instantiable GTypes (of which 29 concrete widgets), 38 declarations, 11 enum nick unions, 24 slot candidates.
+ * 37 instantiable GTypes (of which 29 concrete widgets), 38 declarations, 10 enum nick unions, 24 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -30,7 +30,10 @@ import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type Handy from './handy-1.js';
 import type Pango from '@girs/pango-1.0';
+import type { GActionGroupConstructOnly, GActionGroupProps, GActionMapConstructOnly, GActionMapProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkEventBoxConstructOnly, GtkEventBoxProps, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkPackTypeNick, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
+import type { PangoEllipsizeModeNick } from '@girs/pango-1.0/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -52,7 +55,6 @@ export type HdyLeafletTransitionTypeNick = 'over' | 'under' | 'slide';
 export type HdyNavigationDirectionNick = 'back' | 'forward';
 export type HdySqueezerTransitionTypeNick = 'none' | 'crossfade';
 export type HdyViewSwitcherPolicyNick = 'auto' | 'narrow' | 'wide';
-export type PangoEllipsizeModeNick = 'none' | 'start' | 'middle' | 'end';
 
 // ---------------------------------------------------------------------------
 // Property surfaces — one interface per GIR DECLARATION, mirroring GIR's own
@@ -104,10 +106,10 @@ export interface HdyActionRowProps extends HdyPreferencesRowProps, GtkActionable
 export type HdyActionRowConstructOnly = HdyPreferencesRowConstructOnly | GtkActionableConstructOnly | GtkBuildableConstructOnly;
 
 /** A freeform application window. */
-export interface HdyApplicationWindowProps extends GtkApplicationWindowProps, GtkBuildableProps {
+export interface HdyApplicationWindowProps extends GtkApplicationWindowProps, GActionGroupProps, GActionMapProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type HdyApplicationWindowConstructOnly = GtkApplicationWindowConstructOnly | GtkBuildableConstructOnly;
+export type HdyApplicationWindowConstructOnly = GtkApplicationWindowConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly | GtkBuildableConstructOnly;
 
 /** A widget displaying an image, with a generated fallback. */
 export interface HdyAvatarProps extends GtkDrawingAreaProps, GtkBuildableProps {
@@ -310,10 +312,10 @@ export interface HdyDeckProps extends GtkContainerProps, GtkBuildableProps, GtkO
 export type HdyDeckConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | HdySwipeableConstructOnly;
 
 /** An object representing an [struct@GObject.EnumValue]. */
-export interface HdyEnumValueObjectProps {
+export interface HdyEnumValueObjectProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type HdyEnumValueObjectConstructOnly = never;
+export type HdyEnumValueObjectConstructOnly = GObjectConstructOnly;
 
 /** A [class@Gtk.ListBoxRow] used to reveal widgets. */
 export interface HdyExpanderRowProps extends HdyPreferencesRowProps, GtkActionableProps, GtkBuildableProps {
@@ -508,7 +510,7 @@ export interface HdyHeaderBarProps extends GtkContainerProps, GtkBuildableProps 
 export type HdyHeaderBarConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly;
 
 /** An object handling composite title bars. */
-export interface HdyHeaderGroupProps extends GtkBuildableProps {
+export interface HdyHeaderGroupProps extends GObjectProps, GtkBuildableProps {
     /**
      * Whether the elements of the group should all receive the full decoration.
      * @since 1.0
@@ -517,13 +519,13 @@ export interface HdyHeaderGroupProps extends GtkBuildableProps {
     'decorate-all'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type HdyHeaderGroupConstructOnly = GtkBuildableConstructOnly;
+export type HdyHeaderGroupConstructOnly = GObjectConstructOnly | GtkBuildableConstructOnly;
 
 /** A child object for [class@HeaderGroup]. */
-export interface HdyHeaderGroupChildProps {
+export interface HdyHeaderGroupChildProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type HdyHeaderGroupChildConstructOnly = never;
+export type HdyHeaderGroupChildConstructOnly = GObjectConstructOnly;
 
 /** A keypad for dialing numbers The `HdyKeypad` widget is a keypad for entering numbers such as phone numbers or PIN codes. */
 export interface HdyKeypadProps extends GtkBinProps, GtkBuildableProps {
@@ -803,7 +805,7 @@ export interface HdyStatusPageProps extends GtkBinProps, GtkBuildableProps {
 export type HdyStatusPageConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
 /** A class for managing application-wide styling. */
-export interface HdyStyleManagerProps {
+export interface HdyStyleManagerProps extends GObjectProps {
     /**
      * The requested application color scheme.
      * @since 1.6
@@ -817,16 +819,16 @@ export interface HdyStyleManagerProps {
     display?: Gdk.Display;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type HdyStyleManagerConstructOnly = 'display';
+export type HdyStyleManagerConstructOnly = GObjectConstructOnly | 'display';
 
 /** An object for syncing swipeable widgets. */
-export interface HdySwipeGroupProps extends GtkBuildableProps {
+export interface HdySwipeGroupProps extends GObjectProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type HdySwipeGroupConstructOnly = GtkBuildableConstructOnly;
+export type HdySwipeGroupConstructOnly = GObjectConstructOnly | GtkBuildableConstructOnly;
 
 /** Swipe tracker used in [class@Carousel] and [class@Leaflet]. */
-export interface HdySwipeTrackerProps extends GtkOrientableProps {
+export interface HdySwipeTrackerProps extends GObjectProps, GtkOrientableProps {
     /**
      * Whether to allow swiping for more than one snap point at a time.
      * @since 1.2
@@ -858,7 +860,7 @@ export interface HdySwipeTrackerProps extends GtkOrientableProps {
     swipeable?: Handy.Swipeable;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type HdySwipeTrackerConstructOnly = GtkOrientableConstructOnly | 'swipeable';
+export type HdySwipeTrackerConstructOnly = GObjectConstructOnly | GtkOrientableConstructOnly | 'swipeable';
 
 /** An interface for swipeable widgets. */
 export interface HdySwipeableProps extends GtkWidgetProps {
@@ -911,7 +913,7 @@ export interface HdyTabBarProps extends GtkBinProps, GtkBuildableProps {
 export type HdyTabBarConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
 /** An auxiliary class used by [class@TabView]. */
-export interface HdyTabPageProps {
+export interface HdyTabPageProps extends GObjectProps {
     /**
      * The child of the page.
      * @since 1.2
@@ -964,7 +966,7 @@ export interface HdyTabPageProps {
     tooltip?: string | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type HdyTabPageConstructOnly = 'child' | 'parent';
+export type HdyTabPageConstructOnly = GObjectConstructOnly | 'child' | 'parent';
 
 /** A dynamic tabbed container. */
 export interface HdyTabViewProps extends GtkBinProps, GtkBuildableProps {
@@ -1006,7 +1008,7 @@ export interface HdyTitleBarProps extends GtkBinProps, GtkBuildableProps {
 export type HdyTitleBarConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
 /** An object representing a [struct@GObject.Value]. */
-export interface HdyValueObjectProps {
+export interface HdyValueObjectProps extends GObjectProps {
     /**
      * The contained value.
      * @since 1.0
@@ -1014,7 +1016,7 @@ export interface HdyValueObjectProps {
     value?: GObject.Value;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type HdyValueObjectConstructOnly = 'value';
+export type HdyValueObjectConstructOnly = GObjectConstructOnly | 'value';
 
 /** An adaptive view switcher. */
 export interface HdyViewSwitcherProps extends GtkBinProps, GtkBuildableProps {
@@ -1432,6 +1434,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

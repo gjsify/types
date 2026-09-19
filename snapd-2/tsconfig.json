@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./snapd-2.d.ts"]
+  "include": ["./snapd-2.d.ts","./snapd-2-vocabulary.d.ts"]
 }
 
 

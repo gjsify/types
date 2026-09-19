@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for GooCanvas-3.0.
  *
- * GENERATED — do not edit. Provenance: GooCanvas-3.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Atk.ObjectFactory
+ * GENERATED — do not edit. Provenance: GooCanvas-3.0 — dropped empty base(s): Atk.ImplementorIface
  *
- * 26 instantiable GTypes (of which 1 concrete widgets), 28 declarations, 13 enum nick unions, 0 slot candidates.
+ * 26 instantiable GTypes (of which 1 concrete widgets), 28 declarations, 10 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -29,7 +29,10 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GooCanvas from './goocanvas-3.0.js';
 import type Gtk from '@girs/gtk-3.0';
 import type Pango from '@girs/pango-1.0';
+import type { AtkObjectFactoryConstructOnly, AtkObjectFactoryProps } from '@girs/atk-1.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkUnitNick, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-3.0/vocabulary';
+import type { PangoAlignmentNick, PangoEllipsizeModeNick, PangoWrapModeNick } from '@girs/pango-1.0/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -51,9 +54,6 @@ export type GooCanvasAnchorTypeNick = 'center' | 'north' | 'north-west' | 'north
 export type GooCanvasAnimateTypeNick = 'freeze' | 'reset' | 'restart' | 'bounce';
 export type GooCanvasItemVisibilityNick = 'hidden' | 'invisible' | 'visible' | 'visible-above-threshold';
 export type GooCanvasPathCommandTypeNick = 'move-to' | 'close-path' | 'line-to' | 'horizontal-line-to' | 'vertical-line-to' | 'curve-to' | 'smooth-curve-to' | 'quadratic-curve-to' | 'smooth-quadratic-curve-to' | 'elliptical-arc';
-export type PangoAlignmentNick = 'left' | 'center' | 'right';
-export type PangoEllipsizeModeNick = 'none' | 'start' | 'middle' | 'end';
-export type PangoWrapModeNick = 'word' | 'char' | 'word-char' | 'none';
 
 // ---------------------------------------------------------------------------
 // Property surfaces — one interface per GIR DECLARATION, mirroring GIR's own
@@ -95,10 +95,10 @@ export interface GooCanvasProps extends GtkContainerProps, GtkBuildableProps, Gt
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GooCanvasConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly;
 
-export interface GooCanvasAccessibleFactoryProps {
+export interface GooCanvasAccessibleFactoryProps extends AtkObjectFactoryProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GooCanvasAccessibleFactoryConstructOnly = never;
+export type GooCanvasAccessibleFactoryConstructOnly = AtkObjectFactoryConstructOnly;
 
 /** GooCanvasEllipse represents an ellipse item. */
 export interface GooCanvasEllipseProps extends GooCanvasItemSimpleProps, GooCanvasItemProps {
@@ -259,7 +259,7 @@ export interface GooCanvasImageModelProps extends GooCanvasItemModelSimpleProps,
 export type GooCanvasImageModelConstructOnly = GooCanvasItemModelSimpleConstructOnly | GooCanvasItemModelConstructOnly;
 
 /** #GooCanvasItem defines the interface that canvas items must implement, and contains methods for operating on canvas items. */
-export interface GooCanvasItemProps {
+export interface GooCanvasItemProps extends GObjectProps {
     'can-focus'?: boolean;
     description?: string;
     parent?: GooCanvas.CanvasItem;
@@ -272,15 +272,15 @@ export interface GooCanvasItemProps {
     'visibility-threshold'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GooCanvasItemConstructOnly = never;
+export type GooCanvasItemConstructOnly = GObjectConstructOnly;
 
-export interface GooCanvasItemAccessibleFactoryProps {
+export interface GooCanvasItemAccessibleFactoryProps extends AtkObjectFactoryProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GooCanvasItemAccessibleFactoryConstructOnly = never;
+export type GooCanvasItemAccessibleFactoryConstructOnly = AtkObjectFactoryConstructOnly;
 
 /** #GooCanvasItemModel defines the interface that models for canvas items must implement, and contains methods for operating on canvas item models. */
-export interface GooCanvasItemModelProps {
+export interface GooCanvasItemModelProps extends GObjectProps {
     'can-focus'?: boolean;
     description?: string;
     parent?: GooCanvas.CanvasItemModel;
@@ -292,10 +292,10 @@ export interface GooCanvasItemModelProps {
     'visibility-threshold'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GooCanvasItemModelConstructOnly = never;
+export type GooCanvasItemModelConstructOnly = GObjectConstructOnly;
 
 /** #GooCanvasItemModelSimple is used as a base class for the standard canvas item models. */
-export interface GooCanvasItemModelSimpleProps extends GooCanvasItemModelProps {
+export interface GooCanvasItemModelSimpleProps extends GObjectProps, GooCanvasItemModelProps {
     antialias?: GooCairoAntialiasNick | GooCanvas.CairoAntialias;
     'clip-fill-rule'?: GooCairoFillRuleNick | GooCanvas.CairoFillRule;
     /** The sequence of commands describing the clip path of the item, specified as a string using the same syntax as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector Graphics (SVG)</ulink… */
@@ -322,10 +322,10 @@ export interface GooCanvasItemModelSimpleProps extends GooCanvasItemModelProps {
     'stroke-pixbuf'?: GdkPixbuf.Pixbuf;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GooCanvasItemModelSimpleConstructOnly = GooCanvasItemModelConstructOnly;
+export type GooCanvasItemModelSimpleConstructOnly = GObjectConstructOnly | GooCanvasItemModelConstructOnly;
 
 /** #GooCanvasItemSimple is used as a base class for all of the standard canvas items. */
-export interface GooCanvasItemSimpleProps extends GooCanvasItemProps {
+export interface GooCanvasItemSimpleProps extends GObjectProps, GooCanvasItemProps {
     antialias?: GooCairoAntialiasNick | GooCanvas.CairoAntialias;
     'clip-fill-rule'?: GooCairoFillRuleNick | GooCanvas.CairoFillRule;
     /** The sequence of commands describing the clip path of the item, specified as a string using the same syntax as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector Graphics (SVG)</ulink… */
@@ -360,7 +360,7 @@ export interface GooCanvasItemSimpleProps extends GooCanvasItemProps {
     'stroke-pixbuf'?: GdkPixbuf.Pixbuf;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GooCanvasItemSimpleConstructOnly = GooCanvasItemConstructOnly;
+export type GooCanvasItemSimpleConstructOnly = GObjectConstructOnly | GooCanvasItemConstructOnly;
 
 /** GooCanvasPath represents a path item, which is a series of one or more lines, bezier curves, or elliptical arcs. */
 export interface GooCanvasPathProps extends GooCanvasItemSimpleProps, GooCanvasItemProps {
@@ -460,10 +460,10 @@ export interface GooCanvasRectModelProps extends GooCanvasItemModelSimpleProps, 
 export type GooCanvasRectModelConstructOnly = GooCanvasItemModelSimpleConstructOnly | GooCanvasItemModelConstructOnly;
 
 /** #GooCanvasStyle provides support for cascading style properties for canvas items. */
-export interface GooCanvasStyleProps {
+export interface GooCanvasStyleProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GooCanvasStyleConstructOnly = never;
+export type GooCanvasStyleConstructOnly = GObjectConstructOnly;
 
 /** #GooCanvasTable is a table container used to lay out other canvas items. */
 export interface GooCanvasTableProps extends GooCanvasGroupProps, GooCanvasItemProps {
@@ -537,10 +537,10 @@ export interface GooCanvasWidgetProps extends GooCanvasItemSimpleProps, GooCanva
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GooCanvasWidgetConstructOnly = GooCanvasItemSimpleConstructOnly | GooCanvasItemConstructOnly;
 
-export interface GooCanvasWidgetAccessibleFactoryProps {
+export interface GooCanvasWidgetAccessibleFactoryProps extends AtkObjectFactoryProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GooCanvasWidgetAccessibleFactoryConstructOnly = never;
+export type GooCanvasWidgetAccessibleFactoryConstructOnly = AtkObjectFactoryConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -631,6 +631,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

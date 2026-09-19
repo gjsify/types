@@ -53,7 +53,7 @@
       ]
 }
   },
-  "include": ["./vpg-1.d.ts"]
+  "include": ["./vpg-1.d.ts","./vpg-1-vocabulary.d.ts"]
 }
 
 

@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./gstbadaudio-1.0.d.ts"]
+  "include": ["./gstbadaudio-1.0.d.ts","./gstbadaudio-1.0-vocabulary.d.ts"]
 }
 
 

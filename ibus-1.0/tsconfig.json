@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./ibus-1.0.d.ts"]
+  "include": ["./ibus-1.0.d.ts","./ibus-1.0-vocabulary.d.ts"]
 }
 
 

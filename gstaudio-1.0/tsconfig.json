@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gstaudio-1.0.d.ts"]
+  "include": ["./gstaudio-1.0.d.ts","./gstaudio-1.0-vocabulary.d.ts"]
 }
 
 

@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Granite-7.0.
  *
- * GENERATED — do not edit. Provenance: Granite-7.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+ * GENERATED — do not edit. Provenance: Granite-7.0
  *
- * 23 instantiable GTypes (of which 19 concrete widgets), 23 declarations, 6 enum nick unions, 6 slot candidates.
+ * 23 instantiable GTypes (of which 19 concrete widgets), 23 declarations, 5 enum nick unions, 6 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -30,7 +30,9 @@ import type Gio from '@girs/gio-2.0';
 import type Granite from './granite-7.0.js';
 import type Gtk from '@girs/gtk-4.0';
 import type Pango from '@girs/pango-1.0';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkAccessibleTextConstructOnly, GtkAccessibleTextProps, GtkActionableConstructOnly, GtkActionableProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkButtonsTypeNick, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkDialogConstructOnly, GtkDialogProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkNativeConstructOnly, GtkNativeProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkRootConstructOnly, GtkRootProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkShortcutManagerConstructOnly, GtkShortcutManagerProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkToggleButtonConstructOnly, GtkToggleButtonProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-4.0/vocabulary';
+import type { PangoEllipsizeModeNick } from '@girs/pango-1.0/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -47,7 +49,6 @@ export type GraniteHeaderLabelSizeNick = 'h1' | 'h2' | 'h3' | 'h4';
 export type GraniteSettingsColorSchemeNick = 'no-preference' | 'dark' | 'light';
 export type GraniteSettingsPageStatusTypeNick = 'error' | 'offline' | 'success' | 'warning' | 'none';
 export type GraniteToastDismissReasonNick = 'expired' | 'closed' | 'withdrawn';
-export type PangoEllipsizeModeNick = 'none' | 'start' | 'middle' | 'end';
 
 // ---------------------------------------------------------------------------
 // Property surfaces — one interface per GIR DECLARATION, mirroring GIR's own
@@ -167,23 +168,23 @@ export interface GranitePlaceholderProps extends GtkWidgetProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GranitePlaceholderConstructOnly = GtkWidgetConstructOnly;
 
-export interface GraniteServicesContractorProxyProps {
+export interface GraniteServicesContractorProxyProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GraniteServicesContractorProxyConstructOnly = never;
+export type GraniteServicesContractorProxyConstructOnly = GObjectConstructOnly;
 
-export interface GraniteServicesSystemProps {
+export interface GraniteServicesSystemProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GraniteServicesSystemConstructOnly = never;
+export type GraniteServicesSystemConstructOnly = GObjectConstructOnly;
 
-export interface GraniteSettingsProps {
+export interface GraniteSettingsProps extends GObjectProps {
     /** @since 7.7.0 */
     'accent-color'?: Gdk.RGBA;
     'prefers-color-scheme'?: GraniteSettingsColorSchemeNick | Granite.SettingsColorScheme;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GraniteSettingsConstructOnly = never;
+export type GraniteSettingsConstructOnly = GObjectConstructOnly;
 
 export interface GraniteSettingsSidebarProps extends GtkWidgetProps {
     stack?: Gtk.Stack;
@@ -192,12 +193,12 @@ export interface GraniteSettingsSidebarProps extends GtkWidgetProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GraniteSettingsSidebarConstructOnly = GtkWidgetConstructOnly | 'stack';
 
-export interface GraniteStyleManagerProps {
+export interface GraniteStyleManagerProps extends GObjectProps {
     'color-scheme'?: GraniteSettingsColorSchemeNick | Granite.SettingsColorScheme;
     display?: Gdk.Display;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GraniteStyleManagerConstructOnly = 'display';
+export type GraniteStyleManagerConstructOnly = GObjectConstructOnly | 'display';
 
 export interface GraniteSwitchModelButtonProps extends GtkToggleButtonProps {
     description?: string | null;
@@ -459,6 +460,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

@@ -53,7 +53,7 @@
       ]
 }
   },
-  "include": ["./vgda-1.d.ts"]
+  "include": ["./vgda-1.d.ts","./vgda-1-vocabulary.d.ts"]
 }
 
 

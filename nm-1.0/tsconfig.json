@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./nm-1.0.d.ts"]
+  "include": ["./nm-1.0.d.ts","./nm-1.0-vocabulary.d.ts"]
 }
 
 

@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gsf-1.d.ts"]
+  "include": ["./gsf-1.d.ts","./gsf-1-vocabulary.d.ts"]
 }
 
 

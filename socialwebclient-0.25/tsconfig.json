@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./socialwebclient-0.25.d.ts"]
+  "include": ["./socialwebclient-0.25.d.ts","./socialwebclient-0.25-vocabulary.d.ts"]
 }
 
 

@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./anthy-9000.d.ts"]
+  "include": ["./anthy-9000.d.ts","./anthy-9000-vocabulary.d.ts"]
 }
 
 

@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for GPasteGtk-4.
  *
- * GENERATED — do not edit. Provenance: GPasteGtk-4 — dropped empty base(s): GObject.Object GPaste.KeybindingProvider Gio.AsyncInitable Gio.DBusInterface Gio.Initable GObject.InitiallyUnowned — inlined base(s) their owner's vocabulary does not emit: Gio.DBusProxy
+ * GENERATED — do not edit. Provenance: GPasteGtk-4
  *
- * 10 instantiable GTypes (of which 8 concrete widgets), 11 declarations (1 inlined from a namespace whose vocabulary does not emit them), 1 enum nick unions, 0 slot candidates.
+ * 10 instantiable GTypes (of which 8 concrete widgets), 10 declarations, 0 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -25,8 +25,10 @@
  */
 
 import type GPasteGtk from './gpastegtk-4.js';
-import type Gio from '@girs/gio-2.0';
 import type { AdwBinConstructOnly, AdwBinProps, AdwDialogConstructOnly, AdwDialogProps, AdwPreferencesDialogConstructOnly, AdwPreferencesDialogProps, AdwPreferencesGroupConstructOnly, AdwPreferencesGroupProps, AdwPreferencesPageConstructOnly, AdwPreferencesPageProps } from '@girs/adw-1/vocabulary';
+import type { GAsyncInitableConstructOnly, GAsyncInitableProps, GDBusInterfaceConstructOnly, GDBusInterfaceProps, GDBusProxyConstructOnly, GDBusProxyProps, GInitableConstructOnly, GInitableProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
+import type { GPasteKeybindingProviderConstructOnly, GPasteKeybindingProviderProps } from '@girs/gpaste-2/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkShortcutManagerConstructOnly, GtkShortcutManagerProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-4.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -39,7 +41,7 @@ import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstr
 // Re-measure with `scripts/check-nick-derivation.mjs` in ts-for-gir.
 // ---------------------------------------------------------------------------
 
-export type GBusTypeNick = 'starter' | 'none' | 'system' | 'session';
+
 
 // ---------------------------------------------------------------------------
 // Property surfaces — one interface per GIR DECLARATION, mirroring GIR's own
@@ -51,62 +53,10 @@ export type GBusTypeNick = 'starter' | 'none' | 'system' | 'session';
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-/** `GDBusProxy` is a base class used for proxies to access a D-Bus interface on a remote object. */
-export interface GDBusProxyProps {
-    /**
-     * If this property is not %G_BUS_TYPE_NONE, then #GDBusProxy:g-connection must be %NULL and will be set to the #GDBusConnection obtained by calling g_bus_get() with the value of this property.
-     * @since 2.26
-     * @default G_BUS_TYPE_NONE
-     */
-    'g-bus-type'?: GBusTypeNick | Gio.BusType;
-    /**
-     * The #GDBusConnection the proxy is for.
-     * @since 2.26
-     */
-    'g-connection'?: Gio.DBusConnection;
-    /**
-     * The timeout to use if -1 (specifying default timeout) is passed as @timeout_msec in the g_dbus_proxy_call() and g_dbus_proxy_call_sync() functions.
-     * @since 2.26
-     * @default -1
-     */
-    'g-default-timeout'?: number;
-    /**
-     * Flags from the #GDBusProxyFlags enumeration.
-     * @since 2.26
-     * @default G_DBUS_PROXY_FLAGS_NONE
-     */
-    'g-flags'?: number;
-    /**
-     * Ensure that interactions with this proxy conform to the given interface.
-     * @since 2.26
-     */
-    'g-interface-info'?: Gio.DBusInterfaceInfo | null;
-    /**
-     * The D-Bus interface name the proxy is for.
-     * @since 2.26
-     * @default NULL
-     */
-    'g-interface-name'?: string;
-    /**
-     * The well-known or unique name that the proxy is for.
-     * @since 2.26
-     * @default NULL
-     */
-    'g-name'?: string | null;
-    /**
-     * The object path the proxy is for.
-     * @since 2.26
-     * @default NULL
-     */
-    'g-object-path'?: string;
+export interface GPasteGtkGlobalShortcutClientProps extends GDBusProxyProps, GPasteKeybindingProviderProps, GAsyncInitableProps, GDBusInterfaceProps, GInitableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GDBusProxyConstructOnly = 'g-bus-type' | 'g-connection' | 'g-flags' | 'g-interface-name' | 'g-name' | 'g-object-path';
-
-export interface GPasteGtkGlobalShortcutClientProps extends GDBusProxyProps {
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GPasteGtkGlobalShortcutClientConstructOnly = GDBusProxyConstructOnly;
+export type GPasteGtkGlobalShortcutClientConstructOnly = GDBusProxyConstructOnly | GPasteKeybindingProviderConstructOnly | GAsyncInitableConstructOnly | GDBusInterfaceConstructOnly | GInitableConstructOnly;
 
 export interface GPasteGtkPreferencesBehaviourPageProps extends GPasteGtkPreferencesPageProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
 }
@@ -133,10 +83,10 @@ export interface GPasteGtkPreferencesImagesPageProps extends GPasteGtkPreference
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GPasteGtkPreferencesImagesPageConstructOnly = GPasteGtkPreferencesPageConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
-export interface GPasteGtkPreferencesManagerProps {
+export interface GPasteGtkPreferencesManagerProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GPasteGtkPreferencesManagerConstructOnly = never;
+export type GPasteGtkPreferencesManagerConstructOnly = GObjectConstructOnly;
 
 export interface GPasteGtkPreferencesPageProps extends AdwPreferencesPageProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
 }
@@ -291,6 +241,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

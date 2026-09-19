@@ -1,6 +1,6 @@
 // The widget vocabulary of Granite-7.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Granite-7.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+// GENERATED — do not edit. Provenance: Granite-7.0
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '7.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object'],
+    droppedBases: [],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Granite'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary', '@girs/pango-1.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -53,29 +55,29 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GraniteAccelLabel: ['GraniteAccelLabel', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    GraniteBackButton: ['GraniteBackButton', 'GtkButton', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
-    GraniteBin: ['GraniteBin', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GraniteBox: ['GraniteBox', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    GraniteDatePicker: ['GraniteDatePicker', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkAccessible', 'GtkCellEditable', 'GtkConstraintTarget', 'GtkEditable'],
-    GraniteDialog: ['GraniteDialog', 'GtkDialog', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
-    GraniteHeaderLabel: ['GraniteHeaderLabel', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GraniteHyperTextView: ['GraniteHyperTextView', 'GtkTextView', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
-    GraniteListItem: ['GraniteListItem', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GraniteMessageDialog: ['GraniteMessageDialog', 'GraniteDialog', 'GtkDialog', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
-    GraniteModeSwitch: ['GraniteModeSwitch', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    GraniteOverlayBar: ['GraniteOverlayBar', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GranitePlaceholder: ['GranitePlaceholder', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GraniteServicesContractorProxy: ['GraniteServicesContractorProxy'],
-    GraniteServicesSystem: ['GraniteServicesSystem'],
-    GraniteSettings: ['GraniteSettings'],
-    GraniteSettingsSidebar: ['GraniteSettingsSidebar', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GraniteStyleManager: ['GraniteStyleManager'],
-    GraniteSwitchModelButton: ['GraniteSwitchModelButton', 'GtkToggleButton', 'GtkButton', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
-    GraniteTimePicker: ['GraniteTimePicker', 'GtkEntry', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkCellEditable', 'GtkConstraintTarget', 'GtkEditable'],
-    GraniteToast: ['GraniteToast', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GraniteToolBox: ['GraniteToolBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GraniteValidatedEntry: ['GraniteValidatedEntry', 'GtkEntry', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkCellEditable', 'GtkConstraintTarget', 'GtkEditable'],
+    GraniteAccelLabel: ['GraniteAccelLabel', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    GraniteBackButton: ['GraniteBackButton', 'GtkButton', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
+    GraniteBin: ['GraniteBin', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GraniteBox: ['GraniteBox', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    GraniteDatePicker: ['GraniteDatePicker', 'GtkEntry', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkAccessible', 'GtkCellEditable', 'GtkConstraintTarget', 'GtkEditable'],
+    GraniteDialog: ['GraniteDialog', 'GtkDialog', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    GraniteHeaderLabel: ['GraniteHeaderLabel', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GraniteHyperTextView: ['GraniteHyperTextView', 'GtkTextView', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
+    GraniteListItem: ['GraniteListItem', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GraniteMessageDialog: ['GraniteMessageDialog', 'GraniteDialog', 'GtkDialog', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    GraniteModeSwitch: ['GraniteModeSwitch', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    GraniteOverlayBar: ['GraniteOverlayBar', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GranitePlaceholder: ['GranitePlaceholder', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GraniteServicesContractorProxy: ['GraniteServicesContractorProxy', 'GObject'],
+    GraniteServicesSystem: ['GraniteServicesSystem', 'GObject'],
+    GraniteSettings: ['GraniteSettings', 'GObject'],
+    GraniteSettingsSidebar: ['GraniteSettingsSidebar', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GraniteStyleManager: ['GraniteStyleManager', 'GObject'],
+    GraniteSwitchModelButton: ['GraniteSwitchModelButton', 'GtkToggleButton', 'GtkButton', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
+    GraniteTimePicker: ['GraniteTimePicker', 'GtkEntry', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkCellEditable', 'GtkConstraintTarget', 'GtkEditable'],
+    GraniteToast: ['GraniteToast', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GraniteToolBox: ['GraniteToolBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GraniteValidatedEntry: ['GraniteValidatedEntry', 'GtkEntry', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkCellEditable', 'GtkConstraintTarget', 'GtkEditable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -91,6 +93,7 @@ export const ENUM_NICKS = {
     GraniteSettingsColorScheme: ['no-preference', 'dark', 'light'],
     GraniteSettingsPageStatusType: ['error', 'offline', 'success', 'warning', 'none'],
     GraniteToastDismissReason: ['expired', 'closed', 'withdrawn'],
+    GtkButtonsType: ['none', 'ok', 'close', 'cancel', 'yes-no', 'ok-cancel'],
     PangoEllipsizeMode: ['none', 'start', 'middle', 'end'],
 };
 
@@ -129,6 +132,12 @@ export const ENUM_VALUES = {
     'GraniteToastDismissReason.closed': 2,
     'GraniteToastDismissReason.expired': 1,
     'GraniteToastDismissReason.withdrawn': 3,
+    'GtkButtonsType.cancel': 3,
+    'GtkButtonsType.close': 2,
+    'GtkButtonsType.none': 0,
+    'GtkButtonsType.ok': 1,
+    'GtkButtonsType.ok-cancel': 5,
+    'GtkButtonsType.yes-no': 4,
     'PangoEllipsizeMode.end': 3,
     'PangoEllipsizeMode.middle': 2,
     'PangoEllipsizeMode.none': 0,

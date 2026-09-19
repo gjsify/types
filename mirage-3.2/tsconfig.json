@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./mirage-3.2.d.ts"]
+  "include": ["./mirage-3.2.d.ts","./mirage-3.2-vocabulary.d.ts"]
 }
 
 

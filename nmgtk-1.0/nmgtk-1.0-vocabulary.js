@@ -1,6 +1,6 @@
 // The widget vocabulary of NMGtk-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: NMGtk-1.0 — dropped empty base(s): GObject.Object Gio.AsyncInitable Gio.Initable GObject.InitiallyUnowned Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: NMGtk-1.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gio.AsyncInitable', 'Gio.Initable', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['NMA'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -31,9 +33,9 @@ export const OWN_SIGNALS = {};
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    NMAMobileProvidersDatabase: ['NMAMobileProvidersDatabase'],
-    NMAVpnPasswordDialog: ['NMAVpnPasswordDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    NMAWifiDialog: ['NMAWifiDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    NMAMobileProvidersDatabase: ['NMAMobileProvidersDatabase', 'GObject', 'GAsyncInitable', 'GInitable'],
+    NMAVpnPasswordDialog: ['NMAVpnPasswordDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    NMAWifiDialog: ['NMAWifiDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

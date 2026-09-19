@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gpseq-1.0.d.ts"]
+  "include": ["./gpseq-1.0.d.ts","./gpseq-1.0-vocabulary.d.ts"]
 }
 
 

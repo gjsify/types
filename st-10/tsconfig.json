@@ -95,7 +95,7 @@
       ]
 }
   },
-  "include": ["./st-10.d.ts"]
+  "include": ["./st-10.d.ts","./st-10-vocabulary.d.ts"]
 }
 
 

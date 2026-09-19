@@ -1,6 +1,6 @@
 {
     "name": "@girs/gst-0.10",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "libraryVersion": "0.10.29",
     "description": "GJS TypeScript type definitions for Gst-0.10, generated from library version 0.10.29",
     "type": "module",
@@ -17,6 +17,11 @@
         "import": "./gst-0.10-import.js",
         "default": "./gst-0.10-import.js"
       },
+      "./vocabulary": {
+        "types": "./gst-0.10-vocabulary.d.ts",
+        "import": "./gst-0.10-vocabulary.js",
+        "default": "./gst-0.10-vocabulary.js"
+      },
       "./gst-0.10": {
         "types": "./gst-0.10.d.ts",
         "import": "./gst-0.10.js",
@@ -32,11 +37,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/libxml2-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/libxml2-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

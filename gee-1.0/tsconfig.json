@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./gee-1.0.d.ts"]
+  "include": ["./gee-1.0.d.ts","./gee-1.0-vocabulary.d.ts"]
 }
 
 

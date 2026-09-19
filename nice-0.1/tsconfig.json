@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./nice-0.1.d.ts"]
+  "include": ["./nice-0.1.d.ts","./nice-0.1-vocabulary.d.ts"]
 }
 
 

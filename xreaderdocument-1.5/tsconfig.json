@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./xreaderdocument-1.5.d.ts"]
+  "include": ["./xreaderdocument-1.5.d.ts","./xreaderdocument-1.5-vocabulary.d.ts"]
 }
 
 

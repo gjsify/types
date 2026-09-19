@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./secretunstable-0.d.ts"]
+  "include": ["./secretunstable-0.d.ts","./secretunstable-0-vocabulary.d.ts"]
 }
 
 

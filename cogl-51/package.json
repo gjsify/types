@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-51",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for Cogl-51",
     "type": "module",
     "module": "cogl-51.js",
@@ -15,6 +15,11 @@
         "types": "./cogl-51-import.d.ts",
         "import": "./cogl-51-import.js",
         "default": "./cogl-51-import.js"
+      },
+      "./vocabulary": {
+        "types": "./cogl-51-vocabulary.d.ts",
+        "import": "./cogl-51-vocabulary.js",
+        "default": "./cogl-51-vocabulary.js"
       },
       "./cogl-51": {
         "types": "./cogl-51.d.ts",
@@ -31,12 +36,12 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/mtk-51": "^5.2.0",
-      "@girs/graphene-1.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gl-1.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/mtk-51": "^5.3.0",
+      "@girs/graphene-1.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gl-1.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

@@ -1,6 +1,6 @@
 // The widget vocabulary of Gedit-3.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Gedit-3.0 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application
+// GENERATED — do not edit. Provenance: Gedit-3.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,14 +11,15 @@ export const PROVENANCE = {
     version: '3.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gio.ActionGroup', 'Gio.ActionMap', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
-    inlinedBases: ['Gio.Application'],
+    droppedBases: ['Atk.ImplementorIface'],
+    inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Gedit'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/gtksource-300/vocabulary', '@girs/tepl-6/vocabulary'],
 };
 
 export const OWN_PROPS = {
-    GApplication: ['action-group', 'application-id', 'flags', 'inactivity-timeout', 'resource-base-path', 'version'],
     GeditDocument: ['content-type'],
     GeditEncodingsComboBox: ['save-mode'],
     GeditMenuExtension: ['menu'],
@@ -27,7 +28,6 @@ export const OWN_PROPS = {
 };
 
 export const OWN_SIGNALS = {
-    GApplication: ['activate', 'command-line', 'handle-local-options', 'name-lost', 'open', 'shutdown', 'startup'],
     GeditDocument: ['load', 'loaded', 'save', 'saved'],
     GeditMessageBus: ['dispatch', 'registered', 'unregistered'],
     GeditView: ['drop-uris'],
@@ -42,15 +42,15 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GeditApp: ['GeditApp', 'GtkApplication', 'GApplication'],
-    GeditDocument: ['GeditDocument', 'TeplBuffer', 'GtkSourceBuffer', 'GtkTextBuffer'],
-    GeditEncodingsComboBox: ['GeditEncodingsComboBox', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
-    GeditMenuExtension: ['GeditMenuExtension'],
-    GeditMessage: ['GeditMessage'],
-    GeditMessageBus: ['GeditMessageBus'],
-    GeditTab: ['GeditTab', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    GeditView: ['GeditView', 'TeplView', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
-    GeditWindow: ['GeditWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    GeditApp: ['GeditApp', 'GtkApplication', 'GApplication', 'GObject', 'GActionGroup', 'GActionMap'],
+    GeditDocument: ['GeditDocument', 'TeplBuffer', 'GtkSourceBuffer', 'GtkTextBuffer', 'GObject'],
+    GeditEncodingsComboBox: ['GeditEncodingsComboBox', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
+    GeditMenuExtension: ['GeditMenuExtension', 'GObject'],
+    GeditMessage: ['GeditMessage', 'GObject'],
+    GeditMessageBus: ['GeditMessageBus', 'GObject'],
+    GeditTab: ['GeditTab', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    GeditView: ['GeditView', 'TeplView', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
+    GeditWindow: ['GeditWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GActionGroup', 'GActionMap', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -129,17 +129,6 @@ export const ENUM_VALUES_UNREADABLE = {};
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
 export const FLAG_VALUES = {
-    'GApplicationFlags.allow-replacement': 128,
-    'GApplicationFlags.can-override-app-id': 64,
-    'GApplicationFlags.default-flags': 0,
-    'GApplicationFlags.flags-none': 0,
-    'GApplicationFlags.handles-command-line': 8,
-    'GApplicationFlags.handles-open': 4,
-    'GApplicationFlags.is-launcher': 2,
-    'GApplicationFlags.is-service': 1,
-    'GApplicationFlags.non-unique': 32,
-    'GApplicationFlags.replace': 256,
-    'GApplicationFlags.send-environment': 16,
     'GeditDebugSection.debug-app': 64,
     'GeditDebugSection.debug-commands': 32,
     'GeditDebugSection.debug-document': 16,
@@ -175,9 +164,7 @@ export const FLAG_VALUES_UNREADABLE = {};
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
 // that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
-export const PROP_ENUMS = {
-    'GApplication.flags': 'GApplicationFlags',
-};
+export const PROP_ENUMS = {};
 
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
@@ -214,14 +201,5 @@ export const SLOT_CANDIDATES = {
 };
 
 export const SINCE = {
-    'GApplication': '2.28',
-    'GApplication.action-group': '2.28',
-    'GApplication.application-id': '2.28',
-    'GApplication.flags': '2.28',
-    'GApplication.inactivity-timeout': '2.28',
-    'GApplication.resource-base-path': '2.28',
-    'GApplication.version': '2.80',
-    'GApplication::handle-local-options': '2.40',
-    'GApplication::name-lost': '2.60',
     'GeditWindow::active-tab-changed': '47',
 };

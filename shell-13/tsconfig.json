@@ -113,7 +113,7 @@
       ]
 }
   },
-  "include": ["./shell-13.d.ts"]
+  "include": ["./shell-13.d.ts","./shell-13-vocabulary.d.ts"]
 }
 
 

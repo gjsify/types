@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./folkstelepathy-0.7.d.ts"]
+  "include": ["./folkstelepathy-0.7.d.ts","./folkstelepathy-0.7-vocabulary.d.ts"]
 }
 
 

@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./playerctl-2.0.d.ts"]
+  "include": ["./playerctl-2.0.d.ts","./playerctl-2.0-vocabulary.d.ts"]
 }
 
 

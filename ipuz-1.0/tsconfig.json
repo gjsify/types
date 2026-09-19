@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./ipuz-1.0.d.ts"]
+  "include": ["./ipuz-1.0.d.ts","./ipuz-1.0-vocabulary.d.ts"]
 }
 
 

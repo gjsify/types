@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gusb-1.0.d.ts"]
+  "include": ["./gusb-1.0.d.ts","./gusb-1.0-vocabulary.d.ts"]
 }
 
 

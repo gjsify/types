@@ -1,6 +1,6 @@
 // The widget vocabulary of Midori-0.6 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Midori-0.6 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface Gio.ListModel Gio.Initable — inlined base(s) their owner's vocabulary does not emit: Gio.Application Peas.Engine
+// GENERATED — do not edit. Provenance: Midori-0.6 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,14 +11,15 @@ export const PROVENANCE = {
     version: '0.6',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gio.ActionGroup', 'Gio.ActionMap', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface', 'Gio.ListModel', 'Gio.Initable'],
-    inlinedBases: ['Gio.Application', 'Peas.Engine'],
+    droppedBases: ['Atk.ImplementorIface'],
+    inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Midori'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/peas-1.0/vocabulary', '@girs/webkit2-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
-    GApplication: ['action-group', 'application-id', 'flags', 'inactivity-timeout', 'resource-base-path', 'version'],
     MidoriApp: ['exec-path'],
     MidoriBrowser: ['is-fullscreen', 'is-loading', 'is-locked', 'tab', 'trash', 'uri', 'web-context'],
     MidoriCompletion: ['incognito', 'key'],
@@ -39,16 +40,13 @@ export const OWN_PROPS = {
     MidoriTab: ['can-go-back', 'can-go-forward', 'color', 'display-title', 'display-uri', 'item', 'link-uri', 'pinned', 'progress', 'secure'],
     MidoriTally: ['active', 'show-close', 'tab', 'title', 'uri'],
     MidoriUrlbar: ['key', 'location', 'regex', 'secure', 'uri'],
-    PeasEngine: ['loaded-plugins', 'nonglobal-loaders'],
 };
 
 export const OWN_SIGNALS = {
-    GApplication: ['activate', 'command-line', 'handle-local-options', 'name-lost', 'open', 'shutdown', 'startup'],
     MidoriBrowser: ['default-tab'],
     MidoriDownloadButton: ['show-downloads'],
     MidoriDownloadItem: ['finished'],
     MidoriTally: ['clicked'],
-    PeasEngine: ['load-plugin', 'unload-plugin'],
 };
 
 // Every GType this namespace can INSTANTIATE -> the declarations its members come from.
@@ -59,32 +57,32 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    MidoriApp: ['MidoriApp', 'GtkApplication', 'GApplication'],
-    MidoriBrowser: ['MidoriBrowser', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    MidoriClearPrivateData: ['MidoriClearPrivateData', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    MidoriCompletion: ['MidoriCompletion'],
-    MidoriCoreSettings: ['MidoriCoreSettings', 'MidoriSettings'],
-    MidoriDatabase: ['MidoriDatabase', 'MidoriLoggable'],
-    MidoriDatabaseItem: ['MidoriDatabaseItem'],
-    MidoriDatabaseStatement: ['MidoriDatabaseStatement'],
-    MidoriDownloadButton: ['MidoriDownloadButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    MidoriDownloadItem: ['MidoriDownloadItem'],
-    MidoriDownloadRow: ['MidoriDownloadRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
-    MidoriFavicon: ['MidoriFavicon', 'GtkImage', 'GtkMisc', 'GtkWidget', 'GtkBuildable'],
-    MidoriHistoryDatabase: ['MidoriHistoryDatabase', 'MidoriDatabase', 'MidoriLoggable'],
-    MidoriLabelWidget: ['MidoriLabelWidget', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    MidoriNavigationbar: ['MidoriNavigationbar', 'GtkActionBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    MidoriNetworkCheck: ['MidoriNetworkCheck', 'GtkActionBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    MidoriPlugins: ['MidoriPlugins', 'PeasEngine', 'MidoriLoggable'],
-    MidoriPreferences: ['MidoriPreferences', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    MidoriSettings: ['MidoriSettings'],
-    MidoriStatusbar: ['MidoriStatusbar', 'GtkStatusbar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    MidoriSuggestionItem: ['MidoriSuggestionItem', 'MidoriDatabaseItem'],
-    MidoriSuggestionRow: ['MidoriSuggestionRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
-    MidoriSwitcher: ['MidoriSwitcher', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    MidoriTab: ['MidoriTab', 'WebKitWebView', 'WebKitWebViewBase', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    MidoriTally: ['MidoriTally', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    MidoriUrlbar: ['MidoriUrlbar', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
+    MidoriApp: ['MidoriApp', 'GtkApplication', 'GApplication', 'GObject', 'GActionGroup', 'GActionMap'],
+    MidoriBrowser: ['MidoriBrowser', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GActionGroup', 'GActionMap', 'GtkBuildable'],
+    MidoriClearPrivateData: ['MidoriClearPrivateData', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    MidoriCompletion: ['MidoriCompletion', 'GObject', 'GListModel'],
+    MidoriCoreSettings: ['MidoriCoreSettings', 'MidoriSettings', 'GObject'],
+    MidoriDatabase: ['MidoriDatabase', 'GObject', 'GInitable', 'GListModel', 'MidoriLoggable'],
+    MidoriDatabaseItem: ['MidoriDatabaseItem', 'GObject'],
+    MidoriDatabaseStatement: ['MidoriDatabaseStatement', 'GObject', 'GInitable'],
+    MidoriDownloadButton: ['MidoriDownloadButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    MidoriDownloadItem: ['MidoriDownloadItem', 'GObject'],
+    MidoriDownloadRow: ['MidoriDownloadRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkBuildable'],
+    MidoriFavicon: ['MidoriFavicon', 'GtkImage', 'GtkMisc', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    MidoriHistoryDatabase: ['MidoriHistoryDatabase', 'MidoriDatabase', 'GObject', 'GInitable', 'GListModel', 'MidoriLoggable'],
+    MidoriLabelWidget: ['MidoriLabelWidget', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    MidoriNavigationbar: ['MidoriNavigationbar', 'GtkActionBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    MidoriNetworkCheck: ['MidoriNetworkCheck', 'GtkActionBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    MidoriPlugins: ['MidoriPlugins', 'PeasEngine', 'GObject', 'MidoriLoggable'],
+    MidoriPreferences: ['MidoriPreferences', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    MidoriSettings: ['MidoriSettings', 'GObject'],
+    MidoriStatusbar: ['MidoriStatusbar', 'GtkStatusbar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    MidoriSuggestionItem: ['MidoriSuggestionItem', 'MidoriDatabaseItem', 'GObject'],
+    MidoriSuggestionRow: ['MidoriSuggestionRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkBuildable'],
+    MidoriSwitcher: ['MidoriSwitcher', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    MidoriTab: ['MidoriTab', 'WebKitWebView', 'WebKitWebViewBase', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    MidoriTally: ['MidoriTally', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    MidoriUrlbar: ['MidoriUrlbar', 'GtkEntry', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -161,19 +159,7 @@ export const ENUM_VALUES_UNREADABLE = {};
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
-export const FLAG_VALUES = {
-    'GApplicationFlags.allow-replacement': 128,
-    'GApplicationFlags.can-override-app-id': 64,
-    'GApplicationFlags.default-flags': 0,
-    'GApplicationFlags.flags-none': 0,
-    'GApplicationFlags.handles-command-line': 8,
-    'GApplicationFlags.handles-open': 4,
-    'GApplicationFlags.is-launcher': 2,
-    'GApplicationFlags.is-service': 1,
-    'GApplicationFlags.non-unique': 32,
-    'GApplicationFlags.replace': 256,
-    'GApplicationFlags.send-environment': 16,
-};
+export const FLAG_VALUES = {};
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
 // `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
@@ -195,7 +181,6 @@ export const FLAG_VALUES_UNREADABLE = {};
 // that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
-    'GApplication.flags': 'GApplicationFlags',
     'MidoriCoreSettings.load-on-startup': 'MidoriStartupType',
     'MidoriCoreSettings.proxy-type': 'MidoriProxyType',
 };
@@ -243,15 +228,4 @@ export const SLOT_CANDIDATES = {
     },
 };
 
-export const SINCE = {
-    'GApplication': '2.28',
-    'GApplication.action-group': '2.28',
-    'GApplication.application-id': '2.28',
-    'GApplication.flags': '2.28',
-    'GApplication.inactivity-timeout': '2.28',
-    'GApplication.resource-base-path': '2.28',
-    'GApplication.version': '2.80',
-    'GApplication::handle-local-options': '2.40',
-    'GApplication::name-lost': '2.60',
-    'PeasEngine.nonglobal-loaders': '1.14',
-};
+export const SINCE = {};

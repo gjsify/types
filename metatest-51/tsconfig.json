@@ -77,7 +77,7 @@
       ]
 }
   },
-  "include": ["./metatest-51.d.ts"]
+  "include": ["./metatest-51.d.ts","./metatest-51-vocabulary.d.ts"]
 }
 
 

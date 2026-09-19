@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for RB-3.0.
  *
- * GENERATED — do not edit. Provenance: RB-3.0 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application — prop(s) no TypeScript value satisfies: RB.RhythmDBQueryModel.query RB.RhythmDBQueryModel.sort-data RB.RhythmDBQueryModel.sort-data-destroy RB.RhythmDBQueryModel.sort-func
+ * GENERATED — do not edit. Provenance: RB-3.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: RB.RhythmDBQueryModel.query RB.RhythmDBQueryModel.sort-data RB.RhythmDBQueryModel.sort-data-destroy RB.RhythmDBQueryModel.sort-func
  *
- * 50 instantiable GTypes (of which 18 concrete widgets), 57 declarations (1 inlined from a namespace whose vocabulary does not emit them), 20 enum nick unions, 0 slot candidates.
+ * 50 instantiable GTypes (of which 18 concrete widgets), 56 declarations, 20 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -30,6 +30,8 @@ import type Gio from '@girs/gio-2.0';
 import type GstPbutils from '@girs/gstpbutils-1.0';
 import type Gtk from '@girs/gtk-3.0';
 import type RB from './rb-3.0.js';
+import type { GActionGroupConstructOnly, GActionGroupProps, GActionMapConstructOnly, GActionMapProps, GApplicationConstructOnly, GApplicationProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkApplicationConstructOnly, GtkApplicationProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkCellRendererConstructOnly, GtkCellRendererPixbufConstructOnly, GtkCellRendererPixbufProps, GtkCellRendererProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkGridConstructOnly, GtkGridProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrolledWindowConstructOnly, GtkScrolledWindowProps, GtkTreeDragSourceConstructOnly, GtkTreeDragSourceProps, GtkTreeModelConstructOnly, GtkTreeModelFilterConstructOnly, GtkTreeModelFilterProps, GtkTreeModelProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -73,58 +75,16 @@ export type RhythmDBQueryTypeNick = 'query-end' | 'disjunctive-marker' | 'subque
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-/** `GApplication` is the core class for application support. */
-export interface GApplicationProps {
-    /**
-     * The group of actions that the application exports.
-     * @since 2.28
-     * @deprecated since 2.32: Use the [iface@Gio.ActionMap] interface instead.
-     */
-    'action-group'?: Gio.ActionGroup;
-    /**
-     * The unique identifier for the application.
-     * @since 2.28
-     * @default NULL
-     */
-    'application-id'?: string | null;
-    /**
-     * Flags specifying the behaviour of the application.
-     * @since 2.28
-     * @default G_APPLICATION_FLAGS_NONE
-     */
-    flags?: number;
-    /**
-     * Time (in milliseconds) to stay alive after becoming idle.
-     * @since 2.28
-     * @default 0
-     */
-    'inactivity-timeout'?: number;
-    /**
-     * The base resource path for the application.
-     * @since 2.28
-     * @default NULL
-     */
-    'resource-base-path'?: string | null;
-    /**
-     * The human-readable version number of the application.
-     * @since 2.80
-     * @default NULL
-     */
-    version?: string | null;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GApplicationConstructOnly = never;
-
 /** RBApplication contains some interactions with the desktop environment, such as the app menu and processing of files specified on the command line. */
-export interface RBApplicationProps extends GtkApplicationProps {
+export interface RBApplicationProps extends GtkApplicationProps, GActionGroupProps, GActionMapProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBApplicationConstructOnly = GtkApplicationConstructOnly;
+export type RBApplicationConstructOnly = GtkApplicationConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly;
 
-export interface RBAsyncCopyProps {
+export interface RBAsyncCopyProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBAsyncCopyConstructOnly = never;
+export type RBAsyncCopyConstructOnly = GObjectConstructOnly;
 
 /** A playlist populated with the results of a database query. */
 export interface RBAutoPlaylistSourceProps extends RBPlaylistSourceProps, GtkBuildableProps, GtkOrientableProps {
@@ -164,10 +124,10 @@ export interface RBCellRendererRatingProps extends GtkCellRendererProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type RBCellRendererRatingConstructOnly = GtkCellRendererConstructOnly;
 
-export interface RBChunkLoaderProps {
+export interface RBChunkLoaderProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBChunkLoaderConstructOnly = never;
+export type RBChunkLoaderConstructOnly = GObjectConstructOnly;
 
 /** This is the base class for items that appear in the display page tree and can occupy the main display area. */
 export interface RBDisplayPageProps extends Omit<GtkBoxProps, 'parent'>, GtkBuildableProps, GtkOrientableProps {
@@ -223,10 +183,10 @@ export interface RBDisplayPageTreeProps extends GtkGridProps, GtkBuildableProps,
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type RBDisplayPageTreeConstructOnly = GtkGridConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | 'shell';
 
-export interface RBEncoderFactoryProps {
+export interface RBEncoderFactoryProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBEncoderFactoryConstructOnly = never;
+export type RBEncoderFactoryConstructOnly = GObjectConstructOnly;
 
 /** This class provides a predefined set of columns for displaying the common set of #RhythmDBEntry properties, but also allows custom columns to be appended. */
 export interface RBEntryViewProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
@@ -263,7 +223,7 @@ export interface RBEntryViewProps extends GtkBoxProps, GtkBuildableProps, GtkOri
 export type RBEntryViewConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | 'db' | 'is-drag-dest' | 'is-drag-source' | 'shell-player';
 
 /** This class simplifies searching for and providing external metadata such as album art or lyrics. */
-export interface RBExtDBProps {
+export interface RBExtDBProps extends GObjectProps {
     /**
      * Name of the metadata store.
      * @default NULL
@@ -271,7 +231,7 @@ export interface RBExtDBProps {
     name?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBExtDBConstructOnly = 'name';
+export type RBExtDBConstructOnly = GObjectConstructOnly | 'name';
 
 /** This widget displays images, performing a simple fade transition between them. */
 export interface RBFadingImageProps extends GtkWidgetProps, GtkBuildableProps {
@@ -290,7 +250,7 @@ export interface RBFadingImageProps extends GtkWidgetProps, GtkBuildableProps {
 export type RBFadingImageConstructOnly = GtkWidgetConstructOnly | GtkBuildableConstructOnly | 'fallback' | 'use-tooltip';
 
 /** RBHistory is a GSequence that maintains a "current" pointer and can delete an arbitrary element in amortized O(log(N)) time. */
-export interface RBHistoryProps {
+export interface RBHistoryProps extends GObjectProps {
     /**
      * Maximum number of entries to store in the history.
      * @default 0
@@ -303,7 +263,7 @@ export interface RBHistoryProps {
     'truncate-on-play'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBHistoryConstructOnly = never;
+export type RBHistoryConstructOnly = GObjectConstructOnly;
 
 /** This widget contains a set of #RBPropertyView<!-- -->s backed by #RhythmDBPropertyModel<!-- -->s and constructs a chain of #RhythmDBQueryModel<!-- -->s to perform filtering of the entries in a source. */
 export interface RBLibraryBrowserProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
@@ -321,10 +281,10 @@ export interface RBLibraryBrowserProps extends GtkBoxProps, GtkBuildableProps, G
 export type RBLibraryBrowserConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | 'db' | 'entry-type';
 
 /** Stores a list of items and emits notification signals on changes. */
-export interface RBListModelProps {
+export interface RBListModelProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBListModelConstructOnly = never;
+export type RBListModelConstructOnly = GObjectConstructOnly;
 
 export interface RBMediaPlayerEntryTypeProps extends RhythmDBEntryTypeProps {
     /** @default NULL */
@@ -345,30 +305,30 @@ export interface RBMediaPlayerSourceProps extends RBBrowserSourceProps, GtkBuild
 export type RBMediaPlayerSourceConstructOnly = RBBrowserSourceConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
 /** Provides a simple synchronous interface for metadata extraction and updating. */
-export interface RBMetaDataProps {
+export interface RBMetaDataProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBMetaDataConstructOnly = never;
+export type RBMetaDataConstructOnly = GObjectConstructOnly;
 
 /** A play order defines an ordering of the entries from a #RhythmDBQueryModel that the #RBShellPlayer uses to get the next or previous entry to play. */
-export interface RBPlayOrderProps {
+export interface RBPlayOrderProps extends GObjectProps {
     /** The #RBShellPlayer instance */
     player?: RB.ShellPlayer;
     /** The current playing #RhythmDBEntry */
     'playing-entry'?: RB.RhythmDBEntry;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBPlayOrderConstructOnly = 'player';
+export type RBPlayOrderConstructOnly = GObjectConstructOnly | 'player';
 
 /** The playlist manager loads and saves the on-disk playlist file, provides UI actions and a DBus interface for dealing with playlists, and internal interfaces for creating playlists. */
-export interface RBPlaylistManagerProps {
+export interface RBPlaylistManagerProps extends GObjectProps {
     /** @default NULL */
     'playlists-file'?: string;
     shell?: RB.Shell;
     source?: RB.Source;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBPlaylistManagerConstructOnly = never;
+export type RBPlaylistManagerConstructOnly = GObjectConstructOnly;
 
 /** This class provides some common infrastructure for playlist sources. */
 export interface RBPlaylistSourceProps extends RBSourceProps, GtkBuildableProps, GtkOrientableProps {
@@ -381,16 +341,16 @@ export interface RBPlaylistSourceProps extends RBSourceProps, GtkBuildableProps,
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type RBPlaylistSourceConstructOnly = RBSourceConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | 'is-local';
 
-export interface RBPodcastManagerProps {
+export interface RBPodcastManagerProps extends GObjectProps {
     shell?: RB.Shell;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBPodcastManagerConstructOnly = 'shell';
+export type RBPodcastManagerConstructOnly = GObjectConstructOnly | 'shell';
 
-export interface RBPodcastSearchProps {
+export interface RBPodcastSearchProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBPodcastSearchConstructOnly = never;
+export type RBPodcastSearchConstructOnly = GObjectConstructOnly;
 
 export interface RBPodcastSearchITunesProps extends RBPodcastSearchProps {
 }
@@ -431,12 +391,12 @@ export interface RBRatingProps extends GtkWidgetProps, GtkBuildableProps {
 export type RBRatingConstructOnly = GtkWidgetConstructOnly | GtkBuildableConstructOnly;
 
 /** The removable media manager maintains the mapping between GIO GVolume and GMount objects and rhythmbox sources. */
-export interface RBRemovableMediaManagerProps {
+export interface RBRemovableMediaManagerProps extends GObjectProps {
     /** The #RBShell instance. */
     shell?: RB.Shell;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBRemovableMediaManagerConstructOnly = 'shell';
+export type RBRemovableMediaManagerConstructOnly = GObjectConstructOnly | 'shell';
 
 /** The search entry contains a label and a text entry box. */
 export interface RBSearchEntryProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
@@ -475,7 +435,7 @@ export interface RBSegmentedBarProps extends GtkWidgetProps, GtkBuildableProps {
 export type RBSegmentedBarConstructOnly = GtkWidgetConstructOnly | GtkBuildableConstructOnly;
 
 /** RBShell is the main application class in Rhythmbox. */
-export interface RBShellProps {
+export interface RBShellProps extends GObjectProps {
     application?: RB.Application;
     /**
      * Whether Rhythmbox was automatically started by the session manager
@@ -519,10 +479,10 @@ export interface RBShellProps {
     visibility?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBShellConstructOnly = 'application' | 'autostarted' | 'disable-plugins' | 'dry-run' | 'no-registration' | 'no-update' | 'playlists-file' | 'rhythmdb-file';
+export type RBShellConstructOnly = GObjectConstructOnly | 'application' | 'autostarted' | 'disable-plugins' | 'dry-run' | 'no-registration' | 'no-update' | 'playlists-file' | 'rhythmdb-file';
 
 /** The shell player (or player shell, depending on who you're talking to) manages the #RBPlayer instance, tracks the current playing #RhythmDBEntry, and manages the various #RBPlayOrder instances. */
-export interface RBShellPlayerProps {
+export interface RBShellPlayerProps extends GObjectProps {
     /** The #RhythmDB */
     db?: RB.RhythmDB;
     /**
@@ -546,7 +506,7 @@ export interface RBShellPlayerProps {
     volume?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBShellPlayerConstructOnly = 'db';
+export type RBShellPlayerConstructOnly = GObjectConstructOnly | 'db';
 
 /** The preferences dialog is built around a #GtkNotebook widget, with two built-in pages and additional pages for various sources. */
 export interface RBShellPreferencesProps extends GtkDialogProps, GtkBuildableProps {
@@ -596,10 +556,10 @@ export interface RBSourceProps extends RBDisplayPageProps, GtkBuildableProps, Gt
 export type RBSourceConstructOnly = RBDisplayPageConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | 'entry-type' | 'toolbar-menu';
 
 /** These translate the text in the search entry box into a RhythmDBQuery. */
-export interface RBSourceSearchProps {
+export interface RBSourceSearchProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBSourceSearchConstructOnly = never;
+export type RBSourceSearchConstructOnly = GObjectConstructOnly;
 
 /** This implementation of #RBSourceSearch constructs queries that search on a single #RhythmDBEntry property. */
 export interface RBSourceSearchBasicProps extends RBSourceSearchProps {
@@ -634,17 +594,17 @@ export interface RBStreamingSourceProps extends RBSourceProps, GtkBuildableProps
 export type RBStreamingSourceConstructOnly = RBSourceConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
 /** Simplifies the use of string:GValue maps with respect to copying of the values inserted into the map. */
-export interface RBStringValueMapProps {
+export interface RBStringValueMapProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBStringValueMapConstructOnly = never;
+export type RBStringValueMapConstructOnly = GObjectConstructOnly;
 
-export interface RBTaskListProps {
+export interface RBTaskListProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBTaskListConstructOnly = never;
+export type RBTaskListConstructOnly = GObjectConstructOnly;
 
-export interface RBTaskProgressProps {
+export interface RBTaskProgressProps extends GObjectProps {
     /** @default FALSE */
     'task-cancellable'?: boolean;
     /** @default NULL */
@@ -661,16 +621,16 @@ export interface RBTaskProgressProps {
     'task-progress'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBTaskProgressConstructOnly = never;
+export type RBTaskProgressConstructOnly = GObjectConstructOnly;
 
 /** This implementation of #RBTaskProgress can be used to represent tasks that aren't bound to the lifecycle of an object that can implement the interface directly. */
-export interface RBTaskProgressSimpleProps extends RBTaskProgressProps {
+export interface RBTaskProgressSimpleProps extends GObjectProps, RBTaskProgressProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBTaskProgressSimpleConstructOnly = RBTaskProgressConstructOnly;
+export type RBTaskProgressSimpleConstructOnly = GObjectConstructOnly | RBTaskProgressConstructOnly;
 
 /** Manages the transfer of a set of tracks (using #RBEncoder), providing overall status information and allowing the transfer to be cancelled as a single unit. */
-export interface RBTrackTransferBatchProps extends RBTaskProgressProps {
+export interface RBTrackTransferBatchProps extends GObjectProps, RBTaskProgressProps {
     /** The RBSource to which the tracks are being transferred. */
     destination?: RB.Source;
     /** A GstEncodingTarget describing allowable target formats. */
@@ -683,14 +643,14 @@ export interface RBTrackTransferBatchProps extends RBTaskProgressProps {
     source?: RB.Source;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBTrackTransferBatchConstructOnly = RBTaskProgressConstructOnly | 'destination' | 'queue' | 'settings' | 'source';
+export type RBTrackTransferBatchConstructOnly = GObjectConstructOnly | RBTaskProgressConstructOnly | 'destination' | 'queue' | 'settings' | 'source';
 
-export interface RBTrackTransferQueueProps {
+export interface RBTrackTransferQueueProps extends GObjectProps {
     /** The #RBShell */
     shell?: RB.Shell;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RBTrackTransferQueueConstructOnly = 'shell';
+export type RBTrackTransferQueueConstructOnly = GObjectConstructOnly | 'shell';
 
 /** A simple dialog used to request a single URI from the user. */
 export interface RBURIDialogProps extends GtkDialogProps, GtkBuildableProps {
@@ -701,7 +661,7 @@ export interface RBURIDialogProps extends GtkDialogProps, GtkBuildableProps {
 export type RBURIDialogConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly | 'label';
 
 /** This is the base class for database entry type classes, which provide some aspects of the behaviour of database entry types. */
-export interface RhythmDBEntryTypeProps {
+export interface RhythmDBEntryTypeProps extends GObjectProps {
     /**
      * Metadata cache name.
      * @default NULL
@@ -731,20 +691,20 @@ export interface RhythmDBEntryTypeProps {
     'type-data-size'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RhythmDBEntryTypeConstructOnly = 'cache-name' | 'category' | 'db' | 'name' | 'save-to-disk' | 'type-data-size';
+export type RhythmDBEntryTypeConstructOnly = GObjectConstructOnly | 'cache-name' | 'category' | 'db' | 'name' | 'save-to-disk' | 'type-data-size';
 
 /** Tracks the addition to the database of files under a set of directories, providing status information. */
-export interface RhythmDBImportJobProps extends RBTaskProgressProps {
+export interface RhythmDBImportJobProps extends GObjectProps, RBTaskProgressProps {
     db?: RB.RhythmDB;
     'entry-type'?: RB.RhythmDBEntryType;
     'error-type'?: RB.RhythmDBEntryType;
     'ignore-type'?: RB.RhythmDBEntryType;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RhythmDBImportJobConstructOnly = RBTaskProgressConstructOnly | 'db' | 'entry-type' | 'error-type' | 'ignore-type';
+export type RhythmDBImportJobConstructOnly = GObjectConstructOnly | RBTaskProgressConstructOnly | 'db' | 'entry-type' | 'error-type' | 'ignore-type';
 
 /** A RhythmDBPropertyModel groups the entries in a #RhythmDBQueryModel by the value of a property. */
-export interface RhythmDBPropertyModelProps extends GtkTreeModelProps {
+export interface RhythmDBPropertyModelProps extends GObjectProps, GtkTreeModelProps {
     /** The #RhythmDB object the model is associated with. */
     db?: RB.RhythmDB;
     /**
@@ -756,10 +716,10 @@ export interface RhythmDBPropertyModelProps extends GtkTreeModelProps {
     'query-model'?: RB.RhythmDBQueryModel;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RhythmDBPropertyModelConstructOnly = GtkTreeModelConstructOnly | 'db' | 'prop';
+export type RhythmDBPropertyModelConstructOnly = GObjectConstructOnly | GtkTreeModelConstructOnly | 'db' | 'prop';
 
 /** A RhythmDBQueryModel contains an ordered set of #RhythmDBEntry items, either generated by running a query against the database, or populated by adding individual entries. */
-export interface RhythmDBQueryModelProps extends GtkTreeModelProps, RhythmDBQueryResultsProps {
+export interface RhythmDBQueryModelProps extends GObjectProps, GtkTreeModelProps, RhythmDBQueryResultsProps {
     'base-model'?: RB.RhythmDBQueryModel;
     db?: RB.RhythmDB;
     /** @default RHYTHMDB_QUERY_MODEL_LIMIT_NONE */
@@ -775,18 +735,18 @@ export interface RhythmDBQueryModelProps extends GtkTreeModelProps, RhythmDBQuer
     'sort-reverse'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RhythmDBQueryModelConstructOnly = GtkTreeModelConstructOnly | RhythmDBQueryResultsConstructOnly | 'db' | 'limit-type' | 'limit-value';
+export type RhythmDBQueryModelConstructOnly = GObjectConstructOnly | GtkTreeModelConstructOnly | RhythmDBQueryResultsConstructOnly | 'db' | 'limit-type' | 'limit-value';
 
-export interface RhythmDBQueryResultListProps extends RhythmDBQueryResultsProps {
+export interface RhythmDBQueryResultListProps extends GObjectProps, RhythmDBQueryResultsProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RhythmDBQueryResultListConstructOnly = RhythmDBQueryResultsConstructOnly;
+export type RhythmDBQueryResultListConstructOnly = GObjectConstructOnly | RhythmDBQueryResultsConstructOnly;
 
 /** This is the interface that #RhythmDB uses to report results of database queries. */
-export interface RhythmDBQueryResultsProps {
+export interface RhythmDBQueryResultsProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RhythmDBQueryResultsConstructOnly = never;
+export type RhythmDBQueryResultsConstructOnly = GObjectConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -996,6 +956,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

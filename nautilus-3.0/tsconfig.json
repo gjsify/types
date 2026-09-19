@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./nautilus-3.0.d.ts"]
+  "include": ["./nautilus-3.0.d.ts","./nautilus-3.0-vocabulary.d.ts"]
 }
 
 

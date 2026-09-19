@@ -1,6 +1,6 @@
 // The widget vocabulary of PapersView-4.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: PapersView-4.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned
+// GENERATED — do not edit. Provenance: PapersView-4.0
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '4.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned'],
+    droppedBases: [],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Pps'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -50,31 +52,31 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    PpsAnnotationModel: ['PpsAnnotationModel'],
-    PpsAnnotationsContext: ['PpsAnnotationsContext', 'PpsUndoHandler'],
-    PpsAttachmentContext: ['PpsAttachmentContext'],
-    PpsDocumentModel: ['PpsDocumentModel'],
-    PpsHistory: ['PpsHistory'],
-    PpsJobAnnots: ['PpsJobAnnots', 'PpsJob'],
-    PpsJobAttachments: ['PpsJobAttachments', 'PpsJob'],
-    PpsJobExport: ['PpsJobExport', 'PpsJob'],
-    PpsJobFind: ['PpsJobFind', 'PpsJob'],
-    PpsJobFonts: ['PpsJobFonts', 'PpsJob'],
-    PpsJobLayers: ['PpsJobLayers', 'PpsJob'],
-    PpsJobLinks: ['PpsJobLinks', 'PpsJob'],
-    PpsJobLoad: ['PpsJobLoad', 'PpsJob'],
-    PpsJobPageData: ['PpsJobPageData', 'PpsJob'],
-    PpsJobPrint: ['PpsJobPrint', 'PpsJob'],
-    PpsJobRenderTexture: ['PpsJobRenderTexture', 'PpsJob'],
-    PpsJobSave: ['PpsJobSave', 'PpsJob'],
-    PpsJobSignatures: ['PpsJobSignatures', 'PpsJob'],
-    PpsJobThumbnailTexture: ['PpsJobThumbnailTexture', 'PpsJob'],
-    PpsMetadata: ['PpsMetadata'],
-    PpsSearchContext: ['PpsSearchContext'],
-    PpsSearchResult: ['PpsSearchResult'],
-    PpsUndoContext: ['PpsUndoContext'],
-    PpsView: ['PpsView', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
-    PpsViewPresentation: ['PpsViewPresentation', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    PpsAnnotationModel: ['PpsAnnotationModel', 'GObject'],
+    PpsAnnotationsContext: ['PpsAnnotationsContext', 'GObject', 'PpsUndoHandler'],
+    PpsAttachmentContext: ['PpsAttachmentContext', 'GObject'],
+    PpsDocumentModel: ['PpsDocumentModel', 'GObject'],
+    PpsHistory: ['PpsHistory', 'GObject'],
+    PpsJobAnnots: ['PpsJobAnnots', 'PpsJob', 'GObject'],
+    PpsJobAttachments: ['PpsJobAttachments', 'PpsJob', 'GObject'],
+    PpsJobExport: ['PpsJobExport', 'PpsJob', 'GObject'],
+    PpsJobFind: ['PpsJobFind', 'PpsJob', 'GObject'],
+    PpsJobFonts: ['PpsJobFonts', 'PpsJob', 'GObject'],
+    PpsJobLayers: ['PpsJobLayers', 'PpsJob', 'GObject'],
+    PpsJobLinks: ['PpsJobLinks', 'PpsJob', 'GObject'],
+    PpsJobLoad: ['PpsJobLoad', 'PpsJob', 'GObject'],
+    PpsJobPageData: ['PpsJobPageData', 'PpsJob', 'GObject'],
+    PpsJobPrint: ['PpsJobPrint', 'PpsJob', 'GObject'],
+    PpsJobRenderTexture: ['PpsJobRenderTexture', 'PpsJob', 'GObject'],
+    PpsJobSave: ['PpsJobSave', 'PpsJob', 'GObject'],
+    PpsJobSignatures: ['PpsJobSignatures', 'PpsJob', 'GObject'],
+    PpsJobThumbnailTexture: ['PpsJobThumbnailTexture', 'PpsJob', 'GObject'],
+    PpsMetadata: ['PpsMetadata', 'GObject'],
+    PpsSearchContext: ['PpsSearchContext', 'GObject'],
+    PpsSearchResult: ['PpsSearchResult', 'GObject'],
+    PpsUndoContext: ['PpsUndoContext', 'GObject'],
+    PpsView: ['PpsView', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
+    PpsViewPresentation: ['PpsViewPresentation', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

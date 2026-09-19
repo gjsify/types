@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./libosinfo-1.0.d.ts"]
+  "include": ["./libosinfo-1.0.d.ts","./libosinfo-1.0-vocabulary.d.ts"]
 }
 
 

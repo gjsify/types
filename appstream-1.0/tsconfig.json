@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./appstream-1.0.d.ts"]
+  "include": ["./appstream-1.0.d.ts","./appstream-1.0-vocabulary.d.ts"]
 }
 
 

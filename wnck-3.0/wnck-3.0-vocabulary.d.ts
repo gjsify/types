@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Wnck-3.0.
  *
- * GENERATED — do not edit. Provenance: Wnck-3.0 — library 43.3.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Wnck.ActionMenu.window
+ * GENERATED — do not edit. Provenance: Wnck-3.0 — library 43.3.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Wnck.ActionMenu.window
  *
  * 11 instantiable GTypes (of which 5 concrete widgets), 11 declarations, 7 enum nick unions, 0 slot candidates.
  *
@@ -25,6 +25,7 @@
  */
 
 import type Wnck from './wnck-3.0.js';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkMenuBarConstructOnly, GtkMenuBarProps, GtkMenuConstructOnly, GtkMenuItemConstructOnly, GtkMenuItemProps, GtkMenuProps, GtkMenuShellConstructOnly, GtkMenuShellProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -63,24 +64,24 @@ export interface WnckActionMenuProps extends GtkMenuProps, GtkBuildableProps {
 export type WnckActionMenuConstructOnly = GtkMenuConstructOnly | GtkBuildableConstructOnly | 'window';
 
 /** The #WnckApplication struct contains only private fields and should not be directly accessed. */
-export interface WnckApplicationProps {
+export interface WnckApplicationProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WnckApplicationConstructOnly = never;
+export type WnckApplicationConstructOnly = GObjectConstructOnly;
 
 /** The #WnckClassGroup struct contains only private fields and should not be directly accessed. */
-export interface WnckClassGroupProps {
+export interface WnckClassGroupProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WnckClassGroupConstructOnly = never;
+export type WnckClassGroupConstructOnly = GObjectConstructOnly;
 
 /** The #WnckHandle struct contains only private fields and should not be directly accessed. */
-export interface WnckHandleProps {
+export interface WnckHandleProps extends GObjectProps {
     /** @default WNCK_CLIENT_TYPE_APPLICATION */
     'client-type'?: WnckClientTypeNick | Wnck.ClientType;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WnckHandleConstructOnly = never;
+export type WnckHandleConstructOnly = GObjectConstructOnly;
 
 export interface WnckImageMenuItemProps extends GtkMenuItemProps, GtkActionableProps, GtkActivatableProps, GtkBuildableProps {
 }
@@ -95,10 +96,10 @@ export interface WnckPagerProps extends GtkWidgetProps, GtkBuildableProps {
 export type WnckPagerConstructOnly = GtkWidgetConstructOnly | GtkBuildableConstructOnly | 'handle';
 
 /** The #WnckScreen struct contains only private fields and should not be directly accessed. */
-export interface WnckScreenProps {
+export interface WnckScreenProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WnckScreenConstructOnly = never;
+export type WnckScreenConstructOnly = GObjectConstructOnly;
 
 /** The #WnckSelector struct contains only private fields and should not be directly accessed. */
 export interface WnckSelectorProps extends GtkMenuBarProps, GtkBuildableProps {
@@ -117,16 +118,16 @@ export interface WnckTasklistProps extends GtkContainerProps, GtkBuildableProps 
 export type WnckTasklistConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly | 'handle';
 
 /** The #WnckWindow struct contains only private fields and should not be directly accessed. */
-export interface WnckWindowProps {
+export interface WnckWindowProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WnckWindowConstructOnly = never;
+export type WnckWindowConstructOnly = GObjectConstructOnly;
 
 /** The #WnckWorkspace struct contains only private fields and should not be directly accessed. */
-export interface WnckWorkspaceProps {
+export interface WnckWorkspaceProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WnckWorkspaceConstructOnly = never;
+export type WnckWorkspaceConstructOnly = GObjectConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -245,6 +246,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

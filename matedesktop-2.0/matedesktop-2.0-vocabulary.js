@@ -1,6 +1,6 @@
 // The widget vocabulary of MateDesktop-2.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: MateDesktop-2.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface Gio.Initable
+// GENERATED — do not edit. Provenance: MateDesktop-2.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '2.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface', 'Gio.Initable'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Mate'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -42,17 +44,17 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    MateBG: ['MateBG'],
-    MateBGCrossfade: ['MateBGCrossfade'],
-    MateColorSelection: ['MateColorSelection', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    MateColorSelectionDialog: ['MateColorSelectionDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    MateDesktopThumbnailFactory: ['MateDesktopThumbnailFactory'],
-    MateHSV: ['MateHSV', 'GtkWidget', 'GtkBuildable'],
-    MateImageMenuItem: ['MateImageMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    MateRRConfig: ['MateRRConfig'],
-    MateRRLabeler: ['MateRRLabeler'],
-    MateRROutputInfo: ['MateRROutputInfo'],
-    MateRRScreen: ['MateRRScreen'],
+    MateBG: ['MateBG', 'GObject'],
+    MateBGCrossfade: ['MateBGCrossfade', 'GObject'],
+    MateColorSelection: ['MateColorSelection', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    MateColorSelectionDialog: ['MateColorSelectionDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    MateDesktopThumbnailFactory: ['MateDesktopThumbnailFactory', 'GObject'],
+    MateHSV: ['MateHSV', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    MateImageMenuItem: ['MateImageMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    MateRRConfig: ['MateRRConfig', 'GObject'],
+    MateRRLabeler: ['MateRRLabeler', 'GObject'],
+    MateRROutputInfo: ['MateRROutputInfo', 'GObject'],
+    MateRRScreen: ['MateRRScreen', 'GObject', 'GInitable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

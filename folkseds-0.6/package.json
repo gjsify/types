@@ -1,6 +1,6 @@
 {
     "name": "@girs/folkseds-0.6",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for FolksEds-0.6",
     "type": "module",
     "module": "folkseds-0.6.js",
@@ -15,6 +15,11 @@
         "types": "./folkseds-0.6-import.d.ts",
         "import": "./folkseds-0.6-import.js",
         "default": "./folkseds-0.6-import.js"
+      },
+      "./vocabulary": {
+        "types": "./folkseds-0.6-vocabulary.d.ts",
+        "import": "./folkseds-0.6-vocabulary.js",
+        "default": "./folkseds-0.6-vocabulary.js"
       },
       "./folkseds-0.6": {
         "types": "./folkseds-0.6.d.ts",
@@ -31,19 +36,19 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/ebookcontacts-1.2": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0",
-      "@girs/edataserver-1.2": "^5.2.0",
-      "@girs/libxml2-2.0": "^5.2.0",
-      "@girs/soup-3.0": "^5.2.0",
-      "@girs/json-1.0": "^5.2.0",
-      "@girs/camel-1.2": "^5.2.0",
-      "@girs/gee-0.8": "^5.2.0",
-      "@girs/folks-0.6": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/ebookcontacts-1.2": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0",
+      "@girs/edataserver-1.2": "^5.3.0",
+      "@girs/libxml2-2.0": "^5.3.0",
+      "@girs/soup-3.0": "^5.3.0",
+      "@girs/json-1.0": "^5.3.0",
+      "@girs/camel-1.2": "^5.3.0",
+      "@girs/gee-0.8": "^5.3.0",
+      "@girs/folks-0.6": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

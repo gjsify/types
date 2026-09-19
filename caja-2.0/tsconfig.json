@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./caja-2.0.d.ts"]
+  "include": ["./caja-2.0.d.ts","./caja-2.0-vocabulary.d.ts"]
 }
 
 

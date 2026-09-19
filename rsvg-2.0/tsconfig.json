@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./rsvg-2.0.d.ts"]
+  "include": ["./rsvg-2.0.d.ts","./rsvg-2.0-vocabulary.d.ts"]
 }
 
 

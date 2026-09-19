@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gck-1.d.ts"]
+  "include": ["./gck-1.d.ts","./gck-1-vocabulary.d.ts"]
 }
 
 

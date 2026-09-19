@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Tepl-6.
  *
- * GENERATED — do not edit. Provenance: Tepl-6 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: Tepl-6 — dropped empty base(s): Atk.ImplementorIface
  *
  * 36 instantiable GTypes (of which 19 concrete widgets), 39 declarations, 4 enum nick unions, 4 slot candidates.
  *
@@ -28,6 +28,7 @@ import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type GtkSource from '@girs/gtksource-300';
 import type Tepl from './tepl-6.js';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkGridConstructOnly, GtkGridProps, GtkInfoBarConstructOnly, GtkInfoBarProps, GtkMenuButtonConstructOnly, GtkMenuButtonProps, GtkNotebookConstructOnly, GtkNotebookProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkStatusbarConstructOnly, GtkStatusbarProps, GtkTextBufferConstructOnly, GtkTextBufferProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkToggleButtonConstructOnly, GtkToggleButtonProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 import type { GtkSourceBufferConstructOnly, GtkSourceBufferProps, GtkSourceGutterRendererConstructOnly, GtkSourceGutterRendererProps, GtkSourceViewConstructOnly, GtkSourceViewProps } from '@girs/gtksource-300/vocabulary';
 
@@ -56,12 +57,12 @@ export type TeplSettingsThemeVariantNick = 'system' | 'light' | 'dark';
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-export interface TeplAbstractFactoryProps {
+export interface TeplAbstractFactoryProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplAbstractFactoryConstructOnly = never;
+export type TeplAbstractFactoryConstructOnly = GObjectConstructOnly;
 
-export interface TeplApplicationProps {
+export interface TeplApplicationProps extends GObjectProps {
     /**
      * The #GtkApplication.
      * @since 2.0
@@ -69,9 +70,9 @@ export interface TeplApplicationProps {
     application?: Gtk.Application;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplApplicationConstructOnly = 'application';
+export type TeplApplicationConstructOnly = GObjectConstructOnly | 'application';
 
-export interface TeplApplicationWindowProps extends TeplTabGroupProps {
+export interface TeplApplicationWindowProps extends GObjectProps, TeplTabGroupProps {
     /**
      * The #GtkApplicationWindow.
      * @since 2.0
@@ -85,14 +86,14 @@ export interface TeplApplicationWindowProps extends TeplTabGroupProps {
     'handle-title'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplApplicationWindowConstructOnly = TeplTabGroupConstructOnly | 'application-window';
+export type TeplApplicationWindowConstructOnly = GObjectConstructOnly | TeplTabGroupConstructOnly | 'application-window';
 
 export interface TeplBufferProps extends GtkSourceBufferProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplBufferConstructOnly = GtkSourceBufferConstructOnly;
 
-export interface TeplCodeCommentViewProps {
+export interface TeplCodeCommentViewProps extends GObjectProps {
     /**
      * The associated #GtkSourceView widget.
      * @since 6.14
@@ -100,9 +101,9 @@ export interface TeplCodeCommentViewProps {
     'source-view'?: GtkSource.View | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplCodeCommentViewConstructOnly = 'source-view';
+export type TeplCodeCommentViewConstructOnly = GObjectConstructOnly | 'source-view';
 
-export interface TeplFileProps {
+export interface TeplFileProps extends GObjectProps {
     /**
      * The location.
      * @since 1.0
@@ -110,9 +111,9 @@ export interface TeplFileProps {
     location?: Gio.File;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplFileConstructOnly = never;
+export type TeplFileConstructOnly = GObjectConstructOnly;
 
-export interface TeplFileLoaderProps {
+export interface TeplFileLoaderProps extends GObjectProps {
     /**
      * The #TeplBuffer to load the content into.
      * @since 1.0
@@ -130,9 +131,9 @@ export interface TeplFileLoaderProps {
     location?: Gio.File | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplFileLoaderConstructOnly = 'buffer' | 'file' | 'location';
+export type TeplFileLoaderConstructOnly = GObjectConstructOnly | 'buffer' | 'file' | 'location';
 
-export interface TeplFileSaverProps {
+export interface TeplFileSaverProps extends GObjectProps {
     /**
      * The #TeplBuffer to save.
      * @since 1.0
@@ -162,9 +163,9 @@ export interface TeplFileSaverProps {
     'newline-type'?: TeplNewlineTypeNick | Tepl.NewlineType;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplFileSaverConstructOnly = 'buffer' | 'file' | 'location';
+export type TeplFileSaverConstructOnly = GObjectConstructOnly | 'buffer' | 'file' | 'location';
 
-export interface TeplFoldRegionProps {
+export interface TeplFoldRegionProps extends GObjectProps {
     /**
      * The #GtkTextBuffer where the fold region is applied.
      * @since 1.0
@@ -178,7 +179,7 @@ export interface TeplFoldRegionProps {
     folded?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplFoldRegionConstructOnly = 'buffer';
+export type TeplFoldRegionConstructOnly = GObjectConstructOnly | 'buffer';
 
 export interface TeplGotoLineBarProps extends GtkGridProps, GtkBuildableProps, GtkOrientableProps {
 }
@@ -213,10 +214,10 @@ export interface TeplInfoBarProps extends GtkInfoBarProps, GtkBuildableProps, Gt
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplInfoBarConstructOnly = GtkInfoBarConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
-export interface TeplLanguageChooserProps {
+export interface TeplLanguageChooserProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplLanguageChooserConstructOnly = never;
+export type TeplLanguageChooserConstructOnly = GObjectConstructOnly;
 
 export interface TeplLanguageChooserDialogProps extends GtkDialogProps, GtkBuildableProps, TeplLanguageChooserProps {
 }
@@ -233,15 +234,15 @@ export interface TeplLineColumnIndicatorProps extends GtkBinProps, GtkBuildableP
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplLineColumnIndicatorConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
-export interface TeplMetadataProps {
+export interface TeplMetadataProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplMetadataConstructOnly = never;
+export type TeplMetadataConstructOnly = GObjectConstructOnly;
 
-export interface TeplMetadataManagerProps {
+export interface TeplMetadataManagerProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplMetadataManagerConstructOnly = never;
+export type TeplMetadataManagerConstructOnly = GObjectConstructOnly;
 
 export interface TeplNotebookProps extends GtkNotebookProps, GtkBuildableProps, TeplTabGroupProps {
 }
@@ -259,17 +260,17 @@ export interface TeplOverwriteIndicatorProps extends GtkBinProps, GtkBuildablePr
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplOverwriteIndicatorConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
-export interface TeplPanelProps {
+export interface TeplPanelProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplPanelConstructOnly = never;
+export type TeplPanelConstructOnly = GObjectConstructOnly;
 
 export interface TeplPanel1Props extends GtkGridProps, GtkBuildableProps, GtkOrientableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplPanel1ConstructOnly = GtkGridConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
-export interface TeplPanelItemProps {
+export interface TeplPanelItemProps extends GObjectProps {
     /**
      * The icon name.
      * @since 6.11
@@ -301,14 +302,14 @@ export interface TeplPanelItemProps {
     widget?: Gtk.Widget | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplPanelItemConstructOnly = 'icon-name' | 'name' | 'position' | 'title' | 'widget';
+export type TeplPanelItemConstructOnly = GObjectConstructOnly | 'icon-name' | 'name' | 'position' | 'title' | 'widget';
 
-export interface TeplPanelNotebookProps {
+export interface TeplPanelNotebookProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplPanelNotebookConstructOnly = never;
+export type TeplPanelNotebookConstructOnly = GObjectConstructOnly;
 
-export interface TeplPanelSimpleProps extends TeplPanelProps {
+export interface TeplPanelSimpleProps extends GObjectProps, TeplPanelProps {
     /**
      * The #TeplPanelItem currently shown.
      * @since 6.11
@@ -322,12 +323,12 @@ export interface TeplPanelSimpleProps extends TeplPanelProps {
     'active-item-name'?: string | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplPanelSimpleConstructOnly = TeplPanelConstructOnly;
+export type TeplPanelSimpleConstructOnly = GObjectConstructOnly | TeplPanelConstructOnly;
 
-export interface TeplPanelStackProps {
+export interface TeplPanelStackProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplPanelStackConstructOnly = never;
+export type TeplPanelStackConstructOnly = GObjectConstructOnly;
 
 export interface TeplPanelSwitcherMenuProps extends GtkBinProps, GtkBuildableProps {
 }
@@ -350,10 +351,10 @@ export interface TeplProgressInfoBarProps extends TeplInfoBarProps, GtkBuildable
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplProgressInfoBarConstructOnly = TeplInfoBarConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | 'has-cancel-button';
 
-export interface TeplSettingsProps {
+export interface TeplSettingsProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplSettingsConstructOnly = never;
+export type TeplSettingsConstructOnly = GObjectConstructOnly;
 
 export interface TeplSpaceDrawerPrefsProps extends GtkGridProps, GtkBuildableProps, GtkOrientableProps {
 }
@@ -396,7 +397,7 @@ export interface TeplTabProps extends GtkGridProps, GtkBuildableProps, GtkOrient
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type TeplTabConstructOnly = GtkGridConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | TeplTabGroupConstructOnly | 'view';
 
-export interface TeplTabGroupProps {
+export interface TeplTabGroupProps extends GObjectProps {
     /**
      * The #TeplTab currently shown.
      * @since 3.0
@@ -404,7 +405,7 @@ export interface TeplTabGroupProps {
     'active-tab'?: Tepl.Tab | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type TeplTabGroupConstructOnly = never;
+export type TeplTabGroupConstructOnly = GObjectConstructOnly;
 
 export interface TeplTabLabelProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     /**
@@ -644,6 +645,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

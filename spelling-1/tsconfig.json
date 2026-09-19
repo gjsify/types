@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./spelling-1.d.ts"]
+  "include": ["./spelling-1.d.ts","./spelling-1-vocabulary.d.ts"]
 }
 
 

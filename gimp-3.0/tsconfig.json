@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./gimp-3.0.d.ts"]
+  "include": ["./gimp-3.0.d.ts","./gimp-3.0-vocabulary.d.ts"]
 }
 
 

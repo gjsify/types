@@ -1,6 +1,6 @@
 {
     "name": "@girs/ostree-1.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for OSTree-1.0",
     "type": "module",
     "module": "ostree-1.0.js",
@@ -15,6 +15,11 @@
         "types": "./ostree-1.0-import.d.ts",
         "import": "./ostree-1.0-import.js",
         "default": "./ostree-1.0-import.js"
+      },
+      "./vocabulary": {
+        "types": "./ostree-1.0-vocabulary.d.ts",
+        "import": "./ostree-1.0-vocabulary.js",
+        "default": "./ostree-1.0-vocabulary.js"
       },
       "./ostree-1.0": {
         "types": "./ostree-1.0.d.ts",
@@ -31,11 +36,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

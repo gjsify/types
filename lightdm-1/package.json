@@ -1,6 +1,6 @@
 {
     "name": "@girs/lightdm-1",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for LightDM-1",
     "type": "module",
     "module": "lightdm-1.js",
@@ -15,6 +15,11 @@
         "types": "./lightdm-1-import.d.ts",
         "import": "./lightdm-1-import.js",
         "default": "./lightdm-1-import.js"
+      },
+      "./vocabulary": {
+        "types": "./lightdm-1-vocabulary.d.ts",
+        "import": "./lightdm-1-vocabulary.js",
+        "default": "./lightdm-1-vocabulary.js"
       },
       "./lightdm-1": {
         "types": "./lightdm-1.d.ts",
@@ -31,11 +36,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

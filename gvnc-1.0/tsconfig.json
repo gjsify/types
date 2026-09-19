@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gvnc-1.0.d.ts"]
+  "include": ["./gvnc-1.0.d.ts","./gvnc-1.0-vocabulary.d.ts"]
 }
 
 

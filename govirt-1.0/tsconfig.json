@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./govirt-1.0.d.ts"]
+  "include": ["./govirt-1.0.d.ts","./govirt-1.0-vocabulary.d.ts"]
 }
 
 

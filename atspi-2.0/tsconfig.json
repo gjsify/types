@@ -32,7 +32,7 @@
       ]
 }
   },
-  "include": ["./atspi-2.0.d.ts"]
+  "include": ["./atspi-2.0.d.ts","./atspi-2.0-vocabulary.d.ts"]
 }
 
 

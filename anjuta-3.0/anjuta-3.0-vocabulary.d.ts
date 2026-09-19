@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Anjuta-3.0.
  *
- * GENERATED — do not edit. Provenance: Anjuta-3.0 — dropped empty base(s): GObject.Object GObject.TypeModule GObject.TypePlugin GObject.InitiallyUnowned Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: Anjuta-3.0 — dropped empty base(s): GObject.TypeModule GObject.TypePlugin Atk.ImplementorIface
  *
  * 41 instantiable GTypes (of which 16 concrete widgets), 41 declarations, 7 enum nick unions, 4 slot candidates.
  *
@@ -30,6 +30,7 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type { GdlDockConstructOnly, GdlDockObjectConstructOnly, GdlDockObjectProps, GdlDockProps } from '@girs/gdl-3/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkCellRendererConstructOnly, GtkCellRendererProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkMessageDialogConstructOnly, GtkMessageDialogProps, GtkNotebookConstructOnly, GtkNotebookProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkToggleButtonConstructOnly, GtkToggleButtonProps, GtkTreeViewConstructOnly, GtkTreeViewProps, GtkUIManagerConstructOnly, GtkUIManagerProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -65,26 +66,26 @@ export interface AnjutaAsyncCommandProps extends AnjutaCommandProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AnjutaAsyncCommandConstructOnly = AnjutaCommandConstructOnly;
 
-export interface AnjutaAsyncNotifyProps {
+export interface AnjutaAsyncNotifyProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaAsyncNotifyConstructOnly = never;
+export type AnjutaAsyncNotifyConstructOnly = GObjectConstructOnly;
 
 /** A GObject wrapper for running GNU autogen. */
-export interface AnjutaAutogenProps {
+export interface AnjutaAutogenProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaAutogenConstructOnly = never;
+export type AnjutaAutogenConstructOnly = GObjectConstructOnly;
 
 export interface AnjutaCModuleProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AnjutaCModuleConstructOnly = never;
 
-export interface AnjutaCPluginFactoryProps {
+export interface AnjutaCPluginFactoryProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaCPluginFactoryConstructOnly = never;
+export type AnjutaCPluginFactoryConstructOnly = GObjectConstructOnly;
 
 export interface AnjutaCellRendererCaptionedImageProps extends GtkCellRendererProps {
     pixbuf?: GdkPixbuf.Pixbuf;
@@ -110,10 +111,10 @@ export interface AnjutaColumnTextViewProps extends GtkBoxProps, GtkBuildableProp
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AnjutaColumnTextViewConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
-export interface AnjutaCommandProps {
+export interface AnjutaCommandProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaCommandConstructOnly = never;
+export type AnjutaCommandConstructOnly = GObjectConstructOnly;
 
 export interface AnjutaCommandBarProps extends GtkNotebookProps, GtkBuildableProps {
     /** @default 25 */
@@ -122,17 +123,17 @@ export interface AnjutaCommandBarProps extends GtkNotebookProps, GtkBuildablePro
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AnjutaCommandBarConstructOnly = GtkNotebookConstructOnly | GtkBuildableConstructOnly | 'max-text-width';
 
-export interface AnjutaCommandQueueProps {
+export interface AnjutaCommandQueueProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaCommandQueueConstructOnly = never;
+export type AnjutaCommandQueueConstructOnly = GObjectConstructOnly;
 
-export interface AnjutaCompletionProps {
+export interface AnjutaCompletionProps extends GObjectProps {
     /** @default TRUE */
     'case-sensitive'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaCompletionConstructOnly = never;
+export type AnjutaCompletionConstructOnly = GObjectConstructOnly;
 
 export interface AnjutaDockProps extends GdlDockProps, GtkBuildableProps {
 }
@@ -170,15 +171,15 @@ export interface AnjutaFileListProps extends GtkBoxProps, GtkBuildableProps, Gtk
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AnjutaFileListConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
-export interface AnjutaLanguageProviderProps {
+export interface AnjutaLanguageProviderProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaLanguageProviderConstructOnly = never;
+export type AnjutaLanguageProviderConstructOnly = GObjectConstructOnly;
 
-export interface AnjutaLauncherProps {
+export interface AnjutaLauncherProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaLauncherConstructOnly = never;
+export type AnjutaLauncherConstructOnly = GObjectConstructOnly;
 
 export interface AnjutaPkgConfigChooserProps extends GtkTreeViewProps, GtkBuildableProps, GtkScrollableProps {
 }
@@ -194,29 +195,29 @@ export interface AnjutaPkgScannerProps extends AnjutaAsyncCommandProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AnjutaPkgScannerConstructOnly = AnjutaAsyncCommandConstructOnly;
 
-export interface AnjutaPluginProps {
+export interface AnjutaPluginProps extends GObjectProps {
     /** The #AnjutaShell object associated with this plugin */
     shell?: Anjuta.Shell;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaPluginConstructOnly = never;
+export type AnjutaPluginConstructOnly = GObjectConstructOnly;
 
-export interface AnjutaPluginHandleProps {
+export interface AnjutaPluginHandleProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaPluginHandleConstructOnly = never;
+export type AnjutaPluginHandleConstructOnly = GObjectConstructOnly;
 
-export interface AnjutaPluginManagerProps {
+export interface AnjutaPluginManagerProps extends GObjectProps {
     shell?: GObject.Object;
     status?: Anjuta.Status;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaPluginManagerConstructOnly = never;
+export type AnjutaPluginManagerConstructOnly = GObjectConstructOnly;
 
-export interface AnjutaPreferencesProps {
+export interface AnjutaPreferencesProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaPreferencesConstructOnly = never;
+export type AnjutaPreferencesConstructOnly = GObjectConstructOnly;
 
 export interface AnjutaPreferencesDialogProps extends GtkDialogProps, GtkBuildableProps {
 }
@@ -224,24 +225,24 @@ export interface AnjutaPreferencesDialogProps extends GtkDialogProps, GtkBuildab
 export type AnjutaPreferencesDialogConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly;
 
 /** Stores a plugin list. */
-export interface AnjutaProfileProps {
+export interface AnjutaProfileProps extends GObjectProps {
     'plugin-manager'?: Anjuta.PluginManager;
     /** @default NULL */
     'profile-name'?: string;
     'sync-file'?: Gio.File;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaProfileConstructOnly = never;
+export type AnjutaProfileConstructOnly = GObjectConstructOnly;
 
 /** Stores stack of #AnjutaProfile. */
-export interface AnjutaProfileManagerProps {
+export interface AnjutaProfileManagerProps extends GObjectProps {
     'plugin-manager'?: Anjuta.PluginManager;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaProfileManagerConstructOnly = never;
+export type AnjutaProfileManagerConstructOnly = GObjectConstructOnly;
 
 /** The #AnjutaProjectNode struct contains private data only, and should accessed using the functions below. */
-export interface AnjutaProjectNodeProps {
+export interface AnjutaProjectNodeProps extends GInitiallyUnownedProps {
     file?: Gio.File;
     name?: string;
     /** @default ANJUTA_PROJECT_OK */
@@ -250,26 +251,26 @@ export interface AnjutaProjectNodeProps {
     type?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaProjectNodeConstructOnly = never;
+export type AnjutaProjectNodeConstructOnly = GInitiallyUnownedConstructOnly;
 
 export interface AnjutaSavePromptProps extends GtkMessageDialogProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AnjutaSavePromptConstructOnly = GtkMessageDialogConstructOnly | GtkBuildableConstructOnly;
 
-export interface AnjutaSerializerProps {
+export interface AnjutaSerializerProps extends GObjectProps {
     /** @default NULL */
     filepath?: string;
     /** @default ANJUTA_SERIALIZER_READ */
     mode?: AnjutaSerializerModeNick | Anjuta.SerializerMode;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaSerializerConstructOnly = 'filepath' | 'mode';
+export type AnjutaSerializerConstructOnly = GObjectConstructOnly | 'filepath' | 'mode';
 
-export interface AnjutaSessionProps {
+export interface AnjutaSessionProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaSessionConstructOnly = never;
+export type AnjutaSessionConstructOnly = GObjectConstructOnly;
 
 export interface AnjutaStatusProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
 }
@@ -287,10 +288,10 @@ export interface AnjutaTabberProps extends GtkContainerProps, GtkBuildableProps 
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AnjutaTabberConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly | 'notebook';
 
-export interface AnjutaTokenFileProps {
+export interface AnjutaTokenFileProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AnjutaTokenFileConstructOnly = never;
+export type AnjutaTokenFileConstructOnly = GObjectConstructOnly;
 
 export interface AnjutaTreeComboBoxProps extends GtkToggleButtonProps, GtkActionableProps, GtkActivatableProps, GtkBuildableProps, GtkCellLayoutProps {
     model?: Gtk.TreeModel;
@@ -515,6 +516,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

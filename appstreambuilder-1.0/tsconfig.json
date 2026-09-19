@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./appstreambuilder-1.0.d.ts"]
+  "include": ["./appstreambuilder-1.0.d.ts","./appstreambuilder-1.0-vocabulary.d.ts"]
 }
 
 

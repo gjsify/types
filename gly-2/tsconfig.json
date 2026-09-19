@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gly-2.d.ts"]
+  "include": ["./gly-2.d.ts","./gly-2-vocabulary.d.ts"]
 }
 
 

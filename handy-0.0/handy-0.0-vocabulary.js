@@ -1,6 +1,6 @@
 // The widget vocabulary of Handy-0.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Handy-0.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: Handy-0.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '0.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Hdy'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/pango-1.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -57,32 +59,32 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    HdyActionRow: ['HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
-    HdyArrows: ['HdyArrows', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
-    HdyColumn: ['HdyColumn', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyComboRow: ['HdyComboRow', 'HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
-    HdyDialer: ['HdyDialer', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyDialerButton: ['HdyDialerButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    HdyDialerCycleButton: ['HdyDialerCycleButton', 'HdyDialerButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    HdyDialog: ['HdyDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyEnumValueObject: ['HdyEnumValueObject'],
-    HdyExpanderRow: ['HdyExpanderRow', 'HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
-    HdyHeaderBar: ['HdyHeaderBar', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyHeaderGroup: ['HdyHeaderGroup', 'GtkBuildable'],
-    HdyKeypad: ['HdyKeypad', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    HdyLeaflet: ['HdyLeaflet', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
-    HdyPaginator: ['HdyPaginator', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
-    HdyPreferencesGroup: ['HdyPreferencesGroup', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    HdyPreferencesPage: ['HdyPreferencesPage', 'GtkScrolledWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyPreferencesRow: ['HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
-    HdyPreferencesWindow: ['HdyPreferencesWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdySearchBar: ['HdySearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdySqueezer: ['HdySqueezer', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    HdySwipeGroup: ['HdySwipeGroup', 'GtkBuildable'],
-    HdyTitleBar: ['HdyTitleBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyValueObject: ['HdyValueObject'],
-    HdyViewSwitcher: ['HdyViewSwitcher', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    HdyViewSwitcherBar: ['HdyViewSwitcherBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    HdyActionRow: ['HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkBuildable'],
+    HdyArrows: ['HdyArrows', 'GtkDrawingArea', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyColumn: ['HdyColumn', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyComboRow: ['HdyComboRow', 'HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkBuildable'],
+    HdyDialer: ['HdyDialer', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyDialerButton: ['HdyDialerButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    HdyDialerCycleButton: ['HdyDialerCycleButton', 'HdyDialerButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    HdyDialog: ['HdyDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyEnumValueObject: ['HdyEnumValueObject', 'GObject'],
+    HdyExpanderRow: ['HdyExpanderRow', 'HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkBuildable'],
+    HdyHeaderBar: ['HdyHeaderBar', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyHeaderGroup: ['HdyHeaderGroup', 'GObject', 'GtkBuildable'],
+    HdyKeypad: ['HdyKeypad', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    HdyLeaflet: ['HdyLeaflet', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
+    HdyPaginator: ['HdyPaginator', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
+    HdyPreferencesGroup: ['HdyPreferencesGroup', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    HdyPreferencesPage: ['HdyPreferencesPage', 'GtkScrolledWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyPreferencesRow: ['HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkBuildable'],
+    HdyPreferencesWindow: ['HdyPreferencesWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdySearchBar: ['HdySearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdySqueezer: ['HdySqueezer', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    HdySwipeGroup: ['HdySwipeGroup', 'GObject', 'GtkBuildable'],
+    HdyTitleBar: ['HdyTitleBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyValueObject: ['HdyValueObject', 'GObject'],
+    HdyViewSwitcher: ['HdyViewSwitcher', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    HdyViewSwitcherBar: ['HdyViewSwitcherBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -93,6 +95,7 @@ export const DECLS = {
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
+    GtkReliefStyle: ['normal', 'half', 'none'],
     HdyArrowsDirection: ['up', 'down', 'left', 'right'],
     HdyCenteringPolicy: ['loose', 'strict'],
     HdyFold: ['unfolded', 'folded'],
@@ -120,6 +123,9 @@ export const ENUM_NICKS = {
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
 export const ENUM_VALUES = {
+    'GtkReliefStyle.half': 1,
+    'GtkReliefStyle.none': 2,
+    'GtkReliefStyle.normal': 0,
     'HdyArrowsDirection.down': 1,
     'HdyArrowsDirection.left': 2,
     'HdyArrowsDirection.right': 3,

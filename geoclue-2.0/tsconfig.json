@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./geoclue-2.0.d.ts"]
+  "include": ["./geoclue-2.0.d.ts","./geoclue-2.0-vocabulary.d.ts"]
 }
 
 

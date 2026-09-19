@@ -1,6 +1,6 @@
 // The widget vocabulary of GcrUi-3 as runtime data.
 //
-// GENERATED — do not edit. Provenance: GcrUi-3 — dropped empty base(s): GObject.Object Gcr.Certificate Gcr.Comparable GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gcr.Prompt — prop(s) no TypeScript value satisfies: GcrUi.CollectionModel.columns GcrUi.TreeSelector.columns
+// GENERATED — do not edit. Provenance: GcrUi-3 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: GcrUi.CollectionModel.columns GcrUi.TreeSelector.columns
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '3',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gcr.Certificate', 'Gcr.Comparable', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
-    inlinedBases: ['Gcr.Prompt'],
+    droppedBases: ['Atk.ImplementorIface'],
+    inlinedBases: [],
     unsettableProps: ['GcrUi.CollectionModel.columns', 'GcrUi.TreeSelector.columns'],
     unresolvedProps: [],
+    identifierPrefixes: ['Gcr'],
+    requiredVocabularies: ['@girs/gcr-3/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -26,7 +28,6 @@ export const OWN_PROPS = {
     GcrKeyRenderer: ['object'],
     GcrKeyWidget: ['attributes'],
     GcrListSelector: ['collection'],
-    GcrPrompt: ['caller-window', 'cancel-label', 'choice-chosen', 'choice-label', 'continue-label', 'description', 'message', 'password-new', 'title', 'warning'],
     GcrRenderer: ['attributes', 'label'],
     GcrTreeSelector: ['collection', 'columns'],
     GcrUnlockOptionsWidget: ['choice', 'ttl'],
@@ -35,7 +36,6 @@ export const OWN_PROPS = {
 
 export const OWN_SIGNALS = {
     GcrImportButton: ['imported', 'importing'],
-    GcrPrompt: ['prompt-close'],
     GcrRenderer: ['data-changed'],
     GcrViewerWidget: ['added'],
 };
@@ -48,20 +48,20 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GcrCertificateRenderer: ['GcrCertificateRenderer', 'GcrRenderer'],
-    GcrCertificateWidget: ['GcrCertificateWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GcrCollectionModel: ['GcrCollectionModel', 'GtkTreeModel', 'GtkTreeSortable'],
-    GcrComboSelector: ['GcrComboSelector', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
-    GcrFailureRenderer: ['GcrFailureRenderer', 'GcrRenderer'],
-    GcrImportButton: ['GcrImportButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    GcrKeyRenderer: ['GcrKeyRenderer', 'GcrRenderer'],
-    GcrKeyWidget: ['GcrKeyWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GcrListSelector: ['GcrListSelector', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
-    GcrPromptDialog: ['GcrPromptDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GcrPrompt', 'GtkBuildable'],
-    GcrSecureEntryBuffer: ['GcrSecureEntryBuffer', 'GtkEntryBuffer'],
-    GcrTreeSelector: ['GcrTreeSelector', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
-    GcrUnlockOptionsWidget: ['GcrUnlockOptionsWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GcrViewerWidget: ['GcrViewerWidget', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    GcrCertificateRenderer: ['GcrCertificateRenderer', 'GObject', 'GcrCertificate', 'GcrComparable', 'GcrRenderer'],
+    GcrCertificateWidget: ['GcrCertificateWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GcrCollectionModel: ['GcrCollectionModel', 'GObject', 'GtkTreeModel', 'GtkTreeSortable'],
+    GcrComboSelector: ['GcrComboSelector', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
+    GcrFailureRenderer: ['GcrFailureRenderer', 'GObject', 'GcrRenderer'],
+    GcrImportButton: ['GcrImportButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    GcrKeyRenderer: ['GcrKeyRenderer', 'GObject', 'GcrRenderer'],
+    GcrKeyWidget: ['GcrKeyWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GcrListSelector: ['GcrListSelector', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
+    GcrPromptDialog: ['GcrPromptDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GcrPrompt', 'GtkBuildable'],
+    GcrSecureEntryBuffer: ['GcrSecureEntryBuffer', 'GtkEntryBuffer', 'GObject'],
+    GcrTreeSelector: ['GcrTreeSelector', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
+    GcrUnlockOptionsWidget: ['GcrUnlockOptionsWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GcrViewerWidget: ['GcrViewerWidget', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

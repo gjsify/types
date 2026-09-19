@@ -47,7 +47,7 @@
       ]
 }
   },
-  "include": ["./foundry-1.d.ts"]
+  "include": ["./foundry-1.d.ts","./foundry-1-vocabulary.d.ts"]
 }
 
 

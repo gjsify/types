@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./ayatanaappindicator3-0.1.d.ts"]
+  "include": ["./ayatanaappindicator3-0.1.d.ts","./ayatanaappindicator3-0.1-vocabulary.d.ts"]
 }
 
 

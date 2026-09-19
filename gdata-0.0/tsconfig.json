@@ -47,7 +47,7 @@
       ]
 }
   },
-  "include": ["./gdata-0.0.d.ts"]
+  "include": ["./gdata-0.0.d.ts","./gdata-0.0-vocabulary.d.ts"]
 }
 
 

@@ -47,7 +47,7 @@
       ]
 }
   },
-  "include": ["./gstvulkanwayland-1.0.d.ts"]
+  "include": ["./gstvulkanwayland-1.0.d.ts","./gstvulkanwayland-1.0-vocabulary.d.ts"]
 }
 
 

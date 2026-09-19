@@ -50,7 +50,7 @@
       ]
 }
   },
-  "include": ["./rygelcore-2.8.d.ts"]
+  "include": ["./rygelcore-2.8.d.ts","./rygelcore-2.8-vocabulary.d.ts"]
 }
 
 

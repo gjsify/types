@@ -1,6 +1,6 @@
 {
     "name": "@girs/vgsl-1",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for Vgsl-1",
     "type": "module",
     "module": "vgsl-1.js",
@@ -15,6 +15,11 @@
         "types": "./vgsl-1-import.d.ts",
         "import": "./vgsl-1-import.js",
         "default": "./vgsl-1-import.js"
+      },
+      "./vocabulary": {
+        "types": "./vgsl-1-vocabulary.d.ts",
+        "import": "./vgsl-1-vocabulary.js",
+        "default": "./vgsl-1-vocabulary.js"
       },
       "./vgsl-1": {
         "types": "./vgsl-1.d.ts",
@@ -31,18 +36,18 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/vgda-1": "^5.2.0",
-      "@girs/vda-1": "^5.2.0",
-      "@girs/gcalc-2": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0",
-      "@girs/gee-0.8": "^5.2.0",
-      "@girs/json-1.0": "^5.2.0",
-      "@girs/gxml-0.20": "^5.2.0",
-      "@girs/libxml2-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/vgda-1": "^5.3.0",
+      "@girs/vda-1": "^5.3.0",
+      "@girs/gcalc-2": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0",
+      "@girs/gee-0.8": "^5.3.0",
+      "@girs/json-1.0": "^5.3.0",
+      "@girs/gxml-0.20": "^5.3.0",
+      "@girs/libxml2-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

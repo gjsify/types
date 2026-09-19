@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Gspell-1.
  *
- * GENERATED — do not edit. Provenance: Gspell-1 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: Gspell-1 — dropped empty base(s): Atk.ImplementorIface
  *
  * 9 instantiable GTypes (of which 3 concrete widgets), 11 declarations, 0 enum nick unions, 0 slot candidates.
  *
@@ -26,6 +26,7 @@
 
 import type Gspell from './gspell-1.js';
 import type Gtk from '@girs/gtk-3.0';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -50,12 +51,12 @@ import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableCons
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-export interface GspellCheckerProps {
+export interface GspellCheckerProps extends GObjectProps {
     /** The #GspellLanguage used. */
     language?: Gspell.Language | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GspellCheckerConstructOnly = never;
+export type GspellCheckerConstructOnly = GObjectConstructOnly;
 
 export interface GspellCheckerDialogProps extends GtkDialogProps, GtkBuildableProps {
     /** The #GspellNavigator to use. */
@@ -64,7 +65,7 @@ export interface GspellCheckerDialogProps extends GtkDialogProps, GtkBuildablePr
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GspellCheckerDialogConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly | 'spell-navigator';
 
-export interface GspellEntryProps {
+export interface GspellEntryProps extends GObjectProps {
     /**
      * The #GtkEntry.
      * @since 1.4
@@ -78,9 +79,9 @@ export interface GspellEntryProps {
     'inline-spell-checking'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GspellEntryConstructOnly = 'entry';
+export type GspellEntryConstructOnly = GObjectConstructOnly | 'entry';
 
-export interface GspellEntryBufferProps {
+export interface GspellEntryBufferProps extends GObjectProps {
     /**
      * The #GtkEntryBuffer.
      * @since 1.4
@@ -93,16 +94,16 @@ export interface GspellEntryBufferProps {
     'spell-checker'?: Gspell.Checker | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GspellEntryBufferConstructOnly = 'buffer';
+export type GspellEntryBufferConstructOnly = GObjectConstructOnly | 'buffer';
 
-export interface GspellLanguageChooserProps {
+export interface GspellLanguageChooserProps extends GObjectProps {
     /** The selected #GspellLanguage. */
     language?: Gspell.Language | null;
     /** The empty string if the default language was set and the selection hasn't changed. */
     'language-code'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GspellLanguageChooserConstructOnly = never;
+export type GspellLanguageChooserConstructOnly = GObjectConstructOnly;
 
 export interface GspellLanguageChooserButtonProps extends GtkButtonProps, GspellLanguageChooserProps, GtkActionableProps, GtkActivatableProps, GtkBuildableProps {
 }
@@ -114,28 +115,28 @@ export interface GspellLanguageChooserDialogProps extends GtkDialogProps, Gspell
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GspellLanguageChooserDialogConstructOnly = GtkDialogConstructOnly | GspellLanguageChooserConstructOnly | GtkBuildableConstructOnly;
 
-export interface GspellNavigatorProps {
+export interface GspellNavigatorProps extends GInitiallyUnownedProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GspellNavigatorConstructOnly = never;
+export type GspellNavigatorConstructOnly = GInitiallyUnownedConstructOnly;
 
-export interface GspellNavigatorTextViewProps extends GspellNavigatorProps {
+export interface GspellNavigatorTextViewProps extends GInitiallyUnownedProps, GspellNavigatorProps {
     /** The #GtkTextView. */
     view?: Gtk.TextView;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GspellNavigatorTextViewConstructOnly = GspellNavigatorConstructOnly | 'view';
+export type GspellNavigatorTextViewConstructOnly = GInitiallyUnownedConstructOnly | GspellNavigatorConstructOnly | 'view';
 
-export interface GspellTextBufferProps {
+export interface GspellTextBufferProps extends GObjectProps {
     /** The #GtkTextBuffer. */
     buffer?: Gtk.TextBuffer;
     /** The #GspellChecker. */
     'spell-checker'?: Gspell.Checker | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GspellTextBufferConstructOnly = 'buffer';
+export type GspellTextBufferConstructOnly = GObjectConstructOnly | 'buffer';
 
-export interface GspellTextViewProps {
+export interface GspellTextViewProps extends GObjectProps {
     /**
      * When the context menu is shown, whether to add a sub-menu to select the language for the spell checking.
      * @since 1.2
@@ -151,7 +152,7 @@ export interface GspellTextViewProps {
     view?: Gtk.TextView;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GspellTextViewConstructOnly = 'view';
+export type GspellTextViewConstructOnly = GObjectConstructOnly | 'view';
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -256,6 +257,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

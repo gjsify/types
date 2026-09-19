@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./coglpango-15.d.ts"]
+  "include": ["./coglpango-15.d.ts","./coglpango-15-vocabulary.d.ts"]
 }
 
 

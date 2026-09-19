@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./cloudproviders-0.3.d.ts"]
+  "include": ["./cloudproviders-0.3.d.ts","./cloudproviders-0.3-vocabulary.d.ts"]
 }
 
 

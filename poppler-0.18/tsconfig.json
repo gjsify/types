@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./poppler-0.18.d.ts"]
+  "include": ["./poppler-0.18.d.ts","./poppler-0.18-vocabulary.d.ts"]
 }
 
 

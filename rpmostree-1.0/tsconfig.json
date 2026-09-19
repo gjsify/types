@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./rpmostree-1.0.d.ts"]
+  "include": ["./rpmostree-1.0.d.ts","./rpmostree-1.0-vocabulary.d.ts"]
 }
 
 

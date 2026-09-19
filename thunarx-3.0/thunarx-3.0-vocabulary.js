@@ -1,6 +1,6 @@
 // The widget vocabulary of Thunarx-3.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Thunarx-3.0 — library 4.20.9 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface GObject.TypeModule GObject.TypePlugin
+// GENERATED — do not edit. Provenance: Thunarx-3.0 — library 4.20.9 — dropped empty base(s): Atk.ImplementorIface GObject.TypeModule GObject.TypePlugin
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '3.0',
     libraryVersion: '4.20.9',
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface', 'GObject.TypeModule', 'GObject.TypePlugin'],
+    droppedBases: ['Atk.ImplementorIface', 'GObject.TypeModule', 'GObject.TypePlugin'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Thunarx'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -35,11 +37,11 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    ThunarxMenu: ['ThunarxMenu'],
-    ThunarxMenuItem: ['ThunarxMenuItem'],
-    ThunarxPropertyPage: ['ThunarxPropertyPage', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    ThunarxProviderFactory: ['ThunarxProviderFactory'],
-    ThunarxProviderModule: ['ThunarxProviderModule', 'ThunarxProviderPlugin'],
+    ThunarxMenu: ['ThunarxMenu', 'GObject'],
+    ThunarxMenuItem: ['ThunarxMenuItem', 'GObject'],
+    ThunarxPropertyPage: ['ThunarxPropertyPage', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    ThunarxProviderFactory: ['ThunarxProviderFactory', 'GObject'],
+    ThunarxProviderModule: ['ThunarxProviderModule', 'GObject', 'ThunarxProviderPlugin'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

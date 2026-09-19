@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./girepository-3.0.d.ts"]
+  "include": ["./girepository-3.0.d.ts","./girepository-3.0-vocabulary.d.ts"]
 }
 
 

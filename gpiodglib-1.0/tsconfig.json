@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gpiodglib-1.0.d.ts"]
+  "include": ["./gpiodglib-1.0.d.ts","./gpiodglib-1.0-vocabulary.d.ts"]
 }
 
 

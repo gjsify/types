@@ -1,6 +1,6 @@
 // The widget vocabulary of NMA4-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: NMA4-1.0 — library 1.10.6 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Gio.AsyncInitable Gio.Initable
+// GENERATED — do not edit. Provenance: NMA4-1.0 — library 1.10.6
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: '1.10.6',
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Gio.AsyncInitable', 'Gio.Initable'],
+    droppedBases: [],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['NMA'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -36,13 +38,13 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    NMABarCode: ['NMABarCode'],
-    NMABarCodeWidget: ['NMABarCodeWidget', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    NMACertChooser: ['NMACertChooser', 'GtkGrid', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    NMAMobileProvidersDatabase: ['NMAMobileProvidersDatabase'],
-    NMAMobileWizard: ['NMAMobileWizard'],
-    NMAVpnPasswordDialog: ['NMAVpnPasswordDialog', 'GtkDialog', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
-    NMAWifiDialog: ['NMAWifiDialog', 'GtkDialog', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    NMABarCode: ['NMABarCode', 'GObject'],
+    NMABarCodeWidget: ['NMABarCodeWidget', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    NMACertChooser: ['NMACertChooser', 'GtkGrid', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    NMAMobileProvidersDatabase: ['NMAMobileProvidersDatabase', 'GObject', 'GAsyncInitable', 'GInitable'],
+    NMAMobileWizard: ['NMAMobileWizard', 'GObject'],
+    NMAVpnPasswordDialog: ['NMAVpnPasswordDialog', 'GtkDialog', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    NMAWifiDialog: ['NMAWifiDialog', 'GtkDialog', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

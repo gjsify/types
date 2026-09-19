@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./ggit-1.0.d.ts"]
+  "include": ["./ggit-1.0.d.ts","./ggit-1.0-vocabulary.d.ts"]
 }
 
 

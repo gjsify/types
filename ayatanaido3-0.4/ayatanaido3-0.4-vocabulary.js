@@ -1,6 +1,6 @@
 // The widget vocabulary of AyatanaIdo3-0.4 as runtime data.
 //
-// GENERATED — do not edit. Provenance: AyatanaIdo3-0.4 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: AyatanaIdo3-0.4 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '0.4',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Ido'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -36,12 +38,12 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    IdoCalendarMenuItem: ['IdoCalendarMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    IdoEntryMenuItem: ['IdoEntryMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    IdoRange: ['IdoRange', 'GtkScale', 'GtkRange', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    IdoScaleMenuItem: ['IdoScaleMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    IdoSwitchMenuItem: ['IdoSwitchMenuItem', 'GtkCheckMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    IdoTimeline: ['IdoTimeline'],
+    IdoCalendarMenuItem: ['IdoCalendarMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    IdoEntryMenuItem: ['IdoEntryMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    IdoRange: ['IdoRange', 'GtkScale', 'GtkRange', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    IdoScaleMenuItem: ['IdoScaleMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    IdoSwitchMenuItem: ['IdoSwitchMenuItem', 'GtkCheckMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    IdoTimeline: ['IdoTimeline', 'GObject'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

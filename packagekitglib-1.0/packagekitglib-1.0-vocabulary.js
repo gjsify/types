@@ -1,0 +1,695 @@
+// The widget vocabulary of PackageKitGlib-1.0 as runtime data.
+//
+// GENERATED — do not edit. Provenance: PackageKitGlib-1.0 — library 1.3.6
+//
+// The type half of this subpath is the sibling `.d.ts`. This file exists because
+// types are erased: a consumer that wants to ask the installed library whether every
+// name here is real needs values, not declarations.
+
+export const PROVENANCE = {
+    namespace: 'PackageKitGlib',
+    version: '1.0',
+    libraryVersion: '1.3.6',
+    childHolders: 0,
+    droppedBases: [],
+    inlinedBases: [],
+    unsettableProps: [],
+    unresolvedProps: [],
+    identifierPrefixes: ['Pk'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary'],
+};
+
+export const OWN_PROPS = {
+    PkCategory: ['cat-id', 'icon', 'name', 'parent-id', 'summary'],
+    PkClient: ['background', 'cache-age', 'details-with-deps-size', 'interactive', 'locale'],
+    PkControl: ['backend-author', 'backend-description', 'backend-name', 'connected', 'distro-id', 'filters', 'groups', 'locked', 'mime-types', 'network-state', 'provides', 'roles'],
+    PkDetails: ['description', 'download-size', 'group', 'license', 'package-id', 'size', 'summary', 'url'],
+    PkDistroUpgrade: ['name', 'state', 'summary'],
+    PkError: ['code', 'details'],
+    PkEulaRequired: ['eula-id', 'license-agreement', 'package-id', 'vendor-name'],
+    PkFiles: ['files', 'package-id'],
+    PkItemProgress: ['package-id', 'percentage', 'status'],
+    PkMediaChangeRequired: ['media-id', 'media-text', 'media-type'],
+    PkPackage: ['description', 'group', 'info', 'license', 'size', 'summary', 'update-bugzilla-urls', 'update-changelog', 'update-cve-urls', 'update-issued', 'update-obsoletes', 'update-restart', 'update-severity', 'update-state', 'update-text', 'update-updated', 'update-updates', 'update-vendor-urls', 'url'],
+    PkProgress: ['allow-cancel', 'caller-active', 'download-size-remaining', 'elapsed-time', 'item-progress', 'package', 'package-id', 'percentage', 'remaining-time', 'role', 'sender', 'speed', 'status', 'transaction-flags', 'transaction-id', 'uid'],
+    PkRepoDetail: ['description', 'enabled', 'repo-id'],
+    PkRepoSignatureRequired: ['key-fingerprint', 'key-id', 'key-timestamp', 'key-url', 'key-userid', 'package-id', 'repository-name', 'type'],
+    PkRequireRestart: ['package-id', 'restart'],
+    PkResults: ['inputs', 'progress', 'role', 'transaction-flags'],
+    PkSource: ['role', 'transaction-id'],
+    PkTask: ['allow-downgrade', 'allow-reinstall', 'only-download', 'only-trusted', 'simulate'],
+    PkTransactionPast: ['cmdline', 'data', 'duration', 'role', 'succeeded', 'tid', 'timespec', 'uid'],
+    PkUpdateDetail: ['bugzilla-urls', 'changelog', 'cve-urls', 'issued', 'obsoletes', 'package-id', 'restart', 'state', 'update-text', 'updated', 'updates', 'vendor-urls'],
+};
+
+export const OWN_SIGNALS = {
+    PkControl: ['installed-changed', 'repo-list-changed', 'restart-schedule', 'transaction-list-changed', 'updates-changed'],
+    PkPackage: ['changed'],
+    PkTransactionList: ['added', 'removed'],
+};
+
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
+export const DECLS = {
+    PkCategory: ['PkCategory', 'PkSource', 'GObject'],
+    PkClient: ['PkClient', 'GObject'],
+    PkClientHelper: ['PkClientHelper', 'GObject'],
+    PkControl: ['PkControl', 'GObject'],
+    PkDesktop: ['PkDesktop', 'GObject'],
+    PkDetails: ['PkDetails', 'PkSource', 'GObject'],
+    PkDistroUpgrade: ['PkDistroUpgrade', 'PkSource', 'GObject'],
+    PkError: ['PkError', 'PkSource', 'GObject'],
+    PkEulaRequired: ['PkEulaRequired', 'PkSource', 'GObject'],
+    PkFiles: ['PkFiles', 'PkSource', 'GObject'],
+    PkItemProgress: ['PkItemProgress', 'PkSource', 'GObject'],
+    PkMediaChangeRequired: ['PkMediaChangeRequired', 'PkSource', 'GObject'],
+    PkPackage: ['PkPackage', 'PkSource', 'GObject'],
+    PkPackageSack: ['PkPackageSack', 'GObject'],
+    PkProgress: ['PkProgress', 'GObject'],
+    PkRepoDetail: ['PkRepoDetail', 'PkSource', 'GObject'],
+    PkRepoSignatureRequired: ['PkRepoSignatureRequired', 'PkSource', 'GObject'],
+    PkRequireRestart: ['PkRequireRestart', 'PkSource', 'GObject'],
+    PkResults: ['PkResults', 'GObject'],
+    PkSource: ['PkSource', 'GObject'],
+    PkTask: ['PkTask', 'PkClient', 'GObject'],
+    PkTransactionList: ['PkTransactionList', 'GObject'],
+    PkTransactionPast: ['PkTransactionPast', 'PkSource', 'GObject'],
+    PkUpdateDetail: ['PkUpdateDetail', 'PkSource', 'GObject'],
+};
+
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
+export const CHILD_HOLDERS = [];
+
+export const ENUM_NICKS = {
+    PkAuthorizeEnum: ['unknown', 'yes', 'no', 'interactive', 'last'],
+    PkDistroUpgradeEnum: ['unknown', 'stable', 'unstable', 'last'],
+    PkErrorEnum: ['unknown', 'oom', 'no-network', 'not-supported', 'internal-error', 'gpg-failure', 'package-id-invalid', 'package-not-installed', 'package-not-found', 'package-already-installed', 'package-download-failed', 'group-not-found', 'group-list-invalid', 'dep-resolution-failed', 'filter-invalid', 'create-thread-failed', 'transaction-error', 'transaction-cancelled', 'no-cache', 'repo-not-found', 'cannot-remove-system-package', 'process-kill', 'failed-initialization', 'failed-finalise', 'failed-config-parsing', 'cannot-cancel', 'cannot-get-lock', 'no-packages-to-update', 'cannot-write-repo-config', 'local-install-failed', 'bad-gpg-signature', 'missing-gpg-signature', 'cannot-install-source-package', 'repo-configuration-error', 'no-license-agreement', 'file-conflicts', 'package-conflicts', 'repo-not-available', 'invalid-package-file', 'package-install-blocked', 'package-corrupt', 'all-packages-already-installed', 'file-not-found', 'no-more-mirrors-to-try', 'no-distro-upgrade-data', 'incompatible-architecture', 'no-space-on-device', 'media-change-required', 'not-authorized', 'update-not-found', 'cannot-install-repo-unsigned', 'cannot-update-repo-unsigned', 'cannot-get-filelist', 'cannot-get-requires', 'cannot-disable-repository', 'restricted-download', 'package-failed-to-configure', 'package-failed-to-build', 'package-failed-to-install', 'package-failed-to-remove', 'update-failed-due-to-running-process', 'package-database-changed', 'provide-type-not-supported', 'install-root-invalid', 'cannot-fetch-sources', 'cancelled-priority', 'unfinished-transaction', 'lock-required', 'repo-already-set', 'last'],
+    PkExitEnum: ['unknown', 'success', 'failed', 'cancelled', 'key-required', 'eula-required', 'killed', 'media-change-required', 'need-untrusted', 'cancelled-priority', 'skip-transaction', 'repair-required', 'last'],
+    PkFilterEnum: ['unknown', 'none', 'installed', 'not-installed', 'development', 'not-development', 'gui', 'not-gui', 'free', 'not-free', 'visible', 'not-visible', 'supported', 'not-supported', 'basename', 'not-basename', 'newest', 'not-newest', 'arch', 'not-arch', 'source', 'not-source', 'collections', 'not-collections', 'application', 'not-application', 'downloaded', 'not-downloaded', 'last'],
+    PkGroupEnum: ['unknown', 'accessibility', 'accessories', 'admin-tools', 'communication', 'desktop-gnome', 'desktop-kde', 'desktop-other', 'desktop-xfce', 'education', 'fonts', 'games', 'graphics', 'internet', 'legacy', 'localization', 'maps', 'multimedia', 'network', 'office', 'other', 'power-management', 'programming', 'publishing', 'repos', 'security', 'servers', 'system', 'virtualization', 'science', 'documentation', 'electronics', 'collections', 'vendor', 'newest', 'desktop-dde', 'last'],
+    PkInfoEnum: ['unknown', 'installed', 'available', 'low', 'enhancement', 'normal', 'bugfix', 'important', 'security', 'blocked', 'downloading', 'updating', 'installing', 'removing', 'cleanup', 'obsoleting', 'collection-installed', 'collection-available', 'finished', 'reinstalling', 'downgrading', 'preparing', 'decompressing', 'untrusted', 'trusted', 'unavailable', 'critical', 'install', 'remove', 'obsolete', 'downgrade', 'last'],
+    PkMediaTypeEnum: ['unknown', 'cd', 'dvd', 'disc', 'last'],
+    PkNetworkEnum: ['unknown', 'offline', 'online', 'wired', 'wifi', 'mobile', 'last'],
+    PkOfflineAction: ['unknown', 'reboot', 'power-off', 'unset'],
+    PkPackageSackSortType: ['name', 'info', 'package-id', 'summary', 'last'],
+    PkProgressType: ['package-id', 'transaction-id', 'percentage', 'allow-cancel', 'status', 'role', 'caller-active', 'elapsed-time', 'remaining-time', 'speed', 'download-size-remaining', 'uid', 'package', 'item-progress', 'transaction-flags', 'invalid', 'sender'],
+    PkRestartEnum: ['unknown', 'none', 'application', 'session', 'system', 'security-session', 'security-system', 'last'],
+    PkRoleEnum: ['unknown', 'cancel', 'depends-on', 'get-details', 'get-files', 'get-packages', 'get-repo-list', 'required-by', 'get-update-detail', 'get-updates', 'install-files', 'install-packages', 'install-signature', 'refresh-cache', 'remove-packages', 'repo-enable', 'repo-set-data', 'resolve', 'search-details', 'search-file', 'search-group', 'search-name', 'update-packages', 'what-provides', 'accept-eula', 'download-packages', 'get-distro-upgrades', 'get-categories', 'get-old-transactions', 'repair-system', 'get-details-local', 'get-files-local', 'repo-remove', 'upgrade-system', 'last'],
+    PkSigTypeEnum: ['unknown', 'gpg', 'last'],
+    PkStatusEnum: ['unknown', 'wait', 'setup', 'running', 'query', 'info', 'remove', 'refresh-cache', 'download', 'install', 'update', 'cleanup', 'obsolete', 'dep-resolve', 'sig-check', 'test-commit', 'commit', 'request', 'finished', 'cancel', 'download-repository', 'download-packagelist', 'download-filelist', 'download-changelog', 'download-group', 'download-updateinfo', 'repackaging', 'loading-cache', 'scan-applications', 'generate-package-list', 'waiting-for-lock', 'waiting-for-auth', 'scan-process-list', 'check-executable-files', 'check-libraries', 'copy-files', 'run-hook', 'last'],
+    PkTransactionFlagEnum: ['none', 'only-trusted', 'simulate', 'only-download', 'allow-reinstall', 'just-reinstall', 'allow-downgrade', 'last'],
+    PkUpdateStateEnum: ['unknown', 'stable', 'unstable', 'testing', 'last'],
+    PkUpgradeKindEnum: ['unknown', 'minimal', 'default', 'complete', 'last'],
+};
+
+// The number behind each of those nicks, read from GIR's own `value` attribute.
+//
+// It ships because position in `ENUM_NICKS` is not the value and a consumer with no
+// typelib has no other way to learn it: a surface without GI still has to hand GObject an
+// integer. The alternative a consumer reaches for first is counting, and counting is wrong
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
+// `GtkResponseType` runs -1 down to
+// -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
+// 1001001000 where counting answers 0.
+//
+// Same provenance as the nicks above, which is the point: a consumer that reads the numbers
+// from an INSTALLED library instead gets two provenances for one table, and a member the
+// vocabulary describes but the host predates then looks like a missing number rather than a
+// version gap.
+export const ENUM_VALUES = {
+    'PkAuthorizeEnum.interactive': 3,
+    'PkAuthorizeEnum.last': 4,
+    'PkAuthorizeEnum.no': 2,
+    'PkAuthorizeEnum.unknown': 0,
+    'PkAuthorizeEnum.yes': 1,
+    'PkDistroUpgradeEnum.last': 3,
+    'PkDistroUpgradeEnum.stable': 1,
+    'PkDistroUpgradeEnum.unknown': 0,
+    'PkDistroUpgradeEnum.unstable': 2,
+    'PkErrorEnum.all-packages-already-installed': 41,
+    'PkErrorEnum.bad-gpg-signature': 30,
+    'PkErrorEnum.cancelled-priority': 65,
+    'PkErrorEnum.cannot-cancel': 25,
+    'PkErrorEnum.cannot-disable-repository': 54,
+    'PkErrorEnum.cannot-fetch-sources': 64,
+    'PkErrorEnum.cannot-get-filelist': 52,
+    'PkErrorEnum.cannot-get-lock': 26,
+    'PkErrorEnum.cannot-get-requires': 53,
+    'PkErrorEnum.cannot-install-repo-unsigned': 50,
+    'PkErrorEnum.cannot-install-source-package': 32,
+    'PkErrorEnum.cannot-remove-system-package': 20,
+    'PkErrorEnum.cannot-update-repo-unsigned': 51,
+    'PkErrorEnum.cannot-write-repo-config': 28,
+    'PkErrorEnum.create-thread-failed': 15,
+    'PkErrorEnum.dep-resolution-failed': 13,
+    'PkErrorEnum.failed-config-parsing': 24,
+    'PkErrorEnum.failed-finalise': 23,
+    'PkErrorEnum.failed-initialization': 22,
+    'PkErrorEnum.file-conflicts': 35,
+    'PkErrorEnum.file-not-found': 42,
+    'PkErrorEnum.filter-invalid': 14,
+    'PkErrorEnum.gpg-failure': 5,
+    'PkErrorEnum.group-list-invalid': 12,
+    'PkErrorEnum.group-not-found': 11,
+    'PkErrorEnum.incompatible-architecture': 45,
+    'PkErrorEnum.install-root-invalid': 63,
+    'PkErrorEnum.internal-error': 4,
+    'PkErrorEnum.invalid-package-file': 38,
+    'PkErrorEnum.last': 69,
+    'PkErrorEnum.local-install-failed': 29,
+    'PkErrorEnum.lock-required': 67,
+    'PkErrorEnum.media-change-required': 47,
+    'PkErrorEnum.missing-gpg-signature': 31,
+    'PkErrorEnum.no-cache': 18,
+    'PkErrorEnum.no-distro-upgrade-data': 44,
+    'PkErrorEnum.no-license-agreement': 34,
+    'PkErrorEnum.no-more-mirrors-to-try': 43,
+    'PkErrorEnum.no-network': 2,
+    'PkErrorEnum.no-packages-to-update': 27,
+    'PkErrorEnum.no-space-on-device': 46,
+    'PkErrorEnum.not-authorized': 48,
+    'PkErrorEnum.not-supported': 3,
+    'PkErrorEnum.oom': 1,
+    'PkErrorEnum.package-already-installed': 9,
+    'PkErrorEnum.package-conflicts': 36,
+    'PkErrorEnum.package-corrupt': 40,
+    'PkErrorEnum.package-database-changed': 61,
+    'PkErrorEnum.package-download-failed': 10,
+    'PkErrorEnum.package-failed-to-build': 57,
+    'PkErrorEnum.package-failed-to-configure': 56,
+    'PkErrorEnum.package-failed-to-install': 58,
+    'PkErrorEnum.package-failed-to-remove': 59,
+    'PkErrorEnum.package-id-invalid': 6,
+    'PkErrorEnum.package-install-blocked': 39,
+    'PkErrorEnum.package-not-found': 8,
+    'PkErrorEnum.package-not-installed': 7,
+    'PkErrorEnum.process-kill': 21,
+    'PkErrorEnum.provide-type-not-supported': 62,
+    'PkErrorEnum.repo-already-set': 68,
+    'PkErrorEnum.repo-configuration-error': 33,
+    'PkErrorEnum.repo-not-available': 37,
+    'PkErrorEnum.repo-not-found': 19,
+    'PkErrorEnum.restricted-download': 55,
+    'PkErrorEnum.transaction-cancelled': 17,
+    'PkErrorEnum.transaction-error': 16,
+    'PkErrorEnum.unfinished-transaction': 66,
+    'PkErrorEnum.unknown': 0,
+    'PkErrorEnum.update-failed-due-to-running-process': 60,
+    'PkErrorEnum.update-not-found': 49,
+    'PkExitEnum.cancelled': 3,
+    'PkExitEnum.cancelled-priority': 9,
+    'PkExitEnum.eula-required': 5,
+    'PkExitEnum.failed': 2,
+    'PkExitEnum.key-required': 4,
+    'PkExitEnum.killed': 6,
+    'PkExitEnum.last': 12,
+    'PkExitEnum.media-change-required': 7,
+    'PkExitEnum.need-untrusted': 8,
+    'PkExitEnum.repair-required': 11,
+    'PkExitEnum.skip-transaction': 10,
+    'PkExitEnum.success': 1,
+    'PkExitEnum.unknown': 0,
+    'PkFilterEnum.application': 24,
+    'PkFilterEnum.arch': 18,
+    'PkFilterEnum.basename': 14,
+    'PkFilterEnum.collections': 22,
+    'PkFilterEnum.development': 4,
+    'PkFilterEnum.downloaded': 26,
+    'PkFilterEnum.free': 8,
+    'PkFilterEnum.gui': 6,
+    'PkFilterEnum.installed': 2,
+    'PkFilterEnum.last': 28,
+    'PkFilterEnum.newest': 16,
+    'PkFilterEnum.none': 1,
+    'PkFilterEnum.not-application': 25,
+    'PkFilterEnum.not-arch': 19,
+    'PkFilterEnum.not-basename': 15,
+    'PkFilterEnum.not-collections': 23,
+    'PkFilterEnum.not-development': 5,
+    'PkFilterEnum.not-downloaded': 27,
+    'PkFilterEnum.not-free': 9,
+    'PkFilterEnum.not-gui': 7,
+    'PkFilterEnum.not-installed': 3,
+    'PkFilterEnum.not-newest': 17,
+    'PkFilterEnum.not-source': 21,
+    'PkFilterEnum.not-supported': 13,
+    'PkFilterEnum.not-visible': 11,
+    'PkFilterEnum.source': 20,
+    'PkFilterEnum.supported': 12,
+    'PkFilterEnum.unknown': 0,
+    'PkFilterEnum.visible': 10,
+    'PkGroupEnum.accessibility': 1,
+    'PkGroupEnum.accessories': 2,
+    'PkGroupEnum.admin-tools': 3,
+    'PkGroupEnum.collections': 32,
+    'PkGroupEnum.communication': 4,
+    'PkGroupEnum.desktop-dde': 35,
+    'PkGroupEnum.desktop-gnome': 5,
+    'PkGroupEnum.desktop-kde': 6,
+    'PkGroupEnum.desktop-other': 7,
+    'PkGroupEnum.desktop-xfce': 8,
+    'PkGroupEnum.documentation': 30,
+    'PkGroupEnum.education': 9,
+    'PkGroupEnum.electronics': 31,
+    'PkGroupEnum.fonts': 10,
+    'PkGroupEnum.games': 11,
+    'PkGroupEnum.graphics': 12,
+    'PkGroupEnum.internet': 13,
+    'PkGroupEnum.last': 36,
+    'PkGroupEnum.legacy': 14,
+    'PkGroupEnum.localization': 15,
+    'PkGroupEnum.maps': 16,
+    'PkGroupEnum.multimedia': 17,
+    'PkGroupEnum.network': 18,
+    'PkGroupEnum.newest': 34,
+    'PkGroupEnum.office': 19,
+    'PkGroupEnum.other': 20,
+    'PkGroupEnum.power-management': 21,
+    'PkGroupEnum.programming': 22,
+    'PkGroupEnum.publishing': 23,
+    'PkGroupEnum.repos': 24,
+    'PkGroupEnum.science': 29,
+    'PkGroupEnum.security': 25,
+    'PkGroupEnum.servers': 26,
+    'PkGroupEnum.system': 27,
+    'PkGroupEnum.unknown': 0,
+    'PkGroupEnum.vendor': 33,
+    'PkGroupEnum.virtualization': 28,
+    'PkInfoEnum.available': 2,
+    'PkInfoEnum.blocked': 9,
+    'PkInfoEnum.bugfix': 6,
+    'PkInfoEnum.cleanup': 14,
+    'PkInfoEnum.collection-available': 17,
+    'PkInfoEnum.collection-installed': 16,
+    'PkInfoEnum.critical': 26,
+    'PkInfoEnum.decompressing': 22,
+    'PkInfoEnum.downgrade': 30,
+    'PkInfoEnum.downgrading': 20,
+    'PkInfoEnum.downloading': 10,
+    'PkInfoEnum.enhancement': 4,
+    'PkInfoEnum.finished': 18,
+    'PkInfoEnum.important': 7,
+    'PkInfoEnum.install': 27,
+    'PkInfoEnum.installed': 1,
+    'PkInfoEnum.installing': 12,
+    'PkInfoEnum.last': 31,
+    'PkInfoEnum.low': 3,
+    'PkInfoEnum.normal': 5,
+    'PkInfoEnum.obsolete': 29,
+    'PkInfoEnum.obsoleting': 15,
+    'PkInfoEnum.preparing': 21,
+    'PkInfoEnum.reinstalling': 19,
+    'PkInfoEnum.remove': 28,
+    'PkInfoEnum.removing': 13,
+    'PkInfoEnum.security': 8,
+    'PkInfoEnum.trusted': 24,
+    'PkInfoEnum.unavailable': 25,
+    'PkInfoEnum.unknown': 0,
+    'PkInfoEnum.untrusted': 23,
+    'PkInfoEnum.updating': 11,
+    'PkMediaTypeEnum.cd': 1,
+    'PkMediaTypeEnum.disc': 3,
+    'PkMediaTypeEnum.dvd': 2,
+    'PkMediaTypeEnum.last': 4,
+    'PkMediaTypeEnum.unknown': 0,
+    'PkNetworkEnum.last': 6,
+    'PkNetworkEnum.mobile': 5,
+    'PkNetworkEnum.offline': 1,
+    'PkNetworkEnum.online': 2,
+    'PkNetworkEnum.unknown': 0,
+    'PkNetworkEnum.wifi': 4,
+    'PkNetworkEnum.wired': 3,
+    'PkOfflineAction.power-off': 2,
+    'PkOfflineAction.reboot': 1,
+    'PkOfflineAction.unknown': 0,
+    'PkOfflineAction.unset': 3,
+    'PkPackageSackSortType.info': 1,
+    'PkPackageSackSortType.last': 4,
+    'PkPackageSackSortType.name': 0,
+    'PkPackageSackSortType.package-id': 2,
+    'PkPackageSackSortType.summary': 3,
+    'PkProgressType.allow-cancel': 3,
+    'PkProgressType.caller-active': 6,
+    'PkProgressType.download-size-remaining': 10,
+    'PkProgressType.elapsed-time': 7,
+    'PkProgressType.invalid': 15,
+    'PkProgressType.item-progress': 13,
+    'PkProgressType.package': 12,
+    'PkProgressType.package-id': 0,
+    'PkProgressType.percentage': 2,
+    'PkProgressType.remaining-time': 8,
+    'PkProgressType.role': 5,
+    'PkProgressType.sender': 16,
+    'PkProgressType.speed': 9,
+    'PkProgressType.status': 4,
+    'PkProgressType.transaction-flags': 14,
+    'PkProgressType.transaction-id': 1,
+    'PkProgressType.uid': 11,
+    'PkRestartEnum.application': 2,
+    'PkRestartEnum.last': 7,
+    'PkRestartEnum.none': 1,
+    'PkRestartEnum.security-session': 5,
+    'PkRestartEnum.security-system': 6,
+    'PkRestartEnum.session': 3,
+    'PkRestartEnum.system': 4,
+    'PkRestartEnum.unknown': 0,
+    'PkRoleEnum.accept-eula': 24,
+    'PkRoleEnum.cancel': 1,
+    'PkRoleEnum.depends-on': 2,
+    'PkRoleEnum.download-packages': 25,
+    'PkRoleEnum.get-categories': 27,
+    'PkRoleEnum.get-details': 3,
+    'PkRoleEnum.get-details-local': 30,
+    'PkRoleEnum.get-distro-upgrades': 26,
+    'PkRoleEnum.get-files': 4,
+    'PkRoleEnum.get-files-local': 31,
+    'PkRoleEnum.get-old-transactions': 28,
+    'PkRoleEnum.get-packages': 5,
+    'PkRoleEnum.get-repo-list': 6,
+    'PkRoleEnum.get-update-detail': 8,
+    'PkRoleEnum.get-updates': 9,
+    'PkRoleEnum.install-files': 10,
+    'PkRoleEnum.install-packages': 11,
+    'PkRoleEnum.install-signature': 12,
+    'PkRoleEnum.last': 34,
+    'PkRoleEnum.refresh-cache': 13,
+    'PkRoleEnum.remove-packages': 14,
+    'PkRoleEnum.repair-system': 29,
+    'PkRoleEnum.repo-enable': 15,
+    'PkRoleEnum.repo-remove': 32,
+    'PkRoleEnum.repo-set-data': 16,
+    'PkRoleEnum.required-by': 7,
+    'PkRoleEnum.resolve': 17,
+    'PkRoleEnum.search-details': 18,
+    'PkRoleEnum.search-file': 19,
+    'PkRoleEnum.search-group': 20,
+    'PkRoleEnum.search-name': 21,
+    'PkRoleEnum.unknown': 0,
+    'PkRoleEnum.update-packages': 22,
+    'PkRoleEnum.upgrade-system': 33,
+    'PkRoleEnum.what-provides': 23,
+    'PkSigTypeEnum.gpg': 1,
+    'PkSigTypeEnum.last': 2,
+    'PkSigTypeEnum.unknown': 0,
+    'PkStatusEnum.cancel': 19,
+    'PkStatusEnum.check-executable-files': 33,
+    'PkStatusEnum.check-libraries': 34,
+    'PkStatusEnum.cleanup': 11,
+    'PkStatusEnum.commit': 16,
+    'PkStatusEnum.copy-files': 35,
+    'PkStatusEnum.dep-resolve': 13,
+    'PkStatusEnum.download': 8,
+    'PkStatusEnum.download-changelog': 23,
+    'PkStatusEnum.download-filelist': 22,
+    'PkStatusEnum.download-group': 24,
+    'PkStatusEnum.download-packagelist': 21,
+    'PkStatusEnum.download-repository': 20,
+    'PkStatusEnum.download-updateinfo': 25,
+    'PkStatusEnum.finished': 18,
+    'PkStatusEnum.generate-package-list': 29,
+    'PkStatusEnum.info': 5,
+    'PkStatusEnum.install': 9,
+    'PkStatusEnum.last': 37,
+    'PkStatusEnum.loading-cache': 27,
+    'PkStatusEnum.obsolete': 12,
+    'PkStatusEnum.query': 4,
+    'PkStatusEnum.refresh-cache': 7,
+    'PkStatusEnum.remove': 6,
+    'PkStatusEnum.repackaging': 26,
+    'PkStatusEnum.request': 17,
+    'PkStatusEnum.run-hook': 36,
+    'PkStatusEnum.running': 3,
+    'PkStatusEnum.scan-applications': 28,
+    'PkStatusEnum.scan-process-list': 32,
+    'PkStatusEnum.setup': 2,
+    'PkStatusEnum.sig-check': 14,
+    'PkStatusEnum.test-commit': 15,
+    'PkStatusEnum.unknown': 0,
+    'PkStatusEnum.update': 10,
+    'PkStatusEnum.wait': 1,
+    'PkStatusEnum.waiting-for-auth': 31,
+    'PkStatusEnum.waiting-for-lock': 30,
+    'PkTransactionFlagEnum.allow-downgrade': 6,
+    'PkTransactionFlagEnum.allow-reinstall': 4,
+    'PkTransactionFlagEnum.just-reinstall': 5,
+    'PkTransactionFlagEnum.last': 7,
+    'PkTransactionFlagEnum.none': 0,
+    'PkTransactionFlagEnum.only-download': 3,
+    'PkTransactionFlagEnum.only-trusted': 1,
+    'PkTransactionFlagEnum.simulate': 2,
+    'PkUpdateStateEnum.last': 4,
+    'PkUpdateStateEnum.stable': 1,
+    'PkUpdateStateEnum.testing': 3,
+    'PkUpdateStateEnum.unknown': 0,
+    'PkUpdateStateEnum.unstable': 2,
+    'PkUpgradeKindEnum.complete': 3,
+    'PkUpgradeKindEnum.default': 2,
+    'PkUpgradeKindEnum.last': 4,
+    'PkUpgradeKindEnum.minimal': 1,
+    'PkUpgradeKindEnum.unknown': 0,
+};
+
+// The nicks GIR marks `deprecated="1"`.
+//
+// Two members of one enum may share a value -- that is how GObject spells an alias, and
+// `GTK_ALIGN_BASELINE` and `GTK_ALIGN_BASELINE_FILL` are both 4. `ENUM_VALUES` keeps
+// both names, so nothing is lost, and this is what says which of the two a number should be
+// spelled back as. Stated rather than derived: the pairing is visible in the values, the
+// DIRECTION is not.
+//
+// Read it as evidence, not as a negative: 4 registered-enum members in the 718 GIRs carry
+// the attribute at all, and 179 of the 182 value-sharing pairs carry it on neither half.
+// A nick missing from here is a nick GIR says nothing about, not a nick GIR calls current.
+export const ENUM_DEPRECATED = [];
+
+// The declared remainder: nicks whose GIR `value` is not a number this can carry.
+//
+// Every nick in `ENUM_NICKS` is in `ENUM_VALUES` or here -- a nick in neither would be a
+// silent drop. GIR carries two shapes no integer holds: a symbolic or absent value (Vala
+// writes `(null)`, a char enum writes a letter) and an integer past
+// `Number.MAX_SAFE_INTEGER`. The value kept here is the raw attribute, so the entry says
+// WHAT was unreadable rather than only that something was. Measured over the 718 GIRs in
+// ts-for-gir's `girs/`: 32 of 34096 registered-enum members, none in Gtk, Adw, GLib or Gio.
+export const ENUM_VALUES_UNREADABLE = {};
+
+// The number behind each member of a registered BITFIELD, keyed the same way.
+//
+// `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
+//
+// A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
+// `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
+export const FLAG_VALUES = {
+    'PkOfflineFlags.interactive': 1,
+    'PkOfflineFlags.none': 0,
+};
+
+// The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
+// `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
+// so this is the table that shape actually reaches.
+export const FLAG_VALUES_UNREADABLE = {};
+
+// Declaration GType + property name -> the GType of that property's enum or bitfield.
+//
+// Without it the value tables above are half an answer. A host with no GI knows it must set
+// `orientation` to the number behind the nick `vertical`; `ENUM_VALUES` is keyed
+// `GtkOrientation.vertical`, and nothing else says that `orientation` is a
+// `GtkOrientation`. Deriving it is not available: `never` is a member of several Gtk enums,
+// and choosing between them produces a wrong number rather than a missing one.
+//
+// Only where the property's OWN type is the enum. An array of them and a union that mentions
+// one are both entries a consumer would resolve wrongly, so neither is written.
+//
+// A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
+// vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
+export const PROP_ENUMS = {
+    'PkControl.network-state': 'PkNetworkEnum',
+    'PkDetails.group': 'PkGroupEnum',
+    'PkDistroUpgrade.state': 'PkDistroUpgradeEnum',
+    'PkError.code': 'PkErrorEnum',
+    'PkMediaChangeRequired.media-type': 'PkMediaTypeEnum',
+    'PkPackage.group': 'PkGroupEnum',
+    'PkPackage.info': 'PkInfoEnum',
+    'PkPackage.update-restart': 'PkRestartEnum',
+    'PkPackage.update-severity': 'PkInfoEnum',
+    'PkPackage.update-state': 'PkUpdateStateEnum',
+    'PkRepoSignatureRequired.type': 'PkSigTypeEnum',
+    'PkRequireRestart.restart': 'PkRestartEnum',
+    'PkResults.role': 'PkRoleEnum',
+    'PkSource.role': 'PkRoleEnum',
+    'PkTransactionPast.role': 'PkRoleEnum',
+    'PkUpdateDetail.restart': 'PkRestartEnum',
+    'PkUpdateDetail.state': 'PkUpdateStateEnum',
+};
+
+// `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
+//
+// The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint
+// `accessibility { … }` block is typed by GTK's ARIA table instead, and the two disagree
+// where it matters: `orientation` is settable on a `GtkLabel` that implements no
+// `GtkOrientable` and has no such property, and `checked` is a `GtkAccessibleTristate`, so
+// `checked: true` means the number 1 and not the boolean. A consumer typing those slots
+// from the widget gets both wrong, silently.
+//
+// Read from each member's own documentation, which is where GTK keeps the table --
+// `gtk_accessible_property_init_value()` is the C half and is not introspectable, the
+// sentence is. Complete or absent, never partial: a member whose documentation states no
+// value type fails generation and names itself, because a missing row is indistinguishable
+// from "GTK has no such name" and the plausible fallback emits `true` where GTK means 1.
+export const ARIA_VALUE_TYPES = {};
+
+// The same keys, for the `'enum'` rows only -> the GType of the enum.
+//
+// The join on from a kind to a number, and a table of its own for the reason `PROP_ENUMS`
+// is one: folding the GType into `ARIA_VALUE_TYPES` would make its values a mix of six
+// reserved words and arbitrary GTypes, and telling them apart would be the consumer's
+// problem. With this, `ARIA_VALUE_TYPES[k] === 'enum'` is the whole test, and
+// `ENUM_NICKS[ARIA_VALUE_ENUMS[k]]` is the nick list.
+export const ARIA_VALUE_ENUMS = {};
+
+export const SLOT_CANDIDATES = {};
+
+export const SINCE = {
+    'PkCategory.cat-id': '0.5.4',
+    'PkCategory.icon': '0.5.4',
+    'PkCategory.name': '0.5.4',
+    'PkCategory.parent-id': '0.5.4',
+    'PkCategory.summary': '0.5.4',
+    'PkClient.background': '0.5.3',
+    'PkClient.cache-age': '0.6.10',
+    'PkClient.details-with-deps-size': '1.2.7',
+    'PkClient.interactive': '0.5.4',
+    'PkClient.locale': '0.5.3',
+    'PkControl.backend-author': '0.5.2',
+    'PkControl.backend-description': '0.5.2',
+    'PkControl.backend-name': '0.5.2',
+    'PkControl.connected': '0.5.3',
+    'PkControl.distro-id': '0.5.5',
+    'PkControl.filters': '0.5.2',
+    'PkControl.groups': '0.5.2',
+    'PkControl.locked': '0.5.3',
+    'PkControl.mime-types': '0.8.1',
+    'PkControl.network-state': '0.5.3',
+    'PkControl.provides': '0.8.8',
+    'PkControl.roles': '0.5.2',
+    'PkControl::installed-changed': '1.2.9',
+    'PkDetails.description': '0.5.4',
+    'PkDetails.download-size': '1.2.4',
+    'PkDetails.group': '0.5.4',
+    'PkDetails.license': '0.5.4',
+    'PkDetails.package-id': '0.5.4',
+    'PkDetails.size': '0.5.4',
+    'PkDetails.summary': '0.9.1',
+    'PkDetails.url': '0.5.4',
+    'PkDistroUpgrade.name': '0.5.4',
+    'PkDistroUpgrade.state': '0.5.4',
+    'PkDistroUpgrade.summary': '0.5.4',
+    'PkError.code': '0.5.5',
+    'PkError.details': '0.5.5',
+    'PkEulaRequired.eula-id': '0.5.4',
+    'PkEulaRequired.license-agreement': '0.5.4',
+    'PkEulaRequired.package-id': '0.5.4',
+    'PkEulaRequired.vendor-name': '0.5.4',
+    'PkFiles.files': '0.5.4',
+    'PkFiles.package-id': '0.5.4',
+    'PkItemProgress.package-id': '0.8.1',
+    'PkItemProgress.percentage': '0.8.1',
+    'PkItemProgress.status': '0.8.2',
+    'PkMediaChangeRequired.media-id': '0.5.4',
+    'PkMediaChangeRequired.media-text': '0.5.4',
+    'PkMediaChangeRequired.media-type': '0.5.4',
+    'PkPackage.description': '0.5.4',
+    'PkPackage.group': '0.5.4',
+    'PkPackage.info': '0.5.4',
+    'PkPackage.license': '0.5.4',
+    'PkPackage.size': '0.5.4',
+    'PkPackage.summary': '0.5.4',
+    'PkPackage.update-bugzilla-urls': '0.8.1',
+    'PkPackage.update-changelog': '0.5.4',
+    'PkPackage.update-cve-urls': '0.8.1',
+    'PkPackage.update-issued': '0.5.4',
+    'PkPackage.update-obsoletes': '0.5.4',
+    'PkPackage.update-restart': '0.5.4',
+    'PkPackage.update-severity': '1.2.4',
+    'PkPackage.update-state': '0.5.4',
+    'PkPackage.update-text': '0.5.4',
+    'PkPackage.update-updated': '0.5.4',
+    'PkPackage.update-updates': '0.5.4',
+    'PkPackage.update-vendor-urls': '0.8.1',
+    'PkPackage.url': '0.5.4',
+    'PkProgress.allow-cancel': '0.5.2',
+    'PkProgress.caller-active': '0.5.2',
+    'PkProgress.download-size-remaining': '0.8.0',
+    'PkProgress.elapsed-time': '0.5.2',
+    'PkProgress.item-progress': '0.8.1',
+    'PkProgress.package': '0.5.3',
+    'PkProgress.package-id': '0.5.2',
+    'PkProgress.percentage': '0.5.2',
+    'PkProgress.remaining-time': '0.5.2',
+    'PkProgress.role': '0.5.2',
+    'PkProgress.sender': '1.2.6',
+    'PkProgress.speed': '0.5.2',
+    'PkProgress.status': '0.5.2',
+    'PkProgress.transaction-flags': '0.8.8',
+    'PkProgress.transaction-id': '0.5.2',
+    'PkProgress.uid': '0.5.2',
+    'PkRepoDetail.description': '0.5.4',
+    'PkRepoDetail.enabled': '0.5.4',
+    'PkRepoDetail.repo-id': '0.5.4',
+    'PkRepoSignatureRequired.key-fingerprint': '0.5.4',
+    'PkRepoSignatureRequired.key-id': '0.5.4',
+    'PkRepoSignatureRequired.key-timestamp': '0.5.4',
+    'PkRepoSignatureRequired.key-url': '0.5.4',
+    'PkRepoSignatureRequired.key-userid': '0.5.4',
+    'PkRepoSignatureRequired.package-id': '0.5.4',
+    'PkRepoSignatureRequired.repository-name': '0.5.4',
+    'PkRepoSignatureRequired.type': '0.5.4',
+    'PkRequireRestart.package-id': '0.5.4',
+    'PkRequireRestart.restart': '0.5.4',
+    'PkResults.inputs': '0.5.3',
+    'PkResults.progress': '0.5.3',
+    'PkResults.role': '0.5.2',
+    'PkResults.transaction-flags': '0.8.1',
+    'PkSource.role': '0.6.0',
+    'PkSource.transaction-id': '0.6.0',
+    'PkTask.allow-downgrade': '1.0.2',
+    'PkTask.allow-reinstall': '1.0.2',
+    'PkTask.only-download': '0.8.1',
+    'PkTask.only-trusted': '0.9.5',
+    'PkTask.simulate': '0.5.2',
+    'PkTransactionPast.cmdline': '0.5.4',
+    'PkTransactionPast.data': '0.5.4',
+    'PkTransactionPast.duration': '0.5.4',
+    'PkTransactionPast.role': '0.5.4',
+    'PkTransactionPast.succeeded': '0.5.4',
+    'PkTransactionPast.tid': '0.5.4',
+    'PkTransactionPast.timespec': '0.5.4',
+    'PkTransactionPast.uid': '0.5.4',
+    'PkUpdateDetail.bugzilla-urls': '0.8.1',
+    'PkUpdateDetail.changelog': '0.5.4',
+    'PkUpdateDetail.cve-urls': '0.8.1',
+    'PkUpdateDetail.issued': '0.5.4',
+    'PkUpdateDetail.obsoletes': '0.8.1',
+    'PkUpdateDetail.package-id': '0.5.4',
+    'PkUpdateDetail.restart': '0.5.4',
+    'PkUpdateDetail.state': '0.5.4',
+    'PkUpdateDetail.update-text': '0.5.4',
+    'PkUpdateDetail.updated': '0.5.4',
+    'PkUpdateDetail.updates': '0.8.1',
+    'PkUpdateDetail.vendor-urls': '0.8.1',
+};

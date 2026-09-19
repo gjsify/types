@@ -1,6 +1,6 @@
 // The widget vocabulary of Tepl-5 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Tepl-5 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: Tepl-5 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '5',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Tepl'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/gtksource-4/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -45,29 +47,29 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    TeplAbstractFactory: ['TeplAbstractFactory'],
-    TeplApplication: ['TeplApplication'],
-    TeplApplicationWindow: ['TeplApplicationWindow', 'TeplTabGroup'],
-    TeplBuffer: ['TeplBuffer', 'GtkSourceBuffer', 'GtkTextBuffer'],
-    TeplFile: ['TeplFile'],
-    TeplFileLoader: ['TeplFileLoader'],
-    TeplFileSaver: ['TeplFileSaver'],
-    TeplFoldRegion: ['TeplFoldRegion'],
-    TeplGotoLineBar: ['TeplGotoLineBar', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    TeplGutterRendererFolds: ['TeplGutterRendererFolds', 'GtkSourceGutterRenderer'],
-    TeplInfoBar: ['TeplInfoBar', 'GtkInfoBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    TeplLanguageChooserDialog: ['TeplLanguageChooserDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'TeplLanguageChooser'],
-    TeplLanguageChooserWidget: ['TeplLanguageChooserWidget', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'TeplLanguageChooser'],
-    TeplMetadata: ['TeplMetadata'],
-    TeplMetadataManager: ['TeplMetadataManager'],
-    TeplNotebook: ['TeplNotebook', 'GtkNotebook', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'TeplTabGroup'],
-    TeplPanel: ['TeplPanel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    TeplSpaceDrawerPrefs: ['TeplSpaceDrawerPrefs', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    TeplStatusbar: ['TeplStatusbar', 'GtkStatusbar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    TeplStyleSchemeChooserWidget: ['TeplStyleSchemeChooserWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkSourceStyleSchemeChooser'],
-    TeplTab: ['TeplTab', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'TeplTabGroup'],
-    TeplTabLabel: ['TeplTabLabel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    TeplView: ['TeplView', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
+    TeplAbstractFactory: ['TeplAbstractFactory', 'GObject'],
+    TeplApplication: ['TeplApplication', 'GObject'],
+    TeplApplicationWindow: ['TeplApplicationWindow', 'GObject', 'TeplTabGroup'],
+    TeplBuffer: ['TeplBuffer', 'GtkSourceBuffer', 'GtkTextBuffer', 'GObject'],
+    TeplFile: ['TeplFile', 'GObject'],
+    TeplFileLoader: ['TeplFileLoader', 'GObject'],
+    TeplFileSaver: ['TeplFileSaver', 'GObject'],
+    TeplFoldRegion: ['TeplFoldRegion', 'GObject'],
+    TeplGotoLineBar: ['TeplGotoLineBar', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    TeplGutterRendererFolds: ['TeplGutterRendererFolds', 'GtkSourceGutterRenderer', 'GInitiallyUnowned', 'GObject'],
+    TeplInfoBar: ['TeplInfoBar', 'GtkInfoBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    TeplLanguageChooserDialog: ['TeplLanguageChooserDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'TeplLanguageChooser'],
+    TeplLanguageChooserWidget: ['TeplLanguageChooserWidget', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'TeplLanguageChooser'],
+    TeplMetadata: ['TeplMetadata', 'GObject'],
+    TeplMetadataManager: ['TeplMetadataManager', 'GObject'],
+    TeplNotebook: ['TeplNotebook', 'GtkNotebook', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'TeplTabGroup'],
+    TeplPanel: ['TeplPanel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    TeplSpaceDrawerPrefs: ['TeplSpaceDrawerPrefs', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    TeplStatusbar: ['TeplStatusbar', 'GtkStatusbar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    TeplStyleSchemeChooserWidget: ['TeplStyleSchemeChooserWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkSourceStyleSchemeChooser'],
+    TeplTab: ['TeplTab', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'TeplTabGroup'],
+    TeplTabLabel: ['TeplTabLabel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    TeplView: ['TeplView', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

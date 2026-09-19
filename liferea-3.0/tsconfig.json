@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./liferea-3.0.d.ts"]
+  "include": ["./liferea-3.0.d.ts","./liferea-3.0-vocabulary.d.ts"]
 }
 
 

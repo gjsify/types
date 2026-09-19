@@ -1,6 +1,6 @@
 // The widget vocabulary of AtrilView-1.5.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: AtrilView-1.5.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: AtrilView-1.5.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1.5.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Ev'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -39,23 +41,23 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    EvDocumentModel: ['EvDocumentModel'],
-    EvJobAnnots: ['EvJobAnnots', 'EvJob'],
-    EvJobAttachments: ['EvJobAttachments', 'EvJob'],
-    EvJobExport: ['EvJobExport', 'EvJob'],
-    EvJobFind: ['EvJobFind', 'EvJob'],
-    EvJobFonts: ['EvJobFonts', 'EvJob'],
-    EvJobLayers: ['EvJobLayers', 'EvJob'],
-    EvJobLinks: ['EvJobLinks', 'EvJob'],
-    EvJobLoad: ['EvJobLoad', 'EvJob'],
-    EvJobPageData: ['EvJobPageData', 'EvJob'],
-    EvJobPrint: ['EvJobPrint', 'EvJob'],
-    EvJobRender: ['EvJobRender', 'EvJob'],
-    EvJobSave: ['EvJobSave', 'EvJob'],
-    EvJobThumbnail: ['EvJobThumbnail', 'EvJob'],
-    EvView: ['EvView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
-    EvViewPresentation: ['EvViewPresentation', 'GtkWidget', 'GtkBuildable'],
-    EvWebView: ['EvWebView', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    EvDocumentModel: ['EvDocumentModel', 'GObject'],
+    EvJobAnnots: ['EvJobAnnots', 'EvJob', 'GObject'],
+    EvJobAttachments: ['EvJobAttachments', 'EvJob', 'GObject'],
+    EvJobExport: ['EvJobExport', 'EvJob', 'GObject'],
+    EvJobFind: ['EvJobFind', 'EvJob', 'GObject'],
+    EvJobFonts: ['EvJobFonts', 'EvJob', 'GObject'],
+    EvJobLayers: ['EvJobLayers', 'EvJob', 'GObject'],
+    EvJobLinks: ['EvJobLinks', 'EvJob', 'GObject'],
+    EvJobLoad: ['EvJobLoad', 'EvJob', 'GObject'],
+    EvJobPageData: ['EvJobPageData', 'EvJob', 'GObject'],
+    EvJobPrint: ['EvJobPrint', 'EvJob', 'GObject'],
+    EvJobRender: ['EvJobRender', 'EvJob', 'GObject'],
+    EvJobSave: ['EvJobSave', 'EvJob', 'GObject'],
+    EvJobThumbnail: ['EvJobThumbnail', 'EvJob', 'GObject'],
+    EvView: ['EvView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
+    EvViewPresentation: ['EvViewPresentation', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EvWebView: ['EvWebView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

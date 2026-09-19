@@ -1,6 +1,6 @@
 {
     "name": "@girs/gdkwayland-4.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for GdkWayland-4.0",
     "type": "module",
     "module": "gdkwayland-4.0.js",
@@ -15,6 +15,11 @@
         "types": "./gdkwayland-4.0-import.d.ts",
         "import": "./gdkwayland-4.0-import.js",
         "default": "./gdkwayland-4.0-import.js"
+      },
+      "./vocabulary": {
+        "types": "./gdkwayland-4.0-vocabulary.d.ts",
+        "import": "./gdkwayland-4.0-vocabulary.js",
+        "default": "./gdkwayland-4.0-vocabulary.js"
       },
       "./gdkwayland-4.0": {
         "types": "./gdkwayland-4.0.d.ts",
@@ -31,18 +36,18 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gdk-4.0": "^5.2.0",
-      "@girs/cairo-1.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/pangocairo-1.0": "^5.2.0",
-      "@girs/pango-1.0": "^5.2.0",
-      "@girs/harfbuzz-0.0": "^5.2.0",
-      "@girs/freetype2-2.0": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0",
-      "@girs/gdkpixbuf-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gdk-4.0": "^5.3.0",
+      "@girs/cairo-1.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/pangocairo-1.0": "^5.3.0",
+      "@girs/pango-1.0": "^5.3.0",
+      "@girs/harfbuzz-0.0": "^5.3.0",
+      "@girs/freetype2-2.0": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0",
+      "@girs/gdkpixbuf-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

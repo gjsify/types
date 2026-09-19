@@ -50,7 +50,7 @@
       ]
 }
   },
-  "include": ["./gstrtspserver-1.0.d.ts"]
+  "include": ["./gstrtspserver-1.0.d.ts","./gstrtspserver-1.0-vocabulary.d.ts"]
 }
 
 

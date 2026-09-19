@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for GcrUi-3.
  *
- * GENERATED — do not edit. Provenance: GcrUi-3 — dropped empty base(s): GObject.Object Gcr.Certificate Gcr.Comparable GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gcr.Prompt — prop(s) no TypeScript value satisfies: GcrUi.CollectionModel.columns GcrUi.TreeSelector.columns
+ * GENERATED — do not edit. Provenance: GcrUi-3 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: GcrUi.CollectionModel.columns GcrUi.TreeSelector.columns
  *
- * 14 instantiable GTypes (of which 9 concrete widgets), 16 declarations (1 inlined from a namespace whose vocabulary does not emit them), 0 enum nick unions, 0 slot candidates.
+ * 14 instantiable GTypes (of which 9 concrete widgets), 15 declarations, 0 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -27,6 +27,8 @@
 import type Gck from '@girs/gck-1';
 import type Gcr from '@girs/gcr-3';
 import type GcrUi from './gcrui-3.js';
+import type { GcrCertificateConstructOnly, GcrCertificateProps, GcrComparableConstructOnly, GcrComparableProps, GcrPromptConstructOnly, GcrPromptProps } from '@girs/gcr-3/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkComboBoxConstructOnly, GtkComboBoxProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkEntryBufferConstructOnly, GtkEntryBufferProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkTreeModelConstructOnly, GtkTreeModelProps, GtkTreeSortableConstructOnly, GtkTreeSortableProps, GtkTreeViewConstructOnly, GtkTreeViewProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -52,7 +54,7 @@ import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableCons
 // ---------------------------------------------------------------------------
 
 /** An implementation of #GcrRenderer which renders certificates. */
-export interface GcrCertificateRendererProps extends Omit<GcrRendererProps, 'attributes'> {
+export interface GcrCertificateRendererProps extends GObjectProps, GcrCertificateProps, GcrComparableProps, Omit<GcrRendererProps, 'attributes'> {
     /** The certificate attributes to display. */
     attributes?: Gck.Attributes;
     /** The certificate to display. */
@@ -61,7 +63,7 @@ export interface GcrCertificateRendererProps extends Omit<GcrRendererProps, 'att
     label?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GcrCertificateRendererConstructOnly = GcrRendererConstructOnly;
+export type GcrCertificateRendererConstructOnly = GObjectConstructOnly | GcrCertificateConstructOnly | GcrComparableConstructOnly | GcrRendererConstructOnly;
 
 /** A widget that can be used to display a certificate. */
 export interface GcrCertificateWidgetProps extends GtkBinProps, GtkBuildableProps {
@@ -72,12 +74,12 @@ export interface GcrCertificateWidgetProps extends GtkBinProps, GtkBuildableProp
 export type GcrCertificateWidgetConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
 /** Ain implementation of a [iface@Gtk.TreeModel] which contains a row for each object in a [iface@Gcr.Collection]. */
-export interface GcrCollectionModelProps extends GtkTreeModelProps, GtkTreeSortableProps {
+export interface GcrCollectionModelProps extends GObjectProps, GtkTreeModelProps, GtkTreeSortableProps {
     collection?: Gcr.Collection;
     columns?: never;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GcrCollectionModelConstructOnly = GtkTreeModelConstructOnly | GtkTreeSortableConstructOnly | 'columns';
+export type GcrCollectionModelConstructOnly = GObjectConstructOnly | GtkTreeModelConstructOnly | GtkTreeSortableConstructOnly | 'columns';
 
 /** A widget that can be used to select a certificate or key. */
 export interface GcrComboSelectorProps extends GtkComboBoxProps, GtkBuildableProps, GtkCellEditableProps, GtkCellLayoutProps {
@@ -88,12 +90,12 @@ export interface GcrComboSelectorProps extends GtkComboBoxProps, GtkBuildablePro
 export type GcrComboSelectorConstructOnly = GtkComboBoxConstructOnly | GtkBuildableConstructOnly | GtkCellEditableConstructOnly | GtkCellLayoutConstructOnly | 'collection';
 
 /** A renderer that can be used for unsupported data. */
-export interface GcrFailureRendererProps extends Omit<GcrRendererProps, 'attributes'> {
+export interface GcrFailureRendererProps extends GObjectProps, Omit<GcrRendererProps, 'attributes'> {
     attributes?: Gck.Attributes;
     label?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GcrFailureRendererConstructOnly = GcrRendererConstructOnly;
+export type GcrFailureRendererConstructOnly = GObjectConstructOnly | GcrRendererConstructOnly;
 
 /** A button which imports keys and certificates. */
 export interface GcrImportButtonProps extends GtkButtonProps, GtkActionableProps, GtkActivatableProps, GtkBuildableProps {
@@ -102,11 +104,11 @@ export interface GcrImportButtonProps extends GtkButtonProps, GtkActionableProps
 export type GcrImportButtonConstructOnly = GtkButtonConstructOnly | GtkActionableConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly;
 
 /** An implementation of #GcrRenderer which renders keys. */
-export interface GcrKeyRendererProps extends GcrRendererProps {
+export interface GcrKeyRendererProps extends GObjectProps, GcrRendererProps {
     object?: Gck.Object;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GcrKeyRendererConstructOnly = GcrRendererConstructOnly;
+export type GcrKeyRendererConstructOnly = GObjectConstructOnly | GcrRendererConstructOnly;
 
 /** A key widget and renderer A key widget can be used to display a RSA, DSA or EC key. */
 export interface GcrKeyWidgetProps extends GtkBinProps, GtkBuildableProps {
@@ -123,62 +125,6 @@ export interface GcrListSelectorProps extends GtkTreeViewProps, GtkBuildableProp
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GcrListSelectorConstructOnly = GtkTreeViewConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly | 'collection';
 
-/** A prompt displayed to the user. */
-export interface GcrPromptProps {
-    /**
-     * The string handle of the caller's window.
-     * @default NULL
-     */
-    'caller-window'?: string;
-    /**
-     * The label for the cancel button in the prompt.
-     * @default Cancel
-     */
-    'cancel-label'?: string;
-    /**
-     * Whether the additional choice is chosen or not.
-     * @default FALSE
-     */
-    'choice-chosen'?: boolean;
-    /**
-     * The label for the additional choice.
-     * @default NULL
-     */
-    'choice-label'?: string;
-    /**
-     * The label for the continue button in the prompt.
-     * @default Continue
-     */
-    'continue-label'?: string;
-    /**
-     * The detailed description of the prompt.
-     * @default NULL
-     */
-    description?: string;
-    /**
-     * The prompt message for the user.
-     * @default NULL
-     */
-    message?: string;
-    /**
-     * Whether the prompt will prompt for a new password.
-     * @default FALSE
-     */
-    'password-new'?: boolean;
-    /**
-     * The title of the prompt.
-     * @default NULL
-     */
-    title?: string;
-    /**
-     * A prompt warning displayed on the prompt, or %NULL for no warning.
-     * @default NULL
-     */
-    warning?: string;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GcrPromptConstructOnly = never;
-
 /** A [iface@Gcr.Prompt] implementation which shows a GTK dialog. */
 export interface GcrPromptDialogProps extends GtkDialogProps, Omit<GcrPromptProps, 'title'>, GtkBuildableProps {
 }
@@ -186,14 +132,14 @@ export interface GcrPromptDialogProps extends GtkDialogProps, Omit<GcrPromptProp
 export type GcrPromptDialogConstructOnly = GtkDialogConstructOnly | GcrPromptConstructOnly | GtkBuildableConstructOnly;
 
 /** An interface that's implemented by renderers which wish to render data to a [iface@Viewer]. */
-export interface GcrRendererProps {
+export interface GcrRendererProps extends GObjectProps {
     /** The attributes to display. */
     attributes?: Gck.Attributes | null;
     /** The label to display. */
     label?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GcrRendererConstructOnly = never;
+export type GcrRendererConstructOnly = GObjectConstructOnly;
 
 /** A [class@Gtk.EntryBuffer] that uses non-pageable memory. */
 export interface GcrSecureEntryBufferProps extends GtkEntryBufferProps {
@@ -377,6 +323,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./restextras-0.7.d.ts"]
+  "include": ["./restextras-0.7.d.ts","./restextras-0.7-vocabulary.d.ts"]
 }
 
 

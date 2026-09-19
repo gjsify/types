@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./packagekitglib-1.0.d.ts"]
+  "include": ["./packagekitglib-1.0.d.ts","./packagekitglib-1.0-vocabulary.d.ts"]
 }
 
 

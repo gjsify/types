@@ -86,7 +86,7 @@
       ]
 }
   },
-  "include": ["./cluttergst-3.0.d.ts"]
+  "include": ["./cluttergst-3.0.d.ts","./cluttergst-3.0-vocabulary.d.ts"]
 }
 
 

@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./folksdummy-0.7.d.ts"]
+  "include": ["./folksdummy-0.7.d.ts","./folksdummy-0.7-vocabulary.d.ts"]
 }
 
 

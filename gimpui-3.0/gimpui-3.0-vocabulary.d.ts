@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for GimpUi-3.0.
  *
- * GENERATED — do not edit. Provenance: GimpUi-3.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — prop(s) no TypeScript value satisfies: GimpUi.Dialog.help-func
+ * GENERATED — do not edit. Provenance: GimpUi-3.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: GimpUi.Dialog.help-func
  *
- * 73 instantiable GTypes (of which 65 concrete widgets), 77 declarations, 13 enum nick unions, 2 slot candidates.
+ * 73 instantiable GTypes (of which 65 concrete widgets), 77 declarations, 9 enum nick unions, 2 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -31,7 +31,10 @@ import type GimpUi from './gimpui-3.0.js';
 import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type Pango from '@girs/pango-1.0';
+import type { GimpCheckSizeNick, GimpCheckTypeNick, GimpFileChooserActionNick } from '@girs/gimp-3.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkCellRendererConstructOnly, GtkCellRendererProps, GtkCellRendererToggleConstructOnly, GtkCellRendererToggleProps, GtkComboBoxConstructOnly, GtkComboBoxProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkFileChooserConstructOnly, GtkFileChooserDialogConstructOnly, GtkFileChooserDialogProps, GtkFileChooserProps, GtkFrameConstructOnly, GtkFrameProps, GtkGridConstructOnly, GtkGridProps, GtkIconSizeNick, GtkLabelConstructOnly, GtkLabelProps, GtkListStoreConstructOnly, GtkListStoreProps, GtkMiscConstructOnly, GtkMiscProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkOrientationNick, GtkPanedConstructOnly, GtkPanedProps, GtkProgressBarConstructOnly, GtkProgressBarProps, GtkRangeConstructOnly, GtkRangeProps, GtkScaleConstructOnly, GtkScaleProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkSpinButtonConstructOnly, GtkSpinButtonProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkTreeDragDestConstructOnly, GtkTreeDragDestProps, GtkTreeDragSourceConstructOnly, GtkTreeDragSourceProps, GtkTreeModelConstructOnly, GtkTreeModelProps, GtkTreeSortableConstructOnly, GtkTreeSortableProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
+import type { PangoEllipsizeModeNick } from '@girs/pango-1.0/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -45,17 +48,13 @@ import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableCons
 
 export type GimpAspectTypeNick = 'square' | 'portrait' | 'landscape';
 export type GimpChainPositionNick = 'top' | 'left' | 'bottom' | 'right';
-export type GimpCheckSizeNick = 'small-checks' | 'medium-checks' | 'large-checks';
-export type GimpCheckTypeNick = 'light-checks' | 'gray-checks' | 'dark-checks' | 'white-only' | 'gray-only' | 'black-only' | 'custom-checks';
 export type GimpColorAreaTypeNick = 'flat' | 'small-checks' | 'large-checks';
 export type GimpColorSelectorChannelNick = 'hue' | 'saturation' | 'value' | 'red' | 'green' | 'blue' | 'alpha' | 'lch-lightness' | 'lch-chroma' | 'lch-hue';
 export type GimpColorSelectorModelNick = 'rgb' | 'lch' | 'hsv';
-export type GimpFileChooserActionNick = 'any' | 'open' | 'save' | 'select-folder' | 'create-folder';
 export type GimpIntComboBoxLayoutNick = 'icon-only' | 'abbreviated' | 'full';
 export type GimpPageSelectorTargetNick = 'layers' | 'images';
 export type GimpSizeEntryUpdatePolicyNick = 'none' | 'size' | 'resolution';
 export type GimpZoomTypeNick = 'in' | 'out';
-export type PangoEllipsizeModeNick = 'none' | 'start' | 'middle' | 'end';
 
 // ---------------------------------------------------------------------------
 // Property surfaces — one interface per GIR DECLARATION, mirroring GIR's own
@@ -228,10 +227,10 @@ export interface GimpColorButtonProps extends GimpButtonProps, GtkActionableProp
 export type GimpColorButtonConstructOnly = GimpButtonConstructOnly | GtkActionableConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly;
 
 /** A stack of color correction modules. */
-export interface GimpColorDisplayStackProps {
+export interface GimpColorDisplayStackProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GimpColorDisplayStackConstructOnly = never;
+export type GimpColorDisplayStackConstructOnly = GObjectConstructOnly;
 
 /** Widget for entering a color's hex triplet. */
 export interface GimpColorHexEntryProps extends GtkEntryProps, GtkBuildableProps, GtkCellEditableProps, GtkEditableProps {
@@ -944,7 +943,7 @@ export interface GimpUnitComboBoxProps extends GtkComboBoxProps, GtkBuildablePro
 export type GimpUnitComboBoxConstructOnly = GtkComboBoxConstructOnly | GtkBuildableConstructOnly | GtkCellEditableConstructOnly | GtkCellLayoutConstructOnly;
 
 /** A model for #GimpUnit views */
-export interface GimpUnitStoreProps extends GtkTreeModelProps {
+export interface GimpUnitStoreProps extends GObjectProps, GtkTreeModelProps {
     /** @default FALSE */
     'has-percent'?: boolean;
     /** @default TRUE */
@@ -957,7 +956,7 @@ export interface GimpUnitStoreProps extends GtkTreeModelProps {
     'short-format'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GimpUnitStoreConstructOnly = GtkTreeModelConstructOnly | 'num-values';
+export type GimpUnitStoreConstructOnly = GObjectConstructOnly | GtkTreeModelConstructOnly | 'num-values';
 
 export interface GimpVectorLoadProcedureDialogProps extends GimpProcedureDialogProps, GtkBuildableProps {
 }
@@ -965,7 +964,7 @@ export interface GimpVectorLoadProcedureDialogProps extends GimpProcedureDialogP
 export type GimpVectorLoadProcedureDialogConstructOnly = GimpProcedureDialogConstructOnly | GtkBuildableConstructOnly;
 
 /** A model for zoom values. */
-export interface GimpZoomModelProps {
+export interface GimpZoomModelProps extends GObjectProps {
     /**
      * The maximum zoom factor.
      * @default 256.000000
@@ -983,7 +982,7 @@ export interface GimpZoomModelProps {
     value?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GimpZoomModelConstructOnly = never;
+export type GimpZoomModelConstructOnly = GObjectConstructOnly;
 
 /** A drawable preview with zooming capabilities. */
 export interface GimpZoomPreviewProps extends GimpScrolledPreviewProps, GtkBuildableProps, GtkOrientableProps {
@@ -1538,6 +1537,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

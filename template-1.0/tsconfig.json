@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./template-1.0.d.ts"]
+  "include": ["./template-1.0.d.ts","./template-1.0-vocabulary.d.ts"]
 }
 
 

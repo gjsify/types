@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./uhm-0.0.d.ts"]
+  "include": ["./uhm-0.0.d.ts","./uhm-0.0-vocabulary.d.ts"]
 }
 
 

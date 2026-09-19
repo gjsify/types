@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gweather-4.0.d.ts"]
+  "include": ["./gweather-4.0.d.ts","./gweather-4.0-vocabulary.d.ts"]
 }
 
 

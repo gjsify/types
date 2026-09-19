@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Gtef-2.
  *
- * GENERATED — do not edit. Provenance: Gtef-2 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: Gtef-2 — dropped empty base(s): Atk.ImplementorIface
  *
  * 15 instantiable GTypes (of which 3 concrete widgets), 15 declarations, 3 enum nick unions, 2 slot candidates.
  *
@@ -28,6 +28,7 @@ import type Gio from '@girs/gio-2.0';
 import type Gtef from './gtef-2.js';
 import type Gtk from '@girs/gtk-3.0';
 import type GtkSource from '@girs/gtksource-3.0';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkGridConstructOnly, GtkGridProps, GtkInfoBarConstructOnly, GtkInfoBarProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkTextBufferConstructOnly, GtkTextBufferProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-3.0/vocabulary';
 import type { GtkSourceBufferConstructOnly, GtkSourceBufferProps, GtkSourceCompressionTypeNick, GtkSourceGutterRendererConstructOnly, GtkSourceGutterRendererProps, GtkSourceNewlineTypeNick, GtkSourceViewConstructOnly, GtkSourceViewProps } from '@girs/gtksource-3.0/vocabulary';
 
@@ -55,12 +56,12 @@ export type GtefSelectionTypeNick = 'no-selection' | 'on-same-line' | 'multiple-
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-export interface GtefActionInfoCentralStoreProps {
+export interface GtefActionInfoCentralStoreProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtefActionInfoCentralStoreConstructOnly = never;
+export type GtefActionInfoCentralStoreConstructOnly = GObjectConstructOnly;
 
-export interface GtefActionInfoStoreProps {
+export interface GtefActionInfoStoreProps extends GObjectProps {
     /**
      * The associated #GtkApplication.
      * @since 2.0
@@ -68,9 +69,9 @@ export interface GtefActionInfoStoreProps {
     application?: Gtk.Application | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtefActionInfoStoreConstructOnly = 'application';
+export type GtefActionInfoStoreConstructOnly = GObjectConstructOnly | 'application';
 
-export interface GtefApplicationProps {
+export interface GtefApplicationProps extends GObjectProps {
     /**
      * The #GtkApplication.
      * @since 2.0
@@ -78,9 +79,9 @@ export interface GtefApplicationProps {
     application?: Gtk.Application;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtefApplicationConstructOnly = 'application';
+export type GtefApplicationConstructOnly = GObjectConstructOnly | 'application';
 
-export interface GtefApplicationWindowProps {
+export interface GtefApplicationWindowProps extends GObjectProps {
     /**
      * The #GtkApplicationWindow.
      * @since 2.0
@@ -93,7 +94,7 @@ export interface GtefApplicationWindowProps {
     statusbar?: Gtk.Statusbar | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtefApplicationWindowConstructOnly = 'application-window';
+export type GtefApplicationWindowConstructOnly = GObjectConstructOnly | 'application-window';
 
 export interface GtefBufferProps extends GtkSourceBufferProps {
     /**
@@ -105,7 +106,7 @@ export interface GtefBufferProps extends GtkSourceBufferProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtefBufferConstructOnly = GtkSourceBufferConstructOnly;
 
-export interface GtefFileProps {
+export interface GtefFileProps extends GObjectProps {
     /**
      * The location.
      * @since 1.0
@@ -113,9 +114,9 @@ export interface GtefFileProps {
     location?: Gio.File;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtefFileConstructOnly = never;
+export type GtefFileConstructOnly = GObjectConstructOnly;
 
-export interface GtefFileLoaderProps {
+export interface GtefFileLoaderProps extends GObjectProps {
     /**
      * The #GtefBuffer to load the content into.
      * @since 1.0
@@ -143,9 +144,9 @@ export interface GtefFileLoaderProps {
     'max-size'?: bigint | number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtefFileLoaderConstructOnly = 'buffer' | 'file' | 'location';
+export type GtefFileLoaderConstructOnly = GObjectConstructOnly | 'buffer' | 'file' | 'location';
 
-export interface GtefFileMetadataProps {
+export interface GtefFileMetadataProps extends GObjectProps {
     /**
      * The #GtefFile that the metadata belong to.
      * @since 1.0
@@ -153,9 +154,9 @@ export interface GtefFileMetadataProps {
     file?: Gtef.File;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtefFileMetadataConstructOnly = 'file';
+export type GtefFileMetadataConstructOnly = GObjectConstructOnly | 'file';
 
-export interface GtefFileSaverProps {
+export interface GtefFileSaverProps extends GObjectProps {
     /**
      * The #GtefBuffer to save.
      * @since 1.0
@@ -193,9 +194,9 @@ export interface GtefFileSaverProps {
     'newline-type'?: GtkSourceNewlineTypeNick | GtkSource.NewlineType;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtefFileSaverConstructOnly = 'buffer' | 'file' | 'location';
+export type GtefFileSaverConstructOnly = GObjectConstructOnly | 'buffer' | 'file' | 'location';
 
-export interface GtefFoldRegionProps {
+export interface GtefFoldRegionProps extends GObjectProps {
     /**
      * The #GtkTextBuffer where the fold region is applied.
      * @since 1.0
@@ -208,7 +209,7 @@ export interface GtefFoldRegionProps {
     folded?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtefFoldRegionConstructOnly = 'buffer';
+export type GtefFoldRegionConstructOnly = GObjectConstructOnly | 'buffer';
 
 export interface GtefGutterRendererFoldsProps extends GtkSourceGutterRendererProps {
 }
@@ -220,7 +221,7 @@ export interface GtefInfoBarProps extends GtkInfoBarProps, GtkBuildableProps, Gt
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtefInfoBarConstructOnly = GtkInfoBarConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
-export interface GtefMenuShellProps {
+export interface GtefMenuShellProps extends GObjectProps {
     /**
      * The #GtkMenuShell.
      * @since 2.0
@@ -228,7 +229,7 @@ export interface GtefMenuShellProps {
     'menu-shell'?: Gtk.MenuShell;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtefMenuShellConstructOnly = 'menu-shell';
+export type GtefMenuShellConstructOnly = GObjectConstructOnly | 'menu-shell';
 
 export interface GtefTabProps extends GtkGridProps, GtkBuildableProps, GtkOrientableProps {
 }
@@ -347,6 +348,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

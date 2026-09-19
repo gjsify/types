@@ -1,6 +1,6 @@
 // The widget vocabulary of Tepl-4 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Tepl-4 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: Tepl-4 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '4',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Tepl'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/gtksource-4/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -44,23 +46,23 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    TeplAbstractFactory: ['TeplAbstractFactory'],
-    TeplAbstractFactoryVala: ['TeplAbstractFactoryVala', 'TeplAbstractFactory'],
-    TeplApplication: ['TeplApplication'],
-    TeplApplicationWindow: ['TeplApplicationWindow', 'TeplTabGroup'],
-    TeplBuffer: ['TeplBuffer', 'GtkSourceBuffer', 'GtkTextBuffer'],
-    TeplFile: ['TeplFile'],
-    TeplFileLoader: ['TeplFileLoader'],
-    TeplFileMetadata: ['TeplFileMetadata'],
-    TeplFileSaver: ['TeplFileSaver'],
-    TeplFoldRegion: ['TeplFoldRegion'],
-    TeplGutterRendererFolds: ['TeplGutterRendererFolds', 'GtkSourceGutterRenderer'],
-    TeplInfoBar: ['TeplInfoBar', 'GtkInfoBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    TeplMetadataStore: ['TeplMetadataStore'],
-    TeplNotebook: ['TeplNotebook', 'GtkNotebook', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'TeplTabGroup'],
-    TeplTab: ['TeplTab', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'TeplTabGroup'],
-    TeplTabLabel: ['TeplTabLabel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    TeplView: ['TeplView', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
+    TeplAbstractFactory: ['TeplAbstractFactory', 'GObject'],
+    TeplAbstractFactoryVala: ['TeplAbstractFactoryVala', 'TeplAbstractFactory', 'GObject'],
+    TeplApplication: ['TeplApplication', 'GObject'],
+    TeplApplicationWindow: ['TeplApplicationWindow', 'GObject', 'TeplTabGroup'],
+    TeplBuffer: ['TeplBuffer', 'GtkSourceBuffer', 'GtkTextBuffer', 'GObject'],
+    TeplFile: ['TeplFile', 'GObject'],
+    TeplFileLoader: ['TeplFileLoader', 'GObject'],
+    TeplFileMetadata: ['TeplFileMetadata', 'GObject'],
+    TeplFileSaver: ['TeplFileSaver', 'GObject'],
+    TeplFoldRegion: ['TeplFoldRegion', 'GObject'],
+    TeplGutterRendererFolds: ['TeplGutterRendererFolds', 'GtkSourceGutterRenderer', 'GInitiallyUnowned', 'GObject'],
+    TeplInfoBar: ['TeplInfoBar', 'GtkInfoBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    TeplMetadataStore: ['TeplMetadataStore', 'GObject'],
+    TeplNotebook: ['TeplNotebook', 'GtkNotebook', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'TeplTabGroup'],
+    TeplTab: ['TeplTab', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'TeplTabGroup'],
+    TeplTabLabel: ['TeplTabLabel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    TeplView: ['TeplView', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -71,6 +73,8 @@ export const DECLS = {
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
+    GtkSourceCompressionType: ['none', 'gzip'],
+    GtkSourceNewlineType: ['lf', 'cr', 'cr-lf'],
     TeplCompressionType: ['none', 'gzip'],
     TeplNewlineType: ['lf', 'cr', 'cr-lf'],
     TeplSelectionType: ['no-selection', 'on-same-line', 'multiple-lines'],
@@ -91,6 +95,11 @@ export const ENUM_NICKS = {
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
 export const ENUM_VALUES = {
+    'GtkSourceCompressionType.gzip': 1,
+    'GtkSourceCompressionType.none': 0,
+    'GtkSourceNewlineType.cr': 1,
+    'GtkSourceNewlineType.cr-lf': 2,
+    'GtkSourceNewlineType.lf': 0,
     'TeplCompressionType.gzip': 1,
     'TeplCompressionType.none': 0,
     'TeplNewlineType.cr': 1,

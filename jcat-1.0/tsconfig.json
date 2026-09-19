@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./jcat-1.0.d.ts"]
+  "include": ["./jcat-1.0.d.ts","./jcat-1.0-vocabulary.d.ts"]
 }
 
 

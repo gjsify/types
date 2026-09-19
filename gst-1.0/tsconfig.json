@@ -32,7 +32,7 @@
       ]
 }
   },
-  "include": ["./gst-1.0.d.ts"]
+  "include": ["./gst-1.0.d.ts","./gst-1.0-vocabulary.d.ts"]
 }
 
 

@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./gtk4sessionlock-1.0.d.ts"]
+  "include": ["./gtk4sessionlock-1.0.d.ts","./gtk4sessionlock-1.0-vocabulary.d.ts"]
 }
 
 

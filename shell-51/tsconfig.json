@@ -104,7 +104,7 @@
       ]
 }
   },
-  "include": ["./shell-51.d.ts"]
+  "include": ["./shell-51.d.ts","./shell-51-vocabulary.d.ts"]
 }
 
 

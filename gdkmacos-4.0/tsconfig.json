@@ -56,7 +56,7 @@
       ]
 }
   },
-  "include": ["./gdkmacos-4.0.d.ts"]
+  "include": ["./gdkmacos-4.0.d.ts","./gdkmacos-4.0-vocabulary.d.ts"]
 }
 
 

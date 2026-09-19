@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gst-0.10.d.ts"]
+  "include": ["./gst-0.10.d.ts","./gst-0.10-vocabulary.d.ts"]
 }
 
 

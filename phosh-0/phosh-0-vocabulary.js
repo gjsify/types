@@ -1,6 +1,6 @@
 // The widget vocabulary of Phosh-0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Phosh-0 — dropped empty base(s): GObject.Object Gio.AsyncInitable Gio.DBusInterface Gio.Initable GObject.InitiallyUnowned Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap — inlined base(s) their owner's vocabulary does not emit: Gio.DBusProxy Gio.DBusInterfaceSkeleton — prop(s) no TypeScript value satisfies: Phosh.LayerSurface.layer-shell Phosh.LayerSurface.wl-output
+// GENERATED — do not edit. Provenance: Phosh-0 — dropped empty base(s): Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.DBusInterfaceSkeleton — prop(s) no TypeScript value satisfies: Phosh.LayerSurface.layer-shell Phosh.LayerSurface.wl-output
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,15 +11,16 @@ export const PROVENANCE = {
     version: '0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gio.AsyncInitable', 'Gio.DBusInterface', 'Gio.Initable', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface', 'Gio.ActionGroup', 'Gio.ActionMap'],
-    inlinedBases: ['Gio.DBusProxy', 'Gio.DBusInterfaceSkeleton'],
+    droppedBases: ['Atk.ImplementorIface'],
+    inlinedBases: ['Gio.DBusInterfaceSkeleton'],
     unsettableProps: ['Phosh.LayerSurface.layer-shell', 'Phosh.LayerSurface.wl-output'],
     unresolvedProps: [],
+    identifierPrefixes: ['Phosh'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
     GDBusInterfaceSkeleton: ['g-flags'],
-    GDBusProxy: ['g-bus-type', 'g-connection', 'g-default-timeout', 'g-flags', 'g-interface-info', 'g-interface-name', 'g-name', 'g-object-path'],
     PhoshLayerSurface: ['anchor', 'exclusive-zone', 'height', 'kbd-interactivity', 'layer', 'layer-shell', 'margin-bottom', 'margin-left', 'margin-right', 'margin-top', 'namespace', 'width', 'wl-output'],
     PhoshLockscreen: ['require-unlock'],
     PhoshLockscreenManager: ['locked'],
@@ -31,7 +32,6 @@ export const OWN_PROPS = {
 
 export const OWN_SIGNALS = {
     GDBusInterfaceSkeleton: ['g-authorize-method'],
-    GDBusProxy: ['g-properties-changed', 'g-signal'],
     PhoshDBusScreenshot: ['handle-flash-area', 'handle-pick-color', 'handle-screenshot', 'handle-screenshot-area', 'handle-screenshot-window', 'handle-select-area'],
     PhoshLayerSurface: ['configured'],
     PhoshLockscreen: ['lockscreen-unlock', 'wakeup-output'],
@@ -49,17 +49,17 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    PhoshDBusScreenshotProxy: ['PhoshDBusScreenshotProxy', 'GDBusProxy', 'PhoshDBusScreenshot'],
-    PhoshDBusScreenshotSkeleton: ['PhoshDBusScreenshotSkeleton', 'GDBusInterfaceSkeleton', 'PhoshDBusScreenshot'],
-    PhoshLayerSurface: ['PhoshLayerSurface', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    PhoshLockscreen: ['PhoshLockscreen', 'PhoshLayerSurface', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    PhoshLockscreenManager: ['PhoshLockscreenManager'],
-    PhoshQuickSetting: ['PhoshQuickSetting', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    PhoshScreenshotManager: ['PhoshScreenshotManager', 'PhoshDBusScreenshotSkeleton', 'GDBusInterfaceSkeleton', 'PhoshDBusScreenshot'],
-    PhoshShell: ['PhoshShell'],
-    PhoshStatusIcon: ['PhoshStatusIcon', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    PhoshStatusPage: ['PhoshStatusPage', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    PhoshWallClock: ['PhoshWallClock'],
+    PhoshDBusScreenshotProxy: ['PhoshDBusScreenshotProxy', 'GDBusProxy', 'GObject', 'GAsyncInitable', 'GDBusInterface', 'GInitable', 'PhoshDBusScreenshot'],
+    PhoshDBusScreenshotSkeleton: ['PhoshDBusScreenshotSkeleton', 'GDBusInterfaceSkeleton', 'GObject', 'GDBusInterface', 'PhoshDBusScreenshot'],
+    PhoshLayerSurface: ['PhoshLayerSurface', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    PhoshLockscreen: ['PhoshLockscreen', 'PhoshLayerSurface', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    PhoshLockscreenManager: ['PhoshLockscreenManager', 'GObject'],
+    PhoshQuickSetting: ['PhoshQuickSetting', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    PhoshScreenshotManager: ['PhoshScreenshotManager', 'PhoshDBusScreenshotSkeleton', 'GDBusInterfaceSkeleton', 'GObject', 'GDBusInterface', 'PhoshDBusScreenshot'],
+    PhoshShell: ['PhoshShell', 'GObject', 'GActionGroup', 'GActionMap'],
+    PhoshStatusIcon: ['PhoshStatusIcon', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    PhoshStatusPage: ['PhoshStatusPage', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    PhoshWallClock: ['PhoshWallClock', 'GObject'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -70,7 +70,7 @@ export const DECLS = {
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
-    GBusType: ['starter', 'none', 'system', 'session'],
+    GtkIconSize: ['invalid', 'menu', 'small-toolbar', 'large-toolbar', 'button', 'dnd', 'dialog'],
     PhoshLockscreenPage: ['info', 'extra', 'unlock'],
 };
 
@@ -89,10 +89,13 @@ export const ENUM_NICKS = {
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
 export const ENUM_VALUES = {
-    'GBusType.none': 0,
-    'GBusType.session': 2,
-    'GBusType.starter': -1,
-    'GBusType.system': 1,
+    'GtkIconSize.button': 4,
+    'GtkIconSize.dialog': 6,
+    'GtkIconSize.dnd': 5,
+    'GtkIconSize.invalid': 0,
+    'GtkIconSize.large-toolbar': 3,
+    'GtkIconSize.menu': 1,
+    'GtkIconSize.small-toolbar': 2,
     'PhoshLockscreenPage.extra': 1,
     'PhoshLockscreenPage.info': 0,
     'PhoshLockscreenPage.unlock': 2,
@@ -136,13 +139,6 @@ export const ENUM_VALUES_UNREADABLE = {};
 export const FLAG_VALUES = {
     'GDBusInterfaceSkeletonFlags.handle-method-invocations-in-thread': 1,
     'GDBusInterfaceSkeletonFlags.none': 0,
-    'GDBusProxyFlags.do-not-auto-start': 4,
-    'GDBusProxyFlags.do-not-auto-start-at-construction': 16,
-    'GDBusProxyFlags.do-not-connect-signals': 2,
-    'GDBusProxyFlags.do-not-load-properties': 1,
-    'GDBusProxyFlags.get-invalidated-properties': 8,
-    'GDBusProxyFlags.no-match-rule': 32,
-    'GDBusProxyFlags.none': 0,
 };
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
@@ -166,8 +162,6 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
     'GDBusInterfaceSkeleton.g-flags': 'GDBusInterfaceSkeletonFlags',
-    'GDBusProxy.g-bus-type': 'GBusType',
-    'GDBusProxy.g-flags': 'GDBusProxyFlags',
     'PhoshStatusIcon.icon-size': 'GtkIconSize',
 };
 
@@ -218,16 +212,5 @@ export const SINCE = {
     'GDBusInterfaceSkeleton': '2.30',
     'GDBusInterfaceSkeleton.g-flags': '2.30',
     'GDBusInterfaceSkeleton::g-authorize-method': '2.30',
-    'GDBusProxy': '2.26',
-    'GDBusProxy.g-bus-type': '2.26',
-    'GDBusProxy.g-connection': '2.26',
-    'GDBusProxy.g-default-timeout': '2.26',
-    'GDBusProxy.g-flags': '2.26',
-    'GDBusProxy.g-interface-info': '2.26',
-    'GDBusProxy.g-interface-name': '2.26',
-    'GDBusProxy.g-name': '2.26',
-    'GDBusProxy.g-object-path': '2.26',
-    'GDBusProxy::g-properties-changed': '2.26',
-    'GDBusProxy::g-signal': '2.26',
     'PhoshShell::ready': '0.11.0',
 };

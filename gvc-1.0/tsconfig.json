@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gvc-1.0.d.ts"]
+  "include": ["./gvc-1.0.d.ts","./gvc-1.0-vocabulary.d.ts"]
 }
 
 

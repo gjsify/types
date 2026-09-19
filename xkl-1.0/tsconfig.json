@@ -32,7 +32,7 @@
       ]
 }
   },
-  "include": ["./xkl-1.0.d.ts"]
+  "include": ["./xkl-1.0.d.ts","./xkl-1.0-vocabulary.d.ts"]
 }
 
 

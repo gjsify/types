@@ -1,6 +1,6 @@
 // The widget vocabulary of Gtef-2 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Gtef-2 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: Gtef-2 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '2',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Gtef'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/gtksource-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -43,21 +45,21 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GtefActionInfoCentralStore: ['GtefActionInfoCentralStore'],
-    GtefActionInfoStore: ['GtefActionInfoStore'],
-    GtefApplication: ['GtefApplication'],
-    GtefApplicationWindow: ['GtefApplicationWindow'],
-    GtefBuffer: ['GtefBuffer', 'GtkSourceBuffer', 'GtkTextBuffer'],
-    GtefFile: ['GtefFile'],
-    GtefFileLoader: ['GtefFileLoader'],
-    GtefFileMetadata: ['GtefFileMetadata'],
-    GtefFileSaver: ['GtefFileSaver'],
-    GtefFoldRegion: ['GtefFoldRegion'],
-    GtefGutterRendererFolds: ['GtefGutterRendererFolds', 'GtkSourceGutterRenderer'],
-    GtefInfoBar: ['GtefInfoBar', 'GtkInfoBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    GtefMenuShell: ['GtefMenuShell'],
-    GtefTab: ['GtefTab', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    GtefView: ['GtefView', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
+    GtefActionInfoCentralStore: ['GtefActionInfoCentralStore', 'GObject'],
+    GtefActionInfoStore: ['GtefActionInfoStore', 'GObject'],
+    GtefApplication: ['GtefApplication', 'GObject'],
+    GtefApplicationWindow: ['GtefApplicationWindow', 'GObject'],
+    GtefBuffer: ['GtefBuffer', 'GtkSourceBuffer', 'GtkTextBuffer', 'GObject'],
+    GtefFile: ['GtefFile', 'GObject'],
+    GtefFileLoader: ['GtefFileLoader', 'GObject'],
+    GtefFileMetadata: ['GtefFileMetadata', 'GObject'],
+    GtefFileSaver: ['GtefFileSaver', 'GObject'],
+    GtefFoldRegion: ['GtefFoldRegion', 'GObject'],
+    GtefGutterRendererFolds: ['GtefGutterRendererFolds', 'GtkSourceGutterRenderer', 'GInitiallyUnowned', 'GObject'],
+    GtefInfoBar: ['GtefInfoBar', 'GtkInfoBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    GtefMenuShell: ['GtefMenuShell', 'GObject'],
+    GtefTab: ['GtefTab', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    GtefView: ['GtefView', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -71,6 +73,8 @@ export const ENUM_NICKS = {
     GtefCompressionType: ['none', 'gzip'],
     GtefNewlineType: ['lf', 'cr', 'cr-lf'],
     GtefSelectionType: ['no-selection', 'on-same-line', 'multiple-lines'],
+    GtkSourceCompressionType: ['none', 'gzip'],
+    GtkSourceNewlineType: ['lf', 'cr', 'cr-lf'],
 };
 
 // The number behind each of those nicks, read from GIR's own `value` attribute.
@@ -96,6 +100,11 @@ export const ENUM_VALUES = {
     'GtefSelectionType.multiple-lines': 2,
     'GtefSelectionType.no-selection': 0,
     'GtefSelectionType.on-same-line': 1,
+    'GtkSourceCompressionType.gzip': 1,
+    'GtkSourceCompressionType.none': 0,
+    'GtkSourceNewlineType.cr': 1,
+    'GtkSourceNewlineType.cr-lf': 2,
+    'GtkSourceNewlineType.lf': 0,
 };
 
 // The nicks GIR marks `deprecated="1"`.

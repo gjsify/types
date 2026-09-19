@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./mpid-3.0.d.ts"]
+  "include": ["./mpid-3.0.d.ts","./mpid-3.0-vocabulary.d.ts"]
 }
 
 

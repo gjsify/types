@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./pango-1.0.d.ts"]
+  "include": ["./pango-1.0.d.ts","./pango-1.0-vocabulary.d.ts"]
 }
 
 

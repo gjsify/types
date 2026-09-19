@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./vips-8.0.d.ts"]
+  "include": ["./vips-8.0.d.ts","./vips-8.0-vocabulary.d.ts"]
 }
 
 

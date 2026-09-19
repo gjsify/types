@@ -107,7 +107,7 @@
       ]
 }
   },
-  "include": ["./shell-15.d.ts"]
+  "include": ["./shell-15.d.ts","./shell-15-vocabulary.d.ts"]
 }
 
 

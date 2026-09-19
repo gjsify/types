@@ -32,7 +32,7 @@
       ]
 }
   },
-  "include": ["./libvirtgconfig-1.0.d.ts"]
+  "include": ["./libvirtgconfig-1.0.d.ts","./libvirtgconfig-1.0-vocabulary.d.ts"]
 }
 
 

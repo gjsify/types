@@ -59,7 +59,7 @@
       ]
 }
   },
-  "include": ["./edatacal-2.0.d.ts"]
+  "include": ["./edatacal-2.0.d.ts","./edatacal-2.0-vocabulary.d.ts"]
 }
 
 

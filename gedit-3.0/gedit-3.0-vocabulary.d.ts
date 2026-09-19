@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Gedit-3.0.
  *
- * GENERATED — do not edit. Provenance: Gedit-3.0 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application
+ * GENERATED — do not edit. Provenance: Gedit-3.0 — dropped empty base(s): Atk.ImplementorIface
  *
- * 9 instantiable GTypes (of which 4 concrete widgets), 10 declarations (1 inlined from a namespace whose vocabulary does not emit them), 1 enum nick unions, 2 slot candidates.
+ * 9 instantiable GTypes (of which 4 concrete widgets), 9 declarations, 1 enum nick unions, 2 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -26,6 +26,8 @@
 
 import type Gedit from './gedit-3.0.js';
 import type Gio from '@girs/gio-2.0';
+import type { GActionGroupConstructOnly, GActionGroupProps, GActionMapConstructOnly, GActionMapProps, GApplicationConstructOnly, GApplicationProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkApplicationConstructOnly, GtkApplicationProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkComboBoxConstructOnly, GtkComboBoxProps, GtkContainerConstructOnly, GtkContainerProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkTextBufferConstructOnly, GtkTextBufferProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 import type { GtkSourceBufferConstructOnly, GtkSourceBufferProps, GtkSourceViewConstructOnly, GtkSourceViewProps } from '@girs/gtksource-300/vocabulary';
 import type { TeplBufferConstructOnly, TeplBufferProps, TeplViewConstructOnly, TeplViewProps } from '@girs/tepl-6/vocabulary';
@@ -52,52 +54,10 @@ export type GeditTabStateNick = 'normal' | 'loading' | 'reverting' | 'saving' | 
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-/** `GApplication` is the core class for application support. */
-export interface GApplicationProps {
-    /**
-     * The group of actions that the application exports.
-     * @since 2.28
-     * @deprecated since 2.32: Use the [iface@Gio.ActionMap] interface instead.
-     */
-    'action-group'?: Gio.ActionGroup;
-    /**
-     * The unique identifier for the application.
-     * @since 2.28
-     * @default NULL
-     */
-    'application-id'?: string | null;
-    /**
-     * Flags specifying the behaviour of the application.
-     * @since 2.28
-     * @default G_APPLICATION_FLAGS_NONE
-     */
-    flags?: number;
-    /**
-     * Time (in milliseconds) to stay alive after becoming idle.
-     * @since 2.28
-     * @default 0
-     */
-    'inactivity-timeout'?: number;
-    /**
-     * The base resource path for the application.
-     * @since 2.28
-     * @default NULL
-     */
-    'resource-base-path'?: string | null;
-    /**
-     * The human-readable version number of the application.
-     * @since 2.80
-     * @default NULL
-     */
-    version?: string | null;
+export interface GeditAppProps extends GtkApplicationProps, GActionGroupProps, GActionMapProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GApplicationConstructOnly = never;
-
-export interface GeditAppProps extends GtkApplicationProps {
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GeditAppConstructOnly = GtkApplicationConstructOnly;
+export type GeditAppConstructOnly = GtkApplicationConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly;
 
 export interface GeditDocumentProps extends TeplBufferProps {
     /**
@@ -119,13 +79,13 @@ export interface GeditEncodingsComboBoxProps extends GtkComboBoxProps, GtkBuilda
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GeditEncodingsComboBoxConstructOnly = GtkComboBoxConstructOnly | GtkBuildableConstructOnly | GtkCellEditableConstructOnly | GtkCellLayoutConstructOnly;
 
-export interface GeditMenuExtensionProps {
+export interface GeditMenuExtensionProps extends GObjectProps {
     menu?: Gio.Menu;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GeditMenuExtensionConstructOnly = 'menu';
+export type GeditMenuExtensionConstructOnly = GObjectConstructOnly | 'menu';
 
-export interface GeditMessageProps {
+export interface GeditMessageProps extends GObjectProps {
     /**
      * The messages method.
      * @default NULL
@@ -135,12 +95,12 @@ export interface GeditMessageProps {
     'object-path'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GeditMessageConstructOnly = never;
+export type GeditMessageConstructOnly = GObjectConstructOnly;
 
-export interface GeditMessageBusProps {
+export interface GeditMessageBusProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GeditMessageBusConstructOnly = never;
+export type GeditMessageBusConstructOnly = GObjectConstructOnly;
 
 export interface GeditTabProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     /**
@@ -162,10 +122,10 @@ export interface GeditViewProps extends TeplViewProps, GtkBuildableProps, GtkScr
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GeditViewConstructOnly = TeplViewConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly;
 
-export interface GeditWindowProps extends GtkApplicationWindowProps, GtkBuildableProps {
+export interface GeditWindowProps extends GtkApplicationWindowProps, GActionGroupProps, GActionMapProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GeditWindowConstructOnly = GtkApplicationWindowConstructOnly | GtkBuildableConstructOnly;
+export type GeditWindowConstructOnly = GtkApplicationWindowConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly | GtkBuildableConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -281,6 +241,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

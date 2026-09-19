@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./flatpak-1.0.d.ts"]
+  "include": ["./flatpak-1.0.d.ts","./flatpak-1.0-vocabulary.d.ts"]
 }
 
 

@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gjsdbus-1.0.d.ts"]
+  "include": ["./gjsdbus-1.0.d.ts","./gjsdbus-1.0-vocabulary.d.ts"]
 }
 
 

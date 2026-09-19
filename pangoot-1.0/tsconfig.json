@@ -53,7 +53,7 @@
       ]
 }
   },
-  "include": ["./pangoot-1.0.d.ts"]
+  "include": ["./pangoot-1.0.d.ts","./pangoot-1.0-vocabulary.d.ts"]
 }
 
 

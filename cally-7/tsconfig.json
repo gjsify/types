@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./cally-7.d.ts"]
+  "include": ["./cally-7.d.ts","./cally-7-vocabulary.d.ts"]
 }
 
 

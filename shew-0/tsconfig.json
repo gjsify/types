@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./shew-0.d.ts"]
+  "include": ["./shew-0.d.ts","./shew-0-vocabulary.d.ts"]
 }
 
 

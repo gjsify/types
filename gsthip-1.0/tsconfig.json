@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./gsthip-1.0.d.ts"]
+  "include": ["./gsthip-1.0.d.ts","./gsthip-1.0-vocabulary.d.ts"]
 }
 
 

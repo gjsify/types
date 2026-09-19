@@ -1,6 +1,6 @@
 // The widget vocabulary of RB-3.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: RB-3.0 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application — prop(s) no TypeScript value satisfies: RB.RhythmDBQueryModel.query RB.RhythmDBQueryModel.sort-data RB.RhythmDBQueryModel.sort-data-destroy RB.RhythmDBQueryModel.sort-func
+// GENERATED — do not edit. Provenance: RB-3.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: RB.RhythmDBQueryModel.query RB.RhythmDBQueryModel.sort-data RB.RhythmDBQueryModel.sort-data-destroy RB.RhythmDBQueryModel.sort-func
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,14 +11,15 @@ export const PROVENANCE = {
     version: '3.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gio.ActionGroup', 'Gio.ActionMap', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
-    inlinedBases: ['Gio.Application'],
+    droppedBases: ['Atk.ImplementorIface'],
+    inlinedBases: [],
     unsettableProps: ['RB.RhythmDBQueryModel.query', 'RB.RhythmDBQueryModel.sort-data', 'RB.RhythmDBQueryModel.sort-data-destroy', 'RB.RhythmDBQueryModel.sort-func'],
     unresolvedProps: [],
+    identifierPrefixes: ['RB'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
-    GApplication: ['action-group', 'application-id', 'flags', 'inactivity-timeout', 'resource-base-path', 'version'],
     RBBrowserSource: ['populate'],
     RBButtonBar: ['model', 'target'],
     RBCellRendererRating: ['rating'],
@@ -58,7 +59,6 @@ export const OWN_PROPS = {
 };
 
 export const OWN_SIGNALS = {
-    GApplication: ['activate', 'command-line', 'handle-local-options', 'name-lost', 'open', 'shutdown', 'startup'],
     RBCellRendererPixbuf: ['pixbuf-clicked'],
     RBCellRendererRating: ['rated'],
     RBDisplayPage: ['deleted', 'status-changed'],
@@ -99,56 +99,56 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    RBApplication: ['RBApplication', 'GtkApplication', 'GApplication'],
-    RBAsyncCopy: ['RBAsyncCopy'],
-    RBAutoPlaylistSource: ['RBAutoPlaylistSource', 'RBPlaylistSource', 'RBSource', 'RBDisplayPage', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    RBButtonBar: ['RBButtonBar', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    RBCellRendererPixbuf: ['RBCellRendererPixbuf', 'GtkCellRendererPixbuf', 'GtkCellRenderer'],
-    RBCellRendererRating: ['RBCellRendererRating', 'GtkCellRenderer'],
-    RBChunkLoader: ['RBChunkLoader'],
-    RBDisplayPageGroup: ['RBDisplayPageGroup', 'RBDisplayPage', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    RBDisplayPageModel: ['RBDisplayPageModel', 'GtkTreeModelFilter', 'GtkTreeDragSource', 'GtkTreeModel'],
-    RBDisplayPageTree: ['RBDisplayPageTree', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    RBEncoderFactory: ['RBEncoderFactory'],
-    RBEntryView: ['RBEntryView', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    RBExtDB: ['RBExtDB'],
-    RBFadingImage: ['RBFadingImage', 'GtkWidget', 'GtkBuildable'],
-    RBHistory: ['RBHistory'],
-    RBLibraryBrowser: ['RBLibraryBrowser', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    RBListModel: ['RBListModel'],
-    RBMediaPlayerEntryType: ['RBMediaPlayerEntryType', 'RhythmDBEntryType'],
-    RBMediaPlayerSource: ['RBMediaPlayerSource', 'RBBrowserSource', 'RBSource', 'RBDisplayPage', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    RBMetaData: ['RBMetaData'],
-    RBPlayOrder: ['RBPlayOrder'],
-    RBPlaylistManager: ['RBPlaylistManager'],
-    RBPodcastManager: ['RBPodcastManager'],
-    RBPodcastSearch: ['RBPodcastSearch'],
-    RBPodcastSearchITunes: ['RBPodcastSearchITunes', 'RBPodcastSearch'],
-    RBPropertyView: ['RBPropertyView', 'GtkScrolledWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    RBRating: ['RBRating', 'GtkWidget', 'GtkBuildable'],
-    RBRemovableMediaManager: ['RBRemovableMediaManager'],
-    RBSearchEntry: ['RBSearchEntry', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    RBSegmentedBar: ['RBSegmentedBar', 'GtkWidget', 'GtkBuildable'],
-    RBShell: ['RBShell'],
-    RBShellPlayer: ['RBShellPlayer'],
-    RBShellPreferences: ['RBShellPreferences', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    RBSongInfo: ['RBSongInfo', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    RBSourceSearch: ['RBSourceSearch'],
-    RBSourceSearchBasic: ['RBSourceSearchBasic', 'RBSourceSearch'],
-    RBSourceToolbar: ['RBSourceToolbar', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    RBStaticPlaylistSource: ['RBStaticPlaylistSource', 'RBPlaylistSource', 'RBSource', 'RBDisplayPage', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    RBStreamingSource: ['RBStreamingSource', 'RBSource', 'RBDisplayPage', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    RBStringValueMap: ['RBStringValueMap'],
-    RBTaskList: ['RBTaskList'],
-    RBTaskProgressSimple: ['RBTaskProgressSimple', 'RBTaskProgress'],
-    RBTrackTransferBatch: ['RBTrackTransferBatch', 'RBTaskProgress'],
-    RBTrackTransferQueue: ['RBTrackTransferQueue'],
-    RBURIDialog: ['RBURIDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    RhythmDBEntryType: ['RhythmDBEntryType'],
-    RhythmDBImportJob: ['RhythmDBImportJob', 'RBTaskProgress'],
-    RhythmDBPropertyModel: ['RhythmDBPropertyModel', 'GtkTreeModel'],
-    RhythmDBQueryModel: ['RhythmDBQueryModel', 'GtkTreeModel', 'RhythmDBQueryResults'],
-    RhythmDBQueryResultList: ['RhythmDBQueryResultList', 'RhythmDBQueryResults'],
+    RBApplication: ['RBApplication', 'GtkApplication', 'GApplication', 'GObject', 'GActionGroup', 'GActionMap'],
+    RBAsyncCopy: ['RBAsyncCopy', 'GObject'],
+    RBAutoPlaylistSource: ['RBAutoPlaylistSource', 'RBPlaylistSource', 'RBSource', 'RBDisplayPage', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    RBButtonBar: ['RBButtonBar', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    RBCellRendererPixbuf: ['RBCellRendererPixbuf', 'GtkCellRendererPixbuf', 'GtkCellRenderer', 'GInitiallyUnowned', 'GObject'],
+    RBCellRendererRating: ['RBCellRendererRating', 'GtkCellRenderer', 'GInitiallyUnowned', 'GObject'],
+    RBChunkLoader: ['RBChunkLoader', 'GObject'],
+    RBDisplayPageGroup: ['RBDisplayPageGroup', 'RBDisplayPage', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    RBDisplayPageModel: ['RBDisplayPageModel', 'GtkTreeModelFilter', 'GObject', 'GtkTreeDragSource', 'GtkTreeModel'],
+    RBDisplayPageTree: ['RBDisplayPageTree', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    RBEncoderFactory: ['RBEncoderFactory', 'GObject'],
+    RBEntryView: ['RBEntryView', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    RBExtDB: ['RBExtDB', 'GObject'],
+    RBFadingImage: ['RBFadingImage', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    RBHistory: ['RBHistory', 'GObject'],
+    RBLibraryBrowser: ['RBLibraryBrowser', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    RBListModel: ['RBListModel', 'GObject'],
+    RBMediaPlayerEntryType: ['RBMediaPlayerEntryType', 'RhythmDBEntryType', 'GObject'],
+    RBMediaPlayerSource: ['RBMediaPlayerSource', 'RBBrowserSource', 'RBSource', 'RBDisplayPage', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    RBMetaData: ['RBMetaData', 'GObject'],
+    RBPlayOrder: ['RBPlayOrder', 'GObject'],
+    RBPlaylistManager: ['RBPlaylistManager', 'GObject'],
+    RBPodcastManager: ['RBPodcastManager', 'GObject'],
+    RBPodcastSearch: ['RBPodcastSearch', 'GObject'],
+    RBPodcastSearchITunes: ['RBPodcastSearchITunes', 'RBPodcastSearch', 'GObject'],
+    RBPropertyView: ['RBPropertyView', 'GtkScrolledWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    RBRating: ['RBRating', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    RBRemovableMediaManager: ['RBRemovableMediaManager', 'GObject'],
+    RBSearchEntry: ['RBSearchEntry', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    RBSegmentedBar: ['RBSegmentedBar', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    RBShell: ['RBShell', 'GObject'],
+    RBShellPlayer: ['RBShellPlayer', 'GObject'],
+    RBShellPreferences: ['RBShellPreferences', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    RBSongInfo: ['RBSongInfo', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    RBSourceSearch: ['RBSourceSearch', 'GObject'],
+    RBSourceSearchBasic: ['RBSourceSearchBasic', 'RBSourceSearch', 'GObject'],
+    RBSourceToolbar: ['RBSourceToolbar', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    RBStaticPlaylistSource: ['RBStaticPlaylistSource', 'RBPlaylistSource', 'RBSource', 'RBDisplayPage', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    RBStreamingSource: ['RBStreamingSource', 'RBSource', 'RBDisplayPage', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    RBStringValueMap: ['RBStringValueMap', 'GObject'],
+    RBTaskList: ['RBTaskList', 'GObject'],
+    RBTaskProgressSimple: ['RBTaskProgressSimple', 'GObject', 'RBTaskProgress'],
+    RBTrackTransferBatch: ['RBTrackTransferBatch', 'GObject', 'RBTaskProgress'],
+    RBTrackTransferQueue: ['RBTrackTransferQueue', 'GObject'],
+    RBURIDialog: ['RBURIDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    RhythmDBEntryType: ['RhythmDBEntryType', 'GObject'],
+    RhythmDBImportJob: ['RhythmDBImportJob', 'GObject', 'RBTaskProgress'],
+    RhythmDBPropertyModel: ['RhythmDBPropertyModel', 'GObject', 'GtkTreeModel'],
+    RhythmDBQueryModel: ['RhythmDBQueryModel', 'GObject', 'GtkTreeModel', 'RhythmDBQueryResults'],
+    RhythmDBQueryResultList: ['RhythmDBQueryResultList', 'GObject', 'RhythmDBQueryResults'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -446,19 +446,7 @@ export const ENUM_VALUES_UNREADABLE = {};
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
-export const FLAG_VALUES = {
-    'GApplicationFlags.allow-replacement': 128,
-    'GApplicationFlags.can-override-app-id': 64,
-    'GApplicationFlags.default-flags': 0,
-    'GApplicationFlags.flags-none': 0,
-    'GApplicationFlags.handles-command-line': 8,
-    'GApplicationFlags.handles-open': 4,
-    'GApplicationFlags.is-launcher': 2,
-    'GApplicationFlags.is-service': 1,
-    'GApplicationFlags.non-unique': 32,
-    'GApplicationFlags.replace': 256,
-    'GApplicationFlags.send-environment': 16,
-};
+export const FLAG_VALUES = {};
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
 // `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
@@ -480,7 +468,6 @@ export const FLAG_VALUES_UNREADABLE = {};
 // that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
-    'GApplication.flags': 'GApplicationFlags',
     'RBDisplayPageGroup.category': 'RBDisplayPageGroupType',
     'RBPropertyView.prop': 'RhythmDBPropType',
     'RBSource.load-status': 'RBSourceLoadStatus',
@@ -516,14 +503,4 @@ export const ARIA_VALUE_ENUMS = {};
 
 export const SLOT_CANDIDATES = {};
 
-export const SINCE = {
-    'GApplication': '2.28',
-    'GApplication.action-group': '2.28',
-    'GApplication.application-id': '2.28',
-    'GApplication.flags': '2.28',
-    'GApplication.inactivity-timeout': '2.28',
-    'GApplication.resource-base-path': '2.28',
-    'GApplication.version': '2.80',
-    'GApplication::handle-local-options': '2.40',
-    'GApplication::name-lost': '2.60',
-};
+export const SINCE = {};

@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./gstglegl-1.0.d.ts"]
+  "include": ["./gstglegl-1.0.d.ts","./gstglegl-1.0-vocabulary.d.ts"]
 }
 
 

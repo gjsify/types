@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-15",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for Cogl-15",
     "type": "module",
     "module": "cogl-15.js",
@@ -15,6 +15,11 @@
         "types": "./cogl-15-import.d.ts",
         "import": "./cogl-15-import.js",
         "default": "./cogl-15-import.js"
+      },
+      "./vocabulary": {
+        "types": "./cogl-15-vocabulary.d.ts",
+        "import": "./cogl-15-vocabulary.js",
+        "default": "./cogl-15-vocabulary.js"
       },
       "./cogl-15": {
         "types": "./cogl-15.d.ts",
@@ -31,13 +36,13 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/xlib-2.0": "^5.2.0",
-      "@girs/mtk-15": "^5.2.0",
-      "@girs/graphene-1.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gl-1.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/xlib-2.0": "^5.3.0",
+      "@girs/mtk-15": "^5.3.0",
+      "@girs/graphene-1.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gl-1.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

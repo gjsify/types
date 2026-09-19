@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./amtk-4.d.ts"]
+  "include": ["./amtk-4.d.ts","./amtk-4-vocabulary.d.ts"]
 }
 
 

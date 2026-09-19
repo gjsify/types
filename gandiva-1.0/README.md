@@ -4,7 +4,7 @@
 ![version](https://img.shields.io/npm/v/@girs/gandiva-1.0)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gandiva-1.0)
 
-GJS TypeScript type definitions for Gandiva-1.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v5.2.0.
+GJS TypeScript type definitions for Gandiva-1.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v5.3.0.
 
 This package contains type declarations only. It ships no runtime code, so it adds
 nothing to your program and works with any bundler or none at all.
@@ -26,6 +26,7 @@ type packages.
 | `@girs/gandiva-1.0/ambient` | only the `gi://` module declarations |
 | `@girs/gandiva-1.0/import` | only the `imports.gi` declarations |
 | `@girs/gandiva-1.0/gandiva-1.0` | the namespace, without the side-effecting declarations |
+| `@girs/gandiva-1.0/vocabulary` | GIR-derived widget data: settable properties, enum nicks, slot candidates |
 
 ## Three ways to import
 
@@ -66,6 +67,24 @@ GJS's global object works the same way, via `@girs/gandiva-1.0/import`:
 ```ts
 const Gandiva = imports.gi.Gandiva;
 ```
+
+## Widget vocabulary
+
+`gandiva-1.0` declares widgets, so it also carries what the GIR says about them, as
+types and as values a test can read:
+
+```ts
+import type { Widgets, PropsOf } from '@girs/gandiva-1.0/vocabulary';
+import { OWN_PROPS, ENUM_NICKS, PROVENANCE } from '@girs/gandiva-1.0/vocabulary';
+```
+
+Properties are keyed the way GObject registered them, writable-only and optional, so they
+match `g_object_set`, GtkBuilder XML and Blueprint. `PROVENANCE.libraryVersion` names the
+library release this was generated from, which lets a check tell "newer than what is
+installed" from "wrong".
+
+This subpath answers what the GIR says, not what the installed library has. For the
+second question, ask the library.
 
 ## Building
 

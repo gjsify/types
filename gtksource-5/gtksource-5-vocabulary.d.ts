@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for GtkSource-5.
  *
- * GENERATED — do not edit. Provenance: GtkSource-5 — library 5.21.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Gio.ListModel
+ * GENERATED — do not edit. Provenance: GtkSource-5 — library 5.21.0
  *
- * 42 instantiable GTypes (of which 10 concrete widgets), 45 declarations, 13 enum nick unions, 2 slot candidates.
+ * 42 instantiable GTypes (of which 10 concrete widgets), 45 declarations, 11 enum nick unions, 2 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -31,7 +31,10 @@ import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-4.0';
 import type GtkSource from './gtksource-5.js';
 import type Pango from '@girs/pango-1.0';
+import type { GListModelConstructOnly, GListModelProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkAccessibleTextConstructOnly, GtkAccessibleTextProps, GtkActionableConstructOnly, GtkActionableProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkIMContextConstructOnly, GtkIMContextProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkTextBufferConstructOnly, GtkTextBufferProps, GtkTextMarkConstructOnly, GtkTextMarkProps, GtkTextTagConstructOnly, GtkTextTagProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkTextWindowTypeNick, GtkWidgetConstructOnly, GtkWidgetProps, GtkWrapModeNick } from '@girs/gtk-4.0/vocabulary';
+import type { PangoUnderlineNick, PangoWeightNick } from '@girs/pango-1.0/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -54,8 +57,6 @@ export type GtkSourceGutterRendererAlignmentModeNick = 'cell' | 'first' | 'last'
 export type GtkSourceNewlineTypeNick = 'lf' | 'cr' | 'cr-lf';
 export type GtkSourceSmartHomeEndTypeNick = 'disabled' | 'before' | 'after' | 'always';
 export type GtkSourceViewGutterPositionNick = 'lines' | 'marks';
-export type PangoUnderlineNick = 'none' | 'single' | 'double' | 'low' | 'error' | 'single-line' | 'double-line' | 'error-line';
-export type PangoWeightNick = 'thin' | 'ultralight' | 'light' | 'semilight' | 'book' | 'normal' | 'medium' | 'semibold' | 'bold' | 'ultrabold' | 'heavy' | 'ultraheavy';
 
 // ---------------------------------------------------------------------------
 // Property surfaces — one interface per GIR DECLARATION, mirroring GIR's own
@@ -68,22 +69,22 @@ export type PangoWeightNick = 'thin' | 'ultralight' | 'light' | 'semilight' | 'b
 // ---------------------------------------------------------------------------
 
 /** Represents an annotation added to [class@View], it has a [property@Annotation:line] property, [property@Annotation:description], icon and a style. */
-export interface GtkSourceAnnotationProps {
+export interface GtkSourceAnnotationProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceAnnotationConstructOnly = never;
+export type GtkSourceAnnotationConstructOnly = GObjectConstructOnly;
 
 /** It is used to provide annotations and display them on [class@View] and also populate [class@HoverDisplay] when the user hovers over an annotation. */
-export interface GtkSourceAnnotationProviderProps {
+export interface GtkSourceAnnotationProviderProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceAnnotationProviderConstructOnly = never;
+export type GtkSourceAnnotationProviderConstructOnly = GObjectConstructOnly;
 
 /** Use this object to manage [class@Annotation]s. */
-export interface GtkSourceAnnotationsProps {
+export interface GtkSourceAnnotationsProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceAnnotationsConstructOnly = never;
+export type GtkSourceAnnotationsConstructOnly = GObjectConstructOnly;
 
 /** Subclass of [class@Gtk.TextBuffer]. */
 export interface GtkSourceBufferProps extends GtkTextBufferProps {
@@ -110,7 +111,7 @@ export interface GtkSourceBufferProps extends GtkTextBufferProps {
 export type GtkSourceBufferConstructOnly = GtkTextBufferConstructOnly;
 
 /** Main Completion Object. */
-export interface GtkSourceCompletionProps {
+export interface GtkSourceCompletionProps extends GObjectProps {
     /**
      * The number of rows to display to the user before scrolling.
      * @default 5
@@ -135,7 +136,7 @@ export interface GtkSourceCompletionProps {
     view?: GtkSource.View;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceCompletionConstructOnly = 'view';
+export type GtkSourceCompletionConstructOnly = GObjectConstructOnly | 'view';
 
 /** Widget for single cell of completion proposal. */
 export interface GtkSourceCompletionCellProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -152,31 +153,31 @@ export interface GtkSourceCompletionCellProps extends GtkWidgetProps, GtkAccessi
 export type GtkSourceCompletionCellConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | 'column';
 
 /** The context of a completion. */
-export interface GtkSourceCompletionContextProps {
+export interface GtkSourceCompletionContextProps extends GObjectProps, GListModelProps {
     /** The "completion" is the #GtkSourceCompletion that was used to create the context. */
     completion?: GtkSource.Completion | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceCompletionContextConstructOnly = 'completion';
+export type GtkSourceCompletionContextConstructOnly = GObjectConstructOnly | GListModelConstructOnly | 'completion';
 
 /** Completion provider interface. */
-export interface GtkSourceCompletionProviderProps {
+export interface GtkSourceCompletionProviderProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceCompletionProviderConstructOnly = never;
+export type GtkSourceCompletionProviderConstructOnly = GObjectConstructOnly;
 
 /** A [iface@CompletionProvider] for the completion of snippets. */
-export interface GtkSourceCompletionSnippetsProps extends GtkSourceCompletionProviderProps {
+export interface GtkSourceCompletionSnippetsProps extends GObjectProps, GtkSourceCompletionProviderProps {
     /** @default 0 */
     priority?: number;
     /** @default NULL */
     title?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceCompletionSnippetsConstructOnly = GtkSourceCompletionProviderConstructOnly;
+export type GtkSourceCompletionSnippetsConstructOnly = GObjectConstructOnly | GtkSourceCompletionProviderConstructOnly;
 
 /** A [iface@CompletionProvider] for the completion of words. */
-export interface GtkSourceCompletionWordsProps extends GtkSourceCompletionProviderProps {
+export interface GtkSourceCompletionWordsProps extends GObjectProps, GtkSourceCompletionProviderProps {
     /** @default 2 */
     'minimum-word-size'?: number;
     /** @default 0 */
@@ -189,18 +190,18 @@ export interface GtkSourceCompletionWordsProps extends GtkSourceCompletionProvid
     title?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceCompletionWordsConstructOnly = GtkSourceCompletionProviderConstructOnly;
+export type GtkSourceCompletionWordsConstructOnly = GObjectConstructOnly | GtkSourceCompletionProviderConstructOnly;
 
 /** On-disk representation of a [class@Buffer]. */
-export interface GtkSourceFileProps {
+export interface GtkSourceFileProps extends GObjectProps {
     /** The location. */
     location?: Gio.File | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceFileConstructOnly = never;
+export type GtkSourceFileConstructOnly = GObjectConstructOnly;
 
 /** Load a file into a GtkSourceBuffer. */
-export interface GtkSourceFileLoaderProps {
+export interface GtkSourceFileLoaderProps extends GObjectProps {
     /** The #GtkSourceBuffer to load the contents into. */
     buffer?: GtkSource.Buffer;
     /** The #GtkSourceFile. */
@@ -217,10 +218,10 @@ export interface GtkSourceFileLoaderProps {
     'max-size'?: bigint | number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceFileLoaderConstructOnly = 'buffer' | 'file' | 'input-stream' | 'location';
+export type GtkSourceFileLoaderConstructOnly = GObjectConstructOnly | 'buffer' | 'file' | 'input-stream' | 'location';
 
 /** Save a [class@Buffer] into a file. */
-export interface GtkSourceFileSaverProps {
+export interface GtkSourceFileSaverProps extends GObjectProps {
     /** The #GtkSourceBuffer to save. */
     buffer?: GtkSource.Buffer;
     /**
@@ -246,7 +247,7 @@ export interface GtkSourceFileSaverProps {
     'newline-type'?: GtkSourceNewlineTypeNick | GtkSource.NewlineType;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceFileSaverConstructOnly = 'buffer' | 'file' | 'location';
+export type GtkSourceFileSaverConstructOnly = GObjectConstructOnly | 'buffer' | 'file' | 'location';
 
 /** Gutter object for [class@View]. */
 export interface GtkSourceGutterProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -262,10 +263,10 @@ export interface GtkSourceGutterProps extends GtkWidgetProps, GtkAccessibleProps
 export type GtkSourceGutterConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | 'view' | 'window-type';
 
 /** Collected information about visible lines. */
-export interface GtkSourceGutterLinesProps {
+export interface GtkSourceGutterLinesProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceGutterLinesConstructOnly = never;
+export type GtkSourceGutterLinesConstructOnly = GObjectConstructOnly;
 
 /** Gutter cell renderer. */
 export interface GtkSourceGutterRendererProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -320,7 +321,7 @@ export interface GtkSourceGutterRendererTextProps extends GtkSourceGutterRendere
 export type GtkSourceGutterRendererTextConstructOnly = GtkSourceGutterRendererConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** Interactive tooltips. */
-export interface GtkSourceHoverProps {
+export interface GtkSourceHoverProps extends GObjectProps {
     /**
      * Contains the number of milliseconds to delay before showing the hover assistant.
      * @default 500
@@ -328,13 +329,13 @@ export interface GtkSourceHoverProps {
     'hover-delay'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceHoverConstructOnly = never;
+export type GtkSourceHoverConstructOnly = GObjectConstructOnly;
 
 /** Context for populating [class@HoverDisplay] contents. */
-export interface GtkSourceHoverContextProps {
+export interface GtkSourceHoverContextProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceHoverContextConstructOnly = never;
+export type GtkSourceHoverContextConstructOnly = GObjectConstructOnly;
 
 /** Display for interactive tooltips. */
 export interface GtkSourceHoverDisplayProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -343,17 +344,17 @@ export interface GtkSourceHoverDisplayProps extends GtkWidgetProps, GtkAccessibl
 export type GtkSourceHoverDisplayConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** Represents a syntax highlighted language. */
-export interface GtkSourceLanguageProps {
+export interface GtkSourceLanguageProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceLanguageConstructOnly = never;
+export type GtkSourceLanguageConstructOnly = GObjectConstructOnly;
 
 /** Provides access to [class@Language]s. */
-export interface GtkSourceLanguageManagerProps {
+export interface GtkSourceLanguageManagerProps extends GObjectProps {
     'search-path'?: string[];
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceLanguageManagerConstructOnly = never;
+export type GtkSourceLanguageManagerConstructOnly = GObjectConstructOnly;
 
 /** Widget that displays a map for a specific [class@View]. */
 export interface GtkSourceMapProps extends GtkSourceViewProps, GtkAccessibleProps, GtkAccessibleTextProps, GtkBuildableProps, GtkConstraintTargetProps, GtkScrollableProps {
@@ -375,7 +376,7 @@ export interface GtkSourceMarkProps extends GtkTextMarkProps {
 export type GtkSourceMarkConstructOnly = GtkTextMarkConstructOnly | 'category';
 
 /** The source mark attributes object. */
-export interface GtkSourceMarkAttributesProps {
+export interface GtkSourceMarkAttributesProps extends GObjectProps {
     /** A color used for background of a line. */
     background?: Gdk.RGBA;
     /** A #GIcon that may be a base of a rendered icon. */
@@ -389,10 +390,10 @@ export interface GtkSourceMarkAttributesProps {
     pixbuf?: GdkPixbuf.Pixbuf;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceMarkAttributesConstructOnly = never;
+export type GtkSourceMarkAttributesConstructOnly = GObjectConstructOnly;
 
 /** Compose a [class@Buffer] for printing. */
-export interface GtkSourcePrintCompositorProps {
+export interface GtkSourcePrintCompositorProps extends GObjectProps {
     /**
      * Name of the font used for the text body.
      * @default NULL
@@ -447,18 +448,18 @@ export interface GtkSourcePrintCompositorProps {
     'wrap-mode'?: GtkWrapModeNick | Gtk.WrapMode;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourcePrintCompositorConstructOnly = 'buffer';
+export type GtkSourcePrintCompositorConstructOnly = GObjectConstructOnly | 'buffer';
 
 /** Region utility. */
-export interface GtkSourceRegionProps {
+export interface GtkSourceRegionProps extends GObjectProps {
     /** The [class@Gtk.TextBuffer]. */
     buffer?: Gtk.TextBuffer | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceRegionConstructOnly = 'buffer';
+export type GtkSourceRegionConstructOnly = GObjectConstructOnly | 'buffer';
 
 /** Search context. */
-export interface GtkSourceSearchContextProps {
+export interface GtkSourceSearchContextProps extends GObjectProps {
     /** The [class@Buffer] associated to the search context. */
     buffer?: GtkSource.Buffer;
     /**
@@ -472,10 +473,10 @@ export interface GtkSourceSearchContextProps {
     settings?: GtkSource.SearchSettings;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceSearchContextConstructOnly = 'buffer' | 'settings';
+export type GtkSourceSearchContextConstructOnly = GObjectConstructOnly | 'buffer' | 'settings';
 
 /** Search settings. */
-export interface GtkSourceSearchSettingsProps {
+export interface GtkSourceSearchSettingsProps extends GObjectProps {
     /**
      * If %TRUE, a search match must start and end a word.
      * @default FALSE
@@ -509,10 +510,10 @@ export interface GtkSourceSearchSettingsProps {
     'wrap-around'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceSearchSettingsConstructOnly = never;
+export type GtkSourceSearchSettingsConstructOnly = GObjectConstructOnly;
 
 /** Quick insertion code snippets. */
-export interface GtkSourceSnippetProps {
+export interface GtkSourceSnippetProps extends GObjectProps {
     /** @default NULL */
     description?: string;
     /** @default NULL */
@@ -523,10 +524,10 @@ export interface GtkSourceSnippetProps {
     trigger?: string | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceSnippetConstructOnly = never;
+export type GtkSourceSnippetConstructOnly = GObjectConstructOnly;
 
 /** A chunk of text within the source snippet. */
-export interface GtkSourceSnippetChunkProps {
+export interface GtkSourceSnippetChunkProps extends GInitiallyUnownedProps {
     context?: GtkSource.SnippetContext;
     /** @default -1 */
     'focus-position'?: number;
@@ -540,24 +541,24 @@ export interface GtkSourceSnippetChunkProps {
     'tooltip-text'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceSnippetChunkConstructOnly = never;
+export type GtkSourceSnippetChunkConstructOnly = GInitiallyUnownedConstructOnly;
 
 /** Context for expanding [class@SnippetChunk]. */
-export interface GtkSourceSnippetContextProps {
+export interface GtkSourceSnippetContextProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceSnippetContextConstructOnly = never;
+export type GtkSourceSnippetContextConstructOnly = GObjectConstructOnly;
 
 /** Provides access to [class@Snippet]. */
-export interface GtkSourceSnippetManagerProps {
+export interface GtkSourceSnippetManagerProps extends GObjectProps {
     /** Contains a list of directories to search for files containing snippets (*.snippets). */
     'search-path'?: string[];
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceSnippetManagerConstructOnly = never;
+export type GtkSourceSnippetManagerConstructOnly = GObjectConstructOnly;
 
 /** Represent white space characters with symbols. */
-export interface GtkSourceSpaceDrawerProps {
+export interface GtkSourceSpaceDrawerProps extends GObjectProps {
     /**
      * Whether the [property@SpaceDrawer:matrix] property is enabled.
      * @default FALSE
@@ -567,10 +568,10 @@ export interface GtkSourceSpaceDrawerProps {
     matrix?: GLib.Variant;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceSpaceDrawerConstructOnly = never;
+export type GtkSourceSpaceDrawerConstructOnly = GObjectConstructOnly;
 
 /** Represents a style. */
-export interface GtkSourceStyleProps {
+export interface GtkSourceStyleProps extends GObjectProps {
     /** @default NULL */
     background?: string;
     /** @default FALSE */
@@ -613,10 +614,10 @@ export interface GtkSourceStyleProps {
     'weight-set'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceStyleConstructOnly = 'background' | 'background-set' | 'bold' | 'bold-set' | 'foreground' | 'foreground-set' | 'italic' | 'italic-set' | 'line-background' | 'line-background-set' | 'pango-underline' | 'scale' | 'scale-set' | 'strikethrough' | 'strikethrough-set' | 'underline-color' | 'underline-color-set' | 'underline-set' | 'weight' | 'weight-set';
+export type GtkSourceStyleConstructOnly = GObjectConstructOnly | 'background' | 'background-set' | 'bold' | 'bold-set' | 'foreground' | 'foreground-set' | 'italic' | 'italic-set' | 'line-background' | 'line-background-set' | 'pango-underline' | 'scale' | 'scale-set' | 'strikethrough' | 'strikethrough-set' | 'underline-color' | 'underline-color-set' | 'underline-set' | 'weight' | 'weight-set';
 
 /** Controls the appearance of [class@View]. */
-export interface GtkSourceStyleSchemeProps {
+export interface GtkSourceStyleSchemeProps extends GObjectProps {
     /**
      * Style scheme id, a unique string used to identify the style scheme in [class@StyleSchemeManager].
      * @default NULL
@@ -624,15 +625,15 @@ export interface GtkSourceStyleSchemeProps {
     id?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceStyleSchemeConstructOnly = 'id';
+export type GtkSourceStyleSchemeConstructOnly = GObjectConstructOnly | 'id';
 
 /** Interface implemented by widgets for choosing style schemes. */
-export interface GtkSourceStyleSchemeChooserProps {
+export interface GtkSourceStyleSchemeChooserProps extends GObjectProps {
     /** Contains the currently selected style scheme. */
     'style-scheme'?: GtkSource.StyleScheme;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceStyleSchemeChooserConstructOnly = never;
+export type GtkSourceStyleSchemeChooserConstructOnly = GObjectConstructOnly;
 
 /** A button to launch a style scheme selection dialog. */
 export interface GtkSourceStyleSchemeChooserButtonProps extends GtkButtonProps, GtkAccessibleProps, GtkActionableProps, GtkBuildableProps, GtkConstraintTargetProps, GtkSourceStyleSchemeChooserProps {
@@ -647,11 +648,11 @@ export interface GtkSourceStyleSchemeChooserWidgetProps extends GtkWidgetProps, 
 export type GtkSourceStyleSchemeChooserWidgetConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkSourceStyleSchemeChooserConstructOnly;
 
 /** Provides access to [class@StyleScheme]s. */
-export interface GtkSourceStyleSchemeManagerProps {
+export interface GtkSourceStyleSchemeManagerProps extends GObjectProps {
     'search-path'?: string[];
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GtkSourceStyleSchemeManagerConstructOnly = never;
+export type GtkSourceStyleSchemeManagerConstructOnly = GObjectConstructOnly;
 
 /** A preview widget for [class@StyleScheme]. */
 export interface GtkSourceStyleSchemePreviewProps extends GtkWidgetProps, GtkAccessibleProps, GtkActionableProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -906,6 +907,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./clutter-14.d.ts"]
+  "include": ["./clutter-14.d.ts","./clutter-14-vocabulary.d.ts"]
 }
 
 

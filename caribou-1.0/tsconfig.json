@@ -53,7 +53,7 @@
       ]
 }
   },
-  "include": ["./caribou-1.0.d.ts"]
+  "include": ["./caribou-1.0.d.ts","./caribou-1.0-vocabulary.d.ts"]
 }
 
 

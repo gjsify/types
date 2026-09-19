@@ -59,7 +59,7 @@
       ]
 }
   },
-  "include": ["./gdkwin32-4.0.d.ts"]
+  "include": ["./gdkwin32-4.0.d.ts","./gdkwin32-4.0-vocabulary.d.ts"]
 }
 
 

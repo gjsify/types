@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Panel-1.
  *
- * GENERATED — do not edit. Provenance: Panel-1 — library 1.10.4 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned — inlined base(s) their owner's vocabulary does not emit: Gio.Application
+ * GENERATED — do not edit. Provenance: Panel-1 — library 1.10.4
  *
- * 29 instantiable GTypes (of which 17 concrete widgets), 31 declarations (1 inlined from a namespace whose vocabulary does not emit them), 1 enum nick unions, 6 slot candidates.
+ * 29 instantiable GTypes (of which 17 concrete widgets), 30 declarations, 1 enum nick unions, 6 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -28,6 +28,8 @@ import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-4.0';
 import type Panel from './panel-1.js';
 import type { AdwAlertDialogConstructOnly, AdwAlertDialogProps, AdwApplicationConstructOnly, AdwApplicationProps, AdwApplicationWindowConstructOnly, AdwApplicationWindowProps, AdwDialogConstructOnly, AdwDialogProps, AdwMessageDialogConstructOnly, AdwMessageDialogProps } from '@girs/adw-1/vocabulary';
+import type { GActionGroupConstructOnly, GActionGroupProps, GActionMapConstructOnly, GActionMapProps, GApplicationConstructOnly, GApplicationProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkActionableConstructOnly, GtkActionableProps, GtkApplicationConstructOnly, GtkApplicationProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkNativeConstructOnly, GtkNativeProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkRootConstructOnly, GtkRootProps, GtkShortcutManagerConstructOnly, GtkShortcutManagerProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowGroupConstructOnly, GtkWindowGroupProps, GtkWindowProps } from '@girs/gtk-4.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -52,57 +54,15 @@ export type PanelAreaNick = 'start' | 'end' | 'top' | 'bottom' | 'center';
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-/** `GApplication` is the core class for application support. */
-export interface GApplicationProps {
-    /**
-     * The group of actions that the application exports.
-     * @since 2.28
-     * @deprecated since 2.32: Use the [iface@Gio.ActionMap] interface instead.
-     */
-    'action-group'?: Gio.ActionGroup;
-    /**
-     * The unique identifier for the application.
-     * @since 2.28
-     * @default NULL
-     */
-    'application-id'?: string | null;
-    /**
-     * Flags specifying the behaviour of the application.
-     * @since 2.28
-     * @default G_APPLICATION_FLAGS_NONE
-     */
-    flags?: number;
-    /**
-     * Time (in milliseconds) to stay alive after becoming idle.
-     * @since 2.28
-     * @default 0
-     */
-    'inactivity-timeout'?: number;
-    /**
-     * The base resource path for the application.
-     * @since 2.28
-     * @default NULL
-     */
-    'resource-base-path'?: string | null;
-    /**
-     * The human-readable version number of the application.
-     * @since 2.80
-     * @default NULL
-     */
-    version?: string | null;
+export interface PanelActionMuxerProps extends GObjectProps, GActionGroupProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GApplicationConstructOnly = never;
+export type PanelActionMuxerConstructOnly = GObjectConstructOnly | GActionGroupConstructOnly;
 
-export interface PanelActionMuxerProps {
+export interface PanelApplicationProps extends AdwApplicationProps, GActionGroupProps, GActionMapProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelActionMuxerConstructOnly = never;
-
-export interface PanelApplicationProps extends AdwApplicationProps {
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelApplicationConstructOnly = AdwApplicationConstructOnly;
+export type PanelApplicationConstructOnly = AdwApplicationConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly;
 
 export interface PanelChangesDialogProps extends AdwAlertDialogProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkShortcutManagerProps {
     /**
@@ -136,10 +96,10 @@ export interface PanelDockProps extends GtkWidgetProps, GtkAccessibleProps, GtkB
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type PanelDockConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
-export interface PanelDocumentWorkspaceProps extends PanelWorkspaceProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
+export interface PanelDocumentWorkspaceProps extends PanelWorkspaceProps, GActionGroupProps, GActionMapProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelDocumentWorkspaceConstructOnly = PanelWorkspaceConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkNativeConstructOnly | GtkRootConstructOnly | GtkShortcutManagerConstructOnly;
+export type PanelDocumentWorkspaceConstructOnly = PanelWorkspaceConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkNativeConstructOnly | GtkRootConstructOnly | GtkShortcutManagerConstructOnly;
 
 /** The #PanelFrame is a widget containing panels to display in an area. */
 export interface PanelFrameProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkOrientableProps {
@@ -195,11 +155,11 @@ export interface PanelFrameTabBarProps extends GtkWidgetProps, GtkAccessibleProp
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type PanelFrameTabBarConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | PanelFrameHeaderConstructOnly;
 
-export interface PanelGSettingsActionGroupProps {
+export interface PanelGSettingsActionGroupProps extends GObjectProps, GActionGroupProps {
     settings?: Gio.Settings;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelGSettingsActionGroupConstructOnly = 'settings';
+export type PanelGSettingsActionGroupConstructOnly = GObjectConstructOnly | GActionGroupConstructOnly | 'settings';
 
 /** The #PanelGrid is a widget used to layout the dock item in the center area. */
 export interface PanelGridProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -212,25 +172,25 @@ export interface PanelGridColumnProps extends GtkWidgetProps, GtkAccessibleProps
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type PanelGridColumnConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
-export interface PanelInhibitorProps {
+export interface PanelInhibitorProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelInhibitorConstructOnly = never;
+export type PanelInhibitorConstructOnly = GObjectConstructOnly;
 
-export interface PanelLayeredSettingsProps {
+export interface PanelLayeredSettingsProps extends GObjectProps {
     /** @default NULL */
     path?: string;
     /** @default NULL */
     'schema-id'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelLayeredSettingsConstructOnly = 'path' | 'schema-id';
+export type PanelLayeredSettingsConstructOnly = GObjectConstructOnly | 'path' | 'schema-id';
 
 /** The goal of #PanelMenuManager is to simplify the process of merging multiple GtkBuilder .ui files containing menus into a single representation of the application menus. */
-export interface PanelMenuManagerProps {
+export interface PanelMenuManagerProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelMenuManagerConstructOnly = never;
+export type PanelMenuManagerConstructOnly = GObjectConstructOnly;
 
 /** A multi-use widget for user interaction in the window header bar. */
 export interface PanelOmniBarProps extends GtkWidgetProps, GtkAccessibleProps, GtkActionableProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -264,7 +224,7 @@ export interface PanelPanedProps extends GtkWidgetProps, GtkAccessibleProps, Gtk
 export type PanelPanedConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkOrientableConstructOnly;
 
 /** Specifies a position in the dock. */
-export interface PanelPositionProps {
+export interface PanelPositionProps extends GObjectProps {
     /**
      * The area.
      * @default PANEL_AREA_CENTER
@@ -295,9 +255,9 @@ export interface PanelPositionProps {
     'row-set'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelPositionConstructOnly = never;
+export type PanelPositionConstructOnly = GObjectConstructOnly;
 
-export interface PanelSaveDelegateProps {
+export interface PanelSaveDelegateProps extends GObjectProps {
     /** The "icon" property contains a #GIcon that describes the save operation. */
     icon?: Gio.Icon | null;
     /**
@@ -327,7 +287,7 @@ export interface PanelSaveDelegateProps {
     title?: string | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelSaveDelegateConstructOnly = never;
+export type PanelSaveDelegateConstructOnly = GObjectConstructOnly;
 
 export interface PanelSaveDialogProps extends AdwMessageDialogProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
     /**
@@ -340,12 +300,12 @@ export interface PanelSaveDialogProps extends AdwMessageDialogProps, GtkAccessib
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type PanelSaveDialogConstructOnly = AdwMessageDialogConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkNativeConstructOnly | GtkRootConstructOnly | GtkShortcutManagerConstructOnly;
 
-export interface PanelSessionProps {
+export interface PanelSessionProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelSessionConstructOnly = never;
+export type PanelSessionConstructOnly = GObjectConstructOnly;
 
-export interface PanelSessionItemProps {
+export interface PanelSessionItemProps extends GObjectProps {
     /** @default NULL */
     id?: string | null;
     /** @default NULL */
@@ -357,9 +317,9 @@ export interface PanelSessionItemProps {
     workspace?: string | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelSessionItemConstructOnly = never;
+export type PanelSessionItemConstructOnly = GObjectConstructOnly;
 
-export interface PanelSettingsProps {
+export interface PanelSettingsProps extends GObjectProps, GActionGroupProps {
     /**
      * The "identifier" property is used to make unique paths.
      * @default NULL
@@ -377,7 +337,7 @@ export interface PanelSettingsProps {
     'schema-id-prefix'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelSettingsConstructOnly = 'identifier' | 'path' | 'path-prefix' | 'path-suffix' | 'schema-id' | 'schema-id-prefix';
+export type PanelSettingsConstructOnly = GObjectConstructOnly | GActionGroupConstructOnly | 'identifier' | 'path' | 'path-prefix' | 'path-suffix' | 'schema-id' | 'schema-id-prefix';
 
 /** A panel status bar is meant to be displayed at the bottom of the window. */
 export interface PanelStatusbarProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -462,7 +422,7 @@ export interface PanelWorkbenchProps extends GtkWindowGroupProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type PanelWorkbenchConstructOnly = GtkWindowGroupConstructOnly;
 
-export interface PanelWorkspaceProps extends AdwApplicationWindowProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
+export interface PanelWorkspaceProps extends AdwApplicationWindowProps, GActionGroupProps, GActionMapProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
     /**
      * The "id" of the workspace.
      * @since 1.4
@@ -471,7 +431,7 @@ export interface PanelWorkspaceProps extends AdwApplicationWindowProps, GtkAcces
     id?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type PanelWorkspaceConstructOnly = AdwApplicationWindowConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkNativeConstructOnly | GtkRootConstructOnly | GtkShortcutManagerConstructOnly;
+export type PanelWorkspaceConstructOnly = AdwApplicationWindowConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkNativeConstructOnly | GtkRootConstructOnly | GtkShortcutManagerConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -684,6 +644,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

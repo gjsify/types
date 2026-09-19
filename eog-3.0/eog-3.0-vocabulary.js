@@ -1,6 +1,6 @@
 // The widget vocabulary of Eog-3.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Eog-3.0 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application
+// GENERATED — do not edit. Provenance: Eog-3.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '3.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gio.ActionGroup', 'Gio.ActionMap', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
-    inlinedBases: ['Gio.Application'],
+    droppedBases: ['Atk.ImplementorIface'],
+    inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Eog'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -25,7 +27,6 @@ export const OWN_PROPS = {
     EogThumbNav: ['mode', 'show-buttons', 'thumbview'],
     EogURIConverter: ['convert-spaces', 'counter-n-digits', 'counter-start', 'n-images', 'space-character'],
     EogWindow: ['gallery-position', 'gallery-resizable', 'startup-flags'],
-    GApplication: ['action-group', 'application-id', 'flags', 'inactivity-timeout', 'resource-base-path', 'version'],
 };
 
 export const OWN_SIGNALS = {
@@ -35,7 +36,6 @@ export const OWN_SIGNALS = {
     EogScrollView: ['next-image', 'previous-image', 'rotation-changed', 'zoom-changed'],
     EogSidebar: ['page-added', 'page-removed'],
     EogWindow: ['prepared'],
-    GApplication: ['activate', 'command-line', 'handle-local-options', 'name-lost', 'open', 'shutdown', 'startup'],
 };
 
 // Every GType this namespace can INSTANTIATE -> the declarations its members come from.
@@ -46,29 +46,29 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    EogApplication: ['EogApplication', 'GtkApplication', 'GApplication'],
-    EogClipboardHandler: ['EogClipboardHandler'],
-    EogDetailsDialog: ['EogDetailsDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EogFileChooser: ['EogFileChooser', 'GtkFileChooserDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkFileChooser'],
-    EogImage: ['EogImage'],
-    EogImageSaveInfo: ['EogImageSaveInfo'],
-    EogJobCopy: ['EogJobCopy', 'EogJob'],
-    EogJobLoad: ['EogJobLoad', 'EogJob'],
-    EogJobModel: ['EogJobModel', 'EogJob'],
-    EogJobSave: ['EogJobSave', 'EogJob'],
-    EogJobSaveAs: ['EogJobSaveAs', 'EogJobSave', 'EogJob'],
-    EogJobThumbnail: ['EogJobThumbnail', 'EogJob'],
-    EogJobTransform: ['EogJobTransform', 'EogJob'],
-    EogListStore: ['EogListStore', 'GtkListStore', 'GtkBuildable', 'GtkTreeDragDest', 'GtkTreeDragSource', 'GtkTreeModel', 'GtkTreeSortable'],
-    EogRemotePresenter: ['EogRemotePresenter', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EogScrollView: ['EogScrollView', 'GtkOverlay', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
-    EogSidebar: ['EogSidebar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    EogStatusbar: ['EogStatusbar', 'GtkStatusbar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    EogThumbNav: ['EogThumbNav', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    EogThumbView: ['EogThumbView', 'GtkIconView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellLayout', 'GtkOrientable', 'GtkScrollable'],
-    EogTransform: ['EogTransform'],
-    EogURIConverter: ['EogURIConverter'],
-    EogWindow: ['EogWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    EogApplication: ['EogApplication', 'GtkApplication', 'GApplication', 'GObject', 'GActionGroup', 'GActionMap'],
+    EogClipboardHandler: ['EogClipboardHandler', 'GInitiallyUnowned', 'GObject'],
+    EogDetailsDialog: ['EogDetailsDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EogFileChooser: ['EogFileChooser', 'GtkFileChooserDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkFileChooser'],
+    EogImage: ['EogImage', 'GObject'],
+    EogImageSaveInfo: ['EogImageSaveInfo', 'GObject'],
+    EogJobCopy: ['EogJobCopy', 'EogJob', 'GObject'],
+    EogJobLoad: ['EogJobLoad', 'EogJob', 'GObject'],
+    EogJobModel: ['EogJobModel', 'EogJob', 'GObject'],
+    EogJobSave: ['EogJobSave', 'EogJob', 'GObject'],
+    EogJobSaveAs: ['EogJobSaveAs', 'EogJobSave', 'EogJob', 'GObject'],
+    EogJobThumbnail: ['EogJobThumbnail', 'EogJob', 'GObject'],
+    EogJobTransform: ['EogJobTransform', 'EogJob', 'GObject'],
+    EogListStore: ['EogListStore', 'GtkListStore', 'GObject', 'GtkBuildable', 'GtkTreeDragDest', 'GtkTreeDragSource', 'GtkTreeModel', 'GtkTreeSortable'],
+    EogRemotePresenter: ['EogRemotePresenter', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EogScrollView: ['EogScrollView', 'GtkOverlay', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
+    EogSidebar: ['EogSidebar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    EogStatusbar: ['EogStatusbar', 'GtkStatusbar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    EogThumbNav: ['EogThumbNav', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    EogThumbView: ['EogThumbView', 'GtkIconView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkCellLayout', 'GtkOrientable', 'GtkScrollable'],
+    EogTransform: ['EogTransform', 'GObject'],
+    EogURIConverter: ['EogURIConverter', 'GObject'],
+    EogWindow: ['EogWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GActionGroup', 'GActionMap', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -236,17 +236,6 @@ export const FLAG_VALUES = {
     'EogStartupFlags.fullscreen': 1,
     'EogStartupFlags.single-window': 8,
     'EogStartupFlags.slide-show': 2,
-    'GApplicationFlags.allow-replacement': 128,
-    'GApplicationFlags.can-override-app-id': 64,
-    'GApplicationFlags.default-flags': 0,
-    'GApplicationFlags.flags-none': 0,
-    'GApplicationFlags.handles-command-line': 8,
-    'GApplicationFlags.handles-open': 4,
-    'GApplicationFlags.is-launcher': 2,
-    'GApplicationFlags.is-service': 1,
-    'GApplicationFlags.non-unique': 32,
-    'GApplicationFlags.replace': 256,
-    'GApplicationFlags.send-environment': 16,
 };
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
@@ -273,7 +262,6 @@ export const PROP_ENUMS = {
     'EogScrollView.zoom-mode': 'EogZoomMode',
     'EogWindow.gallery-position': 'EogWindowGalleryPos',
     'EogWindow.startup-flags': 'EogStartupFlags',
-    'GApplication.flags': 'GApplicationFlags',
 };
 
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
@@ -313,14 +301,4 @@ export const SLOT_CANDIDATES = {
     },
 };
 
-export const SINCE = {
-    'GApplication': '2.28',
-    'GApplication.action-group': '2.28',
-    'GApplication.application-id': '2.28',
-    'GApplication.flags': '2.28',
-    'GApplication.inactivity-timeout': '2.28',
-    'GApplication.resource-base-path': '2.28',
-    'GApplication.version': '2.80',
-    'GApplication::handle-local-options': '2.40',
-    'GApplication::name-lost': '2.60',
-};
+export const SINCE = {};

@@ -1,6 +1,6 @@
 // The widget vocabulary of Wnck-3.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Wnck-3.0 — library 43.3.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Wnck.ActionMenu.window
+// GENERATED — do not edit. Provenance: Wnck-3.0 — library 43.3.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Wnck.ActionMenu.window
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '3.0',
     libraryVersion: '43.3.0',
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: ['Wnck.ActionMenu.window'],
     unresolvedProps: [],
+    identifierPrefixes: ['Wnck'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -42,17 +44,17 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    WnckActionMenu: ['WnckActionMenu', 'GtkMenu', 'GtkMenuShell', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    WnckApplication: ['WnckApplication'],
-    WnckClassGroup: ['WnckClassGroup'],
-    WnckHandle: ['WnckHandle'],
-    WnckImageMenuItem: ['WnckImageMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    WnckPager: ['WnckPager', 'GtkWidget', 'GtkBuildable'],
-    WnckScreen: ['WnckScreen'],
-    WnckSelector: ['WnckSelector', 'GtkMenuBar', 'GtkMenuShell', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    WnckTasklist: ['WnckTasklist', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    WnckWindow: ['WnckWindow'],
-    WnckWorkspace: ['WnckWorkspace'],
+    WnckActionMenu: ['WnckActionMenu', 'GtkMenu', 'GtkMenuShell', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    WnckApplication: ['WnckApplication', 'GObject'],
+    WnckClassGroup: ['WnckClassGroup', 'GObject'],
+    WnckHandle: ['WnckHandle', 'GObject'],
+    WnckImageMenuItem: ['WnckImageMenuItem', 'GtkMenuItem', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    WnckPager: ['WnckPager', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    WnckScreen: ['WnckScreen', 'GObject'],
+    WnckSelector: ['WnckSelector', 'GtkMenuBar', 'GtkMenuShell', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    WnckTasklist: ['WnckTasklist', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    WnckWindow: ['WnckWindow', 'GObject'],
+    WnckWorkspace: ['WnckWorkspace', 'GObject'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

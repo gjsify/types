@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./appindicator3-0.1.d.ts"]
+  "include": ["./appindicator3-0.1.d.ts","./appindicator3-0.1-vocabulary.d.ts"]
 }
 
 

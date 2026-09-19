@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./translit-1.0.d.ts"]
+  "include": ["./translit-1.0.d.ts","./translit-1.0-vocabulary.d.ts"]
 }
 
 

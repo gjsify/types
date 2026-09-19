@@ -47,7 +47,7 @@
       ]
 }
   },
-  "include": ["./gc-1.0.d.ts"]
+  "include": ["./gc-1.0.d.ts","./gc-1.0-vocabulary.d.ts"]
 }
 
 

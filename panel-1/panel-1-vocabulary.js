@@ -1,6 +1,6 @@
 // The widget vocabulary of Panel-1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Panel-1 — library 1.10.4 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned — inlined base(s) their owner's vocabulary does not emit: Gio.Application
+// GENERATED — do not edit. Provenance: Panel-1 — library 1.10.4
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,14 +11,15 @@ export const PROVENANCE = {
     version: '1',
     libraryVersion: '1.10.4',
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gio.ActionGroup', 'Gio.ActionMap', 'GObject.InitiallyUnowned'],
-    inlinedBases: ['Gio.Application'],
+    droppedBases: [],
+    inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Panel'],
+    requiredVocabularies: ['@girs/adw-1/vocabulary', '@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
-    GApplication: ['action-group', 'application-id', 'flags', 'inactivity-timeout', 'resource-base-path', 'version'],
     PanelChangesDialog: ['close-after-save'],
     PanelDock: ['bottom-height', 'end-width', 'reveal-bottom', 'reveal-end', 'reveal-start', 'reveal-top', 'start-width', 'top-height'],
     PanelFrame: ['placeholder', 'visible-child'],
@@ -41,7 +42,6 @@ export const OWN_PROPS = {
 };
 
 export const OWN_SIGNALS = {
-    GApplication: ['activate', 'command-line', 'handle-local-options', 'name-lost', 'open', 'shutdown', 'startup'],
     PanelDock: ['adopt-widget', 'create-frame', 'panel-drag-begin', 'panel-drag-end'],
     PanelDocumentWorkspace: ['add-widget', 'create-frame'],
     PanelFrame: ['adopt-widget', 'page-closed'],
@@ -61,35 +61,35 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    PanelActionMuxer: ['PanelActionMuxer'],
-    PanelApplication: ['PanelApplication', 'AdwApplication', 'GtkApplication', 'GApplication'],
-    PanelChangesDialog: ['PanelChangesDialog', 'AdwAlertDialog', 'AdwDialog', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkShortcutManager'],
-    PanelDock: ['PanelDock', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    PanelDocumentWorkspace: ['PanelDocumentWorkspace', 'PanelWorkspace', 'AdwApplicationWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
-    PanelFrame: ['PanelFrame', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    PanelFrameHeaderBar: ['PanelFrameHeaderBar', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'PanelFrameHeader'],
-    PanelFrameSwitcher: ['PanelFrameSwitcher', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable', 'PanelFrameHeader'],
-    PanelFrameTabBar: ['PanelFrameTabBar', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'PanelFrameHeader'],
-    PanelGSettingsActionGroup: ['PanelGSettingsActionGroup'],
-    PanelGrid: ['PanelGrid', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    PanelGridColumn: ['PanelGridColumn', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    PanelInhibitor: ['PanelInhibitor'],
-    PanelLayeredSettings: ['PanelLayeredSettings'],
-    PanelMenuManager: ['PanelMenuManager'],
-    PanelOmniBar: ['PanelOmniBar', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
-    PanelPaned: ['PanelPaned', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    PanelPosition: ['PanelPosition'],
-    PanelSaveDelegate: ['PanelSaveDelegate'],
-    PanelSaveDialog: ['PanelSaveDialog', 'AdwMessageDialog', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
-    PanelSession: ['PanelSession'],
-    PanelSessionItem: ['PanelSessionItem'],
-    PanelSettings: ['PanelSettings'],
-    PanelStatusbar: ['PanelStatusbar', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    PanelThemeSelector: ['PanelThemeSelector', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    PanelToggleButton: ['PanelToggleButton', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    PanelWidget: ['PanelWidget', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    PanelWorkbench: ['PanelWorkbench', 'GtkWindowGroup'],
-    PanelWorkspace: ['PanelWorkspace', 'AdwApplicationWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    PanelActionMuxer: ['PanelActionMuxer', 'GObject', 'GActionGroup'],
+    PanelApplication: ['PanelApplication', 'AdwApplication', 'GtkApplication', 'GApplication', 'GObject', 'GActionGroup', 'GActionMap'],
+    PanelChangesDialog: ['PanelChangesDialog', 'AdwAlertDialog', 'AdwDialog', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkShortcutManager'],
+    PanelDock: ['PanelDock', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    PanelDocumentWorkspace: ['PanelDocumentWorkspace', 'PanelWorkspace', 'AdwApplicationWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GActionGroup', 'GActionMap', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    PanelFrame: ['PanelFrame', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    PanelFrameHeaderBar: ['PanelFrameHeaderBar', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'PanelFrameHeader'],
+    PanelFrameSwitcher: ['PanelFrameSwitcher', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable', 'PanelFrameHeader'],
+    PanelFrameTabBar: ['PanelFrameTabBar', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'PanelFrameHeader'],
+    PanelGSettingsActionGroup: ['PanelGSettingsActionGroup', 'GObject', 'GActionGroup'],
+    PanelGrid: ['PanelGrid', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    PanelGridColumn: ['PanelGridColumn', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    PanelInhibitor: ['PanelInhibitor', 'GObject'],
+    PanelLayeredSettings: ['PanelLayeredSettings', 'GObject'],
+    PanelMenuManager: ['PanelMenuManager', 'GObject'],
+    PanelOmniBar: ['PanelOmniBar', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
+    PanelPaned: ['PanelPaned', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    PanelPosition: ['PanelPosition', 'GObject'],
+    PanelSaveDelegate: ['PanelSaveDelegate', 'GObject'],
+    PanelSaveDialog: ['PanelSaveDialog', 'AdwMessageDialog', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    PanelSession: ['PanelSession', 'GObject'],
+    PanelSessionItem: ['PanelSessionItem', 'GObject'],
+    PanelSettings: ['PanelSettings', 'GObject', 'GActionGroup'],
+    PanelStatusbar: ['PanelStatusbar', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    PanelThemeSelector: ['PanelThemeSelector', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    PanelToggleButton: ['PanelToggleButton', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    PanelWidget: ['PanelWidget', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    PanelWorkbench: ['PanelWorkbench', 'GtkWindowGroup', 'GObject'],
+    PanelWorkspace: ['PanelWorkspace', 'AdwApplicationWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GActionGroup', 'GActionMap', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -160,19 +160,7 @@ export const ENUM_VALUES_UNREADABLE = {};
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
-export const FLAG_VALUES = {
-    'GApplicationFlags.allow-replacement': 128,
-    'GApplicationFlags.can-override-app-id': 64,
-    'GApplicationFlags.default-flags': 0,
-    'GApplicationFlags.flags-none': 0,
-    'GApplicationFlags.handles-command-line': 8,
-    'GApplicationFlags.handles-open': 4,
-    'GApplicationFlags.is-launcher': 2,
-    'GApplicationFlags.is-service': 1,
-    'GApplicationFlags.non-unique': 32,
-    'GApplicationFlags.replace': 256,
-    'GApplicationFlags.send-environment': 16,
-};
+export const FLAG_VALUES = {};
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
 // `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
@@ -194,7 +182,6 @@ export const FLAG_VALUES_UNREADABLE = {};
 // that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
-    'GApplication.flags': 'GApplicationFlags',
     'PanelPosition.area': 'PanelArea',
     'PanelToggleButton.area': 'PanelArea',
 };
@@ -242,15 +229,6 @@ export const SLOT_CANDIDATES = {
 };
 
 export const SINCE = {
-    'GApplication': '2.28',
-    'GApplication.action-group': '2.28',
-    'GApplication.application-id': '2.28',
-    'GApplication.flags': '2.28',
-    'GApplication.inactivity-timeout': '2.28',
-    'GApplication.resource-base-path': '2.28',
-    'GApplication.version': '2.80',
-    'GApplication::handle-local-options': '2.40',
-    'GApplication::name-lost': '2.60',
     'PanelDock::adopt-widget': '1.2',
     'PanelDock::create-frame': '1.2',
     'PanelDocumentWorkspace::add-widget': '1.4',

@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gcr-4.d.ts"]
+  "include": ["./gcr-4.d.ts","./gcr-4-vocabulary.d.ts"]
 }
 
 

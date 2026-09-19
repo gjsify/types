@@ -32,7 +32,7 @@
       ]
 }
   },
-  "include": ["./grl-0.1.d.ts"]
+  "include": ["./grl-0.1.d.ts","./grl-0.1-vocabulary.d.ts"]
 }
 
 

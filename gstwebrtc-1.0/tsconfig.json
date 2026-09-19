@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gstwebrtc-1.0.d.ts"]
+  "include": ["./gstwebrtc-1.0.d.ts","./gstwebrtc-1.0-vocabulary.d.ts"]
 }
 
 

@@ -47,7 +47,7 @@
       ]
 }
   },
-  "include": ["./libvirtsandbox-1.0.d.ts"]
+  "include": ["./libvirtsandbox-1.0.d.ts","./libvirtsandbox-1.0-vocabulary.d.ts"]
 }
 
 

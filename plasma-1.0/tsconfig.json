@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./plasma-1.0.d.ts"]
+  "include": ["./plasma-1.0.d.ts","./plasma-1.0-vocabulary.d.ts"]
 }
 
 

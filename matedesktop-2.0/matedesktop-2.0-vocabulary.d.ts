@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for MateDesktop-2.0.
  *
- * GENERATED — do not edit. Provenance: MateDesktop-2.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface Gio.Initable
+ * GENERATED — do not edit. Provenance: MateDesktop-2.0 — dropped empty base(s): Atk.ImplementorIface
  *
  * 11 instantiable GTypes (of which 4 concrete widgets), 11 declarations, 0 enum nick unions, 1 slot candidates.
  *
@@ -27,6 +27,8 @@
 import type Gdk from '@girs/gdk-3.0';
 import type Gtk from '@girs/gtk-3.0';
 import type MateDesktop from './matedesktop-2.0.js';
+import type { GInitableConstructOnly, GInitableProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkMenuItemConstructOnly, GtkMenuItemProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -51,12 +53,12 @@ import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableCons
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-export interface MateBGProps {
+export interface MateBGProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type MateBGConstructOnly = never;
+export type MateBGConstructOnly = GObjectConstructOnly;
 
-export interface MateBGCrossfadeProps {
+export interface MateBGCrossfadeProps extends GObjectProps {
     /**
      * When a crossfade is running, this is height of the fading surface.
      * @default 0
@@ -69,7 +71,7 @@ export interface MateBGCrossfadeProps {
     width?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type MateBGCrossfadeConstructOnly = 'height' | 'width';
+export type MateBGCrossfadeConstructOnly = GObjectConstructOnly | 'height' | 'width';
 
 export interface MateColorSelectionProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     /** @default 65535 */
@@ -88,10 +90,10 @@ export interface MateColorSelectionDialogProps extends GtkDialogProps, GtkBuilda
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type MateColorSelectionDialogConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly;
 
-export interface MateDesktopThumbnailFactoryProps {
+export interface MateDesktopThumbnailFactoryProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type MateDesktopThumbnailFactoryConstructOnly = never;
+export type MateDesktopThumbnailFactoryConstructOnly = GObjectConstructOnly;
 
 export interface MateHSVProps extends GtkWidgetProps, GtkBuildableProps {
 }
@@ -105,28 +107,28 @@ export interface MateImageMenuItemProps extends GtkMenuItemProps, GtkActionableP
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type MateImageMenuItemConstructOnly = GtkMenuItemConstructOnly | GtkActionableConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly;
 
-export interface MateRRConfigProps {
+export interface MateRRConfigProps extends GObjectProps {
     screen?: MateDesktop.RRScreen;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type MateRRConfigConstructOnly = 'screen';
+export type MateRRConfigConstructOnly = GObjectConstructOnly | 'screen';
 
-export interface MateRRLabelerProps {
+export interface MateRRLabelerProps extends GObjectProps {
     config?: MateDesktop.RRConfig;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type MateRRLabelerConstructOnly = 'config';
+export type MateRRLabelerConstructOnly = GObjectConstructOnly | 'config';
 
-export interface MateRROutputInfoProps {
+export interface MateRROutputInfoProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type MateRROutputInfoConstructOnly = never;
+export type MateRROutputInfoConstructOnly = GObjectConstructOnly;
 
-export interface MateRRScreenProps {
+export interface MateRRScreenProps extends GObjectProps, GInitableProps {
     'gdk-screen'?: Gdk.Screen;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type MateRRScreenConstructOnly = 'gdk-screen';
+export type MateRRScreenConstructOnly = GObjectConstructOnly | GInitableConstructOnly | 'gdk-screen';
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -240,6 +242,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

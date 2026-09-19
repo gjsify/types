@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./gxml-0.16.d.ts"]
+  "include": ["./gxml-0.16.d.ts","./gxml-0.16-vocabulary.d.ts"]
 }
 
 

@@ -1,0 +1,593 @@
+/**
+ * The GIR-derived widget VOCABULARY for Gst-0.10.
+ *
+ * GENERATED — do not edit. Provenance: Gst-0.10 — library 0.10.29
+ *
+ * 29 instantiable GTypes (of which 0 concrete widgets), 35 declarations, 41 enum nick unions, 0 slot candidates.
+ *
+ * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
+ * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
+ * differently. The shape to avoid is the GLOBAL AUGMENT — a `declare global` on
+ * `React.JSX` collides with every other library on a shared tag — while a
+ * module-scoped `JSX` behind a `jsxImportSource` does not. This package is used by
+ * projects that want nothing to do with JSX, so it emits neither; a consumer declaring
+ * a module-scoped namespace over these names is doing it right.
+ *
+ * Three things this is and `ConstructorProps` is not: WRITABLE-only (measured on
+ * Gtk-4.0, `ConstructorProps` offers 150 read-only properties across 68 classes as
+ * settable, and GTK's failure mode for writing one is exit 0), OPTIONAL, and keyed
+ * by the name GObject actually REGISTERED — the dashed spelling `g_object_set`,
+ * GtkBuilder XML and Blueprint all use.
+ *
+ * Signal handler types are not re-derived: `X.SignalSignatures`, which this package
+ * already emits for every class with the parent chain, every implemented interface
+ * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
+ */
+
+import type Gst from './gst-0.10.js';
+import type { GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
+
+// ---------------------------------------------------------------------------
+// Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
+//
+// Not derived from the member name. Substituting underscores for dashes is not a law:
+// some nicks keep an underscore the substitution would have replaced, and only the
+// attribute knows which. Gtk-4.0 and Adw-1 contradict no derivation at all, which is
+// how a derived nick passes review and breaks elsewhere.
+// Re-measure with `scripts/check-nick-derivation.mjs` in ts-for-gir.
+// ---------------------------------------------------------------------------
+
+export type GstActivateModeNick = 'none' | 'push' | 'pull';
+export type GstBufferListItemNick = 'continue' | 'skip-group' | 'end';
+export type GstBufferingModeNick = 'stream' | 'download' | 'timeshift' | 'live';
+export type GstBusSyncReplyNick = 'drop' | 'pass' | 'async';
+export type GstClockEntryTypeNick = 'single' | 'periodic';
+export type GstClockReturnNick = 'ok' | 'early' | 'unscheduled' | 'busy' | 'badtime' | 'error' | 'unsupported';
+export type GstClockTypeNick = 'realtime' | 'monotonic';
+export type GstCoreErrorNick = 'failed' | 'too-lazy' | 'not-implemented' | 'state-change' | 'pad' | 'thread' | 'negotiation' | 'event' | 'seek' | 'caps' | 'tag' | 'missing-plugin' | 'clock' | 'disabled' | 'num-errors';
+export type GstDebugColorFlagsNick = 'fg-black' | 'fg-red' | 'fg-green' | 'fg-yellow' | 'fg-blue' | 'fg-magenta' | 'fg-cyan' | 'fg-white' | 'bg-black' | 'bg-red' | 'bg-green' | 'bg-yellow' | 'bg-blue' | 'bg-magenta' | 'bg-cyan' | 'bg-white' | 'bold' | 'underline';
+export type GstDebugLevelNick = 'none' | 'error' | 'warning' | 'info' | 'debug' | 'log' | 'fixme' | 'trace' | 'memdump' | 'count';
+export type GstEventTypeNick = 'unknown' | 'flush-start' | 'flush-stop' | 'eos' | 'newsegment' | 'tag' | 'buffersize' | 'sink-message' | 'qos' | 'seek' | 'navigation' | 'latency' | 'step' | 'custom-upstream' | 'custom-downstream' | 'custom-downstream-oob' | 'custom-both' | 'custom-both-oob';
+export type GstFlowReturnNick = 'custom-success-2' | 'custom-success-1' | 'custom-success' | 'resend' | 'ok' | 'not-linked' | 'wrong-state' | 'unexpected' | 'not-negotiated' | 'error' | 'not-supported' | 'custom-error' | 'custom-error-1' | 'custom-error-2';
+export type GstFormatNick = 'undefined' | 'default' | 'bytes' | 'time' | 'buffers' | 'percent';
+export type GstIndexCertaintyNick = 'unknown' | 'certain' | 'fuzzy';
+export type GstIndexEntryTypeNick = 'id' | 'association' | 'object' | 'format';
+export type GstIndexLookupMethodNick = 'exact' | 'before' | 'after';
+export type GstIndexResolverMethodNick = 'custom' | 'gtype' | 'path';
+export type GstIteratorItemNick = 'skip' | 'pass' | 'end';
+export type GstIteratorResultNick = 'done' | 'ok' | 'resync' | 'error';
+export type GstLibraryErrorNick = 'failed' | 'too-lazy' | 'init' | 'shutdown' | 'settings' | 'encode' | 'num-errors';
+export type GstPadDirectionNick = 'unknown' | 'src' | 'sink';
+export type GstPadLinkReturnNick = 'ok' | 'wrong-hierarchy' | 'was-linked' | 'wrong-direction' | 'noformat' | 'nosched' | 'refused';
+export type GstPadPresenceNick = 'always' | 'sometimes' | 'request';
+export type GstParseErrorNick = 'syntax' | 'no-such-element' | 'no-such-property' | 'link' | 'could-not-set-property' | 'empty-bin' | 'empty';
+export type GstPluginErrorNick = 'module' | 'dependencies' | 'name-mismatch';
+export type GstQueryTypeNick = 'none' | 'position' | 'duration' | 'latency' | 'jitter' | 'rate' | 'seeking' | 'segment' | 'convert' | 'formats' | 'buffering' | 'custom' | 'uri';
+export type GstRankNick = 'none' | 'marginal' | 'secondary' | 'primary';
+export type GstResourceErrorNick = 'failed' | 'too-lazy' | 'not-found' | 'busy' | 'open-read' | 'open-write' | 'open-read-write' | 'close' | 'read' | 'write' | 'seek' | 'sync' | 'settings' | 'no-space-left' | 'num-errors';
+export type GstSearchModeNick = 'exact' | 'before' | 'after';
+export type GstSeekTypeNick = 'none' | 'cur' | 'set' | 'end';
+export type GstStateNick = 'void-pending' | 'null' | 'ready' | 'paused' | 'playing';
+export type GstStateChangeNick = 'null-to-ready' | 'ready-to-paused' | 'paused-to-playing' | 'playing-to-paused' | 'paused-to-ready' | 'ready-to-null';
+export type GstStateChangeReturnNick = 'failure' | 'success' | 'async' | 'no-preroll';
+export type GstStreamErrorNick = 'failed' | 'too-lazy' | 'not-implemented' | 'type-not-found' | 'wrong-type' | 'codec-not-found' | 'decode' | 'encode' | 'demux' | 'mux' | 'format' | 'decrypt' | 'decrypt-nokey' | 'num-errors';
+export type GstStreamStatusTypeNick = 'create' | 'enter' | 'leave' | 'destroy' | 'start' | 'pause' | 'stop';
+export type GstStructureChangeTypeNick = 'link' | 'unlink';
+export type GstTagFlagNick = 'undefined' | 'meta' | 'encoded' | 'decoded' | 'count';
+export type GstTagMergeModeNick = 'undefined' | 'replace-all' | 'replace' | 'append' | 'prepend' | 'keep' | 'keep-all' | 'count';
+export type GstTaskStateNick = 'started' | 'stopped' | 'paused';
+export type GstTypeFindProbabilityNick = 'minimum' | 'possible' | 'likely' | 'nearly-certain' | 'maximum';
+export type GstURITypeNick = 'unknown' | 'sink' | 'src';
+
+// ---------------------------------------------------------------------------
+// Property surfaces — one interface per GIR DECLARATION, mirroring GIR's own
+// inheritance rather than flattening per widget.
+//
+// The interfaces are load-bearing, not tidiness: `GtkBox` declares four properties
+// of its own and `orientation` is not among them — it lives on `Gtk.Orientable`,
+// because GObject installs interface properties on the implementor at runtime while
+// GIR keeps them once, on the interface.
+// ---------------------------------------------------------------------------
+
+export interface GParamSpecMiniObjectProps extends GObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GParamSpecMiniObjectConstructOnly = GObjectConstructOnly;
+
+/** The opaque #GstAdapter data structure. */
+export interface GstAdapterProps extends GObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstAdapterConstructOnly = GObjectConstructOnly;
+
+/** The opaque #GstBaseSrc data structure. */
+export interface GstBaseSrcProps extends GstElementProps {
+    blocksize?: bigint | number;
+    'do-timestamp'?: boolean;
+    'num-buffers'?: number;
+    typefind?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstBaseSrcConstructOnly = GstElementConstructOnly;
+
+/** The GstBin base class. */
+export interface GstBinProps extends GstElementProps, GstChildProxyProps {
+    'async-handling'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstBinConstructOnly = GstElementConstructOnly | GstChildProxyConstructOnly;
+
+/** The structure of a #GstBuffer. */
+export interface GstBufferProps extends GstMiniObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstBufferConstructOnly = GstMiniObjectConstructOnly;
+
+export interface GstBufferListProps extends GstMiniObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstBufferListConstructOnly = GstMiniObjectConstructOnly;
+
+/** The opaque #GstBus data structure. */
+export interface GstBusProps extends GstObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstBusConstructOnly = GstObjectConstructOnly;
+
+/** Opaque #GstChildProxy data structure. */
+export interface GstChildProxyProps extends GstObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstChildProxyConstructOnly = GstObjectConstructOnly;
+
+/** #GstClock base structure. */
+export interface GstClockProps extends GstObjectProps {
+    stats?: boolean;
+    timeout?: number;
+    'window-size'?: number;
+    'window-threshold'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstClockConstructOnly = GstObjectConstructOnly;
+
+/** Collectpads object. */
+export interface GstCollectPadsProps extends GstObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstCollectPadsConstructOnly = GstObjectConstructOnly;
+
+/** Opaque #GstDataQueue structure. */
+export interface GstDataQueueProps extends GObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstDataQueueConstructOnly = GObjectConstructOnly;
+
+/** GStreamer element abstract base class. */
+export interface GstElementProps extends GstObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstElementConstructOnly = GstObjectConstructOnly;
+
+/** The opaque #GstElementFactory data structure. */
+export interface GstElementFactoryProps extends GstPluginFeatureProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstElementFactoryConstructOnly = GstPluginFeatureConstructOnly;
+
+/** A #GstEvent. */
+export interface GstEventProps extends GstMiniObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstEventConstructOnly = GstMiniObjectConstructOnly;
+
+/** Opaque #GstGhostPad structure. */
+export interface GstGhostPadProps extends GstProxyPadProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstGhostPadConstructOnly = GstProxyPadConstructOnly;
+
+/** Opaque #GstIndex structure. */
+export interface GstIndexProps extends GstObjectProps {
+    resolver?: Gst.IndexResolver;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstIndexConstructOnly = GstObjectConstructOnly;
+
+/** The GstIndexFactory object */
+export interface GstIndexFactoryProps extends GstPluginFeatureProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstIndexFactoryConstructOnly = GstPluginFeatureConstructOnly;
+
+/** A #GstMessage. */
+export interface GstMessageProps extends GstMiniObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstMessageConstructOnly = GstMiniObjectConstructOnly;
+
+/** Base class for refcounted lightweight objects. */
+export interface GstMiniObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstMiniObjectConstructOnly = never;
+
+/** GStreamer base object class. */
+export interface GstObjectProps extends GObjectProps {
+    name?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstObjectConstructOnly = GObjectConstructOnly;
+
+/** The #GstPad structure. */
+export interface GstPadProps extends GstObjectProps {
+    direction?: GstPadDirectionNick | Gst.PadDirection;
+    template?: Gst.PadTemplate;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstPadConstructOnly = GstObjectConstructOnly | 'direction';
+
+/** The padtemplate object. */
+export interface GstPadTemplateProps extends GstObjectProps {
+    caps?: Gst.Caps;
+    direction?: GstPadDirectionNick | Gst.PadDirection;
+    'name-template'?: string;
+    presence?: GstPadPresenceNick | Gst.PadPresence;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstPadTemplateConstructOnly = GstObjectConstructOnly | 'caps' | 'direction' | 'name-template' | 'presence';
+
+export interface GstParamFractionProps extends GObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstParamFractionConstructOnly = GObjectConstructOnly;
+
+/** The #GstPipeline structure. */
+export interface GstPipelineProps extends GstBinProps, GstChildProxyProps {
+    'auto-flush-bus'?: boolean;
+    delay?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstPipelineConstructOnly = GstBinConstructOnly | GstChildProxyConstructOnly;
+
+/** The plugin object */
+export interface GstPluginProps extends GstObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstPluginConstructOnly = GstObjectConstructOnly;
+
+/** Opaque #GstPluginFeature structure. */
+export interface GstPluginFeatureProps extends GstObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstPluginFeatureConstructOnly = GstObjectConstructOnly;
+
+export interface GstProxyPadProps extends GstPadProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstProxyPadConstructOnly = GstPadConstructOnly;
+
+/** The opaque #GstPushSrc data structure. */
+export interface GstPushSrcProps extends GstBaseSrcProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstPushSrcConstructOnly = GstBaseSrcConstructOnly;
+
+/** The #GstQuery structure. */
+export interface GstQueryProps extends GstMiniObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstQueryConstructOnly = GstMiniObjectConstructOnly;
+
+/** Opaque #GstRegistry structure. */
+export interface GstRegistryProps extends GstObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstRegistryConstructOnly = GstObjectConstructOnly;
+
+/** The default implementation of a #GstClock that uses the system time. */
+export interface GstSystemClockProps extends GstClockProps {
+    'clock-type'?: GstClockTypeNick | Gst.ClockType;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstSystemClockConstructOnly = GstClockConstructOnly;
+
+/** The #GstTask object. */
+export interface GstTaskProps extends GstObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstTaskConstructOnly = GstObjectConstructOnly;
+
+/** The #GstTaskPool object. */
+export interface GstTaskPoolProps extends GstObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstTaskPoolConstructOnly = GstObjectConstructOnly;
+
+/** Object that stores information about a typefind function. */
+export interface GstTypeFindFactoryProps extends GstPluginFeatureProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstTypeFindFactoryConstructOnly = GstPluginFeatureConstructOnly;
+
+/** XML parser object */
+export interface GstXMLProps extends GstObjectProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GstXMLConstructOnly = GstObjectConstructOnly;
+
+// ---------------------------------------------------------------------------
+// The GType-keyed widget map.
+//
+// Keyed by GType because that is also the GtkBuilder XML key and the typelib key. A
+// consumer maps GTypes to tags in ITS convention — kebab for JSX intrinsics, Pascal
+// for a Vue `GlobalComponents`, the class itself for a renderer whose element type
+// is the class. None of those is baked in here.
+//
+// `slotCandidates` is a candidate list and never an answer: derived from methods
+// taking exactly one widget argument. The GIR cannot tell adoption from reference —
+// `set_title_widget` parents its argument and `set_activatable_widget` does not, and
+// both are `void f(GtkWidget*)` at `transfer-ownership="none"`. Curation decides;
+// this is what notices when a release adds a candidate.
+// ---------------------------------------------------------------------------
+
+export interface Widgets {
+
+}
+
+/**
+ * Every GType this namespace can create AND put on screen. A consumer derives its own
+ * tag map. For everything a UI file can instantiate — layout managers, event
+ * controllers, cell renderers, `GtkSizeGroup` — read `DECLS` below.
+ */
+export type WidgetGType = keyof Widgets;
+
+// ---------------------------------------------------------------------------
+// Child holders — the same shape, for objects that CARRY a widget without being one.
+//
+// `GtkListItem`, `GtkListHeader`, `GtkColumnViewCell` and `AdwToggle` descend from
+// `GObject.Object` and hold a widget through `set_child`/`get_child`. A renderer places
+// them exactly like a container, so they belong in the vocabulary; a check asking "is
+// this a widget" must still be able to say no. Hence a sibling table rather than four
+// more rows in `Widgets`: concatenate them when you mean both.
+// ---------------------------------------------------------------------------
+
+export interface ChildHolders {
+
+}
+
+/** Every GType this namespace holds a child in without it being a widget. */
+export type ChildHolderGType = keyof ChildHolders;
+
+/** The writable, optional, GObject-keyed property surface of one GType. */
+export type PropsOf<G extends WidgetGType> = Widgets[G]['props'];
+
+/** The signal table this package already emits, reached by GType. */
+export type SignalsOf<G extends WidgetGType> = Widgets[G]['signals'];
+
+/** The instance type — what a `ref`-shaped prop should infer. */
+export type InstanceOf<G extends WidgetGType> = Widgets[G]['class'];
+
+/** Property names that can only be set at construction. */
+export type ConstructOnlyOf<G extends WidgetGType> = Widgets[G]['constructOnly'];
+
+/** Candidate child slots — see the note above; curation decides. */
+export type SlotCandidatesOf<G extends WidgetGType> = keyof Widgets[G]['slotCandidates'];
+
+/**
+ * The same facts as runtime data, for a consumer that CHECKS them.
+ *
+ * Types are erased, so a spec that asks the installed GTK whether every property
+ * here is a writable ParamSpec, every signal resolvable by `GObject.signal_lookup`
+ * and every nick resolvable through an enum lookup cannot read the interfaces
+ * above. Emitted headlessly with no GTK present, which is exactly why the checking
+ * belongs to the consumer and the DATA belongs here.
+ */
+export const PROVENANCE: {
+    readonly namespace: string;
+    readonly version: string;
+    /** The version the LIBRARY states, or null where it states none. Never the namespace's. */
+    readonly libraryVersion: string | null;
+    readonly childHolders: number;
+    readonly droppedBases: readonly string[];
+    readonly inlinedBases: readonly string[];
+    /** `<decl>.<prop>` for every property printed `never` because TypeScript has no value for it. */
+    readonly unsettableProps: readonly string[];
+    /**
+     * `<decl>.<prop>: <Ns>.<Name>` for every property printed `never` because the model
+     * could not resolve its type across a namespace boundary — two independently released
+     * GIRs disagreeing, which is what the main emitter answers `never` for as well.
+     */
+    readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
+};
+
+/** Declaration GType -> its own settable properties, as GObject registered them. */
+export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
+
+/**
+ * Declaration GType -> the signals it registers itself, never its parents'.
+ *
+ * Keyed like `OWN_PROPS`, so both are read at every link of a `DECLS` chain. An
+ * abstract base has no `Widgets` row and still owns signals — `GtkWidget` owns 13.
+ */
+export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
+
+/**
+ * Instantiable GType -> every declaration its members come from, self first.
+ *
+ * The key set is what a UI description file can NAME: every registered, non-abstract
+ * class this namespace declares. GtkBuilder resolves a `<object class="…">` through
+ * `g_type_from_name`, which knows nothing about widgets, so this is wider than
+ * `Widgets` by design — `GtkSizeGroup`, `GtkTextTag`, every `GtkEventController`
+ * and every `GtkCellRenderer` are here and are not widgets.
+ *
+ * `Widgets` and `CHILD_HOLDERS` are the narrower questions and answer them unchanged.
+ */
+export const DECLS: Readonly<Record<string, readonly string[]>>;
+
+/** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
+export const CHILD_HOLDERS: readonly string[];
+
+/** Enum GType -> the nicks this surface offers. */
+export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
+
+/**
+ * `<enum GType>.<nick>` -> the integer GObject registers for it, from GIR's `value`.
+ *
+ * Position in `ENUM_NICKS` is NOT this number. Counting is wrong on 6 of the 137 enums a
+ * GTK 4 vocabulary carries -- 112 in Gtk-4.0 and 25 in Adw-1: `GtkResponseType` runs -1 to -11, `GtkTextWindowType` starts
+ * at 1, `GtkOrdering` and `GtkConstraintRelation` are -1/0/1, `GtkAlign` has two names
+ * on one value, and `GtkConstraintStrength.required` is 1001001000 where counting says 0.
+ *
+ * Read from the same GIR as the nicks, deliberately. A consumer reading the numbers off an
+ * installed typelib instead has two provenances for one table, and then cannot tell a
+ * missing number from a host older than the vocabulary.
+ */
+export const ENUM_VALUES: Readonly<Record<string, number>>;
+
+/**
+ * The `<enum GType>.<nick>` entries GIR marks `deprecated="1"`.
+ *
+ * Two names on one value is how GObject spells an alias -- `GTK_ALIGN_BASELINE` and
+ * `GTK_ALIGN_BASELINE_FILL` are both 4, and both keep a `ENUM_VALUES` entry. The pairing
+ * is visible in the numbers; which name is the old one is not, and this is that fact --
+ * where GIR states it. It usually does not: 4 registered-enum members across the 718 GIRs
+ * carry the attribute, and 179 of the 182 value-sharing pairs carry it on neither half, so
+ * absence from this list means GIR is silent, not that the nick is the current one.
+ */
+export const ENUM_DEPRECATED: readonly string[];
+
+/**
+ * `<enum GType>.<nick>` -> the raw GIR `value` no number could be read from.
+ *
+ * The declared remainder, so that every nick in `ENUM_NICKS` is in `ENUM_VALUES` or in
+ * here and a drop cannot be silent. Two shapes reach it: a symbolic or absent value (Vala
+ * writes `(null)`, a char enum writes a letter) and an integer past
+ * `Number.MAX_SAFE_INTEGER`, where a literal would lose precision and stop being the
+ * GIR's number. Empty for Gtk, Adw, GLib and Gio.
+ */
+export const ENUM_VALUES_UNREADABLE: Readonly<Record<string, string>>;
+
+/**
+ * `<bitfield GType>.<nick>` -> the integer GObject registers for that one member.
+ *
+ * `ENUM_NICKS` carries no bitfield, because GObject cannot resolve a nick SET; that says
+ * nothing about a single member's number, and the number is what a host without GI needs.
+ * 23 settable properties in Gtk-4.0 and Adw-1 are bitfield-typed and are declared bare
+ * `number` -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`, `AdwTabView:shortcuts`,
+ * `GtkDropTarget:actions` among them. Counting is worst here: 119 of the 156 Gtk-4.0
+ * bitfield members this vocabulary carries disagree with their declaration position,
+ * against 29 of 672 enumeration members.
+ *
+ * Combine with `|` as GObject does. There is no nick table to pair this with, so a name
+ * here is resolvable and a SET still is not.
+ */
+export const FLAG_VALUES: Readonly<Record<string, number>>;
+
+/** `<bitfield GType>.<nick>` -> the raw GIR `value` no number could be read from. */
+export const FLAG_VALUES_UNREADABLE: Readonly<Record<string, string>>;
+
+/**
+ * `<declaration GType>.<property>` -> the GType of that property's enum or bitfield.
+ *
+ * The join the value tables need and nothing else here carries. A host with no GI has a
+ * property name and a nick and needs a number; `ENUM_VALUES` is keyed by ENUM GType, and
+ * only this says which enum a property is. Keyed by DECLARATION like `OWN_PROPS`, so it is
+ * read at every link of a `DECLS` chain — `orientation` belongs to `GtkOrientable`, not
+ * to the `GtkBox` a caller starts from.
+ *
+ * Present only where the property's OWN type is the enum: an array of them, or a union that
+ * merely mentions one, would be an entry a consumer resolves wrongly.
+ *
+ * The GType named here is not always one THIS module gives numbers for. A nick vocabulary is
+ * emitted once, by the namespace that owns the enum, so `AdwComboRow.search-match-mode` names
+ * `GtkStringFilterMatchMode` and its rows are in `@girs/gtk-4.0/vocabulary` — 83 of the 909
+ * entries in a full run resolve only with the owner's vocabulary loaded beside this one. An
+ * owner with no vocabulary of its own (Gdk, Pango) is inlined here instead, so every entry
+ * resolves against SOME module.
+ */
+export const PROP_ENUMS: Readonly<Record<string, string>>;
+
+/**
+ * The kinds of value a GTK accessible property, relation or state takes.
+ *
+ * `enum` is the one that needs a second lookup: `ARIA_VALUE_ENUMS` names the enum GType,
+ * and `ENUM_NICKS` and `ENUM_VALUES` answer from there.
+ */
+export type AriaValueType = 'string' | 'integer' | 'double' | 'boolean' | 'reference' | 'enum';
+
+/**
+ * `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
+ *
+ * The one table in this file that is not a fact about a ParamSpec. A GtkBuilder or
+ * Blueprint `accessibility { … }` block is typed by GTK's ARIA table, not by the widget,
+ * and the two disagree where it costs most: `orientation` is settable on a `GtkLabel`
+ * that implements no `GtkOrientable`, and `checked` is a `GtkAccessibleTristate`, so
+ * `checked: true` is the number 1 rather than a boolean. Typing those slots from the
+ * widget's properties gets both wrong and raises nothing.
+ *
+ * Keyed like `ENUM_VALUES` because the ARIA names ARE enum members — of
+ * `GtkAccessibleProperty`, `GtkAccessibleRelation` and `GtkAccessibleState` — so
+ * `ENUM_NICKS` already lists them and one key parser reads both.
+ *
+ * Read from each member's own GIR documentation. `gtk_accessible_property_init_value()`
+ * is the C half of this table and is not introspectable; the doc sentence is, and states
+ * the type for 52 of the 53 members in gtk4 4.23.3. Complete or absent, never partial: a
+ * member the generator cannot answer for fails the build and names itself.
+ */
+export const ARIA_VALUE_TYPES: Readonly<Record<string, AriaValueType>>;
+
+/**
+ * The same keys, for the `'enum'` rows only -> the GType of that enum.
+ *
+ * A table of its own for the reason `PROP_ENUMS` is one: folded in, the values of
+ * `ARIA_VALUE_TYPES` would be six reserved words mixed with arbitrary GTypes and telling
+ * them apart would be the consumer's problem. Apart, `ARIA_VALUE_TYPES[k] === 'enum'` is
+ * the whole test and `ENUM_NICKS[ARIA_VALUE_ENUMS[k]]` is the nick list.
+ */
+export const ARIA_VALUE_ENUMS: Readonly<Record<string, string>>;
+
+/** Widget GType -> slot name -> the method that may adopt a child there. */
+export const SLOT_CANDIDATES: Readonly<Record<string, Readonly<Record<string, string>>>>;
+
+/**
+ * `Type`, `Type.property` and `Type::signal` -> the release that introduced it.
+ *
+ * What keeps a runtime cross-check honest across a version gap without an
+ * allowlist: a name the installed library lacks is a defect UNLESS the version
+ * here is newer than the one running.
+ *
+ * ALL THREE key shapes, because that test only works for the names it covers. A
+ * property-only map leaves a consumer no way to explain a missing SIGNAL, which is
+ * a correct vocabulary reported as 18 defects; a member-only map leaves it no way to
+ * explain a missing CLASS, and that one fails as a bare
+ * `TypeError: can't access property "$gtype", ctor() is undefined` that does not
+ * even name the GType.
+ *
+ * A key is present only where the GIR states a version — sparse by nature (`version`
+ * sits on 29 of the 301 classes and interfaces in Gtk-4.0), never inferred.
+ */
+export const SINCE: Readonly<Record<string, string>>;

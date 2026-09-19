@@ -1,6 +1,6 @@
 // The widget vocabulary of GooCanvas-2.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: GooCanvas-2.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Atk.ObjectFactory
+// GENERATED — do not edit. Provenance: GooCanvas-2.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '2.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface', 'Atk.ObjectFactory'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Goo'],
+    requiredVocabularies: ['@girs/atk-1.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/pango-1.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -58,32 +60,32 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GooCanvas: ['GooCanvas', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
-    GooCanvasAccessibleFactory: ['GooCanvasAccessibleFactory'],
-    GooCanvasEllipse: ['GooCanvasEllipse', 'GooCanvasItemSimple', 'GooCanvasItem'],
-    GooCanvasEllipseModel: ['GooCanvasEllipseModel', 'GooCanvasItemModelSimple', 'GooCanvasItemModel'],
-    GooCanvasGrid: ['GooCanvasGrid', 'GooCanvasItemSimple', 'GooCanvasItem'],
-    GooCanvasGridModel: ['GooCanvasGridModel', 'GooCanvasItemModelSimple', 'GooCanvasItemModel'],
-    GooCanvasGroup: ['GooCanvasGroup', 'GooCanvasItemSimple', 'GooCanvasItem'],
-    GooCanvasGroupModel: ['GooCanvasGroupModel', 'GooCanvasItemModelSimple', 'GooCanvasItemModel'],
-    GooCanvasImage: ['GooCanvasImage', 'GooCanvasItemSimple', 'GooCanvasItem'],
-    GooCanvasImageModel: ['GooCanvasImageModel', 'GooCanvasItemModelSimple', 'GooCanvasItemModel'],
-    GooCanvasItemAccessibleFactory: ['GooCanvasItemAccessibleFactory'],
-    GooCanvasItemModelSimple: ['GooCanvasItemModelSimple', 'GooCanvasItemModel'],
-    GooCanvasItemSimple: ['GooCanvasItemSimple', 'GooCanvasItem'],
-    GooCanvasPath: ['GooCanvasPath', 'GooCanvasItemSimple', 'GooCanvasItem'],
-    GooCanvasPathModel: ['GooCanvasPathModel', 'GooCanvasItemModelSimple', 'GooCanvasItemModel'],
-    GooCanvasPolyline: ['GooCanvasPolyline', 'GooCanvasItemSimple', 'GooCanvasItem'],
-    GooCanvasPolylineModel: ['GooCanvasPolylineModel', 'GooCanvasItemModelSimple', 'GooCanvasItemModel'],
-    GooCanvasRect: ['GooCanvasRect', 'GooCanvasItemSimple', 'GooCanvasItem'],
-    GooCanvasRectModel: ['GooCanvasRectModel', 'GooCanvasItemModelSimple', 'GooCanvasItemModel'],
-    GooCanvasStyle: ['GooCanvasStyle'],
-    GooCanvasTable: ['GooCanvasTable', 'GooCanvasGroup', 'GooCanvasItemSimple', 'GooCanvasItem'],
-    GooCanvasTableModel: ['GooCanvasTableModel', 'GooCanvasGroupModel', 'GooCanvasItemModelSimple', 'GooCanvasItemModel'],
-    GooCanvasText: ['GooCanvasText', 'GooCanvasItemSimple', 'GooCanvasItem'],
-    GooCanvasTextModel: ['GooCanvasTextModel', 'GooCanvasItemModelSimple', 'GooCanvasItemModel'],
-    GooCanvasWidget: ['GooCanvasWidget', 'GooCanvasItemSimple', 'GooCanvasItem'],
-    GooCanvasWidgetAccessibleFactory: ['GooCanvasWidgetAccessibleFactory'],
+    GooCanvas: ['GooCanvas', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
+    GooCanvasAccessibleFactory: ['GooCanvasAccessibleFactory', 'AtkObjectFactory', 'GObject'],
+    GooCanvasEllipse: ['GooCanvasEllipse', 'GooCanvasItemSimple', 'GObject', 'GooCanvasItem'],
+    GooCanvasEllipseModel: ['GooCanvasEllipseModel', 'GooCanvasItemModelSimple', 'GObject', 'GooCanvasItemModel'],
+    GooCanvasGrid: ['GooCanvasGrid', 'GooCanvasItemSimple', 'GObject', 'GooCanvasItem'],
+    GooCanvasGridModel: ['GooCanvasGridModel', 'GooCanvasItemModelSimple', 'GObject', 'GooCanvasItemModel'],
+    GooCanvasGroup: ['GooCanvasGroup', 'GooCanvasItemSimple', 'GObject', 'GooCanvasItem'],
+    GooCanvasGroupModel: ['GooCanvasGroupModel', 'GooCanvasItemModelSimple', 'GObject', 'GooCanvasItemModel'],
+    GooCanvasImage: ['GooCanvasImage', 'GooCanvasItemSimple', 'GObject', 'GooCanvasItem'],
+    GooCanvasImageModel: ['GooCanvasImageModel', 'GooCanvasItemModelSimple', 'GObject', 'GooCanvasItemModel'],
+    GooCanvasItemAccessibleFactory: ['GooCanvasItemAccessibleFactory', 'AtkObjectFactory', 'GObject'],
+    GooCanvasItemModelSimple: ['GooCanvasItemModelSimple', 'GObject', 'GooCanvasItemModel'],
+    GooCanvasItemSimple: ['GooCanvasItemSimple', 'GObject', 'GooCanvasItem'],
+    GooCanvasPath: ['GooCanvasPath', 'GooCanvasItemSimple', 'GObject', 'GooCanvasItem'],
+    GooCanvasPathModel: ['GooCanvasPathModel', 'GooCanvasItemModelSimple', 'GObject', 'GooCanvasItemModel'],
+    GooCanvasPolyline: ['GooCanvasPolyline', 'GooCanvasItemSimple', 'GObject', 'GooCanvasItem'],
+    GooCanvasPolylineModel: ['GooCanvasPolylineModel', 'GooCanvasItemModelSimple', 'GObject', 'GooCanvasItemModel'],
+    GooCanvasRect: ['GooCanvasRect', 'GooCanvasItemSimple', 'GObject', 'GooCanvasItem'],
+    GooCanvasRectModel: ['GooCanvasRectModel', 'GooCanvasItemModelSimple', 'GObject', 'GooCanvasItemModel'],
+    GooCanvasStyle: ['GooCanvasStyle', 'GObject'],
+    GooCanvasTable: ['GooCanvasTable', 'GooCanvasGroup', 'GooCanvasItemSimple', 'GObject', 'GooCanvasItem'],
+    GooCanvasTableModel: ['GooCanvasTableModel', 'GooCanvasGroupModel', 'GooCanvasItemModelSimple', 'GObject', 'GooCanvasItemModel'],
+    GooCanvasText: ['GooCanvasText', 'GooCanvasItemSimple', 'GObject', 'GooCanvasItem'],
+    GooCanvasTextModel: ['GooCanvasTextModel', 'GooCanvasItemModelSimple', 'GObject', 'GooCanvasItemModel'],
+    GooCanvasWidget: ['GooCanvasWidget', 'GooCanvasItemSimple', 'GObject', 'GooCanvasItem'],
+    GooCanvasWidgetAccessibleFactory: ['GooCanvasWidgetAccessibleFactory', 'AtkObjectFactory', 'GObject'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -104,6 +106,7 @@ export const ENUM_NICKS = {
     GooCanvasAnimateType: ['freeze', 'reset', 'restart', 'bounce'],
     GooCanvasItemVisibility: ['hidden', 'invisible', 'visible', 'visible-above-threshold'],
     GooCanvasPathCommandType: ['move-to', 'close-path', 'line-to', 'horizontal-line-to', 'vertical-line-to', 'curve-to', 'smooth-curve-to', 'quadratic-curve-to', 'smooth-quadratic-curve-to', 'elliptical-arc'],
+    GtkUnit: ['none', 'points', 'inch', 'mm'],
     PangoAlignment: ['left', 'center', 'right'],
     PangoEllipsizeMode: ['none', 'start', 'middle', 'end'],
     PangoWrapMode: ['word', 'char', 'word-char', 'none'],
@@ -188,6 +191,10 @@ export const ENUM_VALUES = {
     'GooCanvasPathCommandType.smooth-curve-to': 6,
     'GooCanvasPathCommandType.smooth-quadratic-curve-to': 8,
     'GooCanvasPathCommandType.vertical-line-to': 4,
+    'GtkUnit.inch': 2,
+    'GtkUnit.mm': 3,
+    'GtkUnit.none': 0,
+    'GtkUnit.points': 1,
     'PangoAlignment.center': 1,
     'PangoAlignment.left': 0,
     'PangoAlignment.right': 2,

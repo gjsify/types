@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Gd-1.0.
  *
- * GENERATED — do not edit. Provenance: Gd-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: Gd-1.0 — dropped empty base(s): Atk.ImplementorIface
  *
  * 17 instantiable GTypes (of which 13 concrete widgets), 19 declarations, 0 enum nick unions, 5 slot candidates.
  *
@@ -26,6 +26,7 @@
 
 import type Gd from './gd-1.0.js';
 import type Gtk from '@girs/gtk-3.0';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkCellRendererConstructOnly, GtkCellRendererPixbufConstructOnly, GtkCellRendererPixbufProps, GtkCellRendererProps, GtkCellRendererTextConstructOnly, GtkCellRendererTextProps, GtkCheckButtonConstructOnly, GtkCheckButtonProps, GtkContainerConstructOnly, GtkContainerProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkIconViewConstructOnly, GtkIconViewProps, GtkMenuButtonConstructOnly, GtkMenuButtonProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkOrientationNick, GtkRadioButtonConstructOnly, GtkRadioButtonProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkScrolledWindowConstructOnly, GtkScrolledWindowProps, GtkSearchEntryConstructOnly, GtkSearchEntryProps, GtkToggleButtonConstructOnly, GtkToggleButtonProps, GtkToolShellConstructOnly, GtkToolShellProps, GtkToolbarConstructOnly, GtkToolbarProps, GtkTreeViewConstructOnly, GtkTreeViewProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -156,13 +157,13 @@ export interface GdTaggedEntryProps extends GtkSearchEntryProps, GtkBuildablePro
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GdTaggedEntryConstructOnly = GtkSearchEntryConstructOnly | GtkBuildableConstructOnly | GtkCellEditableConstructOnly | GtkEditableConstructOnly;
 
-export interface GdTaggedEntryTagProps {
+export interface GdTaggedEntryTagProps extends GObjectProps {
     'has-close-button'?: boolean;
     label?: string;
     style?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GdTaggedEntryTagConstructOnly = never;
+export type GdTaggedEntryTagConstructOnly = GObjectConstructOnly;
 
 export interface GdTogglePixbufRendererProps extends GtkCellRendererPixbufProps {
     active?: boolean;
@@ -360,6 +361,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

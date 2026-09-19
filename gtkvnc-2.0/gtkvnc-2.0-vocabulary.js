@@ -1,6 +1,6 @@
 // The widget vocabulary of GtkVnc-2.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: GtkVnc-2.0 — dropped empty base(s): GObject.Object GVnc.Framebuffer GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: GVnc.BaseFramebuffer — prop(s) no TypeScript value satisfies: GVnc.BaseFramebuffer.buffer GtkVnc.CairoFramebuffer.surface
+// GENERATED — do not edit. Provenance: GtkVnc-2.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: GtkVnc.CairoFramebuffer.surface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,14 +11,15 @@ export const PROVENANCE = {
     version: '2.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GVnc.Framebuffer', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
-    inlinedBases: ['GVnc.BaseFramebuffer'],
-    unsettableProps: ['GVnc.BaseFramebuffer.buffer', 'GtkVnc.CairoFramebuffer.surface'],
+    droppedBases: ['Atk.ImplementorIface'],
+    inlinedBases: [],
+    unsettableProps: ['GtkVnc.CairoFramebuffer.surface'],
     unresolvedProps: [],
+    identifierPrefixes: ['Vnc'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/gvnc-1.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
-    VncBaseFramebuffer: ['buffer', 'color-map', 'height', 'local-format', 'remote-format', 'rowstride', 'width'],
     VncCairoFramebuffer: ['surface'],
     VncDisplay: ['allow-resize', 'depth', 'force-size', 'grab-keyboard', 'grab-keys', 'grab-pointer', 'keep-aspect-ratio', 'local-pointer', 'lossy-encoding', 'read-only', 'rotation', 'scaling', 'shared-flag', 'smoothing', 'zoom-level'],
 };
@@ -35,8 +36,8 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    VncCairoFramebuffer: ['VncCairoFramebuffer', 'VncBaseFramebuffer'],
-    VncDisplay: ['VncDisplay', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
+    VncCairoFramebuffer: ['VncCairoFramebuffer', 'VncBaseFramebuffer', 'GObject', 'VncFramebuffer'],
+    VncDisplay: ['VncDisplay', 'GtkDrawingArea', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

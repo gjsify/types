@@ -1,6 +1,6 @@
 // The widget vocabulary of Mks-1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Mks-1 — library 0.1.5 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Gio.AsyncInitable Gio.Initable
+// GENERATED — do not edit. Provenance: Mks-1 — library 0.1.5
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1',
     libraryVersion: '0.1.5',
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Gio.AsyncInitable', 'Gio.Initable'],
+    droppedBases: [],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Mks'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -32,13 +34,13 @@ export const OWN_SIGNALS = {};
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    MksDevice: ['MksDevice'],
-    MksDisplay: ['MksDisplay', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    MksKeyboard: ['MksKeyboard', 'MksDevice'],
-    MksMouse: ['MksMouse', 'MksDevice'],
-    MksScreen: ['MksScreen', 'MksDevice'],
-    MksSession: ['MksSession'],
-    MksTouchable: ['MksTouchable', 'MksDevice'],
+    MksDevice: ['MksDevice', 'GObject'],
+    MksDisplay: ['MksDisplay', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    MksKeyboard: ['MksKeyboard', 'MksDevice', 'GObject'],
+    MksMouse: ['MksMouse', 'MksDevice', 'GObject'],
+    MksScreen: ['MksScreen', 'MksDevice', 'GObject'],
+    MksSession: ['MksSession', 'GObject', 'GAsyncInitable', 'GInitable'],
+    MksTouchable: ['MksTouchable', 'MksDevice', 'GObject'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

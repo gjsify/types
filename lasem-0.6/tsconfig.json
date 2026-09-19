@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./lasem-0.6.d.ts"]
+  "include": ["./lasem-0.6.d.ts","./lasem-0.6-vocabulary.d.ts"]
 }
 
 

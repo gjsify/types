@@ -86,7 +86,7 @@
       ]
 }
   },
-  "include": ["./metatest-13.d.ts"]
+  "include": ["./metatest-13.d.ts","./metatest-13-vocabulary.d.ts"]
 }
 
 

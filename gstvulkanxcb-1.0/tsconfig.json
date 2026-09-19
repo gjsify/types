@@ -47,7 +47,7 @@
       ]
 }
   },
-  "include": ["./gstvulkanxcb-1.0.d.ts"]
+  "include": ["./gstvulkanxcb-1.0.d.ts","./gstvulkanxcb-1.0-vocabulary.d.ts"]
 }
 
 

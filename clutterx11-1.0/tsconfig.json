@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./clutterx11-1.0.d.ts"]
+  "include": ["./clutterx11-1.0.d.ts","./clutterx11-1.0-vocabulary.d.ts"]
 }
 
 

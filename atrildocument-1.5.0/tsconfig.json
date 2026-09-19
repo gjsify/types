@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./atrildocument-1.5.0.d.ts"]
+  "include": ["./atrildocument-1.5.0.d.ts","./atrildocument-1.5.0-vocabulary.d.ts"]
 }
 
 

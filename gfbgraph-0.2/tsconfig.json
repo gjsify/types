@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./gfbgraph-0.2.d.ts"]
+  "include": ["./gfbgraph-0.2.d.ts","./gfbgraph-0.2-vocabulary.d.ts"]
 }
 
 

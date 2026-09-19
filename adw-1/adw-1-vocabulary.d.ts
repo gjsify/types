@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Adw-1.
  *
- * GENERATED — do not edit. Provenance: Adw-1 — library 1.10.0 — 1 child holder(s) — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap Gio.ListModel Gdk.Paintable — inlined base(s) their owner's vocabulary does not emit: Gio.Application
+ * GENERATED — do not edit. Provenance: Adw-1 — library 1.10.0 — 1 child holder(s)
  *
- * 89 instantiable GTypes (of which 62 concrete widgets and 1 child holders), 93 declarations (1 inlined from a namespace whose vocabulary does not emit them), 25 enum nick unions, 67 slot candidates.
+ * 89 instantiable GTypes (of which 62 concrete widgets and 1 child holders), 92 declarations, 25 enum nick unions, 67 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -31,6 +31,9 @@ import type Gdk from '@girs/gdk-4.0';
 import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-4.0';
 import type Pango from '@girs/pango-1.0';
+import type { GdkPaintableConstructOnly, GdkPaintableProps } from '@girs/gdk-4.0/vocabulary';
+import type { GActionGroupConstructOnly, GActionGroupProps, GActionMapConstructOnly, GActionMapProps, GApplicationConstructOnly, GApplicationProps, GListModelConstructOnly, GListModelProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkActionableConstructOnly, GtkActionableProps, GtkApplicationConstructOnly, GtkApplicationProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkArrowTypeNick, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkEditableConstructOnly, GtkEditableProps, GtkInputPurposeNick, GtkLayoutManagerConstructOnly, GtkLayoutManagerProps, GtkLicenseNick, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkNativeConstructOnly, GtkNativeProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkPackTypeNick, GtkRootConstructOnly, GtkRootProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkSectionModelConstructOnly, GtkSectionModelProps, GtkSelectionModelConstructOnly, GtkSelectionModelProps, GtkShortcutManagerConstructOnly, GtkShortcutManagerProps, GtkSpinButtonUpdatePolicyNick, GtkStringFilterMatchModeNick, GtkSymbolicPaintableConstructOnly, GtkSymbolicPaintableProps, GtkTextDirectionNick, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-4.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -407,7 +410,7 @@ export interface AdwAlertDialogProps extends AdwDialogProps, GtkAccessibleProps,
 export type AdwAlertDialogConstructOnly = AdwDialogConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkShortcutManagerConstructOnly;
 
 /** A base class for animations. */
-export interface AdwAnimationProps {
+export interface AdwAnimationProps extends GObjectProps {
     /**
      * Whether to skip the animation when animations are globally disabled.
      * @since 1.3
@@ -420,22 +423,22 @@ export interface AdwAnimationProps {
     widget?: Gtk.Widget;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwAnimationConstructOnly = 'widget';
+export type AdwAnimationConstructOnly = GObjectConstructOnly | 'widget';
 
 /** Represents a value [class@Animation] can animate. */
-export interface AdwAnimationTargetProps {
+export interface AdwAnimationTargetProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwAnimationTargetConstructOnly = never;
+export type AdwAnimationTargetConstructOnly = GObjectConstructOnly;
 
 /** A base class for Adwaita applications. */
-export interface AdwApplicationProps extends GtkApplicationProps {
+export interface AdwApplicationProps extends GtkApplicationProps, GActionGroupProps, GActionMapProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwApplicationConstructOnly = GtkApplicationConstructOnly;
+export type AdwApplicationConstructOnly = GtkApplicationConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly;
 
 /** A freeform application window. */
-export interface AdwApplicationWindowProps extends GtkApplicationWindowProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
+export interface AdwApplicationWindowProps extends GtkApplicationWindowProps, GActionGroupProps, GActionMapProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
     /**
      * Whether adaptive preview is currently open.
      * @since 1.7
@@ -446,7 +449,7 @@ export interface AdwApplicationWindowProps extends GtkApplicationWindowProps, Gt
     content?: Gtk.Widget | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwApplicationWindowConstructOnly = GtkApplicationWindowConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkNativeConstructOnly | GtkRootConstructOnly | GtkShortcutManagerConstructOnly;
+export type AdwApplicationWindowConstructOnly = GtkApplicationWindowConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkNativeConstructOnly | GtkRootConstructOnly | GtkShortcutManagerConstructOnly;
 
 /** A widget displaying an image, with a generated fallback. */
 export interface AdwAvatarProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -585,7 +588,7 @@ export interface AdwBottomSheetProps extends GtkWidgetProps, AdwSwipeableProps, 
 export type AdwBottomSheetConstructOnly = GtkWidgetConstructOnly | AdwSwipeableConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** Describes a breakpoint for [class@Window] or [class@Dialog]. */
-export interface AdwBreakpointProps extends GtkBuildableProps {
+export interface AdwBreakpointProps extends GObjectProps, GtkBuildableProps {
     /**
      * The breakpoint's condition.
      * @since 1.4
@@ -593,7 +596,7 @@ export interface AdwBreakpointProps extends GtkBuildableProps {
     condition?: Adw.BreakpointCondition | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwBreakpointConstructOnly = GtkBuildableConstructOnly;
+export type AdwBreakpointConstructOnly = GObjectConstructOnly | GtkBuildableConstructOnly;
 
 /** A widget that changes layout based on available size. */
 export interface AdwBreakpointBinProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -815,7 +818,7 @@ export interface AdwComboRowProps extends AdwActionRowProps, GtkAccessibleProps,
 export type AdwComboRowConstructOnly = AdwActionRowConstructOnly | GtkAccessibleConstructOnly | GtkActionableConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** A binding between a [class@GObject.Object] property and a CSS class on a [class@Gtk.Widget]. */
-export interface AdwCssClassBindingProps {
+export interface AdwCssClassBindingProps extends GObjectProps {
     /**
      * Flags to be used to control the binding.
      * @since 1.10
@@ -846,7 +849,7 @@ export interface AdwCssClassBindingProps {
     'target-css-class'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwCssClassBindingConstructOnly = 'flags' | 'source' | 'source-property' | 'target' | 'target-css-class';
+export type AdwCssClassBindingConstructOnly = GObjectConstructOnly | 'flags' | 'source' | 'source-property' | 'target' | 'target-css-class';
 
 /** An adaptive dialog container. */
 export interface AdwDialogProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkShortcutManagerProps {
@@ -952,13 +955,13 @@ export interface AdwEntryRowProps extends AdwPreferencesRowProps, GtkAccessibleP
 export type AdwEntryRowConstructOnly = AdwPreferencesRowConstructOnly | GtkAccessibleConstructOnly | GtkActionableConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkEditableConstructOnly;
 
 /** `AdwEnumListItem` is the type of items in a [class@EnumListModel]. */
-export interface AdwEnumListItemProps {
+export interface AdwEnumListItemProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwEnumListItemConstructOnly = never;
+export type AdwEnumListItemConstructOnly = GObjectConstructOnly;
 
 /** A [iface@Gio.ListModel] representing values of a given enum. */
-export interface AdwEnumListModelProps {
+export interface AdwEnumListModelProps extends GObjectProps, GListModelProps {
     /**
      * The type of the enum represented by the model.
      * @deprecated since 1.10: Use [class@Gtk.EnumList].
@@ -966,7 +969,7 @@ export interface AdwEnumListModelProps {
     'enum-type'?: GObject.GType;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwEnumListModelConstructOnly = 'enum-type';
+export type AdwEnumListModelConstructOnly = GObjectConstructOnly | GListModelConstructOnly | 'enum-type';
 
 /** A [class@Gtk.ListBoxRow] used to reveal widgets. */
 export interface AdwExpanderRowProps extends AdwPreferencesRowProps, GtkAccessibleProps, GtkActionableProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -1164,7 +1167,7 @@ export interface AdwInlineViewSwitcherProps extends GtkWidgetProps, GtkAccessibl
 export type AdwInlineViewSwitcherConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkOrientableConstructOnly;
 
 /** An individual layout in [class@MultiLayoutView]. */
-export interface AdwLayoutProps extends GtkBuildableProps {
+export interface AdwLayoutProps extends GObjectProps, GtkBuildableProps {
     /**
      * The content widget.
      * @since 1.6
@@ -1178,7 +1181,7 @@ export interface AdwLayoutProps extends GtkBuildableProps {
     name?: string | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwLayoutConstructOnly = GtkBuildableConstructOnly | 'content';
+export type AdwLayoutConstructOnly = GObjectConstructOnly | GtkBuildableConstructOnly | 'content';
 
 /** A child slot within [class@Layout]. */
 export interface AdwLayoutSlotProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -1257,7 +1260,7 @@ export interface AdwLeafletProps extends GtkWidgetProps, AdwSwipeableProps, GtkA
 export type AdwLeafletConstructOnly = GtkWidgetConstructOnly | AdwSwipeableConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkOrientableConstructOnly;
 
 /** An auxiliary class used by [class@Leaflet]. */
-export interface AdwLeafletPageProps {
+export interface AdwLeafletPageProps extends GObjectProps {
     /**
      * The leaflet child to which the page belongs.
      * @deprecated since 1.4: See [the migration guide](migrating-to-breakpoints.html#replace-adwleaflet)
@@ -1277,7 +1280,7 @@ export interface AdwLeafletPageProps {
     navigatable?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwLeafletPageConstructOnly = 'child';
+export type AdwLeafletPageConstructOnly = GObjectConstructOnly | 'child';
 
 /** A dialog presenting a message or a question. */
 export interface AdwMessageDialogProps extends GtkWindowProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
@@ -1725,7 +1728,7 @@ export interface AdwShortcutsDialogProps extends AdwDialogProps, GtkAccessiblePr
 export type AdwShortcutsDialogConstructOnly = AdwDialogConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkShortcutManagerConstructOnly;
 
 /** An object representing an individual shortcut in [class@ShortcutsSection]. */
-export interface AdwShortcutsItemProps {
+export interface AdwShortcutsItemProps extends GObjectProps {
     /**
      * The shortcut accelerator.
      * @since 1.8
@@ -1754,10 +1757,10 @@ export interface AdwShortcutsItemProps {
     title?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwShortcutsItemConstructOnly = never;
+export type AdwShortcutsItemConstructOnly = GObjectConstructOnly;
 
 /** An object representing a section in [class@ShortcutsDialog]. */
-export interface AdwShortcutsSectionProps extends GtkBuildableProps {
+export interface AdwShortcutsSectionProps extends GObjectProps, GListModelProps, GtkBuildableProps {
     /**
      * The title of the section, can be `NULL`.
      * @since 1.8
@@ -1766,7 +1769,7 @@ export interface AdwShortcutsSectionProps extends GtkBuildableProps {
     title?: string | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwShortcutsSectionConstructOnly = GtkBuildableConstructOnly;
+export type AdwShortcutsSectionConstructOnly = GObjectConstructOnly | GListModelConstructOnly | GtkBuildableConstructOnly;
 
 /** Adaptive sidebar widget. */
 export interface AdwSidebarProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -1818,7 +1821,7 @@ export interface AdwSidebarProps extends GtkWidgetProps, GtkAccessibleProps, Gtk
 export type AdwSidebarConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** An item within [class@SidebarSection]. */
-export interface AdwSidebarItemProps {
+export interface AdwSidebarItemProps extends GObjectProps {
     /**
      * Whether to activate the item on pointer motion during Drag-and-Drop.
      * @since 1.9
@@ -1881,10 +1884,10 @@ export interface AdwSidebarItemProps {
     visible?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwSidebarItemConstructOnly = never;
+export type AdwSidebarItemConstructOnly = GObjectConstructOnly;
 
 /** A section within [class@Sidebar]. */
-export interface AdwSidebarSectionProps extends GtkBuildableProps {
+export interface AdwSidebarSectionProps extends GObjectProps, GtkBuildableProps {
     /**
      * Context menu model for the section items.
      * @since 1.9
@@ -1902,7 +1905,7 @@ export interface AdwSidebarSectionProps extends GtkBuildableProps {
     title?: string | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwSidebarSectionConstructOnly = GtkBuildableConstructOnly;
+export type AdwSidebarSectionConstructOnly = GObjectConstructOnly | GtkBuildableConstructOnly;
 
 /** An [class@ActionRow] with an embedded spin button. */
 export interface AdwSpinRowProps extends AdwActionRowProps, GtkAccessibleProps, GtkActionableProps, GtkBuildableProps, GtkConstraintTargetProps, GtkEditableProps {
@@ -1964,7 +1967,7 @@ export interface AdwSpinnerProps extends GtkWidgetProps, GtkAccessibleProps, Gtk
 export type AdwSpinnerConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** A paintable showing a loading spinner. */
-export interface AdwSpinnerPaintableProps extends GtkSymbolicPaintableProps {
+export interface AdwSpinnerPaintableProps extends GObjectProps, GdkPaintableProps, GtkSymbolicPaintableProps {
     /**
      * The widget the spinner uses for frame clock.
      * @since 1.6
@@ -1972,7 +1975,7 @@ export interface AdwSpinnerPaintableProps extends GtkSymbolicPaintableProps {
     widget?: Gtk.Widget | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwSpinnerPaintableConstructOnly = GtkSymbolicPaintableConstructOnly;
+export type AdwSpinnerPaintableConstructOnly = GObjectConstructOnly | GdkPaintableConstructOnly | GtkSymbolicPaintableConstructOnly;
 
 /** A combined button and dropdown widget. */
 export interface AdwSplitButtonProps extends GtkWidgetProps, GtkAccessibleProps, GtkActionableProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -2105,7 +2108,7 @@ export interface AdwSqueezerProps extends GtkWidgetProps, GtkAccessibleProps, Gt
 export type AdwSqueezerConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkOrientableConstructOnly;
 
 /** An auxiliary class used by [class@Squeezer]. */
-export interface AdwSqueezerPageProps {
+export interface AdwSqueezerPageProps extends GObjectProps {
     /**
      * The the squeezer child to which the page belongs.
      * @deprecated since 1.4: See [the migration guide](migrating-to-breakpoints.html#replace-adwsqueezer)
@@ -2119,7 +2122,7 @@ export interface AdwSqueezerPageProps {
     enabled?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwSqueezerPageConstructOnly = 'child';
+export type AdwSqueezerPageConstructOnly = GObjectConstructOnly | 'child';
 
 /** A page used for empty/error states and similar use-cases. */
 export interface AdwStatusPageProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -2141,7 +2144,7 @@ export interface AdwStatusPageProps extends GtkWidgetProps, GtkAccessibleProps, 
 export type AdwStatusPageConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** A class for managing application-wide styling. */
-export interface AdwStyleManagerProps {
+export interface AdwStyleManagerProps extends GObjectProps {
     /**
      * The requested application color scheme.
      * @default ADW_COLOR_SCHEME_DEFAULT
@@ -2151,10 +2154,10 @@ export interface AdwStyleManagerProps {
     display?: Gdk.Display | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwStyleManagerConstructOnly = 'display';
+export type AdwStyleManagerConstructOnly = GObjectConstructOnly | 'display';
 
 /** A swipe tracker used in [class@Carousel], [class@NavigationView] and [class@OverlaySplitView]. */
-export interface AdwSwipeTrackerProps extends GtkOrientableProps {
+export interface AdwSwipeTrackerProps extends GObjectProps, GtkOrientableProps {
     /**
      * Whether to allow swiping for more than one snap point at a time.
      * @default FALSE
@@ -2197,7 +2200,7 @@ export interface AdwSwipeTrackerProps extends GtkOrientableProps {
     'upper-overshoot'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwSwipeTrackerConstructOnly = GtkOrientableConstructOnly | 'swipeable';
+export type AdwSwipeTrackerConstructOnly = GObjectConstructOnly | GtkOrientableConstructOnly | 'swipeable';
 
 /** An interface for swipeable widgets. */
 export interface AdwSwipeableProps extends GtkWidgetProps {
@@ -2325,7 +2328,7 @@ export interface AdwTabOverviewProps extends GtkWidgetProps, GtkAccessibleProps,
 export type AdwTabOverviewConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** An auxiliary class used by [class@TabView]. */
-export interface AdwTabPageProps extends GtkAccessibleProps {
+export interface AdwTabPageProps extends GObjectProps, GtkAccessibleProps {
     /** The child of the page. */
     child?: Gtk.Widget;
     /** The icon of the page. */
@@ -2383,7 +2386,7 @@ export interface AdwTabPageProps extends GtkAccessibleProps {
     tooltip?: string | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwTabPageConstructOnly = GtkAccessibleConstructOnly | 'child' | 'parent';
+export type AdwTabPageConstructOnly = GObjectConstructOnly | GtkAccessibleConstructOnly | 'child' | 'parent';
 
 /** A dynamic tabbed container. */
 export interface AdwTabViewProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -2445,7 +2448,7 @@ export interface AdwTimedAnimationProps extends AdwAnimationProps {
 export type AdwTimedAnimationConstructOnly = AdwAnimationConstructOnly;
 
 /** A helper object for [class@ToastOverlay]. */
-export interface AdwToastProps {
+export interface AdwToastProps extends GObjectProps {
     /**
      * The name of the associated action.
      * @default NULL
@@ -2483,7 +2486,7 @@ export interface AdwToastProps {
     'use-markup'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwToastConstructOnly = never;
+export type AdwToastConstructOnly = GObjectConstructOnly;
 
 /** A widget showing toasts above its content. */
 export interface AdwToastOverlayProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -2494,7 +2497,7 @@ export interface AdwToastOverlayProps extends GtkWidgetProps, GtkAccessibleProps
 export type AdwToastOverlayConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** A toggle within [class@ToggleGroup]. */
-export interface AdwToggleProps {
+export interface AdwToggleProps extends GObjectProps {
     /**
      * The toggle child.
      * @since 1.7
@@ -2542,7 +2545,7 @@ export interface AdwToggleProps {
     'use-underline'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwToggleConstructOnly = never;
+export type AdwToggleConstructOnly = GObjectConstructOnly;
 
 /** A group of exclusive toggles. */
 export interface AdwToggleGroupProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkOrientableProps {
@@ -2657,7 +2660,7 @@ export interface AdwViewStackProps extends GtkWidgetProps, GtkAccessibleProps, G
 export type AdwViewStackConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** An auxiliary class used by [class@ViewStack]. */
-export interface AdwViewStackPageProps extends GtkAccessibleProps {
+export interface AdwViewStackPageProps extends GObjectProps, GtkAccessibleProps {
     /**
      * The badge number for this page.
      * @default 0
@@ -2709,10 +2712,10 @@ export interface AdwViewStackPageProps extends GtkAccessibleProps {
     visible?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwViewStackPageConstructOnly = GtkAccessibleConstructOnly | 'child';
+export type AdwViewStackPageConstructOnly = GObjectConstructOnly | GtkAccessibleConstructOnly | 'child';
 
 /** An auxiliary class used by [class@ViewStack]. */
-export interface AdwViewStackPagesProps extends GtkSectionModelProps, GtkSelectionModelProps {
+export interface AdwViewStackPagesProps extends GObjectProps, GListModelProps, GtkSectionModelProps, GtkSelectionModelProps {
     /**
      * The selected [class@ViewStackPage] within the [class@ViewStackPages].
      * @since 1.4
@@ -2720,7 +2723,7 @@ export interface AdwViewStackPagesProps extends GtkSectionModelProps, GtkSelecti
     'selected-page'?: Adw.ViewStackPage | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AdwViewStackPagesConstructOnly = GtkSectionModelConstructOnly | GtkSelectionModelConstructOnly;
+export type AdwViewStackPagesConstructOnly = GObjectConstructOnly | GListModelConstructOnly | GtkSectionModelConstructOnly | GtkSelectionModelConstructOnly;
 
 /** An adaptive view switcher. */
 export interface AdwViewSwitcherProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -3003,48 +3006,6 @@ export interface AdwWrapLayoutProps extends GtkLayoutManagerProps, GtkOrientable
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AdwWrapLayoutConstructOnly = GtkLayoutManagerConstructOnly | GtkOrientableConstructOnly;
-
-/** `GApplication` is the core class for application support. */
-export interface GApplicationProps {
-    /**
-     * The group of actions that the application exports.
-     * @since 2.28
-     * @deprecated since 2.32: Use the [iface@Gio.ActionMap] interface instead.
-     */
-    'action-group'?: Gio.ActionGroup;
-    /**
-     * The unique identifier for the application.
-     * @since 2.28
-     * @default NULL
-     */
-    'application-id'?: string | null;
-    /**
-     * Flags specifying the behaviour of the application.
-     * @since 2.28
-     * @default G_APPLICATION_FLAGS_NONE
-     */
-    flags?: number;
-    /**
-     * Time (in milliseconds) to stay alive after becoming idle.
-     * @since 2.28
-     * @default 0
-     */
-    'inactivity-timeout'?: number;
-    /**
-     * The base resource path for the application.
-     * @since 2.28
-     * @default NULL
-     */
-    'resource-base-path'?: string | null;
-    /**
-     * The human-readable version number of the application.
-     * @since 2.80
-     * @default NULL
-     */
-    version?: string | null;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GApplicationConstructOnly = never;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -3675,6 +3636,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

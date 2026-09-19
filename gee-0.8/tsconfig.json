@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gee-0.8.d.ts"]
+  "include": ["./gee-0.8.d.ts","./gee-0.8-vocabulary.d.ts"]
 }
 
 

@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./arrow-1.0.d.ts"]
+  "include": ["./arrow-1.0.d.ts","./arrow-1.0-vocabulary.d.ts"]
 }
 
 

@@ -1,6 +1,6 @@
 // The widget vocabulary of Workbench-0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Workbench-0 — dropped empty base(s): GObject.Object Gio.ListModel GObject.InitiallyUnowned
+// GENERATED — do not edit. Provenance: Workbench-0
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gio.ListModel', 'GObject.InitiallyUnowned'],
+    droppedBases: [],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Workbench'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary', '@girs/gtksource-5/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -33,9 +35,9 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    WorkbenchCompletionProvider: ['WorkbenchCompletionProvider', 'GtkSourceCompletionProvider'],
-    WorkbenchCompletionRequest: ['WorkbenchCompletionRequest'],
-    WorkbenchPreviewWindow: ['WorkbenchPreviewWindow', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    WorkbenchCompletionProvider: ['WorkbenchCompletionProvider', 'GObject', 'GtkSourceCompletionProvider'],
+    WorkbenchCompletionRequest: ['WorkbenchCompletionRequest', 'GObject', 'GListModel'],
+    WorkbenchPreviewWindow: ['WorkbenchPreviewWindow', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

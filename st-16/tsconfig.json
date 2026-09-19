@@ -80,7 +80,7 @@
       ]
 }
   },
-  "include": ["./st-16.d.ts"]
+  "include": ["./st-16.d.ts","./st-16-vocabulary.d.ts"]
 }
 
 

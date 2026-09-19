@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./jsonrpc-1.0.d.ts"]
+  "include": ["./jsonrpc-1.0.d.ts","./jsonrpc-1.0-vocabulary.d.ts"]
 }
 
 

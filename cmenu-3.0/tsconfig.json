@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./cmenu-3.0.d.ts"]
+  "include": ["./cmenu-3.0.d.ts","./cmenu-3.0-vocabulary.d.ts"]
 }
 
 

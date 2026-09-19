@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./wp-0.4.d.ts"]
+  "include": ["./wp-0.4.d.ts","./wp-0.4-vocabulary.d.ts"]
 }
 
 

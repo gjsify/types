@@ -59,7 +59,7 @@
       ]
 }
   },
-  "include": ["./coglpango-11.d.ts"]
+  "include": ["./coglpango-11.d.ts","./coglpango-11-vocabulary.d.ts"]
 }
 
 

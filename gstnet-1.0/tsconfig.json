@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gstnet-1.0.d.ts"]
+  "include": ["./gstnet-1.0.d.ts","./gstnet-1.0-vocabulary.d.ts"]
 }
 
 

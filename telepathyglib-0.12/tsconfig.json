@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./telepathyglib-0.12.d.ts"]
+  "include": ["./telepathyglib-0.12.d.ts","./telepathyglib-0.12-vocabulary.d.ts"]
 }
 
 

@@ -32,7 +32,7 @@
       ]
 }
   },
-  "include": ["./gda-5.0.d.ts"]
+  "include": ["./gda-5.0.d.ts","./gda-5.0-vocabulary.d.ts"]
 }
 
 

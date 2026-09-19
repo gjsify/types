@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gstinterfaces-0.10.d.ts"]
+  "include": ["./gstinterfaces-0.10.d.ts","./gstinterfaces-0.10-vocabulary.d.ts"]
 }
 
 

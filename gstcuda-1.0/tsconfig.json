@@ -47,7 +47,7 @@
       ]
 }
   },
-  "include": ["./gstcuda-1.0.d.ts"]
+  "include": ["./gstcuda-1.0.d.ts","./gstcuda-1.0-vocabulary.d.ts"]
 }
 
 

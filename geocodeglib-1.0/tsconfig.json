@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./geocodeglib-1.0.d.ts"]
+  "include": ["./geocodeglib-1.0.d.ts","./geocodeglib-1.0-vocabulary.d.ts"]
 }
 
 

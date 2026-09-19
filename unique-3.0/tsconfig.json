@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./unique-3.0.d.ts"]
+  "include": ["./unique-3.0.d.ts","./unique-3.0-vocabulary.d.ts"]
 }
 
 

@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./gupnp-1.2.d.ts"]
+  "include": ["./gupnp-1.2.d.ts","./gupnp-1.2-vocabulary.d.ts"]
 }
 
 

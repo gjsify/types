@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./json-1.0.d.ts"]
+  "include": ["./json-1.0.d.ts","./json-1.0-vocabulary.d.ts"]
 }
 
 

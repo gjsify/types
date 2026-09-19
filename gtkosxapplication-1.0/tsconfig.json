@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gtkosxapplication-1.0.d.ts"]
+  "include": ["./gtkosxapplication-1.0.d.ts","./gtkosxapplication-1.0-vocabulary.d.ts"]
 }
 
 

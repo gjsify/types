@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./gstvideo-0.10.d.ts"]
+  "include": ["./gstvideo-0.10.d.ts","./gstvideo-0.10-vocabulary.d.ts"]
 }
 
 

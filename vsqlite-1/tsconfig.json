@@ -53,7 +53,7 @@
       ]
 }
   },
-  "include": ["./vsqlite-1.d.ts"]
+  "include": ["./vsqlite-1.d.ts","./vsqlite-1-vocabulary.d.ts"]
 }
 
 

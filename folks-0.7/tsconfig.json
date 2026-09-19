@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./folks-0.7.d.ts"]
+  "include": ["./folks-0.7.d.ts","./folks-0.7-vocabulary.d.ts"]
 }
 
 

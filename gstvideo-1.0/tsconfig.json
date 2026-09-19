@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gstvideo-1.0.d.ts"]
+  "include": ["./gstvideo-1.0.d.ts","./gstvideo-1.0-vocabulary.d.ts"]
 }
 
 

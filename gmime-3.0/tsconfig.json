@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gmime-3.0.d.ts"]
+  "include": ["./gmime-3.0.d.ts","./gmime-3.0-vocabulary.d.ts"]
 }
 
 

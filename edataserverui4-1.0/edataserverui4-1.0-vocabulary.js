@@ -1,6 +1,6 @@
 // The widget vocabulary of EDataServerUI4-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: EDataServerUI4-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object EDataServer.Extensible — inlined base(s) their owner's vocabulary does not emit: EDataServer.Extension
+// GENERATED — do not edit. Provenance: EDataServerUI4-1.0
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,16 +11,17 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'EDataServer.Extensible'],
-    inlinedBases: ['EDataServer.Extension'],
+    droppedBases: [],
+    inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['E'],
+    requiredVocabularies: ['@girs/edataserver-1.2/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
     ECellRendererColor: ['rgba'],
     ECredentialsPrompter: ['auto-prompt', 'registry'],
-    EExtension: ['extensible'],
     ERemindersWidget: ['watcher'],
 };
 
@@ -38,14 +39,14 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    ECellRendererColor: ['ECellRendererColor', 'GtkCellRenderer'],
-    ECertificateWidget: ['ECertificateWidget', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    ECredentialsPrompter: ['ECredentialsPrompter'],
-    ECredentialsPrompterImplOAuth2: ['ECredentialsPrompterImplOAuth2', 'ECredentialsPrompterImpl', 'EExtension'],
-    ECredentialsPrompterImplPassword: ['ECredentialsPrompterImplPassword', 'ECredentialsPrompterImpl', 'EExtension'],
-    ERemindersWidget: ['ERemindersWidget', 'GtkGrid', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    EWebDAVDiscoverContent: ['EWebDAVDiscoverContent', 'GtkGrid', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    EWebDAVDiscoverDialog: ['EWebDAVDiscoverDialog', 'GtkDialog', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    ECellRendererColor: ['ECellRendererColor', 'GtkCellRenderer', 'GInitiallyUnowned', 'GObject'],
+    ECertificateWidget: ['ECertificateWidget', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    ECredentialsPrompter: ['ECredentialsPrompter', 'GObject', 'EExtensible'],
+    ECredentialsPrompterImplOAuth2: ['ECredentialsPrompterImplOAuth2', 'ECredentialsPrompterImpl', 'EExtension', 'GObject'],
+    ECredentialsPrompterImplPassword: ['ECredentialsPrompterImplPassword', 'ECredentialsPrompterImpl', 'EExtension', 'GObject'],
+    ERemindersWidget: ['ERemindersWidget', 'GtkGrid', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'EExtensible', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    EWebDAVDiscoverContent: ['EWebDAVDiscoverContent', 'GtkGrid', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    EWebDAVDiscoverDialog: ['EWebDAVDiscoverDialog', 'GtkDialog', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -170,6 +171,5 @@ export const SINCE = {
     'ECredentialsPrompterImpl::prompt-finished': '3.16',
     'ECredentialsPrompterImplOAuth2': '3.28',
     'ECredentialsPrompterImplPassword': '3.16',
-    'EExtension': '3.4',
     'ERemindersWidget': '3.30',
 };

@@ -50,7 +50,7 @@
       ]
 }
   },
-  "include": ["./gdk-3.0.d.ts"]
+  "include": ["./gdk-3.0.d.ts","./gdk-3.0-vocabulary.d.ts"]
 }
 
 

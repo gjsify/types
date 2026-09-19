@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./arrowflight-1.0.d.ts"]
+  "include": ["./arrowflight-1.0.d.ts","./arrowflight-1.0-vocabulary.d.ts"]
 }
 
 

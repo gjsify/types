@@ -1,6 +1,6 @@
 {
     "name": "@girs/mbim-1.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "libraryVersion": "1.32.0",
     "description": "GJS TypeScript type definitions for Mbim-1.0, generated from library version 1.32.0",
     "type": "module",
@@ -17,6 +17,11 @@
         "import": "./mbim-1.0-import.js",
         "default": "./mbim-1.0-import.js"
       },
+      "./vocabulary": {
+        "types": "./mbim-1.0-vocabulary.d.ts",
+        "import": "./mbim-1.0-vocabulary.js",
+        "default": "./mbim-1.0-vocabulary.js"
+      },
       "./mbim-1.0": {
         "types": "./mbim-1.0.d.ts",
         "import": "./mbim-1.0.js",
@@ -32,11 +37,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

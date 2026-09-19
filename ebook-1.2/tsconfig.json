@@ -53,7 +53,7 @@
       ]
 }
   },
-  "include": ["./ebook-1.2.d.ts"]
+  "include": ["./ebook-1.2.d.ts","./ebook-1.2-vocabulary.d.ts"]
 }
 
 

@@ -1,6 +1,6 @@
 {
     "name": "@girs/mirage-3.2",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "libraryVersion": "3.2.9",
     "description": "GJS TypeScript type definitions for Mirage-3.2, generated from library version 3.2.9",
     "type": "module",
@@ -17,6 +17,11 @@
         "import": "./mirage-3.2-import.js",
         "default": "./mirage-3.2-import.js"
       },
+      "./vocabulary": {
+        "types": "./mirage-3.2-vocabulary.d.ts",
+        "import": "./mirage-3.2-vocabulary.js",
+        "default": "./mirage-3.2-vocabulary.js"
+      },
       "./mirage-3.2": {
         "types": "./mirage-3.2.d.ts",
         "import": "./mirage-3.2.js",
@@ -32,11 +37,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

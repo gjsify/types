@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Retro-1.
  *
- * GENERATED — do not edit. Provenance: Retro-1 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: Retro-1 — dropped empty base(s): Atk.ImplementorIface
  *
  * 9 instantiable GTypes (of which 1 concrete widgets), 9 declarations, 9 enum nick unions, 0 slot candidates.
  *
@@ -25,6 +25,7 @@
  */
 
 import type Retro from './retro-1.js';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkEventBoxConstructOnly, GtkEventBoxProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -57,12 +58,12 @@ export type RetroVideoFilterNick = 'smooth' | 'sharp' | 'crt';
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-export interface RetroControllerIteratorProps {
+export interface RetroControllerIteratorProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RetroControllerIteratorConstructOnly = never;
+export type RetroControllerIteratorConstructOnly = GObjectConstructOnly;
 
-export interface RetroCoreProps {
+export interface RetroCoreProps extends GObjectProps {
     'content-directory'?: string;
     /** The filename of the core. */
     filename?: string;
@@ -78,12 +79,12 @@ export interface RetroCoreProps {
     'user-name'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RetroCoreConstructOnly = 'filename';
+export type RetroCoreConstructOnly = GObjectConstructOnly | 'filename';
 
-export interface RetroCoreDescriptorProps {
+export interface RetroCoreDescriptorProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RetroCoreDescriptorConstructOnly = never;
+export type RetroCoreDescriptorConstructOnly = GObjectConstructOnly;
 
 export interface RetroCoreViewProps extends GtkEventBoxProps, GtkBuildableProps {
     'can-grab-pointer'?: boolean;
@@ -92,30 +93,30 @@ export interface RetroCoreViewProps extends GtkEventBoxProps, GtkBuildableProps 
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type RetroCoreViewConstructOnly = GtkEventBoxConstructOnly | GtkBuildableConstructOnly;
 
-export interface RetroKeyJoypadMappingProps {
+export interface RetroKeyJoypadMappingProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RetroKeyJoypadMappingConstructOnly = never;
+export type RetroKeyJoypadMappingConstructOnly = GObjectConstructOnly;
 
-export interface RetroModuleIteratorProps {
+export interface RetroModuleIteratorProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RetroModuleIteratorConstructOnly = never;
+export type RetroModuleIteratorConstructOnly = GObjectConstructOnly;
 
-export interface RetroModuleQueryProps {
+export interface RetroModuleQueryProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RetroModuleQueryConstructOnly = never;
+export type RetroModuleQueryConstructOnly = GObjectConstructOnly;
 
-export interface RetroOptionProps {
+export interface RetroOptionProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RetroOptionConstructOnly = never;
+export type RetroOptionConstructOnly = GObjectConstructOnly;
 
-export interface RetroOptionIteratorProps {
+export interface RetroOptionIteratorProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type RetroOptionIteratorConstructOnly = never;
+export type RetroOptionIteratorConstructOnly = GObjectConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -206,6 +207,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

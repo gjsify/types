@@ -86,7 +86,7 @@
       ]
 }
   },
-  "include": ["./meta-5.d.ts"]
+  "include": ["./meta-5.d.ts","./meta-5-vocabulary.d.ts"]
 }
 
 

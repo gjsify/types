@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./peas-2.d.ts"]
+  "include": ["./peas-2.d.ts","./peas-2-vocabulary.d.ts"]
 }
 
 

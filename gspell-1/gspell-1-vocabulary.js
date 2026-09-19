@@ -1,6 +1,6 @@
 // The widget vocabulary of Gspell-1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Gspell-1 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: Gspell-1 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Gspell'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -40,15 +42,15 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GspellChecker: ['GspellChecker'],
-    GspellCheckerDialog: ['GspellCheckerDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GspellEntry: ['GspellEntry'],
-    GspellEntryBuffer: ['GspellEntryBuffer'],
-    GspellLanguageChooserButton: ['GspellLanguageChooserButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GspellLanguageChooser', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    GspellLanguageChooserDialog: ['GspellLanguageChooserDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GspellLanguageChooser', 'GtkBuildable'],
-    GspellNavigatorTextView: ['GspellNavigatorTextView', 'GspellNavigator'],
-    GspellTextBuffer: ['GspellTextBuffer'],
-    GspellTextView: ['GspellTextView'],
+    GspellChecker: ['GspellChecker', 'GObject'],
+    GspellCheckerDialog: ['GspellCheckerDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GspellEntry: ['GspellEntry', 'GObject'],
+    GspellEntryBuffer: ['GspellEntryBuffer', 'GObject'],
+    GspellLanguageChooserButton: ['GspellLanguageChooserButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GspellLanguageChooser', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    GspellLanguageChooserDialog: ['GspellLanguageChooserDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GspellLanguageChooser', 'GtkBuildable'],
+    GspellNavigatorTextView: ['GspellNavigatorTextView', 'GInitiallyUnowned', 'GObject', 'GspellNavigator'],
+    GspellTextBuffer: ['GspellTextBuffer', 'GObject'],
+    GspellTextView: ['GspellTextView', 'GObject'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

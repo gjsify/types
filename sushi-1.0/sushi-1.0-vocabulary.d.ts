@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Sushi-1.0.
  *
- * GENERATED — do not edit. Provenance: Sushi-1.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned
+ * GENERATED — do not edit. Provenance: Sushi-1.0
  *
  * 2 instantiable GTypes (of which 1 concrete widgets), 2 declarations, 0 enum nick unions, 0 slot candidates.
  *
@@ -25,6 +25,7 @@
  */
 
 import type Sushi from './sushi-1.0.js';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-4.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -49,10 +50,10 @@ import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstr
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-export interface SushiDiscovererProps {
+export interface SushiDiscovererProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type SushiDiscovererConstructOnly = never;
+export type SushiDiscovererConstructOnly = GObjectConstructOnly;
 
 export interface SushiFontWidgetProps extends GtkDrawingAreaProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
     /** @default 0 */
@@ -152,6 +153,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

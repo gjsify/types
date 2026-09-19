@@ -83,7 +83,7 @@
       ]
 }
   },
-  "include": ["./meta-13.d.ts"]
+  "include": ["./meta-13.d.ts","./meta-13-vocabulary.d.ts"]
 }
 
 

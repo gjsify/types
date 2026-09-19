@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./fprint-2.0.d.ts"]
+  "include": ["./fprint-2.0.d.ts","./fprint-2.0-vocabulary.d.ts"]
 }
 
 

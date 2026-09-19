@@ -1,6 +1,6 @@
 // The widget vocabulary of BraseroBurn-3.1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: BraseroBurn-3.1 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: BraseroBurn-3.1 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '3.1',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Brasero'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -38,23 +40,23 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    BraseroBurn: ['BraseroBurn'],
-    BraseroBurnDialog: ['BraseroBurnDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    BraseroBurnOptions: ['BraseroBurnOptions', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    BraseroBurnSession: ['BraseroBurnSession'],
-    BraseroSessionCfg: ['BraseroSessionCfg', 'BraseroSessionSpan', 'BraseroBurnSession'],
-    BraseroSessionSpan: ['BraseroSessionSpan', 'BraseroBurnSession'],
-    BraseroStatus: ['BraseroStatus'],
-    BraseroSumDialog: ['BraseroSumDialog', 'BraseroToolDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    BraseroToolDialog: ['BraseroToolDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    BraseroTrack: ['BraseroTrack'],
-    BraseroTrackData: ['BraseroTrackData', 'BraseroTrack'],
-    BraseroTrackDataCfg: ['BraseroTrackDataCfg', 'BraseroTrackData', 'BraseroTrack', 'GtkTreeDragDest', 'GtkTreeDragSource', 'GtkTreeModel', 'GtkTreeSortable'],
-    BraseroTrackDisc: ['BraseroTrackDisc', 'BraseroTrack'],
-    BraseroTrackImage: ['BraseroTrackImage', 'BraseroTrack'],
-    BraseroTrackImageCfg: ['BraseroTrackImageCfg', 'BraseroTrackImage', 'BraseroTrack'],
-    BraseroTrackStream: ['BraseroTrackStream', 'BraseroTrack'],
-    BraseroTrackStreamCfg: ['BraseroTrackStreamCfg', 'BraseroTrackStream', 'BraseroTrack'],
+    BraseroBurn: ['BraseroBurn', 'GObject'],
+    BraseroBurnDialog: ['BraseroBurnDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    BraseroBurnOptions: ['BraseroBurnOptions', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    BraseroBurnSession: ['BraseroBurnSession', 'GObject'],
+    BraseroSessionCfg: ['BraseroSessionCfg', 'BraseroSessionSpan', 'BraseroBurnSession', 'GObject'],
+    BraseroSessionSpan: ['BraseroSessionSpan', 'BraseroBurnSession', 'GObject'],
+    BraseroStatus: ['BraseroStatus', 'GObject'],
+    BraseroSumDialog: ['BraseroSumDialog', 'BraseroToolDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    BraseroToolDialog: ['BraseroToolDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    BraseroTrack: ['BraseroTrack', 'GObject'],
+    BraseroTrackData: ['BraseroTrackData', 'BraseroTrack', 'GObject'],
+    BraseroTrackDataCfg: ['BraseroTrackDataCfg', 'BraseroTrackData', 'BraseroTrack', 'GObject', 'GtkTreeDragDest', 'GtkTreeDragSource', 'GtkTreeModel', 'GtkTreeSortable'],
+    BraseroTrackDisc: ['BraseroTrackDisc', 'BraseroTrack', 'GObject'],
+    BraseroTrackImage: ['BraseroTrackImage', 'BraseroTrack', 'GObject'],
+    BraseroTrackImageCfg: ['BraseroTrackImageCfg', 'BraseroTrackImage', 'BraseroTrack', 'GObject'],
+    BraseroTrackStream: ['BraseroTrackStream', 'BraseroTrack', 'GObject'],
+    BraseroTrackStreamCfg: ['BraseroTrackStreamCfg', 'BraseroTrackStream', 'BraseroTrack', 'GObject'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

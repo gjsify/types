@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./lightdm-1.d.ts"]
+  "include": ["./lightdm-1.d.ts","./lightdm-1-vocabulary.d.ts"]
 }
 
 

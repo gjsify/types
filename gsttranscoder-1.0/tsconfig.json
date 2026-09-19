@@ -47,7 +47,7 @@
       ]
 }
   },
-  "include": ["./gsttranscoder-1.0.d.ts"]
+  "include": ["./gsttranscoder-1.0.d.ts","./gsttranscoder-1.0-vocabulary.d.ts"]
 }
 
 

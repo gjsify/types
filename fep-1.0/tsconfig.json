@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./fep-1.0.d.ts"]
+  "include": ["./fep-1.0.d.ts","./fep-1.0-vocabulary.d.ts"]
 }
 
 

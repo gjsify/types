@@ -1,6 +1,6 @@
 // The widget vocabulary of FoundryAdw-1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: FoundryAdw-1 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned
+// GENERATED — do not edit. Provenance: FoundryAdw-1
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned'],
+    droppedBases: [],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Foundry'],
+    requiredVocabularies: ['@girs/adw-1/vocabulary', '@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -43,16 +45,16 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    FoundryDocumentationNavigator: ['FoundryDocumentationNavigator', 'FoundryPathNavigator'],
-    FoundryFileNavigator: ['FoundryFileNavigator', 'FoundryPathNavigator'],
-    FoundryFileRow: ['FoundryFileRow', 'AdwEntryRow', 'AdwPreferencesRow', 'GtkListBoxRow', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget', 'GtkEditable'],
-    FoundryPage: ['FoundryPage', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    FoundryPanelBar: ['FoundryPanelBar', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    FoundryPathBar: ['FoundryPathBar', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    FoundrySearchDialog: ['FoundrySearchDialog', 'AdwDialog', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkShortcutManager'],
-    FoundrySymbolNavigator: ['FoundrySymbolNavigator', 'FoundryPathNavigator'],
-    FoundryTreeExpander: ['FoundryTreeExpander', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    FoundryWorkspace: ['FoundryWorkspace', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    FoundryDocumentationNavigator: ['FoundryDocumentationNavigator', 'FoundryPathNavigator', 'GObject'],
+    FoundryFileNavigator: ['FoundryFileNavigator', 'FoundryPathNavigator', 'GObject'],
+    FoundryFileRow: ['FoundryFileRow', 'AdwEntryRow', 'AdwPreferencesRow', 'GtkListBoxRow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget', 'GtkEditable'],
+    FoundryPage: ['FoundryPage', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    FoundryPanelBar: ['FoundryPanelBar', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    FoundryPathBar: ['FoundryPathBar', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    FoundrySearchDialog: ['FoundrySearchDialog', 'AdwDialog', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkShortcutManager'],
+    FoundrySymbolNavigator: ['FoundrySymbolNavigator', 'FoundryPathNavigator', 'GObject'],
+    FoundryTreeExpander: ['FoundryTreeExpander', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    FoundryWorkspace: ['FoundryWorkspace', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gsystem-1.0.d.ts"]
+  "include": ["./gsystem-1.0.d.ts","./gsystem-1.0-vocabulary.d.ts"]
 }
 
 

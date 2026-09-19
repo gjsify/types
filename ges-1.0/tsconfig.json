@@ -50,7 +50,7 @@
       ]
 }
   },
-  "include": ["./ges-1.0.d.ts"]
+  "include": ["./ges-1.0.d.ts","./ges-1.0-vocabulary.d.ts"]
 }
 
 

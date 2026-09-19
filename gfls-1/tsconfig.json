@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gfls-1.d.ts"]
+  "include": ["./gfls-1.d.ts","./gfls-1-vocabulary.d.ts"]
 }
 
 

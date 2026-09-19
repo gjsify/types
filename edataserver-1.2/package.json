@@ -1,6 +1,6 @@
 {
     "name": "@girs/edataserver-1.2",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for EDataServer-1.2",
     "type": "module",
     "module": "edataserver-1.2.js",
@@ -15,6 +15,11 @@
         "types": "./edataserver-1.2-import.d.ts",
         "import": "./edataserver-1.2-import.js",
         "default": "./edataserver-1.2-import.js"
+      },
+      "./vocabulary": {
+        "types": "./edataserver-1.2-vocabulary.d.ts",
+        "import": "./edataserver-1.2-vocabulary.js",
+        "default": "./edataserver-1.2-vocabulary.js"
       },
       "./edataserver-1.2": {
         "types": "./edataserver-1.2.d.ts",
@@ -31,15 +36,15 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/libxml2-2.0": "^5.2.0",
-      "@girs/soup-3.0": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0",
-      "@girs/json-1.0": "^5.2.0",
-      "@girs/camel-1.2": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/libxml2-2.0": "^5.3.0",
+      "@girs/soup-3.0": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0",
+      "@girs/json-1.0": "^5.3.0",
+      "@girs/camel-1.2": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

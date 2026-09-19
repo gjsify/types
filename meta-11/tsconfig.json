@@ -89,7 +89,7 @@
       ]
 }
   },
-  "include": ["./meta-11.d.ts"]
+  "include": ["./meta-11.d.ts","./meta-11-vocabulary.d.ts"]
 }
 
 

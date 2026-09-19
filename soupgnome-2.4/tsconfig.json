@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./soupgnome-2.4.d.ts"]
+  "include": ["./soupgnome-2.4.d.ts","./soupgnome-2.4-vocabulary.d.ts"]
 }
 
 

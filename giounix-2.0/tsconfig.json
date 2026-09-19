@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./giounix-2.0.d.ts"]
+  "include": ["./giounix-2.0.d.ts","./giounix-2.0-vocabulary.d.ts"]
 }
 
 

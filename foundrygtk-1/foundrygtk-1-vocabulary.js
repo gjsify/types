@@ -1,6 +1,6 @@
 // The widget vocabulary of FoundryGtk-1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: FoundryGtk-1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.MenuModel Gio.ListModel Foundry.Service Json.Serializable — inlined base(s) their owner's vocabulary does not emit: Foundry.Contextual Foundry.TextBuffer
+// GENERATED — do not edit. Provenance: FoundryGtk-1 — dropped empty base(s): Json.Serializable
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,15 +11,16 @@ export const PROVENANCE = {
     version: '1',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Gio.MenuModel', 'Gio.ListModel', 'Foundry.Service', 'Json.Serializable'],
-    inlinedBases: ['Foundry.Contextual', 'Foundry.TextBuffer'],
+    droppedBases: ['Json.Serializable'],
+    inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Foundry'],
+    requiredVocabularies: ['@girs/foundry-1/vocabulary', '@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary', '@girs/gtksource-5/vocabulary'],
 };
 
 export const OWN_PROPS = {
     FoundryChangesGutterRenderer: ['show-overview'],
-    FoundryContextual: ['context'],
     FoundryDiagnosticsGutterRenderer: ['diagnostics'],
     FoundryGitLanes: ['entry'],
     FoundryMenuProxy: ['menu-id'],
@@ -27,7 +28,6 @@ export const OWN_PROPS = {
     FoundrySourceBuffer: ['context', 'override-syntax'],
     FoundrySourceView: ['document', 'enable-completion', 'enable-vim', 'font', 'line-height', 'show-diagnostics', 'show-line-changes', 'show-line-changes-overview'],
     FoundryTerminal: ['palette'],
-    FoundryTextBuffer: ['context'],
 };
 
 export const OWN_SIGNALS = {
@@ -42,20 +42,20 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    FoundryChangesGutterRenderer: ['FoundryChangesGutterRenderer', 'GtkSourceGutterRenderer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    FoundryDiagnosticsGutterRenderer: ['FoundryDiagnosticsGutterRenderer', 'GtkSourceGutterRenderer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    FoundryGitLanes: ['FoundryGitLanes', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    FoundryMarkupView: ['FoundryMarkupView', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    FoundryMenuManager: ['FoundryMenuManager'],
-    FoundryMenuProxy: ['FoundryMenuProxy'],
-    FoundryShortcutBundle: ['FoundryShortcutBundle'],
-    FoundryShortcutManager: ['FoundryShortcutManager', 'FoundryContextual'],
-    FoundryShortcutObserver: ['FoundryShortcutObserver'],
-    FoundrySourceBuffer: ['FoundrySourceBuffer', 'GtkSourceBuffer', 'GtkTextBuffer', 'FoundryTextBuffer'],
-    FoundrySourceView: ['FoundrySourceView', 'GtkSourceView', 'GtkTextView', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
-    FoundryTerminal: ['FoundryTerminal', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
-    FoundryTerminalPalette: ['FoundryTerminalPalette'],
-    FoundryTerminalPaletteSet: ['FoundryTerminalPaletteSet'],
+    FoundryChangesGutterRenderer: ['FoundryChangesGutterRenderer', 'GtkSourceGutterRenderer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    FoundryDiagnosticsGutterRenderer: ['FoundryDiagnosticsGutterRenderer', 'GtkSourceGutterRenderer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    FoundryGitLanes: ['FoundryGitLanes', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    FoundryMarkupView: ['FoundryMarkupView', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    FoundryMenuManager: ['FoundryMenuManager', 'GObject'],
+    FoundryMenuProxy: ['FoundryMenuProxy', 'GMenuModel', 'GObject'],
+    FoundryShortcutBundle: ['FoundryShortcutBundle', 'GObject', 'GListModel'],
+    FoundryShortcutManager: ['FoundryShortcutManager', 'FoundryService', 'FoundryContextual', 'GObject', 'GListModel'],
+    FoundryShortcutObserver: ['FoundryShortcutObserver', 'GObject'],
+    FoundrySourceBuffer: ['FoundrySourceBuffer', 'GtkSourceBuffer', 'GtkTextBuffer', 'GObject', 'FoundryTextBuffer'],
+    FoundrySourceView: ['FoundrySourceView', 'GtkSourceView', 'GtkTextView', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
+    FoundryTerminal: ['FoundryTerminal', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
+    FoundryTerminalPalette: ['FoundryTerminalPalette', 'GObject'],
+    FoundryTerminalPaletteSet: ['FoundryTerminalPaletteSet', 'GObject'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

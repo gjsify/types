@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./grl-0.3.d.ts"]
+  "include": ["./grl-0.3.d.ts","./grl-0.3-vocabulary.d.ts"]
 }
 
 

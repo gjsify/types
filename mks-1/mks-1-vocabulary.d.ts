@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Mks-1.
  *
- * GENERATED — do not edit. Provenance: Mks-1 — library 0.1.5 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Gio.AsyncInitable Gio.Initable
+ * GENERATED — do not edit. Provenance: Mks-1 — library 0.1.5
  *
  * 7 instantiable GTypes (of which 1 concrete widgets), 7 declarations, 3 enum nick unions, 0 slot candidates.
  *
@@ -27,6 +27,8 @@
 import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-4.0';
 import type Mks from './mks-1.js';
+import type { GAsyncInitableConstructOnly, GAsyncInitableProps, GInitableConstructOnly, GInitableProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-4.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -54,10 +56,10 @@ export type MksTouchEventKindNick = 'begin' | 'update' | 'end' | 'cancel';
 // ---------------------------------------------------------------------------
 
 /** An abstraction of a virtualized QEMU device. */
-export interface MksDeviceProps {
+export interface MksDeviceProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type MksDeviceConstructOnly = never;
+export type MksDeviceConstructOnly = GObjectConstructOnly;
 
 export interface MksDisplayProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
     /** @default TRUE */
@@ -86,12 +88,12 @@ export interface MksScreenProps extends MksDeviceProps {
 export type MksScreenConstructOnly = MksDeviceConstructOnly;
 
 /** Session connected to a QEMU VM The `MksSession` represents a connection to a QEMU VM instance. */
-export interface MksSessionProps {
+export interface MksSessionProps extends GObjectProps, GAsyncInitableProps, GInitableProps {
     /** The [class@Gio.DBusConnection] that is used to communicate with QEMU. */
     connection?: Gio.DBusConnection | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type MksSessionConstructOnly = 'connection';
+export type MksSessionConstructOnly = GObjectConstructOnly | GAsyncInitableConstructOnly | GInitableConstructOnly | 'connection';
 
 /** A virtualized QEMU touch device. */
 export interface MksTouchableProps extends MksDeviceProps {
@@ -188,6 +190,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

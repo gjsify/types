@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gnomebluetooth-3.0.d.ts"]
+  "include": ["./gnomebluetooth-3.0.d.ts","./gnomebluetooth-3.0-vocabulary.d.ts"]
 }
 
 

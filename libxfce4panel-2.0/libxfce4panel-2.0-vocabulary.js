@@ -1,6 +1,6 @@
 // The widget vocabulary of Libxfce4panel-2.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Libxfce4panel-2.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: Libxfce4panel-2.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '2.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Xfce'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -36,9 +38,9 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    XfceArrowButton: ['XfceArrowButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    XfcePanelImage: ['XfcePanelImage', 'GtkWidget', 'GtkBuildable'],
-    XfcePanelPlugin: ['XfcePanelPlugin', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    XfceArrowButton: ['XfceArrowButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    XfcePanelImage: ['XfcePanelImage', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    XfcePanelPlugin: ['XfcePanelPlugin', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -49,6 +51,7 @@ export const DECLS = {
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
+    GtkArrowType: ['up', 'down', 'left', 'right', 'none'],
     XfcePanelPluginMode: ['horizontal', 'vertical', 'deskbar'],
     XfceScreenPosition: ['none', 'nw-h', 'n', 'ne-h', 'nw-v', 'w', 'sw-v', 'ne-v', 'e', 'se-v', 'sw-h', 's', 'se-h', 'floating-h', 'floating-v'],
 };
@@ -68,6 +71,11 @@ export const ENUM_NICKS = {
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
 export const ENUM_VALUES = {
+    'GtkArrowType.down': 1,
+    'GtkArrowType.left': 2,
+    'GtkArrowType.none': 4,
+    'GtkArrowType.right': 3,
+    'GtkArrowType.up': 0,
     'XfcePanelPluginMode.deskbar': 2,
     'XfcePanelPluginMode.horizontal': 0,
     'XfcePanelPluginMode.vertical': 1,

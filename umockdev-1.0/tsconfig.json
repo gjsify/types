@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./umockdev-1.0.d.ts"]
+  "include": ["./umockdev-1.0.d.ts","./umockdev-1.0-vocabulary.d.ts"]
 }
 
 

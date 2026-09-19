@@ -50,7 +50,7 @@
       ]
 }
   },
-  "include": ["./lasem-0.4.d.ts"]
+  "include": ["./lasem-0.4.d.ts","./lasem-0.4-vocabulary.d.ts"]
 }
 
 

@@ -59,7 +59,7 @@
       ]
 }
   },
-  "include": ["./folkseds-0.7.d.ts"]
+  "include": ["./folkseds-0.7.d.ts","./folkseds-0.7-vocabulary.d.ts"]
 }
 
 

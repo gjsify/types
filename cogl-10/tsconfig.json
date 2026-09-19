@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./cogl-10.d.ts"]
+  "include": ["./cogl-10.d.ts","./cogl-10-vocabulary.d.ts"]
 }
 
 

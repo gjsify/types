@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./javascriptcore-5.0.d.ts"]
+  "include": ["./javascriptcore-5.0.d.ts","./javascriptcore-5.0-vocabulary.d.ts"]
 }
 
 

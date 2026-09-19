@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./fwupd-2.0.d.ts"]
+  "include": ["./fwupd-2.0.d.ts","./fwupd-2.0-vocabulary.d.ts"]
 }
 
 

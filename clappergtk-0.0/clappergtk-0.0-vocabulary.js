@@ -1,6 +1,6 @@
 // The widget vocabulary of ClapperGtk-0.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: ClapperGtk-0.0 — library 0.10.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+// GENERATED — do not edit. Provenance: ClapperGtk-0.0 — library 0.10.0
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '0.0',
     libraryVersion: '0.10.0',
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object'],
+    droppedBases: [],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['ClapperGtk'],
+    requiredVocabularies: ['@girs/clapper-0.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -44,21 +46,21 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    ClapperGtkAudio: ['ClapperGtkAudio', 'ClapperGtkAv', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkAv: ['ClapperGtkAv', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkBillboard: ['ClapperGtkBillboard', 'ClapperGtkContainer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkContainer: ['ClapperGtkContainer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkExtraMenuButton: ['ClapperGtkExtraMenuButton', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkLeadContainer: ['ClapperGtkLeadContainer', 'ClapperGtkContainer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkNextItemButton: ['ClapperGtkNextItemButton', 'GtkButton', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkPreviousItemButton: ['ClapperGtkPreviousItemButton', 'GtkButton', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkSeekBar: ['ClapperGtkSeekBar', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkSimpleControls: ['ClapperGtkSimpleControls', 'ClapperGtkContainer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkTitleHeader: ['ClapperGtkTitleHeader', 'ClapperGtkLeadContainer', 'ClapperGtkContainer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkTitleLabel: ['ClapperGtkTitleLabel', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkToggleFullscreenButton: ['ClapperGtkToggleFullscreenButton', 'GtkButton', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkTogglePlayButton: ['ClapperGtkTogglePlayButton', 'GtkButton', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
-    ClapperGtkVideo: ['ClapperGtkVideo', 'ClapperGtkAv', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkAudio: ['ClapperGtkAudio', 'ClapperGtkAv', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkAv: ['ClapperGtkAv', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkBillboard: ['ClapperGtkBillboard', 'ClapperGtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkContainer: ['ClapperGtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkExtraMenuButton: ['ClapperGtkExtraMenuButton', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkLeadContainer: ['ClapperGtkLeadContainer', 'ClapperGtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkNextItemButton: ['ClapperGtkNextItemButton', 'GtkButton', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkPreviousItemButton: ['ClapperGtkPreviousItemButton', 'GtkButton', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkSeekBar: ['ClapperGtkSeekBar', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkSimpleControls: ['ClapperGtkSimpleControls', 'ClapperGtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkTitleHeader: ['ClapperGtkTitleHeader', 'ClapperGtkLeadContainer', 'ClapperGtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkTitleLabel: ['ClapperGtkTitleLabel', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkToggleFullscreenButton: ['ClapperGtkToggleFullscreenButton', 'GtkButton', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkTogglePlayButton: ['ClapperGtkTogglePlayButton', 'GtkButton', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
+    ClapperGtkVideo: ['ClapperGtkVideo', 'ClapperGtkAv', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

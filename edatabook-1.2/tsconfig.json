@@ -56,7 +56,7 @@
       ]
 }
   },
-  "include": ["./edatabook-1.2.d.ts"]
+  "include": ["./edatabook-1.2.d.ts","./edatabook-1.2-vocabulary.d.ts"]
 }
 
 

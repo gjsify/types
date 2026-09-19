@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-3",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for Cogl-3",
     "type": "module",
     "module": "cogl-3.js",
@@ -15,6 +15,11 @@
         "types": "./cogl-3-import.d.ts",
         "import": "./cogl-3-import.js",
         "default": "./cogl-3-import.js"
+      },
+      "./vocabulary": {
+        "types": "./cogl-3-vocabulary.d.ts",
+        "import": "./cogl-3-vocabulary.js",
+        "default": "./cogl-3-vocabulary.js"
       },
       "./cogl-3": {
         "types": "./cogl-3.d.ts",
@@ -31,10 +36,10 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gl-1.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gl-1.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

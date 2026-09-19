@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./gupnpigd-1.6.d.ts"]
+  "include": ["./gupnpigd-1.6.d.ts","./gupnpigd-1.6-vocabulary.d.ts"]
 }
 
 

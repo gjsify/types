@@ -56,7 +56,7 @@
       ]
 }
   },
-  "include": ["./rygelrenderer-2.6.d.ts"]
+  "include": ["./rygelrenderer-2.6.d.ts","./rygelrenderer-2.6-vocabulary.d.ts"]
 }
 
 

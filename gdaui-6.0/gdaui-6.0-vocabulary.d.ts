@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Gdaui-6.0.
  *
- * GENERATED — do not edit. Provenance: Gdaui-6.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Gdaui.BasicForm.paramlist Gdaui.BasicForm.xml-layout Gdaui.DataCellRendererCombo.data-set-source Gdaui.DataCellRendererCombo.values Gdaui.DataCellRendererCombo.values-display Gdaui.DataCellRendererInfo.group Gdaui.DataCellRendererTextual.value Gdaui.DataStore.model Gdaui.RawGrid.xml-layout
+ * GENERATED — do not edit. Provenance: Gdaui-6.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Gdaui.BasicForm.paramlist Gdaui.BasicForm.xml-layout Gdaui.DataCellRendererCombo.data-set-source Gdaui.DataCellRendererCombo.values Gdaui.DataCellRendererCombo.values-display Gdaui.DataCellRendererInfo.group Gdaui.DataCellRendererTextual.value Gdaui.DataStore.model Gdaui.RawGrid.xml-layout
  *
  * 34 instantiable GTypes (of which 26 concrete widgets), 37 declarations, 0 enum nick unions, 0 slot candidates.
  *
@@ -27,6 +27,7 @@
 import type GObject from '@girs/gobject-2.0';
 import type Gda from '@girs/gda-6.0';
 import type Gdaui from './gdaui-6.0.js';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkCellRendererConstructOnly, GtkCellRendererPixbufConstructOnly, GtkCellRendererPixbufProps, GtkCellRendererProps, GtkCellRendererTextConstructOnly, GtkCellRendererTextProps, GtkCellRendererToggleConstructOnly, GtkCellRendererToggleProps, GtkComboBoxConstructOnly, GtkComboBoxProps, GtkContainerConstructOnly, GtkContainerProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkToolShellConstructOnly, GtkToolShellProps, GtkToolbarConstructOnly, GtkToolbarProps, GtkTreeDragDestConstructOnly, GtkTreeDragDestProps, GtkTreeDragSourceConstructOnly, GtkTreeDragSourceProps, GtkTreeModelConstructOnly, GtkTreeModelProps, GtkTreeViewConstructOnly, GtkTreeViewProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -167,18 +168,18 @@ export interface GdauiDataProxyInfoProps extends GtkToolbarProps, GtkBuildablePr
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GdauiDataProxyInfoConstructOnly = GtkToolbarConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | GtkToolShellConstructOnly;
 
-export interface GdauiDataSelectorProps {
+export interface GdauiDataSelectorProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GdauiDataSelectorConstructOnly = never;
+export type GdauiDataSelectorConstructOnly = GObjectConstructOnly;
 
-export interface GdauiDataStoreProps extends GtkTreeModelProps {
+export interface GdauiDataStoreProps extends GObjectProps, GtkTreeModelProps {
     model?: never;
     /** @default FALSE */
     'prepend-null-entry'?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GdauiDataStoreConstructOnly = GtkTreeModelConstructOnly | 'model';
+export type GdauiDataStoreConstructOnly = GObjectConstructOnly | GtkTreeModelConstructOnly | 'model';
 
 export interface GdauiEntryProps extends GtkEntryProps, GtkBuildableProps, GtkCellEditableProps, GtkEditableProps {
     /** @default NULL */
@@ -342,17 +343,17 @@ export interface GdauiServerOperationProps extends GtkBoxProps, GtkBuildableProp
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GdauiServerOperationConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | 'server-operation';
 
-export interface GdauiSetProps {
+export interface GdauiSetProps extends GObjectProps {
     set?: Gda.Set;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GdauiSetConstructOnly = 'set';
+export type GdauiSetConstructOnly = GObjectConstructOnly | 'set';
 
-export interface GdauiTreeStoreProps extends GtkTreeDragDestProps, GtkTreeDragSourceProps, GtkTreeModelProps {
+export interface GdauiTreeStoreProps extends GObjectProps, GtkTreeDragDestProps, GtkTreeDragSourceProps, GtkTreeModelProps {
     tree?: Gda.Tree;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GdauiTreeStoreConstructOnly = GtkTreeDragDestConstructOnly | GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly | 'tree';
+export type GdauiTreeStoreConstructOnly = GObjectConstructOnly | GtkTreeDragDestConstructOnly | GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly | 'tree';
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -618,6 +619,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

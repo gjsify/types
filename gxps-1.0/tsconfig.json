@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gxps-1.0.d.ts"]
+  "include": ["./gxps-1.0.d.ts","./gxps-1.0-vocabulary.d.ts"]
 }
 
 

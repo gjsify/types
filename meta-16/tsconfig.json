@@ -74,7 +74,7 @@
       ]
 }
   },
-  "include": ["./meta-16.d.ts"]
+  "include": ["./meta-16.d.ts","./meta-16-vocabulary.d.ts"]
 }
 
 

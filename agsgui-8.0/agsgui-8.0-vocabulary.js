@@ -1,6 +1,6 @@
 // The widget vocabulary of AgsGui-8.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: AgsGui-8.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object — prop(s) no TypeScript value satisfies: AgsGui.Cartesian.plot AgsGui.Cartesian.surface AgsGui.Cartesian.translate-data AgsGui.Cartesian.x-label AgsGui.Cartesian.x-label-data AgsGui.Cartesian.x-scale-data AgsGui.Cartesian.x-step-data AgsGui.Cartesian.y-label AgsGui.Cartesian.y-label-data AgsGui.Cartesian.y-scale-data AgsGui.Cartesian.y-step-data AgsGui.FileDialog.file-widget
+// GENERATED — do not edit. Provenance: AgsGui-8.0 — prop(s) no TypeScript value satisfies: AgsGui.Cartesian.plot AgsGui.Cartesian.surface AgsGui.Cartesian.translate-data AgsGui.Cartesian.x-label AgsGui.Cartesian.x-label-data AgsGui.Cartesian.x-scale-data AgsGui.Cartesian.x-step-data AgsGui.Cartesian.y-label AgsGui.Cartesian.y-label-data AgsGui.Cartesian.y-scale-data AgsGui.Cartesian.y-step-data AgsGui.FileDialog.file-widget
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '8.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object'],
+    droppedBases: [],
     inlinedBases: [],
     unsettableProps: ['AgsGui.Cartesian.plot', 'AgsGui.Cartesian.surface', 'AgsGui.Cartesian.translate-data', 'AgsGui.Cartesian.x-label', 'AgsGui.Cartesian.x-label-data', 'AgsGui.Cartesian.x-scale-data', 'AgsGui.Cartesian.x-step-data', 'AgsGui.Cartesian.y-label', 'AgsGui.Cartesian.y-label-data', 'AgsGui.Cartesian.y-scale-data', 'AgsGui.Cartesian.y-step-data', 'AgsGui.FileDialog.file-widget'],
     unresolvedProps: [],
+    identifierPrefixes: ['Ags'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -58,29 +60,29 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    AgsCartesian: ['AgsCartesian', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    AgsDial: ['AgsDial', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleRange', 'GtkBuildable', 'GtkConstraintTarget'],
-    AgsExpander: ['AgsExpander', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsExpanderSet: ['AgsExpanderSet', 'GtkGrid', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsFileDialog: ['AgsFileDialog', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
-    AgsFileEntry: ['AgsFileEntry', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsFileWidget: ['AgsFileWidget', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsIconLink: ['AgsIconLink', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsIndicator: ['AgsIndicator', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleRange', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsInputDialog: ['AgsInputDialog', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
-    AgsLed: ['AgsLed', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    AgsLedArray: ['AgsLedArray', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsLevel: ['AgsLevel', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsLevelBox: ['AgsLevelBox', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsNotebook: ['AgsNotebook', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsPiano: ['AgsPiano', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsRuler: ['AgsRuler', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsScale: ['AgsScale', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsScaleBox: ['AgsScaleBox', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsScrolledLevelBox: ['AgsScrolledLevelBox', 'GtkGrid', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsScrolledPiano: ['AgsScrolledPiano', 'GtkGrid', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsScrolledScaleBox: ['AgsScrolledScaleBox', 'GtkGrid', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsTempo: ['AgsTempo', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsCartesian: ['AgsCartesian', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    AgsDial: ['AgsDial', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkAccessibleRange', 'GtkBuildable', 'GtkConstraintTarget'],
+    AgsExpander: ['AgsExpander', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsExpanderSet: ['AgsExpanderSet', 'GtkGrid', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsFileDialog: ['AgsFileDialog', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    AgsFileEntry: ['AgsFileEntry', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsFileWidget: ['AgsFileWidget', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsIconLink: ['AgsIconLink', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsIndicator: ['AgsIndicator', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkAccessibleRange', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsInputDialog: ['AgsInputDialog', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    AgsLed: ['AgsLed', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    AgsLedArray: ['AgsLedArray', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsLevel: ['AgsLevel', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsLevelBox: ['AgsLevelBox', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsNotebook: ['AgsNotebook', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsPiano: ['AgsPiano', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsRuler: ['AgsRuler', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsScale: ['AgsScale', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsScaleBox: ['AgsScaleBox', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsScrolledLevelBox: ['AgsScrolledLevelBox', 'GtkGrid', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsScrolledPiano: ['AgsScrolledPiano', 'GtkGrid', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsScrolledScaleBox: ['AgsScrolledScaleBox', 'GtkGrid', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsTempo: ['AgsTempo', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

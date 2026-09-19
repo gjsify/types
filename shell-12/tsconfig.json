@@ -110,7 +110,7 @@
       ]
 }
   },
-  "include": ["./shell-12.d.ts"]
+  "include": ["./shell-12.d.ts","./shell-12-vocabulary.d.ts"]
 }
 
 

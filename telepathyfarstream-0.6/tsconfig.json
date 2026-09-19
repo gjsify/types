@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./telepathyfarstream-0.6.d.ts"]
+  "include": ["./telepathyfarstream-0.6.d.ts","./telepathyfarstream-0.6-vocabulary.d.ts"]
 }
 
 

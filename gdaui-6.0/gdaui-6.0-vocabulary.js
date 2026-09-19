@@ -1,6 +1,6 @@
 // The widget vocabulary of Gdaui-6.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Gdaui-6.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Gdaui.BasicForm.paramlist Gdaui.BasicForm.xml-layout Gdaui.DataCellRendererCombo.data-set-source Gdaui.DataCellRendererCombo.values Gdaui.DataCellRendererCombo.values-display Gdaui.DataCellRendererInfo.group Gdaui.DataCellRendererTextual.value Gdaui.DataStore.model Gdaui.RawGrid.xml-layout
+// GENERATED — do not edit. Provenance: Gdaui-6.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Gdaui.BasicForm.paramlist Gdaui.BasicForm.xml-layout Gdaui.DataCellRendererCombo.data-set-source Gdaui.DataCellRendererCombo.values Gdaui.DataCellRendererCombo.values-display Gdaui.DataCellRendererInfo.group Gdaui.DataCellRendererTextual.value Gdaui.DataStore.model Gdaui.RawGrid.xml-layout
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '6.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: ['Gdaui.BasicForm.paramlist', 'Gdaui.BasicForm.xml-layout', 'Gdaui.DataCellRendererCombo.data-set-source', 'Gdaui.DataCellRendererCombo.values', 'Gdaui.DataCellRendererCombo.values-display', 'Gdaui.DataCellRendererInfo.group', 'Gdaui.DataCellRendererTextual.value', 'Gdaui.DataStore.model', 'Gdaui.RawGrid.xml-layout'],
     unresolvedProps: [],
+    identifierPrefixes: ['Gdaui'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -73,40 +75,40 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GdauiBasicForm: ['GdauiBasicForm', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    GdauiCloud: ['GdauiCloud', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataSelector', 'GtkBuildable', 'GtkOrientable'],
-    GdauiCombo: ['GdauiCombo', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GdauiDataSelector', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
-    GdauiDataCellRendererBin: ['GdauiDataCellRendererBin', 'GtkCellRendererPixbuf', 'GtkCellRenderer'],
-    GdauiDataCellRendererBoolean: ['GdauiDataCellRendererBoolean', 'GtkCellRendererToggle', 'GtkCellRenderer'],
-    GdauiDataCellRendererCombo: ['GdauiDataCellRendererCombo', 'GtkCellRendererText', 'GtkCellRenderer'],
-    GdauiDataCellRendererInfo: ['GdauiDataCellRendererInfo', 'GtkCellRenderer'],
-    GdauiDataCellRendererTextual: ['GdauiDataCellRendererTextual', 'GtkCellRendererText', 'GtkCellRenderer'],
-    GdauiDataFilter: ['GdauiDataFilter', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    GdauiDataProxyInfo: ['GdauiDataProxyInfo', 'GtkToolbar', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'GtkToolShell'],
-    GdauiDataStore: ['GdauiDataStore', 'GtkTreeModel'],
-    GdauiEntry: ['GdauiEntry', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
-    GdauiEntryBin: ['GdauiEntryBin', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataEntry', 'GtkBuildable', 'GtkOrientable'],
-    GdauiEntryBoolean: ['GdauiEntryBoolean', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataEntry', 'GtkBuildable', 'GtkOrientable'],
-    GdauiEntryCombo: ['GdauiEntryCombo', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataEntry', 'GtkBuildable', 'GtkOrientable'],
-    GdauiEntryCommonTime: ['GdauiEntryCommonTime', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
-    GdauiEntryDate: ['GdauiEntryDate', 'GdauiEntryCommonTime', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
-    GdauiEntryNone: ['GdauiEntryNone', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataEntry', 'GtkBuildable', 'GtkOrientable'],
-    GdauiEntryNumber: ['GdauiEntryNumber', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
-    GdauiEntryString: ['GdauiEntryString', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
-    GdauiEntryTime: ['GdauiEntryTime', 'GdauiEntryCommonTime', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
-    GdauiEntryTimestamp: ['GdauiEntryTimestamp', 'GdauiEntryCommonTime', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
-    GdauiForm: ['GdauiForm', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataProxy', 'GdauiDataSelector', 'GtkBuildable', 'GtkOrientable'],
-    GdauiFormattedEntry: ['GdauiFormattedEntry', 'GdauiEntry', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
-    GdauiGrid: ['GdauiGrid', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataProxy', 'GdauiDataSelector', 'GtkBuildable', 'GtkOrientable'],
-    GdauiLogin: ['GdauiLogin', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    GdauiNumericEntry: ['GdauiNumericEntry', 'GdauiEntry', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
-    GdauiProviderSelector: ['GdauiProviderSelector', 'GdauiCombo', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GdauiDataSelector', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
-    GdauiRawForm: ['GdauiRawForm', 'GdauiBasicForm', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GdauiDataProxy', 'GdauiDataSelector', 'GtkBuildable', 'GtkOrientable'],
-    GdauiRawGrid: ['GdauiRawGrid', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GdauiDataProxy', 'GdauiDataSelector', 'GtkBuildable', 'GtkScrollable'],
-    GdauiRtEditor: ['GdauiRtEditor', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    GdauiServerOperation: ['GdauiServerOperation', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    GdauiSet: ['GdauiSet'],
-    GdauiTreeStore: ['GdauiTreeStore', 'GtkTreeDragDest', 'GtkTreeDragSource', 'GtkTreeModel'],
+    GdauiBasicForm: ['GdauiBasicForm', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    GdauiCloud: ['GdauiCloud', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataSelector', 'GtkBuildable', 'GtkOrientable'],
+    GdauiCombo: ['GdauiCombo', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataSelector', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
+    GdauiDataCellRendererBin: ['GdauiDataCellRendererBin', 'GtkCellRendererPixbuf', 'GtkCellRenderer', 'GInitiallyUnowned', 'GObject'],
+    GdauiDataCellRendererBoolean: ['GdauiDataCellRendererBoolean', 'GtkCellRendererToggle', 'GtkCellRenderer', 'GInitiallyUnowned', 'GObject'],
+    GdauiDataCellRendererCombo: ['GdauiDataCellRendererCombo', 'GtkCellRendererText', 'GtkCellRenderer', 'GInitiallyUnowned', 'GObject'],
+    GdauiDataCellRendererInfo: ['GdauiDataCellRendererInfo', 'GtkCellRenderer', 'GInitiallyUnowned', 'GObject'],
+    GdauiDataCellRendererTextual: ['GdauiDataCellRendererTextual', 'GtkCellRendererText', 'GtkCellRenderer', 'GInitiallyUnowned', 'GObject'],
+    GdauiDataFilter: ['GdauiDataFilter', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    GdauiDataProxyInfo: ['GdauiDataProxyInfo', 'GtkToolbar', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'GtkToolShell'],
+    GdauiDataStore: ['GdauiDataStore', 'GObject', 'GtkTreeModel'],
+    GdauiEntry: ['GdauiEntry', 'GtkEntry', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
+    GdauiEntryBin: ['GdauiEntryBin', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataEntry', 'GtkBuildable', 'GtkOrientable'],
+    GdauiEntryBoolean: ['GdauiEntryBoolean', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataEntry', 'GtkBuildable', 'GtkOrientable'],
+    GdauiEntryCombo: ['GdauiEntryCombo', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataEntry', 'GtkBuildable', 'GtkOrientable'],
+    GdauiEntryCommonTime: ['GdauiEntryCommonTime', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
+    GdauiEntryDate: ['GdauiEntryDate', 'GdauiEntryCommonTime', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
+    GdauiEntryNone: ['GdauiEntryNone', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataEntry', 'GtkBuildable', 'GtkOrientable'],
+    GdauiEntryNumber: ['GdauiEntryNumber', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
+    GdauiEntryString: ['GdauiEntryString', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
+    GdauiEntryTime: ['GdauiEntryTime', 'GdauiEntryCommonTime', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
+    GdauiEntryTimestamp: ['GdauiEntryTimestamp', 'GdauiEntryCommonTime', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataEntry', 'GtkBuildable', 'GtkCellEditable', 'GtkOrientable'],
+    GdauiForm: ['GdauiForm', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataProxy', 'GdauiDataSelector', 'GtkBuildable', 'GtkOrientable'],
+    GdauiFormattedEntry: ['GdauiFormattedEntry', 'GdauiEntry', 'GtkEntry', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
+    GdauiGrid: ['GdauiGrid', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataProxy', 'GdauiDataSelector', 'GtkBuildable', 'GtkOrientable'],
+    GdauiLogin: ['GdauiLogin', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    GdauiNumericEntry: ['GdauiNumericEntry', 'GdauiEntry', 'GtkEntry', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
+    GdauiProviderSelector: ['GdauiProviderSelector', 'GdauiCombo', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataSelector', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
+    GdauiRawForm: ['GdauiRawForm', 'GdauiBasicForm', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataProxy', 'GdauiDataSelector', 'GtkBuildable', 'GtkOrientable'],
+    GdauiRawGrid: ['GdauiRawGrid', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GdauiDataProxy', 'GdauiDataSelector', 'GtkBuildable', 'GtkScrollable'],
+    GdauiRtEditor: ['GdauiRtEditor', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    GdauiServerOperation: ['GdauiServerOperation', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    GdauiSet: ['GdauiSet', 'GObject'],
+    GdauiTreeStore: ['GdauiTreeStore', 'GObject', 'GtkTreeDragDest', 'GtkTreeDragSource', 'GtkTreeModel'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

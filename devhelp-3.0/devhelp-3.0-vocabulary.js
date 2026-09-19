@@ -1,6 +1,6 @@
 // The widget vocabulary of Devhelp-3.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Devhelp-3.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: Devhelp-3.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '3.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Dh'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/webkit2-4.1/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -47,25 +49,25 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    DhAssistantView: ['DhAssistantView', 'WebKitWebView', 'WebKitWebViewBase', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    DhBook: ['DhBook'],
-    DhBookList: ['DhBookList'],
-    DhBookListBuilder: ['DhBookListBuilder'],
-    DhBookListDirectory: ['DhBookListDirectory', 'DhBookList'],
-    DhBookManager: ['DhBookManager'],
-    DhBookTree: ['DhBookTree', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
-    DhCompletion: ['DhCompletion'],
-    DhKeywordModel: ['DhKeywordModel', 'GtkTreeModel'],
-    DhNotebook: ['DhNotebook', 'GtkNotebook', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    DhProfile: ['DhProfile'],
-    DhProfileBuilder: ['DhProfileBuilder'],
-    DhSearchBar: ['DhSearchBar', 'GtkSearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    DhSettings: ['DhSettings'],
-    DhSettingsBuilder: ['DhSettingsBuilder'],
-    DhSidebar: ['DhSidebar', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    DhTab: ['DhTab', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    DhTabLabel: ['DhTabLabel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    DhWebView: ['DhWebView', 'WebKitWebView', 'WebKitWebViewBase', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    DhAssistantView: ['DhAssistantView', 'WebKitWebView', 'WebKitWebViewBase', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    DhBook: ['DhBook', 'GObject'],
+    DhBookList: ['DhBookList', 'GObject'],
+    DhBookListBuilder: ['DhBookListBuilder', 'GObject'],
+    DhBookListDirectory: ['DhBookListDirectory', 'DhBookList', 'GObject'],
+    DhBookManager: ['DhBookManager', 'GObject'],
+    DhBookTree: ['DhBookTree', 'GtkTreeView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
+    DhCompletion: ['DhCompletion', 'GObject'],
+    DhKeywordModel: ['DhKeywordModel', 'GObject', 'GtkTreeModel'],
+    DhNotebook: ['DhNotebook', 'GtkNotebook', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    DhProfile: ['DhProfile', 'GObject'],
+    DhProfileBuilder: ['DhProfileBuilder', 'GObject'],
+    DhSearchBar: ['DhSearchBar', 'GtkSearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    DhSettings: ['DhSettings', 'GObject'],
+    DhSettingsBuilder: ['DhSettingsBuilder', 'GObject'],
+    DhSidebar: ['DhSidebar', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    DhTab: ['DhTab', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    DhTabLabel: ['DhTabLabel', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    DhWebView: ['DhWebView', 'WebKitWebView', 'WebKitWebViewBase', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

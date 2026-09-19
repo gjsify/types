@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gnomebg-4.0.d.ts"]
+  "include": ["./gnomebg-4.0.d.ts","./gnomebg-4.0-vocabulary.d.ts"]
 }
 
 

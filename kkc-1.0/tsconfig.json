@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./kkc-1.0.d.ts"]
+  "include": ["./kkc-1.0.d.ts","./kkc-1.0-vocabulary.d.ts"]
 }
 
 

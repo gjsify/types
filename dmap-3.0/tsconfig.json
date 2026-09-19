@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./dmap-3.0.d.ts"]
+  "include": ["./dmap-3.0.d.ts","./dmap-3.0-vocabulary.d.ts"]
 }
 
 

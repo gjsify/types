@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstmse-1.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for GstMse-1.0",
     "type": "module",
     "module": "gstmse-1.0.js",
@@ -15,6 +15,11 @@
         "types": "./gstmse-1.0-import.d.ts",
         "import": "./gstmse-1.0-import.js",
         "default": "./gstmse-1.0-import.js"
+      },
+      "./vocabulary": {
+        "types": "./gstmse-1.0-vocabulary.d.ts",
+        "import": "./gstmse-1.0-vocabulary.js",
+        "default": "./gstmse-1.0-vocabulary.js"
       },
       "./gstmse-1.0": {
         "types": "./gstmse-1.0.d.ts",
@@ -31,11 +36,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gst-1.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gst-1.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

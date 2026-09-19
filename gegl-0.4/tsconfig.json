@@ -32,7 +32,7 @@
       ]
 }
   },
-  "include": ["./gegl-0.4.d.ts"]
+  "include": ["./gegl-0.4.d.ts","./gegl-0.4-vocabulary.d.ts"]
 }
 
 

@@ -1,6 +1,6 @@
 {
     "name": "@girs/clapper-0.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "libraryVersion": "0.10.0",
     "description": "GJS TypeScript type definitions for Clapper-0.0, generated from library version 0.10.0",
     "type": "module",
@@ -17,6 +17,11 @@
         "import": "./clapper-0.0-import.js",
         "default": "./clapper-0.0-import.js"
       },
+      "./vocabulary": {
+        "types": "./clapper-0.0-vocabulary.d.ts",
+        "import": "./clapper-0.0-vocabulary.js",
+        "default": "./clapper-0.0-vocabulary.js"
+      },
       "./clapper-0.0": {
         "types": "./clapper-0.0.d.ts",
         "import": "./clapper-0.0.js",
@@ -32,17 +37,17 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gsttag-1.0": "^5.2.0",
-      "@girs/gstbase-1.0": "^5.2.0",
-      "@girs/gst-1.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0",
-      "@girs/gstpbutils-1.0": "^5.2.0",
-      "@girs/gstvideo-1.0": "^5.2.0",
-      "@girs/gstaudio-1.0": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gsttag-1.0": "^5.3.0",
+      "@girs/gstbase-1.0": "^5.3.0",
+      "@girs/gst-1.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0",
+      "@girs/gstpbutils-1.0": "^5.3.0",
+      "@girs/gstvideo-1.0": "^5.3.0",
+      "@girs/gstaudio-1.0": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

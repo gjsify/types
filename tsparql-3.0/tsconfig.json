@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./tsparql-3.0.d.ts"]
+  "include": ["./tsparql-3.0.d.ts","./tsparql-3.0-vocabulary.d.ts"]
 }
 
 

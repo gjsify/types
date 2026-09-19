@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Workbench-0.
  *
- * GENERATED — do not edit. Provenance: Workbench-0 — dropped empty base(s): GObject.Object Gio.ListModel GObject.InitiallyUnowned
+ * GENERATED — do not edit. Provenance: Workbench-0
  *
  * 3 instantiable GTypes (of which 1 concrete widgets), 3 declarations, 1 enum nick unions, 1 slot candidates.
  *
@@ -27,6 +27,8 @@
 import type Gio from '@girs/gio-2.0';
 import type GtkSource from '@girs/gtksource-5';
 import type Workbench from './workbench-0.js';
+import type { GListModelConstructOnly, GListModelProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkNativeConstructOnly, GtkNativeProps, GtkRootConstructOnly, GtkRootProps, GtkShortcutManagerConstructOnly, GtkShortcutManagerProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-4.0/vocabulary';
 import type { GtkSourceCompletionProviderConstructOnly, GtkSourceCompletionProviderProps } from '@girs/gtksource-5/vocabulary';
 
@@ -53,13 +55,13 @@ export type WorkbenchRequestStateNick = 'unknown' | 'cancelled' | 'complete';
 // ---------------------------------------------------------------------------
 
 /** A base class for completion providers in Workbench. */
-export interface WorkbenchCompletionProviderProps extends GtkSourceCompletionProviderProps {
+export interface WorkbenchCompletionProviderProps extends GObjectProps, GtkSourceCompletionProviderProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WorkbenchCompletionProviderConstructOnly = GtkSourceCompletionProviderConstructOnly;
+export type WorkbenchCompletionProviderConstructOnly = GObjectConstructOnly | GtkSourceCompletionProviderConstructOnly;
 
 /** A helper object for [iface@GtkSource.CompletionProvider]. */
-export interface WorkbenchCompletionRequestProps {
+export interface WorkbenchCompletionRequestProps extends GObjectProps, GListModelProps {
     cancellable?: Gio.Cancellable | null;
     /** The [class@GtkSource.CompletionContext] of the request. */
     context?: GtkSource.CompletionContext | null;
@@ -67,7 +69,7 @@ export interface WorkbenchCompletionRequestProps {
     provider?: GtkSource.CompletionProvider | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type WorkbenchCompletionRequestConstructOnly = 'cancellable' | 'context' | 'provider';
+export type WorkbenchCompletionRequestConstructOnly = GObjectConstructOnly | GListModelConstructOnly | 'cancellable' | 'context' | 'provider';
 
 export interface WorkbenchPreviewWindowProps extends GtkWindowProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
 }
@@ -165,6 +167,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

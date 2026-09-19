@@ -77,7 +77,7 @@
       ]
 }
   },
-  "include": ["./mx-1.0.d.ts"]
+  "include": ["./mx-1.0.d.ts","./mx-1.0-vocabulary.d.ts"]
 }
 
 

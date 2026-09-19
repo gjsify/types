@@ -86,7 +86,7 @@
       ]
 }
   },
-  "include": ["./st-15.d.ts"]
+  "include": ["./st-15.d.ts","./st-15-vocabulary.d.ts"]
 }
 
 

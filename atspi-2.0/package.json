@@ -1,6 +1,6 @@
 {
     "name": "@girs/atspi-2.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for Atspi-2.0",
     "type": "module",
     "module": "atspi-2.0.js",
@@ -15,6 +15,11 @@
         "types": "./atspi-2.0-import.d.ts",
         "import": "./atspi-2.0-import.js",
         "default": "./atspi-2.0-import.js"
+      },
+      "./vocabulary": {
+        "types": "./atspi-2.0-vocabulary.d.ts",
+        "import": "./atspi-2.0-vocabulary.js",
+        "default": "./atspi-2.0-vocabulary.js"
       },
       "./atspi-2.0": {
         "types": "./atspi-2.0.d.ts",
@@ -31,10 +36,10 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/dbus-1.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/dbus-1.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

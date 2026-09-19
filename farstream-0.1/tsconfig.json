@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./farstream-0.1.d.ts"]
+  "include": ["./farstream-0.1.d.ts","./farstream-0.1-vocabulary.d.ts"]
 }
 
 

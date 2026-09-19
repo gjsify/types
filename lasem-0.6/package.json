@@ -1,6 +1,6 @@
 {
     "name": "@girs/lasem-0.6",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for Lasem-0.6",
     "type": "module",
     "module": "lasem-0.6.js",
@@ -15,6 +15,11 @@
         "types": "./lasem-0.6-import.d.ts",
         "import": "./lasem-0.6-import.js",
         "default": "./lasem-0.6-import.js"
+      },
+      "./vocabulary": {
+        "types": "./lasem-0.6-vocabulary.d.ts",
+        "import": "./lasem-0.6-vocabulary.js",
+        "default": "./lasem-0.6-vocabulary.js"
       },
       "./lasem-0.6": {
         "types": "./lasem-0.6.d.ts",
@@ -31,13 +36,13 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/cairo-1.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0",
-      "@girs/gdkpixbuf-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/cairo-1.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0",
+      "@girs/gdkpixbuf-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

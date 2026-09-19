@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./bump-0.1.d.ts"]
+  "include": ["./bump-0.1.d.ts","./bump-0.1-vocabulary.d.ts"]
 }
 
 

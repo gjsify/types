@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gplugin-1.0.d.ts"]
+  "include": ["./gplugin-1.0.d.ts","./gplugin-1.0-vocabulary.d.ts"]
 }
 
 

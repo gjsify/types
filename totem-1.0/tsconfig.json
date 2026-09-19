@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./totem-1.0.d.ts"]
+  "include": ["./totem-1.0.d.ts","./totem-1.0-vocabulary.d.ts"]
 }
 
 

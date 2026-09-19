@@ -1,6 +1,6 @@
 // The widget vocabulary of Gtd-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Gtd-1.0 — dropped empty base(s): GObject.Object Gio.ListModel GObject.InitiallyUnowned Gio.ActionGroup Gio.ActionMap
+// GENERATED — do not edit. Provenance: Gtd-1.0
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gio.ListModel', 'GObject.InitiallyUnowned', 'Gio.ActionGroup', 'Gio.ActionMap'],
+    droppedBases: [],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Gtd'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -47,23 +49,23 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GtdBinLayout: ['GtdBinLayout', 'GtkLayoutManager'],
-    GtdClock: ['GtdClock', 'GtdObject'],
-    GtdListModelFilter: ['GtdListModelFilter'],
-    GtdListStore: ['GtdListStore'],
-    GtdManager: ['GtdManager', 'GtdObject'],
-    GtdMaxSizeLayout: ['GtdMaxSizeLayout', 'GtkLayoutManager'],
-    GtdMenuButton: ['GtdMenuButton', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GtdNotification: ['GtdNotification', 'GtdObject'],
-    GtdObject: ['GtdObject'],
-    GtdOmniArea: ['GtdOmniArea', 'GtdWidget', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GtdProviderPopover: ['GtdProviderPopover', 'GtkPopover', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkShortcutManager'],
-    GtdStarWidget: ['GtdStarWidget', 'GtdWidget', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GtdTask: ['GtdTask', 'GtdObject'],
-    GtdTaskList: ['GtdTaskList', 'GtdObject'],
-    GtdTaskListView: ['GtdTaskListView', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    GtdWidget: ['GtdWidget', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GtdWindow: ['GtdWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
+    GtdBinLayout: ['GtdBinLayout', 'GtkLayoutManager', 'GObject'],
+    GtdClock: ['GtdClock', 'GtdObject', 'GObject'],
+    GtdListModelFilter: ['GtdListModelFilter', 'GObject', 'GListModel'],
+    GtdListStore: ['GtdListStore', 'GObject', 'GListModel'],
+    GtdManager: ['GtdManager', 'GtdObject', 'GObject'],
+    GtdMaxSizeLayout: ['GtdMaxSizeLayout', 'GtkLayoutManager', 'GObject'],
+    GtdMenuButton: ['GtdMenuButton', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GtdNotification: ['GtdNotification', 'GtdObject', 'GObject'],
+    GtdObject: ['GtdObject', 'GObject'],
+    GtdOmniArea: ['GtdOmniArea', 'GtdWidget', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GtdProviderPopover: ['GtdProviderPopover', 'GtkPopover', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkShortcutManager'],
+    GtdStarWidget: ['GtdStarWidget', 'GtdWidget', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GtdTask: ['GtdTask', 'GtdObject', 'GObject'],
+    GtdTaskList: ['GtdTaskList', 'GtdObject', 'GObject', 'GListModel'],
+    GtdTaskListView: ['GtdTaskListView', 'GtkBox', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    GtdWidget: ['GtdWidget', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GtdWindow: ['GtdWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GActionGroup', 'GActionMap', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -73,7 +75,9 @@ export const DECLS = {
 // count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
-export const ENUM_NICKS = {};
+export const ENUM_NICKS = {
+    GtkArrowType: ['up', 'down', 'left', 'right', 'none'],
+};
 
 // The number behind each of those nicks, read from GIR's own `value` attribute.
 //
@@ -89,7 +93,13 @@ export const ENUM_NICKS = {};
 // from an INSTALLED library instead gets two provenances for one table, and a member the
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
-export const ENUM_VALUES = {};
+export const ENUM_VALUES = {
+    'GtkArrowType.down': 1,
+    'GtkArrowType.left': 2,
+    'GtkArrowType.none': 4,
+    'GtkArrowType.right': 3,
+    'GtkArrowType.up': 0,
+};
 
 // The nicks GIR marks `deprecated="1"`.
 //

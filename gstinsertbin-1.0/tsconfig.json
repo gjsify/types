@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gstinsertbin-1.0.d.ts"]
+  "include": ["./gstinsertbin-1.0.d.ts","./gstinsertbin-1.0-vocabulary.d.ts"]
 }
 
 

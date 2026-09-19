@@ -1,6 +1,6 @@
 {
     "name": "@girs/parquet-23.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "libraryVersion": "23.0.1",
     "description": "GJS TypeScript type definitions for Parquet-23.0, generated from library version 23.0.1",
     "type": "module",
@@ -17,6 +17,11 @@
         "import": "./parquet-23.0-import.js",
         "default": "./parquet-23.0-import.js"
       },
+      "./vocabulary": {
+        "types": "./parquet-23.0-vocabulary.d.ts",
+        "import": "./parquet-23.0-vocabulary.js",
+        "default": "./parquet-23.0-vocabulary.js"
+      },
       "./parquet-23.0": {
         "types": "./parquet-23.0.d.ts",
         "import": "./parquet-23.0.js",
@@ -32,12 +37,12 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/arrow-23.0": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/arrow-23.0": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

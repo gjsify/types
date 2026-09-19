@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gstbase-0.10.d.ts"]
+  "include": ["./gstbase-0.10.d.ts","./gstbase-0.10-vocabulary.d.ts"]
 }
 
 

@@ -1,6 +1,6 @@
 {
     "name": "@girs/foundry-1",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for Foundry-1",
     "type": "module",
     "module": "foundry-1.js",
@@ -15,6 +15,11 @@
         "types": "./foundry-1-import.d.ts",
         "import": "./foundry-1-import.js",
         "default": "./foundry-1-import.js"
+      },
+      "./vocabulary": {
+        "types": "./foundry-1-vocabulary.d.ts",
+        "import": "./foundry-1-vocabulary.js",
+        "default": "./foundry-1-vocabulary.js"
       },
       "./foundry-1": {
         "types": "./foundry-1.d.ts",
@@ -31,15 +36,15 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/peas-2": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0",
-      "@girs/json-1.0": "^5.2.0",
-      "@girs/dex-1": "^5.2.0",
-      "@girs/giounix-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/peas-2": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0",
+      "@girs/json-1.0": "^5.3.0",
+      "@girs/dex-1": "^5.3.0",
+      "@girs/giounix-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

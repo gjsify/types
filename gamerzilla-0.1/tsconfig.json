@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./gamerzilla-0.1.d.ts"]
+  "include": ["./gamerzilla-0.1.d.ts","./gamerzilla-0.1-vocabulary.d.ts"]
 }
 
 

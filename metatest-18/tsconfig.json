@@ -77,7 +77,7 @@
       ]
 }
   },
-  "include": ["./metatest-18.d.ts"]
+  "include": ["./metatest-18.d.ts","./metatest-18-vocabulary.d.ts"]
 }
 
 

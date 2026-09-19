@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gsound-1.0.d.ts"]
+  "include": ["./gsound-1.0.d.ts","./gsound-1.0-vocabulary.d.ts"]
 }
 
 

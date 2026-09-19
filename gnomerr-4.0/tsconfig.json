@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gnomerr-4.0.d.ts"]
+  "include": ["./gnomerr-4.0.d.ts","./gnomerr-4.0-vocabulary.d.ts"]
 }
 
 

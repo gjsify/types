@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./gssdp-1.0.d.ts"]
+  "include": ["./gssdp-1.0.d.ts","./gssdp-1.0-vocabulary.d.ts"]
 }
 
 

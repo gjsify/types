@@ -1,6 +1,6 @@
 // The widget vocabulary of GtkSource-4 as runtime data.
 //
-// GENERATED — do not edit. Provenance: GtkSource-4 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: GtkSource-4 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '4',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['GtkSource'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/pango-1.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -65,35 +67,35 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GtkSourceBuffer: ['GtkSourceBuffer', 'GtkTextBuffer'],
-    GtkSourceCompletion: ['GtkSourceCompletion', 'GtkBuildable'],
-    GtkSourceCompletionContext: ['GtkSourceCompletionContext'],
-    GtkSourceCompletionInfo: ['GtkSourceCompletionInfo', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    GtkSourceCompletionItem: ['GtkSourceCompletionItem', 'GtkSourceCompletionProposal'],
-    GtkSourceCompletionWords: ['GtkSourceCompletionWords', 'GtkSourceCompletionProvider'],
-    GtkSourceFile: ['GtkSourceFile'],
-    GtkSourceFileLoader: ['GtkSourceFileLoader'],
-    GtkSourceFileSaver: ['GtkSourceFileSaver'],
-    GtkSourceGutter: ['GtkSourceGutter'],
-    GtkSourceGutterRendererPixbuf: ['GtkSourceGutterRendererPixbuf', 'GtkSourceGutterRenderer'],
-    GtkSourceGutterRendererText: ['GtkSourceGutterRendererText', 'GtkSourceGutterRenderer'],
-    GtkSourceLanguage: ['GtkSourceLanguage'],
-    GtkSourceLanguageManager: ['GtkSourceLanguageManager'],
-    GtkSourceMap: ['GtkSourceMap', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
-    GtkSourceMark: ['GtkSourceMark', 'GtkTextMark'],
-    GtkSourceMarkAttributes: ['GtkSourceMarkAttributes'],
-    GtkSourcePrintCompositor: ['GtkSourcePrintCompositor'],
-    GtkSourceRegion: ['GtkSourceRegion'],
-    GtkSourceSearchContext: ['GtkSourceSearchContext'],
-    GtkSourceSearchSettings: ['GtkSourceSearchSettings'],
-    GtkSourceSpaceDrawer: ['GtkSourceSpaceDrawer'],
-    GtkSourceStyle: ['GtkSourceStyle'],
-    GtkSourceStyleScheme: ['GtkSourceStyleScheme'],
-    GtkSourceStyleSchemeChooserButton: ['GtkSourceStyleSchemeChooserButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable', 'GtkSourceStyleSchemeChooser'],
-    GtkSourceStyleSchemeChooserWidget: ['GtkSourceStyleSchemeChooserWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkSourceStyleSchemeChooser'],
-    GtkSourceStyleSchemeManager: ['GtkSourceStyleSchemeManager'],
-    GtkSourceTag: ['GtkSourceTag', 'GtkTextTag'],
-    GtkSourceView: ['GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
+    GtkSourceBuffer: ['GtkSourceBuffer', 'GtkTextBuffer', 'GObject'],
+    GtkSourceCompletion: ['GtkSourceCompletion', 'GObject', 'GtkBuildable'],
+    GtkSourceCompletionContext: ['GtkSourceCompletionContext', 'GInitiallyUnowned', 'GObject'],
+    GtkSourceCompletionInfo: ['GtkSourceCompletionInfo', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    GtkSourceCompletionItem: ['GtkSourceCompletionItem', 'GObject', 'GtkSourceCompletionProposal'],
+    GtkSourceCompletionWords: ['GtkSourceCompletionWords', 'GObject', 'GtkSourceCompletionProvider'],
+    GtkSourceFile: ['GtkSourceFile', 'GObject'],
+    GtkSourceFileLoader: ['GtkSourceFileLoader', 'GObject'],
+    GtkSourceFileSaver: ['GtkSourceFileSaver', 'GObject'],
+    GtkSourceGutter: ['GtkSourceGutter', 'GObject'],
+    GtkSourceGutterRendererPixbuf: ['GtkSourceGutterRendererPixbuf', 'GtkSourceGutterRenderer', 'GInitiallyUnowned', 'GObject'],
+    GtkSourceGutterRendererText: ['GtkSourceGutterRendererText', 'GtkSourceGutterRenderer', 'GInitiallyUnowned', 'GObject'],
+    GtkSourceLanguage: ['GtkSourceLanguage', 'GObject'],
+    GtkSourceLanguageManager: ['GtkSourceLanguageManager', 'GObject'],
+    GtkSourceMap: ['GtkSourceMap', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
+    GtkSourceMark: ['GtkSourceMark', 'GtkTextMark', 'GObject'],
+    GtkSourceMarkAttributes: ['GtkSourceMarkAttributes', 'GObject'],
+    GtkSourcePrintCompositor: ['GtkSourcePrintCompositor', 'GObject'],
+    GtkSourceRegion: ['GtkSourceRegion', 'GObject'],
+    GtkSourceSearchContext: ['GtkSourceSearchContext', 'GObject'],
+    GtkSourceSearchSettings: ['GtkSourceSearchSettings', 'GObject'],
+    GtkSourceSpaceDrawer: ['GtkSourceSpaceDrawer', 'GObject'],
+    GtkSourceStyle: ['GtkSourceStyle', 'GObject'],
+    GtkSourceStyleScheme: ['GtkSourceStyleScheme', 'GObject'],
+    GtkSourceStyleSchemeChooserButton: ['GtkSourceStyleSchemeChooserButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable', 'GtkSourceStyleSchemeChooser'],
+    GtkSourceStyleSchemeChooserWidget: ['GtkSourceStyleSchemeChooserWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkSourceStyleSchemeChooser'],
+    GtkSourceStyleSchemeManager: ['GtkSourceStyleSchemeManager', 'GObject'],
+    GtkSourceTag: ['GtkSourceTag', 'GtkTextTag', 'GObject'],
+    GtkSourceView: ['GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -112,6 +114,8 @@ export const ENUM_NICKS = {
     GtkSourceNewlineType: ['lf', 'cr', 'cr-lf'],
     GtkSourceSmartHomeEndType: ['disabled', 'before', 'after', 'always'],
     GtkSourceViewGutterPosition: ['lines', 'marks'],
+    GtkTextWindowType: ['private', 'widget', 'text', 'left', 'right', 'top', 'bottom'],
+    GtkWrapMode: ['none', 'char', 'word', 'word-char'],
     PangoUnderline: ['none', 'single', 'double', 'low', 'error', 'single-line', 'double-line', 'error-line'],
 };
 
@@ -154,6 +158,17 @@ export const ENUM_VALUES = {
     'GtkSourceSmartHomeEndType.disabled': 0,
     'GtkSourceViewGutterPosition.lines': -30,
     'GtkSourceViewGutterPosition.marks': -20,
+    'GtkTextWindowType.bottom': 6,
+    'GtkTextWindowType.left': 3,
+    'GtkTextWindowType.private': 0,
+    'GtkTextWindowType.right': 4,
+    'GtkTextWindowType.text': 2,
+    'GtkTextWindowType.top': 5,
+    'GtkTextWindowType.widget': 1,
+    'GtkWrapMode.char': 1,
+    'GtkWrapMode.none': 0,
+    'GtkWrapMode.word': 2,
+    'GtkWrapMode.word-char': 3,
     'PangoUnderline.double': 2,
     'PangoUnderline.double-line': 6,
     'PangoUnderline.error': 4,

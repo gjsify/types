@@ -104,7 +104,7 @@
       ]
 }
   },
-  "include": ["./shell-18.d.ts"]
+  "include": ["./shell-18.d.ts","./shell-18-vocabulary.d.ts"]
 }
 
 

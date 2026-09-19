@@ -1,6 +1,6 @@
 {
     "name": "@girs/unity-7.0",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "description": "GJS TypeScript type definitions for Unity-7.0",
     "type": "module",
     "module": "unity-7.0.js",
@@ -15,6 +15,11 @@
         "types": "./unity-7.0-import.d.ts",
         "import": "./unity-7.0-import.js",
         "default": "./unity-7.0-import.js"
+      },
+      "./vocabulary": {
+        "types": "./unity-7.0-vocabulary.d.ts",
+        "import": "./unity-7.0-vocabulary.js",
+        "default": "./unity-7.0-vocabulary.js"
       },
       "./unity-7.0": {
         "types": "./unity-7.0.d.ts",
@@ -31,13 +36,13 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.2.0",
-      "@girs/dbusmenu-0.4": "^5.2.0",
-      "@girs/gobject-2.0": "^5.2.0",
-      "@girs/glib-2.0": "^5.2.0",
-      "@girs/dee-1.0": "^5.2.0",
-      "@girs/gio-2.0": "^5.2.0",
-      "@girs/gmodule-2.0": "^5.2.0"    },
+      "@girs/gjs": "^5.3.0",
+      "@girs/dbusmenu-0.4": "^5.3.0",
+      "@girs/gobject-2.0": "^5.3.0",
+      "@girs/glib-2.0": "^5.3.0",
+      "@girs/dee-1.0": "^5.3.0",
+      "@girs/gio-2.0": "^5.3.0",
+      "@girs/gmodule-2.0": "^5.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

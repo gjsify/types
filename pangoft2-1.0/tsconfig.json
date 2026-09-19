@@ -53,7 +53,7 @@
       ]
 }
   },
-  "include": ["./pangoft2-1.0.d.ts"]
+  "include": ["./pangoft2-1.0.d.ts","./pangoft2-1.0-vocabulary.d.ts"]
 }
 
 

@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Egg-1.0.
  *
- * GENERATED — do not edit. Provenance: Egg-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.Action Gio.ActionGroup — prop(s) no TypeScript value satisfies: Egg.TaskCache.key-copy-func Egg.TaskCache.key-destroy-func Egg.TaskCache.key-equal-func Egg.TaskCache.key-hash-func Egg.TaskCache.populate-callback Egg.TaskCache.populate-callback-data Egg.TaskCache.populate-callback-data-destroy Egg.TaskCache.value-copy-func Egg.TaskCache.value-destroy-func
+ * GENERATED — do not edit. Provenance: Egg-1.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Egg.TaskCache.key-copy-func Egg.TaskCache.key-destroy-func Egg.TaskCache.key-equal-func Egg.TaskCache.key-hash-func Egg.TaskCache.populate-callback Egg.TaskCache.populate-callback-data Egg.TaskCache.populate-callback-data-destroy Egg.TaskCache.value-copy-func Egg.TaskCache.value-destroy-func
  *
  * 32 instantiable GTypes (of which 21 concrete widgets), 32 declarations, 3 enum nick unions, 1 slot candidates.
  *
@@ -29,6 +29,8 @@ import type GObject from '@girs/gobject-2.0';
 import type Gdk from '@girs/gdk-3.0';
 import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
+import type { GActionConstructOnly, GActionGroupConstructOnly, GActionGroupProps, GActionProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkContainerConstructOnly, GtkContainerProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryBufferConstructOnly, GtkEntryBufferProps, GtkEntryConstructOnly, GtkEntryProps, GtkEventBoxConstructOnly, GtkEventBoxProps, GtkFileChooserActionNick, GtkListBoxConstructOnly, GtkListBoxProps, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkPopoverConstructOnly, GtkPopoverProps, GtkScrolledWindowConstructOnly, GtkScrolledWindowProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -55,7 +57,7 @@ export type EggThreeGridColumnNick = 'left' | 'center' | 'right';
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-export interface EggAnimationProps {
+export interface EggAnimationProps extends GInitiallyUnownedProps {
     /** The "duration" property is the total number of milliseconds that the animation should run before being completed. */
     duration?: number;
     'frame-clock'?: Gdk.FrameClock;
@@ -65,15 +67,15 @@ export interface EggAnimationProps {
     target?: GObject.Object;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EggAnimationConstructOnly = 'duration' | 'frame-clock' | 'mode' | 'target';
+export type EggAnimationConstructOnly = GInitiallyUnownedConstructOnly | 'duration' | 'frame-clock' | 'mode' | 'target';
 
 /** #EggBindingGroup manages to simplify the process of binding many properties from a #GObject as a group. */
-export interface EggBindingGroupProps {
+export interface EggBindingGroupProps extends GObjectProps {
     /** The source object used for binding properties. */
     source?: GObject.Object | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EggBindingGroupConstructOnly = never;
+export type EggBindingGroupConstructOnly = GObjectConstructOnly;
 
 export interface EggBoxProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     'max-width-request'?: number;
@@ -141,10 +143,10 @@ export interface EggListBoxProps extends GtkListBoxProps, GtkBuildableProps {
 export type EggListBoxConstructOnly = GtkListBoxConstructOnly | GtkBuildableConstructOnly | 'property-name' | 'row-type' | 'row-type-name';
 
 /** The goal of #EggMenuManager is to simplify the process of merging multiple GtkBuilder .ui files containing menus into a single representation of the application menus. */
-export interface EggMenuManagerProps {
+export interface EggMenuManagerProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EggMenuManagerConstructOnly = never;
+export type EggMenuManagerConstructOnly = GObjectConstructOnly;
 
 export interface EggPillBoxProps extends GtkEventBoxProps, GtkBuildableProps {
     label?: string;
@@ -184,30 +186,30 @@ export interface EggSearchBarProps extends GtkBinProps, GtkBuildableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EggSearchBarConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
 
-export interface EggSettingsFlagActionProps {
+export interface EggSettingsFlagActionProps extends GObjectProps, GActionProps {
     'flag-nick'?: string;
     'schema-id'?: string;
     'schema-key'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EggSettingsFlagActionConstructOnly = 'flag-nick' | 'schema-id';
+export type EggSettingsFlagActionConstructOnly = GObjectConstructOnly | GActionConstructOnly | 'flag-nick' | 'schema-id';
 
-export interface EggSettingsSandwichProps {
+export interface EggSettingsSandwichProps extends GObjectProps {
     path?: string;
     'schema-id'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EggSettingsSandwichConstructOnly = 'path' | 'schema-id';
+export type EggSettingsSandwichConstructOnly = GObjectConstructOnly | 'path' | 'schema-id';
 
 /** #EggSignalGroup manages to simplify the process of connecting many signals to a #GObject as a group. */
-export interface EggSignalGroupProps {
+export interface EggSignalGroupProps extends GObjectProps {
     /** The target instance used when connecting signals. */
     target?: GObject.Object | null;
     /** The GType of the target property. */
     'target-type'?: GObject.GType;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EggSignalGroupConstructOnly = 'target-type';
+export type EggSignalGroupConstructOnly = GObjectConstructOnly | 'target-type';
 
 export interface EggSimpleLabelProps extends GtkWidgetProps, GtkBuildableProps {
     label?: string;
@@ -233,20 +235,20 @@ export interface EggSliderProps extends GtkContainerProps, GtkBuildableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EggSliderConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly;
 
-export interface EggStateMachineProps extends GtkBuildableProps {
+export interface EggStateMachineProps extends GObjectProps, GtkBuildableProps {
     state?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EggStateMachineConstructOnly = GtkBuildableConstructOnly;
+export type EggStateMachineConstructOnly = GObjectConstructOnly | GtkBuildableConstructOnly;
 
-export interface EggSuggestionProps {
+export interface EggSuggestionProps extends GObjectProps {
     'icon-name'?: string;
     id?: string;
     subtitle?: string;
     title?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EggSuggestionConstructOnly = never;
+export type EggSuggestionConstructOnly = GObjectConstructOnly;
 
 export interface EggSuggestionEntryProps extends GtkEntryProps, GtkBuildableProps, GtkCellEditableProps, GtkEditableProps {
     model?: Gio.ListModel | null;
@@ -274,7 +276,7 @@ export interface EggSuggestionRowProps extends GtkListBoxRowProps, GtkBuildableP
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EggSuggestionRowConstructOnly = GtkListBoxRowConstructOnly | GtkBuildableConstructOnly;
 
-export interface EggTaskCacheProps {
+export interface EggTaskCacheProps extends GObjectProps {
     'key-copy-func'?: never;
     'key-destroy-func'?: never;
     'key-equal-func'?: never;
@@ -288,7 +290,7 @@ export interface EggTaskCacheProps {
     'value-destroy-func'?: never;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EggTaskCacheConstructOnly = 'key-copy-func' | 'key-destroy-func' | 'key-equal-func' | 'key-hash-func' | 'populate-callback' | 'populate-callback-data' | 'populate-callback-data-destroy' | 'time-to-live' | 'value-copy-func' | 'value-destroy-func';
+export type EggTaskCacheConstructOnly = GObjectConstructOnly | 'key-copy-func' | 'key-destroy-func' | 'key-equal-func' | 'key-hash-func' | 'populate-callback' | 'populate-callback-data' | 'populate-callback-data-destroy' | 'time-to-live' | 'value-copy-func' | 'value-destroy-func';
 
 export interface EggThreeGridProps extends GtkContainerProps, GtkBuildableProps {
     'column-spacing'?: number;
@@ -297,11 +299,11 @@ export interface EggThreeGridProps extends GtkContainerProps, GtkBuildableProps 
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EggThreeGridConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly;
 
-export interface EggWidgetActionGroupProps {
+export interface EggWidgetActionGroupProps extends GObjectProps, GActionGroupProps {
     widget?: Gtk.Widget;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EggWidgetActionGroupConstructOnly = 'widget';
+export type EggWidgetActionGroupConstructOnly = GObjectConstructOnly | GActionGroupConstructOnly | 'widget';
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -534,6 +536,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

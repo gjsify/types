@@ -50,7 +50,7 @@
       ]
 }
   },
-  "include": ["./gstplay-1.0.d.ts"]
+  "include": ["./gstplay-1.0.d.ts","./gstplay-1.0-vocabulary.d.ts"]
 }
 
 

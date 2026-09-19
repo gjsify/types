@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./evincedocument-3.0.d.ts"]
+  "include": ["./evincedocument-3.0.d.ts","./evincedocument-3.0-vocabulary.d.ts"]
 }
 
 

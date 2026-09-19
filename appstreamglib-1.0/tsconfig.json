@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./appstreamglib-1.0.d.ts"]
+  "include": ["./appstreamglib-1.0.d.ts","./appstreamglib-1.0-vocabulary.d.ts"]
 }
 
 

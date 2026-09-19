@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Shumate-1.0.
  *
- * GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.7.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ListModel Gio.Initable Gdk.Paintable
+ * GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.7.0
  *
  * 24 instantiable GTypes (of which 10 concrete widgets), 28 declarations, 5 enum nick unions, 4 slot candidates.
  *
@@ -27,6 +27,9 @@
 import type Gdk from '@girs/gdk-4.0';
 import type Gtk from '@girs/gtk-4.0';
 import type Shumate from './shumate-1.0.js';
+import type { GdkPaintableConstructOnly, GdkPaintableProps } from '@girs/gdk-4.0/vocabulary';
+import type { GInitableConstructOnly, GInitableProps, GListModelConstructOnly, GListModelProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkSelectionModeNick, GtkSymbolicPaintableConstructOnly, GtkSymbolicPaintableProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-4.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -64,13 +67,13 @@ export interface ShumateCompassProps extends GtkWidgetProps, GtkAccessibleProps,
 export type ShumateCompassConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** A simple object implementing [iface@Location]. */
-export interface ShumateCoordinateProps extends ShumateLocationProps {
+export interface ShumateCoordinateProps extends GInitiallyUnownedProps, ShumateLocationProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateCoordinateConstructOnly = ShumateLocationConstructOnly;
+export type ShumateCoordinateConstructOnly = GInitiallyUnownedConstructOnly | ShumateLocationConstructOnly;
 
 /** The base class used to retrieve tiles as [struct@GLib.Bytes]. */
-export interface ShumateDataSourceProps {
+export interface ShumateDataSourceProps extends GObjectProps {
     /**
      * The maximum zoom level
      * @since 1.1
@@ -85,10 +88,10 @@ export interface ShumateDataSourceProps {
     'min-zoom-level'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateDataSourceConstructOnly = never;
+export type ShumateDataSourceConstructOnly = GObjectConstructOnly;
 
 /** Represents a request to a [class@DataSource] for a tile. */
-export interface ShumateDataSourceRequestProps {
+export interface ShumateDataSourceRequestProps extends GObjectProps {
     /**
      * The X coordinate of the requested tile.
      * @since 1.1
@@ -109,10 +112,10 @@ export interface ShumateDataSourceRequestProps {
     'zoom-level'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateDataSourceRequestConstructOnly = 'x' | 'y' | 'zoom-level';
+export type ShumateDataSourceRequestConstructOnly = GObjectConstructOnly | 'x' | 'y' | 'zoom-level';
 
 /** A cache that stores and retrieves tiles from the file system. */
-export interface ShumateFileCacheProps {
+export interface ShumateFileCacheProps extends GObjectProps {
     /**
      * The directory where the tile database is stored.
      * @default NULL
@@ -130,7 +133,7 @@ export interface ShumateFileCacheProps {
     'size-limit'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateFileCacheConstructOnly = 'cache-dir' | 'cache-key';
+export type ShumateFileCacheConstructOnly = GObjectConstructOnly | 'cache-dir' | 'cache-key';
 
 /** Every layer (overlay that moves together with the map) has to inherit this class and implement its virtual methods. */
 export interface ShumateLayerProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -156,7 +159,7 @@ export interface ShumateLicenseProps extends GtkWidgetProps, GtkAccessibleProps,
 export type ShumateLicenseConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** An interface common to objects having latitude and longitude By implementing #ShumateLocation the object declares that it has latitude and longitude and can be used to specify location on the map. */
-export interface ShumateLocationProps {
+export interface ShumateLocationProps extends GObjectProps {
     /**
      * The latitude coordonate in degrees
      * @default 0.000000
@@ -169,7 +172,7 @@ export interface ShumateLocationProps {
     longitude?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateLocationConstructOnly = never;
+export type ShumateLocationConstructOnly = GObjectConstructOnly;
 
 /** The Map widget is a [class@Gtk.Widget] that show and allows interaction with the user. */
 export interface ShumateMapProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
@@ -201,7 +204,7 @@ export interface ShumateMapLayerProps extends ShumateLayerProps, GtkAccessiblePr
 export type ShumateMapLayerConstructOnly = ShumateLayerConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** The base class for all map sources. */
-export interface ShumateMapSourceProps {
+export interface ShumateMapSourceProps extends GObjectProps {
     /**
      * The id of the map source
      * @default NULL
@@ -244,13 +247,13 @@ export interface ShumateMapSourceProps {
     'tile-size'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateMapSourceConstructOnly = never;
+export type ShumateMapSourceConstructOnly = GObjectConstructOnly;
 
 /** This object allows you to hold [class@MapSource] instances, you can access a default set of sources with [method@MapSourceRegistry.populate_defaults]. */
-export interface ShumateMapSourceRegistryProps {
+export interface ShumateMapSourceRegistryProps extends GObjectProps, GListModelProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateMapSourceRegistryConstructOnly = never;
+export type ShumateMapSourceRegistryConstructOnly = GObjectConstructOnly | GListModelConstructOnly;
 
 /** Markers represent points of interest on a map. */
 export interface ShumateMarkerProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, ShumateLocationProps {
@@ -366,7 +369,7 @@ export interface ShumateSimpleMapProps extends GtkWidgetProps, GtkAccessibleProp
 export type ShumateSimpleMapConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** An object containing the details of a map feature that has been clicked. */
-export interface ShumateSymbolEventProps extends ShumateLocationProps {
+export interface ShumateSymbolEventProps extends GObjectProps, ShumateLocationProps {
     /**
      * The number of clicks/presses triggering the symbol event.
      * @since 1.5
@@ -375,10 +378,10 @@ export interface ShumateSymbolEventProps extends ShumateLocationProps {
     'n-press'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateSymbolEventConstructOnly = ShumateLocationConstructOnly;
+export type ShumateSymbolEventConstructOnly = GObjectConstructOnly | ShumateLocationConstructOnly;
 
 /** An object that represents map tiles. */
-export interface ShumateTileProps {
+export interface ShumateTileProps extends GObjectProps {
     /**
      * Specifies whether the tile should fade in when loading
      * @default FALSE
@@ -419,7 +422,7 @@ export interface ShumateTileProps {
     'zoom-level'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateTileConstructOnly = never;
+export type ShumateTileConstructOnly = GObjectConstructOnly;
 
 /** A [class@DataSource] that asynchronously downloads tiles from an online service using a given template. */
 export interface ShumateTileDownloaderProps extends ShumateDataSourceProps {
@@ -433,20 +436,20 @@ export interface ShumateTileDownloaderProps extends ShumateDataSourceProps {
 export type ShumateTileDownloaderConstructOnly = ShumateDataSourceConstructOnly | 'url-template';
 
 /** Provides low-level access to the contents of a vector tile. */
-export interface ShumateVectorReaderProps {
+export interface ShumateVectorReaderProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateVectorReaderConstructOnly = never;
+export type ShumateVectorReaderConstructOnly = GObjectConstructOnly;
 
 /** Reads the layers and features of a vector tile. */
-export interface ShumateVectorReaderIterProps {
+export interface ShumateVectorReaderIterProps extends GObjectProps {
     reader?: Shumate.VectorReader;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateVectorReaderIterConstructOnly = 'reader';
+export type ShumateVectorReaderIterConstructOnly = GObjectConstructOnly | 'reader';
 
 /** A [class@MapSource] that renders tiles from a given vector data source. */
-export interface ShumateVectorRendererProps extends ShumateMapSourceProps {
+export interface ShumateVectorRendererProps extends ShumateMapSourceProps, GInitableProps {
     /**
      * The sprite sheet used to render icons and textures.
      * @since 1.1
@@ -459,10 +462,10 @@ export interface ShumateVectorRendererProps extends ShumateMapSourceProps {
     'style-json'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateVectorRendererConstructOnly = ShumateMapSourceConstructOnly | 'style-json';
+export type ShumateVectorRendererConstructOnly = ShumateMapSourceConstructOnly | GInitableConstructOnly | 'style-json';
 
 /** A sprite used to draw textures or icons. */
-export interface ShumateVectorSpriteProps extends GtkSymbolicPaintableProps {
+export interface ShumateVectorSpriteProps extends GObjectProps, GdkPaintableProps, GtkSymbolicPaintableProps {
     /**
      * The height at which the sprite should be drawn, in pixels.
      * @since 1.1
@@ -493,16 +496,16 @@ export interface ShumateVectorSpriteProps extends GtkSymbolicPaintableProps {
     width?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateVectorSpriteConstructOnly = GtkSymbolicPaintableConstructOnly | 'height' | 'scale-factor' | 'source-paintable' | 'source-rect' | 'width';
+export type ShumateVectorSpriteConstructOnly = GObjectConstructOnly | GdkPaintableConstructOnly | GtkSymbolicPaintableConstructOnly | 'height' | 'scale-factor' | 'source-paintable' | 'source-rect' | 'width';
 
 /** A collection of [class@VectorSprite]s. */
-export interface ShumateVectorSpriteSheetProps {
+export interface ShumateVectorSpriteSheetProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateVectorSpriteSheetConstructOnly = never;
+export type ShumateVectorSpriteSheetConstructOnly = GObjectConstructOnly;
 
 /** The object holding the coordinate, zoom-level, and rotation state of the current view. */
-export interface ShumateViewportProps extends ShumateLocationProps {
+export interface ShumateViewportProps extends GObjectProps, ShumateLocationProps {
     /**
      * The highest allowed level of zoom of the content.
      * @default 20
@@ -527,7 +530,7 @@ export interface ShumateViewportProps extends ShumateLocationProps {
     'zoom-level'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateViewportConstructOnly = ShumateLocationConstructOnly;
+export type ShumateViewportConstructOnly = GObjectConstructOnly | ShumateLocationConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -689,6 +692,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

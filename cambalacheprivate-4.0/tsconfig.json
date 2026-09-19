@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./cambalacheprivate-4.0.d.ts"]
+  "include": ["./cambalacheprivate-4.0.d.ts","./cambalacheprivate-4.0-vocabulary.d.ts"]
 }
 
 

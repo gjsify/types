@@ -50,7 +50,7 @@
       ]
 }
   },
-  "include": ["./gstclapper-1.0.d.ts"]
+  "include": ["./gstclapper-1.0.d.ts","./gstclapper-1.0-vocabulary.d.ts"]
 }
 
 

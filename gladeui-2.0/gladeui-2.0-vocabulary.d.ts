@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Gladeui-2.0.
  *
- * GENERATED — do not edit. Provenance: Gladeui-2.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface GObject.ParamSpec — prop(s) no TypeScript value satisfies: Gladeui.EditorProperty.property-def Gladeui.Property.class Gladeui.Signal.class Gladeui.SignalModel.signals Gladeui.Widget.properties Gladeui.WidgetAction.definition
+ * GENERATED — do not edit. Provenance: Gladeui-2.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Gladeui.EditorProperty.property-def Gladeui.Property.class Gladeui.Signal.class Gladeui.SignalModel.signals Gladeui.Widget.properties Gladeui.WidgetAction.definition
  *
  * 37 instantiable GTypes (of which 25 concrete widgets), 38 declarations, 11 enum nick unions, 1 slot candidates.
  *
@@ -27,6 +27,7 @@
 import type GObject from '@girs/gobject-2.0';
 import type Gladeui from './gladeui-2.0.js';
 import type Gtk from '@girs/gtk-3.0';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps, GParamConstructOnly, GParamProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkCellRendererConstructOnly, GtkCellRendererPixbufConstructOnly, GtkCellRendererPixbufProps, GtkCellRendererProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkEventBoxConstructOnly, GtkEventBoxProps, GtkGridConstructOnly, GtkGridProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkTreeDragSourceConstructOnly, GtkTreeDragSourceProps, GtkTreeModelConstructOnly, GtkTreeModelProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -67,10 +68,10 @@ export interface GladeAdaptorChooserProps extends GtkBoxProps, GtkBuildableProps
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GladeAdaptorChooserConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
-export interface GladeAppProps {
+export interface GladeAppProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GladeAppConstructOnly = never;
+export type GladeAppConstructOnly = GObjectConstructOnly;
 
 export interface GladeBaseEditorProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     container?: GObject.Object;
@@ -87,15 +88,15 @@ export interface GladeCellRendererIconProps extends GtkCellRendererPixbufProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GladeCellRendererIconConstructOnly = GtkCellRendererPixbufConstructOnly;
 
-export interface GladeClipboardProps {
+export interface GladeClipboardProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GladeClipboardConstructOnly = never;
+export type GladeClipboardConstructOnly = GObjectConstructOnly;
 
-export interface GladeCommandProps {
+export interface GladeCommandProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GladeCommandConstructOnly = never;
+export type GladeCommandConstructOnly = GObjectConstructOnly;
 
 export interface GladeDesignViewProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     project?: Gladeui.Project;
@@ -221,17 +222,17 @@ export interface GladePaletteProps extends GtkBoxProps, GtkBuildableProps, GtkOr
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GladePaletteConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
-export interface GladeParamObjectsProps {
+export interface GladeParamObjectsProps extends GParamProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GladeParamObjectsConstructOnly = never;
+export type GladeParamObjectsConstructOnly = GParamConstructOnly;
 
 export interface GladePlaceholderProps extends GtkWidgetProps, GtkBuildableProps, GtkScrollableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GladePlaceholderConstructOnly = GtkWidgetConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly;
 
-export interface GladeProjectProps extends GtkTreeDragSourceProps, GtkTreeModelProps {
+export interface GladeProjectProps extends GObjectProps, GtkTreeDragSourceProps, GtkTreeModelProps {
     /** @default NULL */
     'css-provider-path'?: string;
     /** @default NULL */
@@ -243,9 +244,9 @@ export interface GladeProjectProps extends GtkTreeDragSourceProps, GtkTreeModelP
     'translation-domain'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GladeProjectConstructOnly = GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly;
+export type GladeProjectConstructOnly = GObjectConstructOnly | GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly;
 
-export interface GladePropertyProps {
+export interface GladePropertyProps extends GObjectProps {
     class?: never;
     /** @default TRUE */
     enabled?: boolean;
@@ -261,7 +262,7 @@ export interface GladePropertyProps {
     sensitive?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GladePropertyConstructOnly = 'class';
+export type GladePropertyConstructOnly = GObjectConstructOnly | 'class';
 
 export interface GladePropertyLabelProps extends GtkEventBoxProps, GladeEditableProps, GtkBuildableProps {
     /** @default TRUE */
@@ -296,7 +297,7 @@ export interface GladePropertyShellProps extends GtkBoxProps, GladeEditableProps
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GladePropertyShellConstructOnly = GtkBoxConstructOnly | GladeEditableConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | 'editor-type';
 
-export interface GladeSignalProps {
+export interface GladeSignalProps extends GObjectProps {
     /** @default FALSE */
     after?: boolean;
     class?: never;
@@ -312,7 +313,7 @@ export interface GladeSignalProps {
     userdata?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GladeSignalConstructOnly = 'class';
+export type GladeSignalConstructOnly = GObjectConstructOnly | 'class';
 
 export interface GladeSignalEditorProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     'glade-widget'?: Gtk.TreeModel;
@@ -320,14 +321,14 @@ export interface GladeSignalEditorProps extends GtkBoxProps, GtkBuildableProps, 
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GladeSignalEditorConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
-export interface GladeSignalModelProps extends GtkTreeDragSourceProps, GtkTreeModelProps {
+export interface GladeSignalModelProps extends GObjectProps, GtkTreeDragSourceProps, GtkTreeModelProps {
     signals?: never;
     widget?: Gladeui.Widget;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GladeSignalModelConstructOnly = GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly | 'signals' | 'widget';
+export type GladeSignalModelConstructOnly = GObjectConstructOnly | GtkTreeDragSourceConstructOnly | GtkTreeModelConstructOnly | 'signals' | 'widget';
 
-export interface GladeWidgetProps {
+export interface GladeWidgetProps extends GInitiallyUnownedProps {
     adaptor?: Gladeui.WidgetAdaptor;
     /** @default FALSE */
     anarchist?: boolean;
@@ -354,9 +355,9 @@ export interface GladeWidgetProps {
     'toplevel-width'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GladeWidgetConstructOnly = 'adaptor' | 'anarchist' | 'internal-name' | 'properties' | 'reason' | 'template' | 'template-exact';
+export type GladeWidgetConstructOnly = GInitiallyUnownedConstructOnly | 'adaptor' | 'anarchist' | 'internal-name' | 'properties' | 'reason' | 'template' | 'template-exact';
 
-export interface GladeWidgetActionProps {
+export interface GladeWidgetActionProps extends GObjectProps {
     definition?: never;
     /** @default TRUE */
     sensitive?: boolean;
@@ -364,9 +365,9 @@ export interface GladeWidgetActionProps {
     visible?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GladeWidgetActionConstructOnly = 'definition';
+export type GladeWidgetActionConstructOnly = GObjectConstructOnly | 'definition';
 
-export interface GladeWidgetAdaptorProps {
+export interface GladeWidgetAdaptorProps extends GObjectProps {
     /** @default NULL */
     book?: string;
     /** @default NULL */
@@ -386,7 +387,7 @@ export interface GladeWidgetAdaptorProps {
     type?: GObject.GType;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GladeWidgetAdaptorConstructOnly = 'book' | 'catalog' | 'generic-name' | 'icon-name' | 'name' | 'special-child-type' | 'type';
+export type GladeWidgetAdaptorConstructOnly = GObjectConstructOnly | 'book' | 'catalog' | 'generic-name' | 'icon-name' | 'name' | 'special-child-type' | 'type';
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -647,6 +648,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

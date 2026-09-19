@@ -89,7 +89,7 @@
       ]
 }
   },
-  "include": ["./meta-8.d.ts"]
+  "include": ["./meta-8.d.ts","./meta-8-vocabulary.d.ts"]
 }
 
 

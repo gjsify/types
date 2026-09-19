@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gexiv2-0.10.d.ts"]
+  "include": ["./gexiv2-0.10.d.ts","./gexiv2-0.10-vocabulary.d.ts"]
 }
 
 

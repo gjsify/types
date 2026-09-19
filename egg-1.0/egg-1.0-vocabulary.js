@@ -1,6 +1,6 @@
 // The widget vocabulary of Egg-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Egg-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.Action Gio.ActionGroup — prop(s) no TypeScript value satisfies: Egg.TaskCache.key-copy-func Egg.TaskCache.key-destroy-func Egg.TaskCache.key-equal-func Egg.TaskCache.key-hash-func Egg.TaskCache.populate-callback Egg.TaskCache.populate-callback-data Egg.TaskCache.populate-callback-data-destroy Egg.TaskCache.value-copy-func Egg.TaskCache.value-destroy-func
+// GENERATED — do not edit. Provenance: Egg-1.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: Egg.TaskCache.key-copy-func Egg.TaskCache.key-destroy-func Egg.TaskCache.key-equal-func Egg.TaskCache.key-hash-func Egg.TaskCache.populate-callback Egg.TaskCache.populate-callback-data Egg.TaskCache.populate-callback-data-destroy Egg.TaskCache.value-copy-func Egg.TaskCache.value-destroy-func
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface', 'Gio.Action', 'Gio.ActionGroup'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: ['Egg.TaskCache.key-copy-func', 'Egg.TaskCache.key-destroy-func', 'Egg.TaskCache.key-equal-func', 'Egg.TaskCache.key-hash-func', 'Egg.TaskCache.populate-callback', 'Egg.TaskCache.populate-callback-data', 'Egg.TaskCache.populate-callback-data-destroy', 'Egg.TaskCache.value-copy-func', 'Egg.TaskCache.value-destroy-func'],
     unresolvedProps: [],
+    identifierPrefixes: ['Egg'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -67,38 +69,38 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    EggAnimation: ['EggAnimation'],
-    EggBindingGroup: ['EggBindingGroup'],
-    EggBox: ['EggBox', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    EggCenteringBin: ['EggCenteringBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggColumnLayout: ['EggColumnLayout', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggElasticBin: ['EggElasticBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggEmptyState: ['EggEmptyState', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggEntryBox: ['EggEntryBox', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    EggFileChooserEntry: ['EggFileChooserEntry', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggListBox: ['EggListBox', 'GtkListBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggMenuManager: ['EggMenuManager'],
-    EggPillBox: ['EggPillBox', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggPriorityBox: ['EggPriorityBox', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    EggProgressButton: ['EggProgressButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    EggRadioBox: ['EggRadioBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggScrolledWindow: ['EggScrolledWindow', 'GtkScrolledWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggSearchBar: ['EggSearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggSettingsFlagAction: ['EggSettingsFlagAction'],
-    EggSettingsSandwich: ['EggSettingsSandwich'],
-    EggSignalGroup: ['EggSignalGroup'],
-    EggSimpleLabel: ['EggSimpleLabel', 'GtkWidget', 'GtkBuildable'],
-    EggSimplePopover: ['EggSimplePopover', 'GtkPopover', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggSlider: ['EggSlider', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggStateMachine: ['EggStateMachine', 'GtkBuildable'],
-    EggSuggestion: ['EggSuggestion'],
-    EggSuggestionEntry: ['EggSuggestionEntry', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
-    EggSuggestionEntryBuffer: ['EggSuggestionEntryBuffer', 'GtkEntryBuffer'],
-    EggSuggestionPopover: ['EggSuggestionPopover', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggSuggestionRow: ['EggSuggestionRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkActionable'],
-    EggTaskCache: ['EggTaskCache'],
-    EggThreeGrid: ['EggThreeGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    EggWidgetActionGroup: ['EggWidgetActionGroup'],
+    EggAnimation: ['EggAnimation', 'GInitiallyUnowned', 'GObject'],
+    EggBindingGroup: ['EggBindingGroup', 'GObject'],
+    EggBox: ['EggBox', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    EggCenteringBin: ['EggCenteringBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggColumnLayout: ['EggColumnLayout', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggElasticBin: ['EggElasticBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggEmptyState: ['EggEmptyState', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggEntryBox: ['EggEntryBox', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    EggFileChooserEntry: ['EggFileChooserEntry', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggListBox: ['EggListBox', 'GtkListBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggMenuManager: ['EggMenuManager', 'GObject'],
+    EggPillBox: ['EggPillBox', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggPriorityBox: ['EggPriorityBox', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    EggProgressButton: ['EggProgressButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    EggRadioBox: ['EggRadioBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggScrolledWindow: ['EggScrolledWindow', 'GtkScrolledWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggSearchBar: ['EggSearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggSettingsFlagAction: ['EggSettingsFlagAction', 'GObject', 'GAction'],
+    EggSettingsSandwich: ['EggSettingsSandwich', 'GObject'],
+    EggSignalGroup: ['EggSignalGroup', 'GObject'],
+    EggSimpleLabel: ['EggSimpleLabel', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggSimplePopover: ['EggSimplePopover', 'GtkPopover', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggSlider: ['EggSlider', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggStateMachine: ['EggStateMachine', 'GObject', 'GtkBuildable'],
+    EggSuggestion: ['EggSuggestion', 'GObject'],
+    EggSuggestionEntry: ['EggSuggestionEntry', 'GtkEntry', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
+    EggSuggestionEntryBuffer: ['EggSuggestionEntryBuffer', 'GtkEntryBuffer', 'GObject'],
+    EggSuggestionPopover: ['EggSuggestionPopover', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggSuggestionRow: ['EggSuggestionRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkActionable'],
+    EggTaskCache: ['EggTaskCache', 'GObject'],
+    EggThreeGrid: ['EggThreeGrid', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    EggWidgetActionGroup: ['EggWidgetActionGroup', 'GObject', 'GActionGroup'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -112,6 +114,7 @@ export const ENUM_NICKS = {
     EggAnimationMode: ['linear', 'ease-in-quad', 'ease-in-out-quad', 'ease-out-quad', 'ease-in-cubic', 'ease-out-cubic', 'ease-in-out-cubic'],
     EggSliderPosition: ['none', 'top', 'right', 'bottom', 'left'],
     EggThreeGridColumn: ['left', 'center', 'right'],
+    GtkFileChooserAction: ['open', 'save', 'select-folder', 'create-folder'],
 };
 
 // The number behind each of those nicks, read from GIR's own `value` attribute.
@@ -144,6 +147,10 @@ export const ENUM_VALUES = {
     'EggThreeGridColumn.center': 1,
     'EggThreeGridColumn.left': 0,
     'EggThreeGridColumn.right': 2,
+    'GtkFileChooserAction.create-folder': 3,
+    'GtkFileChooserAction.open': 0,
+    'GtkFileChooserAction.save': 1,
+    'GtkFileChooserAction.select-folder': 2,
 };
 
 // The nicks GIR marks `deprecated="1"`.

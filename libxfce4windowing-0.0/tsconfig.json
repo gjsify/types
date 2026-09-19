@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./libxfce4windowing-0.0.d.ts"]
+  "include": ["./libxfce4windowing-0.0.d.ts","./libxfce4windowing-0.0-vocabulary.d.ts"]
 }
 
 

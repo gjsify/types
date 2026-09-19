@@ -32,7 +32,7 @@
       ]
 }
   },
-  "include": ["./cogl-1.0.d.ts"]
+  "include": ["./cogl-1.0.d.ts","./cogl-1.0-vocabulary.d.ts"]
 }
 
 

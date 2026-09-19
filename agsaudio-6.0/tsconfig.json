@@ -53,7 +53,7 @@
       ]
 }
   },
-  "include": ["./agsaudio-6.0.d.ts"]
+  "include": ["./agsaudio-6.0.d.ts","./agsaudio-6.0-vocabulary.d.ts"]
 }
 
 

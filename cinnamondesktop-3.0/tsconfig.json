@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./cinnamondesktop-3.0.d.ts"]
+  "include": ["./cinnamondesktop-3.0.d.ts","./cinnamondesktop-3.0-vocabulary.d.ts"]
 }
 
 

@@ -1,6 +1,6 @@
 // The widget vocabulary of Pnl-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Pnl-1.0 — library 3.25.1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: Pnl-1.0 — library 3.25.1 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: '3.25.1',
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Pnl'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -48,22 +50,22 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    PnlAnimation: ['PnlAnimation'],
-    PnlDockBin: ['PnlDockBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'PnlDock', 'PnlDockItem'],
-    PnlDockBinEdge: ['PnlDockBinEdge', 'PnlDockRevealer', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'PnlDockItem'],
-    PnlDockManager: ['PnlDockManager'],
-    PnlDockOverlay: ['PnlDockOverlay', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'PnlDock', 'PnlDockItem'],
-    PnlDockOverlayEdge: ['PnlDockOverlayEdge', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'PnlDockItem'],
-    PnlDockPaned: ['PnlDockPaned', 'PnlMultiPaned', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'PnlDockItem'],
-    PnlDockRevealer: ['PnlDockRevealer', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    PnlDockStack: ['PnlDockStack', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'PnlDockItem'],
-    PnlDockTabStrip: ['PnlDockTabStrip', 'PnlTabStrip', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    PnlDockTransientGrab: ['PnlDockTransientGrab'],
-    PnlDockWidget: ['PnlDockWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'PnlDockItem'],
-    PnlDockWindow: ['PnlDockWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'PnlDock', 'PnlDockItem'],
-    PnlMultiPaned: ['PnlMultiPaned', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    PnlTab: ['PnlTab', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    PnlTabStrip: ['PnlTabStrip', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    PnlAnimation: ['PnlAnimation', 'GInitiallyUnowned', 'GObject'],
+    PnlDockBin: ['PnlDockBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'PnlDock', 'PnlDockItem'],
+    PnlDockBinEdge: ['PnlDockBinEdge', 'PnlDockRevealer', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'PnlDockItem'],
+    PnlDockManager: ['PnlDockManager', 'GObject'],
+    PnlDockOverlay: ['PnlDockOverlay', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'PnlDock', 'PnlDockItem'],
+    PnlDockOverlayEdge: ['PnlDockOverlayEdge', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'PnlDockItem'],
+    PnlDockPaned: ['PnlDockPaned', 'PnlMultiPaned', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'PnlDockItem'],
+    PnlDockRevealer: ['PnlDockRevealer', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    PnlDockStack: ['PnlDockStack', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'PnlDockItem'],
+    PnlDockTabStrip: ['PnlDockTabStrip', 'PnlTabStrip', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    PnlDockTransientGrab: ['PnlDockTransientGrab', 'GObject'],
+    PnlDockWidget: ['PnlDockWidget', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'PnlDockItem'],
+    PnlDockWindow: ['PnlDockWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'PnlDock', 'PnlDockItem'],
+    PnlMultiPaned: ['PnlMultiPaned', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    PnlTab: ['PnlTab', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    PnlTabStrip: ['PnlTabStrip', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -74,6 +76,8 @@ export const DECLS = {
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
+    GtkOrientation: ['horizontal', 'vertical'],
+    GtkPositionType: ['left', 'right', 'top', 'bottom'],
     PnlAnimationMode: ['linear', 'ease-in-quad', 'ease-in-out-quad', 'ease-out-quad', 'ease-in-cubic', 'ease-out-cubic', 'ease-in-out-cubic'],
     PnlDockRevealerTransitionType: ['none', 'slide-right', 'slide-left', 'slide-up', 'slide-down'],
 };
@@ -93,6 +97,12 @@ export const ENUM_NICKS = {
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
 export const ENUM_VALUES = {
+    'GtkOrientation.horizontal': 0,
+    'GtkOrientation.vertical': 1,
+    'GtkPositionType.bottom': 3,
+    'GtkPositionType.left': 0,
+    'GtkPositionType.right': 1,
+    'GtkPositionType.top': 2,
     'PnlAnimationMode.ease-in-cubic': 4,
     'PnlAnimationMode.ease-in-out-cubic': 6,
     'PnlAnimationMode.ease-in-out-quad': 3,

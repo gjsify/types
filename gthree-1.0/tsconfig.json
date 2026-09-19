@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./gthree-1.0.d.ts"]
+  "include": ["./gthree-1.0.d.ts","./gthree-1.0-vocabulary.d.ts"]
 }
 
 

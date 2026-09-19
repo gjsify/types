@@ -1,6 +1,6 @@
 // The widget vocabulary of Retro-1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Retro-1 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: Retro-1 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Retro'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -36,15 +38,15 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    RetroControllerIterator: ['RetroControllerIterator'],
-    RetroCore: ['RetroCore'],
-    RetroCoreDescriptor: ['RetroCoreDescriptor'],
-    RetroCoreView: ['RetroCoreView', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    RetroKeyJoypadMapping: ['RetroKeyJoypadMapping'],
-    RetroModuleIterator: ['RetroModuleIterator'],
-    RetroModuleQuery: ['RetroModuleQuery'],
-    RetroOption: ['RetroOption'],
-    RetroOptionIterator: ['RetroOptionIterator'],
+    RetroControllerIterator: ['RetroControllerIterator', 'GObject'],
+    RetroCore: ['RetroCore', 'GObject'],
+    RetroCoreDescriptor: ['RetroCoreDescriptor', 'GObject'],
+    RetroCoreView: ['RetroCoreView', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    RetroKeyJoypadMapping: ['RetroKeyJoypadMapping', 'GObject'],
+    RetroModuleIterator: ['RetroModuleIterator', 'GObject'],
+    RetroModuleQuery: ['RetroModuleQuery', 'GObject'],
+    RetroOption: ['RetroOption', 'GObject'],
+    RetroOptionIterator: ['RetroOptionIterator', 'GObject'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

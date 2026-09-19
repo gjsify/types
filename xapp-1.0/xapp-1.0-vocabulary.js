@@ -1,6 +1,6 @@
 // The widget vocabulary of XApp-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: XApp-1.0 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Atk.ImplementorIface Gio.AsyncInitable Gio.DBusObjectManager Gio.Initable Gio.DBusObject Gio.DBusInterface — inlined base(s) their owner's vocabulary does not emit: Gio.DBusObjectManagerClient Gio.DBusObjectProxy Gio.DBusObjectSkeleton Gio.DBusProxy Gio.DBusInterfaceSkeleton — prop(s) no TypeScript value satisfies: Gio.DBusObjectManagerClient.get-proxy-type-destroy-notify Gio.DBusObjectManagerClient.get-proxy-type-func Gio.DBusObjectManagerClient.get-proxy-type-user-data
+// GENERATED — do not edit. Provenance: XApp-1.0 — dropped empty base(s): Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.DBusInterfaceSkeleton
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,18 +11,16 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface', 'Gio.AsyncInitable', 'Gio.DBusObjectManager', 'Gio.Initable', 'Gio.DBusObject', 'Gio.DBusInterface'],
-    inlinedBases: ['Gio.DBusObjectManagerClient', 'Gio.DBusObjectProxy', 'Gio.DBusObjectSkeleton', 'Gio.DBusProxy', 'Gio.DBusInterfaceSkeleton'],
-    unsettableProps: ['Gio.DBusObjectManagerClient.get-proxy-type-destroy-notify', 'Gio.DBusObjectManagerClient.get-proxy-type-func', 'Gio.DBusObjectManagerClient.get-proxy-type-user-data'],
+    droppedBases: ['Atk.ImplementorIface'],
+    inlinedBases: ['Gio.DBusInterfaceSkeleton'],
+    unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['XApp'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
     GDBusInterfaceSkeleton: ['g-flags'],
-    GDBusObjectManagerClient: ['bus-type', 'connection', 'flags', 'get-proxy-type-destroy-notify', 'get-proxy-type-func', 'get-proxy-type-user-data', 'name', 'object-path'],
-    GDBusObjectProxy: ['g-connection', 'g-object-path'],
-    GDBusObjectSkeleton: ['g-object-path'],
-    GDBusProxy: ['g-bus-type', 'g-connection', 'g-default-timeout', 'g-flags', 'g-interface-info', 'g-interface-name', 'g-name', 'g-object-path'],
     XAppIconChooserButton: ['category', 'icon', 'icon-size'],
     XAppIconChooserDialog: ['allow-paths', 'default-icon', 'icon-size'],
     XAppObject: ['status-icon-interface'],
@@ -35,9 +33,6 @@ export const OWN_PROPS = {
 
 export const OWN_SIGNALS = {
     GDBusInterfaceSkeleton: ['g-authorize-method'],
-    GDBusObjectManagerClient: ['interface-proxy-properties-changed', 'interface-proxy-signal'],
-    GDBusObjectSkeleton: ['authorize-method'],
-    GDBusProxy: ['g-properties-changed', 'g-signal'],
     XAppFavorites: ['changed'],
     XAppGpuOffloadHelper: ['ready'],
     XAppIconChooserDialog: ['select'],
@@ -56,26 +51,26 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    XAppDarkModeManager: ['XAppDarkModeManager'],
-    XAppFavorites: ['XAppFavorites'],
-    XAppGpuOffloadHelper: ['XAppGpuOffloadHelper'],
-    XAppGtkWindow: ['XAppGtkWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    XAppIconChooserButton: ['XAppIconChooserButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    XAppIconChooserDialog: ['XAppIconChooserDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    XAppKbdLayoutController: ['XAppKbdLayoutController'],
-    XAppMonitorBlanker: ['XAppMonitorBlanker'],
-    XAppObjectManagerClient: ['XAppObjectManagerClient', 'GDBusObjectManagerClient'],
-    XAppObjectProxy: ['XAppObjectProxy', 'GDBusObjectProxy', 'XAppObject'],
-    XAppObjectSkeleton: ['XAppObjectSkeleton', 'GDBusObjectSkeleton', 'XAppObject'],
-    XAppPreferencesWindow: ['XAppPreferencesWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    XAppStackSidebar: ['XAppStackSidebar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    XAppStatusIcon: ['XAppStatusIcon'],
-    XAppStatusIconInterfaceProxy: ['XAppStatusIconInterfaceProxy', 'GDBusProxy', 'XAppStatusIconInterface'],
-    XAppStatusIconInterfaceSkeleton: ['XAppStatusIconInterfaceSkeleton', 'GDBusInterfaceSkeleton', 'XAppStatusIconInterface'],
-    XAppStatusIconMonitor: ['XAppStatusIconMonitor'],
-    XAppStyleManager: ['XAppStyleManager'],
-    XAppSwitcherooControlProxy: ['XAppSwitcherooControlProxy', 'GDBusProxy', 'XAppSwitcherooControl'],
-    XAppSwitcherooControlSkeleton: ['XAppSwitcherooControlSkeleton', 'GDBusInterfaceSkeleton', 'XAppSwitcherooControl'],
+    XAppDarkModeManager: ['XAppDarkModeManager', 'GObject'],
+    XAppFavorites: ['XAppFavorites', 'GObject'],
+    XAppGpuOffloadHelper: ['XAppGpuOffloadHelper', 'GObject'],
+    XAppGtkWindow: ['XAppGtkWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    XAppIconChooserButton: ['XAppIconChooserButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
+    XAppIconChooserDialog: ['XAppIconChooserDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    XAppKbdLayoutController: ['XAppKbdLayoutController', 'GObject'],
+    XAppMonitorBlanker: ['XAppMonitorBlanker', 'GObject'],
+    XAppObjectManagerClient: ['XAppObjectManagerClient', 'GDBusObjectManagerClient', 'GObject', 'GAsyncInitable', 'GDBusObjectManager', 'GInitable'],
+    XAppObjectProxy: ['XAppObjectProxy', 'GDBusObjectProxy', 'GObject', 'GDBusObject', 'XAppObject'],
+    XAppObjectSkeleton: ['XAppObjectSkeleton', 'GDBusObjectSkeleton', 'GObject', 'GDBusObject', 'XAppObject'],
+    XAppPreferencesWindow: ['XAppPreferencesWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    XAppStackSidebar: ['XAppStackSidebar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    XAppStatusIcon: ['XAppStatusIcon', 'GObject'],
+    XAppStatusIconInterfaceProxy: ['XAppStatusIconInterfaceProxy', 'GDBusProxy', 'GObject', 'GAsyncInitable', 'GDBusInterface', 'GInitable', 'XAppStatusIconInterface'],
+    XAppStatusIconInterfaceSkeleton: ['XAppStatusIconInterfaceSkeleton', 'GDBusInterfaceSkeleton', 'GObject', 'GDBusInterface', 'XAppStatusIconInterface'],
+    XAppStatusIconMonitor: ['XAppStatusIconMonitor', 'GObject'],
+    XAppStyleManager: ['XAppStyleManager', 'GObject'],
+    XAppSwitcherooControlProxy: ['XAppSwitcherooControlProxy', 'GDBusProxy', 'GObject', 'GAsyncInitable', 'GDBusInterface', 'GInitable', 'XAppSwitcherooControl'],
+    XAppSwitcherooControlSkeleton: ['XAppSwitcherooControlSkeleton', 'GDBusInterfaceSkeleton', 'GObject', 'GDBusInterface', 'XAppSwitcherooControl'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -86,7 +81,7 @@ export const DECLS = {
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
-    GBusType: ['starter', 'none', 'system', 'session'],
+    GtkIconSize: ['invalid', 'menu', 'small-toolbar', 'large-toolbar', 'button', 'dnd', 'dialog'],
     XAppIconSize: ['16', '22', '24', '32', '48', '96'],
     XAppScrollDirection: ['up', 'down', 'left', 'right'],
     XAppStatusIconState: ['native', 'fallback', 'no-support'],
@@ -107,10 +102,13 @@ export const ENUM_NICKS = {
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
 export const ENUM_VALUES = {
-    'GBusType.none': 0,
-    'GBusType.session': 2,
-    'GBusType.starter': -1,
-    'GBusType.system': 1,
+    'GtkIconSize.button': 4,
+    'GtkIconSize.dialog': 6,
+    'GtkIconSize.dnd': 5,
+    'GtkIconSize.invalid': 0,
+    'GtkIconSize.large-toolbar': 3,
+    'GtkIconSize.menu': 1,
+    'GtkIconSize.small-toolbar': 2,
     'XAppIconSize.16': 16,
     'XAppIconSize.22': 22,
     'XAppIconSize.24': 24,
@@ -164,15 +162,6 @@ export const ENUM_VALUES_UNREADABLE = {};
 export const FLAG_VALUES = {
     'GDBusInterfaceSkeletonFlags.handle-method-invocations-in-thread': 1,
     'GDBusInterfaceSkeletonFlags.none': 0,
-    'GDBusObjectManagerClientFlags.do-not-auto-start': 1,
-    'GDBusObjectManagerClientFlags.none': 0,
-    'GDBusProxyFlags.do-not-auto-start': 4,
-    'GDBusProxyFlags.do-not-auto-start-at-construction': 16,
-    'GDBusProxyFlags.do-not-connect-signals': 2,
-    'GDBusProxyFlags.do-not-load-properties': 1,
-    'GDBusProxyFlags.get-invalidated-properties': 8,
-    'GDBusProxyFlags.no-match-rule': 32,
-    'GDBusProxyFlags.none': 0,
 };
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
@@ -196,10 +185,6 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
     'GDBusInterfaceSkeleton.g-flags': 'GDBusInterfaceSkeletonFlags',
-    'GDBusObjectManagerClient.bus-type': 'GBusType',
-    'GDBusObjectManagerClient.flags': 'GDBusObjectManagerClientFlags',
-    'GDBusProxy.g-bus-type': 'GBusType',
-    'GDBusProxy.g-flags': 'GDBusProxyFlags',
     'XAppIconChooserButton.icon-size': 'GtkIconSize',
     'XAppIconChooserDialog.icon-size': 'XAppIconSize',
 };
@@ -239,32 +224,4 @@ export const SINCE = {
     'GDBusInterfaceSkeleton': '2.30',
     'GDBusInterfaceSkeleton.g-flags': '2.30',
     'GDBusInterfaceSkeleton::g-authorize-method': '2.30',
-    'GDBusObjectManagerClient': '2.30',
-    'GDBusObjectManagerClient.bus-type': '2.30',
-    'GDBusObjectManagerClient.connection': '2.30',
-    'GDBusObjectManagerClient.flags': '2.30',
-    'GDBusObjectManagerClient.get-proxy-type-destroy-notify': '2.30',
-    'GDBusObjectManagerClient.get-proxy-type-func': '2.30',
-    'GDBusObjectManagerClient.get-proxy-type-user-data': '2.30',
-    'GDBusObjectManagerClient.name': '2.30',
-    'GDBusObjectManagerClient.object-path': '2.30',
-    'GDBusObjectManagerClient::interface-proxy-properties-changed': '2.30',
-    'GDBusObjectManagerClient::interface-proxy-signal': '2.30',
-    'GDBusObjectProxy': '2.30',
-    'GDBusObjectProxy.g-connection': '2.30',
-    'GDBusObjectProxy.g-object-path': '2.30',
-    'GDBusObjectSkeleton': '2.30',
-    'GDBusObjectSkeleton.g-object-path': '2.30',
-    'GDBusObjectSkeleton::authorize-method': '2.30',
-    'GDBusProxy': '2.26',
-    'GDBusProxy.g-bus-type': '2.26',
-    'GDBusProxy.g-connection': '2.26',
-    'GDBusProxy.g-default-timeout': '2.26',
-    'GDBusProxy.g-flags': '2.26',
-    'GDBusProxy.g-interface-info': '2.26',
-    'GDBusProxy.g-interface-name': '2.26',
-    'GDBusProxy.g-name': '2.26',
-    'GDBusProxy.g-object-path': '2.26',
-    'GDBusProxy::g-properties-changed': '2.26',
-    'GDBusProxy::g-signal': '2.26',
 };

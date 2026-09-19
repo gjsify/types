@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./unity-7.0.d.ts"]
+  "include": ["./unity-7.0.d.ts","./unity-7.0-vocabulary.d.ts"]
 }
 
 

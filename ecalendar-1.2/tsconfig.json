@@ -50,7 +50,7 @@
       ]
 }
   },
-  "include": ["./ecalendar-1.2.d.ts"]
+  "include": ["./ecalendar-1.2.d.ts","./ecalendar-1.2-vocabulary.d.ts"]
 }
 
 

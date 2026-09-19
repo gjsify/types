@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./ags-8.0.d.ts"]
+  "include": ["./ags-8.0.d.ts","./ags-8.0-vocabulary.d.ts"]
 }
 
 

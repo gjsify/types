@@ -47,7 +47,7 @@
       ]
 }
   },
-  "include": ["./edataserver-1.2.d.ts"]
+  "include": ["./edataserver-1.2.d.ts","./edataserver-1.2-vocabulary.d.ts"]
 }
 
 

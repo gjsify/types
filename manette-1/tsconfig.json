@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./manette-1.d.ts"]
+  "include": ["./manette-1.d.ts","./manette-1-vocabulary.d.ts"]
 }
 
 

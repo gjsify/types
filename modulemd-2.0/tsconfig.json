@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./modulemd-2.0.d.ts"]
+  "include": ["./modulemd-2.0.d.ts","./modulemd-2.0-vocabulary.d.ts"]
 }
 
 

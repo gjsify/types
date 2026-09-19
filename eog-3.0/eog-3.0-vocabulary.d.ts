@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Eog-3.0.
  *
- * GENERATED — do not edit. Provenance: Eog-3.0 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application
+ * GENERATED — do not edit. Provenance: Eog-3.0 — dropped empty base(s): Atk.ImplementorIface
  *
- * 23 instantiable GTypes (of which 9 concrete widgets), 25 declarations (1 inlined from a namespace whose vocabulary does not emit them), 13 enum nick unions, 3 slot candidates.
+ * 23 instantiable GTypes (of which 9 concrete widgets), 24 declarations, 13 enum nick unions, 3 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -27,8 +27,9 @@
 import type Eog from './eog-3.0.js';
 import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type Gio from '@girs/gio-2.0';
 import type Gtk from '@girs/gtk-3.0';
+import type { GActionGroupConstructOnly, GActionGroupProps, GActionMapConstructOnly, GActionMapProps, GApplicationConstructOnly, GApplicationProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkApplicationConstructOnly, GtkApplicationProps, GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkFileChooserConstructOnly, GtkFileChooserDialogConstructOnly, GtkFileChooserDialogProps, GtkFileChooserProps, GtkIconViewConstructOnly, GtkIconViewProps, GtkListStoreConstructOnly, GtkListStoreProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkOverlayConstructOnly, GtkOverlayProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkStatusbarConstructOnly, GtkStatusbarProps, GtkTreeDragDestConstructOnly, GtkTreeDragDestProps, GtkTreeDragSourceConstructOnly, GtkTreeDragSourceProps, GtkTreeModelConstructOnly, GtkTreeModelProps, GtkTreeSortableConstructOnly, GtkTreeSortableProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -65,18 +66,18 @@ export type EogZoomModeNick = 'free' | 'shrink-to-fit';
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-export interface EogApplicationProps extends GtkApplicationProps {
+export interface EogApplicationProps extends GtkApplicationProps, GActionGroupProps, GActionMapProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EogApplicationConstructOnly = GtkApplicationConstructOnly;
+export type EogApplicationConstructOnly = GtkApplicationConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly;
 
-export interface EogClipboardHandlerProps {
+export interface EogClipboardHandlerProps extends GInitiallyUnownedProps {
     pixbuf?: GdkPixbuf.Pixbuf;
     /** @default NULL */
     uri?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EogClipboardHandlerConstructOnly = 'pixbuf' | 'uri';
+export type EogClipboardHandlerConstructOnly = GInitiallyUnownedConstructOnly | 'pixbuf' | 'uri';
 
 export interface EogDetailsDialogProps extends GtkWindowProps, GtkBuildableProps {
 }
@@ -88,20 +89,20 @@ export interface EogFileChooserProps extends GtkFileChooserDialogProps, GtkBuild
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EogFileChooserConstructOnly = GtkFileChooserDialogConstructOnly | GtkBuildableConstructOnly | GtkFileChooserConstructOnly;
 
-export interface EogImageProps {
+export interface EogImageProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EogImageConstructOnly = never;
+export type EogImageConstructOnly = GObjectConstructOnly;
 
-export interface EogImageSaveInfoProps {
+export interface EogImageSaveInfoProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EogImageSaveInfoConstructOnly = never;
+export type EogImageSaveInfoConstructOnly = GObjectConstructOnly;
 
-export interface EogJobProps {
+export interface EogJobProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EogJobConstructOnly = never;
+export type EogJobConstructOnly = GObjectConstructOnly;
 
 export interface EogJobCopyProps extends EogJobProps {
 }
@@ -219,12 +220,12 @@ export interface EogThumbViewProps extends GtkIconViewProps, GtkBuildableProps, 
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type EogThumbViewConstructOnly = GtkIconViewConstructOnly | GtkBuildableConstructOnly | GtkCellLayoutConstructOnly | GtkOrientableConstructOnly | GtkScrollableConstructOnly;
 
-export interface EogTransformProps {
+export interface EogTransformProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EogTransformConstructOnly = never;
+export type EogTransformConstructOnly = GObjectConstructOnly;
 
-export interface EogURIConverterProps {
+export interface EogURIConverterProps extends GObjectProps {
     /** @default FALSE */
     'convert-spaces'?: boolean;
     /** @default 1 */
@@ -237,9 +238,9 @@ export interface EogURIConverterProps {
     'space-character'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EogURIConverterConstructOnly = never;
+export type EogURIConverterConstructOnly = GObjectConstructOnly;
 
-export interface EogWindowProps extends GtkApplicationWindowProps, GtkBuildableProps {
+export interface EogWindowProps extends GtkApplicationWindowProps, GActionGroupProps, GActionMapProps, GtkBuildableProps {
     /**
      * Determines the position of the image gallery in the window relative to the image.
      * @default EOG_WINDOW_GALLERY_POS_BOTTOM
@@ -257,49 +258,7 @@ export interface EogWindowProps extends GtkApplicationWindowProps, GtkBuildableP
     'startup-flags'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type EogWindowConstructOnly = GtkApplicationWindowConstructOnly | GtkBuildableConstructOnly | 'startup-flags';
-
-/** `GApplication` is the core class for application support. */
-export interface GApplicationProps {
-    /**
-     * The group of actions that the application exports.
-     * @since 2.28
-     * @deprecated since 2.32: Use the [iface@Gio.ActionMap] interface instead.
-     */
-    'action-group'?: Gio.ActionGroup;
-    /**
-     * The unique identifier for the application.
-     * @since 2.28
-     * @default NULL
-     */
-    'application-id'?: string | null;
-    /**
-     * Flags specifying the behaviour of the application.
-     * @since 2.28
-     * @default G_APPLICATION_FLAGS_NONE
-     */
-    flags?: number;
-    /**
-     * Time (in milliseconds) to stay alive after becoming idle.
-     * @since 2.28
-     * @default 0
-     */
-    'inactivity-timeout'?: number;
-    /**
-     * The base resource path for the application.
-     * @since 2.28
-     * @default NULL
-     */
-    'resource-base-path'?: string | null;
-    /**
-     * The human-readable version number of the application.
-     * @since 2.80
-     * @default NULL
-     */
-    version?: string | null;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GApplicationConstructOnly = never;
+export type EogWindowConstructOnly = GtkApplicationWindowConstructOnly | GActionGroupConstructOnly | GActionMapConstructOnly | GtkBuildableConstructOnly | 'startup-flags';
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -452,6 +411,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

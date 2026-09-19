@@ -1,6 +1,6 @@
 // The widget vocabulary of GPasteGtk-4 as runtime data.
 //
-// GENERATED — do not edit. Provenance: GPasteGtk-4 — dropped empty base(s): GObject.Object GPaste.KeybindingProvider Gio.AsyncInitable Gio.DBusInterface Gio.Initable GObject.InitiallyUnowned — inlined base(s) their owner's vocabulary does not emit: Gio.DBusProxy
+// GENERATED — do not edit. Provenance: GPasteGtk-4
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,19 +11,17 @@ export const PROVENANCE = {
     version: '4',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'GPaste.KeybindingProvider', 'Gio.AsyncInitable', 'Gio.DBusInterface', 'Gio.Initable', 'GObject.InitiallyUnowned'],
-    inlinedBases: ['Gio.DBusProxy'],
+    droppedBases: [],
+    inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['GPasteGtk'],
+    requiredVocabularies: ['@girs/adw-1/vocabulary', '@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gpaste-2/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
-export const OWN_PROPS = {
-    GDBusProxy: ['g-bus-type', 'g-connection', 'g-default-timeout', 'g-flags', 'g-interface-info', 'g-interface-name', 'g-name', 'g-object-path'],
-};
+export const OWN_PROPS = {};
 
-export const OWN_SIGNALS = {
-    GDBusProxy: ['g-properties-changed', 'g-signal'],
-};
+export const OWN_SIGNALS = {};
 
 // Every GType this namespace can INSTANTIATE -> the declarations its members come from.
 //
@@ -33,16 +31,16 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    GPasteGtkGlobalShortcutClient: ['GPasteGtkGlobalShortcutClient', 'GDBusProxy'],
-    GPasteGtkPreferencesBehaviourPage: ['GPasteGtkPreferencesBehaviourPage', 'GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GPasteGtkPreferencesDialog: ['GPasteGtkPreferencesDialog', 'AdwPreferencesDialog', 'AdwDialog', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkShortcutManager'],
-    GPasteGtkPreferencesGroup: ['GPasteGtkPreferencesGroup', 'AdwPreferencesGroup', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GPasteGtkPreferencesHistorySettingsPage: ['GPasteGtkPreferencesHistorySettingsPage', 'GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GPasteGtkPreferencesImagesPage: ['GPasteGtkPreferencesImagesPage', 'GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GPasteGtkPreferencesManager: ['GPasteGtkPreferencesManager'],
-    GPasteGtkPreferencesPage: ['GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GPasteGtkPreferencesShortcutsPage: ['GPasteGtkPreferencesShortcutsPage', 'GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    GPasteGtkPreferencesWidget: ['GPasteGtkPreferencesWidget', 'AdwBin', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GPasteGtkGlobalShortcutClient: ['GPasteGtkGlobalShortcutClient', 'GDBusProxy', 'GObject', 'GPasteKeybindingProvider', 'GAsyncInitable', 'GDBusInterface', 'GInitable'],
+    GPasteGtkPreferencesBehaviourPage: ['GPasteGtkPreferencesBehaviourPage', 'GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GPasteGtkPreferencesDialog: ['GPasteGtkPreferencesDialog', 'AdwPreferencesDialog', 'AdwDialog', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkShortcutManager'],
+    GPasteGtkPreferencesGroup: ['GPasteGtkPreferencesGroup', 'AdwPreferencesGroup', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GPasteGtkPreferencesHistorySettingsPage: ['GPasteGtkPreferencesHistorySettingsPage', 'GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GPasteGtkPreferencesImagesPage: ['GPasteGtkPreferencesImagesPage', 'GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GPasteGtkPreferencesManager: ['GPasteGtkPreferencesManager', 'GObject'],
+    GPasteGtkPreferencesPage: ['GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GPasteGtkPreferencesShortcutsPage: ['GPasteGtkPreferencesShortcutsPage', 'GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GPasteGtkPreferencesWidget: ['GPasteGtkPreferencesWidget', 'AdwBin', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -52,9 +50,7 @@ export const DECLS = {
 // count is in the provenance line above.
 export const CHILD_HOLDERS = [];
 
-export const ENUM_NICKS = {
-    GBusType: ['starter', 'none', 'system', 'session'],
-};
+export const ENUM_NICKS = {};
 
 // The number behind each of those nicks, read from GIR's own `value` attribute.
 //
@@ -70,12 +66,7 @@ export const ENUM_NICKS = {
 // from an INSTALLED library instead gets two provenances for one table, and a member the
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
-export const ENUM_VALUES = {
-    'GBusType.none': 0,
-    'GBusType.session': 2,
-    'GBusType.starter': -1,
-    'GBusType.system': 1,
-};
+export const ENUM_VALUES = {};
 
 // The nicks GIR marks `deprecated="1"`.
 //
@@ -112,15 +103,7 @@ export const ENUM_VALUES_UNREADABLE = {};
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
-export const FLAG_VALUES = {
-    'GDBusProxyFlags.do-not-auto-start': 4,
-    'GDBusProxyFlags.do-not-auto-start-at-construction': 16,
-    'GDBusProxyFlags.do-not-connect-signals': 2,
-    'GDBusProxyFlags.do-not-load-properties': 1,
-    'GDBusProxyFlags.get-invalidated-properties': 8,
-    'GDBusProxyFlags.no-match-rule': 32,
-    'GDBusProxyFlags.none': 0,
-};
+export const FLAG_VALUES = {};
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
 // `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
@@ -141,10 +124,7 @@ export const FLAG_VALUES_UNREADABLE = {};
 // A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
 // that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
-export const PROP_ENUMS = {
-    'GDBusProxy.g-bus-type': 'GBusType',
-    'GDBusProxy.g-flags': 'GDBusProxyFlags',
-};
+export const PROP_ENUMS = {};
 
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
@@ -173,16 +153,4 @@ export const ARIA_VALUE_ENUMS = {};
 
 export const SLOT_CANDIDATES = {};
 
-export const SINCE = {
-    'GDBusProxy': '2.26',
-    'GDBusProxy.g-bus-type': '2.26',
-    'GDBusProxy.g-connection': '2.26',
-    'GDBusProxy.g-default-timeout': '2.26',
-    'GDBusProxy.g-flags': '2.26',
-    'GDBusProxy.g-interface-info': '2.26',
-    'GDBusProxy.g-interface-name': '2.26',
-    'GDBusProxy.g-name': '2.26',
-    'GDBusProxy.g-object-path': '2.26',
-    'GDBusProxy::g-properties-changed': '2.26',
-    'GDBusProxy::g-signal': '2.26',
-};
+export const SINCE = {};

@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./nmclient-1.0.d.ts"]
+  "include": ["./nmclient-1.0.d.ts","./nmclient-1.0-vocabulary.d.ts"]
 }
 
 

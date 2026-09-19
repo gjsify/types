@@ -74,7 +74,7 @@
       ]
 }
   },
-  "include": ["./cheese-3.0.d.ts"]
+  "include": ["./cheese-3.0.d.ts","./cheese-3.0-vocabulary.d.ts"]
 }
 
 

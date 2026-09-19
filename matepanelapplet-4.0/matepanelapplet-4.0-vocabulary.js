@@ -1,6 +1,6 @@
 // The widget vocabulary of MatePanelApplet-4.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: MatePanelApplet-4.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface — prop(s) no TypeScript value satisfies: MatePanelApplet.Applet.closure MatePanelApplet.Applet.size-hints
+// GENERATED — do not edit. Provenance: MatePanelApplet-4.0 — dropped empty base(s): Atk.ImplementorIface — prop(s) no TypeScript value satisfies: MatePanelApplet.Applet.closure MatePanelApplet.Applet.size-hints
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '4.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: ['MatePanelApplet.Applet.closure', 'MatePanelApplet.Applet.size-hints'],
     unresolvedProps: [],
+    identifierPrefixes: ['MatePanel'],
+    requiredVocabularies: ['@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -33,7 +35,7 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    MatePanelApplet: ['MatePanelApplet', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    MatePanelApplet: ['MatePanelApplet', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

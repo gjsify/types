@@ -1,0 +1,675 @@
+// The widget vocabulary of Meta-18 as runtime data.
+//
+// GENERATED — do not edit. Provenance: Meta-18 — dropped empty base(s): Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.DBusInterfaceSkeleton
+//
+// The type half of this subpath is the sibling `.d.ts`. This file exists because
+// types are erased: a consumer that wants to ask the installed library whether every
+// name here is real needs values, not declarations.
+
+export const PROVENANCE = {
+    namespace: 'Meta',
+    version: '18',
+    libraryVersion: null,
+    childHolders: 0,
+    droppedBases: ['Atk.ImplementorIface'],
+    inlinedBases: ['Gio.DBusInterfaceSkeleton'],
+    unsettableProps: [],
+    unresolvedProps: [],
+    identifierPrefixes: ['Meta'],
+    requiredVocabularies: ['@girs/clutter-18/vocabulary', '@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary'],
+};
+
+export const OWN_PROPS = {
+    GDBusInterfaceSkeleton: ['g-flags'],
+    MetaBackground: ['meta-display'],
+    MetaBackgroundActor: ['meta-display', 'monitor'],
+    MetaBackgroundContent: ['background', 'brightness', 'gradient', 'gradient-height', 'gradient-max-darkness', 'meta-display', 'monitor', 'rounded-clip-radius', 'vignette', 'vignette-sharpness'],
+    MetaBarrier: ['backend', 'directions', 'flags', 'x1', 'x2', 'y1', 'y2'],
+    MetaContext: ['name', 'nick', 'unsafe-mode'],
+    MetaCursorTracker: ['backend'],
+    MetaDebugControl: ['context', 'exported'],
+    MetaLaunchContext: ['display', 'timestamp', 'workspace'],
+    MetaMonitorManager: ['backend'],
+    MetaRemoteAccessHandle: ['is-recording'],
+    MetaShapedTexture: ['clutter-context', 'color-state'],
+    MetaStartupNotification: ['display'],
+    MetaStartupSequence: ['application-id', 'display', 'icon-name', 'id', 'name', 'timestamp', 'wmclass', 'workspace'],
+    MetaWaylandSurface: ['main-monitor'],
+    MetaWindowConfig: ['is-fullscreen', 'rect'],
+};
+
+export const OWN_SIGNALS = {
+    GDBusInterfaceSkeleton: ['g-authorize-method'],
+    MetaBackground: ['changed'],
+    MetaBackgroundImage: ['loaded'],
+    MetaBarrier: ['hit', 'left'],
+    MetaContext: ['prepare-shutdown', 'started'],
+    MetaCursorTracker: ['cursor-changed', 'cursor-prefs-changed', 'position-invalidated', 'visibility-changed'],
+    MetaDisplay: ['accelerator-activated', 'accelerator-deactivated', 'closing', 'focus-window', 'gl-video-memory-purged', 'grab-op-begin', 'grab-op-end', 'in-fullscreen-changed', 'init-xserver', 'modifiers-accelerator-activated', 'overlay-key', 'pad-mode-switch', 'restacked', 'show-osd', 'show-pad-osd', 'show-resize-popup', 'showing-desktop-changed', 'window-created', 'window-demands-attention', 'window-entered-monitor', 'window-left-monitor', 'window-marked-urgent', 'window-visibility-updated', 'workareas-changed', 'x11-display-closing', 'x11-display-opened', 'x11-display-setup'],
+    MetaDnd: ['dnd-enter', 'dnd-leave', 'dnd-position-change'],
+    MetaMonitorManager: ['confirm-display-change', 'monitor-privacy-screen-changed', 'monitors-changed', 'monitors-changed-internal', 'monitors-changing', 'power-save-mode-changed'],
+    MetaOrientationManager: ['orientation-changed', 'sensor-active'],
+    MetaRemoteAccessController: ['new-handle'],
+    MetaRemoteAccessHandle: ['stopped'],
+    MetaSelection: ['owner-changed'],
+    MetaSelectionSource: ['activated', 'deactivated'],
+    MetaShapedTexture: ['size-changed'],
+    MetaStartupNotification: ['changed'],
+    MetaStartupSequence: ['complete', 'timeout'],
+    MetaWaylandClient: ['client-destroyed'],
+    MetaWaylandCompositor: ['prepare-shutdown'],
+    MetaWaylandSurface: ['actor-changed', 'configure', 'destroy', 'geometry-changed', 'pre-state-applied', 'shortcuts-inhibited', 'shortcuts-restored', 'unmapped'],
+    MetaWorkspace: ['window-added', 'window-removed'],
+    MetaWorkspaceManager: ['active-workspace-changed', 'showing-desktop-changed', 'workspace-added', 'workspace-removed', 'workspace-switched', 'workspaces-reordered'],
+};
+
+// Every GType this namespace can INSTANTIATE -> the declarations its members come from.
+//
+// The key set is what a UI description file can name: a registered, non-abstract class.
+// Not "every widget" — GtkBuilder resolves a name through `g_type_from_name`, which knows
+// nothing about widgets, and a `.ui` file is full of `GtkSizeGroup`, `GtkTextTag`,
+// `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
+// below for the narrower questions; they did not move.
+export const DECLS = {
+    MetaBackground: ['MetaBackground', 'GObject'],
+    MetaBackgroundActor: ['MetaBackgroundActor', 'ClutterActor', 'GInitiallyUnowned', 'GObject', 'ClutterAnimatable'],
+    MetaBackgroundContent: ['MetaBackgroundContent', 'GObject', 'ClutterContent'],
+    MetaBackgroundGroup: ['MetaBackgroundGroup', 'ClutterActor', 'GInitiallyUnowned', 'GObject', 'ClutterAnimatable'],
+    MetaBackgroundImage: ['MetaBackgroundImage', 'GObject'],
+    MetaBackgroundImageCache: ['MetaBackgroundImageCache', 'GObject'],
+    MetaBarrier: ['MetaBarrier', 'GObject', 'GInitable'],
+    MetaContext: ['MetaContext', 'GObject'],
+    MetaCursorTracker: ['MetaCursorTracker', 'GObject'],
+    MetaDebugControl: ['MetaDebugControl', 'GDBusInterfaceSkeleton', 'GObject', 'GDBusInterface'],
+    MetaDisplay: ['MetaDisplay', 'GObject'],
+    MetaDnd: ['MetaDnd', 'GObject'],
+    MetaIdleMonitor: ['MetaIdleMonitor', 'GObject'],
+    MetaLaters: ['MetaLaters', 'GObject'],
+    MetaLaunchContext: ['MetaLaunchContext', 'GAppLaunchContext', 'GObject'],
+    MetaLogicalMonitor: ['MetaLogicalMonitor', 'GObject'],
+    MetaMonitor: ['MetaMonitor', 'GObject'],
+    MetaMonitorManager: ['MetaMonitorManager', 'GObject'],
+    MetaMultiTexture: ['MetaMultiTexture', 'GObject'],
+    MetaOrientationManager: ['MetaOrientationManager', 'GObject'],
+    MetaRemoteAccessController: ['MetaRemoteAccessController', 'GObject'],
+    MetaRemoteAccessHandle: ['MetaRemoteAccessHandle', 'GObject'],
+    MetaSelection: ['MetaSelection', 'GObject'],
+    MetaSelectionSource: ['MetaSelectionSource', 'GObject'],
+    MetaSelectionSourceMemory: ['MetaSelectionSourceMemory', 'MetaSelectionSource', 'GObject'],
+    MetaShapedTexture: ['MetaShapedTexture', 'GObject', 'ClutterContent'],
+    MetaSoundPlayer: ['MetaSoundPlayer', 'GObject'],
+    MetaStage: ['MetaStage', 'ClutterStage', 'ClutterActor', 'GInitiallyUnowned', 'GObject', 'ClutterAnimatable'],
+    MetaStartupNotification: ['MetaStartupNotification', 'GObject'],
+    MetaStartupSequence: ['MetaStartupSequence', 'GObject'],
+    MetaWaylandClient: ['MetaWaylandClient', 'GObject'],
+    MetaWaylandCompositor: ['MetaWaylandCompositor', 'GObject'],
+    MetaWaylandSurface: ['MetaWaylandSurface', 'GObject'],
+    MetaWindowConfig: ['MetaWindowConfig', 'GObject'],
+    MetaWindowGroup: ['MetaWindowGroup', 'ClutterActor', 'GInitiallyUnowned', 'GObject', 'ClutterAnimatable'],
+    MetaWorkspace: ['MetaWorkspace', 'GObject'],
+    MetaWorkspaceManager: ['MetaWorkspaceManager', 'GObject'],
+    MetaX11Display: ['MetaX11Display', 'GObject'],
+};
+
+// The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
+// are the ones that merely HOLD one, through `set_child`/`get_child`, descending from
+// `GObject.Object`. A renderer places them like a container; a check asking "is this a
+// widget" must not count them. Derived from the accessor pair, never from a list — the
+// count is in the provenance line above.
+export const CHILD_HOLDERS = [];
+
+export const ENUM_NICKS = {
+    MetaButtonFunction: ['menu', 'minimize', 'maximize', 'close', 'last'],
+    MetaCloseDialogResponse: ['wait', 'force-close'],
+    MetaCompEffect: ['create', 'unminimize', 'destroy', 'minimize', 'none'],
+    MetaDisplayCorner: ['topleft', 'topright', 'bottomleft', 'bottomright'],
+    MetaDisplayDirection: ['up', 'down', 'left', 'right'],
+    MetaEdgeType: ['window', 'monitor', 'screen'],
+    MetaExitCode: ['success', 'error'],
+    MetaFrameType: ['normal', 'dialog', 'modal-dialog', 'utility', 'menu', 'border', 'attached', 'last'],
+    MetaGrabOp: ['none', 'window-base', 'moving', 'moving-unconstrained', 'resizing-nw', 'resizing-n', 'resizing-ne', 'resizing-e', 'resizing-sw', 'resizing-s', 'resizing-se', 'resizing-w', 'keyboard-moving', 'keyboard-resizing-unknown', 'keyboard-resizing-nw', 'keyboard-resizing-n', 'keyboard-resizing-ne', 'keyboard-resizing-e', 'keyboard-resizing-sw', 'keyboard-resizing-s', 'keyboard-resizing-se', 'keyboard-resizing-w'],
+    MetaGravity: ['none', 'north-west', 'north', 'north-east', 'west', 'center', 'east', 'south-west', 'south', 'south-east', 'static'],
+    MetaInhibitShortcutsDialogResponse: ['allow', 'deny'],
+    MetaKeyBindingAction: ['none', 'workspace-1', 'workspace-2', 'workspace-3', 'workspace-4', 'workspace-5', 'workspace-6', 'workspace-7', 'workspace-8', 'workspace-9', 'workspace-10', 'workspace-11', 'workspace-12', 'workspace-left', 'workspace-right', 'workspace-up', 'workspace-down', 'workspace-last', 'switch-applications', 'switch-applications-backward', 'switch-group', 'switch-group-backward', 'switch-windows', 'switch-windows-backward', 'switch-panels', 'switch-panels-backward', 'cycle-group', 'cycle-group-backward', 'cycle-windows', 'cycle-windows-backward', 'cycle-panels', 'cycle-panels-backward', 'show-desktop', 'panel-run-dialog', 'toggle-recording', 'set-spew-mark', 'activate-window-menu', 'toggle-fullscreen', 'toggle-maximized', 'toggle-tiled-left', 'toggle-tiled-right', 'toggle-above', 'maximize', 'unmaximize', 'toggle-shaded', 'minimize', 'close', 'begin-move', 'begin-resize', 'toggle-on-all-workspaces', 'move-to-workspace-1', 'move-to-workspace-2', 'move-to-workspace-3', 'move-to-workspace-4', 'move-to-workspace-5', 'move-to-workspace-6', 'move-to-workspace-7', 'move-to-workspace-8', 'move-to-workspace-9', 'move-to-workspace-10', 'move-to-workspace-11', 'move-to-workspace-12', 'move-to-workspace-left', 'move-to-workspace-right', 'move-to-workspace-up', 'move-to-workspace-down', 'move-to-workspace-last', 'move-to-monitor-left', 'move-to-monitor-right', 'move-to-monitor-up', 'move-to-monitor-down', 'raise-or-lower', 'raise', 'lower', 'maximize-vertically', 'maximize-horizontally', 'move-to-corner-nw', 'move-to-corner-ne', 'move-to-corner-sw', 'move-to-corner-se', 'move-to-side-n', 'move-to-side-s', 'move-to-side-e', 'move-to-side-w', 'move-to-center', 'overlay-key', 'locate-pointer-key', 'iso-next-group', 'always-on-top', 'switch-monitor', 'rotate-monitor', 'last'],
+    MetaLaterType: ['resize', 'calc-showing', 'check-fullscreen', 'sync-stack', 'before-redraw', 'idle'],
+    MetaMonitorSwitchConfigType: ['all-mirror', 'all-linear', 'external', 'builtin', 'unknown'],
+    MetaMotionDirection: ['up', 'down', 'left', 'right', 'up-left', 'up-right', 'down-left', 'down-right'],
+    MetaMultiTextureAlphaMode: ['meta-multi-texture-alpha-mode-none', 'meta-multi-texture-alpha-mode-premult-electrical', 'meta-multi-texture-alpha-mode-straight', 'n-meta-multi-texture-alpha-modes'],
+    MetaMultiTextureChromaLoc: ['none', 'defined'],
+    MetaMultiTextureCoefficients: ['meta-multi-texture-coefficients-none', 'meta-multi-texture-coefficients-identity-full', 'meta-multi-texture-coefficients-identity-limited', 'meta-multi-texture-coefficients-bt709-full', 'meta-multi-texture-coefficients-bt709-limited', 'meta-multi-texture-coefficients-bt601-full', 'meta-multi-texture-coefficients-bt601-limited', 'meta-multi-texture-coefficients-bt2020-full', 'meta-multi-texture-coefficients-bt2020-limited', 'n-meta-multi-texture-coefficients'],
+    MetaMultiTextureFormat: ['meta-multi-texture-format-invalid', 'meta-multi-texture-format-simple', 'meta-multi-texture-format-yuyv', 'meta-multi-texture-format-yvyu', 'meta-multi-texture-format-uyvy', 'meta-multi-texture-format-vyuy', 'meta-multi-texture-format-nv12', 'meta-multi-texture-format-nv21', 'meta-multi-texture-format-nv16', 'meta-multi-texture-format-nv61', 'meta-multi-texture-format-nv24', 'meta-multi-texture-format-nv42', 'meta-multi-texture-format-p010', 'meta-multi-texture-format-p012', 'meta-multi-texture-format-p016', 'meta-multi-texture-format-yuv420', 'meta-multi-texture-format-yvu420', 'meta-multi-texture-format-yuv422', 'meta-multi-texture-format-yvu422', 'meta-multi-texture-format-yuv444', 'meta-multi-texture-format-yvu444', 'meta-multi-texture-format-s010', 'meta-multi-texture-format-s210', 'meta-multi-texture-format-s410', 'meta-multi-texture-format-s012', 'meta-multi-texture-format-s212', 'meta-multi-texture-format-s412', 'meta-multi-texture-format-s016', 'meta-multi-texture-format-s216', 'meta-multi-texture-format-s416', 'n-meta-multi-texture-formats'],
+    MetaOrientation: ['undefined', 'normal', 'bottom-up', 'left-up', 'right-up'],
+    MetaPadDirection: ['up', 'down', 'cw', 'ccw'],
+    MetaPadFeatureType: ['ring', 'strip', 'dial'],
+    MetaPowerSaveChangeReason: ['mode-change', 'hotplug'],
+    MetaPreference: ['mouse-button-mods', 'focus-mode', 'focus-new-windows', 'attach-modal-dialogs', 'raise-on-click', 'action-double-click-titlebar', 'action-middle-click-titlebar', 'action-right-click-titlebar', 'auto-raise', 'auto-raise-delay', 'focus-change-on-pointer-rest', 'num-workspaces', 'dynamic-workspaces', 'keybindings', 'disable-workarounds', 'button-layout', 'workspace-names', 'visual-bell', 'audible-bell', 'visual-bell-type', 'gnome-accessibility', 'gnome-animations', 'cursor-theme', 'cursor-size', 'resize-with-right-button', 'edge-tiling', 'force-fullscreen', 'workspaces-only-on-primary', 'draggable-border-width', 'auto-maximize', 'center-new-windows', 'drag-threshold', 'locate-pointer', 'check-alive-timeout'],
+    MetaSelectionType: ['selection-primary', 'selection-clipboard', 'selection-dnd', 'n-selection-types'],
+    MetaSide: ['left', 'right', 'top', 'bottom'],
+    MetaSizeChange: ['maximize', 'unmaximize', 'fullscreen', 'unfullscreen', 'monitor-move'],
+    MetaStackLayer: ['desktop', 'bottom', 'normal', 'top', 'dock', 'override-redirect', 'last'],
+    MetaTabList: ['normal', 'docks', 'group', 'normal-all', 'normal-all-mru'],
+    MetaTabShowType: ['icon', 'instantly'],
+    MetaWindowClientType: ['wayland', 'x11'],
+    MetaWindowMenuType: ['wm', 'app'],
+    MetaWindowType: ['normal', 'desktop', 'dock', 'dialog', 'modal-dialog', 'toolbar', 'menu', 'utility', 'splashscreen', 'dropdown-menu', 'popup-menu', 'tooltip', 'notification', 'combo', 'dnd', 'override-other'],
+};
+
+// The number behind each of those nicks, read from GIR's own `value` attribute.
+//
+// It ships because position in `ENUM_NICKS` is not the value and a consumer with no
+// typelib has no other way to learn it: a surface without GI still has to hand GObject an
+// integer. The alternative a consumer reaches for first is counting, and counting is wrong
+// on 6 of the 137 enums a GTK 4 vocabulary carries (112 in Gtk-4.0, 25 in Adw-1) --
+// `GtkResponseType` runs -1 down to
+// -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
+// 1001001000 where counting answers 0.
+//
+// Same provenance as the nicks above, which is the point: a consumer that reads the numbers
+// from an INSTALLED library instead gets two provenances for one table, and a member the
+// vocabulary describes but the host predates then looks like a missing number rather than a
+// version gap.
+export const ENUM_VALUES = {
+    'MetaButtonFunction.close': 3,
+    'MetaButtonFunction.last': 4,
+    'MetaButtonFunction.maximize': 2,
+    'MetaButtonFunction.menu': 0,
+    'MetaButtonFunction.minimize': 1,
+    'MetaCloseDialogResponse.force-close': 1,
+    'MetaCloseDialogResponse.wait': 0,
+    'MetaCompEffect.create': 0,
+    'MetaCompEffect.destroy': 2,
+    'MetaCompEffect.minimize': 3,
+    'MetaCompEffect.none': 4,
+    'MetaCompEffect.unminimize': 1,
+    'MetaDisplayCorner.bottomleft': 2,
+    'MetaDisplayCorner.bottomright': 3,
+    'MetaDisplayCorner.topleft': 0,
+    'MetaDisplayCorner.topright': 1,
+    'MetaDisplayDirection.down': 1,
+    'MetaDisplayDirection.left': 2,
+    'MetaDisplayDirection.right': 3,
+    'MetaDisplayDirection.up': 0,
+    'MetaEdgeType.monitor': 1,
+    'MetaEdgeType.screen': 2,
+    'MetaEdgeType.window': 0,
+    'MetaExitCode.error': 1,
+    'MetaExitCode.success': 0,
+    'MetaFrameType.attached': 6,
+    'MetaFrameType.border': 5,
+    'MetaFrameType.dialog': 1,
+    'MetaFrameType.last': 7,
+    'MetaFrameType.menu': 4,
+    'MetaFrameType.modal-dialog': 2,
+    'MetaFrameType.normal': 0,
+    'MetaFrameType.utility': 3,
+    'MetaGrabOp.keyboard-moving': 257,
+    'MetaGrabOp.keyboard-resizing-e': 8449,
+    'MetaGrabOp.keyboard-resizing-n': 33025,
+    'MetaGrabOp.keyboard-resizing-ne': 41217,
+    'MetaGrabOp.keyboard-resizing-nw': 37121,
+    'MetaGrabOp.keyboard-resizing-s': 16641,
+    'MetaGrabOp.keyboard-resizing-se': 24833,
+    'MetaGrabOp.keyboard-resizing-sw': 20737,
+    'MetaGrabOp.keyboard-resizing-unknown': 769,
+    'MetaGrabOp.keyboard-resizing-w': 4353,
+    'MetaGrabOp.moving': 1,
+    'MetaGrabOp.moving-unconstrained': 1025,
+    'MetaGrabOp.none': 0,
+    'MetaGrabOp.resizing-e': 8193,
+    'MetaGrabOp.resizing-n': 32769,
+    'MetaGrabOp.resizing-ne': 40961,
+    'MetaGrabOp.resizing-nw': 36865,
+    'MetaGrabOp.resizing-s': 16385,
+    'MetaGrabOp.resizing-se': 24577,
+    'MetaGrabOp.resizing-sw': 20481,
+    'MetaGrabOp.resizing-w': 4097,
+    'MetaGrabOp.window-base': 1,
+    'MetaGravity.center': 5,
+    'MetaGravity.east': 6,
+    'MetaGravity.none': 0,
+    'MetaGravity.north': 2,
+    'MetaGravity.north-east': 3,
+    'MetaGravity.north-west': 1,
+    'MetaGravity.south': 8,
+    'MetaGravity.south-east': 9,
+    'MetaGravity.south-west': 7,
+    'MetaGravity.static': 10,
+    'MetaGravity.west': 4,
+    'MetaInhibitShortcutsDialogResponse.allow': 0,
+    'MetaInhibitShortcutsDialogResponse.deny': 1,
+    'MetaKeyBindingAction.activate-window-menu': 36,
+    'MetaKeyBindingAction.always-on-top': 88,
+    'MetaKeyBindingAction.begin-move': 47,
+    'MetaKeyBindingAction.begin-resize': 48,
+    'MetaKeyBindingAction.close': 46,
+    'MetaKeyBindingAction.cycle-group': 26,
+    'MetaKeyBindingAction.cycle-group-backward': 27,
+    'MetaKeyBindingAction.cycle-panels': 30,
+    'MetaKeyBindingAction.cycle-panels-backward': 31,
+    'MetaKeyBindingAction.cycle-windows': 28,
+    'MetaKeyBindingAction.cycle-windows-backward': 29,
+    'MetaKeyBindingAction.iso-next-group': 87,
+    'MetaKeyBindingAction.last': 91,
+    'MetaKeyBindingAction.locate-pointer-key': 86,
+    'MetaKeyBindingAction.lower': 73,
+    'MetaKeyBindingAction.maximize': 42,
+    'MetaKeyBindingAction.maximize-horizontally': 75,
+    'MetaKeyBindingAction.maximize-vertically': 74,
+    'MetaKeyBindingAction.minimize': 45,
+    'MetaKeyBindingAction.move-to-center': 84,
+    'MetaKeyBindingAction.move-to-corner-ne': 77,
+    'MetaKeyBindingAction.move-to-corner-nw': 76,
+    'MetaKeyBindingAction.move-to-corner-se': 79,
+    'MetaKeyBindingAction.move-to-corner-sw': 78,
+    'MetaKeyBindingAction.move-to-monitor-down': 70,
+    'MetaKeyBindingAction.move-to-monitor-left': 67,
+    'MetaKeyBindingAction.move-to-monitor-right': 68,
+    'MetaKeyBindingAction.move-to-monitor-up': 69,
+    'MetaKeyBindingAction.move-to-side-e': 82,
+    'MetaKeyBindingAction.move-to-side-n': 80,
+    'MetaKeyBindingAction.move-to-side-s': 81,
+    'MetaKeyBindingAction.move-to-side-w': 83,
+    'MetaKeyBindingAction.move-to-workspace-1': 50,
+    'MetaKeyBindingAction.move-to-workspace-10': 59,
+    'MetaKeyBindingAction.move-to-workspace-11': 60,
+    'MetaKeyBindingAction.move-to-workspace-12': 61,
+    'MetaKeyBindingAction.move-to-workspace-2': 51,
+    'MetaKeyBindingAction.move-to-workspace-3': 52,
+    'MetaKeyBindingAction.move-to-workspace-4': 53,
+    'MetaKeyBindingAction.move-to-workspace-5': 54,
+    'MetaKeyBindingAction.move-to-workspace-6': 55,
+    'MetaKeyBindingAction.move-to-workspace-7': 56,
+    'MetaKeyBindingAction.move-to-workspace-8': 57,
+    'MetaKeyBindingAction.move-to-workspace-9': 58,
+    'MetaKeyBindingAction.move-to-workspace-down': 65,
+    'MetaKeyBindingAction.move-to-workspace-last': 66,
+    'MetaKeyBindingAction.move-to-workspace-left': 62,
+    'MetaKeyBindingAction.move-to-workspace-right': 63,
+    'MetaKeyBindingAction.move-to-workspace-up': 64,
+    'MetaKeyBindingAction.none': 0,
+    'MetaKeyBindingAction.overlay-key': 85,
+    'MetaKeyBindingAction.panel-run-dialog': 33,
+    'MetaKeyBindingAction.raise': 72,
+    'MetaKeyBindingAction.raise-or-lower': 71,
+    'MetaKeyBindingAction.rotate-monitor': 90,
+    'MetaKeyBindingAction.set-spew-mark': 35,
+    'MetaKeyBindingAction.show-desktop': 32,
+    'MetaKeyBindingAction.switch-applications': 18,
+    'MetaKeyBindingAction.switch-applications-backward': 19,
+    'MetaKeyBindingAction.switch-group': 20,
+    'MetaKeyBindingAction.switch-group-backward': 21,
+    'MetaKeyBindingAction.switch-monitor': 89,
+    'MetaKeyBindingAction.switch-panels': 24,
+    'MetaKeyBindingAction.switch-panels-backward': 25,
+    'MetaKeyBindingAction.switch-windows': 22,
+    'MetaKeyBindingAction.switch-windows-backward': 23,
+    'MetaKeyBindingAction.toggle-above': 41,
+    'MetaKeyBindingAction.toggle-fullscreen': 37,
+    'MetaKeyBindingAction.toggle-maximized': 38,
+    'MetaKeyBindingAction.toggle-on-all-workspaces': 49,
+    'MetaKeyBindingAction.toggle-recording': 34,
+    'MetaKeyBindingAction.toggle-shaded': 44,
+    'MetaKeyBindingAction.toggle-tiled-left': 39,
+    'MetaKeyBindingAction.toggle-tiled-right': 40,
+    'MetaKeyBindingAction.unmaximize': 43,
+    'MetaKeyBindingAction.workspace-1': 1,
+    'MetaKeyBindingAction.workspace-10': 10,
+    'MetaKeyBindingAction.workspace-11': 11,
+    'MetaKeyBindingAction.workspace-12': 12,
+    'MetaKeyBindingAction.workspace-2': 2,
+    'MetaKeyBindingAction.workspace-3': 3,
+    'MetaKeyBindingAction.workspace-4': 4,
+    'MetaKeyBindingAction.workspace-5': 5,
+    'MetaKeyBindingAction.workspace-6': 6,
+    'MetaKeyBindingAction.workspace-7': 7,
+    'MetaKeyBindingAction.workspace-8': 8,
+    'MetaKeyBindingAction.workspace-9': 9,
+    'MetaKeyBindingAction.workspace-down': 16,
+    'MetaKeyBindingAction.workspace-last': 17,
+    'MetaKeyBindingAction.workspace-left': 13,
+    'MetaKeyBindingAction.workspace-right': 14,
+    'MetaKeyBindingAction.workspace-up': 15,
+    'MetaLaterType.before-redraw': 4,
+    'MetaLaterType.calc-showing': 1,
+    'MetaLaterType.check-fullscreen': 2,
+    'MetaLaterType.idle': 5,
+    'MetaLaterType.resize': 0,
+    'MetaLaterType.sync-stack': 3,
+    'MetaMonitorSwitchConfigType.all-linear': 1,
+    'MetaMonitorSwitchConfigType.all-mirror': 0,
+    'MetaMonitorSwitchConfigType.builtin': 3,
+    'MetaMonitorSwitchConfigType.external': 2,
+    'MetaMonitorSwitchConfigType.unknown': 4,
+    'MetaMotionDirection.down': -2,
+    'MetaMotionDirection.down-left': -7,
+    'MetaMotionDirection.down-right': -8,
+    'MetaMotionDirection.left': -3,
+    'MetaMotionDirection.right': -4,
+    'MetaMotionDirection.up': -1,
+    'MetaMotionDirection.up-left': -5,
+    'MetaMotionDirection.up-right': -6,
+    'MetaMultiTextureAlphaMode.meta-multi-texture-alpha-mode-none': 0,
+    'MetaMultiTextureAlphaMode.meta-multi-texture-alpha-mode-premult-electrical': 1,
+    'MetaMultiTextureAlphaMode.meta-multi-texture-alpha-mode-straight': 2,
+    'MetaMultiTextureAlphaMode.n-meta-multi-texture-alpha-modes': 3,
+    'MetaMultiTextureChromaLoc.defined': 1,
+    'MetaMultiTextureChromaLoc.none': 0,
+    'MetaMultiTextureCoefficients.meta-multi-texture-coefficients-bt2020-full': 7,
+    'MetaMultiTextureCoefficients.meta-multi-texture-coefficients-bt2020-limited': 8,
+    'MetaMultiTextureCoefficients.meta-multi-texture-coefficients-bt601-full': 5,
+    'MetaMultiTextureCoefficients.meta-multi-texture-coefficients-bt601-limited': 6,
+    'MetaMultiTextureCoefficients.meta-multi-texture-coefficients-bt709-full': 3,
+    'MetaMultiTextureCoefficients.meta-multi-texture-coefficients-bt709-limited': 4,
+    'MetaMultiTextureCoefficients.meta-multi-texture-coefficients-identity-full': 1,
+    'MetaMultiTextureCoefficients.meta-multi-texture-coefficients-identity-limited': 2,
+    'MetaMultiTextureCoefficients.meta-multi-texture-coefficients-none': 0,
+    'MetaMultiTextureCoefficients.n-meta-multi-texture-coefficients': 9,
+    'MetaMultiTextureFormat.meta-multi-texture-format-invalid': 0,
+    'MetaMultiTextureFormat.meta-multi-texture-format-nv12': 6,
+    'MetaMultiTextureFormat.meta-multi-texture-format-nv16': 8,
+    'MetaMultiTextureFormat.meta-multi-texture-format-nv21': 7,
+    'MetaMultiTextureFormat.meta-multi-texture-format-nv24': 10,
+    'MetaMultiTextureFormat.meta-multi-texture-format-nv42': 11,
+    'MetaMultiTextureFormat.meta-multi-texture-format-nv61': 9,
+    'MetaMultiTextureFormat.meta-multi-texture-format-p010': 12,
+    'MetaMultiTextureFormat.meta-multi-texture-format-p012': 13,
+    'MetaMultiTextureFormat.meta-multi-texture-format-p016': 14,
+    'MetaMultiTextureFormat.meta-multi-texture-format-s010': 21,
+    'MetaMultiTextureFormat.meta-multi-texture-format-s012': 24,
+    'MetaMultiTextureFormat.meta-multi-texture-format-s016': 27,
+    'MetaMultiTextureFormat.meta-multi-texture-format-s210': 22,
+    'MetaMultiTextureFormat.meta-multi-texture-format-s212': 25,
+    'MetaMultiTextureFormat.meta-multi-texture-format-s216': 28,
+    'MetaMultiTextureFormat.meta-multi-texture-format-s410': 23,
+    'MetaMultiTextureFormat.meta-multi-texture-format-s412': 26,
+    'MetaMultiTextureFormat.meta-multi-texture-format-s416': 29,
+    'MetaMultiTextureFormat.meta-multi-texture-format-simple': 1,
+    'MetaMultiTextureFormat.meta-multi-texture-format-uyvy': 4,
+    'MetaMultiTextureFormat.meta-multi-texture-format-vyuy': 5,
+    'MetaMultiTextureFormat.meta-multi-texture-format-yuv420': 15,
+    'MetaMultiTextureFormat.meta-multi-texture-format-yuv422': 17,
+    'MetaMultiTextureFormat.meta-multi-texture-format-yuv444': 19,
+    'MetaMultiTextureFormat.meta-multi-texture-format-yuyv': 2,
+    'MetaMultiTextureFormat.meta-multi-texture-format-yvu420': 16,
+    'MetaMultiTextureFormat.meta-multi-texture-format-yvu422': 18,
+    'MetaMultiTextureFormat.meta-multi-texture-format-yvu444': 20,
+    'MetaMultiTextureFormat.meta-multi-texture-format-yvyu': 3,
+    'MetaMultiTextureFormat.n-meta-multi-texture-formats': 30,
+    'MetaOrientation.bottom-up': 2,
+    'MetaOrientation.left-up': 3,
+    'MetaOrientation.normal': 1,
+    'MetaOrientation.right-up': 4,
+    'MetaOrientation.undefined': 0,
+    'MetaPadDirection.ccw': 4,
+    'MetaPadDirection.cw': 3,
+    'MetaPadDirection.down': 2,
+    'MetaPadDirection.up': 1,
+    'MetaPadFeatureType.dial': 2,
+    'MetaPadFeatureType.ring': 0,
+    'MetaPadFeatureType.strip': 1,
+    'MetaPowerSaveChangeReason.hotplug': 1,
+    'MetaPowerSaveChangeReason.mode-change': 0,
+    'MetaPreference.action-double-click-titlebar': 5,
+    'MetaPreference.action-middle-click-titlebar': 6,
+    'MetaPreference.action-right-click-titlebar': 7,
+    'MetaPreference.attach-modal-dialogs': 3,
+    'MetaPreference.audible-bell': 18,
+    'MetaPreference.auto-maximize': 29,
+    'MetaPreference.auto-raise': 8,
+    'MetaPreference.auto-raise-delay': 9,
+    'MetaPreference.button-layout': 15,
+    'MetaPreference.center-new-windows': 30,
+    'MetaPreference.check-alive-timeout': 33,
+    'MetaPreference.cursor-size': 23,
+    'MetaPreference.cursor-theme': 22,
+    'MetaPreference.disable-workarounds': 14,
+    'MetaPreference.drag-threshold': 31,
+    'MetaPreference.draggable-border-width': 28,
+    'MetaPreference.dynamic-workspaces': 12,
+    'MetaPreference.edge-tiling': 25,
+    'MetaPreference.focus-change-on-pointer-rest': 10,
+    'MetaPreference.focus-mode': 1,
+    'MetaPreference.focus-new-windows': 2,
+    'MetaPreference.force-fullscreen': 26,
+    'MetaPreference.gnome-accessibility': 20,
+    'MetaPreference.gnome-animations': 21,
+    'MetaPreference.keybindings': 13,
+    'MetaPreference.locate-pointer': 32,
+    'MetaPreference.mouse-button-mods': 0,
+    'MetaPreference.num-workspaces': 11,
+    'MetaPreference.raise-on-click': 4,
+    'MetaPreference.resize-with-right-button': 24,
+    'MetaPreference.visual-bell': 17,
+    'MetaPreference.visual-bell-type': 19,
+    'MetaPreference.workspace-names': 16,
+    'MetaPreference.workspaces-only-on-primary': 27,
+    'MetaSelectionType.n-selection-types': 3,
+    'MetaSelectionType.selection-clipboard': 1,
+    'MetaSelectionType.selection-dnd': 2,
+    'MetaSelectionType.selection-primary': 0,
+    'MetaSide.bottom': 8,
+    'MetaSide.left': 1,
+    'MetaSide.right': 2,
+    'MetaSide.top': 4,
+    'MetaSizeChange.fullscreen': 2,
+    'MetaSizeChange.maximize': 0,
+    'MetaSizeChange.monitor-move': 4,
+    'MetaSizeChange.unfullscreen': 3,
+    'MetaSizeChange.unmaximize': 1,
+    'MetaStackLayer.bottom': 1,
+    'MetaStackLayer.desktop': 0,
+    'MetaStackLayer.dock': 4,
+    'MetaStackLayer.last': 8,
+    'MetaStackLayer.normal': 2,
+    'MetaStackLayer.override-redirect': 7,
+    'MetaStackLayer.top': 4,
+    'MetaTabList.docks': 1,
+    'MetaTabList.group': 2,
+    'MetaTabList.normal': 0,
+    'MetaTabList.normal-all': 3,
+    'MetaTabList.normal-all-mru': 4,
+    'MetaTabShowType.icon': 0,
+    'MetaTabShowType.instantly': 1,
+    'MetaWindowClientType.wayland': 0,
+    'MetaWindowClientType.x11': 1,
+    'MetaWindowMenuType.app': 1,
+    'MetaWindowMenuType.wm': 0,
+    'MetaWindowType.combo': 13,
+    'MetaWindowType.desktop': 1,
+    'MetaWindowType.dialog': 3,
+    'MetaWindowType.dnd': 14,
+    'MetaWindowType.dock': 2,
+    'MetaWindowType.dropdown-menu': 9,
+    'MetaWindowType.menu': 6,
+    'MetaWindowType.modal-dialog': 4,
+    'MetaWindowType.normal': 0,
+    'MetaWindowType.notification': 12,
+    'MetaWindowType.override-other': 15,
+    'MetaWindowType.popup-menu': 10,
+    'MetaWindowType.splashscreen': 8,
+    'MetaWindowType.toolbar': 5,
+    'MetaWindowType.tooltip': 11,
+    'MetaWindowType.utility': 7,
+};
+
+// The nicks GIR marks `deprecated="1"`.
+//
+// Two members of one enum may share a value -- that is how GObject spells an alias, and
+// `GTK_ALIGN_BASELINE` and `GTK_ALIGN_BASELINE_FILL` are both 4. `ENUM_VALUES` keeps
+// both names, so nothing is lost, and this is what says which of the two a number should be
+// spelled back as. Stated rather than derived: the pairing is visible in the values, the
+// DIRECTION is not.
+//
+// Read it as evidence, not as a negative: 4 registered-enum members in the 718 GIRs carry
+// the attribute at all, and 179 of the 182 value-sharing pairs carry it on neither half.
+// A nick missing from here is a nick GIR says nothing about, not a nick GIR calls current.
+export const ENUM_DEPRECATED = [];
+
+// The declared remainder: nicks whose GIR `value` is not a number this can carry.
+//
+// Every nick in `ENUM_NICKS` is in `ENUM_VALUES` or here -- a nick in neither would be a
+// silent drop. GIR carries two shapes no integer holds: a symbolic or absent value (Vala
+// writes `(null)`, a char enum writes a letter) and an integer past
+// `Number.MAX_SAFE_INTEGER`. The value kept here is the raw attribute, so the entry says
+// WHAT was unreadable rather than only that something was. Measured over the 718 GIRs in
+// ts-for-gir's `girs/`: 32 of 34096 registered-enum members, none in Gtk, Adw, GLib or Gio.
+export const ENUM_VALUES_UNREADABLE = {};
+
+// The number behind each member of a registered BITFIELD, keyed the same way.
+//
+// `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
+// reason says nothing about one member's number. 23 settable properties in Gtk-4.0 and
+// Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, `GtkDropTarget:actions`, ... -- and they are typed bare
+// `number`, so a host without GI has nothing to compute one from. Counting is worst
+// exactly here: 119 of the 156 Gtk-4.0 bitfield members this vocabulary carries disagree
+// with their declaration position, against 29 of 672 enumeration members.
+//
+// A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
+// `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
+export const FLAG_VALUES = {
+    'GDBusInterfaceSkeletonFlags.handle-method-invocations-in-thread': 1,
+    'GDBusInterfaceSkeletonFlags.none': 0,
+    'MetaBackendCapabilities.barriers': 1,
+    'MetaBackendCapabilities.none': 0,
+    'MetaBarrierDirection.negative-x': 4,
+    'MetaBarrierDirection.negative-y': 8,
+    'MetaBarrierDirection.positive-x': 1,
+    'MetaBarrierDirection.positive-y': 2,
+    'MetaBarrierFlags.none': 1,
+    'MetaBarrierFlags.sticky': 2,
+    'MetaDebugPaintFlag.disable-direct-scanout': 4,
+    'MetaDebugPaintFlag.ignore-color-state-for-direct-scanout': 8,
+    'MetaDebugPaintFlag.none': 0,
+    'MetaDebugPaintFlag.opaque-region': 1,
+    'MetaDebugPaintFlag.sync-cursor-primary': 2,
+    'MetaDebugTopic.backend': 2097152,
+    'MetaDebugTopic.color': 8388608,
+    'MetaDebugTopic.dbus': 32768,
+    'MetaDebugTopic.display': 512,
+    'MetaDebugTopic.edge-resistance': 16384,
+    'MetaDebugTopic.eis': 33554432,
+    'MetaDebugTopic.events': 16,
+    'MetaDebugTopic.focus': 1,
+    'MetaDebugTopic.geometry': 128,
+    'MetaDebugTopic.input': 65536,
+    'MetaDebugTopic.input-events': 16777216,
+    'MetaDebugTopic.keybindings': 1024,
+    'MetaDebugTopic.kms': 262144,
+    'MetaDebugTopic.kms-deadline': 67108864,
+    'MetaDebugTopic.placement': 256,
+    'MetaDebugTopic.prefs': 8192,
+    'MetaDebugTopic.remote-desktop': 1048576,
+    'MetaDebugTopic.render': 4194304,
+    'MetaDebugTopic.screen-cast': 524288,
+    'MetaDebugTopic.session-management': 134217728,
+    'MetaDebugTopic.sm': 8,
+    'MetaDebugTopic.stack': 4,
+    'MetaDebugTopic.startup': 4096,
+    'MetaDebugTopic.sync': 2048,
+    'MetaDebugTopic.verbose': -1,
+    'MetaDebugTopic.wayland': 131072,
+    'MetaDebugTopic.window-ops': 64,
+    'MetaDebugTopic.window-state': 32,
+    'MetaDebugTopic.workarea': 2,
+    'MetaDebugTopic.workspaces': 536870912,
+    'MetaDebugTopic.x11': 268435456,
+    'MetaDirection.bottom': 8,
+    'MetaDirection.down': 8,
+    'MetaDirection.horizontal': 3,
+    'MetaDirection.left': 1,
+    'MetaDirection.right': 2,
+    'MetaDirection.top': 4,
+    'MetaDirection.up': 4,
+    'MetaDirection.vertical': 12,
+    'MetaExternalConstraintFlags.move': 1,
+    'MetaExternalConstraintFlags.none': 0,
+    'MetaExternalConstraintFlags.resize': 2,
+    'MetaIdleMonitorWatchFlags.none': 0,
+    'MetaIdleMonitorWatchFlags.start-now': 2,
+    'MetaIdleMonitorWatchFlags.uninhibitable': 1,
+    'MetaKeyBindingFlags.builtin': 2,
+    'MetaKeyBindingFlags.custom-trigger': 64,
+    'MetaKeyBindingFlags.ignore-autorepeat': 16,
+    'MetaKeyBindingFlags.is-reversed': 4,
+    'MetaKeyBindingFlags.no-auto-grab': 32,
+    'MetaKeyBindingFlags.non-maskable': 8,
+    'MetaKeyBindingFlags.none': 0,
+    'MetaKeyBindingFlags.per-window': 1,
+    'MetaKeyBindingFlags.trigger-release': 128,
+    'MetaKeyboardA11yFlags.bounce-keys-beep-reject': 256,
+    'MetaKeyboardA11yFlags.bounce-keys-enabled': 128,
+    'MetaKeyboardA11yFlags.feature-state-change-beep': 8192,
+    'MetaKeyboardA11yFlags.keyboard-enabled': 1,
+    'MetaKeyboardA11yFlags.mouse-keys-enabled': 4,
+    'MetaKeyboardA11yFlags.slow-keys-beep-accept': 32,
+    'MetaKeyboardA11yFlags.slow-keys-beep-press': 16,
+    'MetaKeyboardA11yFlags.slow-keys-beep-reject': 64,
+    'MetaKeyboardA11yFlags.slow-keys-enabled': 8,
+    'MetaKeyboardA11yFlags.sticky-keys-beep': 4096,
+    'MetaKeyboardA11yFlags.sticky-keys-enabled': 1024,
+    'MetaKeyboardA11yFlags.sticky-keys-two-key-off': 2048,
+    'MetaKeyboardA11yFlags.timeout-enabled': 2,
+    'MetaKeyboardA11yFlags.toggle-keys-enabled': 512,
+    'MetaMaximizeFlags.both': 3,
+    'MetaMaximizeFlags.horizontal': 1,
+    'MetaMaximizeFlags.vertical': 2,
+};
+
+// The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
+// `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
+// so this is the table that shape actually reaches.
+export const FLAG_VALUES_UNREADABLE = {};
+
+// Declaration GType + property name -> the GType of that property's enum or bitfield.
+//
+// Without it the value tables above are half an answer. A host with no GI knows it must set
+// `orientation` to the number behind the nick `vertical`; `ENUM_VALUES` is keyed
+// `GtkOrientation.vertical`, and nothing else says that `orientation` is a
+// `GtkOrientation`. Deriving it is not available: `never` is a member of several Gtk enums,
+// and choosing between them produces a wrong number rather than a missing one.
+//
+// Only where the property's OWN type is the enum. An array of them and a union that mentions
+// one are both entries a consumer would resolve wrongly, so neither is written.
+//
+// A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
+// that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
+// vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
+export const PROP_ENUMS = {
+    'GDBusInterfaceSkeleton.g-flags': 'GDBusInterfaceSkeletonFlags',
+    'MetaBarrier.directions': 'MetaBarrierDirection',
+    'MetaBarrier.flags': 'MetaBarrierFlags',
+};
+
+// `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
+//
+// The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint
+// `accessibility { … }` block is typed by GTK's ARIA table instead, and the two disagree
+// where it matters: `orientation` is settable on a `GtkLabel` that implements no
+// `GtkOrientable` and has no such property, and `checked` is a `GtkAccessibleTristate`, so
+// `checked: true` means the number 1 and not the boolean. A consumer typing those slots
+// from the widget gets both wrong, silently.
+//
+// Read from each member's own documentation, which is where GTK keeps the table --
+// `gtk_accessible_property_init_value()` is the C half and is not introspectable, the
+// sentence is. Complete or absent, never partial: a member whose documentation states no
+// value type fails generation and names itself, because a missing row is indistinguishable
+// from "GTK has no such name" and the plausible fallback emits `true` where GTK means 1.
+export const ARIA_VALUE_TYPES = {};
+
+// The same keys, for the `'enum'` rows only -> the GType of the enum.
+//
+// The join on from a kind to a number, and a table of its own for the reason `PROP_ENUMS`
+// is one: folding the GType into `ARIA_VALUE_TYPES` would make its values a mix of six
+// reserved words and arbitrary GTypes, and telling them apart would be the consumer's
+// problem. With this, `ARIA_VALUE_TYPES[k] === 'enum'` is the whole test, and
+// `ENUM_NICKS[ARIA_VALUE_ENUMS[k]]` is the nick list.
+export const ARIA_VALUE_ENUMS = {};
+
+export const SLOT_CANDIDATES = {};
+
+export const SINCE = {
+    'GDBusInterfaceSkeleton': '2.30',
+    'GDBusInterfaceSkeleton.g-flags': '2.30',
+    'GDBusInterfaceSkeleton::g-authorize-method': '2.30',
+};

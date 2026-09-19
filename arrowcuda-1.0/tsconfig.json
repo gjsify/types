@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./arrowcuda-1.0.d.ts"]
+  "include": ["./arrowcuda-1.0.d.ts","./arrowcuda-1.0-vocabulary.d.ts"]
 }
 
 

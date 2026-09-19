@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./gnomeautoar-0.1.d.ts"]
+  "include": ["./gnomeautoar-0.1.d.ts","./gnomeautoar-0.1-vocabulary.d.ts"]
 }
 
 

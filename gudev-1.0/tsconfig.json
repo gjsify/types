@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./gudev-1.0.d.ts"]
+  "include": ["./gudev-1.0.d.ts","./gudev-1.0-vocabulary.d.ts"]
 }
 
 

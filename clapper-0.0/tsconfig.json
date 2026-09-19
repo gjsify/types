@@ -53,7 +53,7 @@
       ]
 }
   },
-  "include": ["./clapper-0.0.d.ts"]
+  "include": ["./clapper-0.0.d.ts","./clapper-0.0-vocabulary.d.ts"]
 }
 
 

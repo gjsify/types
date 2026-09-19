@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./dex-1.d.ts"]
+  "include": ["./dex-1.d.ts","./dex-1-vocabulary.d.ts"]
 }
 
 

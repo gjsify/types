@@ -44,7 +44,7 @@
       ]
 }
   },
-  "include": ["./folkslibsocialweb-0.6.d.ts"]
+  "include": ["./folkslibsocialweb-0.6.d.ts","./folkslibsocialweb-0.6-vocabulary.d.ts"]
 }
 
 

@@ -1,6 +1,6 @@
 // The widget vocabulary of Handy-1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Handy-1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
+// GENERATED — do not edit. Provenance: Handy-1 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Atk.ImplementorIface', 'Gio.ActionGroup', 'Gio.ActionMap'],
+    droppedBases: ['Atk.ImplementorIface'],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Hdy'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/pango-1.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -69,43 +71,43 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    HdyActionRow: ['HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
-    HdyApplicationWindow: ['HdyApplicationWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyAvatar: ['HdyAvatar', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
-    HdyCarousel: ['HdyCarousel', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
-    HdyCarouselIndicatorDots: ['HdyCarouselIndicatorDots', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    HdyCarouselIndicatorLines: ['HdyCarouselIndicatorLines', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    HdyClamp: ['HdyClamp', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    HdyComboRow: ['HdyComboRow', 'HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
-    HdyDeck: ['HdyDeck', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
-    HdyEnumValueObject: ['HdyEnumValueObject'],
-    HdyExpanderRow: ['HdyExpanderRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
-    HdyFlap: ['HdyFlap', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
-    HdyHeaderBar: ['HdyHeaderBar', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyHeaderGroup: ['HdyHeaderGroup', 'GtkBuildable'],
-    HdyHeaderGroupChild: ['HdyHeaderGroupChild'],
-    HdyKeypad: ['HdyKeypad', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyLeaflet: ['HdyLeaflet', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
-    HdyPreferencesGroup: ['HdyPreferencesGroup', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyPreferencesPage: ['HdyPreferencesPage', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyPreferencesRow: ['HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],
-    HdyPreferencesWindow: ['HdyPreferencesWindow', 'HdyWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdySearchBar: ['HdySearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdySqueezer: ['HdySqueezer', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    HdyStatusPage: ['HdyStatusPage', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyStyleManager: ['HdyStyleManager'],
-    HdySwipeGroup: ['HdySwipeGroup', 'GtkBuildable'],
-    HdySwipeTracker: ['HdySwipeTracker', 'GtkOrientable'],
-    HdyTabBar: ['HdyTabBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyTabPage: ['HdyTabPage'],
-    HdyTabView: ['HdyTabView', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyTitleBar: ['HdyTitleBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyValueObject: ['HdyValueObject'],
-    HdyViewSwitcher: ['HdyViewSwitcher', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyViewSwitcherBar: ['HdyViewSwitcherBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyViewSwitcherTitle: ['HdyViewSwitcherTitle', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyWindow: ['HdyWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    HdyWindowHandle: ['HdyWindowHandle', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    HdyActionRow: ['HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkBuildable'],
+    HdyApplicationWindow: ['HdyApplicationWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GActionGroup', 'GActionMap', 'GtkBuildable'],
+    HdyAvatar: ['HdyAvatar', 'GtkDrawingArea', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyCarousel: ['HdyCarousel', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
+    HdyCarouselIndicatorDots: ['HdyCarouselIndicatorDots', 'GtkDrawingArea', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    HdyCarouselIndicatorLines: ['HdyCarouselIndicatorLines', 'GtkDrawingArea', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    HdyClamp: ['HdyClamp', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    HdyComboRow: ['HdyComboRow', 'HdyActionRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkBuildable'],
+    HdyDeck: ['HdyDeck', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
+    HdyEnumValueObject: ['HdyEnumValueObject', 'GObject'],
+    HdyExpanderRow: ['HdyExpanderRow', 'HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkBuildable'],
+    HdyFlap: ['HdyFlap', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
+    HdyHeaderBar: ['HdyHeaderBar', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyHeaderGroup: ['HdyHeaderGroup', 'GObject', 'GtkBuildable'],
+    HdyHeaderGroupChild: ['HdyHeaderGroupChild', 'GObject'],
+    HdyKeypad: ['HdyKeypad', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyLeaflet: ['HdyLeaflet', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable', 'HdySwipeable'],
+    HdyPreferencesGroup: ['HdyPreferencesGroup', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyPreferencesPage: ['HdyPreferencesPage', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyPreferencesRow: ['HdyPreferencesRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkActionable', 'GtkBuildable'],
+    HdyPreferencesWindow: ['HdyPreferencesWindow', 'HdyWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdySearchBar: ['HdySearchBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdySqueezer: ['HdySqueezer', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    HdyStatusPage: ['HdyStatusPage', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyStyleManager: ['HdyStyleManager', 'GObject'],
+    HdySwipeGroup: ['HdySwipeGroup', 'GObject', 'GtkBuildable'],
+    HdySwipeTracker: ['HdySwipeTracker', 'GObject', 'GtkOrientable'],
+    HdyTabBar: ['HdyTabBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyTabPage: ['HdyTabPage', 'GObject'],
+    HdyTabView: ['HdyTabView', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyTitleBar: ['HdyTitleBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyValueObject: ['HdyValueObject', 'GObject'],
+    HdyViewSwitcher: ['HdyViewSwitcher', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyViewSwitcherBar: ['HdyViewSwitcherBar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyViewSwitcherTitle: ['HdyViewSwitcherTitle', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyWindow: ['HdyWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    HdyWindowHandle: ['HdyWindowHandle', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -116,6 +118,7 @@ export const DECLS = {
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
+    GtkPackType: ['start', 'end'],
     HdyCenteringPolicy: ['loose', 'strict'],
     HdyColorScheme: ['default', 'force-light', 'prefer-light', 'prefer-dark', 'force-dark'],
     HdyDeckTransitionType: ['over', 'under', 'slide'],
@@ -144,6 +147,8 @@ export const ENUM_NICKS = {
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
 export const ENUM_VALUES = {
+    'GtkPackType.end': 1,
+    'GtkPackType.start': 0,
     'HdyCenteringPolicy.loose': 0,
     'HdyCenteringPolicy.strict': 1,
     'HdyColorScheme.default': 0,

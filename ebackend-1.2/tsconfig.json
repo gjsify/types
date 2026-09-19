@@ -50,7 +50,7 @@
       ]
 }
   },
-  "include": ["./ebackend-1.2.d.ts"]
+  "include": ["./ebackend-1.2.d.ts","./ebackend-1.2-vocabulary.d.ts"]
 }
 
 

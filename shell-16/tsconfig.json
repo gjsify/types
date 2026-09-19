@@ -101,7 +101,7 @@
       ]
 }
   },
-  "include": ["./shell-16.d.ts"]
+  "include": ["./shell-16.d.ts","./shell-16-vocabulary.d.ts"]
 }
 
 

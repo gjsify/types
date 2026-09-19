@@ -53,7 +53,7 @@
       ]
 }
   },
-  "include": ["./gdk-4.0.d.ts"]
+  "include": ["./gdk-4.0.d.ts","./gdk-4.0-vocabulary.d.ts"]
 }
 
 

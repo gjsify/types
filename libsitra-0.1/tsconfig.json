@@ -41,7 +41,7 @@
       ]
 }
   },
-  "include": ["./libsitra-0.1.d.ts"]
+  "include": ["./libsitra-0.1.d.ts","./libsitra-0.1-vocabulary.d.ts"]
 }
 
 

@@ -4,7 +4,7 @@
 ![version](https://img.shields.io/npm/v/@girs/champlain-0.12)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/champlain-0.12)
 
-GJS TypeScript type definitions for Champlain-0.12, generated from library version 0.12.22 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v5.2.0.
+GJS TypeScript type definitions for Champlain-0.12, generated from library version 0.12.22 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v5.3.0.
 
 This package contains type declarations only. It ships no runtime code, so it adds
 nothing to your program and works with any bundler or none at all.
@@ -26,6 +26,7 @@ type packages.
 | `@girs/champlain-0.12/ambient` | only the `gi://` module declarations |
 | `@girs/champlain-0.12/import` | only the `imports.gi` declarations |
 | `@girs/champlain-0.12/champlain-0.12` | the namespace, without the side-effecting declarations |
+| `@girs/champlain-0.12/vocabulary` | GIR-derived widget data: settable properties, enum nicks, slot candidates |
 
 ## Three ways to import
 
@@ -66,6 +67,24 @@ GJS's global object works the same way, via `@girs/champlain-0.12/import`:
 ```ts
 const Champlain = imports.gi.Champlain;
 ```
+
+## Widget vocabulary
+
+`champlain-0.12` declares widgets, so it also carries what the GIR says about them, as
+types and as values a test can read:
+
+```ts
+import type { Widgets, PropsOf } from '@girs/champlain-0.12/vocabulary';
+import { OWN_PROPS, ENUM_NICKS, PROVENANCE } from '@girs/champlain-0.12/vocabulary';
+```
+
+Properties are keyed the way GObject registered them, writable-only and optional, so they
+match `g_object_set`, GtkBuilder XML and Blueprint. `PROVENANCE.libraryVersion` names the
+library release this was generated from, which lets a check tell "newer than what is
+installed" from "wrong".
+
+This subpath answers what the GIR says, not what the installed library has. For the
+second question, ask the library.
 
 ## Building
 

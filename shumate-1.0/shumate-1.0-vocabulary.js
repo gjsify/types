@@ -1,6 +1,6 @@
 // The widget vocabulary of Shumate-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.7.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ListModel Gio.Initable Gdk.Paintable
+// GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.7.0
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: '1.7.0',
     childHolders: 0,
-    droppedBases: ['GObject.InitiallyUnowned', 'GObject.Object', 'Gio.ListModel', 'Gio.Initable', 'Gdk.Paintable'],
+    droppedBases: [],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Shumate'],
+    requiredVocabularies: ['@girs/gdk-4.0/vocabulary', '@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -61,30 +63,30 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    ShumateCompass: ['ShumateCompass', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ShumateCoordinate: ['ShumateCoordinate', 'ShumateLocation'],
-    ShumateDataSourceRequest: ['ShumateDataSourceRequest'],
-    ShumateFileCache: ['ShumateFileCache'],
-    ShumateLicense: ['ShumateLicense', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ShumateMap: ['ShumateMap', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ShumateMapLayer: ['ShumateMapLayer', 'ShumateLayer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ShumateMapSourceRegistry: ['ShumateMapSourceRegistry'],
-    ShumateMarker: ['ShumateMarker', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'ShumateLocation'],
-    ShumateMarkerLayer: ['ShumateMarkerLayer', 'ShumateLayer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ShumatePathLayer: ['ShumatePathLayer', 'ShumateLayer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ShumatePoint: ['ShumatePoint', 'ShumateMarker', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'ShumateLocation'],
-    ShumateRasterRenderer: ['ShumateRasterRenderer', 'ShumateMapSource'],
-    ShumateScale: ['ShumateScale', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ShumateSimpleMap: ['ShumateSimpleMap', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    ShumateSymbolEvent: ['ShumateSymbolEvent', 'ShumateLocation'],
-    ShumateTile: ['ShumateTile'],
-    ShumateTileDownloader: ['ShumateTileDownloader', 'ShumateDataSource'],
-    ShumateVectorReader: ['ShumateVectorReader'],
-    ShumateVectorReaderIter: ['ShumateVectorReaderIter'],
-    ShumateVectorRenderer: ['ShumateVectorRenderer', 'ShumateMapSource'],
-    ShumateVectorSprite: ['ShumateVectorSprite', 'GtkSymbolicPaintable'],
-    ShumateVectorSpriteSheet: ['ShumateVectorSpriteSheet'],
-    ShumateViewport: ['ShumateViewport', 'ShumateLocation'],
+    ShumateCompass: ['ShumateCompass', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ShumateCoordinate: ['ShumateCoordinate', 'GInitiallyUnowned', 'GObject', 'ShumateLocation'],
+    ShumateDataSourceRequest: ['ShumateDataSourceRequest', 'GObject'],
+    ShumateFileCache: ['ShumateFileCache', 'GObject'],
+    ShumateLicense: ['ShumateLicense', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ShumateMap: ['ShumateMap', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ShumateMapLayer: ['ShumateMapLayer', 'ShumateLayer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ShumateMapSourceRegistry: ['ShumateMapSourceRegistry', 'GObject', 'GListModel'],
+    ShumateMarker: ['ShumateMarker', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'ShumateLocation'],
+    ShumateMarkerLayer: ['ShumateMarkerLayer', 'ShumateLayer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ShumatePathLayer: ['ShumatePathLayer', 'ShumateLayer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ShumatePoint: ['ShumatePoint', 'ShumateMarker', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'ShumateLocation'],
+    ShumateRasterRenderer: ['ShumateRasterRenderer', 'ShumateMapSource', 'GObject'],
+    ShumateScale: ['ShumateScale', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ShumateSimpleMap: ['ShumateSimpleMap', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    ShumateSymbolEvent: ['ShumateSymbolEvent', 'GObject', 'ShumateLocation'],
+    ShumateTile: ['ShumateTile', 'GObject'],
+    ShumateTileDownloader: ['ShumateTileDownloader', 'ShumateDataSource', 'GObject'],
+    ShumateVectorReader: ['ShumateVectorReader', 'GObject'],
+    ShumateVectorReaderIter: ['ShumateVectorReaderIter', 'GObject'],
+    ShumateVectorRenderer: ['ShumateVectorRenderer', 'ShumateMapSource', 'GObject', 'GInitable'],
+    ShumateVectorSprite: ['ShumateVectorSprite', 'GObject', 'GdkPaintable', 'GtkSymbolicPaintable'],
+    ShumateVectorSpriteSheet: ['ShumateVectorSpriteSheet', 'GObject'],
+    ShumateViewport: ['ShumateViewport', 'GObject', 'ShumateLocation'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -95,6 +97,7 @@ export const DECLS = {
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
+    GtkSelectionMode: ['none', 'single', 'browse', 'multiple'],
     ShumateGeometryType: ['unknown', 'point', 'multipoint', 'linestring', 'multilinestring', 'polygon', 'multipolygon'],
     ShumateMapProjection: ['mercator'],
     ShumateState: ['none', 'loading', 'loaded', 'done'],
@@ -117,6 +120,10 @@ export const ENUM_NICKS = {
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
 export const ENUM_VALUES = {
+    'GtkSelectionMode.browse': 2,
+    'GtkSelectionMode.multiple': 3,
+    'GtkSelectionMode.none': 0,
+    'GtkSelectionMode.single': 1,
     'ShumateGeometryType.linestring': 3,
     'ShumateGeometryType.multilinestring': 4,
     'ShumateGeometryType.multipoint': 2,

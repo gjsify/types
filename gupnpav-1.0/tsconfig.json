@@ -32,7 +32,7 @@
       ]
 }
   },
-  "include": ["./gupnpav-1.0.d.ts"]
+  "include": ["./gupnpav-1.0.d.ts","./gupnpav-1.0-vocabulary.d.ts"]
 }
 
 

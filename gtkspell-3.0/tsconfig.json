@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gtkspell-3.0.d.ts"]
+  "include": ["./gtkspell-3.0.d.ts","./gtkspell-3.0-vocabulary.d.ts"]
 }
 
 

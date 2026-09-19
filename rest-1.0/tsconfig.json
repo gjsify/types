@@ -38,7 +38,7 @@
       ]
 }
   },
-  "include": ["./rest-1.0.d.ts"]
+  "include": ["./rest-1.0.d.ts","./rest-1.0-vocabulary.d.ts"]
 }
 
 

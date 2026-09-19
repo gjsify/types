@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./cally-3.d.ts"]
+  "include": ["./cally-3.d.ts","./cally-3-vocabulary.d.ts"]
 }
 
 

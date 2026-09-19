@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./dee-1.0.d.ts"]
+  "include": ["./dee-1.0.d.ts","./dee-1.0-vocabulary.d.ts"]
 }
 
 

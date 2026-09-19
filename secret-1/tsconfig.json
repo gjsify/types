@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./secret-1.d.ts"]
+  "include": ["./secret-1.d.ts","./secret-1-vocabulary.d.ts"]
 }
 
 

@@ -1,6 +1,6 @@
 // The widget vocabulary of Vte-3.91 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Vte-3.91 — library 0.84.1 — dropped empty base(s): GObject.Object Gio.Initable GObject.InitiallyUnowned
+// GENERATED — do not edit. Provenance: Vte-3.91 — library 0.84.1
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,10 +11,12 @@ export const PROVENANCE = {
     version: '3.91',
     libraryVersion: '0.84.1',
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gio.Initable', 'GObject.InitiallyUnowned'],
+    droppedBases: [],
     inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Vte'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-4.0/vocabulary'],
 };
 
 export const OWN_PROPS = {
@@ -34,8 +36,8 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    VtePty: ['VtePty'],
-    VteTerminal: ['VteTerminal', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
+    VtePty: ['VtePty', 'GObject', 'GInitable'],
+    VteTerminal: ['VteTerminal', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these

@@ -59,7 +59,7 @@
       ]
 }
   },
-  "include": ["./gdkx11-4.0.d.ts"]
+  "include": ["./gdkx11-4.0.d.ts","./gdkx11-4.0-vocabulary.d.ts"]
 }
 
 

@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./sugarext-1.0.d.ts"]
+  "include": ["./sugarext-1.0.d.ts","./sugarext-1.0-vocabulary.d.ts"]
 }
 
 

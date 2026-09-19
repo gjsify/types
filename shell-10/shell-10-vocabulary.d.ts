@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Shell-10.
  *
- * GENERATED — do not edit. Provenance: Shell-10 — dropped empty base(s): GObject.Object Clutter.Effect GObject.InitiallyUnowned Atk.ImplementorIface Clutter.OffscreenEffect Clutter.Animatable Clutter.Container Clutter.Scriptable Gio.AsyncInitable Gio.Initable PolkitAgent.Listener Clutter.LayoutManager — inlined base(s) their owner's vocabulary does not emit: Clutter.ActorMeta Clutter.Clone Clutter.Actor Gcr.Prompt Gio.MountOperation NM.SecretAgentOld Clutter.TextBuffer St.Bin St.Widget — prop(s) whose type the model cannot resolve: Shell.App.app-info: Gio.DesktopAppInfo
+ * GENERATED — do not edit. Provenance: Shell-10 — dropped empty base(s): Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: NM.SecretAgentOld — prop(s) whose type the model cannot resolve: Shell.App.app-info: Gio.DesktopAppInfo
  *
- * 24 instantiable GTypes (of which 1 concrete widgets), 33 declarations (9 inlined from a namespace whose vocabulary does not emit them), 12 enum nick unions, 0 slot candidates.
+ * 24 instantiable GTypes (of which 1 concrete widgets), 25 declarations (1 inlined from a namespace whose vocabulary does not emit them), 5 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -24,12 +24,16 @@
  * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
  */
 
-import type Atk from '@girs/atk-1.0';
 import type Clutter from '@girs/clutter-10';
 import type Gio from '@girs/gio-2.0';
-import type Graphene from '@girs/graphene-1.0';
 import type Shell from './shell-10.js';
+import type { ClutterActorConstructOnly, ClutterActorMetaConstructOnly, ClutterActorMetaProps, ClutterActorProps, ClutterAnimatableConstructOnly, ClutterAnimatableProps, ClutterCloneConstructOnly, ClutterCloneProps, ClutterContainerConstructOnly, ClutterContainerProps, ClutterEffectConstructOnly, ClutterEffectProps, ClutterLayoutManagerConstructOnly, ClutterLayoutManagerProps, ClutterOffscreenEffectConstructOnly, ClutterOffscreenEffectProps, ClutterScriptableConstructOnly, ClutterScriptableProps, ClutterTextBufferConstructOnly, ClutterTextBufferProps } from '@girs/clutter-10/vocabulary';
+import type { GcrPromptConstructOnly, GcrPromptProps } from '@girs/gcr-3/vocabulary';
+import type { GAsyncInitableConstructOnly, GAsyncInitableProps, GInitableConstructOnly, GInitableProps, GMountOperationConstructOnly, GMountOperationProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/vocabulary';
+import type { PolkitAgentListenerConstructOnly, PolkitAgentListenerProps } from '@girs/polkitagent-1.0/vocabulary';
+import type { StBinConstructOnly, StBinProps, StWidgetConstructOnly, StWidgetProps } from '@girs/st-10/vocabulary';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -41,13 +45,6 @@ import type { GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBu
 // Re-measure with `scripts/check-nick-derivation.mjs` in ts-for-gir.
 // ---------------------------------------------------------------------------
 
-export type AtkRoleNick = 'invalid' | 'accelerator-label' | 'alert' | 'animation' | 'arrow' | 'calendar' | 'canvas' | 'check-box' | 'check-menu-item' | 'color-chooser' | 'column-header' | 'combo-box' | 'date-editor' | 'desktop-icon' | 'desktop-frame' | 'dial' | 'dialog' | 'directory-pane' | 'drawing-area' | 'file-chooser' | 'filler' | 'font-chooser' | 'frame' | 'glass-pane' | 'html-container' | 'icon' | 'image' | 'internal-frame' | 'label' | 'layered-pane' | 'list' | 'list-item' | 'menu' | 'menu-bar' | 'menu-item' | 'option-pane' | 'page-tab' | 'page-tab-list' | 'panel' | 'password-text' | 'popup-menu' | 'progress-bar' | 'button' | 'radio-button' | 'radio-menu-item' | 'root-pane' | 'row-header' | 'scroll-bar' | 'scroll-pane' | 'separator' | 'slider' | 'split-pane' | 'spin-button' | 'statusbar' | 'table' | 'table-cell' | 'table-column-header' | 'table-row-header' | 'tear-off-menu-item' | 'terminal' | 'text' | 'toggle-button' | 'tool-bar' | 'tool-tip' | 'tree' | 'tree-table' | 'unknown' | 'viewport' | 'window' | 'header' | 'footer' | 'paragraph' | 'ruler' | 'application' | 'autocomplete' | 'edit-bar' | 'embedded' | 'entry' | 'chart' | 'caption' | 'document-frame' | 'heading' | 'page' | 'section' | 'redundant-object' | 'form' | 'link' | 'input-method-window' | 'table-row' | 'tree-item' | 'document-spreadsheet' | 'document-presentation' | 'document-text' | 'document-web' | 'document-email' | 'comment' | 'list-box' | 'grouping' | 'image-map' | 'notification' | 'info-bar' | 'level-bar' | 'title-bar' | 'block-quote' | 'audio' | 'video' | 'definition' | 'article' | 'landmark' | 'log' | 'marquee' | 'math' | 'rating' | 'timer' | 'description-list' | 'description-term' | 'description-value' | 'static' | 'math-fraction' | 'math-root' | 'subscript' | 'superscript' | 'footnote' | 'content-deletion' | 'content-insertion' | 'mark' | 'suggestion' | 'push-button-menu' | 'switch' | 'last-defined' | 'push-button';
-export type ClutterActorAlignNick = 'fill' | 'start' | 'center' | 'end';
-export type ClutterContentGravityNick = 'top-left' | 'top' | 'top-right' | 'left' | 'center' | 'right' | 'bottom-left' | 'bottom' | 'bottom-right' | 'resize-fill' | 'resize-aspect';
-export type ClutterRequestModeNick = 'height-for-width' | 'width-for-height' | 'content-size';
-export type ClutterScalingFilterNick = 'linear' | 'nearest' | 'trilinear';
-export type ClutterTextDirectionNick = 'default' | 'ltr' | 'rtl';
-export type GPasswordSaveNick = 'never' | 'for-session' | 'permanently';
 export type ShellAppLaunchGpuNick = 'app-pref' | 'discrete' | 'default';
 export type ShellAppStateNick = 'stopped' | 'starting' | 'running';
 export type ShellBlurModeNick = 'actor' | 'background';
@@ -64,429 +61,7 @@ export type ShellSnippetHookNick = 'vertex' | 'vertex-transform' | 'fragment' | 
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-/** Base class for actors. */
-export interface ClutterActorProps {
-    /**
-     * Adds a #ClutterAction to the actor
-     * @since 1.4
-     */
-    actions?: Clutter.Action;
-    /**
-     * Paints a solid fill of the actor's allocation using the specified color.
-     * @since 1.10
-     */
-    'background-color'?: Clutter.Color;
-    /**
-     * Applies a transformation matrix on each child of an actor.
-     * @since 1.12
-     */
-    'child-transform'?: Graphene.Matrix;
-    /**
-     * The visible region of the actor, in actor-relative coordinates, expressed as a #graphene_rect_t.
-     * @since 1.12
-     */
-    'clip-rect'?: Graphene.Rect;
-    /**
-     * Whether the clip region should track the allocated area of the actor.
-     * @since 1.0
-     */
-    'clip-to-allocation'?: boolean;
-    /**
-     * Adds a #ClutterConstraint to the actor
-     * @since 1.4
-     */
-    constraints?: Clutter.Constraint;
-    /**
-     * The #ClutterContent implementation that controls the content of the actor.
-     * @since 1.10
-     */
-    content?: Clutter.Content;
-    /**
-     * The alignment that should be honoured by the #ClutterContent set with the #ClutterActor:content property.
-     * @since 1.10
-     */
-    'content-gravity'?: ClutterContentGravityNick | Clutter.ContentGravity;
-    /**
-     * The repeat policy for the actor's #ClutterActor:content.
-     * @since 1.12
-     */
-    'content-repeat'?: number;
-    /**
-     * Adds #ClutterEffect to the list of effects be applied on a #ClutterActor
-     * @since 1.4
-     */
-    effect?: Clutter.Effect | null;
-    /**
-     * This flag controls whether the #ClutterActor:fixed-x and #ClutterActor:fixed-y properties are used
-     * @since 0.8
-     */
-    'fixed-position-set'?: boolean;
-    /**
-     * The fixed X position of the actor in pixels.
-     * @since 0.8
-     */
-    'fixed-x'?: number;
-    /**
-     * The fixed Y position of the actor in pixels.
-     * @since 0.8
-     */
-    'fixed-y'?: number;
-    /** Height of the actor (in pixels). */
-    height?: number;
-    /**
-     * A delegate object for controlling the layout of the children of an actor.
-     * @since 1.10
-     */
-    'layout-manager'?: Clutter.LayoutManager;
-    'magnification-filter'?: ClutterScalingFilterNick | Clutter.ScalingFilter;
-    /**
-     * The margin (in pixels) from the bottom of the actor.
-     * @since 1.10
-     */
-    'margin-bottom'?: number;
-    /**
-     * The margin (in pixels) from the left of the actor.
-     * @since 1.10
-     */
-    'margin-left'?: number;
-    /**
-     * The margin (in pixels) from the right of the actor.
-     * @since 1.10
-     */
-    'margin-right'?: number;
-    /**
-     * The margin (in pixels) from the top of the actor.
-     * @since 1.10
-     */
-    'margin-top'?: number;
-    /**
-     * A forced minimum height request for the actor, in pixels Writing this property sets the #ClutterActor:min-height-set property as well, as a side effect.
-     * @since 0.8
-     */
-    'min-height'?: number;
-    /**
-     * This flag controls whether the #ClutterActor:min-height property is used
-     * @since 0.8
-     */
-    'min-height-set'?: boolean;
-    /**
-     * A forced minimum width request for the actor, in pixels Writing this property sets the #ClutterActor:min-width-set property as well, as a side effect.
-     * @since 0.8
-     */
-    'min-width'?: number;
-    /**
-     * This flag controls whether the #ClutterActor:min-width property is used
-     * @since 0.8
-     */
-    'min-width-set'?: boolean;
-    'minification-filter'?: ClutterScalingFilterNick | Clutter.ScalingFilter;
-    /**
-     * The name of the actor
-     * @since 0.2
-     */
-    name?: string | null;
-    /**
-     * A forced natural height request for the actor, in pixels Writing this property sets the #ClutterActor:natural-height-set property as well, as a side effect.
-     * @since 0.8
-     */
-    'natural-height'?: number;
-    /**
-     * This flag controls whether the #ClutterActor:natural-height property is used
-     * @since 0.8
-     */
-    'natural-height-set'?: boolean;
-    /**
-     * A forced natural width request for the actor, in pixels Writing this property sets the #ClutterActor:natural-width-set property as well, as a side effect.
-     * @since 0.8
-     */
-    'natural-width'?: number;
-    /**
-     * This flag controls whether the #ClutterActor:natural-width property is used
-     * @since 0.8
-     */
-    'natural-width-set'?: boolean;
-    /**
-     * Determines the conditions in which the actor will be redirected to an offscreen framebuffer while being painted.
-     * @since 1.8
-     */
-    'offscreen-redirect'?: number;
-    /** Opacity of an actor, between 0 (fully transparent) and 255 (fully opaque) The #ClutterActor:opacity property is animatable. */
-    opacity?: number;
-    /**
-     * The point around which the scaling and rotation transformations occur.
-     * @since 1.12
-     */
-    'pivot-point'?: Graphene.Point;
-    /**
-     * The Z component of the #ClutterActor:pivot-point, expressed as a value along the Z axis.
-     * @since 1.12
-     */
-    'pivot-point-z'?: number;
-    /**
-     * The position of the origin of the actor.
-     * @since 1.12
-     */
-    position?: Graphene.Point;
-    /**
-     * Whether the actor is reactive to events or not Only reactive actors will emit event-related signals
-     * @since 0.6
-     */
-    reactive?: boolean;
-    /**
-     * Request mode for the #ClutterActor.
-     * @since 0.8
-     */
-    'request-mode'?: ClutterRequestModeNick | Clutter.RequestMode;
-    /**
-     * The rotation angle on the X axis.
-     * @since 0.6
-     */
-    'rotation-angle-x'?: number;
-    /**
-     * The rotation angle on the Y axis The #ClutterActor:rotation-angle-y property is animatable.
-     * @since 0.6
-     */
-    'rotation-angle-y'?: number;
-    /**
-     * The rotation angle on the Z axis The #ClutterActor:rotation-angle-z property is animatable.
-     * @since 0.6
-     */
-    'rotation-angle-z'?: number;
-    /**
-     * The horizontal scale of the actor.
-     * @since 0.6
-     */
-    'scale-x'?: number;
-    /**
-     * The vertical scale of the actor.
-     * @since 0.6
-     */
-    'scale-y'?: number;
-    /**
-     * The scale factor of the actor along the Z axis.
-     * @since 1.12
-     */
-    'scale-z'?: number;
-    /**
-     * If %TRUE, the actor is automatically shown when parented.
-     * @since 0.8
-     */
-    'show-on-set-parent'?: boolean;
-    /**
-     * The size of the actor.
-     * @since 1.12
-     */
-    size?: Graphene.Size;
-    /**
-     * The direction of the text inside a #ClutterActor.
-     * @since 1.0
-     */
-    'text-direction'?: ClutterTextDirectionNick | Clutter.TextDirection;
-    /**
-     * Overrides the transformations of a #ClutterActor with a custom matrix.
-     * @since 1.12
-     */
-    transform?: Graphene.Matrix;
-    /**
-     * An additional translation applied along the X axis, relative to the actor's #ClutterActor:pivot-point.
-     * @since 1.12
-     */
-    'translation-x'?: number;
-    /**
-     * An additional translation applied along the Y axis, relative to the actor's #ClutterActor:pivot-point.
-     * @since 1.12
-     */
-    'translation-y'?: number;
-    /**
-     * An additional translation applied along the Z axis, relative to the actor's #ClutterActor:pivot-point.
-     * @since 1.12
-     */
-    'translation-z'?: number;
-    /** Whether the actor is set to be visible or not See also #ClutterActor:mapped */
-    visible?: boolean;
-    /** Width of the actor (in pixels). */
-    width?: number;
-    /** X coordinate of the actor in pixels. */
-    x?: number;
-    /**
-     * The alignment of an actor on the X axis, if the actor has been given extra space for its allocation.
-     * @since 1.10
-     */
-    'x-align'?: ClutterActorAlignNick | Clutter.ActorAlign;
-    /**
-     * Whether a layout manager should assign more space to the actor on the X axis.
-     * @since 1.12
-     */
-    'x-expand'?: boolean;
-    /** Y coordinate of the actor in pixels. */
-    y?: number;
-    /**
-     * The alignment of an actor on the Y axis, if the actor has been given extra space for its allocation.
-     * @since 1.10
-     */
-    'y-align'?: ClutterActorAlignNick | Clutter.ActorAlign;
-    /**
-     * Whether a layout manager should assign more space to the actor on the Y axis.
-     * @since 1.12
-     */
-    'y-expand'?: boolean;
-    /**
-     * The actor's position on the Z axis, relative to the parent's transformations.
-     * @since 1.12
-     */
-    'z-position'?: number;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ClutterActorConstructOnly = never;
-
-export interface ClutterActorMetaProps {
-    /**
-     * Whether or not the #ClutterActorMeta is enabled
-     * @since 1.4
-     */
-    enabled?: boolean;
-    /**
-     * The unique name to access the #ClutterActorMeta
-     * @since 1.4
-     */
-    name?: string;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ClutterActorMetaConstructOnly = never;
-
-/** The #ClutterClone structure contains only private data and should be accessed using the provided API */
-export interface ClutterCloneProps extends ClutterActorProps {
-    /**
-     * This property specifies the source actor being cloned.
-     * @since 1.0
-     */
-    source?: Clutter.Actor;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ClutterCloneConstructOnly = ClutterActorConstructOnly;
-
-/** The #ClutterTextBuffer structure contains private data and it should only be accessed using the provided API. */
-export interface ClutterTextBufferProps {
-    /**
-     * The maximum length (in characters) of the text in the buffer.
-     * @since 1.10
-     */
-    'max-length'?: number;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ClutterTextBufferConstructOnly = never;
-
-/** `GMountOperation` provides a mechanism for interacting with the user. */
-export interface GMountOperationProps {
-    /**
-     * Whether to use an anonymous user when authenticating.
-     * @default FALSE
-     */
-    anonymous?: boolean;
-    /**
-     * The index of the user's choice when a question is asked during the mount operation.
-     * @default 0
-     */
-    choice?: number;
-    /**
-     * The domain to use for the mount operation.
-     * @default NULL
-     */
-    domain?: string | null;
-    /**
-     * Whether the device to be unlocked is a TCRYPT hidden volume.
-     * @since 2.58
-     * @default FALSE
-     */
-    'is-tcrypt-hidden-volume'?: boolean;
-    /**
-     * Whether the device to be unlocked is a TCRYPT system volume.
-     * @since 2.58
-     * @default FALSE
-     */
-    'is-tcrypt-system-volume'?: boolean;
-    /**
-     * The password that is used for authentication when carrying out the mount operation.
-     * @default NULL
-     */
-    password?: string | null;
-    /**
-     * Determines if and how the password information should be saved.
-     * @default G_PASSWORD_SAVE_NEVER
-     */
-    'password-save'?: GPasswordSaveNick | Gio.PasswordSave;
-    /**
-     * The VeraCrypt PIM value, when unlocking a VeraCrypt volume.
-     * @since 2.58
-     * @default 0
-     */
-    pim?: number;
-    /**
-     * The user name that is used for authentication when carrying out the mount operation.
-     * @default NULL
-     */
-    username?: string | null;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GMountOperationConstructOnly = never;
-
-/** A prompt displayed to the user. */
-export interface GcrPromptProps {
-    /**
-     * The string handle of the caller's window.
-     * @default NULL
-     */
-    'caller-window'?: string;
-    /**
-     * The label for the cancel button in the prompt.
-     * @default Cancel
-     */
-    'cancel-label'?: string;
-    /**
-     * Whether the additional choice is chosen or not.
-     * @default FALSE
-     */
-    'choice-chosen'?: boolean;
-    /**
-     * The label for the additional choice.
-     * @default NULL
-     */
-    'choice-label'?: string;
-    /**
-     * The label for the continue button in the prompt.
-     * @default Continue
-     */
-    'continue-label'?: string;
-    /**
-     * The detailed description of the prompt.
-     * @default NULL
-     */
-    description?: string;
-    /**
-     * The prompt message for the user.
-     * @default NULL
-     */
-    message?: string;
-    /**
-     * Whether the prompt will prompt for a new password.
-     * @default FALSE
-     */
-    'password-new'?: boolean;
-    /**
-     * The title of the prompt.
-     * @default NULL
-     */
-    title?: string;
-    /**
-     * A prompt warning displayed on the prompt, or %NULL for no warning.
-     * @default NULL
-     */
-    warning?: string;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GcrPromptConstructOnly = never;
-
-export interface NMSecretAgentOldProps {
+export interface NMSecretAgentOldProps extends GObjectProps, GAsyncInitableProps, GInitableProps {
     /**
      * If %TRUE (the default), the agent will always be registered when NetworkManager is running; if NetworkManager exits and restarts, the agent will re-register itself automatically.
      * @default TRUE
@@ -509,172 +84,142 @@ export interface NMSecretAgentOldProps {
     identifier?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type NMSecretAgentOldConstructOnly = 'dbus-connection' | 'identifier';
+export type NMSecretAgentOldConstructOnly = GObjectConstructOnly | GAsyncInitableConstructOnly | GInitableConstructOnly | 'dbus-connection' | 'identifier';
 
-export interface ShellAppProps {
+export interface ShellAppProps extends GObjectProps {
     /** The #GDesktopAppInfo associated with this ShellApp, if any. */
     'app-info'?: never;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellAppConstructOnly = 'app-info';
+export type ShellAppConstructOnly = GObjectConstructOnly | 'app-info';
 
-export interface ShellAppSystemProps {
+export interface ShellAppSystemProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellAppSystemConstructOnly = never;
+export type ShellAppSystemConstructOnly = GObjectConstructOnly;
 
-export interface ShellAppUsageProps {
+export interface ShellAppUsageProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellAppUsageConstructOnly = never;
+export type ShellAppUsageConstructOnly = GObjectConstructOnly;
 
-export interface ShellBlurEffectProps {
+export interface ShellBlurEffectProps extends ClutterEffectProps {
     brightness?: number;
     mode?: ShellBlurModeNick | Shell.BlurMode;
     sigma?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellBlurEffectConstructOnly = never;
+export type ShellBlurEffectConstructOnly = ClutterEffectConstructOnly;
 
 export interface ShellEmbeddedWindowProps extends GtkWindowProps, GtkBuildableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type ShellEmbeddedWindowConstructOnly = GtkWindowConstructOnly | GtkBuildableConstructOnly;
 
-export interface ShellGLSLEffectProps {
+export interface ShellGLSLEffectProps extends ClutterOffscreenEffectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellGLSLEffectConstructOnly = never;
+export type ShellGLSLEffectConstructOnly = ClutterOffscreenEffectConstructOnly;
 
-export interface ShellGlobalProps {
+export interface ShellGlobalProps extends GObjectProps {
     'frame-finish-timestamp'?: boolean;
     'frame-timestamps'?: boolean;
     'session-mode'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellGlobalConstructOnly = 'session-mode';
+export type ShellGlobalConstructOnly = GObjectConstructOnly | 'session-mode';
 
-export interface ShellGtkEmbedProps extends ClutterCloneProps {
+export interface ShellGtkEmbedProps extends ClutterCloneProps, ClutterAnimatableProps, ClutterContainerProps, ClutterScriptableProps {
     window?: Shell.EmbeddedWindow;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellGtkEmbedConstructOnly = ClutterCloneConstructOnly | 'window';
+export type ShellGtkEmbedConstructOnly = ClutterCloneConstructOnly | ClutterAnimatableConstructOnly | ClutterContainerConstructOnly | ClutterScriptableConstructOnly | 'window';
 
-export interface ShellInvertLightnessEffectProps {
+export interface ShellInvertLightnessEffectProps extends ClutterOffscreenEffectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellInvertLightnessEffectConstructOnly = never;
+export type ShellInvertLightnessEffectConstructOnly = ClutterOffscreenEffectConstructOnly;
 
-export interface ShellKeyringPromptProps extends GcrPromptProps {
+export interface ShellKeyringPromptProps extends GObjectProps, GcrPromptProps {
     /** Text field for confirmation password */
     'confirm-actor'?: Clutter.Text | null;
     /** Text field for password */
     'password-actor'?: Clutter.Text | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellKeyringPromptConstructOnly = GcrPromptConstructOnly;
+export type ShellKeyringPromptConstructOnly = GObjectConstructOnly | GcrPromptConstructOnly;
 
 export interface ShellMountOperationProps extends GMountOperationProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type ShellMountOperationConstructOnly = GMountOperationConstructOnly;
 
-export interface ShellNetworkAgentProps extends NMSecretAgentOldProps {
+export interface ShellNetworkAgentProps extends NMSecretAgentOldProps, GAsyncInitableProps, GInitableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellNetworkAgentConstructOnly = NMSecretAgentOldConstructOnly;
+export type ShellNetworkAgentConstructOnly = NMSecretAgentOldConstructOnly | GAsyncInitableConstructOnly | GInitableConstructOnly;
 
-export interface ShellPerfLogProps {
+export interface ShellPerfLogProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellPerfLogConstructOnly = never;
+export type ShellPerfLogConstructOnly = GObjectConstructOnly;
 
-export interface ShellPolkitAuthenticationAgentProps {
+export interface ShellPolkitAuthenticationAgentProps extends PolkitAgentListenerProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellPolkitAuthenticationAgentConstructOnly = never;
+export type ShellPolkitAuthenticationAgentConstructOnly = PolkitAgentListenerConstructOnly;
 
-export interface ShellScreenshotProps {
+export interface ShellScreenshotProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellScreenshotConstructOnly = never;
+export type ShellScreenshotConstructOnly = GObjectConstructOnly;
 
 export interface ShellSecureTextBufferProps extends ClutterTextBufferProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type ShellSecureTextBufferConstructOnly = ClutterTextBufferConstructOnly;
 
-export interface ShellSquareBinProps extends StBinProps {
+export interface ShellSquareBinProps extends StBinProps, ClutterAnimatableProps, ClutterContainerProps, ClutterScriptableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellSquareBinConstructOnly = StBinConstructOnly;
+export type ShellSquareBinConstructOnly = StBinConstructOnly | ClutterAnimatableConstructOnly | ClutterContainerConstructOnly | ClutterScriptableConstructOnly;
 
-export interface ShellStackProps extends StWidgetProps {
+export interface ShellStackProps extends StWidgetProps, ClutterAnimatableProps, ClutterContainerProps, ClutterScriptableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellStackConstructOnly = StWidgetConstructOnly;
+export type ShellStackConstructOnly = StWidgetConstructOnly | ClutterAnimatableConstructOnly | ClutterContainerConstructOnly | ClutterScriptableConstructOnly;
 
-export interface ShellTrayIconProps extends ShellGtkEmbedProps {
+export interface ShellTrayIconProps extends ShellGtkEmbedProps, ClutterAnimatableProps, ClutterContainerProps, ClutterScriptableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellTrayIconConstructOnly = ShellGtkEmbedConstructOnly;
+export type ShellTrayIconConstructOnly = ShellGtkEmbedConstructOnly | ClutterAnimatableConstructOnly | ClutterContainerConstructOnly | ClutterScriptableConstructOnly;
 
-export interface ShellTrayManagerProps {
+export interface ShellTrayManagerProps extends GObjectProps {
     'bg-color'?: Clutter.Color;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellTrayManagerConstructOnly = 'bg-color';
+export type ShellTrayManagerConstructOnly = GObjectConstructOnly | 'bg-color';
 
-export interface ShellWMProps {
+export interface ShellWMProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellWMConstructOnly = never;
+export type ShellWMConstructOnly = GObjectConstructOnly;
 
-export interface ShellWindowPreviewProps extends StWidgetProps {
+export interface ShellWindowPreviewProps extends StWidgetProps, ClutterAnimatableProps, ClutterContainerProps, ClutterScriptableProps {
     'window-container'?: Clutter.Actor;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellWindowPreviewConstructOnly = StWidgetConstructOnly;
+export type ShellWindowPreviewConstructOnly = StWidgetConstructOnly | ClutterAnimatableConstructOnly | ClutterContainerConstructOnly | ClutterScriptableConstructOnly;
 
-export interface ShellWindowPreviewLayoutProps {
+export interface ShellWindowPreviewLayoutProps extends ClutterLayoutManagerProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellWindowPreviewLayoutConstructOnly = never;
+export type ShellWindowPreviewLayoutConstructOnly = ClutterLayoutManagerConstructOnly;
 
-export interface ShellWindowTrackerProps {
+export interface ShellWindowTrackerProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShellWindowTrackerConstructOnly = never;
-
-export interface StBinProps extends StWidgetProps {
-    /** The child #ClutterActor of the #StBin container. */
-    child?: Clutter.Actor | null;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type StBinConstructOnly = StWidgetConstructOnly;
-
-export interface StWidgetProps extends ClutterActorProps {
-    /** Object instance's name for assistive technology access. */
-    'accessible-name'?: string;
-    /** The accessible role of this object */
-    'accessible-role'?: AtkRoleNick | Atk.Role;
-    /** Whether or not the widget can be focused via keyboard navigation. */
-    'can-focus'?: boolean;
-    /** Whether or not the pointer is currently hovering over the widget. */
-    hover?: boolean;
-    /** An actor that labels this widget. */
-    'label-actor'?: Clutter.Actor;
-    /** The pseudo-class of the actor. */
-    'pseudo-class'?: string;
-    /** Inline style information for the actor as a ';'-separated list of CSS properties. */
-    style?: string | null;
-    /** The style-class of the actor for use in styling. */
-    'style-class'?: string;
-    /** Determines whether the widget tracks pointer hover state. */
-    'track-hover'?: boolean;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type StWidgetConstructOnly = ClutterActorConstructOnly;
+export type ShellWindowTrackerConstructOnly = GObjectConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -765,6 +310,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

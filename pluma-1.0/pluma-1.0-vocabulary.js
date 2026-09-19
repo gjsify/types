@@ -1,6 +1,6 @@
 // The widget vocabulary of Pluma-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Pluma-1.0 — dropped empty base(s): GObject.Object Gio.ActionGroup Gio.ActionMap GObject.InitiallyUnowned Atk.ImplementorIface — inlined base(s) their owner's vocabulary does not emit: Gio.Application
+// GENERATED — do not edit. Provenance: Pluma-1.0 — dropped empty base(s): Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
@@ -11,14 +11,15 @@ export const PROVENANCE = {
     version: '1.0',
     libraryVersion: null,
     childHolders: 0,
-    droppedBases: ['GObject.Object', 'Gio.ActionGroup', 'Gio.ActionMap', 'GObject.InitiallyUnowned', 'Atk.ImplementorIface'],
-    inlinedBases: ['Gio.Application'],
+    droppedBases: ['Atk.ImplementorIface'],
+    inlinedBases: [],
     unsettableProps: [],
     unresolvedProps: [],
+    identifierPrefixes: ['Pluma'],
+    requiredVocabularies: ['@girs/gio-2.0/vocabulary', '@girs/gobject-2.0/vocabulary', '@girs/gtk-3.0/vocabulary', '@girs/gtksource-4/vocabulary'],
 };
 
 export const OWN_PROPS = {
-    GApplication: ['action-group', 'application-id', 'flags', 'inactivity-timeout', 'resource-base-path', 'version'],
     PlumaDocument: ['content-type', 'enable-search-highlighting', 'newline-type', 'shortname'],
     PlumaEncodingsComboBox: ['save-mode'],
     PlumaMessage: ['type'],
@@ -29,7 +30,6 @@ export const OWN_PROPS = {
 };
 
 export const OWN_SIGNALS = {
-    GApplication: ['activate', 'command-line', 'handle-local-options', 'name-lost', 'open', 'shutdown', 'startup'],
     PlumaDocument: ['cursor-moved', 'load', 'loaded', 'loading', 'save', 'saved', 'saving', 'search-highlight-updated'],
     PlumaMessageBus: ['dispatch', 'registered', 'unregistered'],
     PlumaNotebook: ['tab-added', 'tab-close-request', 'tab-detached', 'tab-removed', 'tabs-reordered'],
@@ -47,20 +47,20 @@ export const OWN_SIGNALS = {
 // `GtkEventController*` and `GtkCellRenderer*`. Use `Widgets` and `CHILD_HOLDERS`
 // below for the narrower questions; they did not move.
 export const DECLS = {
-    PlumaApp: ['PlumaApp'],
-    PlumaApplication: ['PlumaApplication', 'GtkApplication', 'GApplication'],
-    PlumaDocument: ['PlumaDocument', 'GtkSourceBuffer', 'GtkTextBuffer'],
-    PlumaEncodingsComboBox: ['PlumaEncodingsComboBox', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
-    PlumaMessage: ['PlumaMessage'],
-    PlumaMessageBus: ['PlumaMessageBus'],
-    PlumaNotebook: ['PlumaNotebook', 'GtkNotebook', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    PlumaPanel: ['PlumaPanel', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    PlumaProgressMessageArea: ['PlumaProgressMessageArea', 'GtkInfoBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    PlumaStatusComboBox: ['PlumaStatusComboBox', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
-    PlumaStatusbar: ['PlumaStatusbar', 'GtkStatusbar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    PlumaTab: ['PlumaTab', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
-    PlumaView: ['PlumaView', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
-    PlumaWindow: ['PlumaWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    PlumaApp: ['PlumaApp', 'GObject'],
+    PlumaApplication: ['PlumaApplication', 'GtkApplication', 'GApplication', 'GObject', 'GActionGroup', 'GActionMap'],
+    PlumaDocument: ['PlumaDocument', 'GtkSourceBuffer', 'GtkTextBuffer', 'GObject'],
+    PlumaEncodingsComboBox: ['PlumaEncodingsComboBox', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
+    PlumaMessage: ['PlumaMessage', 'GObject'],
+    PlumaMessageBus: ['PlumaMessageBus', 'GObject'],
+    PlumaNotebook: ['PlumaNotebook', 'GtkNotebook', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    PlumaPanel: ['PlumaPanel', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    PlumaProgressMessageArea: ['PlumaProgressMessageArea', 'GtkInfoBar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    PlumaStatusComboBox: ['PlumaStatusComboBox', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable'],
+    PlumaStatusbar: ['PlumaStatusbar', 'GtkStatusbar', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    PlumaTab: ['PlumaTab', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkOrientable'],
+    PlumaView: ['PlumaView', 'GtkSourceView', 'GtkTextView', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GtkBuildable', 'GtkScrollable'],
+    PlumaWindow: ['PlumaWindow', 'GtkApplicationWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GInitiallyUnowned', 'GObject', 'GActionGroup', 'GActionMap', 'GtkBuildable'],
 };
 
 // The GTypes above that ARE widgets are the `Widgets` map in the sibling `.d.ts`; these
@@ -71,6 +71,7 @@ export const DECLS = {
 export const CHILD_HOLDERS = [];
 
 export const ENUM_NICKS = {
+    GtkOrientation: ['horizontal', 'vertical'],
     PlumaDocumentNewlineType: ['lf', 'cr', 'cr-lf'],
     PlumaTabState: ['state-normal', 'state-loading', 'state-reverting', 'state-saving', 'state-printing', 'state-print-previewing', 'state-showing-print-preview', 'state-generic-not-editable', 'state-loading-error', 'state-reverting-error', 'state-saving-error', 'state-generic-error', 'state-closing', 'state-externally-modified-notification', 'num-of-states'],
 };
@@ -90,6 +91,8 @@ export const ENUM_NICKS = {
 // vocabulary describes but the host predates then looks like a missing number rather than a
 // version gap.
 export const ENUM_VALUES = {
+    'GtkOrientation.horizontal': 0,
+    'GtkOrientation.vertical': 1,
     'PlumaDocumentNewlineType.cr': 1,
     'PlumaDocumentNewlineType.cr-lf': 2,
     'PlumaDocumentNewlineType.lf': 0,
@@ -146,17 +149,6 @@ export const ENUM_VALUES_UNREADABLE = {};
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
 export const FLAG_VALUES = {
-    'GApplicationFlags.allow-replacement': 128,
-    'GApplicationFlags.can-override-app-id': 64,
-    'GApplicationFlags.default-flags': 0,
-    'GApplicationFlags.flags-none': 0,
-    'GApplicationFlags.handles-command-line': 8,
-    'GApplicationFlags.handles-open': 4,
-    'GApplicationFlags.is-launcher': 2,
-    'GApplicationFlags.is-service': 1,
-    'GApplicationFlags.non-unique': 32,
-    'GApplicationFlags.replace': 256,
-    'GApplicationFlags.send-environment': 16,
     'PlumaDebugSection.debug-app': 256,
     'PlumaDebugSection.debug-commands': 128,
     'PlumaDebugSection.debug-document': 64,
@@ -214,7 +206,6 @@ export const FLAG_VALUES_UNREADABLE = {};
 // that OWNS an enum publishes it, so 83 of the 909 entries a full run emits want the owner's
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {
-    'GApplication.flags': 'GApplicationFlags',
     'PlumaDocument.newline-type': 'PlumaDocumentNewlineType',
     'PlumaPanel.panel-orientation': 'GtkOrientation',
 };
@@ -256,14 +247,4 @@ export const SLOT_CANDIDATES = {
     },
 };
 
-export const SINCE = {
-    'GApplication': '2.28',
-    'GApplication.action-group': '2.28',
-    'GApplication.application-id': '2.28',
-    'GApplication.flags': '2.28',
-    'GApplication.inactivity-timeout': '2.28',
-    'GApplication.resource-base-path': '2.28',
-    'GApplication.version': '2.80',
-    'GApplication::handle-local-options': '2.40',
-    'GApplication::name-lost': '2.60',
-};
+export const SINCE = {};

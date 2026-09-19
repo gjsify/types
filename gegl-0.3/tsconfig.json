@@ -29,7 +29,7 @@
       ]
 }
   },
-  "include": ["./gegl-0.3.d.ts"]
+  "include": ["./gegl-0.3.d.ts","./gegl-0.3-vocabulary.d.ts"]
 }
 
 

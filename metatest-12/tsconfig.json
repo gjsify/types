@@ -83,7 +83,7 @@
       ]
 }
   },
-  "include": ["./metatest-12.d.ts"]
+  "include": ["./metatest-12.d.ts","./metatest-12-vocabulary.d.ts"]
 }
 
 

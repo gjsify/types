@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./clutter-16.d.ts"]
+  "include": ["./clutter-16.d.ts","./clutter-16-vocabulary.d.ts"]
 }
 
 

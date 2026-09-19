@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./mash-0.2.d.ts"]
+  "include": ["./mash-0.2.d.ts","./mash-0.2-vocabulary.d.ts"]
 }
 
 

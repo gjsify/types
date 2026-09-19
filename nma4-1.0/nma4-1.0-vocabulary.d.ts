@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for NMA4-1.0.
  *
- * GENERATED — do not edit. Provenance: NMA4-1.0 — library 1.10.6 — dropped empty base(s): GObject.Object GObject.InitiallyUnowned Gio.AsyncInitable Gio.Initable
+ * GENERATED — do not edit. Provenance: NMA4-1.0 — library 1.10.6
  *
  * 7 instantiable GTypes (of which 4 concrete widgets), 7 declarations, 0 enum nick unions, 0 slot candidates.
  *
@@ -26,6 +26,8 @@
 
 import type NM from '@girs/nm-1.0';
 import type NMA4 from './nma4-1.0.js';
+import type { GAsyncInitableConstructOnly, GAsyncInitableProps, GInitableConstructOnly, GInitableProps } from '@girs/gio-2.0/vocabulary';
+import type { GInitiallyUnownedConstructOnly, GInitiallyUnownedProps, GObjectConstructOnly, GObjectProps } from '@girs/gobject-2.0/vocabulary';
 import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkDialogConstructOnly, GtkDialogProps, GtkGridConstructOnly, GtkGridProps, GtkNativeConstructOnly, GtkNativeProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkRootConstructOnly, GtkRootProps, GtkShortcutManagerConstructOnly, GtkShortcutManagerProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-4.0/vocabulary';
 
 // ---------------------------------------------------------------------------
@@ -50,11 +52,11 @@ import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBoxConstructOnl
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-export interface NMABarCodeProps {
+export interface NMABarCodeProps extends GObjectProps {
     text?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type NMABarCodeConstructOnly = never;
+export type NMABarCodeConstructOnly = GObjectConstructOnly;
 
 export interface NMABarCodeWidgetProps extends GtkBoxProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkOrientableProps {
     connection?: NM.Connection;
@@ -71,19 +73,19 @@ export interface NMACertChooserProps extends GtkGridProps, GtkAccessibleProps, G
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type NMACertChooserConstructOnly = GtkGridConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkOrientableConstructOnly | 'flags' | 'title';
 
-export interface NMAMobileProvidersDatabaseProps {
+export interface NMAMobileProvidersDatabaseProps extends GObjectProps, GAsyncInitableProps, GInitableProps {
     /** @default NULL */
     'country-codes'?: string;
     /** @default NULL */
     'service-providers'?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type NMAMobileProvidersDatabaseConstructOnly = 'country-codes' | 'service-providers';
+export type NMAMobileProvidersDatabaseConstructOnly = GObjectConstructOnly | GAsyncInitableConstructOnly | GInitableConstructOnly | 'country-codes' | 'service-providers';
 
-export interface NMAMobileWizardProps {
+export interface NMAMobileWizardProps extends GObjectProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type NMAMobileWizardConstructOnly = never;
+export type NMAMobileWizardConstructOnly = GObjectConstructOnly;
 
 export interface NMAVpnPasswordDialogProps extends GtkDialogProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
 }
@@ -205,6 +207,30 @@ export const PROVENANCE: {
      * GIRs disagreeing, which is what the main emitter answers `never` for as well.
      */
     readonly unresolvedProps: readonly string[];
+    /**
+     * `c:identifier-prefixes` from the GIR, verbatim and in order — `['G']` for Gio.
+     *
+     * The C prefix a type REFERENCE needs: resolving `Gio.Icon` means producing `GIcon`,
+     * and nothing else in this package states that `Gio` spells itself `G`. Carried rather
+     * than derived because GIR carries it, and a derivation over the `DECLS` keys is wrong
+     * wherever the C prefix is not a prefix of the type NAMES: gdkx11-4.0 and gdkwayland-4.0
+     * both state `Gdk` while every key they declare begins `GdkX11`/`GdkWayland`.
+     *
+     * Empty where the GIR states none — 17 of the 627 emitting namespaces — because
+     * inventing the namespace name there is a confident wrong answer in place of a missing
+     * one. A LIST because 20 of them state more than one, which no single string expresses.
+     */
+    readonly identifierPrefixes: readonly string[];
+    /**
+     * Sibling vocabularies this one's DECLARATIONS come from, as import specifiers.
+     *
+     * A chain link with no `OWN_PROPS` row is ambiguous on its own — `GtkSeparator` has no
+     * settable property, `GApplication` has its properties in another package — and this
+     * list is what tells the two apart. Enum and bitfield NUMBERS are not here: those are
+     * carried in this file, because a `PROP_ENUMS` row naming a foreign GType gives a
+     * consumer nothing to load and a `.ui` file using the property never names its owner.
+     */
+    readonly requiredVocabularies: readonly string[];
 };
 
 /** Declaration GType -> its own settable properties, as GObject registered them. */

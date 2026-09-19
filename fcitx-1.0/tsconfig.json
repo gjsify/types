@@ -35,7 +35,7 @@
       ]
 }
   },
-  "include": ["./fcitx-1.0.d.ts"]
+  "include": ["./fcitx-1.0.d.ts","./fcitx-1.0-vocabulary.d.ts"]
 }
 
 
