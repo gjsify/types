@@ -137,6 +137,43 @@ export const PROP_ENUMS = {
     'ClutterGstPlayer.seek-flags': 'ClutterGstSeekFlags',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'ClutterGstPlayer.audio-stream': 'gint',
+    'ClutterGstPlayer.seek-flags': 'ClutterGstSeekFlags',
+    'ClutterGstPlayer.subtitle-track': 'gint',
+    'ClutterGstPlayer.user-agent': 'gchararray',
+    'ClutterGstVideoSink.texture': 'ClutterTexture',
+    'ClutterGstVideoSink.update-priority': 'gint',
+    'ClutterGstVideoTexture.pixel-aspect-ratio': 'GstFraction',
+    'ClutterMedia.audio-volume': 'gdouble',
+    'ClutterMedia.playing': 'gboolean',
+    'ClutterMedia.progress': 'gdouble',
+    'ClutterMedia.subtitle-font-name': 'gchararray',
+    'ClutterMedia.subtitle-uri': 'gchararray',
+    'ClutterMedia.uri': 'gchararray',
+    'GstBaseSink.async': 'gboolean',
+    'GstBaseSink.blocksize': 'guint',
+    'GstBaseSink.enable-last-sample': 'gboolean',
+    'GstBaseSink.max-bitrate': 'guint64',
+    'GstBaseSink.max-lateness': 'gint64',
+    'GstBaseSink.processing-deadline': 'guint64',
+    'GstBaseSink.qos': 'gboolean',
+    'GstBaseSink.render-delay': 'guint64',
+    'GstBaseSink.sync': 'gboolean',
+    'GstBaseSink.throttle-time': 'guint64',
+    'GstBaseSink.ts-offset': 'gint64',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

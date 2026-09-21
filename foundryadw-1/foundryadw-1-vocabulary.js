@@ -152,6 +152,57 @@ export const PROP_ENUMS = {
     'FoundryFileRow.file-type': 'GFileType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'FoundryDocumentationNavigator.documentation': 'FoundryDocumentation',
+    'FoundryFileNavigator.file': 'GFile',
+    'FoundryFileRow.file': 'GFile',
+    'FoundryFileRow.file-type': 'GFileType',
+    'FoundryPage.auxiliary': 'GtkWidget',
+    'FoundryPage.content': 'GtkWidget',
+    'FoundryPage.needs-attention': 'gboolean',
+    'FoundryPanelBar.show-bottom': 'gboolean',
+    'FoundryPanelBar.show-start': 'gboolean',
+    'FoundryPanelBar.workspace': 'FoundryWorkspace',
+    'FoundryPathBar.root': 'FoundryPathNavigator',
+    'FoundryPathBar.selected-item': 'FoundryPathNavigator',
+    'FoundrySearchDialog.context': 'FoundryContext',
+    'FoundrySearchDialog.search-text': 'gchararray',
+    'FoundrySymbolNavigator.symbol': 'FoundrySymbol',
+    'FoundryTreeExpander.activate-on-click': 'gboolean',
+    'FoundryTreeExpander.expanded-icon': 'GIcon',
+    'FoundryTreeExpander.expanded-icon-name': 'gchararray',
+    'FoundryTreeExpander.expanded-paintable': 'GdkPaintable',
+    'FoundryTreeExpander.icon': 'GIcon',
+    'FoundryTreeExpander.icon-name': 'gchararray',
+    'FoundryTreeExpander.ignored': 'gboolean',
+    'FoundryTreeExpander.list-row': 'GtkTreeListRow',
+    'FoundryTreeExpander.menu-model': 'GMenuModel',
+    'FoundryTreeExpander.paintable': 'GdkPaintable',
+    'FoundryTreeExpander.suffix': 'GtkWidget',
+    'FoundryTreeExpander.title': 'gchararray',
+    'FoundryTreeExpander.use-markup': 'gboolean',
+    'FoundryWorkspace.auxiliary-placeholder': 'GtkWidget',
+    'FoundryWorkspace.collapsed-titlebar': 'GtkWidget',
+    'FoundryWorkspace.context': 'FoundryContext',
+    'FoundryWorkspace.primary-menu': 'GMenuModel',
+    'FoundryWorkspace.show-auxiliary': 'gboolean',
+    'FoundryWorkspace.show-sidebar': 'gboolean',
+    'FoundryWorkspace.show-utilities': 'gboolean',
+    'FoundryWorkspace.sidebar-titlebar': 'GtkWidget',
+    'FoundryWorkspace.status-widget': 'GtkWidget',
+    'FoundryWorkspace.titlebar': 'GtkWidget',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

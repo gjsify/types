@@ -209,6 +209,69 @@ export const PROP_ENUMS = {
     'GraniteStyleManager.color-scheme': 'GraniteSettingsColorScheme',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GraniteAccelLabel.accel-string': 'gchararray',
+    'GraniteAccelLabel.action-name': 'gchararray',
+    'GraniteAccelLabel.label': 'gchararray',
+    'GraniteBackButton.label': 'gchararray',
+    'GraniteBin.child': 'GtkWidget',
+    'GraniteBox.child-spacing': 'GraniteBoxSpacing',
+    'GraniteDatePicker.format': 'gchararray',
+    'GraniteHeaderLabel.ellipsize': 'PangoEllipsizeMode',
+    'GraniteHeaderLabel.label': 'gchararray',
+    'GraniteHeaderLabel.mnemonic-widget': 'GtkWidget',
+    'GraniteHeaderLabel.secondary-text': 'gchararray',
+    'GraniteHeaderLabel.size': 'GraniteHeaderLabelSize',
+    'GraniteListItem.child': 'GtkWidget',
+    'GraniteListItem.description': 'gchararray',
+    'GraniteListItem.menu-model': 'GMenuModel',
+    'GraniteListItem.text': 'gchararray',
+    'GraniteMessageDialog.badge-icon': 'GIcon',
+    'GraniteMessageDialog.buttons': 'GtkButtonsType',
+    'GraniteMessageDialog.custom-bin': 'GtkBox',
+    'GraniteMessageDialog.image-icon': 'GIcon',
+    'GraniteMessageDialog.primary-label': 'GtkLabel',
+    'GraniteMessageDialog.primary-text': 'gchararray',
+    'GraniteMessageDialog.secondary-label': 'GtkLabel',
+    'GraniteMessageDialog.secondary-text': 'gchararray',
+    'GraniteModeSwitch.active': 'gboolean',
+    'GraniteModeSwitch.primary-icon-gicon': 'GIcon',
+    'GraniteModeSwitch.primary-icon-name': 'gchararray',
+    'GraniteModeSwitch.primary-icon-tooltip-text': 'gchararray',
+    'GraniteModeSwitch.secondary-icon-gicon': 'GIcon',
+    'GraniteModeSwitch.secondary-icon-name': 'gchararray',
+    'GraniteModeSwitch.secondary-icon-tooltip-text': 'gchararray',
+    'GraniteOverlayBar.active': 'gboolean',
+    'GraniteOverlayBar.label': 'gchararray',
+    'GraniteOverlayBar.overlay': 'GtkOverlay',
+    'GranitePlaceholder.description': 'gchararray',
+    'GranitePlaceholder.icon': 'GIcon',
+    'GranitePlaceholder.title': 'gchararray',
+    'GraniteSettings.prefers-color-scheme': 'GraniteSettingsColorScheme',
+    'GraniteSettingsSidebar.stack': 'GtkStack',
+    'GraniteSettingsSidebar.visible-child-name': 'gchararray',
+    'GraniteStyleManager.color-scheme': 'GraniteSettingsColorScheme',
+    'GraniteStyleManager.display': 'GdkDisplay',
+    'GraniteSwitchModelButton.description': 'gchararray',
+    'GraniteSwitchModelButton.text': 'gchararray',
+    'GraniteTimePicker.format-12': 'gchararray',
+    'GraniteTimePicker.format-24': 'gchararray',
+    'GraniteToast.title': 'gchararray',
+    'GraniteToolBox.content': 'GtkWidget',
+    'GraniteValidatedEntry.is-valid': 'gboolean',
+    'GraniteValidatedEntry.min-length': 'gint',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

@@ -329,6 +329,70 @@ export const PROP_ENUMS = {
     'SoupWebsocketConnection.connection-type': 'SoupWebsocketConnectionType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'SoupAuth.authority': 'gchararray',
+    'SoupAuth.is-for-proxy': 'gboolean',
+    'SoupAuth.realm': 'gchararray',
+    'SoupAuthDomain.filter-data': 'gpointer',
+    'SoupAuthDomain.generic-auth-data': 'gpointer',
+    'SoupAuthDomain.proxy': 'gboolean',
+    'SoupAuthDomain.realm': 'gchararray',
+    'SoupAuthDomainBasic.auth-data': 'gpointer',
+    'SoupAuthDomainDigest.auth-data': 'gpointer',
+    'SoupCache.cache-dir': 'gchararray',
+    'SoupCache.cache-type': 'SoupCacheType',
+    'SoupCookieJar.accept-policy': 'SoupCookieJarAcceptPolicy',
+    'SoupCookieJar.read-only': 'gboolean',
+    'SoupCookieJarDB.filename': 'gchararray',
+    'SoupCookieJarDB.max-size': 'guint64',
+    'SoupCookieJarText.filename': 'gchararray',
+    'SoupHSTSEnforcerDB.filename': 'gchararray',
+    'SoupLogger.level': 'SoupLoggerLogLevel',
+    'SoupLogger.max-body-size': 'gint',
+    'SoupMessage.flags': 'SoupMessageFlags',
+    'SoupMessage.is-options-ping': 'gboolean',
+    'SoupMessage.is-top-level-navigation': 'gboolean',
+    'SoupMessage.method': 'gchararray',
+    'SoupMessage.priority': 'SoupMessagePriority',
+    'SoupMultipartInputStream.message': 'SoupMessage',
+    'SoupServer.raw-paths': 'gboolean',
+    'SoupServer.server-header': 'gchararray',
+    'SoupServer.tls-auth-mode': 'GTlsAuthenticationMode',
+    'SoupServer.tls-certificate': 'GTlsCertificate',
+    'SoupServer.tls-database': 'GTlsDatabase',
+    'SoupSession.accept-language': 'gchararray',
+    'SoupSession.accept-language-auto': 'gboolean',
+    'SoupSession.idle-timeout': 'guint',
+    'SoupSession.local-address': 'GInetSocketAddress',
+    'SoupSession.max-conns': 'gint',
+    'SoupSession.max-conns-per-host': 'gint',
+    'SoupSession.proxy-resolver': 'GProxyResolver',
+    'SoupSession.remote-connectable': 'GSocketConnectable',
+    'SoupSession.timeout': 'guint',
+    'SoupSession.tls-database': 'GTlsDatabase',
+    'SoupSession.tls-interaction': 'GTlsInteraction',
+    'SoupSession.user-agent': 'gchararray',
+    'SoupWebsocketConnection.connection-type': 'SoupWebsocketConnectionType',
+    'SoupWebsocketConnection.extensions': 'gpointer',
+    'SoupWebsocketConnection.io-stream': 'GIOStream',
+    'SoupWebsocketConnection.keepalive-interval': 'guint',
+    'SoupWebsocketConnection.keepalive-pong-timeout': 'guint',
+    'SoupWebsocketConnection.max-incoming-payload-size': 'guint64',
+    'SoupWebsocketConnection.max-total-message-size': 'guint64',
+    'SoupWebsocketConnection.origin': 'gchararray',
+    'SoupWebsocketConnection.protocol': 'gchararray',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

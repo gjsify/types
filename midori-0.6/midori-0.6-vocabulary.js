@@ -185,6 +185,96 @@ export const PROP_ENUMS = {
     'MidoriCoreSettings.proxy-type': 'MidoriProxyType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'MidoriApp.exec-path': 'GFile',
+    'MidoriBrowser.is-fullscreen': 'gboolean',
+    'MidoriBrowser.is-loading': 'gboolean',
+    'MidoriBrowser.is-locked': 'gboolean',
+    'MidoriBrowser.tab': 'MidoriTab',
+    'MidoriBrowser.trash': 'GListStore',
+    'MidoriBrowser.uri': 'gchararray',
+    'MidoriBrowser.web-context': 'WebKitWebContext',
+    'MidoriCompletion.incognito': 'gboolean',
+    'MidoriCompletion.key': 'gchararray',
+    'MidoriCoreSettings.auto-load-images': 'gboolean',
+    'MidoriCoreSettings.close-buttons-on-tabs': 'gboolean',
+    'MidoriCoreSettings.enable-caret-browsing': 'gboolean',
+    'MidoriCoreSettings.enable-javascript': 'gboolean',
+    'MidoriCoreSettings.enable-plugins': 'gboolean',
+    'MidoriCoreSettings.enable-spell-checking': 'gboolean',
+    'MidoriCoreSettings.first-party-cookies-only': 'gboolean',
+    'MidoriCoreSettings.homepage': 'gchararray',
+    'MidoriCoreSettings.http-proxy': 'gchararray',
+    'MidoriCoreSettings.http-proxy-port': 'gint',
+    'MidoriCoreSettings.last-window-height': 'gint',
+    'MidoriCoreSettings.last-window-width': 'gint',
+    'MidoriCoreSettings.load-on-startup': 'MidoriStartupType',
+    'MidoriCoreSettings.location-entry-search': 'gchararray',
+    'MidoriCoreSettings.maximum-history-age': 'gint',
+    'MidoriCoreSettings.proxy-type': 'MidoriProxyType',
+    'MidoriDatabase.first-use': 'gboolean',
+    'MidoriDatabase.key': 'gchararray',
+    'MidoriDatabase.path': 'gchararray',
+    'MidoriDatabase.readonly': 'gboolean',
+    'MidoriDatabase.table': 'gchararray',
+    'MidoriDatabaseItem.database': 'MidoriDatabase',
+    'MidoriDatabaseItem.date': 'gint64',
+    'MidoriDatabaseItem.id': 'gint64',
+    'MidoriDatabaseItem.title': 'gchararray',
+    'MidoriDatabaseItem.uri': 'gchararray',
+    'MidoriDatabaseStatement.database': 'MidoriDatabase',
+    'MidoriDatabaseStatement.query': 'gchararray',
+    'MidoriDownloadItem.basename': 'gchararray',
+    'MidoriDownloadItem.download': 'WebKitDownload',
+    'MidoriDownloadItem.error': 'gchararray',
+    'MidoriDownloadItem.filename': 'gchararray',
+    'MidoriDownloadItem.loading': 'gboolean',
+    'MidoriDownloadItem.progress': 'gdouble',
+    'MidoriDownloadRow.item': 'MidoriDownloadItem',
+    'MidoriFavicon.uri': 'gchararray',
+    'MidoriLabelWidget.label': 'GtkLabel',
+    'MidoriLabelWidget.title': 'gchararray',
+    'MidoriLabelWidget.widget': 'GtkWidget',
+    'MidoriPlugins.builtin-path': 'gchararray',
+    'MidoriSettings.filename': 'gchararray',
+    'MidoriStatusbar.label': 'gchararray',
+    'MidoriSuggestionItem.search': 'gchararray',
+    'MidoriSuggestionRow.item': 'MidoriDatabaseItem',
+    'MidoriSuggestionRow.key': 'gchararray',
+    'MidoriSuggestionRow.location': 'gchararray',
+    'MidoriSwitcher.show-close-buttons': 'gboolean',
+    'MidoriSwitcher.stack': 'GtkStack',
+    'MidoriTab.can-go-back': 'gboolean',
+    'MidoriTab.can-go-forward': 'gboolean',
+    'MidoriTab.color': 'gchararray',
+    'MidoriTab.display-title': 'gchararray',
+    'MidoriTab.display-uri': 'gchararray',
+    'MidoriTab.item': 'MidoriDatabaseItem',
+    'MidoriTab.link-uri': 'gchararray',
+    'MidoriTab.pinned': 'gboolean',
+    'MidoriTab.progress': 'gdouble',
+    'MidoriTab.secure': 'gboolean',
+    'MidoriTally.active': 'gboolean',
+    'MidoriTally.show-close': 'gboolean',
+    'MidoriTally.tab': 'MidoriTab',
+    'MidoriTally.title': 'gchararray',
+    'MidoriTally.uri': 'gchararray',
+    'MidoriUrlbar.key': 'gchararray',
+    'MidoriUrlbar.location': 'gchararray',
+    'MidoriUrlbar.secure': 'gboolean',
+    'MidoriUrlbar.uri': 'gchararray',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

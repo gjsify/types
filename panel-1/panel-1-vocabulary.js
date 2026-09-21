@@ -186,6 +186,87 @@ export const PROP_ENUMS = {
     'PanelToggleButton.area': 'PanelArea',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'PanelChangesDialog.close-after-save': 'gboolean',
+    'PanelDock.bottom-height': 'gint',
+    'PanelDock.end-width': 'gint',
+    'PanelDock.reveal-bottom': 'gboolean',
+    'PanelDock.reveal-end': 'gboolean',
+    'PanelDock.reveal-start': 'gboolean',
+    'PanelDock.reveal-top': 'gboolean',
+    'PanelDock.start-width': 'gint',
+    'PanelDock.top-height': 'gint',
+    'PanelFrame.placeholder': 'GtkWidget',
+    'PanelFrame.visible-child': 'PanelWidget',
+    'PanelFrameHeader.frame': 'PanelFrame',
+    'PanelFrameHeaderBar.show-icon': 'gboolean',
+    'PanelFrameTabBar.autohide': 'gboolean',
+    'PanelFrameTabBar.expand-tabs': 'gboolean',
+    'PanelFrameTabBar.inverted': 'gboolean',
+    'PanelGSettingsActionGroup.settings': 'GSettings',
+    'PanelLayeredSettings.path': 'gchararray',
+    'PanelLayeredSettings.schema-id': 'gchararray',
+    'PanelOmniBar.action-tooltip': 'gchararray',
+    'PanelOmniBar.icon-name': 'gchararray',
+    'PanelOmniBar.menu-model': 'GMenuModel',
+    'PanelOmniBar.popover': 'GtkPopover',
+    'PanelOmniBar.progress': 'gdouble',
+    'PanelPosition.area': 'PanelArea',
+    'PanelPosition.area-set': 'gboolean',
+    'PanelPosition.column': 'guint',
+    'PanelPosition.column-set': 'gboolean',
+    'PanelPosition.depth': 'guint',
+    'PanelPosition.depth-set': 'gboolean',
+    'PanelPosition.row': 'guint',
+    'PanelPosition.row-set': 'gboolean',
+    'PanelSaveDelegate.icon': 'GIcon',
+    'PanelSaveDelegate.icon-name': 'gchararray',
+    'PanelSaveDelegate.is-draft': 'gboolean',
+    'PanelSaveDelegate.progress': 'gdouble',
+    'PanelSaveDelegate.subtitle': 'gchararray',
+    'PanelSaveDelegate.title': 'gchararray',
+    'PanelSaveDialog.close-after-save': 'gboolean',
+    'PanelSessionItem.id': 'gchararray',
+    'PanelSessionItem.module-name': 'gchararray',
+    'PanelSessionItem.position': 'PanelPosition',
+    'PanelSessionItem.type-hint': 'gchararray',
+    'PanelSessionItem.workspace': 'gchararray',
+    'PanelSettings.identifier': 'gchararray',
+    'PanelSettings.path': 'gchararray',
+    'PanelSettings.path-prefix': 'gchararray',
+    'PanelSettings.path-suffix': 'gchararray',
+    'PanelSettings.schema-id': 'gchararray',
+    'PanelSettings.schema-id-prefix': 'gchararray',
+    'PanelThemeSelector.action-name': 'gchararray',
+    'PanelToggleButton.area': 'PanelArea',
+    'PanelToggleButton.dock': 'PanelDock',
+    'PanelWidget.can-maximize': 'gboolean',
+    'PanelWidget.child': 'GtkWidget',
+    'PanelWidget.icon': 'GIcon',
+    'PanelWidget.icon-name': 'gchararray',
+    'PanelWidget.id': 'gchararray',
+    'PanelWidget.kind': 'gchararray',
+    'PanelWidget.menu-model': 'GMenuModel',
+    'PanelWidget.modified': 'gboolean',
+    'PanelWidget.needs-attention': 'gboolean',
+    'PanelWidget.reorderable': 'gboolean',
+    'PanelWidget.save-delegate': 'PanelSaveDelegate',
+    'PanelWidget.title': 'gchararray',
+    'PanelWidget.tooltip': 'gchararray',
+    'PanelWorkbench.id': 'gchararray',
+    'PanelWorkspace.id': 'gchararray',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

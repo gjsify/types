@@ -173,6 +173,46 @@ export const PROP_ENUMS = {
     'GarconMenuNode.node-type': 'GarconMenuNodeType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GarconMenu.directory': 'GarconMenuDirectory',
+    'GarconMenu.file': 'GFile',
+    'GarconMenuDirectory.comment': 'gchararray',
+    'GarconMenuDirectory.file': 'GFile',
+    'GarconMenuDirectory.icon-name': 'gchararray',
+    'GarconMenuDirectory.name': 'gchararray',
+    'GarconMenuDirectory.no-display': 'gboolean',
+    'GarconMenuItem.command': 'gchararray',
+    'GarconMenuItem.comment': 'gchararray',
+    'GarconMenuItem.desktop-id': 'gchararray',
+    'GarconMenuItem.file': 'GFile',
+    'GarconMenuItem.generic-name': 'gchararray',
+    'GarconMenuItem.hidden': 'gboolean',
+    'GarconMenuItem.icon-name': 'gchararray',
+    'GarconMenuItem.name': 'gchararray',
+    'GarconMenuItem.no-display': 'gboolean',
+    'GarconMenuItem.path': 'gchararray',
+    'GarconMenuItem.prefers-non-default-gpu': 'gboolean',
+    'GarconMenuItem.requires-terminal': 'gboolean',
+    'GarconMenuItem.supports-startup-notification': 'gboolean',
+    'GarconMenuItem.try-exec': 'gchararray',
+    'GarconMenuItemAction.command': 'gchararray',
+    'GarconMenuItemAction.icon-name': 'gchararray',
+    'GarconMenuItemAction.name': 'gchararray',
+    'GarconMenuMerger.tree-provider': 'GarconMenuTreeProvider',
+    'GarconMenuNode.node-type': 'GarconMenuNodeType',
+    'GarconMenuParser.file': 'GFile',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

@@ -183,6 +183,76 @@ export const PROP_ENUMS = {
     'SpiceSession.verify': 'SpiceSessionVerify',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'SpiceChannel.channel-id': 'gint',
+    'SpiceChannel.channel-type': 'gint',
+    'SpiceChannel.spice-session': 'SpiceSession',
+    'SpiceFileTransferTask.cancellable': 'GCancellable',
+    'SpiceFileTransferTask.channel': 'SpiceMainChannel',
+    'SpiceFileTransferTask.file': 'GFile',
+    'SpiceFileTransferTask.id': 'guint',
+    'SpiceMainChannel.color-depth': 'guint',
+    'SpiceMainChannel.disable-animation': 'gboolean',
+    'SpiceMainChannel.disable-display-align': 'gboolean',
+    'SpiceMainChannel.disable-display-position': 'gboolean',
+    'SpiceMainChannel.disable-font-smooth': 'gboolean',
+    'SpiceMainChannel.disable-wallpaper': 'gboolean',
+    'SpiceMainChannel.max-clipboard': 'gint',
+    'SpicePlaybackChannel.min-latency': 'guint',
+    'SpicePlaybackChannel.mute': 'gboolean',
+    'SpicePlaybackChannel.nchannels': 'guint',
+    'SpicePlaybackChannel.volume': 'gpointer',
+    'SpiceQmpPort.channel': 'SpicePortChannel',
+    'SpiceRecordChannel.mute': 'gboolean',
+    'SpiceRecordChannel.nchannels': 'guint',
+    'SpiceRecordChannel.volume': 'gpointer',
+    'SpiceSession.ca-file': 'gchararray',
+    'SpiceSession.cache-size': 'gint',
+    'SpiceSession.cert-subject': 'gchararray',
+    'SpiceSession.ciphers': 'gchararray',
+    'SpiceSession.client-sockets': 'gboolean',
+    'SpiceSession.color-depth': 'gint',
+    'SpiceSession.enable-audio': 'gboolean',
+    'SpiceSession.enable-smartcard': 'gboolean',
+    'SpiceSession.enable-usbredir': 'gboolean',
+    'SpiceSession.gl-scanout': 'gboolean',
+    'SpiceSession.glz-window-size': 'gint',
+    'SpiceSession.host': 'gchararray',
+    'SpiceSession.inhibit-keyboard-grab': 'gboolean',
+    'SpiceSession.password': 'gchararray',
+    'SpiceSession.port': 'gchararray',
+    'SpiceSession.protocol': 'gint',
+    'SpiceSession.proxy': 'gchararray',
+    'SpiceSession.read-only': 'gboolean',
+    'SpiceSession.share-dir-ro': 'gboolean',
+    'SpiceSession.shared-dir': 'gchararray',
+    'SpiceSession.smartcard-db': 'gchararray',
+    'SpiceSession.tls-port': 'gchararray',
+    'SpiceSession.unix-path': 'gchararray',
+    'SpiceSession.uri': 'gchararray',
+    'SpiceSession.username': 'gchararray',
+    'SpiceSession.verify': 'SpiceSessionVerify',
+    'SpiceURI.hostname': 'gchararray',
+    'SpiceURI.password': 'gchararray',
+    'SpiceURI.port': 'guint',
+    'SpiceURI.scheme': 'gchararray',
+    'SpiceURI.user': 'gchararray',
+    'SpiceUsbDeviceManager.auto-connect': 'gboolean',
+    'SpiceUsbDeviceManager.auto-connect-filter': 'gchararray',
+    'SpiceUsbDeviceManager.redirect-on-connect': 'gchararray',
+    'SpiceUsbDeviceManager.session': 'SpiceSession',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

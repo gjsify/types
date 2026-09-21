@@ -159,6 +159,49 @@ export const PROP_ENUMS = {
     'GADatasetPartitioningFactoryOptions.segment-encoding': 'GADatasetSegmentEncoding',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GADatasetDataset.dataset': 'gpointer',
+    'GADatasetDatasetFactory.dataset-factory': 'gpointer',
+    'GADatasetFileFormat.format': 'gpointer',
+    'GADatasetFileSystemDataset.file-system': 'GArrowFileSystem',
+    'GADatasetFileSystemDataset.format': 'GADatasetFileFormat',
+    'GADatasetFileSystemDataset.partitioning': 'GADatasetPartitioning',
+    'GADatasetFileSystemDatasetFactory.format': 'GADatasetFileFormat',
+    'GADatasetFileSystemDatasetFactory.partition-base-dir': 'gchararray',
+    'GADatasetFileSystemDatasetFactory.partitioning': 'GADatasetPartitioning',
+    'GADatasetFileSystemDatasetWriteOptions.base-dir': 'gchararray',
+    'GADatasetFileSystemDatasetWriteOptions.base-name-template': 'gchararray',
+    'GADatasetFileSystemDatasetWriteOptions.file-system': 'GArrowFileSystem',
+    'GADatasetFileSystemDatasetWriteOptions.file-write-options': 'GADatasetFileWriteOptions',
+    'GADatasetFileSystemDatasetWriteOptions.max-partitions': 'guint',
+    'GADatasetFileSystemDatasetWriteOptions.partitioning': 'GADatasetPartitioning',
+    'GADatasetFileWriteOptions.options': 'gpointer',
+    'GADatasetFileWriter.writer': 'gpointer',
+    'GADatasetFinishOptions.finish-options': 'gpointer',
+    'GADatasetFinishOptions.inspect-n-fragments': 'gint',
+    'GADatasetFinishOptions.schema': 'GArrowSchema',
+    'GADatasetFinishOptions.validate-fragments': 'gboolean',
+    'GADatasetFragment.fragment': 'gpointer',
+    'GADatasetHivePartitioningOptions.null-fallback': 'gchararray',
+    'GADatasetKeyValuePartitioningOptions.segment-encoding': 'GADatasetSegmentEncoding',
+    'GADatasetPartitioning.partitioning': 'gpointer',
+    'GADatasetPartitioningFactoryOptions.infer-dictionary': 'gboolean',
+    'GADatasetPartitioningFactoryOptions.schema': 'GArrowSchema',
+    'GADatasetPartitioningFactoryOptions.segment-encoding': 'GADatasetSegmentEncoding',
+    'GADatasetScanner.scanner': 'gpointer',
+    'GADatasetScannerBuilder.scanner-builder': 'gpointer',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

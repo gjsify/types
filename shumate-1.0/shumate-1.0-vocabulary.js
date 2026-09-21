@@ -213,6 +213,83 @@ export const PROP_ENUMS = {
     'ShumateTile.state': 'ShumateState',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'ShumateCompass.viewport': 'ShumateViewport',
+    'ShumateDataSource.max-zoom-level': 'guint',
+    'ShumateDataSource.min-zoom-level': 'guint',
+    'ShumateDataSourceRequest.x': 'gint',
+    'ShumateDataSourceRequest.y': 'gint',
+    'ShumateDataSourceRequest.zoom-level': 'gint',
+    'ShumateFileCache.cache-dir': 'gchararray',
+    'ShumateFileCache.cache-key': 'gchararray',
+    'ShumateFileCache.size-limit': 'guint',
+    'ShumateLayer.viewport': 'ShumateViewport',
+    'ShumateLicense.extra-text': 'gchararray',
+    'ShumateLicense.xalign': 'gfloat',
+    'ShumateLocation.latitude': 'gdouble',
+    'ShumateLocation.longitude': 'gdouble',
+    'ShumateMap.animate-zoom': 'gboolean',
+    'ShumateMap.go-to-duration': 'guint',
+    'ShumateMap.zoom-on-double-click': 'gboolean',
+    'ShumateMapLayer.map-source': 'ShumateMapSource',
+    'ShumateMapSource.id': 'gchararray',
+    'ShumateMapSource.license': 'gchararray',
+    'ShumateMapSource.license-uri': 'gchararray',
+    'ShumateMapSource.max-zoom-level': 'guint',
+    'ShumateMapSource.min-zoom-level': 'guint',
+    'ShumateMapSource.name': 'gchararray',
+    'ShumateMapSource.projection': 'ShumateMapProjection',
+    'ShumateMapSource.tile-size': 'guint',
+    'ShumateMarker.child': 'GtkWidget',
+    'ShumateMarker.selectable': 'gboolean',
+    'ShumateMarker.x-hotspot': 'gdouble',
+    'ShumateMarker.y-hotspot': 'gdouble',
+    'ShumateMarkerLayer.selection-mode': 'GtkSelectionMode',
+    'ShumatePathLayer.closed': 'gboolean',
+    'ShumatePathLayer.fill': 'gboolean',
+    'ShumatePathLayer.outline-width': 'gdouble',
+    'ShumatePathLayer.stroke': 'gboolean',
+    'ShumatePathLayer.stroke-width': 'gdouble',
+    'ShumateRasterRenderer.data-source': 'ShumateDataSource',
+    'ShumateScale.max-width': 'guint',
+    'ShumateScale.unit': 'ShumateUnit',
+    'ShumateScale.viewport': 'ShumateViewport',
+    'ShumateSimpleMap.map-source': 'ShumateMapSource',
+    'ShumateSimpleMap.show-zoom-buttons': 'gboolean',
+    'ShumateSymbolEvent.n-press': 'guint',
+    'ShumateTile.fade-in': 'gboolean',
+    'ShumateTile.paintable': 'GdkPaintable',
+    'ShumateTile.scale-factor': 'gdouble',
+    'ShumateTile.size': 'guint',
+    'ShumateTile.state': 'ShumateState',
+    'ShumateTile.x': 'guint',
+    'ShumateTile.y': 'guint',
+    'ShumateTile.zoom-level': 'guint',
+    'ShumateTileDownloader.url-template': 'gchararray',
+    'ShumateVectorReaderIter.reader': 'ShumateVectorReader',
+    'ShumateVectorRenderer.sprite-sheet': 'ShumateVectorSpriteSheet',
+    'ShumateVectorRenderer.style-json': 'gchararray',
+    'ShumateVectorSprite.height': 'gint',
+    'ShumateVectorSprite.scale-factor': 'gdouble',
+    'ShumateVectorSprite.source-paintable': 'GdkPaintable',
+    'ShumateVectorSprite.width': 'gint',
+    'ShumateViewport.max-zoom-level': 'guint',
+    'ShumateViewport.min-zoom-level': 'guint',
+    'ShumateViewport.reference-map-source': 'ShumateMapSource',
+    'ShumateViewport.rotation': 'gdouble',
+    'ShumateViewport.zoom-level': 'gdouble',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

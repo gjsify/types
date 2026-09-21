@@ -264,6 +264,44 @@ export const PROP_ENUMS = {
     'EogWindow.startup-flags': 'EogStartupFlags',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'EogClipboardHandler.pixbuf': 'GdkPixbuf',
+    'EogClipboardHandler.uri': 'gchararray',
+    'EogRemotePresenter.next-action': 'gchararray',
+    'EogRemotePresenter.prev-action': 'gchararray',
+    'EogRemotePresenter.thumbview': 'EogThumbView',
+    'EogScrollView.antialiasing-in': 'gboolean',
+    'EogScrollView.antialiasing-out': 'gboolean',
+    'EogScrollView.image': 'EogImage',
+    'EogScrollView.scrollwheel-zoom': 'gboolean',
+    'EogScrollView.transparency-style': 'EogTransparencyStyle',
+    'EogScrollView.use-background-color': 'gboolean',
+    'EogScrollView.zoom-mode': 'EogZoomMode',
+    'EogScrollView.zoom-multiplier': 'gdouble',
+    'EogSidebar.current-page': 'GtkWidget',
+    'EogThumbNav.mode': 'gint',
+    'EogThumbNav.show-buttons': 'gboolean',
+    'EogThumbNav.thumbview': 'EogThumbView',
+    'EogURIConverter.convert-spaces': 'gboolean',
+    'EogURIConverter.counter-n-digits': 'guint',
+    'EogURIConverter.counter-start': 'gulong',
+    'EogURIConverter.n-images': 'guint',
+    'EogURIConverter.space-character': 'gchar',
+    'EogWindow.gallery-position': 'EogWindowGalleryPos',
+    'EogWindow.gallery-resizable': 'gboolean',
+    'EogWindow.startup-flags': 'EogStartupFlags',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

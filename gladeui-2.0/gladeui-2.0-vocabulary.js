@@ -275,6 +275,98 @@ export const PROP_ENUMS = {
     'GladePalette.item-appearance': 'GladeItemAppearance',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GladeAdaptorChooser.project': 'GladeProject',
+    'GladeBaseEditor.container': 'GObject',
+    'GladeCellRendererIcon.activatable': 'gboolean',
+    'GladeCellRendererIcon.active': 'gboolean',
+    'GladeDesignView.project': 'GladeProject',
+    'GladeEditor.show-boder': 'gboolean',
+    'GladeEditor.show-class-field': 'gboolean',
+    'GladeEditor.widget': 'GladeWidget',
+    'GladeEditorProperty.custom-text': 'gchararray',
+    'GladeEditorProperty.disable-check': 'gboolean',
+    'GladeEditorProperty.property-def': 'gpointer',
+    'GladeEditorProperty.use-command': 'gboolean',
+    'GladeEditorTable.page-type': 'GladeEditorPageType',
+    'GladeInspector.project': 'GladeProject',
+    'GladePalette.item-appearance': 'GladeItemAppearance',
+    'GladePalette.project': 'GladeProject',
+    'GladePalette.show-selector-button': 'gboolean',
+    'GladePalette.use-small-item-icons': 'gboolean',
+    'GladeProject.css-provider-path': 'gchararray',
+    'GladeProject.license': 'gchararray',
+    'GladeProject.resource-path': 'gchararray',
+    'GladeProject.template': 'GladeWidget',
+    'GladeProject.translation-domain': 'gchararray',
+    'GladeProperty.class': 'gpointer',
+    'GladeProperty.enabled': 'gboolean',
+    'GladeProperty.i18n-comment': 'gchararray',
+    'GladeProperty.i18n-context': 'gchararray',
+    'GladeProperty.i18n-translatable': 'gboolean',
+    'GladeProperty.precision': 'gint',
+    'GladeProperty.sensitive': 'gboolean',
+    'GladePropertyLabel.append-colon': 'gboolean',
+    'GladePropertyLabel.custom-text': 'gchararray',
+    'GladePropertyLabel.custom-tooltip': 'gchararray',
+    'GladePropertyLabel.packing': 'gboolean',
+    'GladePropertyLabel.property': 'GladeProperty',
+    'GladePropertyLabel.property-name': 'gchararray',
+    'GladePropertyShell.custom-text': 'gchararray',
+    'GladePropertyShell.disable-check': 'gboolean',
+    'GladePropertyShell.editor-type': 'gchararray',
+    'GladePropertyShell.packing': 'gboolean',
+    'GladePropertyShell.property-name': 'gchararray',
+    'GladePropertyShell.use-command': 'gboolean',
+    'GladeSignal.after': 'gboolean',
+    'GladeSignal.class': 'gpointer',
+    'GladeSignal.detail': 'gchararray',
+    'GladeSignal.handler': 'gchararray',
+    'GladeSignal.support-warning': 'gchararray',
+    'GladeSignal.swapped': 'gboolean',
+    'GladeSignal.userdata': 'gchararray',
+    'GladeSignalEditor.glade-widget': 'GtkTreeModel',
+    'GladeSignalModel.signals': 'gpointer',
+    'GladeSignalModel.widget': 'GladeWidget',
+    'GladeWidget.adaptor': 'GladeWidgetAdaptor',
+    'GladeWidget.anarchist': 'gboolean',
+    'GladeWidget.composite': 'gboolean',
+    'GladeWidget.internal': 'gchararray',
+    'GladeWidget.internal-name': 'gchararray',
+    'GladeWidget.name': 'gchararray',
+    'GladeWidget.object': 'GObject',
+    'GladeWidget.parent': 'GladeWidget',
+    'GladeWidget.project': 'GladeProject',
+    'GladeWidget.properties': 'gpointer',
+    'GladeWidget.reason': 'gint',
+    'GladeWidget.template': 'GladeWidget',
+    'GladeWidget.template-exact': 'gboolean',
+    'GladeWidget.toplevel-height': 'gint',
+    'GladeWidget.toplevel-width': 'gint',
+    'GladeWidgetAction.definition': 'gpointer',
+    'GladeWidgetAction.sensitive': 'gboolean',
+    'GladeWidgetAction.visible': 'gboolean',
+    'GladeWidgetAdaptor.book': 'gchararray',
+    'GladeWidgetAdaptor.catalog': 'gchararray',
+    'GladeWidgetAdaptor.generic-name': 'gchararray',
+    'GladeWidgetAdaptor.icon-name': 'gchararray',
+    'GladeWidgetAdaptor.name': 'gchararray',
+    'GladeWidgetAdaptor.query': 'gboolean',
+    'GladeWidgetAdaptor.special-child-type': 'gchararray',
+    'GladeWidgetAdaptor.title': 'gchararray',
+    'GladeWidgetAdaptor.type': 'GType',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

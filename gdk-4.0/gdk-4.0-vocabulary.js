@@ -490,6 +490,59 @@ export const PROP_ENUMS = {
     'GdkMemoryTextureBuilder.format': 'GdkMemoryFormat',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GdkAppLaunchContext.display': 'GdkDisplay',
+    'GdkCicpParams.color-primaries': 'guint',
+    'GdkCicpParams.matrix-coefficients': 'guint',
+    'GdkCicpParams.range': 'GdkCicpRange',
+    'GdkCicpParams.transfer-function': 'guint',
+    'GdkClipboard.display': 'GdkDisplay',
+    'GdkCursor.fallback': 'GdkCursor',
+    'GdkCursor.hotspot-x': 'gint',
+    'GdkCursor.hotspot-y': 'gint',
+    'GdkCursor.name': 'gchararray',
+    'GdkCursor.texture': 'GdkTexture',
+    'GdkDeviceTool.axes': 'GdkAxisFlags',
+    'GdkDeviceTool.hardware-id': 'guint64',
+    'GdkDeviceTool.serial': 'guint64',
+    'GdkDeviceTool.tool-type': 'GdkDeviceToolType',
+    'GdkDisplayManager.default-display': 'GdkDisplay',
+    'GdkDmabufTextureBuilder.display': 'GdkDisplay',
+    'GdkDmabufTextureBuilder.fourcc': 'guint',
+    'GdkDmabufTextureBuilder.height': 'guint',
+    'GdkDmabufTextureBuilder.modifier': 'guint64',
+    'GdkDmabufTextureBuilder.n-planes': 'guint',
+    'GdkDmabufTextureBuilder.premultiplied': 'gboolean',
+    'GdkDmabufTextureBuilder.update-texture': 'GdkTexture',
+    'GdkDmabufTextureBuilder.width': 'guint',
+    'GdkGLTextureBuilder.context': 'GdkGLContext',
+    'GdkGLTextureBuilder.format': 'GdkMemoryFormat',
+    'GdkGLTextureBuilder.has-mipmap': 'gboolean',
+    'GdkGLTextureBuilder.height': 'gint',
+    'GdkGLTextureBuilder.id': 'guint',
+    'GdkGLTextureBuilder.sync': 'gpointer',
+    'GdkGLTextureBuilder.update-texture': 'GdkTexture',
+    'GdkGLTextureBuilder.width': 'gint',
+    'GdkMemoryTextureBuilder.format': 'GdkMemoryFormat',
+    'GdkMemoryTextureBuilder.height': 'gint',
+    'GdkMemoryTextureBuilder.stride': 'guint64',
+    'GdkMemoryTextureBuilder.update-texture': 'GdkTexture',
+    'GdkMemoryTextureBuilder.width': 'gint',
+    'GdkMonitor.display': 'GdkDisplay',
+    'GdkTexture.height': 'gint',
+    'GdkTexture.width': 'gint',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

@@ -395,6 +395,75 @@ export const PROP_ENUMS = {
     'StWidget.accessible-role': 'AtkRole',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'StAdjustment.actor': 'ClutterActor',
+    'StAdjustment.lower': 'gdouble',
+    'StAdjustment.page-increment': 'gdouble',
+    'StAdjustment.page-size': 'gdouble',
+    'StAdjustment.step-increment': 'gdouble',
+    'StAdjustment.upper': 'gdouble',
+    'StAdjustment.value': 'gdouble',
+    'StBin.child': 'ClutterActor',
+    'StBoxLayout.pack-start': 'gboolean',
+    'StBoxLayout.vertical': 'gboolean',
+    'StButton.button-mask': 'StButtonMask',
+    'StButton.checked': 'gboolean',
+    'StButton.label': 'gchararray',
+    'StButton.toggle-mode': 'gboolean',
+    'StEntry.hint-actor': 'ClutterActor',
+    'StEntry.hint-text': 'gchararray',
+    'StEntry.input-hints': 'ClutterInputContentHintFlags',
+    'StEntry.input-purpose': 'ClutterInputContentPurpose',
+    'StEntry.primary-icon': 'ClutterActor',
+    'StEntry.secondary-icon': 'ClutterActor',
+    'StEntry.text': 'gchararray',
+    'StIcon.fallback-gicon': 'GIcon',
+    'StIcon.fallback-icon-name': 'gchararray',
+    'StIcon.gicon': 'GIcon',
+    'StIcon.icon-name': 'gchararray',
+    'StIcon.icon-size': 'gint',
+    'StImageContent.preferred-height': 'gint',
+    'StImageContent.preferred-width': 'gint',
+    'StLabel.text': 'gchararray',
+    'StPasswordEntry.password-visible': 'gboolean',
+    'StPasswordEntry.show-peek-icon': 'gboolean',
+    'StScrollBar.adjustment': 'StAdjustment',
+    'StScrollBar.vertical': 'gboolean',
+    'StScrollView.enable-mouse-scrolling': 'gboolean',
+    'StScrollView.hscrollbar-policy': 'StPolicyType',
+    'StScrollView.overlay-scrollbars': 'gboolean',
+    'StScrollView.vscrollbar-policy': 'StPolicyType',
+    'StScrollViewFade.extend-fade-area': 'gboolean',
+    'StScrollViewFade.fade-edges': 'gboolean',
+    'StScrollable.hadjustment': 'StAdjustment',
+    'StScrollable.vadjustment': 'StAdjustment',
+    'StSettings.slow-down-factor': 'gdouble',
+    'StTheme.application-stylesheet': 'GFile',
+    'StTheme.default-stylesheet': 'GFile',
+    'StTheme.theme-stylesheet': 'GFile',
+    'StThemeContext.scale-factor': 'gint',
+    'StViewport.clip-to-view': 'gboolean',
+    'StWidget.accessible-name': 'gchararray',
+    'StWidget.accessible-role': 'AtkRole',
+    'StWidget.can-focus': 'gboolean',
+    'StWidget.hover': 'gboolean',
+    'StWidget.label-actor': 'ClutterActor',
+    'StWidget.pseudo-class': 'gchararray',
+    'StWidget.style': 'gchararray',
+    'StWidget.style-class': 'gchararray',
+    'StWidget.track-hover': 'gboolean',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

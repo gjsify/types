@@ -172,6 +172,42 @@ export const PROP_ENUMS = {
     'GstClapper.video-multiview-mode': 'GstVideoMultiviewFramePacking',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GstClapper.audio-video-offset': 'gint64',
+    'GstClapper.mpris': 'GstClapperMpris',
+    'GstClapper.mute': 'gboolean',
+    'GstClapper.rate': 'gdouble',
+    'GstClapper.seek-mode': 'GstClapperSeekMode',
+    'GstClapper.signal-dispatcher': 'GstClapperSignalDispatcher',
+    'GstClapper.subtitle-video-offset': 'gint64',
+    'GstClapper.suburi': 'gchararray',
+    'GstClapper.uri': 'gchararray',
+    'GstClapper.use-pipewire': 'gboolean',
+    'GstClapper.use-playbin3': 'gboolean',
+    'GstClapper.video-multiview-flags': 'GstVideoMultiviewFlags',
+    'GstClapper.video-multiview-mode': 'GstVideoMultiviewFramePacking',
+    'GstClapper.video-renderer': 'GstClapperVideoRenderer',
+    'GstClapper.volume': 'gdouble',
+    'GstClapperMpris.default-art-url': 'gchararray',
+    'GstClapperMpris.desktop-entry': 'gchararray',
+    'GstClapperMpris.id-path': 'gchararray',
+    'GstClapperMpris.identity': 'gchararray',
+    'GstClapperMpris.own-name': 'gchararray',
+    'GstClapperMpris.volume': 'gdouble',
+    'GstClapperVideoOverlayVideoRenderer.video-sink': 'GstElement',
+    'GstClapperVideoOverlayVideoRenderer.window-handle': 'gpointer',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

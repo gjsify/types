@@ -183,6 +183,66 @@ export const PROP_ENUMS = {
     'GVirSandboxConfigMountHostImage.format': 'GVirConfigDomainDiskFormat',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GVirSandboxBuilder.connection': 'GVirConnection',
+    'GVirSandboxConfig.arch': 'gchararray',
+    'GVirSandboxConfig.gid': 'guint',
+    'GVirSandboxConfig.homedir': 'gchararray',
+    'GVirSandboxConfig.kernpath': 'gchararray',
+    'GVirSandboxConfig.kernrelease': 'gchararray',
+    'GVirSandboxConfig.kmodpath': 'gchararray',
+    'GVirSandboxConfig.name': 'gchararray',
+    'GVirSandboxConfig.root': 'gchararray',
+    'GVirSandboxConfig.security-dynamic': 'gboolean',
+    'GVirSandboxConfig.security-label': 'gchararray',
+    'GVirSandboxConfig.shell': 'gchararray',
+    'GVirSandboxConfig.uid': 'guint',
+    'GVirSandboxConfig.username': 'gchararray',
+    'GVirSandboxConfig.uuid': 'gchararray',
+    'GVirSandboxConfigDisk.format': 'GVirConfigDomainDiskFormat',
+    'GVirSandboxConfigDisk.source': 'gchararray',
+    'GVirSandboxConfigDisk.tag': 'gchararray',
+    'GVirSandboxConfigDisk.type': 'GVirConfigDomainDiskType',
+    'GVirSandboxConfigInitrd.init': 'gchararray',
+    'GVirSandboxConfigInitrd.kmoddir': 'gchararray',
+    'GVirSandboxConfigInitrd.kver': 'gchararray',
+    'GVirSandboxConfigInteractive.tty': 'gchararray',
+    'GVirSandboxConfigMount.target': 'gchararray',
+    'GVirSandboxConfigMountFile.source': 'gchararray',
+    'GVirSandboxConfigMountHostImage.format': 'GVirConfigDomainDiskFormat',
+    'GVirSandboxConfigMountRam.usage': 'guint64',
+    'GVirSandboxConfigNetwork.dhcp': 'gboolean',
+    'GVirSandboxConfigNetwork.mac': 'gchararray',
+    'GVirSandboxConfigNetwork.source': 'gchararray',
+    'GVirSandboxConfigNetworkAddress.broadcast': 'GInetAddress',
+    'GVirSandboxConfigNetworkAddress.prefix': 'guint',
+    'GVirSandboxConfigNetworkAddress.primary': 'GInetAddress',
+    'GVirSandboxConfigNetworkFilterref.name': 'gchararray',
+    'GVirSandboxConfigNetworkFilterrefParameter.name': 'gchararray',
+    'GVirSandboxConfigNetworkFilterrefParameter.value': 'gchararray',
+    'GVirSandboxConfigNetworkRoute.gateway': 'GInetAddress',
+    'GVirSandboxConfigNetworkRoute.prefix': 'guint',
+    'GVirSandboxConfigNetworkRoute.target': 'GInetAddress',
+    'GVirSandboxConsole.connection': 'GVirConnection',
+    'GVirSandboxConsole.devname': 'gchararray',
+    'GVirSandboxConsole.direct': 'gboolean',
+    'GVirSandboxConsole.domain': 'GVirDomain',
+    'GVirSandboxConsole.escape': 'gchar',
+    'GVirSandboxContext.config': 'GVirSandboxConfig',
+    'GVirSandboxContext.connection': 'GVirConnection',
+    'GVirSandboxContext.domain': 'GVirDomain',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

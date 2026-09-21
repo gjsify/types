@@ -268,6 +268,47 @@ export const PROP_ENUMS = {
     'IpuzCrossword.clue-placement': 'IpuzCluePlacement',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'IpuzAcrostic.quote': 'gchararray',
+    'IpuzAcrostic.source': 'gchararray',
+    'IpuzCrossword.clue-placement': 'IpuzCluePlacement',
+    'IpuzCrossword.show-enumerations': 'gboolean',
+    'IpuzGrid.height': 'guint',
+    'IpuzGrid.width': 'guint',
+    'IpuzNonogram.space': 'gchararray',
+    'IpuzPuzzle.annotation': 'gchararray',
+    'IpuzPuzzle.author': 'gchararray',
+    'IpuzPuzzle.block': 'gchararray',
+    'IpuzPuzzle.charset-str': 'gchararray',
+    'IpuzPuzzle.copyright': 'gchararray',
+    'IpuzPuzzle.date': 'gchararray',
+    'IpuzPuzzle.difficulty': 'gchararray',
+    'IpuzPuzzle.editor': 'gchararray',
+    'IpuzPuzzle.empty': 'gchararray',
+    'IpuzPuzzle.explanation': 'gchararray',
+    'IpuzPuzzle.intro': 'gchararray',
+    'IpuzPuzzle.license': 'gchararray',
+    'IpuzPuzzle.locale': 'gchararray',
+    'IpuzPuzzle.notes': 'gchararray',
+    'IpuzPuzzle.origin': 'gchararray',
+    'IpuzPuzzle.publication': 'gchararray',
+    'IpuzPuzzle.publisher': 'gchararray',
+    'IpuzPuzzle.title': 'gchararray',
+    'IpuzPuzzle.uniqueid': 'gchararray',
+    'IpuzPuzzle.url': 'gchararray',
+    'IpuzPuzzle.version': 'gchararray',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

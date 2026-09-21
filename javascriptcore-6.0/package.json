@@ -1,6 +1,6 @@
 {
     "name": "@girs/javascriptcore-6.0",
-    "version": "5.3.0",
+    "version": "5.4.0",
     "libraryVersion": "2.53.91",
     "description": "GJS TypeScript type definitions for JavaScriptCore-6.0, generated from library version 2.53.91",
     "type": "module",
@@ -37,9 +37,9 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^5.3.0",
-      "@girs/gobject-2.0": "^5.3.0",
-      "@girs/glib-2.0": "^5.3.0"    },
+      "@girs/gjs": "^5.4.0",
+      "@girs/gobject-2.0": "^5.4.0",
+      "@girs/glib-2.0": "^5.4.0"    },
     "devDependencies": {
       "typescript": "*"
     },

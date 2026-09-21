@@ -265,6 +265,78 @@ export const PROP_ENUMS = {
     'GitgRepositoryListBoxRow.mode': 'GitgSelectionMode',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GitgCellRendererLanes.commit': 'GitgCommit',
+    'GitgCellRendererLanes.dot-width': 'guint',
+    'GitgCellRendererLanes.lane-width': 'guint',
+    'GitgCellRendererLanes.next-commit': 'GitgCommit',
+    'GitgCommit.mylane': 'guint',
+    'GitgCommit.tag': 'GitgLaneTag',
+    'GitgCommitModel.limit': 'guint',
+    'GitgCommitModel.repository': 'GitgRepository',
+    'GitgCommitModel.sort-mode': 'GgitSortMode',
+    'GitgDate.date-string': 'gchararray',
+    'GitgDiffStat.added': 'guint',
+    'GitgDiffStat.removed': 'guint',
+    'GitgDiffView.changes-inline': 'gboolean',
+    'GitgDiffView.commit': 'GitgCommit',
+    'GitgDiffView.context-lines': 'gint',
+    'GitgDiffView.default-collapse-all': 'gboolean',
+    'GitgDiffView.diff': 'GgitDiff',
+    'GitgDiffView.handle-selection': 'gboolean',
+    'GitgDiffView.has-selection': 'gboolean',
+    'GitgDiffView.highlight': 'gboolean',
+    'GitgDiffView.ignore-whitespace': 'gboolean',
+    'GitgDiffView.new-is-workdir': 'gboolean',
+    'GitgDiffView.repository': 'GitgRepository',
+    'GitgDiffView.show-parents': 'gboolean',
+    'GitgDiffView.staged': 'gboolean',
+    'GitgDiffView.tab-width': 'gint',
+    'GitgDiffView.unstaged': 'gboolean',
+    'GitgDiffView.use-gravatar': 'gboolean',
+    'GitgDiffView.wrap-lines': 'gboolean',
+    'GitgDiffViewOptions.context-lines': 'gint',
+    'GitgDiffViewOptions.view': 'GitgDiffView',
+    'GitgHook.environment': 'GeeHashMap',
+    'GitgHook.name': 'gchararray',
+    'GitgHook.working-directory': 'GFile',
+    'GitgLanes.inactive-collapse': 'gint',
+    'GitgLanes.inactive-enabled': 'gboolean',
+    'GitgLanes.inactive-gap': 'gint',
+    'GitgLanes.inactive-max': 'gint',
+    'GitgLanes.miss-commits': 'GeeLinkedList',
+    'GitgParsedRefName.rtype': 'GitgRefType',
+    'GitgProgressBin.fraction': 'gdouble',
+    'GitgRef.d-parsed-name': 'GitgParsedRefName',
+    'GitgRef.state': 'GitgRefState',
+    'GitgRef.working': 'gboolean',
+    'GitgRemote.credentials-provider': 'GitgCredentialsProvider',
+    'GitgRemote.state': 'GitgRemoteState',
+    'GitgRepositoryListBox.bookmarks-from-recent-files': 'gboolean',
+    'GitgRepositoryListBox.location': 'GFile',
+    'GitgRepositoryListBox.mode': 'GitgSelectionMode',
+    'GitgRepositoryListBoxRow.branch-name': 'gchararray',
+    'GitgRepositoryListBoxRow.can-remove': 'gboolean',
+    'GitgRepositoryListBoxRow.dirname': 'gchararray',
+    'GitgRepositoryListBoxRow.fraction': 'gdouble',
+    'GitgRepositoryListBoxRow.loading': 'gboolean',
+    'GitgRepositoryListBoxRow.mode': 'GitgSelectionMode',
+    'GitgRepositoryListBoxRow.repository': 'GitgRepository',
+    'GitgRepositoryListBoxRow.repository-name': 'gchararray',
+    'GitgRepositoryListBoxRow.selected': 'gboolean',
+    'GitgSidebar.model': 'GitgSidebarStore',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

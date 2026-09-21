@@ -151,6 +151,73 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'ModulemdBuildopts.rpm-macros': 'gchararray',
+    'ModulemdComponent.buildonly': 'gboolean',
+    'ModulemdComponent.buildorder': 'gint64',
+    'ModulemdComponent.name': 'gchararray',
+    'ModulemdComponent.rationale': 'gchararray',
+    'ModulemdComponentModule.ref': 'gchararray',
+    'ModulemdComponentModule.repository': 'gchararray',
+    'ModulemdComponentRpm.buildroot': 'gboolean',
+    'ModulemdComponentRpm.cache': 'gchararray',
+    'ModulemdComponentRpm.ref': 'gchararray',
+    'ModulemdComponentRpm.repository': 'gchararray',
+    'ModulemdComponentRpm.srpm-buildroot': 'gboolean',
+    'ModulemdDefaults.module-name': 'gchararray',
+    'ModulemdModule.module-name': 'gchararray',
+    'ModulemdModuleStream.arch': 'gchararray',
+    'ModulemdModuleStream.context': 'gchararray',
+    'ModulemdModuleStream.module-name': 'gchararray',
+    'ModulemdModuleStream.stream-name': 'gchararray',
+    'ModulemdModuleStream.version': 'guint64',
+    'ModulemdModuleStreamV1.arch': 'gchararray',
+    'ModulemdModuleStreamV1.buildopts': 'ModulemdBuildopts',
+    'ModulemdModuleStreamV1.community': 'gchararray',
+    'ModulemdModuleStreamV1.documentation': 'gchararray',
+    'ModulemdModuleStreamV1.tracker': 'gchararray',
+    'ModulemdModuleStreamV2.arch': 'gchararray',
+    'ModulemdModuleStreamV2.buildopts': 'ModulemdBuildopts',
+    'ModulemdModuleStreamV2.community': 'gchararray',
+    'ModulemdModuleStreamV2.documentation': 'gchararray',
+    'ModulemdModuleStreamV2.static-context': 'gboolean',
+    'ModulemdModuleStreamV2.tracker': 'gchararray',
+    'ModulemdObsoletes.eol-date': 'guint64',
+    'ModulemdObsoletes.mdversion': 'guint64',
+    'ModulemdObsoletes.message': 'gchararray',
+    'ModulemdObsoletes.modified': 'guint64',
+    'ModulemdObsoletes.module-context': 'gchararray',
+    'ModulemdObsoletes.module-name': 'gchararray',
+    'ModulemdObsoletes.module-stream': 'gchararray',
+    'ModulemdObsoletes.obsoleted-by-module-name': 'gchararray',
+    'ModulemdObsoletes.obsoleted-by-module-stream': 'gchararray',
+    'ModulemdObsoletes.override-previous': 'gboolean',
+    'ModulemdProfile.name': 'gchararray',
+    'ModulemdRpmMapEntry.arch': 'gchararray',
+    'ModulemdRpmMapEntry.epoch': 'guint64',
+    'ModulemdRpmMapEntry.name': 'gchararray',
+    'ModulemdRpmMapEntry.release': 'gchararray',
+    'ModulemdRpmMapEntry.version': 'gchararray',
+    'ModulemdServiceLevel.name': 'gchararray',
+    'ModulemdTranslation.modified': 'guint64',
+    'ModulemdTranslation.module-name': 'gchararray',
+    'ModulemdTranslation.module-stream': 'gchararray',
+    'ModulemdTranslation.version': 'guint64',
+    'ModulemdTranslationEntry.description': 'gchararray',
+    'ModulemdTranslationEntry.locale': 'gchararray',
+    'ModulemdTranslationEntry.summary': 'gchararray',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

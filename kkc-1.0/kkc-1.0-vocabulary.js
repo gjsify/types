@@ -215,6 +215,58 @@ export const PROP_ENUMS = {
     'KkcRomKanaConverter.punctuation-style': 'KkcPunctuationStyle',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'KkcCandidate.annotation': 'gchararray',
+    'KkcCandidate.midasi': 'gchararray',
+    'KkcCandidate.okuri': 'gboolean',
+    'KkcCandidate.output': 'gchararray',
+    'KkcCandidate.text': 'gchararray',
+    'KkcCandidateList.cursor-pos': 'gint',
+    'KkcCandidateList.page-size': 'guint',
+    'KkcCandidateList.page-start': 'guint',
+    'KkcCandidateList.round': 'gboolean',
+    'KkcContext.auto-correct': 'gboolean',
+    'KkcContext.dictionaries': 'KkcDictionaryList',
+    'KkcContext.input-mode': 'KkcInputMode',
+    'KkcContext.punctuation-style': 'KkcPunctuationStyle',
+    'KkcContext.typing-rule': 'KkcRule',
+    'KkcDBusContext.auto-correct': 'gboolean',
+    'KkcDBusContext.input-mode': 'guint',
+    'KkcDBusContext.punctuation-style': 'guint',
+    'KkcKeyEvent.keycode': 'guint',
+    'KkcKeyEvent.keyval': 'guint',
+    'KkcKeyEvent.modifiers': 'KkcModifierType',
+    'KkcKeyEvent.name': 'gchararray',
+    'KkcKeyEvent.unicode': 'guint',
+    'KkcKeymap.parent': 'KkcKeymap',
+    'KkcLanguageModel.metadata': 'KkcLanguageModelMetadata',
+    'KkcLanguageModelMetadata.model-type': 'GType',
+    'KkcMetadataFile.description': 'gchararray',
+    'KkcMetadataFile.filename': 'gchararray',
+    'KkcMetadataFile.label': 'gchararray',
+    'KkcMetadataFile.name': 'gchararray',
+    'KkcRomKanaConverter.auto-correct': 'gboolean',
+    'KkcRomKanaConverter.kana-mode': 'KkcKanaMode',
+    'KkcRomKanaConverter.punctuation-style': 'KkcPunctuationStyle',
+    'KkcRule.filter': 'KkcKeyEventFilter',
+    'KkcRule.metadata': 'KkcRuleMetadata',
+    'KkcRuleMetadata.filter': 'gchararray',
+    'KkcRuleMetadata.priority': 'gint',
+    'KkcSegment.input': 'gchararray',
+    'KkcSegment.output': 'gchararray',
+    'KkcSegmentList.cursor-pos': 'gint',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

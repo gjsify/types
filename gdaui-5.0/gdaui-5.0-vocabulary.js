@@ -198,6 +198,95 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GdauiBasicForm.entries-auto-default': 'gboolean',
+    'GdauiBasicForm.headers-sensitive': 'gboolean',
+    'GdauiBasicForm.paramlist': 'gpointer',
+    'GdauiBasicForm.show-actions': 'gboolean',
+    'GdauiBasicForm.xml-layout': 'gpointer',
+    'GdauiCloud.label-column': 'gint',
+    'GdauiCloud.max-scale': 'gdouble',
+    'GdauiCloud.min-scale': 'gdouble',
+    'GdauiCloud.model': 'GdaDataModel',
+    'GdauiCloud.weight-column': 'gint',
+    'GdauiCombo.as-list': 'gboolean',
+    'GdauiCombo.model': 'GdaDataModel',
+    'GdauiDataCellRendererBin.data-handler': 'GdaDataHandler',
+    'GdauiDataCellRendererBin.editable': 'gboolean',
+    'GdauiDataCellRendererBin.to-be-deleted': 'gboolean',
+    'GdauiDataCellRendererBin.type': 'GType',
+    'GdauiDataCellRendererBoolean.data-handler': 'GdaDataHandler',
+    'GdauiDataCellRendererBoolean.editable': 'gboolean',
+    'GdauiDataCellRendererBoolean.to-be-deleted': 'gboolean',
+    'GdauiDataCellRendererBoolean.type': 'GType',
+    'GdauiDataCellRendererCombo.data-set': 'GdauiSet',
+    'GdauiDataCellRendererCombo.data-set-source': 'gpointer',
+    'GdauiDataCellRendererCombo.set-default-if-invalid': 'gboolean',
+    'GdauiDataCellRendererCombo.show-expander': 'gboolean',
+    'GdauiDataCellRendererCombo.to-be-deleted': 'gboolean',
+    'GdauiDataCellRendererCombo.values': 'gpointer',
+    'GdauiDataCellRendererCombo.values-display': 'gpointer',
+    'GdauiDataCellRendererInfo.editable': 'gboolean',
+    'GdauiDataCellRendererInfo.group': 'gpointer',
+    'GdauiDataCellRendererInfo.iter': 'GdaDataModelIter',
+    'GdauiDataCellRendererInfo.store': 'GdauiDataStore',
+    'GdauiDataCellRendererInfo.to-be-deleted': 'gboolean',
+    'GdauiDataCellRendererTextual.data-handler': 'GdaDataHandler',
+    'GdauiDataCellRendererTextual.options': 'gchararray',
+    'GdauiDataCellRendererTextual.to-be-deleted': 'gboolean',
+    'GdauiDataCellRendererTextual.type': 'GType',
+    'GdauiDataCellRendererTextual.value': 'gpointer',
+    'GdauiDataFilter.data-widget': 'GdauiDataProxy',
+    'GdauiDataProxyInfo.data-proxy': 'GdauiDataProxy',
+    'GdauiDataStore.model': 'gpointer',
+    'GdauiDataStore.prepend-null-entry': 'gboolean',
+    'GdauiEntry.prefix': 'gchararray',
+    'GdauiEntry.suffix': 'gchararray',
+    'GdauiEntryCombo.set-default-if-invalid': 'gboolean',
+    'GdauiEntryCommonTime.editing-canceled': 'gboolean',
+    'GdauiEntryCommonTime.type': 'guint',
+    'GdauiEntryNumber.editing-canceled': 'gboolean',
+    'GdauiEntryNumber.options': 'gchararray',
+    'GdauiEntryShell.actions': 'gboolean',
+    'GdauiEntryShell.handler': 'GdaDataHandler',
+    'GdauiEntryShell.is-cell-renderer': 'gboolean',
+    'GdauiEntryString.editing-canceled': 'gboolean',
+    'GdauiEntryString.multiline': 'gboolean',
+    'GdauiEntryString.options': 'gchararray',
+    'GdauiEntryWrapper.set-default-if-invalid': 'gboolean',
+    'GdauiForm.model': 'GdaDataModel',
+    'GdauiFormattedEntry.format': 'gchararray',
+    'GdauiFormattedEntry.mask': 'gchararray',
+    'GdauiGrid.model': 'GdaDataModel',
+    'GdauiLogin.dsn': 'gchararray',
+    'GdauiNumericEntry.decimal-sep': 'gchar',
+    'GdauiNumericEntry.n-decimals': 'guint',
+    'GdauiNumericEntry.thousands-sep': 'gchar',
+    'GdauiNumericEntry.type': 'GType',
+    'GdauiRawForm.model': 'GdaDataModel',
+    'GdauiRawGrid.global-actions-visible': 'gboolean',
+    'GdauiRawGrid.info-cell-visible': 'gboolean',
+    'GdauiRawGrid.model': 'GdaDataModel',
+    'GdauiRawGrid.xml-layout': 'gpointer',
+    'GdauiRtEditor.in-scrolled-window': 'gboolean',
+    'GdauiRtEditor.no-background': 'gboolean',
+    'GdauiRtEditor.show-markup': 'gboolean',
+    'GdauiServerOperation.hide-single-header': 'gboolean',
+    'GdauiServerOperation.server-operation': 'GdaServerOperation',
+    'GdauiSet.set': 'GdaSet',
+    'GdauiTreeStore.tree': 'GdaTree',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

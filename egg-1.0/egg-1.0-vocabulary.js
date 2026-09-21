@@ -215,6 +215,95 @@ export const PROP_ENUMS = {
     'EggSlider.position': 'EggSliderPosition',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'EggAnimation.duration': 'guint',
+    'EggAnimation.frame-clock': 'GdkFrameClock',
+    'EggAnimation.mode': 'EggAnimationMode',
+    'EggAnimation.target': 'GObject',
+    'EggBindingGroup.source': 'GObject',
+    'EggBox.max-width-request': 'gint',
+    'EggCenteringBin.max-width-request': 'gint',
+    'EggColumnLayout.column-spacing': 'gint',
+    'EggColumnLayout.column-width': 'gint',
+    'EggColumnLayout.max-columns': 'guint',
+    'EggColumnLayout.row-spacing': 'gint',
+    'EggEmptyState.icon-name': 'gchararray',
+    'EggEmptyState.pixel-size': 'gint',
+    'EggEmptyState.resource': 'gchararray',
+    'EggEmptyState.subtitle': 'gchararray',
+    'EggEmptyState.title': 'gchararray',
+    'EggEntryBox.max-width-chars': 'gint',
+    'EggFileChooserEntry.action': 'GtkFileChooserAction',
+    'EggFileChooserEntry.create-folders': 'gboolean',
+    'EggFileChooserEntry.do-overwrite-confirmation': 'gboolean',
+    'EggFileChooserEntry.file': 'GFile',
+    'EggFileChooserEntry.filter': 'GtkFileFilter',
+    'EggFileChooserEntry.local-only': 'gboolean',
+    'EggFileChooserEntry.max-width-chars': 'gint',
+    'EggFileChooserEntry.show-hidden': 'gboolean',
+    'EggFileChooserEntry.title': 'gchararray',
+    'EggListBox.property-name': 'gchararray',
+    'EggListBox.row-type': 'GType',
+    'EggListBox.row-type-name': 'gchararray',
+    'EggPillBox.label': 'gchararray',
+    'EggProgressButton.progress': 'guint',
+    'EggProgressButton.show-progress': 'gboolean',
+    'EggRadioBox.active-id': 'gchararray',
+    'EggRadioBox.show-more': 'gboolean',
+    'EggSearchBar.search-mode-enabled': 'gboolean',
+    'EggSearchBar.show-close-button': 'gboolean',
+    'EggSettingsFlagAction.flag-nick': 'gchararray',
+    'EggSettingsFlagAction.schema-id': 'gchararray',
+    'EggSettingsFlagAction.schema-key': 'gchararray',
+    'EggSettingsSandwich.path': 'gchararray',
+    'EggSettingsSandwich.schema-id': 'gchararray',
+    'EggSignalGroup.target': 'GObject',
+    'EggSignalGroup.target-type': 'GType',
+    'EggSimpleLabel.label': 'gchararray',
+    'EggSimpleLabel.width-chars': 'gint',
+    'EggSimpleLabel.xalign': 'gfloat',
+    'EggSimplePopover.button-text': 'gchararray',
+    'EggSimplePopover.message': 'gchararray',
+    'EggSimplePopover.ready': 'gboolean',
+    'EggSimplePopover.text': 'gchararray',
+    'EggSimplePopover.title': 'gchararray',
+    'EggSlider.position': 'EggSliderPosition',
+    'EggStateMachine.state': 'gchararray',
+    'EggSuggestion.icon-name': 'gchararray',
+    'EggSuggestion.id': 'gchararray',
+    'EggSuggestion.subtitle': 'gchararray',
+    'EggSuggestion.title': 'gchararray',
+    'EggSuggestionEntry.model': 'GListModel',
+    'EggSuggestionEntryBuffer.suggestion': 'EggSuggestion',
+    'EggSuggestionPopover.model': 'EggSuggestion',
+    'EggSuggestionPopover.relative-to': 'GtkWidget',
+    'EggSuggestionPopover.selected': 'EggSuggestion',
+    'EggSuggestionRow.suggestion': 'EggSuggestion',
+    'EggTaskCache.key-copy-func': 'gpointer',
+    'EggTaskCache.key-destroy-func': 'gpointer',
+    'EggTaskCache.key-equal-func': 'gpointer',
+    'EggTaskCache.key-hash-func': 'gpointer',
+    'EggTaskCache.populate-callback': 'gpointer',
+    'EggTaskCache.populate-callback-data': 'gpointer',
+    'EggTaskCache.populate-callback-data-destroy': 'gpointer',
+    'EggTaskCache.time-to-live': 'gint64',
+    'EggTaskCache.value-copy-func': 'gpointer',
+    'EggTaskCache.value-destroy-func': 'gpointer',
+    'EggThreeGrid.column-spacing': 'guint',
+    'EggThreeGrid.row-spacing': 'guint',
+    'EggWidgetActionGroup.widget': 'GtkWidget',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

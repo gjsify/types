@@ -151,6 +151,44 @@ export const PROP_ENUMS = {
     'EpcPublisher.protocol': 'EpcProtocol',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'EpcConsumer.application': 'gchararray',
+    'EpcConsumer.domain': 'gchararray',
+    'EpcConsumer.hostname': 'gchararray',
+    'EpcConsumer.name': 'gchararray',
+    'EpcConsumer.password': 'gchararray',
+    'EpcConsumer.path': 'gchararray',
+    'EpcConsumer.port': 'gint',
+    'EpcConsumer.protocol': 'EpcProtocol',
+    'EpcConsumer.username': 'gchararray',
+    'EpcDispatcher.collision-handling': 'EpcCollisionHandling',
+    'EpcDispatcher.cookie': 'gchararray',
+    'EpcDispatcher.name': 'gchararray',
+    'EpcPublisher.application': 'gchararray',
+    'EpcPublisher.auth-flags': 'EpcAuthFlags',
+    'EpcPublisher.certificate-file': 'gchararray',
+    'EpcPublisher.collision-handling': 'EpcCollisionHandling',
+    'EpcPublisher.contents-path': 'gchararray',
+    'EpcPublisher.private-key-file': 'gchararray',
+    'EpcPublisher.protocol': 'EpcProtocol',
+    'EpcPublisher.service-cookie': 'gchararray',
+    'EpcPublisher.service-domain': 'gchararray',
+    'EpcPublisher.service-name': 'gchararray',
+    'EpcServiceMonitor.application': 'gchararray',
+    'EpcServiceMonitor.domain': 'gchararray',
+    'EpcServiceMonitor.skip-our-own': 'gboolean',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

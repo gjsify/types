@@ -646,6 +646,62 @@ export const PROP_ENUMS = {
     'GimpProcedure.procedure-type': 'GimpPDBProcType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GimpColorConfig.cmyk-profile': 'GimpConfigPath',
+    'GimpColorConfig.display-optimize': 'gboolean',
+    'GimpColorConfig.display-profile': 'GimpConfigPath',
+    'GimpColorConfig.display-profile-from-gdk': 'gboolean',
+    'GimpColorConfig.display-rendering-intent': 'GimpColorRenderingIntent',
+    'GimpColorConfig.display-use-black-point-compensation': 'gboolean',
+    'GimpColorConfig.gray-profile': 'GimpConfigPath',
+    'GimpColorConfig.mode': 'GimpColorManagementMode',
+    'GimpColorConfig.out-of-gamut-color': 'GeglColor',
+    'GimpColorConfig.rgb-profile': 'GimpConfigPath',
+    'GimpColorConfig.show-hsv': 'gboolean',
+    'GimpColorConfig.show-rgb-u8': 'gboolean',
+    'GimpColorConfig.simulation-gamut-check': 'gboolean',
+    'GimpColorConfig.simulation-optimize': 'gboolean',
+    'GimpColorConfig.simulation-profile': 'GimpConfigPath',
+    'GimpColorConfig.simulation-rendering-intent': 'GimpColorRenderingIntent',
+    'GimpColorConfig.simulation-use-black-point-compensation': 'gboolean',
+    'GimpCurve.curve-type': 'GimpCurveType',
+    'GimpCurve.n-samples': 'gint',
+    'GimpDisplay.id': 'gint',
+    'GimpDrawableFilter.id': 'gint',
+    'GimpExportOptions.capabilities': 'GimpExportCapabilities',
+    'GimpExportProcedure.capabilities': 'GimpExportCapabilities',
+    'GimpExportProcedure.supports-comment': 'gboolean',
+    'GimpExportProcedure.supports-exif': 'gboolean',
+    'GimpExportProcedure.supports-iptc': 'gboolean',
+    'GimpExportProcedure.supports-profile': 'gboolean',
+    'GimpExportProcedure.supports-thumbnail': 'gboolean',
+    'GimpExportProcedure.supports-xmp': 'gboolean',
+    'GimpImage.id': 'gint',
+    'GimpItem.id': 'gint',
+    'GimpModule.auto-load': 'gboolean',
+    'GimpPlugIn.program-name': 'gchararray',
+    'GimpProcedure.name': 'gchararray',
+    'GimpProcedure.plug-in': 'GimpPlugIn',
+    'GimpProcedure.procedure-type': 'GimpPDBProcType',
+    'GimpResource.id': 'gint',
+    'GimpUnit.abbreviation': 'gchararray',
+    'GimpUnit.digits': 'gint',
+    'GimpUnit.factor': 'gdouble',
+    'GimpUnit.id': 'gint',
+    'GimpUnit.name': 'gchararray',
+    'GimpUnit.symbol': 'gchararray',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

@@ -257,6 +257,78 @@ export const PROP_ENUMS = {
     'FolksPresenceDetails.presence-type': 'FolksPresenceType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'FolksAbstractFieldDetails.id': 'gchararray',
+    'FolksAbstractFieldDetails.parameters': 'GeeMultiMap',
+    'FolksAbstractFieldDetails.t-type': 'GType',
+    'FolksAbstractFieldDetails.value': 'gpointer',
+    'FolksAliasDetails.alias': 'gchararray',
+    'FolksAvatarDetails.avatar': 'GLoadableIcon',
+    'FolksBackendStore.enabled-backends': 'GeeMap',
+    'FolksBackendStore.is-prepared': 'gboolean',
+    'FolksBirthdayDetails.calendar-event-id': 'gchararray',
+    'FolksDebug.colour-enabled': 'gboolean',
+    'FolksDebug.debug-output-enabled': 'gboolean',
+    'FolksEmailDetails.email-addresses': 'GeeSet',
+    'FolksFavouriteDetails.is-favourite': 'gboolean',
+    'FolksGenderDetails.gender': 'FolksGender',
+    'FolksGroupDetails.groups': 'GeeSet',
+    'FolksImDetails.im-addresses': 'GeeMultiMap',
+    'FolksIndividual.id': 'gchararray',
+    'FolksIndividual.is-user': 'gboolean',
+    'FolksIndividual.personas': 'GeeSet',
+    'FolksIndividual.trust-level': 'FolksTrustLevel',
+    'FolksIndividualAggregator.backend-store': 'FolksBackendStore',
+    'FolksIndividualAggregator.individuals': 'GeeMap',
+    'FolksIndividualAggregator.user': 'FolksIndividual',
+    'FolksLocalIdDetails.local-ids': 'GeeSet',
+    'FolksLocationDetails.location': 'FolksLocation',
+    'FolksNameDetails.full-name': 'gchararray',
+    'FolksNameDetails.nickname': 'gchararray',
+    'FolksNameDetails.structured-name': 'FolksStructuredName',
+    'FolksNoteDetails.notes': 'GeeSet',
+    'FolksNoteFieldDetails.uid': 'gchararray',
+    'FolksPhoneDetails.phone-numbers': 'GeeSet',
+    'FolksPostalAddress.address-format': 'gchararray',
+    'FolksPostalAddress.country': 'gchararray',
+    'FolksPostalAddress.extension': 'gchararray',
+    'FolksPostalAddress.locality': 'gchararray',
+    'FolksPostalAddress.po-box': 'gchararray',
+    'FolksPostalAddress.postal-code': 'gchararray',
+    'FolksPostalAddress.region': 'gchararray',
+    'FolksPostalAddress.street': 'gchararray',
+    'FolksPostalAddress.uid': 'gchararray',
+    'FolksPostalAddressDetails.postal-addresses': 'GeeSet',
+    'FolksPresenceDetails.presence-message': 'gchararray',
+    'FolksPresenceDetails.presence-status': 'gchararray',
+    'FolksPresenceDetails.presence-type': 'FolksPresenceType',
+    'FolksRole.organisation-name': 'gchararray',
+    'FolksRole.role': 'gchararray',
+    'FolksRole.title': 'gchararray',
+    'FolksRole.uid': 'gchararray',
+    'FolksRoleDetails.roles': 'GeeSet',
+    'FolksSearchView.query': 'FolksQuery',
+    'FolksSimpleQuery.query-locale': 'gchararray',
+    'FolksSimpleQuery.query-string': 'gchararray',
+    'FolksStructuredName.additional-names': 'gchararray',
+    'FolksStructuredName.family-name': 'gchararray',
+    'FolksStructuredName.given-name': 'gchararray',
+    'FolksStructuredName.prefixes': 'gchararray',
+    'FolksStructuredName.suffixes': 'gchararray',
+    'FolksUrlDetails.urls': 'GeeSet',
+    'FolksWebServiceDetails.web-service-addresses': 'GeeMultiMap',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

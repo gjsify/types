@@ -213,6 +213,62 @@ export const PROP_ENUMS = {
     'GdlSwitcher.tab-pos': 'GtkPositionType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GdlDock.default-title': 'gchararray',
+    'GdlDock.floating': 'gboolean',
+    'GdlDock.floatx': 'gint',
+    'GdlDock.floaty': 'gint',
+    'GdlDock.height': 'gint',
+    'GdlDock.skip-taskbar': 'gboolean',
+    'GdlDock.width': 'gint',
+    'GdlDockBar.dockbar-style': 'GdlDockBarStyle',
+    'GdlDockBar.master': 'GObject',
+    'GdlDockItem.behavior': 'GdlDockItemBehavior',
+    'GdlDockItem.closed': 'gboolean',
+    'GdlDockItem.iconified': 'gboolean',
+    'GdlDockItem.locked': 'gboolean',
+    'GdlDockItem.orientation': 'GtkOrientation',
+    'GdlDockItem.preferred-height': 'gint',
+    'GdlDockItem.preferred-width': 'gint',
+    'GdlDockItem.resize': 'gboolean',
+    'GdlDockItemGrip.item': 'GdlDockItem',
+    'GdlDockLayout.master': 'GObject',
+    'GdlDockMaster.default-title': 'gchararray',
+    'GdlDockMaster.locked': 'gint',
+    'GdlDockMaster.switcher-style': 'GdlSwitcherStyle',
+    'GdlDockMaster.tab-pos': 'GtkPositionType',
+    'GdlDockMaster.tab-reorderable': 'gboolean',
+    'GdlDockNotebook.page': 'gint',
+    'GdlDockObject.long-name': 'gchararray',
+    'GdlDockObject.master': 'GdlDockMaster',
+    'GdlDockObject.name': 'gchararray',
+    'GdlDockObject.pixbuf-icon': 'gpointer',
+    'GdlDockObject.stock-id': 'gchararray',
+    'GdlDockPaned.position': 'guint',
+    'GdlDockPlaceholder.floating': 'gboolean',
+    'GdlDockPlaceholder.floatx': 'gint',
+    'GdlDockPlaceholder.floaty': 'gint',
+    'GdlDockPlaceholder.height': 'gint',
+    'GdlDockPlaceholder.host': 'GdlDockObject',
+    'GdlDockPlaceholder.next-placement': 'GdlDockPlacement',
+    'GdlDockPlaceholder.sticky': 'gboolean',
+    'GdlDockPlaceholder.width': 'gint',
+    'GdlDockTablabel.item': 'GdlDockItem',
+    'GdlSwitcher.switcher-style': 'GdlSwitcherStyle',
+    'GdlSwitcher.tab-pos': 'GtkPositionType',
+    'GdlSwitcher.tab-reorderable': 'gboolean',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

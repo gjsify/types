@@ -170,6 +170,57 @@ export const PROP_ENUMS = {
     'GsfOutputCsv.quoting-mode': 'GsfOutputCsvQuotingMode',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GsfInfileTar.source': 'GsfInput',
+    'GsfInfileZip.internal-parent': 'GsfInfileZip',
+    'GsfInfileZip.source': 'GsfInput',
+    'GsfInputGZip.raw': 'gboolean',
+    'GsfInputGZip.source': 'GsfInput',
+    'GsfInputGZip.uncompressed-size': 'gint64',
+    'GsfInputHTTP.content-type': 'gchararray',
+    'GsfInputHTTP.url': 'gchararray',
+    'GsfODFOut.odf-version': 'gint',
+    'GsfOutfileMSOle.big-block-size': 'guint',
+    'GsfOutfileMSOle.sink': 'GsfOutput',
+    'GsfOutfileMSOle.small-block-size': 'guint',
+    'GsfOutfileOpenPkg.content-type': 'gchararray',
+    'GsfOutfileOpenPkg.is-dir': 'gboolean',
+    'GsfOutfileOpenPkg.sink': 'GsfOutfile',
+    'GsfOutfileZip.compression-level': 'gint',
+    'GsfOutfileZip.deflate-level': 'gint',
+    'GsfOutfileZip.entry-name': 'gchararray',
+    'GsfOutfileZip.sink': 'GsfOutput',
+    'GsfOutfileZip.zip64': 'gint',
+    'GsfOutput.container': 'GsfOutfile',
+    'GsfOutput.name': 'gchararray',
+    'GsfOutputCsv.eol': 'gchararray',
+    'GsfOutputCsv.quote': 'gchararray',
+    'GsfOutputCsv.quoting-mode': 'GsfOutputCsvQuotingMode',
+    'GsfOutputCsv.quoting-on-whitespace': 'gboolean',
+    'GsfOutputCsv.quoting-triggers': 'gchararray',
+    'GsfOutputCsv.separator': 'gchararray',
+    'GsfOutputCsv.sink': 'GsfOutput',
+    'GsfOutputGZip.deflate-level': 'gint',
+    'GsfOutputGZip.raw': 'gboolean',
+    'GsfOutputGZip.sink': 'GsfOutput',
+    'GsfOutputIconv.fallback': 'gchararray',
+    'GsfOutputIconv.input-charset': 'gchararray',
+    'GsfOutputIconv.output-charset': 'gchararray',
+    'GsfOutputIconv.sink': 'GsfOutput',
+    'GsfXMLOut.pretty-print': 'gboolean',
+    'GsfXMLOut.sink': 'GsfOutput',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

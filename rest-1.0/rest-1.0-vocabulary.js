@@ -126,6 +126,35 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'RestOAuth2Proxy.access-token': 'gchararray',
+    'RestOAuth2Proxy.auth-url': 'gchararray',
+    'RestOAuth2Proxy.client-id': 'gchararray',
+    'RestOAuth2Proxy.client-secret': 'gchararray',
+    'RestOAuth2Proxy.redirect-uri': 'gchararray',
+    'RestOAuth2Proxy.refresh-token': 'gchararray',
+    'RestOAuth2Proxy.token-url': 'gchararray',
+    'RestProxy.binding-required': 'gboolean',
+    'RestProxy.disable-cookies': 'gboolean',
+    'RestProxy.password': 'gchararray',
+    'RestProxy.ssl-ca-file': 'gchararray',
+    'RestProxy.ssl-strict': 'gboolean',
+    'RestProxy.url-format': 'gchararray',
+    'RestProxy.user-agent': 'gchararray',
+    'RestProxy.username': 'gchararray',
+    'RestProxyCall.proxy': 'RestProxy',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

@@ -310,6 +310,78 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'AgsApplicationContext.config': 'GObject',
+    'AgsApplicationContext.file': 'GObject',
+    'AgsApplicationContext.main-loop': 'GObject',
+    'AgsApplicationContext.task-launcher': 'GObject',
+    'AgsController.context-path': 'gchararray',
+    'AgsController.server': 'AgsServer',
+    'AgsConversion.description': 'gchararray',
+    'AgsConversion.name': 'gchararray',
+    'AgsFile.audio-encoding': 'gchararray',
+    'AgsFile.audio-format': 'gchararray',
+    'AgsFile.encoding': 'gchararray',
+    'AgsFile.filename': 'gchararray',
+    'AgsFile.xml-doc': 'gpointer',
+    'AgsFileIdRef.file': 'GObject',
+    'AgsFileIdRef.node': 'gpointer',
+    'AgsFileIdRef.reference': 'gpointer',
+    'AgsFileIdRef.xpath': 'gchararray',
+    'AgsFileLaunch.file': 'GObject',
+    'AgsFileLaunch.node': 'gpointer',
+    'AgsFileLaunch.reference': 'gpointer',
+    'AgsFileLink.data': 'gchararray',
+    'AgsFileLink.filename': 'gchararray',
+    'AgsFileLookup.file': 'GObject',
+    'AgsFileLookup.node': 'gpointer',
+    'AgsFileLookup.reference': 'gpointer',
+    'AgsFunction.normalized-function': 'gchararray',
+    'AgsFunction.pivot-table': 'gpointer',
+    'AgsFunction.source-function': 'gchararray',
+    'AgsMessageEnvelope.recipient': 'GObject',
+    'AgsMessageEnvelope.sender': 'GObject',
+    'AgsMessageEnvelope.xml-doc': 'gpointer',
+    'AgsMessageQueue.recipient-namespace': 'gchararray',
+    'AgsMessageQueue.sender-namespace': 'gchararray',
+    'AgsRegistry.server': 'AgsServer',
+    'AgsReturnableThread.thread-pool': 'GObject',
+    'AgsSecurityContext.certs': 'gchararray',
+    'AgsServer.domain': 'gchararray',
+    'AgsServer.front-controller': 'AgsFrontController',
+    'AgsServer.ip4': 'gchararray',
+    'AgsServer.ip6': 'gchararray',
+    'AgsServer.path': 'gchararray',
+    'AgsServer.realm': 'gchararray',
+    'AgsServer.server-port': 'guint',
+    'AgsSolverMatrix.solver-path': 'gpointer',
+    'AgsSolverMatrix.source-function': 'gchararray',
+    'AgsSolverPolynomial.coefficient': 'gchararray',
+    'AgsSolverPolynomial.polynomial': 'gchararray',
+    'AgsSolverPolynomial.symbol': 'gpointer',
+    'AgsSolverVector.source-polynomial': 'gchararray',
+    'AgsTask.task-launcher': 'AgsTaskLauncher',
+    'AgsTaskCompletion.task': 'GObject',
+    'AgsThread.delay': 'gdouble',
+    'AgsThread.frequency': 'gdouble',
+    'AgsThread.max-precision': 'gdouble',
+    'AgsThreadApplicationContext.thread-pool': 'AgsThreadPool',
+    'AgsThreadPool.max-threads': 'guint',
+    'AgsThreadPool.max-unused-threads': 'guint',
+    'AgsTurtle.filename': 'gchararray',
+    'AgsTurtle.xml-doc': 'gpointer',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

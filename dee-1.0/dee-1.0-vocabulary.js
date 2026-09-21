@@ -156,6 +156,34 @@ export const PROP_ENUMS = {
     'DeeSharedModel.flush-mode': 'DeeSharedModelFlushMode',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'DeeClient.bus-address': 'gchararray',
+    'DeeFileResourceManager.primary-path': 'gchararray',
+    'DeeIndex.analyzer': 'DeeAnalyzer',
+    'DeeIndex.model': 'DeeModel',
+    'DeePeer.swarm-name': 'gchararray',
+    'DeePeer.swarm-owner': 'gboolean',
+    'DeeProxyModel.back-end': 'DeeModel',
+    'DeeProxyModel.inherit-seqnums': 'gboolean',
+    'DeeProxyModel.proxy-signals': 'gboolean',
+    'DeeServer.bus-address': 'gchararray',
+    'DeeServer.same-user-only': 'gboolean',
+    'DeeSharedModel.access-mode': 'DeeSharedModelAccessMode',
+    'DeeSharedModel.flush-mode': 'DeeSharedModelFlushMode',
+    'DeeSharedModel.peer': 'DeePeer',
+    'DeeTransaction.target': 'DeeModel',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

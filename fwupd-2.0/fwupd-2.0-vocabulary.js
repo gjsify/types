@@ -140,6 +140,59 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'FwupdClient.battery-level': 'guint',
+    'FwupdClient.battery-threshold': 'guint',
+    'FwupdClient.host-bkc': 'gchararray',
+    'FwupdClient.host-machine-id': 'gchararray',
+    'FwupdClient.host-product': 'gchararray',
+    'FwupdClient.host-security-id': 'gchararray',
+    'FwupdClient.host-vendor': 'gchararray',
+    'FwupdClient.percentage': 'guint',
+    'FwupdClient.percentage-full': 'gdouble',
+    'FwupdClient.status': 'guint',
+    'FwupdDevice.battery-level': 'guint',
+    'FwupdDevice.battery-threshold': 'guint',
+    'FwupdDevice.flags': 'guint64',
+    'FwupdDevice.id': 'gchararray',
+    'FwupdDevice.parent': 'FwupdDevice',
+    'FwupdDevice.percentage': 'guint',
+    'FwupdDevice.problems': 'guint64',
+    'FwupdDevice.request-flags': 'guint64',
+    'FwupdDevice.status': 'guint',
+    'FwupdDevice.update-error': 'gchararray',
+    'FwupdDevice.update-state': 'guint',
+    'FwupdDevice.vendor': 'gchararray',
+    'FwupdDevice.version': 'gchararray',
+    'FwupdDevice.version-format': 'guint',
+    'FwupdPlugin.flags': 'guint64',
+    'FwupdPlugin.name': 'gchararray',
+    'FwupdRelease.remote-id': 'gchararray',
+    'FwupdRemote.approval-required': 'gboolean',
+    'FwupdRemote.automatic-reports': 'gboolean',
+    'FwupdRemote.automatic-security-reports': 'gboolean',
+    'FwupdRemote.enabled': 'gboolean',
+    'FwupdRemote.flags': 'guint64',
+    'FwupdRemote.id': 'gchararray',
+    'FwupdReport.flags': 'guint64',
+    'FwupdRequest.device-id': 'gchararray',
+    'FwupdRequest.flags': 'guint64',
+    'FwupdRequest.id': 'gchararray',
+    'FwupdRequest.image': 'gchararray',
+    'FwupdRequest.kind': 'guint',
+    'FwupdRequest.message': 'gchararray',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

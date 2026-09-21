@@ -170,6 +170,83 @@ export const PROP_ENUMS = {
     'GtkSourcePrintCompositor.wrap-mode': 'GtkWrapMode',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GtkSourceBuffer.highlight-matching-brackets': 'gboolean',
+    'GtkSourceBuffer.highlight-syntax': 'gboolean',
+    'GtkSourceBuffer.language': 'GtkSourceLanguage',
+    'GtkSourceBuffer.max-undo-levels': 'gint',
+    'GtkSourceBuffer.style-scheme': 'GtkSourceStyleScheme',
+    'GtkSourceBuffer.undo-manager': 'GtkSourceUndoManager',
+    'GtkSourceCompletion.accelerators': 'guint',
+    'GtkSourceCompletion.auto-complete-delay': 'guint',
+    'GtkSourceCompletion.proposal-page-size': 'guint',
+    'GtkSourceCompletion.provider-page-size': 'guint',
+    'GtkSourceCompletion.remember-info-visibility': 'gboolean',
+    'GtkSourceCompletion.select-on-show': 'gboolean',
+    'GtkSourceCompletion.show-headers': 'gboolean',
+    'GtkSourceCompletion.show-icons': 'gboolean',
+    'GtkSourceCompletion.view': 'GtkSourceView',
+    'GtkSourceCompletionContext.completion': 'GtkSourceCompletion',
+    'GtkSourceCompletionInfo.max-height': 'gint',
+    'GtkSourceCompletionInfo.max-width': 'gint',
+    'GtkSourceCompletionInfo.shrink-height': 'gboolean',
+    'GtkSourceCompletionInfo.shrink-width': 'gboolean',
+    'GtkSourceCompletionItem.icon': 'GdkPixbuf',
+    'GtkSourceCompletionItem.info': 'gchararray',
+    'GtkSourceCompletionItem.label': 'gchararray',
+    'GtkSourceCompletionItem.markup': 'gchararray',
+    'GtkSourceCompletionItem.text': 'gchararray',
+    'GtkSourceGutter.view': 'GtkSourceView',
+    'GtkSourceGutter.window-type': 'GtkTextWindowType',
+    'GtkSourceMark.category': 'gchararray',
+    'GtkSourcePrintCompositor.body-font-name': 'gchararray',
+    'GtkSourcePrintCompositor.buffer': 'GtkSourceBuffer',
+    'GtkSourcePrintCompositor.footer-font-name': 'gchararray',
+    'GtkSourcePrintCompositor.header-font-name': 'gchararray',
+    'GtkSourcePrintCompositor.highlight-syntax': 'gboolean',
+    'GtkSourcePrintCompositor.line-numbers-font-name': 'gchararray',
+    'GtkSourcePrintCompositor.print-footer': 'gboolean',
+    'GtkSourcePrintCompositor.print-header': 'gboolean',
+    'GtkSourcePrintCompositor.print-line-numbers': 'guint',
+    'GtkSourcePrintCompositor.tab-width': 'guint',
+    'GtkSourcePrintCompositor.wrap-mode': 'GtkWrapMode',
+    'GtkSourceStyle.background': 'gchararray',
+    'GtkSourceStyle.background-set': 'gboolean',
+    'GtkSourceStyle.bold': 'gboolean',
+    'GtkSourceStyle.bold-set': 'gboolean',
+    'GtkSourceStyle.foreground': 'gchararray',
+    'GtkSourceStyle.foreground-set': 'gboolean',
+    'GtkSourceStyle.italic': 'gboolean',
+    'GtkSourceStyle.italic-set': 'gboolean',
+    'GtkSourceStyle.line-background': 'gchararray',
+    'GtkSourceStyle.line-background-set': 'gboolean',
+    'GtkSourceStyle.strikethrough': 'gboolean',
+    'GtkSourceStyle.strikethrough-set': 'gboolean',
+    'GtkSourceStyle.underline': 'gboolean',
+    'GtkSourceStyle.underline-set': 'gboolean',
+    'GtkSourceStyleScheme.id': 'gchararray',
+    'GtkSourceView.auto-indent': 'gboolean',
+    'GtkSourceView.highlight-current-line': 'gboolean',
+    'GtkSourceView.indent-on-tab': 'gboolean',
+    'GtkSourceView.indent-width': 'gint',
+    'GtkSourceView.insert-spaces-instead-of-tabs': 'gboolean',
+    'GtkSourceView.right-margin-position': 'guint',
+    'GtkSourceView.show-line-marks': 'gboolean',
+    'GtkSourceView.show-line-numbers': 'gboolean',
+    'GtkSourceView.show-right-margin': 'gboolean',
+    'GtkSourceView.tab-width': 'guint',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

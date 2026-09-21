@@ -370,6 +370,90 @@ export const PROP_ENUMS = {
     'PpsTransitionEffect.type': 'PpsTransitionEffectType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'PpsAnnotation.border-width': 'gdouble',
+    'PpsAnnotation.contents': 'gchararray',
+    'PpsAnnotation.hidden': 'gboolean',
+    'PpsAnnotation.modified': 'gchararray',
+    'PpsAnnotation.name': 'gchararray',
+    'PpsAnnotation.page': 'PpsPage',
+    'PpsAnnotationAttachment.attachment': 'PpsAttachment',
+    'PpsAnnotationInk.highlight': 'gboolean',
+    'PpsAnnotationMarkup.has-popup': 'gboolean',
+    'PpsAnnotationMarkup.label': 'gchararray',
+    'PpsAnnotationMarkup.opacity': 'gdouble',
+    'PpsAnnotationMarkup.popup-is-open': 'gboolean',
+    'PpsAnnotationText.icon': 'PpsAnnotationTextIcon',
+    'PpsAnnotationText.is-open': 'gboolean',
+    'PpsAnnotationTextMarkup.type': 'PpsAnnotationTextMarkupType',
+    'PpsAttachment.data': 'gpointer',
+    'PpsAttachment.description': 'gchararray',
+    'PpsAttachment.name': 'gchararray',
+    'PpsAttachment.size': 'guint',
+    'PpsCertificateInfo.id': 'gchararray',
+    'PpsCertificateInfo.issuer-common-name': 'gchararray',
+    'PpsCertificateInfo.issuer-email': 'gchararray',
+    'PpsCertificateInfo.issuer-organization': 'gchararray',
+    'PpsCertificateInfo.status': 'PpsCertificateStatus',
+    'PpsCertificateInfo.subject-common-name': 'gchararray',
+    'PpsCertificateInfo.subject-email': 'gchararray',
+    'PpsCertificateInfo.subject-organization': 'gchararray',
+    'PpsFontDescription.details': 'gchararray',
+    'PpsFontDescription.name': 'gchararray',
+    'PpsLayer.children': 'GListModel',
+    'PpsLayer.enabled': 'gboolean',
+    'PpsLayer.title': 'gchararray',
+    'PpsLayer.title-only': 'gboolean',
+    'PpsLink.action': 'PpsLinkAction',
+    'PpsLink.title': 'gchararray',
+    'PpsLinkAction.dest': 'PpsLinkDest',
+    'PpsLinkAction.exclude-reset-fields': 'gboolean',
+    'PpsLinkAction.filename': 'gchararray',
+    'PpsLinkAction.hide-list': 'gpointer',
+    'PpsLinkAction.name': 'gchararray',
+    'PpsLinkAction.params': 'gchararray',
+    'PpsLinkAction.reset-fields': 'gpointer',
+    'PpsLinkAction.show-list': 'gpointer',
+    'PpsLinkAction.toggle-list': 'gpointer',
+    'PpsLinkAction.type': 'PpsLinkActionType',
+    'PpsLinkAction.uri': 'gchararray',
+    'PpsLinkDest.bottom': 'gdouble',
+    'PpsLinkDest.change': 'guint',
+    'PpsLinkDest.left': 'gdouble',
+    'PpsLinkDest.named': 'gchararray',
+    'PpsLinkDest.page': 'gint',
+    'PpsLinkDest.page-label': 'gchararray',
+    'PpsLinkDest.right': 'gdouble',
+    'PpsLinkDest.top': 'gdouble',
+    'PpsLinkDest.type': 'PpsLinkDestType',
+    'PpsLinkDest.zoom': 'gdouble',
+    'PpsOutlines.children': 'GListModel',
+    'PpsOutlines.expand': 'gboolean',
+    'PpsOutlines.label': 'gchararray',
+    'PpsOutlines.link': 'PpsLink',
+    'PpsOutlines.markup': 'gchararray',
+    'PpsSignature.certificate-info': 'PpsCertificateInfo',
+    'PpsSignature.status': 'PpsSignatureStatus',
+    'PpsTransitionEffect.alignment': 'PpsTransitionEffectAlignment',
+    'PpsTransitionEffect.angle': 'gint',
+    'PpsTransitionEffect.direction': 'PpsTransitionEffectDirection',
+    'PpsTransitionEffect.duration': 'gint',
+    'PpsTransitionEffect.duration-real': 'gdouble',
+    'PpsTransitionEffect.rectangular': 'gboolean',
+    'PpsTransitionEffect.scale': 'gdouble',
+    'PpsTransitionEffect.type': 'PpsTransitionEffectType',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

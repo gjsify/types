@@ -204,6 +204,50 @@ export const PROP_ENUMS = {
     'TeplFileSaver.newline-type': 'TeplNewlineType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'TeplApplication.application': 'GtkApplication',
+    'TeplApplicationWindow.application-window': 'GtkApplicationWindow',
+    'TeplApplicationWindow.handle-title': 'gboolean',
+    'TeplCodeCommentView.source-view': 'GtkSourceView',
+    'TeplFile.location': 'GFile',
+    'TeplFileLoader.buffer': 'TeplBuffer',
+    'TeplFileLoader.file': 'TeplFile',
+    'TeplFileLoader.location': 'GFile',
+    'TeplFileSaver.buffer': 'TeplBuffer',
+    'TeplFileSaver.file': 'TeplFile',
+    'TeplFileSaver.flags': 'TeplFileSaverFlags',
+    'TeplFileSaver.location': 'GFile',
+    'TeplFileSaver.newline-type': 'TeplNewlineType',
+    'TeplFoldRegion.buffer': 'GtkTextBuffer',
+    'TeplFoldRegion.folded': 'gboolean',
+    'TeplInfoBar.handle-close-response': 'gboolean',
+    'TeplInfoBar.icon-from-message-type': 'gboolean',
+    'TeplInfoBar.icon-name': 'gchararray',
+    'TeplOverwriteIndicator.overwrite': 'gboolean',
+    'TeplPanelItem.icon-name': 'gchararray',
+    'TeplPanelItem.name': 'gchararray',
+    'TeplPanelItem.position': 'gint',
+    'TeplPanelItem.title': 'gchararray',
+    'TeplPanelItem.widget': 'GtkWidget',
+    'TeplPanelSimple.active-item': 'TeplPanelItem',
+    'TeplPanelSimple.active-item-name': 'gchararray',
+    'TeplProgressInfoBar.has-cancel-button': 'gboolean',
+    'TeplStyleSchemeChooserSimple.style-scheme-id': 'gchararray',
+    'TeplTab.view': 'TeplView',
+    'TeplTabGroup.active-tab': 'TeplTab',
+    'TeplTabLabel.tab': 'TeplTab',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

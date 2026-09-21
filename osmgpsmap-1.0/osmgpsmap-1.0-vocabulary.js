@@ -130,6 +130,69 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'OsmGpsMap.auto-center': 'gboolean',
+    'OsmGpsMap.auto-center-threshold': 'gfloat',
+    'OsmGpsMap.auto-download': 'gboolean',
+    'OsmGpsMap.drag-limit': 'gint',
+    'OsmGpsMap.gps-track-highlight-radius': 'gint',
+    'OsmGpsMap.gps-track-point-radius': 'gint',
+    'OsmGpsMap.gps-track-width': 'gfloat',
+    'OsmGpsMap.image-format': 'gchararray',
+    'OsmGpsMap.map-source': 'gint',
+    'OsmGpsMap.map-x': 'gint',
+    'OsmGpsMap.map-y': 'gint',
+    'OsmGpsMap.max-zoom': 'gint',
+    'OsmGpsMap.min-zoom': 'gint',
+    'OsmGpsMap.proxy-uri': 'gchararray',
+    'OsmGpsMap.record-trip-history': 'gboolean',
+    'OsmGpsMap.repo-uri': 'gchararray',
+    'OsmGpsMap.show-gps-point': 'gboolean',
+    'OsmGpsMap.show-trip-history': 'gboolean',
+    'OsmGpsMap.tile-cache': 'gchararray',
+    'OsmGpsMap.tile-cache-base': 'gchararray',
+    'OsmGpsMap.tile-zoom-offset': 'gint',
+    'OsmGpsMap.user-agent': 'gchararray',
+    'OsmGpsMap.zoom': 'gint',
+    'OsmGpsMapImage.pixbuf': 'GdkPixbuf',
+    'OsmGpsMapImage.rotation': 'gfloat',
+    'OsmGpsMapImage.x-align': 'gfloat',
+    'OsmGpsMapImage.y-align': 'gfloat',
+    'OsmGpsMapImage.z-order': 'gint',
+    'OsmGpsMapOsd.dpad-radius': 'guint',
+    'OsmGpsMapOsd.osd-x': 'gint',
+    'OsmGpsMapOsd.osd-y': 'gint',
+    'OsmGpsMapOsd.show-coordinates': 'gboolean',
+    'OsmGpsMapOsd.show-copyright': 'gboolean',
+    'OsmGpsMapOsd.show-crosshair': 'gboolean',
+    'OsmGpsMapOsd.show-dpad': 'gboolean',
+    'OsmGpsMapOsd.show-gps-in-dpad': 'gboolean',
+    'OsmGpsMapOsd.show-gps-in-zoom': 'gboolean',
+    'OsmGpsMapOsd.show-scale': 'gboolean',
+    'OsmGpsMapOsd.show-zoom': 'gboolean',
+    'OsmGpsMapPolygon.breakable': 'gboolean',
+    'OsmGpsMapPolygon.editable': 'gboolean',
+    'OsmGpsMapPolygon.shade-alpha': 'gfloat',
+    'OsmGpsMapPolygon.shaded': 'gboolean',
+    'OsmGpsMapPolygon.track': 'gpointer',
+    'OsmGpsMapPolygon.visible': 'gboolean',
+    'OsmGpsMapTrack.alpha': 'gfloat',
+    'OsmGpsMapTrack.editable': 'gboolean',
+    'OsmGpsMapTrack.line-width': 'gfloat',
+    'OsmGpsMapTrack.track': 'gpointer',
+    'OsmGpsMapTrack.visible': 'gboolean',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

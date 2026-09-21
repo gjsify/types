@@ -509,6 +509,87 @@ export const PROP_ENUMS = {
     'CamelOfflineSettings.limit-unit': 'CamelTimeUnit',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'CamelCipherContext.session': 'CamelSession',
+    'CamelDataCache.expire-enabled': 'gboolean',
+    'CamelDataCache.path': 'gchararray',
+    'CamelFilterInputStream.filter': 'CamelMimeFilter',
+    'CamelFilterOutputStream.filter': 'CamelMimeFilter',
+    'CamelFolder.description': 'gchararray',
+    'CamelFolder.display-name': 'gchararray',
+    'CamelFolder.flags': 'guint',
+    'CamelFolder.full-name': 'gchararray',
+    'CamelFolder.mark-seen': 'CamelThreeState',
+    'CamelFolder.mark-seen-timeout': 'gint',
+    'CamelFolder.parent-store': 'CamelStore',
+    'CamelFolderSummary.folder': 'CamelFolder',
+    'CamelGpgContext.always-trust': 'gboolean',
+    'CamelGpgContext.locate-keys': 'gboolean',
+    'CamelGpgContext.prefer-inline': 'gboolean',
+    'CamelLocalSettings.filter-all': 'gboolean',
+    'CamelLocalSettings.filter-junk': 'gboolean',
+    'CamelLocalSettings.maildir-alt-flag-sep': 'gboolean',
+    'CamelLocalSettings.path': 'gchararray',
+    'CamelMedium.content': 'CamelDataWrapper',
+    'CamelMessageInfo.abort-notifications': 'gboolean',
+    'CamelMessageInfo.cc': 'gchararray',
+    'CamelMessageInfo.date-received': 'gint64',
+    'CamelMessageInfo.date-sent': 'gint64',
+    'CamelMessageInfo.dirty': 'gboolean',
+    'CamelMessageInfo.flags': 'CamelMessageFlags',
+    'CamelMessageInfo.folder-flagged': 'gboolean',
+    'CamelMessageInfo.from': 'gchararray',
+    'CamelMessageInfo.message-id': 'guint64',
+    'CamelMessageInfo.mlist': 'gchararray',
+    'CamelMessageInfo.preview': 'gchararray',
+    'CamelMessageInfo.size': 'guint',
+    'CamelMessageInfo.subject': 'gchararray',
+    'CamelMessageInfo.summary': 'CamelFolderSummary',
+    'CamelMessageInfo.to': 'gchararray',
+    'CamelMessageInfo.uid': 'gchararray',
+    'CamelMimePart.content-id': 'gchararray',
+    'CamelMimePart.content-location': 'gchararray',
+    'CamelMimePart.content-md5': 'gchararray',
+    'CamelMimePart.description': 'gchararray',
+    'CamelMimePart.disposition': 'gchararray',
+    'CamelOfflineFolder.offline-sync': 'CamelThreeState',
+    'CamelOfflineSettings.limit-by-age': 'gboolean',
+    'CamelOfflineSettings.limit-unit': 'CamelTimeUnit',
+    'CamelOfflineSettings.limit-value': 'gint',
+    'CamelOfflineSettings.stay-synchronized': 'gboolean',
+    'CamelSasl.authenticated': 'gboolean',
+    'CamelSasl.mechanism': 'gchararray',
+    'CamelSasl.service': 'CamelService',
+    'CamelSasl.service-name': 'gchararray',
+    'CamelService.display-name': 'gchararray',
+    'CamelService.password': 'gchararray',
+    'CamelService.proxy-resolver': 'GProxyResolver',
+    'CamelService.session': 'CamelSession',
+    'CamelService.settings': 'CamelSettings',
+    'CamelService.uid': 'gchararray',
+    'CamelService.with-proxy-resolver': 'gboolean',
+    'CamelSession.junk-filter': 'CamelJunkFilter',
+    'CamelSession.network-monitor': 'GNetworkMonitor',
+    'CamelSession.online': 'gboolean',
+    'CamelSession.user-cache-dir': 'gchararray',
+    'CamelSession.user-data-dir': 'gchararray',
+    'CamelStoreSearch.store': 'CamelStore',
+    'CamelStoreSettings.filter-inbox': 'gboolean',
+    'CamelStoreSettings.store-changes-interval': 'gint',
+    'CamelStream.base-stream': 'GIOStream',
+    'CamelVeeFolder.auto-update': 'gboolean',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

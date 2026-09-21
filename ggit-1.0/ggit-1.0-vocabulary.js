@@ -453,6 +453,68 @@ export const PROP_ENUMS = {
     'GgitDiffOptions.flags': 'GgitDiffOption',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GgitBlobOutputStream.repository': 'GgitRepository',
+    'GgitCheckoutOptions.ancestor-label': 'gchararray',
+    'GgitCheckoutOptions.baseline': 'GgitTree',
+    'GgitCheckoutOptions.dir-mode': 'guint',
+    'GgitCheckoutOptions.disable-filters': 'gboolean',
+    'GgitCheckoutOptions.file-mode': 'guint',
+    'GgitCheckoutOptions.file-open-flags': 'gint',
+    'GgitCheckoutOptions.notify-flags': 'GgitCheckoutNotifyFlags',
+    'GgitCheckoutOptions.our-label': 'gchararray',
+    'GgitCheckoutOptions.strategy': 'GgitCheckoutStrategy',
+    'GgitCheckoutOptions.target-directory': 'gchararray',
+    'GgitCheckoutOptions.their-label': 'gchararray',
+    'GgitCherryPickOptions.checkout-options': 'GgitCheckoutOptions',
+    'GgitCherryPickOptions.mainline': 'guint',
+    'GgitCommitParents.commit': 'GgitCommit',
+    'GgitCredPlaintext.password': 'gchararray',
+    'GgitCredPlaintext.username': 'gchararray',
+    'GgitCredSshInteractive.username': 'gchararray',
+    'GgitCredSshKeyFromAgent.username': 'gchararray',
+    'GgitDiff.repository': 'GgitRepository',
+    'GgitDiffFindOptions.copy-threshold': 'guint',
+    'GgitDiffFindOptions.flags': 'GgitDiffFindFlags',
+    'GgitDiffFindOptions.rename-from-rewrite-threshold': 'guint',
+    'GgitDiffFindOptions.rename-limit': 'guint',
+    'GgitDiffFindOptions.rename-threshold': 'guint',
+    'GgitDiffFormatEmailOptions.author': 'GgitSignature',
+    'GgitDiffFormatEmailOptions.body': 'gchararray',
+    'GgitDiffFormatEmailOptions.flags': 'GgitDiffFormatEmailFlags',
+    'GgitDiffFormatEmailOptions.patch-number': 'guint64',
+    'GgitDiffFormatEmailOptions.summary': 'gchararray',
+    'GgitDiffFormatEmailOptions.total-patches': 'guint64',
+    'GgitDiffOptions.flags': 'GgitDiffOption',
+    'GgitDiffOptions.n-context-lines': 'gint',
+    'GgitDiffOptions.n-interhunk-lines': 'gint',
+    'GgitDiffOptions.new-prefix': 'gchararray',
+    'GgitDiffOptions.old-prefix': 'gchararray',
+    'GgitIndex.file': 'GFile',
+    'GgitNative.native': 'gpointer',
+    'GgitPushOptions.callbacks': 'GgitRemoteCallbacks',
+    'GgitPushOptions.parallelism': 'gint',
+    'GgitRepository.clone-options': 'GgitCloneOptions',
+    'GgitRepository.init': 'gboolean',
+    'GgitRepository.is-bare': 'gboolean',
+    'GgitRepository.location': 'GFile',
+    'GgitRepository.url': 'gchararray',
+    'GgitRepository.workdir': 'GFile',
+    'GgitRevisionWalker.repository': 'GgitRepository',
+    'GgitSignature.encoding': 'gchararray',
+    'GgitSubmoduleUpdateOptions.checkout-options': 'GgitCheckoutOptions',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

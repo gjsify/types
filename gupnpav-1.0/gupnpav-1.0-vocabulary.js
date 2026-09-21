@@ -192,6 +192,96 @@ export const PROP_ENUMS = {
     'GUPnPProtocolInfo.dlna-operation': 'GUPnPDLNAOperation',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GUPnPDIDLLiteContainer.child-count': 'gint',
+    'GUPnPDIDLLiteContainer.container-update-id': 'guint',
+    'GUPnPDIDLLiteContainer.searchable': 'gboolean',
+    'GUPnPDIDLLiteContainer.storage-used': 'gint64',
+    'GUPnPDIDLLiteContainer.total-deleted-child-count': 'guint',
+    'GUPnPDIDLLiteContributor.name': 'gchararray',
+    'GUPnPDIDLLiteContributor.role': 'gchararray',
+    'GUPnPDIDLLiteContributor.xml-node': 'gpointer',
+    'GUPnPDIDLLiteCreateClass.content': 'gchararray',
+    'GUPnPDIDLLiteCreateClass.friendly-name': 'gchararray',
+    'GUPnPDIDLLiteCreateClass.include-derived': 'gboolean',
+    'GUPnPDIDLLiteCreateClass.xml-node': 'gpointer',
+    'GUPnPDIDLLiteDescriptor.content': 'gchararray',
+    'GUPnPDIDLLiteDescriptor.id': 'gchararray',
+    'GUPnPDIDLLiteDescriptor.metadata-type': 'gchararray',
+    'GUPnPDIDLLiteDescriptor.name-space': 'gchararray',
+    'GUPnPDIDLLiteDescriptor.xml-node': 'gpointer',
+    'GUPnPDIDLLiteItem.lifetime': 'glong',
+    'GUPnPDIDLLiteItem.ref-id': 'gchararray',
+    'GUPnPDIDLLiteObject.album': 'gchararray',
+    'GUPnPDIDLLiteObject.album-art': 'gchararray',
+    'GUPnPDIDLLiteObject.artist': 'gchararray',
+    'GUPnPDIDLLiteObject.author': 'gchararray',
+    'GUPnPDIDLLiteObject.creator': 'gchararray',
+    'GUPnPDIDLLiteObject.date': 'gchararray',
+    'GUPnPDIDLLiteObject.dc-namespace': 'gpointer',
+    'GUPnPDIDLLiteObject.description': 'gchararray',
+    'GUPnPDIDLLiteObject.dlna-managed': 'GUPnPOCMFlags',
+    'GUPnPDIDLLiteObject.dlna-namespace': 'gpointer',
+    'GUPnPDIDLLiteObject.genre': 'gchararray',
+    'GUPnPDIDLLiteObject.id': 'gchararray',
+    'GUPnPDIDLLiteObject.parent-id': 'gchararray',
+    'GUPnPDIDLLiteObject.pv-namespace': 'gpointer',
+    'GUPnPDIDLLiteObject.restricted': 'gboolean',
+    'GUPnPDIDLLiteObject.title': 'gchararray',
+    'GUPnPDIDLLiteObject.track-number': 'gint',
+    'GUPnPDIDLLiteObject.update-id': 'guint',
+    'GUPnPDIDLLiteObject.upnp-class': 'gchararray',
+    'GUPnPDIDLLiteObject.upnp-namespace': 'gpointer',
+    'GUPnPDIDLLiteObject.write-status': 'gchararray',
+    'GUPnPDIDLLiteObject.xml-node': 'gpointer',
+    'GUPnPDIDLLiteResource.audio-channels': 'gint',
+    'GUPnPDIDLLiteResource.bitrate': 'gint',
+    'GUPnPDIDLLiteResource.bits-per-sample': 'gint',
+    'GUPnPDIDLLiteResource.cleartext-size': 'gint64',
+    'GUPnPDIDLLiteResource.color-depth': 'gint',
+    'GUPnPDIDLLiteResource.dlna-namespace': 'gpointer',
+    'GUPnPDIDLLiteResource.duration': 'glong',
+    'GUPnPDIDLLiteResource.height': 'gint',
+    'GUPnPDIDLLiteResource.import-uri': 'gchararray',
+    'GUPnPDIDLLiteResource.protection': 'gchararray',
+    'GUPnPDIDLLiteResource.protocol-info': 'GUPnPProtocolInfo',
+    'GUPnPDIDLLiteResource.pv-namespace': 'gpointer',
+    'GUPnPDIDLLiteResource.sample-freq': 'gint',
+    'GUPnPDIDLLiteResource.size': 'glong',
+    'GUPnPDIDLLiteResource.size64': 'gint64',
+    'GUPnPDIDLLiteResource.subtitle-file-type': 'gchararray',
+    'GUPnPDIDLLiteResource.subtitle-file-uri': 'gchararray',
+    'GUPnPDIDLLiteResource.track-total': 'guint',
+    'GUPnPDIDLLiteResource.update-count': 'guint',
+    'GUPnPDIDLLiteResource.uri': 'gchararray',
+    'GUPnPDIDLLiteResource.width': 'gint',
+    'GUPnPDIDLLiteResource.xml-node': 'gpointer',
+    'GUPnPDIDLLiteWriter.language': 'gchararray',
+    'GUPnPFeature.name': 'gchararray',
+    'GUPnPFeature.object-ids': 'gchararray',
+    'GUPnPFeature.version': 'gchararray',
+    'GUPnPMediaCollection.author': 'gchararray',
+    'GUPnPMediaCollection.data': 'gchararray',
+    'GUPnPMediaCollection.title': 'gchararray',
+    'GUPnPProtocolInfo.dlna-conversion': 'GUPnPDLNAConversion',
+    'GUPnPProtocolInfo.dlna-flags': 'GUPnPDLNAFlags',
+    'GUPnPProtocolInfo.dlna-operation': 'GUPnPDLNAOperation',
+    'GUPnPProtocolInfo.dlna-profile': 'gchararray',
+    'GUPnPProtocolInfo.mime-type': 'gchararray',
+    'GUPnPProtocolInfo.network': 'gchararray',
+    'GUPnPProtocolInfo.protocol': 'gchararray',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

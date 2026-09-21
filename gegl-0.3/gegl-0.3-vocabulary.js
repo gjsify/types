@@ -189,6 +189,61 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GeglAudioFragment.string': 'gchararray',
+    'GeglBuffer.abyss-height': 'gint',
+    'GeglBuffer.abyss-width': 'gint',
+    'GeglBuffer.abyss-x': 'gint',
+    'GeglBuffer.abyss-y': 'gint',
+    'GeglBuffer.backend': 'GeglTileBackend',
+    'GeglBuffer.format': 'gpointer',
+    'GeglBuffer.height': 'gint',
+    'GeglBuffer.path': 'gchararray',
+    'GeglBuffer.shift-x': 'gint',
+    'GeglBuffer.shift-y': 'gint',
+    'GeglBuffer.tile-height': 'gint',
+    'GeglBuffer.tile-width': 'gint',
+    'GeglBuffer.width': 'gint',
+    'GeglBuffer.x': 'gint',
+    'GeglBuffer.y': 'gint',
+    'GeglColor.string': 'gchararray',
+    'GeglConfig.application-license': 'gchararray',
+    'GeglConfig.chunk-size': 'gint',
+    'GeglConfig.quality': 'gdouble',
+    'GeglConfig.queue-size': 'gint',
+    'GeglConfig.swap': 'gchararray',
+    'GeglConfig.threads': 'gint',
+    'GeglConfig.tile-cache-size': 'guint64',
+    'GeglConfig.tile-height': 'gint',
+    'GeglConfig.tile-width': 'gint',
+    'GeglConfig.use-opencl': 'gboolean',
+    'GeglNode.dont-cache': 'gboolean',
+    'GeglNode.gegl-operation': 'GeglOperation',
+    'GeglNode.name': 'gchararray',
+    'GeglNode.operation': 'gchararray',
+    'GeglNode.passthrough': 'gboolean',
+    'GeglNode.use-opencl': 'gboolean',
+    'GeglProcessor.chunksize': 'gint',
+    'GeglProcessor.node': 'GeglNode',
+    'GeglProcessor.progress': 'gdouble',
+    'GeglProcessor.rectangle': 'gpointer',
+    'GeglTileBackend.flush-on-destroy': 'gboolean',
+    'GeglTileBackend.format': 'gpointer',
+    'GeglTileBackend.tile-height': 'gint',
+    'GeglTileBackend.tile-width': 'gint',
+    'GeglTileHandler.source': 'GObject',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

@@ -167,6 +167,38 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'EBackend.connectable': 'GSocketConnectable',
+    'EBackend.online': 'gboolean',
+    'EBackend.source': 'ESource',
+    'ECacheKeys.cache': 'ECache',
+    'ECacheKeys.key-column-name': 'gchararray',
+    'ECacheKeys.table-name': 'gchararray',
+    'ECacheKeys.value-column-name': 'gchararray',
+    'ECollectionBackend.server': 'ESourceRegistryServer',
+    'EDataFactory.backend-per-process': 'gint',
+    'EDataFactory.reload-supported': 'gboolean',
+    'EFileCache.filename': 'gchararray',
+    'EServerSideSource.file': 'GFile',
+    'EServerSideSource.oauth2-support': 'EOAuth2Support',
+    'EServerSideSource.remote-creatable': 'gboolean',
+    'EServerSideSource.remote-deletable': 'gboolean',
+    'EServerSideSource.removable': 'gboolean',
+    'EServerSideSource.server': 'ESourceRegistryServer',
+    'EServerSideSource.writable': 'gboolean',
+    'EServerSideSource.write-directory': 'gchararray',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

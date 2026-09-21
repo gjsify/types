@@ -187,6 +187,94 @@ export const PROP_ENUMS = {
     'GDBusInterfaceSkeleton.g-flags': 'GDBusInterfaceSkeletonFlags',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GDBusInterfaceSkeleton.g-flags': 'GDBusInterfaceSkeletonFlags',
+    'GoaAccount.attention-needed': 'gboolean',
+    'GoaAccount.calendar-disabled': 'gboolean',
+    'GoaAccount.chat-disabled': 'gboolean',
+    'GoaAccount.contacts-disabled': 'gboolean',
+    'GoaAccount.documents-disabled': 'gboolean',
+    'GoaAccount.files-disabled': 'gboolean',
+    'GoaAccount.id': 'gchararray',
+    'GoaAccount.identity': 'gchararray',
+    'GoaAccount.is-locked': 'gboolean',
+    'GoaAccount.is-temporary': 'gboolean',
+    'GoaAccount.mail-disabled': 'gboolean',
+    'GoaAccount.maps-disabled': 'gboolean',
+    'GoaAccount.music-disabled': 'gboolean',
+    'GoaAccount.photos-disabled': 'gboolean',
+    'GoaAccount.presentation-identity': 'gchararray',
+    'GoaAccount.printers-disabled': 'gboolean',
+    'GoaAccount.provider-icon': 'gchararray',
+    'GoaAccount.provider-name': 'gchararray',
+    'GoaAccount.provider-type': 'gchararray',
+    'GoaAccount.read-later-disabled': 'gboolean',
+    'GoaAccount.ticketing-disabled': 'gboolean',
+    'GoaAccount.todo-disabled': 'gboolean',
+    'GoaCalendar.accept-ssl-errors': 'gboolean',
+    'GoaCalendar.uri': 'gchararray',
+    'GoaContacts.accept-ssl-errors': 'gboolean',
+    'GoaContacts.uri': 'gchararray',
+    'GoaExchange.accept-ssl-errors': 'gboolean',
+    'GoaExchange.host': 'gchararray',
+    'GoaFiles.accept-ssl-errors': 'gboolean',
+    'GoaFiles.uri': 'gchararray',
+    'GoaMail.email-address': 'gchararray',
+    'GoaMail.imap-accept-ssl-errors': 'gboolean',
+    'GoaMail.imap-host': 'gchararray',
+    'GoaMail.imap-supported': 'gboolean',
+    'GoaMail.imap-use-ssl': 'gboolean',
+    'GoaMail.imap-use-tls': 'gboolean',
+    'GoaMail.imap-user-name': 'gchararray',
+    'GoaMail.name': 'gchararray',
+    'GoaMail.smtp-accept-ssl-errors': 'gboolean',
+    'GoaMail.smtp-auth-login': 'gboolean',
+    'GoaMail.smtp-auth-plain': 'gboolean',
+    'GoaMail.smtp-auth-xoauth2': 'gboolean',
+    'GoaMail.smtp-host': 'gchararray',
+    'GoaMail.smtp-supported': 'gboolean',
+    'GoaMail.smtp-use-auth': 'gboolean',
+    'GoaMail.smtp-use-ssl': 'gboolean',
+    'GoaMail.smtp-use-tls': 'gboolean',
+    'GoaMail.smtp-user-name': 'gchararray',
+    'GoaMediaServer.dlna-supported': 'gboolean',
+    'GoaMediaServer.udn': 'gchararray',
+    'GoaOAuth2Based.client-id': 'gchararray',
+    'GoaOAuth2Based.client-secret': 'gchararray',
+    'GoaOAuthBased.consumer-key': 'gchararray',
+    'GoaOAuthBased.consumer-secret': 'gchararray',
+    'GoaObject.account': 'GoaAccount',
+    'GoaObject.calendar': 'GoaCalendar',
+    'GoaObject.chat': 'GoaChat',
+    'GoaObject.contacts': 'GoaContacts',
+    'GoaObject.documents': 'GoaDocuments',
+    'GoaObject.exchange': 'GoaExchange',
+    'GoaObject.files': 'GoaFiles',
+    'GoaObject.mail': 'GoaMail',
+    'GoaObject.manager': 'GoaManager',
+    'GoaObject.maps': 'GoaMaps',
+    'GoaObject.media-server': 'GoaMediaServer',
+    'GoaObject.music': 'GoaMusic',
+    'GoaObject.oauth-based': 'GoaOAuthBased',
+    'GoaObject.oauth2-based': 'GoaOAuth2Based',
+    'GoaObject.password-based': 'GoaPasswordBased',
+    'GoaObject.photos': 'GoaPhotos',
+    'GoaObject.printers': 'GoaPrinters',
+    'GoaObject.read-later': 'GoaReadLater',
+    'GoaObject.ticketing': 'GoaTicketing',
+    'GoaObject.todo': 'GoaTodo',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

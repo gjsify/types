@@ -353,6 +353,95 @@ export const PROP_ENUMS = {
     'GESVideoTransition.transition-type': 'GESVideoStandardTransitionType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GESAsset.extractable-type': 'GType',
+    'GESAsset.id': 'gchararray',
+    'GESAsset.proxy': 'GESAsset',
+    'GESAudioUriSource.uri': 'gchararray',
+    'GESClip.supported-formats': 'GESTrackType',
+    'GESClipAsset.supported-formats': 'GESTrackType',
+    'GESDiscovererManager.timeout': 'guint64',
+    'GESDiscovererManager.use-cache': 'gboolean',
+    'GESEffect.bin-description': 'gchararray',
+    'GESEffectClip.audio-bin-description': 'gchararray',
+    'GESEffectClip.video-bin-description': 'gchararray',
+    'GESGroup.duration': 'guint64',
+    'GESGroup.in-point': 'guint64',
+    'GESGroup.max-duration': 'guint64',
+    'GESGroup.priority': 'guint',
+    'GESGroup.start': 'guint64',
+    'GESImageSource.uri': 'gchararray',
+    'GESLayer.auto-transition': 'gboolean',
+    'GESLayer.priority': 'guint',
+    'GESMarkerList.flags': 'GESMarkerFlags',
+    'GESMultiFileSource.uri': 'gchararray',
+    'GESPipeline.audio-filter': 'GstElement',
+    'GESPipeline.audio-sink': 'GstElement',
+    'GESPipeline.mode': 'GESPipelineFlags',
+    'GESPipeline.timeline': 'GESTimeline',
+    'GESPipeline.video-filter': 'GstElement',
+    'GESPipeline.video-sink': 'GstElement',
+    'GESProject.uri': 'gchararray',
+    'GESTestClip.freq': 'gdouble',
+    'GESTestClip.mute': 'gboolean',
+    'GESTestClip.volume': 'gdouble',
+    'GESTestClip.vpattern': 'GESVideoTestPattern',
+    'GESTextOverlayClip.color': 'guint',
+    'GESTextOverlayClip.font-desc': 'gchararray',
+    'GESTextOverlayClip.halignment': 'GESTextHAlign',
+    'GESTextOverlayClip.text': 'gchararray',
+    'GESTextOverlayClip.valignment': 'GESTextVAlign',
+    'GESTextOverlayClip.xpos': 'gdouble',
+    'GESTextOverlayClip.ypos': 'gdouble',
+    'GESTimeline.auto-transition': 'gboolean',
+    'GESTimeline.snapping-distance': 'guint64',
+    'GESTimelineElement.duration': 'guint64',
+    'GESTimelineElement.in-point': 'guint64',
+    'GESTimelineElement.max-duration': 'guint64',
+    'GESTimelineElement.name': 'gchararray',
+    'GESTimelineElement.parent': 'GESTimelineElement',
+    'GESTimelineElement.priority': 'guint',
+    'GESTimelineElement.serialize': 'gboolean',
+    'GESTimelineElement.start': 'guint64',
+    'GESTimelineElement.timeline': 'GESTimeline',
+    'GESTitleClip.background': 'guint',
+    'GESTitleClip.color': 'guint',
+    'GESTitleClip.font-desc': 'gchararray',
+    'GESTitleClip.halignment': 'GESTextHAlign',
+    'GESTitleClip.text': 'gchararray',
+    'GESTitleClip.valignment': 'GESTextVAlign',
+    'GESTitleClip.xpos': 'gdouble',
+    'GESTitleClip.ypos': 'gdouble',
+    'GESTrack.id': 'gchararray',
+    'GESTrack.mixing': 'gboolean',
+    'GESTrack.track-type': 'GESTrackType',
+    'GESTrackElement.active': 'gboolean',
+    'GESTrackElement.auto-clamp-control-sources': 'gboolean',
+    'GESTrackElement.has-internal-source': 'gboolean',
+    'GESTrackElement.track-type': 'GESTrackType',
+    'GESTrackElementAsset.track-type': 'GESTrackType',
+    'GESTransitionClip.vtype': 'GESVideoStandardTransitionType',
+    'GESUriClip.is-image': 'gboolean',
+    'GESUriClip.mute': 'gboolean',
+    'GESUriClip.supported-formats': 'GESTrackType',
+    'GESUriClip.uri': 'gchararray',
+    'GESUriClipAsset.duration': 'guint64',
+    'GESVideoTransition.border': 'guint',
+    'GESVideoTransition.invert': 'gboolean',
+    'GESVideoTransition.transition-type': 'GESVideoStandardTransitionType',
+    'GESVideoUriSource.uri': 'gchararray',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

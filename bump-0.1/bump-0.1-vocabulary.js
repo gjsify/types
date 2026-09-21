@@ -137,6 +137,40 @@ export const FLAG_VALUES_UNREADABLE = {};
 // vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
 export const PROP_ENUMS = {};
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'BumpAsyncPriorityQueue.g-type': 'GType',
+    'BumpAsyncPriorityQueue.waiting-threads': 'gint',
+    'BumpClaim.time-acquired': 'gint64',
+    'BumpClaim.time-released': 'gint64',
+    'BumpEvent.auto-reset': 'gboolean',
+    'BumpEvent.pool': 'BumpTaskQueue',
+    'BumpEvent.t-type': 'GType',
+    'BumpEvent.triggered': 'gboolean',
+    'BumpFactory.g-type': 'GType',
+    'BumpLazy.pool': 'BumpTaskQueue',
+    'BumpLazy.t-type': 'GType',
+    'BumpResourceClaim.pool': 'BumpResourcePool',
+    'BumpResourceClaim.t-type': 'GType',
+    'BumpResourcePool.max-resources': 'gint',
+    'BumpResourcePool.num-resources': 'gint',
+    'BumpResourcePool.pool': 'BumpTaskQueue',
+    'BumpResourcePool.t-type': 'GType',
+    'BumpSemaphore.claims': 'gint',
+    'BumpSemaphore.max-claims': 'gint',
+    'BumpSemaphore.pool': 'BumpTaskQueue',
+    'BumpSemaphoreClaim.semaphore': 'BumpSemaphore',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

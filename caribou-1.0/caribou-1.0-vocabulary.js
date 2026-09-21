@@ -154,6 +154,48 @@ export const PROP_ENUMS = {
     'CaribouIScannableGroup.scan-grouping': 'CaribouScanGrouping',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'CaribouDisplayAdapter.display': 'GdkDisplay',
+    'CaribouGroupModel.active-level': 'gchararray',
+    'CaribouIScannableGroup.scan-grouping': 'CaribouScanGrouping',
+    'CaribouIScannableItem.scan-selected': 'gboolean',
+    'CaribouIScannableItem.scan-stepping': 'gboolean',
+    'CaribouKeyModel.align': 'gchararray',
+    'CaribouKeyModel.is-modifier': 'gboolean',
+    'CaribouKeyModel.keyval': 'guint',
+    'CaribouKeyModel.label': 'gchararray',
+    'CaribouKeyModel.name': 'gchararray',
+    'CaribouKeyModel.repeatable': 'gboolean',
+    'CaribouKeyModel.show-subkeys': 'gboolean',
+    'CaribouKeyModel.text': 'gchararray',
+    'CaribouKeyModel.toggle': 'gchararray',
+    'CaribouKeyModel.width': 'gdouble',
+    'CaribouKeyboardModel.active-group': 'gchararray',
+    'CaribouKeyboardModel.keyboard-file': 'gchararray',
+    'CaribouKeyboardModel.keyboard-type': 'gchararray',
+    'CaribouLevelModel.mode': 'gchararray',
+    'CaribouScanner.autorestart': 'gboolean',
+    'CaribouScanner.bind-settings': 'gboolean',
+    'CaribouScanner.inverse-scanning': 'gboolean',
+    'CaribouScanner.keyboard-key': 'gchararray',
+    'CaribouScanner.mouse-button': 'gint',
+    'CaribouScanner.scan-cycles': 'gint',
+    'CaribouScanner.scan-enabled': 'gboolean',
+    'CaribouScanner.scan-grouping': 'gint',
+    'CaribouScanner.step-time': 'gdouble',
+    'CaribouScanner.switch-device': 'gchararray',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

@@ -161,6 +161,58 @@ export const PROP_ENUMS = {
     'GtdMenuButton.direction': 'GtkArrowType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'GtdListStore.item-type': 'GType',
+    'GtdManager.default-provider': 'GtdProvider',
+    'GtdMaxSizeLayout.max-height': 'gint',
+    'GtdMaxSizeLayout.max-width': 'gint',
+    'GtdMaxSizeLayout.max-width-chars': 'gint',
+    'GtdMaxSizeLayout.width-chars': 'gint',
+    'GtdMenuButton.align-widget': 'GtkWidget',
+    'GtdMenuButton.direction': 'GtkArrowType',
+    'GtdMenuButton.gicon': 'GIcon',
+    'GtdMenuButton.has-frame': 'gboolean',
+    'GtdMenuButton.label': 'gchararray',
+    'GtdMenuButton.menu-model': 'GMenuModel',
+    'GtdMenuButton.popover': 'GtkPopover',
+    'GtdMenuButton.use-underline': 'gboolean',
+    'GtdNotification.secondary-action-name': 'gchararray',
+    'GtdNotification.text': 'gchararray',
+    'GtdObject.uid': 'gchararray',
+    'GtdStarWidget.active': 'gboolean',
+    'GtdTask.complete': 'gboolean',
+    'GtdTask.description': 'gchararray',
+    'GtdTask.important': 'gboolean',
+    'GtdTask.list': 'GtdTaskList',
+    'GtdTask.position': 'gint64',
+    'GtdTask.title': 'gchararray',
+    'GtdTaskList.archived': 'gboolean',
+    'GtdTaskList.is-removable': 'gboolean',
+    'GtdTaskList.name': 'gchararray',
+    'GtdTaskList.provider': 'GtdProvider',
+    'GtdTaskListView.show-due-date': 'gboolean',
+    'GtdTaskListView.show-list-name': 'gboolean',
+    'GtdWidget.rotation-x': 'gfloat',
+    'GtdWidget.rotation-y': 'gfloat',
+    'GtdWidget.rotation-z': 'gfloat',
+    'GtdWidget.scale-x': 'gfloat',
+    'GtdWidget.scale-y': 'gfloat',
+    'GtdWidget.scale-z': 'gfloat',
+    'GtdWidget.translation-x': 'gfloat',
+    'GtdWidget.translation-y': 'gfloat',
+    'GtdWidget.translation-z': 'gfloat',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint

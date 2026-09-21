@@ -188,6 +188,50 @@ export const PROP_ENUMS = {
     'FlatpakRemote.type': 'FlatpakRemoteType',
 };
 
+// `<declaration GType>.<property>` -> the GType of that property's own type.
+//
+// `PROP_ENUMS` one case wider, and a SEPARATE table on purpose. That one is a join with a
+// contract — the GType it names has numbers, in this vocabulary or the owner's — and folding a
+// plain type table in would mix "resolvable to numbers" with "not" and hand the distinction to
+// the consumer. `ARIA_VALUE_ENUMS` beside `ARIA_VALUE_TYPES` is the same split.
+//
+// A row is ABSENT where no GType can be stated: a fundamental spelling outside the generator's
+// closed map, a registered type with no `glib:type-name`, or a property with no `<type>`
+// child. Absence therefore reads as "unknown" and never as "scalar".
+export const PROP_TYPES = {
+    'FlatpakBundleRef.file': 'GFile',
+    'FlatpakInstalledRef.appdata-content-rating-type': 'gchararray',
+    'FlatpakInstalledRef.appdata-license': 'gchararray',
+    'FlatpakInstalledRef.appdata-name': 'gchararray',
+    'FlatpakInstalledRef.appdata-summary': 'gchararray',
+    'FlatpakInstalledRef.appdata-version': 'gchararray',
+    'FlatpakInstalledRef.deploy-dir': 'gchararray',
+    'FlatpakInstalledRef.end-of-life': 'gchararray',
+    'FlatpakInstalledRef.end-of-life-rebase': 'gchararray',
+    'FlatpakInstalledRef.installed-size': 'guint64',
+    'FlatpakInstalledRef.is-current': 'gboolean',
+    'FlatpakInstalledRef.latest-commit': 'gchararray',
+    'FlatpakInstalledRef.origin': 'gchararray',
+    'FlatpakRef.arch': 'gchararray',
+    'FlatpakRef.branch': 'gchararray',
+    'FlatpakRef.collection-id': 'gchararray',
+    'FlatpakRef.commit': 'gchararray',
+    'FlatpakRef.kind': 'FlatpakRefKind',
+    'FlatpakRef.name': 'gchararray',
+    'FlatpakRelatedRef.should-autoprune': 'gboolean',
+    'FlatpakRelatedRef.should-delete': 'gboolean',
+    'FlatpakRelatedRef.should-download': 'gboolean',
+    'FlatpakRemote.name': 'gchararray',
+    'FlatpakRemote.type': 'FlatpakRemoteType',
+    'FlatpakRemoteRef.download-size': 'guint64',
+    'FlatpakRemoteRef.end-of-life': 'gchararray',
+    'FlatpakRemoteRef.end-of-life-rebase': 'gchararray',
+    'FlatpakRemoteRef.installed-size': 'guint64',
+    'FlatpakRemoteRef.remote-name': 'gchararray',
+    'FlatpakTransaction.installation': 'FlatpakInstallation',
+    'FlatpakTransaction.no-interaction': 'gboolean',
+};
+
 // `<enum GType>.<nick>` -> the kind of value that ARIA slot takes.
 //
 // The one table here that is not about a ParamSpec. A GtkBuilder or Blueprint
