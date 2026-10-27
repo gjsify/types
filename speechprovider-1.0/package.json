@@ -1,0 +1,58 @@
+{
+    "name": "@girs/speechprovider-1.0",
+    "version": "5.6.0",
+    "description": "GJS TypeScript type definitions for SpeechProvider-1.0",
+    "type": "module",
+    "module": "speechprovider-1.0.js",
+    "main": "speechprovider-1.0.js",
+    "exports": {
+      "./ambient": {
+        "types": "./speechprovider-1.0-ambient.d.ts",
+        "import": "./speechprovider-1.0-ambient.js",
+        "default": "./speechprovider-1.0-ambient.js"
+      },
+      "./import": {
+        "types": "./speechprovider-1.0-import.d.ts",
+        "import": "./speechprovider-1.0-import.js",
+        "default": "./speechprovider-1.0-import.js"
+      },
+      "./vocabulary": {
+        "types": "./speechprovider-1.0-vocabulary.d.ts",
+        "import": "./speechprovider-1.0-vocabulary.js",
+        "default": "./speechprovider-1.0-vocabulary.js"
+      },
+      "./speechprovider-1.0": {
+        "types": "./speechprovider-1.0.d.ts",
+        "import": "./speechprovider-1.0.js",
+        "default": "./speechprovider-1.0.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
+    },
+    "scripts": {
+      "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+      "@girs/gjs": "^5.6.0",
+      "@girs/gobject-2.0": "^5.6.0",
+      "@girs/glib-2.0": "^5.6.0"    },
+    "devDependencies": {
+      "typescript": "*"
+    },
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "SpeechProvider-1.0"],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/speechprovider-1.0#readme"
+}
+
+
